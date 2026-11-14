@@ -1,12 +1,12 @@
 // Filters and sort for the scholarship list. The list is already in the page, so this only shows, hides and reorders.
 // Status is worked out again here from the dates, so it stays right between site builds.
-import { $ } from './lib.js';
-import { statusOf, scholarshipPill } from '../lib/when.js';
+import { $, fill } from './lib.js';
+import { statusOf, scholarshipPill, daysBetween } from '../lib/when.js';
 import { wireSaves, isSaved } from './saved.js';
 
 const list = $('sch-list');
 const rows = [...list.children];
-const q = $('sch-q'), c = $('sch-c'), l = $('sch-l'), s = $('sch-s'), o = $('sch-o'), sv = $('sch-sv'), tally = $('sch-tally'), more = $('sch-more');
+const q = $('sch-q'), c = $('sch-c'), u = $('sch-u'), l = $('sch-l'), s = $('sch-s'), d = $('sch-d'), v = $('sch-v'), o = $('sch-o'), sv = $('sch-sv'), clear = $('sch-clear'), tally = $('sch-tally'), more = $('sch-more');
 const PAGE = 30;
 let shown = PAGE;
 const pad = (n) => String(n).padStart(2, '0');
@@ -28,26 +28,51 @@ const sorters = {
     || a.dataset.name.localeCompare(b.dataset.name),
   name: (a, b) => a.dataset.name.localeCompare(b.dataset.name),
   country: (a, b) => a.dataset.country.localeCompare(b.dataset.country) || a.dataset.name.localeCompare(b.dataset.name),
+  // open scholarships with a deadline, soonest first; the rest after them
+  soon: (a, b) => {
+    const da = a.dataset.status === 'open' && a.dataset.deadline, db = b.dataset.status === 'open' && b.dataset.deadline;
+    return (da ? 0 : 1) - (db ? 0 : 1) || (da || '').localeCompare(db || '') || a.dataset.name.localeCompare(b.dataset.name);
+  },
 };
 
+// The university list follows the destination: only universities that have a scholarship here.
+const unis = new Map();
+for (const r of rows) {
+  const e = unis.get(r.dataset.provider) || { name: r.dataset.pname, country: r.dataset.country, n: 0 };
+  e.n += 1;
+  unis.set(r.dataset.provider, e);
+}
+function fillUnis(keep) {
+  const opts = [...unis].filter(([, e]) => !c.value || e.country === c.value)
+    .sort((a, b) => a[1].name.localeCompare(b[1].name))
+    .map(([slug, e]) => ({ v: slug, l: `${e.name} (${e.n})` }));
+  fill(u, [{ v: '', l: 'All universities' }, ...opts], keep && opts.some((x) => x.v === keep) ? keep : '');
+}
+
+const FILTERS = [[c, 'c'], [u, 'u'], [l, 'l'], [s, 's'], [d, 'd'], [v, 'v'], [o, 'o']];
 function readUrl() {
   const p = new URLSearchParams(location.search);
   q.value = p.get('q') || '';
-  for (const [el, k] of [[c, 'c'], [l, 'l'], [s, 's'], [o, 'o']]) {
-    const v = p.get(k);
-    if (v && [...el.options].some((op) => op.value === v)) el.value = v;
-  }
+  const set = (el, key) => { const val = p.get(key); if (val && [...el.options].some((op) => op.value === val)) el.value = val; };
+  set(c, 'c');
+  fillUnis(p.get('u'));
+  for (const [el, key] of FILTERS) if (el !== c && el !== u) set(el, key);
 }
 function writeUrl() {
   const p = new URLSearchParams();
   if (q.value) p.set('q', q.value);
-  if (c.value) p.set('c', c.value);
-  if (l.value) p.set('l', l.value);
-  if (s.value) p.set('s', s.value);
-  if (o.value !== 'status') p.set('o', o.value);
+  for (const [el, key] of FILTERS) if (el.value && !(el === o && o.value === 'status')) p.set(key, el.value);
   const qs = p.toString();
   history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
 }
+const active = () => Boolean(q.value.trim() || sv.checked || FILTERS.some(([el]) => el !== o && el.value));
+
+// Does the scholarship close within `days` days? Only open scholarships with a deadline on the official page count.
+const closesWithin = (r, days) => {
+  if (r.dataset.status !== 'open' || !r.dataset.deadline) return false;
+  const n = daysBetween(today, r.dataset.deadline);
+  return n >= 0 && n <= days;
+};
 
 function apply(reset) {
   if (reset) shown = PAGE;
@@ -55,20 +80,37 @@ function apply(reset) {
   const matches = rows.filter((r) =>
     (!term || term.split(/\s+/).every((w) => r.dataset.name.includes(w))) &&
     (!c.value || r.dataset.country === c.value) &&
+    (!u.value || r.dataset.provider === u.value) &&
     (!l.value || r.dataset.levels.split(' ').includes(l.value)) &&
     (!s.value || r.dataset.status === s.value) &&
+    (!d.value || (d.value === 'none' ? !r.dataset.deadline : closesWithin(r, Number(d.value)))) &&
+    (!v.value || r.dataset.vt === v.value) &&
     (!sv.checked || isSaved(r.dataset.id)));
   matches.sort(sorters[o.value]);
   const keep = new Set(matches);
   matches.forEach((r) => list.appendChild(r));
   rows.filter((r) => !keep.has(r)).forEach((r) => { r.hidden = true; list.appendChild(r); });
   matches.forEach((r, i) => { r.hidden = i >= shown; });
-  tally.textContent = matches.length === 0 ? (sv.checked ? 'Nothing saved yet. Use the bookmark on a card to save it on this device.' : 'No scholarships match. Try fewer filters.') : `${matches.length} scholarship${matches.length === 1 ? '' : 's'}` + (matches.length > shown ? `, showing ${shown}` : '');
+  tally.textContent = matches.length === 0
+    ? (sv.checked && !q.value.trim() && !FILTERS.some(([el]) => el !== o && el.value) ? 'Nothing saved yet. Use the bookmark on a card to save it on this device.' : 'No scholarships match. Try fewer filters.')
+    : `${matches.length} scholarship${matches.length === 1 ? '' : 's'}` + (matches.length > shown ? `, showing ${shown}` : '');
   more.hidden = matches.length <= shown;
+  clear.hidden = !active();
   writeUrl();
 }
 
-[q, c, l, s, o, sv].forEach((el) => el.addEventListener(el === q ? 'input' : 'change', () => apply(true)));
+[q, c, u, l, s, d, v, o, sv].forEach((el) => el.addEventListener(el === q ? 'input' : 'change', () => {
+  if (el === c) fillUnis('');  // a new destination: the university list starts again
+  apply(true);
+}));
+clear.addEventListener('click', () => {
+  q.value = '';
+  sv.checked = false;
+  for (const [el] of FILTERS) el.value = el === o ? 'status' : '';
+  fillUnis('');
+  apply(true);
+  q.focus();
+});
 wireSaves(list, () => { if (sv.checked) apply(true); });
 more.addEventListener('click', () => { shown += PAGE; apply(false); });
 readUrl();

@@ -35,14 +35,13 @@ export const isNew = (i, todayIso) => {
   return d !== null && d >= 0 && d <= 7;
 };
 
-export const initials = (org) =>
-  (org || '?')
-    .replace(/\(.*?\)/g, '')
-    .split(/[\s.\-&]+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0].toUpperCase())
-    .join('') || '?';
+// Two letters for the tile on a card. Words like "University" and "of" are skipped, so "University of Kent" is K, not UO.
+const FILLER = new Set(['of', 'the', 'and', 'for', 'at', 'in', 'de', 'la', 'du', 'des', 'van', 'von', 'der', 'university', 'universit\u00e4t', 'universit\u00e9', 'universiteit', 'universidad', 'college', 'institute', 'inc', 'ltd', 'llc', 'gmbh', 'ag']);
+export const initials = (org) => {
+  const words = (org || '?').replace(/\(.*?\)/g, '').split(/[\s.\-&,]+/).filter(Boolean);
+  const keep = words.filter((w) => !FILLER.has(w.toLowerCase()));
+  return (keep.length ? keep : words).slice(0, 2).map((w) => w[0].toUpperCase()).join('') || '?';
+};
 export const hue = (s) => [...(s || '')].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
 
 export const ATTRIBUTION = {

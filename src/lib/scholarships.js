@@ -13,7 +13,7 @@ export const hubFor = (slug) => (PUBLISH ? data.universities?.[slug] : null);
 export const itemsFor = (slug) => items.filter((i) => i.providerSlug === slug);
 export const bySlug = (slug) => items.find((i) => i.slug === slug);
 
-export { statusOf, STATUS_LABEL, statusNote, scholarshipPill, fmtIso } from './when.js';
+export { statusOf, STATUS_LABEL, statusNote, scholarshipPill, fmtIso, valueType, VALUE_LABEL, shortAbout } from './when.js';
 
 export const CHECK = 'Check the official page';
 export const levelsText = (l) => (l && l.length ? l.join(', ') : CHECK);

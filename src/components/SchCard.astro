@@ -1,16 +1,15 @@
 ---
 // One scholarship result card. Value, dates and level are copied from the official page; anything missing says so.
 import Icons from './Icons.astro';
-import { statusOf, scholarshipPill, fmtIso, levelsText, CHECK, countryName } from '../lib/scholarships.js';
+import { statusOf, scholarshipPill, fmtIso, levelsText, CHECK, countryName, valueType, shortAbout } from '../lib/scholarships.js';
 import { initials, hue } from '../lib/internships.js';
-import { blurb } from '../lib/data.js';
 const { r, today } = Astro.props;
 const st = statusOf(r, today);
 const apply = r.applyUrl || r.url;
 const n = (r.eligibility || []).length;
-const about = blurb(r.description, 150);
+const about = shortAbout(r.description, 150);
 ---
-<li class="rc sch" data-id={`sch:${r.slug}`} data-name={(r.name + ' ' + r.provider).toLowerCase()} data-country={r.country} data-levels={r.levels.map((l) => l.toLowerCase()).join(' ')} data-deadline={r.deadline || ''} data-opens={r.opens || ''} data-rolling={r.rolling ? '1' : ''} data-status={st}>
+<li class="rc sch" data-id={`sch:${r.slug}`} data-name={(r.name + ' ' + r.provider).toLowerCase()} data-country={r.country} data-levels={r.levels.map((l) => l.toLowerCase()).join(' ')} data-deadline={r.deadline || ''} data-opens={r.opens || ''} data-rolling={r.rolling ? '1' : ''} data-status={st} data-provider={r.providerSlug || r.provider.toLowerCase()} data-pname={r.provider} data-vt={valueType(r.value && r.value.display)}>
   <div class="rc-head">
     <span class="rc-mono" aria-hidden="true" style={`--h:${hue(r.provider)}`}>{initials(r.provider)}</span>
     <p class="rc-org">{r.provider}</p>
@@ -22,7 +21,7 @@ const about = blurb(r.description, 150);
   {r.value ? <p class="rc-pay">{r.value.display}</p> : <p class="rc-pay none">Value: check the official page</p>}
   {about && <p class="rc-note">{about}</p>}
   <dl class="rc-facts">
-    <div><dt>Deadline</dt><dd>{r.deadline ? fmtIso(r.deadline) : (r.deadlinePartial ? `${r.deadlinePartial} (year not stated)` : CHECK)}</dd></div>
+    <div><dt>Deadline</dt><dd>{r.deadline ? fmtIso(r.deadline) : (r.deadlinePartial ? `${r.deadlinePartial} (year not stated)` : 'Not stated')}</dd></div>
     <div><dt>Level</dt><dd>{levelsText(r.levels)}</dd></div>
     {r.opens && <div><dt>Opens</dt><dd>{fmtIso(r.opens)}</dd></div>}
     <div class="wide"><dt>Open to</dt><dd>International students{n > 0 && <Fragment> · <a href={`/scholarships/${r.slug}/#eligibility`}>{n} condition{n === 1 ? '' : 's'}</a></Fragment>}</dd></div>

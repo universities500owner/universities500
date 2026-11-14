@@ -245,7 +245,7 @@ h1 + .sch-sub + .st-wrap { align-items: flex-start; text-align: left; flex-direc
 }
 
 /* ---------- internships ---------- */
-.int-dests { list-style: none; margin: .75rem 0 0; padding: 0; display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); }
+.int-dests { list-style: none; margin: .75rem 0 0; padding: 0; display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
 .int-dest { display: flex; flex-direction: column; gap: .1rem; height: 100%; text-decoration: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: .75rem 1rem; }
 .int-dest:hover { background: var(--hover); border-color: var(--accent); }
 .int-dest-name { font-weight: 700; }
@@ -294,3 +294,9 @@ h1 + .sch-sub + .st-wrap { align-items: flex-start; text-align: left; flex-direc
 .rc-act .btn { min-height: 2.6rem; padding: .55rem 1rem; }
 .rc-go { gap: .5rem; }
 .rc-go svg { flex: none; width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* scholarship filters: eight controls, so they sit two or three to a row and the university list is the widest */
+#sch-bar select { flex: 1 1 9.5rem; }
+#sch-bar #sch-u { flex: 2 1 14rem; }
+#sch-bar .sch-clear { min-height: 2.9rem; padding: .5rem 1rem; }
+#sch-bar .sch-clear[hidden] { display: none; }
