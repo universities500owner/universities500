@@ -8,7 +8,7 @@ name: Scholarships (read official pages)
 # 46 hours old, so in practice it runs every two days (and never twice in a row if one day is missed).
 # A manual run from the Actions tab always goes ahead.
 #
-# Settings: add a repository variable CONTACT_EMAIL (Settings > Secrets and variables > Actions > Variables).
+# Settings: add CONTACT_EMAIL under Settings > Secrets and variables > Actions (a variable or a secret both work).
 # It goes in the crawler's User-Agent so a website owner can reach you.
 on:
   schedule:
@@ -54,7 +54,7 @@ jobs:
         id: run
         continue-on-error: true
         env:
-          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
         run: |
           ARGS="--report out --max-minutes 170"
           if [ "${{ github.event_name }}" = "schedule" ]; then ARGS="$ARGS --if-older-than-hours 46"; fi
