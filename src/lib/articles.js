@@ -161,3 +161,25 @@ export const checkedLabel = (a) => {
   const d = new Date(`${a.reviewed}T00:00:00Z`);
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 };
+
+// A short list of official sources for the foot of an article: the few that best match what the article is about.
+// Government and official-registry pages come first, then whichever source shares the most words with the article.
+const STOP = new Set('the and for with from that this your you are how what when where which into about study student students international studying guide'.split(' '));
+const words = (t) => String(t || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w));
+const OFFICIAL = /(\.gov(\.|\/)|\.gouv\.|\.govt\.|\.gc\.ca|canada\.ca|\.europa\.eu|\.admin\.ch|\.edu(\.|\/)|\.ac\.|studyinaustralia|studyaustralia|educationinireland|studyinsweden|studyinnorway|nuffic|campusfrance|studyinnz|educationnz|icas\.|ukcisa|britishcouncil|iie\.org|studyinthenetherlands|daad|study-in-germany|immigration|immi\.|migri|udi\.no|ind\.nl|ica\.gov|moe\.gov|mom\.gov)/i;
+// Some packs give a bare web address as the title and put the readable name first in the note.
+const isDomain = (t) => /^[\w.-]+\.[a-z]{2,}(\/\S*)?$/i.test(String(t || '').trim());
+const sourceLabel = (s) => (isDomain(s.title) && s.note ? String(s.note).split(/\.\s/)[0].replace(/\.$/, '') : s.title);
+export const shortSources = (a, n = 3) => {
+  const mine = new Set(words([a.title, a.primaryKeyword, ...(a.secondaryKeywords || []), a.topicLabel].join(' ')));
+  return [...(a.sources || [])]
+    .map((s, i) => {
+      const w = words(`${s.title} ${s.url} ${s.note || ''}`);
+      const hit = w.filter((x) => mine.has(x)).length;
+      return { s, i, score: hit + (OFFICIAL.test(s.url) ? 3 : 0) };
+    })
+    .sort((x, y) => y.score - x.score || x.i - y.i)
+    .slice(0, n)
+    .sort((x, y) => x.i - y.i)
+    .map((x) => ({ title: sourceLabel(x.s), url: x.s.url }));
+};

@@ -45,8 +45,35 @@ if (faqItems.length) {
     })),
   });
 }
-const toc = g.sections.filter((s) => s.blocks.length);
+const topics = g.sections.filter((s) => s.blocks.length && s.key !== 'overview');
 const arts = byDestination(g.slug);
+const nm = g.name;
+
+// One plain line per topic, the same for every destination. No figures, so nothing here can go stale.
+const BLURB = {
+  why: 'Why students choose it, in short.',
+  levels: 'Study levels and how long each one takes.',
+  universities: 'The universities named in this guide.',
+  intakes: 'When courses start and when to apply.',
+  costs: 'Tuition, living costs and other expenses.',
+  'post-study': 'Work and stay options after you graduate.',
+  work: 'How much you can work while you study.',
+  checklist: 'Documents and steps to prepare.',
+  visa: 'Student visa requirements and the funds you show.',
+  living: 'Housing, transport, healthcare and daily life.',
+  support: 'Support for international students.',
+  faq: 'Quick answers to common questions.',
+  'apply-visa-support': 'Applying, visas and support.',
+};
+const COVER = {
+  why: 'why study here', levels: 'study levels', universities: 'universities', intakes: 'intakes', costs: 'costs',
+  'post-study': 'post-study work', work: 'part-time work', checklist: 'application documents', visa: 'student visas',
+  living: 'student life', support: 'government support', 'apply-visa-support': 'applications, visas and support',
+};
+const covers = topics.map((t) => COVER[t.key]).filter(Boolean);
+const coverLine = covers.length > 1 ? covers.slice(0, -1).join(', ') + ' and ' + covers[covers.length - 1] : covers[0] || '';
+const topicTitle = (t) => (t.key === 'faq' ? 'Frequently asked questions' : t.title);
+const overviewBlocks = (overview?.blocks || []).filter((b) => b.t === 'p');
 ---
 <Base
   title={`Study in ${g.name}: guide for international students | Universities500`}
@@ -58,55 +85,107 @@ const arts = byDestination(g.slug);
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a><span aria-hidden="true">/</span><a href="/study-in/">Study in</a><span aria-hidden="true">/</span>{g.name}
   </nav>
-  <h1>{g.title}</h1>
-  <p class="lede">{lede}</p>
-  {g.stats.length > 0 && (
-    <div class="gstats">
-      {g.stats.map((s) => <div class="gstat"><b>{s.v}</b><span>{s.l}</span></div>)}
-    </div>
-  )}
-  <p class="guide-note">Fees, visa settings and work rules change often. Check each one on the official government or university site before you rely on it.</p>
 
-  <div class="guide-lay">
-    <nav class="toc" aria-label="In this guide">
-      <h2>In this guide</h2>
+  <section class="ghero">
+    <p class="g-eyebrow">Destination guide · {g.name}</p>
+    <h1>{g.title}</h1>
+    <p class="lede">{lede}</p>
+    {coverLine && <p class="g-cover"><strong>What this guide covers:</strong> {coverLine}.</p>}
+    {g.stats.length > 0 && (
+      <div class="gstats" role="list" aria-label={`${g.name} study guide at a glance`}>
+        {g.stats.map((s) => <div class="gstat" role="listitem"><b>{s.v}</b><span>{s.l}</span></div>)}
+      </div>
+    )}
+  </section>
+
+  <div class="g-intro">
+    {overviewBlocks.length > 0 && (
+      <section class="g-card g-overview" aria-labelledby="g-ov">
+        <h2 id="g-ov">Why study in {nm}?</h2>
+        <GuideBlocks blocks={overviewBlocks} />
+      </section>
+    )}
+    <nav class="g-card g-toc" aria-label="Explore this guide">
+      <h2>Explore this guide</h2>
       <ol>
-        {toc.map((s) => <li><a href={`#s-${s.key}`}>{s.title}</a></li>)}
-        {arts.length > 0 && <li><a href="#s-articles">Articles on {g.name}</a></li>}
-        {list.length > 0 && <li><a href="#s-universities-here">Universities in {g.name} on this site</a></li>}
+        {topics.map((t) => <li><a href={`#s-${t.key}`}>{topicTitle(t)}</a></li>)}
+        {arts.length > 0 && <li><a href="#s-articles">Articles on {nm}</a></li>}
+        {list.length > 0 && <li><a href="#s-universities-here">Universities in {nm} on this site</a></li>}
       </ol>
     </nav>
-    <article class="gbody">
-      {toc.map((s) => (
-        <section class="gsec" id={`s-${s.key}`}>
-          <h2>{s.title}</h2>
-          <GuideBlocks blocks={s.blocks} />
-        </section>
-      ))}
-      {arts.length > 0 && (
-        <section class="gsec" id="s-articles">
-          <h2>Articles on {g.name}</h2>
-          <p>Short answers on costs, visas and more. Each one starts with the answer and names its official sources.</p>
-          <ul class="acards">{arts.map((a) => <li><ArticleCard a={a} compact={true} /></li>)}</ul>
-          <p class="small"><a href={`/articles/destination/${g.slug}/`}>All {g.name} articles</a></p>
-        </section>
-      )}
-      {list.length > 0 && (
-        <section class="gsec uni-in-country" id="s-universities-here">
-          <h2>Universities in {g.name} on this site</h2>
-          <p>{list.length} {list.length === 1 ? 'university' : 'universities'}, listed alphabetically. Each profile links to its sources.</p>
-          <ul class="grid">
-            {list.map((u) => (
-              <li>
-                <a class="card" href={`/universities/${u.slug}/`}>
-                  <strong>{u.name}</strong>
-                  <span>{u.founded ? `Founded ${u.founded.v}` : c.name}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-    </article>
   </div>
+
+  <div class="g-tools">
+    <div>
+      <h2>Explore the topics</h2>
+      <p>Each topic is collapsed. Open the ones most relevant to you.</p>
+    </div>
+    <div class="g-btns">
+      <button class="pill" type="button" id="g-open">Expand all topics</button>
+      <button class="pill" type="button" id="g-close">Collapse all topics</button>
+    </div>
+  </div>
+
+  <section aria-label={`Study in ${nm} topics`} id="g-topics">
+    {topics.map((t, i) => (
+      <details class="topic" id={`s-${t.key}`}>
+        <summary>
+          <span class="num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <span class="topic-head">
+            <span class="topic-title">{topicTitle(t)}</span>
+            {BLURB[t.key] && <span class="topic-desc">{BLURB[t.key]}</span>}
+          </span>
+        </summary>
+        <div class="topic-body gbody">
+          <GuideBlocks blocks={t.blocks} />
+        </div>
+      </details>
+    ))}
+  </section>
+
+  <p class="g-info">Fees, visa settings and work rules change often. Check each one on the official government or university site before you rely on it.</p>
+
+  {arts.length > 0 && (
+    <section class="gsec" id="s-articles">
+      <h2>Articles on {nm}</h2>
+      <p>Short answers on costs, visas and more. Each one starts with the answer and names its official sources.</p>
+      <ul class="acards">{arts.map((a) => <li><ArticleCard a={a} compact={true} /></li>)}</ul>
+      <p class="small"><a href={`/articles/destination/${g.slug}/`}>All {nm} articles</a></p>
+    </section>
+  )}
+  {list.length > 0 && (
+    <section class="gsec uni-in-country" id="s-universities-here">
+      <h2>Universities in {nm} on this site</h2>
+      <p>{list.length} {list.length === 1 ? 'university' : 'universities'}, listed alphabetically. Each profile links to its sources.</p>
+      <ul class="grid">
+        {list.map((u) => (
+          <li>
+            <a class="card" href={`/universities/${u.slug}/`}>
+              <strong>{u.name}</strong>
+              <span>{u.founded ? `Founded ${u.founded.v}` : c.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <script is:inline>
+    (function () {
+      var all = function () { return Array.prototype.slice.call(document.querySelectorAll('#g-topics details.topic')); };
+      document.getElementById('g-open').addEventListener('click', function () { all().forEach(function (d) { d.open = true; }); });
+      document.getElementById('g-close').addEventListener('click', function () { all().forEach(function (d) { d.open = false; }); });
+      // Open the topic a link points at, then scroll to it.
+      function reveal() {
+        var id = decodeURIComponent(location.hash.slice(1));
+        if (!id) return;
+        var el = document.getElementById(id);
+        if (!el) return;
+        var d = el.closest('details');
+        if (d) { d.open = true; el.scrollIntoView(); }
+      }
+      window.addEventListener('hashchange', reveal);
+      reveal();
+    })();
+  </script>
 </Base>

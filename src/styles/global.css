@@ -1,27 +1,55 @@
+/* Colour tokens. Built from the unified palette:
+   Blue (trust and clarity) for text, links and structure, Green (growth and opportunity) for scholarships,
+   open status and guide numbering, Warm (energy and action) for the main buttons and highlights.
+   Blue   #001522 #003455 #005388 #0072BB #0091EE #22A9FF #55BDFF
+   Green  #004418 #00692C #238445 #43A353 #76C476 #A1D998 #C7E0C0
+   Warm   #FFD200 #FF9A00 #FF6A00 #FF3300 #FF0000
+   Text pairs were checked for contrast (4.5:1 for body text, 3:1 for large text and icons). */
 :root {
-  --ink: #0B2447;
-  --muted: #3F4F68;
+  --blue-1: #001522; --blue-2: #003455; --blue-3: #005388; --blue-4: #0072BB; --blue-5: #0091EE; --blue-6: #22A9FF; --blue-7: #55BDFF;
+  --green-1: #004418; --green-2: #00692C; --green-3: #238445; --green-4: #43A353; --green-5: #76C476; --green-6: #A1D998; --green-7: #C7E0C0;
+  --warm-1: #FFD200; --warm-2: #FF9A00; --warm-3: #FF6A00; --warm-4: #FF3300; --warm-5: #FF0000;
+
+  --ink: #001522;
+  --muted: #2F5873;
   --paper: #FFFFFF;
-  --surface: #F3F7FD;
-  --hover: #EAF1FC;
-  --line: #CBD6E6;
-  --accent: #2563C9;
+  --surface: #F2F9FE;
+  --hover: #E1F1FC;
+  --line: #C3D5E3;
+  --accent: #0072BB;
   --accent-on: #FFFFFF;
-  --deep: #12356B;
+  --deep: #003455;
+  --deep-on: #FFFFFF;
+  --cta: #FFD200;
+  --cta-on: #001522;
+  --cta-hover: #FF9A00;
+  --grow: #00692C;
+  --grow-bg: #C7E0C0;
+  --grow-on: #004418;
+  --soon-bg: #FFD200;
+  --soon-on: #001522;
+  --shadow: rgba(0, 21, 34, .16);
+  --display: "agenda-one", "Bricolage Grotesque Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --body: "comma-sans", "Instrument Sans Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --radius: 10px;
   --wrap: 68rem;
 }
 html[data-theme="dark"] {
   color-scheme: dark;
-  --ink: #EAF1FC;
-  --muted: #A9B9D3;
-  --paper: #0B2447;
-  --surface: #12356B;
-  --hover: #1B4687;
-  --line: #2A4A7F;
-  --accent: #4C8DF0;
-  --accent-on: #0B2447;
-  --deep: #2563C9;
+  --ink: #F2F9FF;
+  --muted: #B8D4E8;
+  --paper: #001522;
+  --surface: #00243C;
+  --hover: #003455;
+  --line: #0E4A73;
+  --accent: #55BDFF;
+  --accent-on: #001522;
+  --deep: #003455;
+  --deep-on: #F2F9FF;
+  --grow: #A1D998;
+  --grow-bg: #004418;
+  --grow-on: #C7E0C0;
+  --shadow: rgba(0, 0, 0, .5);
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -29,8 +57,9 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font: 1rem/1.6 var(--body);
 }
+h1, h2, h3, h4 { font-family: var(--display); }
 [hidden] { display: none !important; }
 a { color: var(--accent); text-underline-offset: 0.18em; }
 a:hover { text-decoration-thickness: 2px; }
@@ -77,11 +106,12 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   border: 1.5px solid var(--line); border-radius: var(--radius); padding: .7rem .9rem; min-height: 2.9rem;
 }
 .btn {
-  font: inherit; font-weight: 600; background: var(--accent); color: var(--accent-on);
+  font: inherit; font-weight: 700; background: var(--cta); color: var(--cta-on);
   border: 0; border-radius: var(--radius); padding: .7rem 1.2rem; min-height: 2.9rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center;
 }
-.btn:hover { filter: brightness(1.08); }
+.btn:hover { background: var(--cta-hover); color: var(--cta-on); }
 .btn.ghost { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+.btn.ghost:hover { background: var(--hover); color: var(--accent); }
 
 /* grids and cards */
 .grid { display: grid; gap: .85rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); list-style: none; padding: 0; margin: 1rem 0 0; }
