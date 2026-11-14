@@ -69,3 +69,24 @@ export function internshipPill(deadlineIso, dateIso, posted, todayIso) {
   const ago = n === 0 ? 'today' : n === 1 ? 'yesterday' : `${span(n)} ago`;
   return { text: `${posted ? 'Posted' : 'Added'} ${ago}`, tone: n <= 7 ? 'open' : 'plain', icon: 'clock' };
 }
+
+// What kind of value a scholarship states, read only from the text we show: "10% tuition" is a percentage,
+// "AUD 5,000" a fixed amount, "Tuition fee waiver" something else. No value on the page means none.
+export function valueType(display) {
+  const t = String(display || '').trim();
+  if (!t) return 'none';
+  if (/\d\s?%/.test(t)) return 'percent';
+  if (/(?:[A-Z]{3}|[$\u20AC\u00A3\u00A5\u20B9])\s?\d/.test(t)) return 'amount';
+  return 'other';
+}
+export const VALUE_LABEL = { amount: 'Fixed amount', percent: 'Percentage of tuition', other: 'Other (for example a fee waiver)', none: 'Value not stated' };
+
+// One short line from the page's own description for a card. If the first sentence is tiny ("The Richard A."), it takes the next one.
+export function shortAbout(text, max = 150) {
+  if (!text) return '';
+  const parts = String(text).split(/(?<=[.!?])\s+/);
+  let first = parts[0] || '';
+  if (first.length < 25 && parts.length > 1) first = `${first} ${parts[1]}`;
+  if (first.length <= max) return first;
+  return first.slice(0, max - 1).replace(/\s+\S*$/, '') + '\u2026';
+}

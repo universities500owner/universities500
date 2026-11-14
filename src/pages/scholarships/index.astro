@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { hiddenFromSearch } from '../../lib/noindex.js';
 import { countries } from '../../lib/data.js';
 import SchCard from '../../components/SchCard.astro';
-import { items, PUBLISH, generatedAt, statusOf, STATUS_LABEL, fmtIso, CHECK, lookGroups } from '../../lib/scholarships.js';
+import { items, PUBLISH, generatedAt, statusOf, VALUE_LABEL, fmtIso, CHECK, lookGroups } from '../../lib/scholarships.js';
 
 const path = '/scholarships/';
 const today = new Date().toISOString().slice(0, 10);
@@ -48,11 +48,14 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
 
     <section class="sec" aria-labelledby="h-find">
       <h2 id="h-find" class="sr-only">Search</h2>
-      <div class="filterbar" id="sch-bar">
+      <div class="filterbar" id="sch-bar" role="search" aria-label="Scholarship filters">
         <input id="sch-q" type="search" placeholder="Name or university" aria-label="Search scholarships by name or university" />
         <select id="sch-c" aria-label="Destination">
           <option value="">All destinations</option>
           {countryOpts.map((c) => <option value={c.code}>{c.name}</option>)}
+        </select>
+        <select id="sch-u" aria-label="University">
+          <option value="">All universities</option>
         </select>
         <select id="sch-l" aria-label="Level">
           <option value="">All levels</option>
@@ -66,12 +69,27 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
           <option value="closed">Closed</option>
           <option value="unknown">Check the official page</option>
         </select>
+        <select id="sch-d" aria-label="Deadline">
+          <option value="">Any deadline</option>
+          <option value="30">Closing in 30 days</option>
+          <option value="90">Closing in 90 days</option>
+          <option value="none">No deadline found</option>
+        </select>
+        <select id="sch-v" aria-label="Value">
+          <option value="">Any value</option>
+          <option value="amount">{VALUE_LABEL.amount}</option>
+          <option value="percent">{VALUE_LABEL.percent}</option>
+          <option value="other">{VALUE_LABEL.other}</option>
+          <option value="none">{VALUE_LABEL.none}</option>
+        </select>
         <select id="sch-o" aria-label="Sort by">
           <option value="status">Open first</option>
+          <option value="soon">Closing soonest</option>
           <option value="name">Name A to Z</option>
           <option value="country">Destination</option>
         </select>
         <label class="int-new"><input type="checkbox" id="sch-sv" /> Saved only</label>
+        <button type="button" class="btn-ghost sch-clear" id="sch-clear" hidden>Clear filters</button>
       </div>
       <p class="tally" id="sch-tally" role="status">{rows.length} scholarships</p>
       <ol class="rc-list" id="sch-list">
