@@ -118,6 +118,20 @@ class TitleTests(unittest.TestCase):
                   'Staging Engineer', 'High School Intern', 'Senior Data Analyst']:
             self.assertIsNone(T.classify(t), t)
 
+    def test_pupils_apprentices_and_student_workers_are_not_ours(self):
+        self.assertIsNone(T.classify('Schülerpraktikant (m/w/d)'))
+        self.assertEqual(T.classify('Pflichtpraktikum / Schülerpraktikum Social Media'), 'Internship')
+        self.assertIsNone(T.classify('Product Manager Apprentice', 'france', True))  # the employer's flag does not rescue an apprenticeship
+        self.assertEqual(T.classify('Brand Design Intern or Apprentice'), 'Internship')
+        self.assertIsNone(T.classify('Contract Student Worker: Analyst'))
+
+    def test_swedish_intern_means_internal(self):
+        for t in ['Kommunikatör - intern kommunikation', 'Intern tekniker till Bilbolaget i Kiruna', 'Veterinär blandad praktik',
+                  'Tandhygienist till liten och trivsam praktik', 'Samordnare för praktik och arbetsplats lärande']:
+            self.assertIsNone(T.classify(t, 'sweden'), t)
+        for t in ['HR Intern', 'Internship in Human Resources', 'Praktikant inom IT', 'Praktik inom försäljning på Aventi!']:
+            self.assertEqual(T.classify(t, 'sweden'), 'Internship', t)
+
     def test_stage_only_in_france_and_netherlands(self):
         self.assertEqual(T.classify('Stage - Marketing', 'france'), 'Internship')
         self.assertIsNone(T.classify('Stage - Marketing', 'usa'))
@@ -130,6 +144,12 @@ class TitleTests(unittest.TestCase):
 
 
 class PlaceTests(unittest.TestCase):
+    def test_city_noise_is_cut_to_the_known_city(self):
+        self.assertEqual(P.resolve('9th arrondissement of Paris'), [('Paris', 'france')])
+        self.assertEqual(P.resolve('The Italian Shot Maxvorstadt München'), [('München', 'germany')])
+        self.assertEqual(P.tidy_city('Stuttgart &'), 'Stuttgart')
+        self.assertEqual(P.tidy_city('Bad Salzungen'), 'Bad Salzungen')
+
     def test_resolve(self):
         cases = {
             'Sydney, Australia': [('Sydney', 'australia')], 'London, ON': [('London', 'canada')], 'San Francisco, CA': [('San Francisco', 'usa')],
@@ -191,6 +211,18 @@ def run(tmp, *extra):
         return R.main()
     finally:
         sys.argv = old
+
+
+class RecheckTests(unittest.TestCase):
+    def test_saved_postings_are_checked_again(self):
+        old = [{'title': 'Software Intern', 'country': 'usa', 'kind': 'Internship', 'city': 'Austin', 'org': 'A'},
+               {'title': 'Contract Student Worker', 'country': 'usa', 'kind': 'Working student', 'city': 'Boston', 'org': 'Zoox'},
+               {'title': 'Product Manager Apprentice', 'country': 'france', 'kind': 'Internship', 'city': '9th arrondissement of Paris', 'org': 'Artefactjobs'},
+               {'title': 'Data Analyst', 'country': 'usa', 'kind': 'Internship', 'city': 'Austin', 'org': 'B'}]  # kept: saved as an internship by the employer's flag
+        R.ORG_ALIAS['artefactjobs'] = 'Artefact'
+        kept, removed = R.recheck(old)
+        self.assertEqual([k['title'] for k in kept], ['Software Intern', 'Data Analyst'])
+        self.assertEqual(removed, 2)
 
 
 class PipelineTests(unittest.TestCase):

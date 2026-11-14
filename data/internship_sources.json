@@ -1220,5 +1220,9 @@
    ],
    "note": "Course-related technical internships arranged through national committees."
   }
- ]
+ ],
+ "orgAliases": {
+  "Artefactjobs": "Artefact",
+  "Artefactlinkedin": "Artefact"
+ }
 }

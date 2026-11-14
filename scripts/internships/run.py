@@ -36,6 +36,9 @@ def item_id(url, country):
     return hashlib.sha1(f'{url}|{country}'.encode()).hexdigest()[:12]
 
 
+ORG_ALIAS = {}  # lower-case name an open feed uses -> the company's own name (set from the sources file)
+
+
 def normalise(raw, source, board, org, unplaced):
     """One raw posting -> zero or more items (one per destination it is posted in)."""
     title = clean_title(raw.get('title'))
@@ -54,13 +57,32 @@ def normalise(raw, source, board, org, unplaced):
         if not kind or (city, country) in seen:
             continue
         seen.add((city, country))
-        out.append({'id': item_id(url, country), 'title': title, 'org': (raw.get('org') or org or '').strip(), 'city': city or '',
+        who = (raw.get('org') or org or '').strip()
+        who = ORG_ALIAS.get(who.lower(), who)
+        out.append({'id': item_id(url, country), 'title': title, 'org': who, 'city': city or '',
                     'country': country, 'kind': kind, 'url': url, 'source': source, 'board': board, 'posted': raw.get('posted') or ''})
     if not places and classify(title, None, raw.get('structured')):
         for loc in raw.get('locations') or []:
             if isinstance(loc, str):
                 unplaced[loc.strip()[:80]] += 1
     return out
+
+
+def recheck(items):
+    """Saved postings are checked again with today's rules, so an old mistake does not stay. Returns (kept, removed_count)."""
+    kept = []
+    for it in items:
+        # The employer's own 'intern' flag is not saved. Give the benefit of it only to postings saved as internships,
+        # so a title that only just stopped matching (for example 'student worker') cannot come back as one.
+        kind = classify(it.get('title'), it.get('country'), it.get('kind') == 'Internship' and it.get('source') != 'jobtech')
+        if not kind:
+            continue
+        it = dict(it)
+        it['kind'] = kind
+        it['city'] = P.tidy_city(it.get('city', ''))
+        it['org'] = ORG_ALIAS.get((it.get('org') or '').lower(), it.get('org'))
+        kept.append(it)
+    return kept, len(items) - len(kept)
 
 
 def merge(prev_items, new_items, ok_boards, today):
@@ -100,6 +122,7 @@ def main():
     ap.add_argument('--today', default='')
     ap.add_argument('--allow-drop', action='store_true')
     ap.add_argument('--skip-portals', action='store_true')
+    ap.add_argument('--recheck-only', action='store_true', help='apply the current rules to the saved data and stop; no websites are read')
     args = ap.parse_args()
 
     now = datetime.now(timezone.utc)
@@ -117,6 +140,18 @@ def main():
         Path(gh_out).open('a').write('skip=false\n')
 
     cfg = load(args.sources, {})
+    ORG_ALIAS.update({k.lower(): v for k, v in (cfg.get('orgAliases') or {}).items()})
+    if prev.get('items'):
+        prev['items'], dropped_old = recheck(prev['items'])
+        if dropped_old:
+            print(f'{dropped_old} saved postings no longer pass the title rules and were removed.')
+    if args.recheck_only:
+        prev['items'] = prev.get('items', [])
+        prev['stats'] = {**prev.get('stats', {}), 'items': len(prev['items']), 'byCountry': dict(sorted(Counter(i['country'] for i in prev['items']).items())),
+                         'bySource': dict(sorted(Counter(i['source'] for i in prev['items']).items()))}
+        Path(args.out).write_text(json.dumps(prev, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+        print(f"re-checked {args.out}: {len(prev['items'])} postings")
+        return 0
     employers = cfg.get('employers', [])
     open_feeds = cfg.get('openFeeds', {})
     if args.only:
@@ -227,6 +262,16 @@ def write_report(args, fx, boards, merged, prev_n, unplaced, portals, today, now
     L += [f'- Sources: {len(boards)} asked, {st.get("ok", 0)} read, {st.get("missing", 0)} do not exist, {st.get("blocked", 0)} blocked by robots.txt, {st.get("error", 0)} errors',
           f'- Postings kept: {len(merged)} (before this run: {prev_n})',
           f'- Requests: {fx.stats.get("requests", 0)}, took {int(time.monotonic() - t0)} s', '']
+    per = defaultdict(Counter)
+    for (a, _s), v in boards.items():
+        per[a][v['status']] += 1
+        per[a]['postings read'] += v['postings']
+        per[a]['internships kept'] += v['matched']
+    L += ['## By source type', '| Type | Asked | ok | missing | blocked | error | Postings read | Internships kept |', '|---|---|---|---|---|---|---|---|']
+    for a, c in sorted(per.items()):
+        asked = sum(1 for (x, _s) in boards if x == a)
+        L.append(f'| {a} | {asked} | {c["ok"]} | {c["missing"]} | {c["blocked"]} | {c["error"]} | {c["postings read"]} | {c["internships kept"]} |')
+    L.append('')
     by_c = Counter(i['country'] for i in merged)
     L += ['## By destination', '| Destination | Postings |', '|---|---|'] + [f'| {P.COUNTRY_NAMES.get(c, c)} | {n} |' for c, n in sorted(by_c.items())] + ['']
     by_k = Counter(i['kind'] for i in merged)
@@ -246,6 +291,9 @@ def write_report(args, fx, boards, merged, prev_n, unplaced, portals, today, now
         rt = (p.get('robotsText') or '').replace('\n', ' / ')[:160]
         L.append(f'| {p["title"]} | {"yes" if p["ok"] else "no"} | {rt} |')
     (rep / 'internship_report.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
+    # The run's log is readable without downloading the artifact, so the diagnostics go there too (not the portal table).
+    cut = next((n for n, l in enumerate(L) if l.startswith('## Link-only portals')), len(L))
+    print('\n'.join(L[:cut]))
     summ = os.environ.get('GITHUB_STEP_SUMMARY')  # the run's summary page on GitHub shows the top of the report
     if summ:
         Path(summ).open('a', encoding='utf-8').write('\n'.join(L[:60]) + '\n')
