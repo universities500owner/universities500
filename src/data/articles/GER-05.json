@@ -1,0 +1,526 @@
+{
+ "id": "GER-05",
+ "category": "Universities & Courses",
+ "priority": "Medium",
+ "title": "The Nine TU9 Universities: English-Taught Master's in Engineering and Computer Science",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "TU9 is an alliance of nine leading technical universities in Germany. It can be a useful starting point for students exploring engineering, computer science and technology programmes, but it is not a single admissions system and it does not mean every Master’s programme is taught in English. Students must compare individual programmes, language requirements, academic prerequisites, tuition and application routes."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Start with the nine TU9 members, then filter their official programme catalogues by subject, degree, language of instruction and intake. Many programmes are taught in German, some are fully or partly English-taught, and requirements vary. A German language A1 or B2 certificate is not a universal admission rule for every English-taught Master’s."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "The nine TU9 universities",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "University",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "City / main location",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Programme research focus",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "RWTH Aachen University"
+        }
+       ],
+       [
+        {
+         "t": "Aachen"
+        }
+       ],
+       [
+        {
+         "t": "Engineering, computer science, materials, production and technology."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Technische Universität Berlin"
+        }
+       ],
+       [
+        {
+         "t": "Berlin"
+        }
+       ],
+       [
+        {
+         "t": "Engineering, computing, architecture, transport and applied sciences."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Technische Universität Braunschweig"
+        }
+       ],
+       [
+        {
+         "t": "Braunschweig"
+        }
+       ],
+       [
+        {
+         "t": "Mechanical, automotive, aerospace, electrical and civil engineering."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "TU Darmstadt"
+        }
+       ],
+       [
+        {
+         "t": "Darmstadt"
+        }
+       ],
+       [
+        {
+         "t": "Computer science, electrical engineering, mechanical engineering and information systems."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "TU Dresden"
+        }
+       ],
+       [
+        {
+         "t": "Dresden"
+        }
+       ],
+       [
+        {
+         "t": "Engineering, microelectronics, computing, transport and materials."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Leibniz University Hannover"
+        }
+       ],
+       [
+        {
+         "t": "Hanover"
+        }
+       ],
+       [
+        {
+         "t": "Mechanical, civil, electrical engineering, computer science and related fields."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Karlsruhe Institute of Technology (KIT)"
+        }
+       ],
+       [
+        {
+         "t": "Karlsruhe"
+        }
+       ],
+       [
+        {
+         "t": "Engineering, computer science, natural sciences and technology."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Technical University of Munich (TUM)"
+        }
+       ],
+       [
+        {
+         "t": "Munich and other campuses"
+        }
+       ],
+       [
+        {
+         "t": "Engineering, computer science, data, mobility and interdisciplinary technology."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "University of Stuttgart"
+        }
+       ],
+       [
+        {
+         "t": "Stuttgart"
+        }
+       ],
+       [
+        {
+         "t": "Mechanical, automotive, aerospace, civil and electrical engineering."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "TU9 membership is an institutional alliance, not a ranking. Do not call the member order a ranking or imply that all nine universities have identical tuition, admission or language policies."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "English-taught programmes: verify the exact degree",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A university may offer some English-taught Master’s programmes while most undergraduate or other postgraduate programmes are German-taught. A programme can also be bilingual or require German for internships, labs, clinical/practical elements or professional interaction. Read the programme’s language-of-instruction statement and admission regulations for the intended intake."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Mechanical engineering and computer science: what to compare",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Field",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Programme checks",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Mechanical engineering"
+        }
+       ],
+       [
+        {
+         "t": "Thermodynamics, design, manufacturing, materials, simulation, robotics, automotive/aerospace specialisation, laboratory work and relevant prerequisite credits."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Computer science"
+        }
+       ],
+       [
+        {
+         "t": "Algorithms, software engineering, systems, AI/ML, data engineering, cybersecurity, mathematics and programming prerequisites."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Electrical / electronic engineering"
+        }
+       ],
+       [
+        {
+         "t": "Circuits, control, power systems, communications, embedded systems, signal processing and lab/project experience."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Industrial / production engineering"
+        }
+       ],
+       [
+        {
+         "t": "Operations research, manufacturing systems, automation, supply chain, quality and project work."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "German language: A1, B2 and C1 are not interchangeable",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The language level required depends on the programme and the visa/admission context. A fully English-taught degree may require an accepted English test and may not require German for admission. A German-taught programme will require German at the level specified by the institution, often higher than A1. Some universities recommend or require basic German for daily life, internships or certain course components. Never publish “A1 is enough for Germany” or “B2 is mandatory for all English programmes”."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The German Missions in India state that language evidence must be suitable for the intended programme and list accepted test types in their current guidance. The university’s own programme requirement remains decisive for admission. Students should also consider learning German for employability even when the degree is taught in English."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Tuition and semester contribution",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Many consecutive Master’s programmes at public universities do not charge general tuition, but students should not assume that all public programmes are free. Tuition can apply in certain states, to non-EU students under specific state rules, to continuing-education or non-consecutive programmes and at private institutions. Semester contributions are usually payable even where tuition is not charged. Check the current fee page for the specific programme and applicant category."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Admission requirements: build a programme-level checklist",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Recognised Bachelor’s degree in a relevant subject and required overall grade."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Minimum credits in named subject areas such as mathematics, mechanics, programming or electrical engineering."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "English or German language certificate accepted by the programme."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "APS certificate for Indian academic documents, where required."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "GRE, aptitude assessment, portfolio, work experience or other programme-specific evidence, if applicable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Application route: direct university portal, uni-assist or VPD."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Deadline, semester start, tuition and semester contribution."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "What are the TU9 universities in Germany?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "TU9 is an alliance of RWTH Aachen, TU Berlin, TU Braunschweig, TU Darmstadt, TU Dresden, Leibniz University Hannover, KIT, TUM and the University of Stuttgart."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are all TU9 Master’s programmes taught in English?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Each university has its own programme portfolio. Some programmes are English-taught, some German-taught and some bilingual. Check the exact programme page."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is German A1 enough to study in Germany?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not as a universal rule. A1 may be useful as a starting point, but admission language requirements depend on the programme. German-taught programmes generally require a much higher level; English-taught programmes require the specified English evidence."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Do TU9 universities charge tuition fees?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It varies by university, state, applicant category and programme. Semester contributions are common, and tuition exceptions apply. Always check the current programme fee page."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I apply to TU Munich with a three-year Indian Bachelor’s degree?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not assume a blanket answer. TUM admission is programme-specific and considers degree equivalence, subject credits, academic requirements and other criteria. Check the exact Master’s programme and its current admission regulations."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does studying at a TU9 university guarantee a job or PR?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. University membership does not guarantee employment or residence. Outcomes depend on skills, the job market, employer requirements and immigration rules."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "English taught masters in Germany mechanical engineering",
+ "secondaryKeywords": [
+  "TU9 universities list Germany",
+  "German language A1 B2 requirement"
+ ],
+ "intent": "Commercial",
+ "seoTitle": "TU9 Universities: English-Taught Masters in Germany",
+ "metaDescription": "Compare Germany’s nine TU9 technical universities and filter English-taught Master’s programmes in engineering and computer science.",
+ "slug": "tu9-universities-english-taught-masters",
+ "destination": "germany",
+ "topic": "universities-and-courses",
+ "topicLabel": "Universities and courses",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "tu9.de",
+   "url": "https://www.tu9.de/en/",
+   "note": "TU9 – The German Universities of Technology"
+  },
+  {
+   "title": "rwth-aachen.de",
+   "url": "https://www.rwth-aachen.de/go/id/a/?lidx=1",
+   "note": "RWTH Aachen – Degree programmes"
+  },
+  {
+   "title": "tum.de",
+   "url": "https://www.tum.de/en/studies/degree-programs",
+   "note": "TUM – Degree programmes"
+  },
+  {
+   "title": "kit.edu",
+   "url": "https://www.kit.edu/english/studies/degree-programs.php",
+   "note": "KIT – Degree programmes"
+  },
+  {
+   "title": "uni-stuttgart.de",
+   "url": "https://www.uni-stuttgart.de/en/study/study-programs/",
+   "note": "University of Stuttgart – Study programmes"
+  },
+  {
+   "title": "india.diplo.de",
+   "url": "https://india.diplo.de/in-en/service/2756350-2756350",
+   "note": "German Missions in India – Study visa language and documentation"
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "3dfbcc48-Germany_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 878,
+ "readMinutes": 4
+}

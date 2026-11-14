@@ -1,0 +1,724 @@
+{
+ "id": "NLD-03",
+ "category": "Student Life & Work",
+ "priority": "Medium",
+ "title": "Navigating the Dutch Student Housing Crisis: Room.nl, Cooperatives & Living Costs",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Finding accommodation is one of the most important pre-departure tasks for international students in the Netherlands. The national Study in NL guidance warns that the country has a severe student-housing shortage and advises students to arrange housing before arrival. An admission offer is not a housing offer. Students should ask their institution about its housing allocation process, begin searching early and avoid transferring money before verifying the room and landlord."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Start with your university’s international office and housing service, then search recognised student-housing providers and private platforms in parallel. ROOM.nl, DUWO and SSH are useful names to investigate, but availability, eligibility, registration duration, allocation rules and city coverage differ. Budget using a range rather than assuming one national rent figure."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Understand the shortage before accepting an offer",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Dutch students commonly live in shared student houses across the city rather than in large on-campus residences. Some institutions reserve a limited number of rooms for international students, often for a fixed period and subject to early application. Not every admitted student can receive institution-arranged housing. Ask in writing whether a room is guaranteed, what the deadline is, what the total rent includes and what happens after the initial contract ends."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Housing portal directory: where to begin",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Provider / platform",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "How to use it",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Important checks",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "University housing office"
+        }
+       ],
+       [
+        {
+         "t": "First contact after admission; ask about reserved rooms and partner providers."
+        }
+       ],
+       [
+        {
+         "t": "Eligibility, allocation deadline, guarantee wording, duration, deposit and renewal."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "ROOM.nl"
+        }
+       ],
+       [
+        {
+         "t": "Student-room platform used by participating housing providers."
+        }
+       ],
+       [
+        {
+         "t": "Registration age/waiting time, participating cities, eligibility and current offer rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "DUWO"
+        }
+       ],
+       [
+        {
+         "t": "Student housing corporation; international students may be directed through their institution."
+        }
+       ],
+       [
+        {
+         "t": "Institutional allocation route, availability, registration and contract term."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "SSH Student Housing"
+        }
+       ],
+       [
+        {
+         "t": "Student accommodation provider active in selected cities."
+        }
+       ],
+       [
+        {
+         "t": "City coverage, eligibility, contract duration and application windows."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "HousingAnywhere / Kamernet / Pararius / other private platforms"
+        }
+       ],
+       [
+        {
+         "t": "Broaden the search where institutional and social housing options are limited."
+        }
+       ],
+       [
+        {
+         "t": "Verify the landlord, property, contract, total monthly cost and viewing arrangements."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Study in NL publishes a list of housing platforms but explicitly says the list is not exhaustive and that it does not verify the reliability or quality of every provider. Treat a directory listing as a starting point for research—not an endorsement or guarantee."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to search effectively from India",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "As soon as you accept an offer, email the university’s housing office and ask for its international-student housing procedure and deadlines."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Register with relevant platforms early. Check whether registration time or waiting-list position affects your chances."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Search beyond the city centre. Compare public transport, cycling distance, travel time and total monthly cost."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare a short, credible introduction for landlords: programme, institution, arrival date, intended rental period and ability to provide the requested documents."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Arrange a live video viewing. Ask the person showing the room to demonstrate the address, room, shared areas and access."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Read the full contract before paying. Confirm whether utilities, internet, service costs and municipal charges are included."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep a temporary-arrival plan only if it is realistic and lawful; do not fly without a confirmed place to stay and a contingency plan."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Housing scams: warning signs and safeguards",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "A landlord claims to be abroad and refuses a live viewing or verifiable representative."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "You are pressured to transfer a deposit immediately because “many people are waiting”."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The rent is unusually low for the location and room type, or the photos appear copied."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The landlord refuses to provide a written contract, proof of ownership/authority or a verifiable address."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Payment is requested through an unusual channel, cash without receipt, cryptocurrency or an account unrelated to the landlord/agency."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The listing says you can register at the address, but the landlord later says municipal registration is not possible. Clarify registration before signing."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Study in NL advice is clear: do not sign a tenancy contract without having seen the room; arrange an online viewing and make sure you can clearly see the person you are speaking to. Be cautious about brokerage fees and do not pay rent in cash without a receipt."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What should an Indian student budget?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Study in NL gives a broad student living-cost estimate of €1,000–€1,500 per month. It lists room rent at roughly €450–€1,000 per month, depending on city, accommodation type and what is included. Amsterdam is generally more expensive than smaller university towns. These are planning ranges, not a quote or a guarantee of availability."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Budget component",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Published planning guide / advice",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Accommodation"
+        }
+       ],
+       [
+        {
+         "t": "Approximately €450–€1,000 per month for a room; city and contract inclusions matter."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Overall living costs"
+        }
+       ],
+       [
+        {
+         "t": "Approximately €1,000–€1,500 per month as a broad student estimate."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Groceries"
+        }
+       ],
+       [
+        {
+         "t": "Study in NL lists a Nibud 2024 average of €244 per month; use as a historical reference, not a 2026 guaranteed cost."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Transport"
+        }
+       ],
+       [
+        {
+         "t": "Cycling can reduce daily transport costs; include train/bus journeys and any commute to campus."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Utilities and internet"
+        }
+       ],
+       [
+        {
+         "t": "Check whether gas, electricity, water, internet and service costs are included in the advertised rent."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "One-off set-up"
+        }
+       ],
+       [
+        {
+         "t": "Allow for deposit, advance rent, bedding, kitchen items, bicycle, local registration and travel to campus."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For tuition, Study in NL lists average non-EU/EEA fees of €9,000–€20,000 per year for Bachelor’s programmes and €12,000–€30,000 for Master’s programmes. These are averages only; use the exact programme fee for the intended academic year."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Room contract and registration checks",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Confirm the legal name and contact details of the landlord or housing provider."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check the address, room number, start/end dates, notice period and whether the contract is a tenancy or another occupancy arrangement."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirm whether municipal registration (BRP) at the address is allowed and required."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check deposit amount, refund conditions, inventory and documented room condition."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Separate base rent from service charges and utilities; ask how annual reconciliations are handled."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep signed copies, payment records, messages and the move-in inspection report."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Verified housing portal directory",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Directory entry",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Official / provider page",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "National student guidance"
+        }
+       ],
+       [
+        {
+         "t": "Study in NL – Finding a place to live: "
+        },
+        {
+         "t": "https://www.studyinnl.org/life-in-nl/finding-a-place-to-live",
+         "href": "https://www.studyinnl.org/life-in-nl/finding-a-place-to-live"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "ROOM"
+        }
+       ],
+       [
+        {
+         "t": "https://www.room.nl/",
+         "href": "https://www.room.nl/"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "DUWO"
+        }
+       ],
+       [
+        {
+         "t": "https://www.duwo.nl/en/",
+         "href": "https://www.duwo.nl/en/"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "SSH Student Housing"
+        }
+       ],
+       [
+        {
+         "t": "https://www.sshxl.nl/en",
+         "href": "https://www.sshxl.nl/en"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "HousingAnywhere"
+        }
+       ],
+       [
+        {
+         "t": "https://housinganywhere.com/",
+         "href": "https://housinganywhere.com/"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Kamernet"
+        }
+       ],
+       [
+        {
+         "t": "https://kamernet.nl/en",
+         "href": "https://kamernet.nl/en"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Pararius"
+        }
+       ],
+       [
+        {
+         "t": "https://www.pararius.com/",
+         "href": "https://www.pararius.com/"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "University housing office"
+        }
+       ],
+       [
+        {
+         "t": "Use the official housing page of the student’s admitted institution."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "When should I start looking for student housing in the Netherlands?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "As soon as you apply or receive an offer—ideally before the admission decision if the institution permits it. Housing is scarce and some university allocations have strict deadlines."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does my university guarantee accommodation?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not necessarily. Some institutions offer a limited number of rooms or partner-provider places. Ask whether your specific place is guaranteed and what conditions apply."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is ROOM.nl only for Dutch students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Eligibility and access depend on the participating housing provider and the student’s circumstances. Check current registration and allocation rules directly on ROOM.nl and with the provider."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How much is student rent in the Netherlands?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Study in NL gives a broad range of €450–€1,000 per month for a room. The city, room type, bills and contract terms make a substantial difference."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I pay a deposit before seeing the room?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Avoid doing so unless you have independently verified the landlord, property, contract and payment route. Use a live viewing and keep a written record."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "Netherlands housing crisis student accommodation tips",
+ "secondaryKeywords": [
+  "cost of studying in Netherlands non EU",
+  "living in Amsterdam"
+ ],
+ "intent": "How-To / Informational",
+ "seoTitle": "Netherlands Student Housing: ROOM.nl, Rent Costs & Scam Prevention",
+ "metaDescription": "Find student housing in the Netherlands with guidance on university rooms, ROOM.nl, DUWO, private platforms, rent budgets and scam prevention.",
+ "slug": "/netherlands/student-housing-room-nl-living-costs/",
+ "internalLinks": "cost of studying in the Netherlands; city and university guides; student visa financial requirements; part-time work rules.",
+ "destination": "netherlands",
+ "topic": "student-life",
+ "topicLabel": "Student life and work",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "IND – Orientation year permit (updated 7 October 2026)",
+   "url": "https://ind.nl/en/residence-permits/work/residence-permit-for-orientation-year",
+   "note": ""
+  },
+  {
+   "title": "IND – Highly skilled migrant permit (updated 29 October 2026)",
+   "url": "https://ind.nl/en/residence-permits/work/highly-skilled-migrant",
+   "note": ""
+  },
+  {
+   "title": "IND – Required amounts and income requirements",
+   "url": "https://ind.nl/en/required-amounts-income-requirements",
+   "note": ""
+  },
+  {
+   "title": "Government.nl – Orientation year for highly educated persons",
+   "url": "https://www.government.nl/themes/migration-and-travel/immigration-to-the-netherlands/options-for-entrepreneurs-and-employees-from-abroad/orientation-year-highly-educated-persons",
+   "note": ""
+  },
+  {
+   "title": "Nuffic – Higher education in the Netherlands (WO/HBO)",
+   "url": "https://www.nuffic.nl/en/education-systems/the-netherlands/higher-education",
+   "note": ""
+  },
+  {
+   "title": "Study in NL – How to apply / Numerus Fixus",
+   "url": "https://www.studyinnl.org/plan-your-stay/how-to-apply",
+   "note": ""
+  },
+  {
+   "title": "TU Delft – Computer Science & Engineering selection procedure 2027–28",
+   "url": "https://www.tudelft.nl/en/onderwijs/opleidingen/bachelors/computer-science-and-engineering/bachelor-of-computer-science-and-engineering/from-application-to-enrollment/selection-procedure",
+   "note": ""
+  },
+  {
+   "title": "Study in NL – Finding a place to live",
+   "url": "https://www.studyinnl.org/life-in-nl/finding-a-place-to-live",
+   "note": ""
+  },
+  {
+   "title": "Study in NL – Tuition fees",
+   "url": "https://www.studyinnl.org/finances/tuition-fees",
+   "note": ""
+  },
+  {
+   "title": "Study in NL – Daily student expenses and cost of living",
+   "url": "https://www.studyinnl.org/finances/daily-student-expenses-and-cost-of-living-in-the-netherlands",
+   "note": ""
+  },
+  {
+   "title": "IND – Student residence permit and work rules",
+   "url": "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education",
+   "note": ""
+  },
+  {
+   "title": "DUWO – International students",
+   "url": "https://www.duwo.nl/en/i-search/student-room/international-students",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "36fc0683-Netherlands_Study_Abroad_SEO_GEO_Content_Pack_3_Articles.docx",
+ "words": 1161,
+ "readMinutes": 5
+}

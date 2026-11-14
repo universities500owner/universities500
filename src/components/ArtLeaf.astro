@@ -1,0 +1,40 @@
+---
+import ArtRuns from './ArtRuns.astro';
+// One block of an article that holds no other blocks: paragraph, heading, list or table.
+const { b } = Astro.props;
+const leads = b.t === 'ul' || b.t === 'ol' ? b.items.every((i) => i.lead && i.lead.length) : false;
+const Tag = b.t === 'ol' ? 'ol' : 'ul';
+const cls = leads ? 'tip-leads' : b.check ? 'tip-check' : undefined;
+const head = b.t === 'table' ? b.head : null;
+---
+{b.t === 'p' && <p><ArtRuns runs={b.runs} /></p>}
+{b.t === 'h' && <h3>{b.text}</h3>}
+{(b.t === 'ul' || b.t === 'ol') && (
+  <Tag class={cls}>
+    {b.items.map((i) => (
+      <li>
+        {i.lead && i.lead.length > 0 && <><strong class="lead"><ArtRuns runs={i.lead} /></strong>{' '}</>}
+        <ArtRuns runs={i.runs} />
+        {i.sub && i.sub.length > 0 && (
+          <ul>{i.sub.map((s) => <li>{s.lead && s.lead.length > 0 && <><strong class="lead"><ArtRuns runs={s.lead} /></strong>{' '}</>}<ArtRuns runs={s.runs} /></li>)}</ul>
+        )}
+      </li>
+    ))}
+  </Tag>
+)}
+{b.t === 'table' && (
+  <div class="tip-table" tabindex="0" role="region" aria-label="Table">
+    <table>
+      {head && <thead><tr>{head.map((h) => <th scope="col"><ArtRuns runs={h} /></th>)}</tr></thead>}
+      <tbody>
+        {b.rows.map((r) => (
+          <tr>
+            {r.map((c, k) => (k === 0 && r.length > 1
+              ? <th scope="row"><ArtRuns runs={c} /></th>
+              : <td data-label={head && head[k] ? head[k].map((x) => x.t || '').join('') : undefined}><ArtRuns runs={c} /></td>))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}

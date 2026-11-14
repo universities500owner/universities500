@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { articles, destinations, topics } from '../../lib/articles.js';
+import { SITE } from '../../lib/data.js';
+
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Study abroad articles',
+    url: `${SITE}/articles/`,
+    hasPart: articles.map((a) => ({ '@type': 'Article', headline: a.title, url: `${SITE}${a.href}` })),
+  },
+];
+---
+<Base
+  title="Study abroad articles for international students | Universities500"
+  description={`${articles.length} plain-language articles on costs, visas, admissions, work after study and student life. Each starts with the short answer and links to its official sources.`}
+  path="/articles/"
+  jsonld={ld}
+  current="articles"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Articles</nav>
+  <h1>Articles</h1>
+  <p class="lede">Short answers first, then the detail. Each one names the official pages it draws on.</p>
+
+  <h2 class="hub-h">By topic</h2>
+  <ul class="pills">
+    {topics.map((t) => <li><a href={`/articles/topic/${t.slug}/`}>{t.label} <span>{t.count}</span></a></li>)}
+  </ul>
+  <h2 class="hub-h">By destination</h2>
+  <ul class="pills">
+    {destinations.map((d) => <li><a href={`/articles/destination/${d.slug}/`}>{d.name} <span>{d.count}</span></a></li>)}
+  </ul>
+
+  <h2 class="hub-h">All articles</h2>
+  <ul class="acards wide">
+    {articles.map((a) => <li><ArticleCard a={a} /></li>)}
+  </ul>
+</Base>

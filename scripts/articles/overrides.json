@@ -1,0 +1,52 @@
+{
+  "MYS-01": {
+    "title": "Twinning Programmes and Branch Campuses in Malaysia: UK and Australian Degrees Compared",
+    "why": "the pack headline promises 'Save 60%', which its own text says is a hypothesis, not a guaranteed saving"
+  },
+  "NOR-01": {
+    "title": "Cost of Studying in Norway: Tuition Fees and UDI Proof of Funds",
+    "why": "the pack headline says 'Tuition-Free', but the article explains that fees depend on the programme"
+  },
+  "NZ-03": {
+    "title": "New Zealand's Eight Universities: Courses for IT, Engineering and Healthcare",
+    "dropSections": [
+      "QS World University Rankings"
+    ],
+    "dropFaq": [
+      "ranked",
+      "highest"
+    ],
+    "why": "the site does not publish ranking numbers or ranking claims",
+    "seoTitle": "New Zealand Universities for IT, Engineering and Healthcare",
+    "metaDescription": "Compare New Zealand's eight universities for IT, engineering and healthcare by course fit, tuition fees and professional accreditation.",
+    "slug": "/new-zealand-universities-it-engineering-healthcare/"
+  },
+  "UK-05": {
+    "title": "Russell Group vs Modern UK Universities: Return on Investment and Entry Requirements",
+    "seoTitle": "Russell Group vs Modern UK Universities: ROI and Entry Requirements",
+    "metaDescription": "Compare Russell Group and modern UK universities by course fit, entry requirements, graduate outcomes, MBA options and return on investment.",
+    "why": "the site does not publish ranking claims"
+  },
+  "SGP-01": {
+    "dropSections": [
+      "Subsidised vs non-subsidised fee comparison"
+    ],
+    "why": "the section was only a note for a table that is not in the pack"
+  },
+  "CAN-03": {
+    "title": "Canada After Study: Provincial Nominee Programmes and Express Entry",
+    "why": "the pack headline ranks provinces for PR, which the article itself calls the wrong question"
+  },
+  "FRA-02": {
+    "title": "CAF Housing Benefit in France: A Step-by-Step Guide for International Students",
+    "why": "the pack headline promises to 'slash' rent; eligibility is conditional"
+  },
+  "GER-05": {
+    "title": "The Nine TU9 Universities: English-Taught Master's in Engineering and Computer Science",
+    "why": "the site does not rank universities"
+  },
+  "NOR-02": {
+    "title": "English-Taught Master's in Norway: Energy, Marine Engineering and ICT",
+    "why": "the site does not name a 'best' programme"
+  }
+}

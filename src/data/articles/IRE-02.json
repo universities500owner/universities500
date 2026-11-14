@@ -1,0 +1,568 @@
+{
+ "id": "IRE-02",
+ "category": "Career & ROI",
+ "priority": "High",
+ "title": "Critical Skills Employment Permit in Ireland: Eligible Tech and Pharma Occupations",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Ireland’s Critical Skills Employment Permit (CSEP) is designed to attract highly skilled workers in occupations considered important to the economy and in shortage. For international graduates, the key question is not simply whether a job is in technology or pharmaceuticals. Eligibility depends on the exact occupation and specialism, the salary threshold, the applicant’s qualifications and a qualifying job offer."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Check the current Critical Skills Occupations List using the actual duties and SOC occupational classification—not just the job title. From 2026, the standard minimum annual remuneration is €40,904 for qualifying listed occupations requiring a relevant degree; a lower threshold of €36,848 applies to qualifying recent graduates under the stated conditions. Other eligible occupations may use the higher €68,911 threshold, subject to exclusions and rules."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What is the CSEP?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The CSEP is an employment permit for eligible highly skilled roles. It is intended to attract workers in strategically important occupations and support longer-term employment in Ireland. A qualifying offer must generally be for at least two years from a bona fide employer based and trading in Ireland. The employer and role must meet the legal requirements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Salary thresholds in 2026",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "CSEP category",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Minimum annual remuneration",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Important condition",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Qualifying occupation on Critical Skills Occupations List with relevant degree"
+        }
+       ],
+       [
+        {
+         "t": "€40,904"
+        }
+       ],
+       [
+        {
+         "t": "Role must match the listed occupation and specific skills requirements."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Qualifying recent graduate with relevant degree"
+        }
+       ],
+       [
+        {
+         "t": "€36,848"
+        }
+       ],
+       [
+        {
+         "t": "Qualification must have been received within 12 months before the permit application, subject to the rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Other eligible occupations not on the ineligible list"
+        }
+       ],
+       [
+        {
+         "t": "Above €68,911"
+        }
+       ],
+       [
+        {
+         "t": "Relevant experience/qualification and all other permit conditions apply."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Nurse or midwife"
+        }
+       ],
+       [
+        {
+         "t": "Specific professional registration/qualification route"
+        }
+       ],
+       [
+        {
+         "t": "Qualification must be accepted for registration to practise in Ireland."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Thresholds are applied at the time of application and may be revised. Salary components and exclusions are defined by DETE; do not use total compensation or bonuses as a substitute for the qualifying remuneration rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Tech roles: check the occupational specialism",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The current Critical Skills Occupations List includes selected ICT occupations such as IT specialist managers, IT project and programme managers, IT business analysts, architects and systems designers, programmers and software development professionals, web design and development professionals, and other ICT professionals. The list may specify particular skills within a broad occupational group."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A graduate with a master’s in data science, computer science or information systems should not assume that every data analyst, business analyst, product role or AI-related job qualifies. The actual duties, seniority, specialist skills, SOC classification and employer’s job description matter."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Pharma and life-sciences roles",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The current list includes selected health and scientific occupations, including pharmacists and industrial pharmacists, medical scientists and other specified health professionals. Some engineering and process roles relevant to high-technology manufacturing, quality control, validation, regulation, chemical processing and automation may also be listed when the exact specialism meets the stated criteria."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A role in a pharmaceutical company is not automatically a Critical Skills occupation. For example, a general administration, sales, production support or laboratory assistant job may not meet the CSEP criteria merely because the employer operates in the pharma sector."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to assess an occupation",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Obtain the full job description, including daily duties, required skills, seniority and reporting line."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Identify the most appropriate SOC occupational code based on the work actually performed."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Search the current Critical Skills Occupations List and read the specific skills/specialism wording."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether the role is on the Ineligible List for Employment Permits."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirm the minimum salary threshold, qualifying remuneration components and any recent-graduate concession."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirm that the offer is for at least two years and that the employer meets the bona fide employer conditions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check qualification, experience and any professional registration requirements."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ensure the application is submitted at least 12 weeks before the proposed employment start date, as advised by DETE."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "CSEP vs General Employment Permit",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Feature",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Critical Skills Employment Permit",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "General Employment Permit",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Role eligibility"
+        }
+       ],
+       [
+        {
+         "t": "Specific listed occupations or other eligible high-remuneration roles, subject to exclusions."
+        }
+       ],
+       [
+        {
+         "t": "Broader range of occupations, subject to the ineligible list and other rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Salary"
+        }
+       ],
+       [
+        {
+         "t": "CSEP thresholds apply."
+        }
+       ],
+       [
+        {
+         "t": "Separate GEP minimum remuneration threshold applies."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Job offer"
+        }
+       ],
+       [
+        {
+         "t": "Generally at least two years."
+        }
+       ],
+       [
+        {
+         "t": "Can be issued for qualifying offers that do not meet the CSEP two-year offer condition."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Labour market needs test"
+        }
+       ],
+       [
+        {
+         "t": "Not generally required for CSEP."
+        }
+       ],
+       [
+        {
+         "t": "May be required unless an exemption applies."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Longer-term permission"
+        }
+       ],
+       [
+        {
+         "t": "May support a route to Stamp 4 after the required qualifying period and conditions."
+        }
+       ],
+       [
+        {
+         "t": "Different qualifying timeline and conditions apply."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What students should do before choosing a course",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Look at current employer demand and job descriptions—not only broad sector growth headlines."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare course modules with the specialist skills in current eligible occupation entries."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether professional registration is required for regulated roles."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Build practical experience through projects, internships and relevant work experience."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Understand that the permit is employer- and role-specific; it is not granted simply because a student has an Irish qualification."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Review the list again close to graduation because occupations and thresholds can change."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is data science on Ireland’s Critical Skills list?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some ICT and analytical occupations may qualify depending on the actual duties and occupational classification. A degree title such as Data Science does not itself establish eligibility."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are all pharma jobs eligible for a CSEP?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The role must match an eligible occupation or another qualifying category and meet salary, employer and qualification conditions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What is the 2026 CSEP salary threshold?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The standard threshold for a qualifying listed occupation with a relevant degree is €40,904; a qualifying recent graduate threshold is €36,848. Other eligible occupations may require more than €68,911."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a CSEP guarantee Stamp 4?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. It may provide a route to apply for Stamp 4 after the required period and subject to the conditions then in force."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How early should an employment permit be filed?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "DETE says an application should be received at least 12 weeks before the proposed employment start date."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "Critical Skills Employment Permit Ireland eligible occupations",
+ "secondaryKeywords": [
+  "highest paying jobs Ireland MS Data Science",
+  "Pharma jobs Ireland"
+ ],
+ "intent": "Informational",
+ "seoTitle": "Ireland Critical Skills Employment Permit: Eligible Jobs",
+ "metaDescription": "Check Ireland’s 2026 Critical Skills occupations, salary thresholds, tech and pharma roles, job-offer rules and application steps.",
+ "slug": "ireland-critical-skills-employment-permit-occupations",
+ "destination": "ireland",
+ "topic": "careers",
+ "topicLabel": "Careers and jobs",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "ISD – Third Level Graduate Programme",
+   "url": "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/third-level-graduate-programme/",
+   "note": "Eligibility, award levels, six-month application deadline and 12/24-month permission."
+  },
+  {
+   "title": "ISD – Immigration permission stamps",
+   "url": "https://www.irishimmigration.ie/registering-your-immigration-permission/information-on-registering/immigration-permission-stamps/",
+   "note": "Stamp 1G conditions, work permission and self-employment restriction."
+  },
+  {
+   "title": "ISD – Planning to study in Ireland",
+   "url": "https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-options/planning-to-study-in-ireland/",
+   "note": "Stamp 2 student work-hour limits and study planning."
+  },
+  {
+   "title": "ISD – Student finances",
+   "url": "https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-visa-options/information-on-student-finances/",
+   "note": "€10,000 financial evidence, subsequent-year funds, bank statements and education bond."
+  },
+  {
+   "title": "DETE – Critical Skills Employment Permit",
+   "url": "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/",
+   "note": "CSEP criteria, job duration, remuneration and application lead time."
+  },
+  {
+   "title": "DETE – Critical Skills Occupations List",
+   "url": "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/employment-permit-eligibility/highly-skilled-eligible-occupations-list/critical%20skills%20occupations%20list.html",
+   "note": "Current eligible occupation categories and specific skills."
+  },
+  {
+   "title": "DETE – Minimum Annual Remuneration thresholds",
+   "url": "https://www.enterprise.gov.ie/en/what-we-do/workplace-and-skills/economic-migration-policy/minimum-annual-remuneration/minimum-annual-remuneration-mar-thresholds.html",
+   "note": "2026 salary thresholds for employment permits."
+  },
+  {
+   "title": "RTB – RTB/ESRI Rent Index",
+   "url": "https://rtb.ie/data-insights/rtb-research-reports/rtb-esri-rent-index/",
+   "note": "Quarterly rent data and methodology for new and existing tenancies."
+  },
+  {
+   "title": "RTB – Renting in Ireland",
+   "url": "https://rtb.ie/",
+   "note": "Tenancy rights, registration, deposits and dispute information."
+  },
+  {
+   "title": "Trinity College Dublin – Fees",
+   "url": "https://www.tcd.ie/academicregistry/fees-and-payments/",
+   "note": "Official fee schedule; select exact programme and academic year."
+  },
+  {
+   "title": "University College Dublin – Fees",
+   "url": "https://www.ucd.ie/students/fees/",
+   "note": "Official tuition and student fee information."
+  },
+  {
+   "title": "QQI – Irish National Framework of Qualifications",
+   "url": "https://www.qqi.ie/what-we-do/the-qualifications-system/national-framework-of-qualifications",
+   "note": "NFQ levels and qualification framework."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "ad1c9968-Ireland_Study_Abroad_SEO_GEO_Content_Pack_4_Articles.docx",
+ "words": 960,
+ "readMinutes": 4
+}

@@ -1,0 +1,14 @@
+---
+import ArticleCard from './ArticleCard.astro';
+// A short row of article cards for the end of a page. Pass a list of articles.
+const { list = [], heading = 'Read next', more = null } = Astro.props;
+---
+{list.length > 0 && (
+  <section class="related-arts" aria-labelledby="ra-h">
+    <h2 id="ra-h">{heading}</h2>
+    <ul class="acards">
+      {list.map((a) => <li><ArticleCard a={a} compact={true} /></li>)}
+    </ul>
+    {more && <p class="small"><a href={more[0]}>{more[1]}</a></p>}
+  </section>
+)}

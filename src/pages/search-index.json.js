@@ -2,6 +2,7 @@ import { NAV } from '../lib/nav.js';
 import { guides, runsText } from '../lib/guides.js';
 import { all } from '../lib/data.js';
 import { items as scholarships } from '../lib/scholarships.js';
+import { articles, blockText as artText } from '../lib/articles.js';
 
 const blockText = (b) =>
   b.t === 'p' ? runsText(b.runs)
@@ -24,6 +25,10 @@ export function GET() {
         for (const b of s.blocks.filter((x) => x.t === 'qa')) out.push({ t: b.q, u: `/study-in/${g.slug}/#s-faq`, d: `${g.name}, frequently asked questions`, k: clean(b.a.map(blockText).join(' ')).slice(0, 400) });
       }
     }
+  }
+  for (const a of articles) {
+    const text = clean([...a.quick, ...a.intro].map(artText).join(' '));
+    out.push({ t: a.title, u: a.href, d: `Article: ${a.destName}, ${a.topicLabel.toLowerCase()}`, k: clean(`${text} ${a.sections.map((s) => s.title).join(' ')}`).slice(0, 900) });
   }
   for (const x of scholarships) out.push({ t: x.name, u: `/scholarships/${x.slug}/`, d: `${x.provider}, scholarship`, k: [x.value && x.value.display, x.description].filter(Boolean).join(' ').slice(0, 300) });
   for (const u of all) out.push({ t: u.name, u: `/universities/${u.slug}/`, d: u.countryName, k: '' });

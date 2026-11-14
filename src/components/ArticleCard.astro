@@ -1,0 +1,11 @@
+---
+import { readLabel } from '../lib/articles.js';
+// A link card for one article. `compact` leaves out the one-line answer.
+const { a, compact = false } = Astro.props;
+---
+<a class="acard" href={a.href}>
+  <span class="acard-kick">{a.destName} <span aria-hidden="true">·</span> {a.topicLabel}</span>
+  <strong class="acard-title">{a.title}</strong>
+  {!compact && a.snippet && <span class="acard-snip">{a.snippet}</span>}
+  <span class="acard-meta">{readLabel(a)}</span>
+</a>

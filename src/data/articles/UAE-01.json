@@ -1,0 +1,639 @@
+{
+ "id": "UAE-01",
+ "category": "Universities & Courses",
+ "priority": "High",
+ "title": "International Branch Campuses in Dubai: BITS Pilani, Heriot-Watt & Degree Validity",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Dubai offers students the opportunity to study at international branch campuses, including institutions with roots in India and the United Kingdom. A branch campus can provide access to an overseas university’s academic environment without relocating to its home country. However, “international branch campus” is not a single quality or recognition label. Before accepting an offer, students should verify the Dubai campus licence, the exact programme approval, who awards the degree, the academic regulations and how the qualification will be recognised for future study or employment."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Do not choose a Dubai branch campus based only on the parent university’s name or international ranking. Verify the campus and programme with the relevant UAE regulator—such as KHDA in Dubai or the federal Commission for Academic Accreditation (CAA), where applicable—and confirm the awarding body in the offer and degree documentation. Ask the university for written confirmation of programme accreditation, study location, degree-awarding institution and recognition route in the country where you plan to work or study next."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What is an international branch campus?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A branch campus is a locally operating campus connected to a university based elsewhere. Depending on the institution and regulatory structure, the student may study a programme designed by the parent institution, receive a qualification awarded by the parent institution, or receive a locally awarded qualification. These details must be checked institution by institution; the term “branch campus” alone does not settle degree-awarding authority or recognition."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "BITS Pilani Dubai Campus: what to check",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "BITS Pilani describes its Dubai Campus as its international campus, established in 2000, located in Dubai International Academic City. Its official campus information lists Bachelor of Engineering and Master of Engineering programmes and describes a four-year normal duration for BE and two years for ME. The campus publishes programme, admission, scholarship and internship information on its own website."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Due-diligence item",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Questions for BITS Pilani Dubai applicants",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Campus status"
+        }
+       ],
+       [
+        {
+         "t": "What is the current campus licence and regulator approval? Ask for the current official status, not an old promotional rating."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Degree awarded"
+        }
+       ],
+       [
+        {
+         "t": "What exact institution name appears on the final degree certificate and transcript?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Programme"
+        }
+       ],
+       [
+        {
+         "t": "Is the specific BE/ME programme approved for the intended intake and study mode?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Fees"
+        }
+       ],
+       [
+        {
+         "t": "Request the current year’s tuition, registration, lab, examination and other mandatory charges."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Scholarships"
+        }
+       ],
+       [
+        {
+         "t": "Confirm eligibility, renewal GPA, duration, exclusions and whether scholarship applies to tuition only."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Career outcomes"
+        }
+       ],
+       [
+        {
+         "t": "Ask for programme-specific internship and placement data, including cohort size, denominator, location and median outcomes."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Heriot-Watt University Dubai: what to check",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Heriot-Watt University Dubai is a Dubai campus of a UK university. The student should verify the exact programme and campus location, the awarding institution stated in the offer and degree, and the current regulatory approval for that programme. Do not assume that every programme at a branch campus has identical accreditation, professional recognition or fee terms to the home campus."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Check the exact course page for campus availability, curriculum, entry requirements, tuition and additional costs."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask whether the degree certificate is issued by Heriot-Watt University and whether the transcript records the campus or mode of study."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "For professionally regulated courses, verify accreditation with the relevant professional body in the country where you intend to practise."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "If you may later apply for postgraduate study in India or another country, ask the receiving institution or authority whether it accepts the qualification and what documentation it requires."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "KHDA, CAA and degree recognition: understand the difference",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Authority / process",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What it means",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What it does not automatically prove",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "KHDA (Dubai)"
+        }
+       ],
+       [
+        {
+         "t": "Dubai’s education regulator; maintains information on permitted higher education institutions and programmes in Dubai."
+        }
+       ],
+       [
+        {
+         "t": "A KHDA listing alone should not be presented as blanket recognition for every programme, professional licence or overseas equivalency."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "CAA / federal accreditation"
+        }
+       ],
+       [
+        {
+         "t": "Federal institutional and programme accreditation framework for institutions and programmes within its remit."
+        }
+       ],
+       [
+        {
+         "t": "Not every Dubai campus follows an identical regulatory route; check the institution’s actual regulator and legal status."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "UAE Ministry of Higher Education and Scientific Research (MoHESR) recognition"
+        }
+       ],
+       [
+        {
+         "t": "Federal qualification recognition and related services, including automatic recognition for degrees from listed UAE-based institutions."
+        }
+       ],
+       [
+        {
+         "t": "A list or service update is not a universal guarantee for all programmes, campuses or overseas use."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Foreign parent university"
+        }
+       ],
+       [
+        {
+         "t": "May design, validate or award the qualification, depending on the arrangement."
+        }
+       ],
+       [
+        {
+         "t": "Parent-university reputation does not replace local campus and programme checks."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "MoHESR announced an automatic degree-recognition initiative for degrees from 38 UAE-based higher education institutions. Heriot-Watt University Dubai appears on the published list. This is a specific federal recognition initiative; students should verify whether the exact qualification and their intended use are covered, and should not assume that every branch campus or programme is automatically included."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Branch campus vs home campus: comparison table",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Comparison point",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Dubai branch campus",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Home campus abroad",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Location and living costs"
+        }
+       ],
+       [
+        {
+         "t": "Study and live in the UAE; compare Dubai accommodation, transport and daily costs."
+        }
+       ],
+       [
+        {
+         "t": "Study in the parent university’s home country; costs and visa rules differ."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Academic award"
+        }
+       ],
+       [
+        {
+         "t": "Confirm exact awarding body and certificate wording."
+        }
+       ],
+       [
+        {
+         "t": "Usually awarded by the home institution; verify course-specific arrangements."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Curriculum"
+        }
+       ],
+       [
+        {
+         "t": "May follow parent-university curriculum with local delivery or local adaptations."
+        }
+       ],
+       [
+        {
+         "t": "Delivered at home campus; module choices and facilities may differ."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Campus resources"
+        }
+       ],
+       [
+        {
+         "t": "Check local labs, library, student services, placements and exchange access."
+        }
+       ],
+       [
+        {
+         "t": "Check home-campus facilities and access to specialist resources."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Professional accreditation"
+        }
+       ],
+       [
+        {
+         "t": "Must be verified for the exact course and location."
+        }
+       ],
+       [
+        {
+         "t": "Must also be verified; home-campus accreditation does not automatically extend to every location."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Career access"
+        }
+       ],
+       [
+        {
+         "t": "UAE and regional employer access; work permission is a separate immigration matter."
+        }
+       ],
+       [
+        {
+         "t": "Access to the home-country labour market subject to its immigration rules."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "A practical checklist before paying a deposit",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Confirm the legal name and physical location of the campus."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check the current regulator and campus licence using the regulator’s own register."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Verify that the exact programme and intake are approved or registered as required."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Obtain written confirmation of the degree-awarding institution and sample certificate/transcript if available."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether the programme has professional accreditation, and whether it applies to the Dubai delivery location."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare full programme tuition, annual increases, deposits, refund terms and mandatory charges."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Request transparent placement data and distinguish internships from graduate employment."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "If planning to return to India, check recognition requirements with the relevant Indian authority or receiving institution before enrolment."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "If planning further study overseas, request written confirmation from target universities about qualification acceptability."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is a degree from a Dubai branch campus the same as the home campus degree?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It depends on the institution and programme. Confirm the awarding body, degree certificate wording, curriculum, campus approval and professional accreditation in writing."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is BITS Pilani Dubai a branch campus of BITS Pilani India?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "BITS Pilani describes Dubai as its international campus. Students should still check the specific programme, current campus approvals, degree-awarding details and recognition requirements for their intended use."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is Heriot-Watt Dubai degree recognised in the UK?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Heriot-Watt University is a UK university, but students should verify the exact qualification and any professional recognition needed for their career. Recognition for a specific job or regulated profession is not guaranteed by the campus name alone."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does KHDA approval mean a degree is automatically recognised in India?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. KHDA is Dubai’s education regulator. Indian recognition and equivalency are separate questions and must be checked with the relevant Indian authority or receiving institution."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I transfer from a Dubai campus to the home campus?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Transfer or exchange options depend on the university, programme, academic standing, capacity, visa conditions and additional fees. Obtain the current policy in writing."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "best university branch campuses in Dubai",
+ "secondaryKeywords": [
+  "BITS Pilani Dubai fee structure",
+  "cost of studying in UAE"
+ ],
+ "intent": "Commercial",
+ "seoTitle": "Dubai Branch Campuses: BITS Pilani, Heriot-Watt & Degree Recognition",
+ "metaDescription": "Compare Dubai international branch campuses, verify KHDA/CAA status, degree-awarding bodies, programme accreditation and recognition before applying.",
+ "slug": "/uae/dubai-international-branch-campuses-degree-validity/",
+ "internalLinks": "cost of studying in UAE; UAE student visa; Golden Visa for graduates; BITS Pilani Dubai course guide; Heriot-Watt Dubai course guide.",
+ "destination": "uae",
+ "topic": "universities-and-courses",
+ "topicLabel": "Universities and courses",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "ICP – UAE Golden Residency guide and graduate eligibility",
+   "url": "https://icp.gov.ae/en/services/uae-golden-residency/",
+   "note": ""
+  },
+  {
+   "title": "ICP – Residence visa service for graduates of accredited UAE universities",
+   "url": "https://icp.gov.ae/en/services-details/?serviceid=68e352255ae59b00117383f5",
+   "note": ""
+  },
+  {
+   "title": "UAE Government – Golden Visa overview",
+   "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa",
+   "note": ""
+  },
+  {
+   "title": "Abu Dhabi Added – Golden Visa for university graduates",
+   "url": "https://added.gov.ae/en/live/long-term-residency/abu-dhabi-golden-visa/for-students/for-university-graduates",
+   "note": ""
+  },
+  {
+   "title": "MoHESR – Automatic degree recognition for 38 UAE-based universities",
+   "url": "https://www.mohesr.gov.ae/En/MediaCenter/News/Pages/MoHESR-now-grants-automatic-recognition-for-degrees-from-38-UAE-based-universities-as-part-of-Zero-Government-Bureaucracy-e.aspx",
+   "note": ""
+  },
+  {
+   "title": "KHDA – Dubai higher education institutions and programmes",
+   "url": "https://www.khda.gov.ae/",
+   "note": ""
+  },
+  {
+   "title": "UAE Government – Student residence visa",
+   "url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/residence-visa-for-studying-in-the-uae",
+   "note": ""
+  },
+  {
+   "title": "BITS Pilani Dubai Campus – Official campus and programmes",
+   "url": "https://www.bits-pilani.ac.in/dubai",
+   "note": ""
+  },
+  {
+   "title": "Heriot-Watt University Dubai – Official campus",
+   "url": "https://www.hw.ac.uk/dubai",
+   "note": ""
+  },
+  {
+   "title": "Consulate General of India, Dubai – Information for students / KHDA list",
+   "url": "https://www.cgidubai.gov.in/page/information-for-students/",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "40542226-UAE_Study_Abroad_SEO_GEO_Content_Pack_2_Articles.docx",
+ "words": 1230,
+ "readMinutes": 6
+}

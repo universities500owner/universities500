@@ -1,0 +1,43 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { destinations, byDestination, topics } from '../../../lib/articles.js';
+import { guideBySlug } from '../../../lib/guides.js';
+import { SITE } from '../../../lib/data.js';
+
+export function getStaticPaths() {
+  return destinations.map((d) => ({ params: { dest: d.slug }, props: { d } }));
+}
+const { d } = Astro.props;
+const list = byDestination(d.slug);
+const guide = guideBySlug[d.slug];
+const path = `/articles/destination/${d.slug}/`;
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `Articles on studying in ${d.name}`,
+    url: `${SITE}${path}`,
+    hasPart: list.map((a) => ({ '@type': 'Article', headline: a.title, url: `${SITE}${a.href}` })),
+  },
+];
+const others = destinations.filter((x) => x.slug !== d.slug);
+---
+<Base
+  title={`Studying in ${d.name}: articles for international students | Universities500`}
+  description={`${list.length} ${list.length === 1 ? 'article' : 'articles'} on studying in ${d.name}: ${[...new Set(list.map((a) => a.topicLabel.toLowerCase()))].slice(0, 4).join(', ')}. Each starts with the short answer.`}
+  path={path}
+  jsonld={ld}
+  current="articles"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/articles/">Articles</a><span aria-hidden="true">/</span>{d.name}</nav>
+  <h1>{d.slug === 'global' ? 'Articles for every destination' : `Studying in ${d.name}`}</h1>
+  <p class="lede">{list.length} {list.length === 1 ? 'article' : 'articles'}. {guide && <>For the overview, see <a href={`/study-in/${d.slug}/`}>the {d.name} guide</a>.</>}</p>
+  <ul class="acards wide">
+    {list.map((a) => <li><ArticleCard a={a} /></li>)}
+  </ul>
+  <h2 class="hub-h">Other destinations</h2>
+  <ul class="pills">
+    {others.map((x) => <li><a href={`/articles/destination/${x.slug}/`}>{x.name} <span>{x.count}</span></a></li>)}
+  </ul>
+</Base>

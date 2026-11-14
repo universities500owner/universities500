@@ -1,0 +1,557 @@
+{
+ "id": "FRA-01",
+ "category": "Admissions & Tests",
+ "priority": "High",
+ "title": "Campus France Procedure & Interview Questions: Mastering the Études en France Portal",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For Indian students planning to study in France, the Études en France (EEF) procedure is a central part of the application journey. It allows students to create an online academic file, submit relevant study applications and complete the Campus France process before the visa stage. It is not the same as the France-Visas application, and the exact steps depend on the programme and admission route."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Create the EEF file on the official Pastel platform, complete your academic and personal details, upload the required documents, submit the file for review, correct any anomalies, pay the applicable Campus France fee and attend an academic interview if required. After the Campus France process is completed, follow the instructions to submit the visa application through France-Visas and the designated VFS process."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Does the Études en France process apply to Indian students?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Yes. India is among the countries covered by the Études en France procedure. Campus France describes EEF as the online process for applicants residing in a country covered by the procedure. For most applicants pursuing a Bachelor’s or Master’s route, the EEF process is used through the academic application and visa journey. Doctoral applicants follow a different process and should contact the doctoral school and relevant Campus France office."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Understand the application stages",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Stage",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What the student does",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to remember",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "1. EEF account and file"
+        }
+       ],
+       [
+        {
+         "t": "Create the account on Pastel; complete personal, academic, language, CV and study-project details."
+        }
+       ],
+       [
+        {
+         "t": "Use consistent information and upload clear documents."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "2. Submit for review"
+        }
+       ],
+       [
+        {
+         "t": "Submit the file and monitor messages from Campus France."
+        }
+       ],
+       [
+        {
+         "t": "Correct missing items or anomalies promptly."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "3. Fee and interview"
+        }
+       ],
+       [
+        {
+         "t": "Pay the fee when instructed; attend an in-person academic interview if required."
+        }
+       ],
+       [
+        {
+         "t": "Bring original documents and be ready to explain the study plan."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "4. Visa application"
+        }
+       ],
+       [
+        {
+         "t": "Complete France-Visas and follow the local VFS appointment instructions."
+        }
+       ],
+       [
+        {
+         "t": "Campus France does not issue a visa or an NOC."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "5. Arrival formalities"
+        }
+       ],
+       [
+        {
+         "t": "Validate the VLS-TS online within three months of arrival."
+        }
+       ],
+       [
+        {
+         "t": "Keep the validation confirmation and proof of payment."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Documents to prepare",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Passport and personal details consistent across all application systems."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Academic transcripts, marksheets, certificates and degree/provisional certificates."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "CV outlining education, work experience, projects and relevant activities."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Statement of purpose or motivation letter explaining the course choice and study plan."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Language test results or evidence accepted by the institution."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Admission or pre-admission documents from the French institution."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Evidence of funds and sponsor documents, where applicable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Any additional documents required by the programme, Campus France or the visa checklist."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The precise document list depends on the course, institution, applicant profile and current instructions. Use the checklist shown in the EEF portal and the Campus France India website rather than relying on a generic list alone."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to prepare for the Campus France academic interview",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The interview is an opportunity to explain your academic choices and demonstrate that you understand the programme and your plans. It is not a script-reading exercise. Your answers should be consistent with the information in your EEF file and the documents you submitted."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Likely question",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What a strong answer should demonstrate",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Why did you choose France?"
+        }
+       ],
+       [
+        {
+         "t": "A considered academic reason: programme structure, specialisation, research, industry ecosystem or language/cultural learning."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Why this university and programme?"
+        }
+       ],
+       [
+        {
+         "t": "Knowledge of modules, teaching format, specialisations, projects, internship and entry requirements."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "How does this course connect to your previous studies?"
+        }
+       ],
+       [
+        {
+         "t": "A clear academic progression and explanation of any change in subject."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Why not study the same course in India?"
+        }
+       ],
+       [
+        {
+         "t": "A factual comparison of curriculum, facilities, exposure or specialisation—not unsupported criticism of Indian education."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "How will you finance your studies?"
+        }
+       ],
+       [
+        {
+         "t": "A realistic tuition and living-cost plan, source of funds and supporting evidence."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "What are your plans after graduation?"
+        }
+       ],
+       [
+        {
+         "t": "A credible plan connected to your qualification and awareness of applicable visa rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "What do you know about the city and accommodation?"
+        }
+       ],
+       [
+        {
+         "t": "Basic research on housing, transport, cost and student support."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "What will you do if you face academic difficulty?"
+        }
+       ],
+       [
+        {
+         "t": "A practical approach using faculty, academic support and study planning."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Interview preparation checklist",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Be able to explain every programme selected and why it is a good fit."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Know the institution, campus, city, course duration and start date."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Review your SOP, CV, transcripts and application entries before the interview."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Explain any gap, backlog, low grade or change of academic direction honestly."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Know the total budget, tuition payment plan and sponsor/source of funds."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Do not memorise artificial answers or provide claims that cannot be supported."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Carry original documents if instructed by Campus France India."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "VLS-TS: what happens after the visa is issued?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A long-stay student visa (VLS-TS étudiant) generally covers a stay of four months to one year. After arrival, the student must validate it online within three months. The VLS-TS acts as the residence document for the initial period. If the course continues beyond its validity, the student must apply for the appropriate residence permit before expiry, within the applicable filing window."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Campus France India states that, effective 1 August 2026, the minimum proof of financial resources for a French student visa is €877.50 per month. This is a visa financial benchmark, not a complete estimate of actual living costs."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is Études en France mandatory for Indian students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "India is listed among countries covered by the EEF procedure. Students should follow the Campus France India instructions for their degree level and application route."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is the Campus France interview compulsory?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Campus France India describes an academic interview step where applicable. The portal and local Campus France office provide the instructions and appointment details for each applicant."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does Campus France issue an NOC?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Campus France India states that it does not issue an NOC. The visa application proceeds through France-Visas and the designated VFS process."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What is the minimum funds requirement for a France student visa in 2026?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Campus France India states that from 1 August 2026 the minimum proof of financial resources is €877.50 per month. Check the current visa assistant and individual checklist."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "When should I validate my VLS-TS?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "You must validate the VLS-TS online within three months after arriving in France."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I apply for a student visa before completing Études en France?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For long-stay student applicants covered by EEF, Campus France India describes the EEF procedure as the first step before the visa application. Follow the portal instructions for your case."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "Campus France procedure and interview questions",
+ "secondaryKeywords": [
+  "Etudes en France pastel portal",
+  "VLS-TS student visa France"
+ ],
+ "intent": "How-To",
+ "seoTitle": "Campus France Procedure: Études en France Guide",
+ "metaDescription": "Understand the Études en France process for Indian students, Pastel portal, Campus France interview, VLS-TS and visa steps.",
+ "slug": "campus-france-etudes-en-france-procedure",
+ "destination": "france",
+ "topic": "admissions",
+ "topicLabel": "Admissions and tests",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "inde.campusfrance.org",
+   "url": "https://www.inde.campusfrance.org/node/46",
+   "note": "Campus France India – Preparing the visa application"
+  },
+  {
+   "title": "campusfrance.org",
+   "url": "https://www.campusfrance.org/en/application-etudes-en-france-procedure",
+   "note": "Campus France – Études en France procedure"
+  },
+  {
+   "title": "france-visas.gouv.fr",
+   "url": "https://france-visas.gouv.fr/en/",
+   "note": "France-Visas – Official visa portal"
+  },
+  {
+   "title": "service-public.gouv.fr",
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231",
+   "note": "Service Public – Student long-stay visa and residence permit"
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "f935b0c0-France_Study_Abroad_SEO_GEO_Content_Pack_4_Articles.docx",
+ "words": 1035,
+ "readMinutes": 5
+}

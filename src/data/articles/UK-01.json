@@ -1,0 +1,457 @@
+{
+ "id": "UK-01",
+ "category": "Cost & Budgeting",
+ "priority": "High",
+ "title": "Cost of Studying a 1-Year Master's in UK: Tuition, London Living & IHS Surcharge",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "A one-year master's degree can reduce the time spent paying for accommodation and everyday living costs compared with a longer programme. But the total budget is more than tuition. Indian students should include the Immigration Health Surcharge (IHS), Student visa fee, visa maintenance funds, accommodation deposits, travel and day-to-day expenses."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For a one-year master's, calculate the actual tuition fee on your CAS, add the UKVI maintenance requirement for the location (London or outside London), then budget separately for the visa fee, IHS, flights, deposits and realistic living costs. The visa maintenance figure is a financial requirement—not a promise that it will cover actual living expenses."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Tuition fees: start with your course offer",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "UK postgraduate tuition varies by university, subject, course format and location. Business, laboratory-based, clinical and specialist programmes may have different fee structures. Your offer letter and university fee page are the best sources for the exact course and intake."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Check the international fee for the correct academic year."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirm whether the course has extra costs such as placements, field trips, lab materials or professional accreditation."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check the deposit deadline and whether it is deducted from tuition."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask whether instalments are available and whether any scholarship is conditional."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "London vs outside London: Student visa maintenance funds",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For Student visa applications, the current published maintenance amounts are £1,529 per month for study in London and £1,171 per month outside London, for up to 9 months. This means a maximum of £13,761 for London or £10,539 outside London, before adding unpaid course fees for the relevant period."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Location",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Monthly amount",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Maximum for 9 months",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "London"
+        }
+       ],
+       [
+        {
+         "t": "£1,529"
+        }
+       ],
+       [
+        {
+         "t": "£13,761"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Outside London"
+        }
+       ],
+       [
+        {
+         "t": "£1,171"
+        }
+       ],
+       [
+        {
+         "t": "£10,539"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Home Office defines London for this purpose as the City of London and the 32 London boroughs. The amount required depends on the applicant's circumstances and the course fees shown on the CAS."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Immigration Health Surcharge (IHS)",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students currently pay an IHS rate of £776 per year. The amount charged is based on the length of immigration permission granted, which can be longer than the course itself. A visa lasting more than 6 months but less than one year normally attracts a full year's surcharge; a visa lasting more than one year can attract an additional half-year charge depending on the exact length."
+      }
+     ]
+    },
+    {
+     "t": "callout",
+     "title": "Do not calculate IHS using course length alone",
+     "blocks": [
+      {
+       "t": "p",
+       "runs": [
+        {
+         "t": "Use the official IHS calculator and the visa duration shown in the application process. The amount due may not equal exactly one year of IHS for a one-year master's."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Student visa application fee",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Student visa application fee from outside the UK is currently £558. This is separate from IHS and may change. Check the official Student visa page immediately before applying."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Other costs to include",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Cost item",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to include",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Accommodation"
+        }
+       ],
+       [
+        {
+         "t": "Deposit, advance rent, monthly rent, utilities and internet."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Food and groceries"
+        }
+       ],
+       [
+        {
+         "t": "Weekly food budget, occasional meals out and household supplies."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Transport"
+        }
+       ],
+       [
+        {
+         "t": "Local public transport, commute to campus and intercity travel."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Flights and arrival"
+        }
+       ],
+       [
+        {
+         "t": "Airfare, baggage, airport transfer and initial purchases."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Study costs"
+        }
+       ],
+       [
+        {
+         "t": "Books, laptop/software, equipment and course-specific charges."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Personal expenses"
+        }
+       ],
+       [
+        {
+         "t": "Mobile, clothing, health-related costs not covered, recreation and contingency."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Example: build a one-year budget",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Use a student-specific worksheet rather than publishing one fixed national total. For example, a student in London should add: tuition remaining as shown on the CAS + £13,761 maximum maintenance benchmark + £558 visa fee + IHS calculated for the actual visa duration + travel, deposits and other personal costs. For a course outside London, use £10,539 as the maximum 9-month maintenance benchmark instead."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "This example is a planning structure, not a quote or a statement that the visa maintenance amount will meet the student's actual living costs."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to reduce the total cost",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Compare the net tuition fee after confirmed scholarships."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare accommodation options and commute costs, not rent alone."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether the university offers instalment plans."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare an arrival budget for deposits and the first month."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Do not rely on part-time work to meet visa financial requirements or fund tuition."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "How much is the UK Student visa fee for Indian students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The published fee for an application from outside the UK is currently £558. Confirm the amount on GOV.UK before applying."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How much is IHS for students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The current student rate is £776 per year. The total depends on the length of permission granted, not simply the advertised course length."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How much money must I show for a one-year master's in London?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The current maintenance requirement is £1,529 per month for up to 9 months (£13,761), plus the required unpaid course fees shown on the CAS, subject to the applicant's circumstances."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is the UK cheaper because most master's degrees take one year?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A one-year course may reduce living costs compared with a longer programme, but tuition, city, accommodation, IHS and personal expenses still matter. Compare the total course budget."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is the UKVI maintenance amount enough to live on?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is a visa financial-capacity benchmark, not a guarantee of actual living costs. Students should prepare a realistic personal budget."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "cost of studying in UK for Indian students 1 year masters",
+ "secondaryKeywords": [
+  "Immigration Health Surcharge UK cost",
+  "London vs Manchester"
+ ],
+ "intent": "Informational / Commercial",
+ "seoTitle": "Cost of Studying a 1-Year Master's in UK: Tuition, London Living & IHS",
+ "metaDescription": "Estimate the cost of a one-year master's in the UK for Indian students. Compare tuition, London vs outside-London maintenance funds, visa fees and IHS.",
+ "slug": "/cost-1-year-masters-uk-indian-students/",
+ "destination": "uk",
+ "topic": "cost-and-budgeting",
+ "topicLabel": "Costs and budgeting",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "GOV.UK – Student visa: Money you need",
+   "url": "https://www.gov.uk/student-visa/money",
+   "note": "Current London/outside-London maintenance amounts, course fees and 28-day evidence rule."
+  },
+  {
+   "title": "GOV.UK – Student visa overview",
+   "url": "https://www.gov.uk/student-visa",
+   "note": "Current Student visa application fee, eligibility and general conditions."
+  },
+  {
+   "title": "GOV.UK – Immigration Health Surcharge: How much to pay",
+   "url": "https://www.gov.uk/healthcare-immigration-application/how-much-pay",
+   "note": "Current student IHS rate and duration-based calculation."
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "a68625f0-UK_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 809,
+ "readMinutes": 4
+}

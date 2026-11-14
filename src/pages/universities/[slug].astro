@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { forDestination } from '../../lib/articles.js';
 import { all, blurb, related, fmtDate, SITE } from '../../lib/data.js';
 import { itemsFor, hubFor, statusOf, STATUS_LABEL, fmtIso, scholarshipsLink, PUBLISH } from '../../lib/scholarships.js';
 
@@ -150,4 +152,5 @@ const ld = {
       <p><a href={`/study-in/${u.country}/`}>All universities in {u.countryName}</a></p>
     </section>
   )}
+  <RelatedArticles list={forDestination(u.country, 3)} heading={`Reading on studying in ${u.countryName}`} more={[`/articles/destination/${u.country}/`, `All ${u.countryName} articles`]} />
 </Base>

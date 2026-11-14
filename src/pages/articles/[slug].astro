@@ -1,0 +1,163 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleBlocks from '../../components/ArticleBlocks.astro';
+import ArtRuns from '../../components/ArtRuns.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { articles, TOPICS, related, readLabel, checkedLabel, blockText, flat, slugify } from '../../lib/articles.js';
+import { SITE } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  return articles.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+const { a } = Astro.props;
+const path = a.href;
+const checked = checkedLabel(a);
+
+// Section anchors, unique within the page.
+const used = new Set();
+const secs = a.sections.map((s) => {
+  let id = `s-${slugify(s.title || 'section')}`;
+  while (used.has(id)) id += '-2';
+  used.add(id);
+  return { ...s, id };
+});
+
+const seoTitle = a.seoTitle || a.title;
+const title = seoTitle.length > 48 ? seoTitle : `${seoTitle} | Universities500`;
+const lead = a.quick.length ? flat(a.quick.map(blockText).join(' ')) : a.intro.length ? flat(a.intro.map(blockText).join(' ')) : a.title;
+const description = a.metaDescription || (lead.length > 158 ? lead.slice(0, 157).replace(/\s+\S*$/, '') + '…' : lead);
+
+const { sameDest, sameTopic } = related(a);
+const tools = TOPICS[a.topic]?.tools || [];
+const careful = a.topic === 'visas' || a.topic === 'after-study';
+
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: a.title,
+    description,
+    mainEntityOfPage: `${SITE}${path}`,
+    datePublished: a.reviewed,
+    dateModified: a.reviewed,
+    articleSection: a.topicLabel,
+    about: a.destName,
+    keywords: [a.primaryKeyword, ...(a.secondaryKeywords || [])].filter(Boolean).join(', '),
+    author: { '@type': 'Organization', name: 'Universities500', url: `${SITE}/` },
+    publisher: { '@type': 'Organization', name: 'Universities500', url: `${SITE}/`, logo: { '@type': 'ImageObject', url: `${SITE}/brand/mark-light.png` } },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      ['Home', '/'],
+      ['Articles', '/articles/'],
+      [a.destName, `/articles/destination/${a.destination}/`],
+      [a.title, path],
+    ].map(([name, p], i) => ({ '@type': 'ListItem', position: i + 1, name, item: `${SITE}${p}` })),
+  },
+];
+if (a.faq.length) {
+  ld.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: a.faq.map((q) => ({ '@type': 'Question', name: q.q, acceptedAnswer: { '@type': 'Answer', text: flat(q.a.map(blockText).join(' ')) } })),
+  });
+}
+---
+<Base title={title} description={description} path={path} jsonld={ld} current="articles">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/articles/">Articles</a><span aria-hidden="true">/</span><a href={`/articles/destination/${a.destination}/`}>{a.destName}</a>
+  </nav>
+
+  <article class="tip">
+    <header>
+      <p class="tip-kick">
+        <a href={`/articles/destination/${a.destination}/`}>{a.destName}</a> <span aria-hidden="true">·</span> <a href={`/articles/topic/${a.topic}/`}>{a.topicLabel}</a>
+      </p>
+      <h1>{a.title}</h1>
+      <p class="tip-meta">{readLabel(a)}{checked && <> <span aria-hidden="true">·</span> Facts as of {checked}</>}</p>
+    </header>
+
+    <div class="tip-body">
+      {a.intro.length > 0 && <div class="tip-intro"><ArticleBlocks blocks={a.intro} /></div>}
+
+      {a.quick.length > 0 && (
+        <aside class="tip-quick" aria-labelledby="quick-h">
+          <p class="tip-quick-h" id="quick-h">The short answer</p>
+          <ArticleBlocks blocks={a.quick} />
+        </aside>
+      )}
+
+      {secs.length > 2 && (
+        <details class="tip-toc">
+          <summary>In this article ({secs.length} parts)</summary>
+          <ol>{secs.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}</ol>
+        </details>
+      )}
+
+      {secs.map((s) => (
+        <section class="tip-sec" id={s.id}>
+          <h2>{s.title}</h2>
+          <ArticleBlocks blocks={s.blocks} />
+        </section>
+      ))}
+
+      {a.faq.length > 0 && (
+        <section class="tip-sec tip-faq" id="faq">
+          <h2>Common questions</h2>
+          {a.faq.map((q) => (
+            <details class="tip-q">
+              <summary>{q.q}</summary>
+              <div><ArticleBlocks blocks={q.a} /></div>
+            </details>
+          ))}
+        </section>
+      )}
+    </div>
+
+    <section class="tip-next" aria-labelledby="next-h">
+      <h2 id="next-h">Put this to use</h2>
+      <ul>
+        {tools.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
+        {a.destination !== 'global' && <li><a href={`/study-in/${a.destination}/`}>Study in {a.destName}: the full guide</a></li>}
+        {a.destination !== 'global' && <li><a href={`/universities/?c=${a.destination}`}>Universities in {a.destName}</a></li>}
+      </ul>
+    </section>
+
+    {a.sources.length > 0 && (
+      <section class="tip-src" id="sources" aria-labelledby="src-h">
+        <h2 id="src-h">Where this comes from</h2>
+        <p class="small">{a.sourcesScope === 'destination' ? `Official sources we used for our ${a.destName} articles. Not every source supports every sentence here.` : 'Official sources behind this article.'}</p>
+        <ul>
+          {a.sources.map((s) => (
+            <li><a href={s.url}>{s.title}</a>{s.note && <span class="tip-src-note"> {s.note}</span>}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <p class="tip-care small">
+      Fees, rules and deadlines change. Check the official pages above before you act on anything here.{careful && ' This is general information, not immigration or legal advice.'}{checked && ` Facts as of ${checked}.`}
+    </p>
+  </article>
+
+  {(sameDest.length > 0 || sameTopic.length > 0) && (
+    <div class="tip-more">
+      {sameDest.length > 0 && (
+        <section aria-labelledby="more-d">
+          <h2 id="more-d">More on {a.destName}</h2>
+          <ul class="acards">{sameDest.map((x) => <li><ArticleCard a={x} compact={true} /></li>)}</ul>
+          <p class="small"><a href={`/articles/destination/${a.destination}/`}>All {a.destName} articles</a></p>
+        </section>
+      )}
+      {sameTopic.length > 0 && (
+        <section aria-labelledby="more-t">
+          <h2 id="more-t">{a.topicLabel} in other countries</h2>
+          <ul class="acards">{sameTopic.map((x) => <li><ArticleCard a={x} compact={true} /></li>)}</ul>
+          <p class="small"><a href={`/articles/topic/${a.topic}/`}>All articles on {a.topicLabel.toLowerCase()}</a></p>
+        </section>
+      )}
+    </div>
+  )}
+</Base>

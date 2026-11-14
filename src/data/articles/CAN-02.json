@@ -1,0 +1,484 @@
+{
+ "id": "CAN-02",
+ "category": "Post-Study & PR",
+ "priority": "High",
+ "title": "Canada PGWP Eligibility Changes: Public Colleges vs Universities and PAL",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "A Canadian study permit does not automatically create a right to a post-graduation work permit (PGWP). PGWP eligibility depends on the designated learning institution, the specific programme, credential, study history, language results and—in some non-degree cases—the field-of-study code. The words “public college” or “university” alone are not enough to confirm eligibility."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Before paying a deposit, verify the exact DLI and programme on IRCC’s current PGWP guidance, check whether the programme is a degree or non-degree credential, and confirm any applicable six-digit Classification of Instructional Programs (CIP) code. Also check PAL/TAL requirements separately: PAL exemption and PGWP eligibility are different tests."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Public vs private: why the label can mislead",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A public institution may offer programmes that are PGWP-eligible and others that are not. A private institution may have a limited eligible arrangement in specific circumstances, but many private-college programmes do not qualify. In particular, programmes delivered by a private college on behalf of a public college under a curriculum-licensing arrangement are generally not PGWP-eligible, subject to IRCC’s stated exceptions."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students should verify the legal institution name, campus, DLI number, programme credential and delivery arrangement. Marketing language such as “public college degree”, “pathway”, “partner campus” or “PGWP available” should never replace an IRCC eligibility check."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Current PGWP framework",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Study programme",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Language requirement (general rule)",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Field-of-study requirement",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Bachelor’s, master’s or doctoral degree"
+        }
+       ],
+       [
+        {
+         "t": "CLB 7 / NCLC 7 in all four abilities"
+        }
+       ],
+       [
+        {
+         "t": "No field-of-study requirement"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Other university programme"
+        }
+       ],
+       [
+        {
+         "t": "CLB 7 / NCLC 7 in all four abilities"
+        }
+       ],
+       [
+        {
+         "t": "May apply if study permit application was on/after 1 Nov 2024"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "College, polytechnic or other non-university programme"
+        }
+       ],
+       [
+        {
+         "t": "CLB 5 / NCLC 5 in all four abilities"
+        }
+       ],
+       [
+        {
+         "t": "May apply if study permit application was on/after 1 Nov 2024"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Eligible flight-school programme"
+        }
+       ],
+       [
+        {
+         "t": "Specific flight-school requirements"
+        }
+       ],
+       [
+        {
+         "t": "No general language or field-of-study requirement"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "These are high-level categories. Students must check the exact rules, transition provisions and exceptions that apply to their application date and programme. The IRCC field-of-study list uses six-digit CIP codes and is linked to occupations in long-term shortage. IRCC states that no eligible fields will be added or removed during 2026."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "PGWP duration and application timing",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A PGWP may be issued for up to the length of the eligible programme, subject to IRCC’s rules. Master’s graduates may qualify for a three-year PGWP even when the master’s programme is shorter than two years, if it meets the applicable requirements. Passport expiry can limit the validity period. The general application deadline is 180 days after the institution confirms programme completion."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Credential type, programme length, study history, passport validity and eligibility rules all matter."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "PAL/TAL: a separate study-permit question",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For 2026, IRCC exempts students enrolled in degree-granting master’s or doctoral programmes at public DLIs from the PAL/TAL requirement. Most other post-secondary applicants need a PAL/TAL unless a listed exemption applies. A PAL/TAL is generally provided through the province or territory and the institution. Applicants should submit it with the study permit application when required."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A PAL exemption does not mean the student is exempt from the study permit’s other requirements. It also does not make a programme PGWP-eligible."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "A practical decision tree",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Is the institution a DLI? If not, stop: the programme cannot qualify through the normal PGWP route."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is the exact programme and delivery arrangement PGWP-eligible? Check the institution and IRCC information; do not rely on institution-level status alone."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is the credential a bachelor’s, master’s or doctorate? If yes, the field-of-study requirement does not apply, but language and general rules still do."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is it another university or college programme? Check the study permit application date and the programme’s six-digit CIP code against the applicable IRCC list."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Can the student meet the language requirement in all four abilities? Confirm the accepted test and validity period."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Will the student maintain required full-time status and apply within 180 days of completion? Check all exceptions before relying on a part-time semester or leave."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Separately, does the study permit application require a PAL/TAL? Check the 2026 exemptions and province-specific process."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Red flags before accepting an offer",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "The agent or institution promises a PGWP solely because the campus is publicly funded."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The programme title sounds eligible, but the six-digit CIP code is missing or does not match."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The offer is through a private delivery partner or curriculum-licensing arrangement."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The student is told that a PAL exemption guarantees study permit approval."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The programme is a short certificate, language course or non-credit programme and PGWP eligibility is assumed."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The student has not checked language requirements or the 180-day application window."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Are all public colleges in Canada PGWP-eligible?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Eligibility must be checked for the exact DLI and programme, including delivery arrangements and credential."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are master’s degrees subject to the PGWP field-of-study list?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Bachelor’s, master’s and doctoral graduates do not have a field-of-study requirement under the current general framework, but language and other eligibility rules still apply."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a PAL exemption mean PGWP eligibility?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. PAL/TAL is part of the study permit process; PGWP eligibility is a separate post-study assessment."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can a private college programme lead to a PGWP?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some specific exceptions exist, but many private-college and public-private partnership programmes do not qualify. Verify the exact programme with IRCC before enrolment."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How long do I have to apply for a PGWP?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The general deadline is 180 days after confirmation that the programme has been completed, subject to the detailed rules."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "public vs private colleges Canada PGWP eligibility change",
+ "secondaryKeywords": [
+  "PGWP rules Canada college diplomas",
+  "PAL letter Canada"
+ ],
+ "intent": "Informational",
+ "seoTitle": "Canada PGWP Eligibility: Public Colleges, Universities and PAL",
+ "metaDescription": "Understand Canada PGWP eligibility by institution, programme, credential, CIP code, language rules and PAL/TAL exemptions.",
+ "slug": "canada-pgwp-eligibility-public-private-colleges",
+ "destination": "canada",
+ "topic": "after-study",
+ "topicLabel": "Work after study",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "IRCC – End of the Student Direct Stream and Nigeria Student Express",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/end-student-direct-stream-nigeria-student-express.html",
+   "note": "SDS closure date and transition to regular study permit stream."
+  },
+  {
+   "title": "IRCC – Proof of financial support",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+   "note": "Required financial categories and 2026 living-expense amounts."
+  },
+  {
+   "title": "IRCC – PAL/TAL requirements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/provincial-attestation-letter.html",
+   "note": "PAL/TAL requirement, exemptions and validity."
+  },
+  {
+   "title": "IRCC – 2026 study permit cap allocations",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html",
+   "note": "2026 cap context and public master’s/doctoral PAL exemption."
+  },
+  {
+   "title": "IRCC – PGWP: Who can apply",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html",
+   "note": "General PGWP, language, programme and application requirements."
+  },
+  {
+   "title": "IRCC – PGWP field of study",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html",
+   "note": "CIP codes, exemptions and 2026 field-of-study list freeze."
+  },
+  {
+   "title": "IRCC – Student work placements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/intern.html",
+   "note": "Co-op permit change effective 1 April 2026 and placement conditions."
+  },
+  {
+   "title": "IRCC – Work off campus",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html",
+   "note": "24-hour weekly limit and scheduled-break rules."
+  },
+  {
+   "title": "IRCC – Express Entry category-based selection",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html",
+   "note": "Federal categories and eligibility framework."
+  },
+  {
+   "title": "IRCC – Provincial Nominee Program / Express Entry",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/express-entry/eligibility.html",
+   "note": "Federal and provincial eligibility relationship."
+  },
+  {
+   "title": "Ontario – OINP programme updates",
+   "url": "https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp",
+   "note": "Current Ontario stream status and redesign."
+  },
+  {
+   "title": "Ontario – OINP document checklists",
+   "url": "https://www.ontario.ca/document/print/book/108677",
+   "note": "Masters Graduate Stream closure notice."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/the-bc-provincial-nominee-program",
+   "note": "Current BC PNP pathway overview."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme news",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/news",
+   "note": "No new student streams and current programme updates."
+  },
+  {
+   "title": "Statistics Canada – Quarterly rent statistics, Q2 2026",
+   "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.pdf",
+   "note": "Asking rent data for Toronto, Vancouver and Calgary."
+  },
+  {
+   "title": "University of Toronto – Living costs in Toronto",
+   "url": "https://www.studentlife.utoronto.ca/task/living-costs-in-toronto/",
+   "note": "Institution-specific 2026 student living-cost estimate."
+  },
+  {
+   "title": "ICICI Bank Canada – Student Banking Partnership",
+   "url": "https://www.icicibank.ca/personal-banking/newcomer/student-partnership",
+   "note": "Example of current instalment GIC and student account options."
+  },
+  {
+   "title": "ICICI Bank Canada – Student GIC FAQ",
+   "url": "https://www.icicibank.ca/faq/student-partnership-program",
+   "note": "Payout structure and product details; verify current terms."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "eebc48f5-Canada_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 870,
+ "readMinutes": 4
+}

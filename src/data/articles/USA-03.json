@@ -1,0 +1,509 @@
+{
+ "id": "USA-03",
+ "category": "Post-Study & PR",
+ "priority": "High",
+ "title": "OPT & STEM OPT Extension Rules: Form I-983, E-Verify & Cap-Exempt H-1B Alternatives",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "F-1 students may be eligible for practical training related to their major field of study. The main routes are Curricular Practical Training (CPT) during the programme and Optional Practical Training (OPT) before or after completion. Eligible graduates with a qualifying STEM degree may apply for a 24-month STEM OPT extension. These are regulated benefits—not automatic work rights."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Most eligible F-1 students may receive up to 12 months of OPT per higher educational level. A qualifying STEM degree may support a further 24-month extension if the student and employer meet the requirements, including Form I-983 and E-Verify. Check current USCIS and SEVP instructions before acting."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "OPT vs STEM OPT vs CPT",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Route",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "When it is used",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Key point",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "CPT"
+        }
+       ],
+       [
+        {
+         "t": "During the programme, before the programme end date."
+        }
+       ],
+       [
+        {
+         "t": "Must be integral to the established curriculum, directly related to the major and authorised by the DSO before work begins."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Post-completion OPT"
+        }
+       ],
+       [
+        {
+         "t": "After completing the programme."
+        }
+       ],
+       [
+        {
+         "t": "Generally up to 12 months per higher educational level; employment must relate directly to the major."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "STEM OPT extension"
+        }
+       ],
+       [
+        {
+         "t": "After qualifying post-completion OPT."
+        }
+       ],
+       [
+        {
+         "t": "A further 24 months may be available for qualifying STEM degrees and compliant employer/training arrangements."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Who may qualify for the STEM OPT extension?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "The student is in valid F-1 status and has a qualifying STEM degree from an eligible, accredited U.S. institution."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The degree's Classification of Instructional Programs (CIP) code is on the current DHS STEM Designated Degree Program List."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The student is within the permitted application window and has a DSO recommendation in SEVIS."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The employer is enrolled in E-Verify and can provide a bona fide training opportunity meeting the STEM OPT rules."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The student and employer complete and sign Form I-983 before the DSO makes the STEM OPT recommendation."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is Form I-983?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Form I-983 is the Training Plan for STEM OPT Students. It records the learning objectives, supervision, training methods and how the employer will evaluate the student's progress. It is not simply an employment offer letter or a formality."
+      }
+     ]
+    },
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Work with the employer and DSO to complete the training plan accurately."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Describe duties and learning goals that relate to the qualifying STEM degree."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Identify the supervisor and explain how supervision and evaluation will occur."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Update the DSO when material changes occur and complete required evaluations on schedule."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep copies of the signed plan and supporting records."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "E-Verify: what students should check",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For a STEM OPT extension, the employer must meet the E-Verify requirement. Students should confirm the employing entity's correct legal name and E-Verify participation before accepting a role. A staffing agency or third-party placement arrangement does not remove the student's responsibility to meet all STEM OPT conditions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Important OPT timelines and limits",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Item",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "General rule to understand",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Regular post-completion OPT"
+        }
+       ],
+       [
+        {
+         "t": "Usually up to 12 months, subject to eligibility and any pre-completion OPT already used."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "STEM OPT extension"
+        }
+       ],
+       [
+        {
+         "t": "Up to 24 additional months for qualifying students."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Unemployment limit"
+        }
+       ],
+       [
+        {
+         "t": "Generally 90 days during post-completion OPT; up to 150 days total across post-completion OPT and the STEM extension."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "STEM OPT filing"
+        }
+       ],
+       [
+        {
+         "t": "The student should coordinate the DSO recommendation and Form I-765 filing window; USCIS instructions specify timing limits."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Work start"
+        }
+       ],
+       [
+        {
+         "t": "Do not begin employment until the relevant work authorisation is effective and the student has the required EAD or CPT authorisation."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Exact filing windows, automatic extensions, reporting deadlines and grace-period rules can be technical and may change. The student's DSO and the current USCIS Form I-765 instructions should be treated as the operational source of truth."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is an H-1B cap-exempt employer?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some employers may file H-1B petitions outside the annual numerical cap if they meet statutory and regulatory definitions. Examples can include qualifying institutions of higher education, certain nonprofit entities related to or affiliated with higher education, nonprofit research organisations and governmental research organisations."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Cap-exempt does not mean automatic approval. The employer must qualify, the job must meet H-1B requirements and the petition must be properly filed. For third-party arrangements, additional rules apply; a commercial company working with a university is not automatically cap-exempt."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Alternatives and career planning: what is realistic?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "University employment: investigate roles directly with qualifying universities or research institutions, but confirm the employer's legal status and petition strategy."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Research organisations: some nonprofit or governmental research employers may qualify; confirm their actual cap-exempt basis."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Cap-subject H-1B: many private-sector employers use the regular H-1B process, which is subject to annual limits and selection procedures where applicable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Other immigration categories: eligibility depends on the individual's facts and should be assessed by a qualified immigration attorney. Do not treat any category as a guaranteed fallback."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "callout",
+     "title": "Key distinction",
+     "blocks": [
+      {
+       "t": "p",
+       "runs": [
+        {
+         "t": "Cap-exempt H-1B is an employer/petition classification under H-1B rules. It is not an extension of OPT and does not grant an F-1 student permission to work before the relevant authorisation is approved."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "How long is OPT in the USA?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Eligible F-1 students may generally receive up to 12 months of OPT at each higher educational level. Certain STEM graduates may qualify for an additional 24-month STEM OPT extension."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What is Form I-983?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is the formal STEM OPT training plan completed by the student and employer. It describes the training goals, supervision and evaluation process."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does every STEM degree qualify for STEM OPT?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The degree's CIP code must be on the current DHS STEM Designated Degree Program List and other student and employer conditions must be met."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does my STEM OPT employer need E-Verify?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Yes. The employer must meet the E-Verify requirement and the training arrangement must satisfy STEM OPT rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What is an H-1B cap-exempt employer?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is an employer or qualifying arrangement that meets statutory and regulatory criteria for exemption from the annual H-1B numerical cap. The employer and petition must still meet all H-1B requirements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can cap-exempt H-1B be guaranteed after OPT?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. A qualifying employer must be willing and able to file a petition, and the job and beneficiary must meet applicable requirements."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "STEM OPT extension rules and eligible majors",
+ "secondaryKeywords": [
+  "cap exempt H1B employers list",
+  "H1B lottery alternatives"
+ ],
+ "intent": "Informational",
+ "seoTitle": "OPT & STEM OPT Extension Rules: Form I-983, E-Verify and H-1B Options",
+ "metaDescription": "Understand U.S. OPT and the 24-month STEM OPT extension, including Form I-983, E-Verify, unemployment limits and qualifying H-1B cap-exempt employers.",
+ "slug": "/usa-opt-stem-opt-extension-form-i983/",
+ "destination": "usa",
+ "topic": "after-study",
+ "topicLabel": "Work after study",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "ICE / SEVP – Practical Training Overview",
+   "url": "https://www.ice.gov/doclib/sevis/pdf/SEVPPracticalTrainingOverview.pdf",
+   "note": "Summarises CPT, OPT and STEM OPT, including the 24-month extension and employer conditions."
+  },
+  {
+   "title": "USCIS – STEM OPT Policy Alert",
+   "url": "https://www.uscis.gov/sites/default/files/document/policy-manual-updates/20240827-STEMOPT.pdf",
+   "note": "USCIS policy guidance on STEM OPT eligibility, degree and related requirements."
+  },
+  {
+   "title": "USCIS – Form I-765 Instructions",
+   "url": "https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf",
+   "note": "Application instructions and filing windows for employment authorisation; confirm the current edition."
+  },
+  {
+   "title": "ICE – OPT directly related guidance",
+   "url": "https://www.ice.gov/doclib/sevis/pdf/optDirectlyRelatedGuidance.pdf",
+   "note": "Guidance on relating practical training employment to a student's major and unemployment tracking."
+  },
+  {
+   "title": "USCIS – H-1B cap exemption guidance / statutory categories",
+   "url": "https://www.ecfr.gov/current/title-8/section-214.2",
+   "note": "Lists qualifying categories such as higher education institutions, affiliated nonprofits and research organisations. Verify current I-129 instructions."
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "80b0f94a-USA_Study_Abroad_SEO_GEO_Content_Pack_6_Articles.docx",
+ "words": 956,
+ "readMinutes": 4
+}

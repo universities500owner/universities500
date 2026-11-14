@@ -1,0 +1,439 @@
+{
+ "id": "USA-06",
+ "category": "Visa & Compliance",
+ "priority": "Medium",
+ "title": "Day-1 CPT Universities in USA: Compliance Mechanics, SEVP Audits & USCIS Risks",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "“Day-1 CPT” is a marketing term commonly used for programmes that may allow eligible F-1 students to seek Curricular Practical Training (CPT) early in their course. CPT is not a general work permit or a shortcut to employment. It must meet the federal definition of practical training that is integral to an established curriculum and directly related to the student's major."
+    }
+   ]
+  },
+  {
+   "t": "callout",
+   "title": "Critical 2026 update",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "SEVP issued additional CPT guidance on 24 August 2026. USC's Office of International Services summarises the clarification: CPT must be an integral and required part of an established curriculum that applies to all students in the programme, regardless of citizenship. An optional elective that a student can skip to complete the degree does not meet this stated test."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "quick": [],
+ "sections": [
+  {
+   "title": "What is CPT?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Curricular Practical Training is an F-1 employment benefit for qualifying alternative work/study, internship, cooperative education or practicum experiences offered through arrangements with the school. It takes place before the programme end date and must relate directly to the student's major area of study."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Why is the term Day-1 CPT used?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The term is used by some providers to describe a programme where CPT may be available early in the course. The label itself has no legal force. The important question is whether the specific student's proposed training and the programme curriculum meet the applicable CPT rules and whether the DSO authorises the training in SEVIS before it begins."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What changed in the 2026 SEVP clarification?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "On 24 August 2026, SEVP issued Broadcast Message 2608-02, as summarised by university international offices. The clarification emphasises that practical training must be required as an integral part of the established curriculum and apply to all students participating in the same programme, regardless of citizenship. USC's published update states that optional courses or elective internships that are not required for every student do not qualify under this guidance."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Because institutional implementation and further agency guidance may evolve, students should ask their university's DSO for the current written policy and how the school applies the SEVP message to the exact degree and internship."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "CPT vs OPT: do not confuse the two",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "CPT",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "OPT",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Curricular Practical Training"
+        }
+       ],
+       [
+        {
+         "t": "Optional Practical Training"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "During the academic programme, before the I-20 programme end date."
+        }
+       ],
+       [
+        {
+         "t": "Can be pre-completion or post-completion, subject to rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Must be integral to established curriculum and directly related to major."
+        }
+       ],
+       [
+        {
+         "t": "Must be directly related to the student's major field of study."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "DSO authorises specific employer and dates in SEVIS; student must have required I-20 endorsement before work begins."
+        }
+       ],
+       [
+        {
+         "t": "DSO recommends OPT in SEVIS; student applies to USCIS for EAD and must not work before authorisation begins."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "12 months or more of full-time CPT at the same educational level generally eliminates OPT eligibility at that level."
+        }
+       ],
+       [
+        {
+         "t": "Regular post-completion OPT is generally up to 12 months, with a possible STEM extension for eligible students."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Questions to ask before enrolling in a programme advertising Day-1 CPT",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Is the practical training a required part of the degree for every student, regardless of citizenship?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Where is this requirement shown in the published curriculum, programme handbook and graduation requirements?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Can a student graduate without completing the practical training course or internship?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How does the programme meet the 24 August 2026 SEVP clarification?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Does the DSO review the student's specific job duties and their direct relationship to the major?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Will the school issue CPT authorisation in SEVIS and provide an updated Form I-20 before the employment start date?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What are the attendance, in-person instruction, academic progress and reporting requirements?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Are there any separate state authorisation, accreditation or programme delivery issues the student should verify?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What are the immigration and academic risks?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Working before CPT is authorised, outside the approved dates or for an unapproved employer can create serious F-1 status problems."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "A programme's advertising claim does not determine whether CPT is lawful; the curriculum and student's facts matter."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "One year or more of full-time CPT at the same degree level generally removes eligibility for post-completion OPT at that level."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Frequent work-focused course scheduling can undermine the academic purpose of the degree and may attract closer scrutiny from school officials or government agencies."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Students should not rely on informal promises that a programme is 'safe', 'approved' or 'guaranteed' without reviewing the actual rules and obtaining written advice from the DSO."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What should a student do if already enrolled?",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Do not assume existing authorisation automatically covers a new job, employer, location or period."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask the DSO to confirm the current CPT basis, curriculum requirement and any effect of the 2026 guidance."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep the current I-20, SEVIS records, course catalogue, internship agreement, job description and authorisation dates."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Do not start or continue work outside the exact authorisation. Seek qualified immigration advice if there may have been a status violation."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep academic progress and attendance requirements separate from employment planning; the degree remains the primary purpose of F-1 study."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is Day-1 CPT illegal in the USA?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The phrase itself is not a visa category. CPT is a recognised F-1 benefit, but it must meet federal curricular requirements and be authorised by the DSO. A programme's marketing label does not establish eligibility."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work from the first day of my U.S. course?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Only if the specific training meets CPT requirements and the DSO has authorised it in SEVIS with the required Form I-20 endorsement before work begins. Do not rely on a general promise from a school or recruiter."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What did SEVP clarify in August 2026?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The 24 August 2026 guidance, as summarised by university international offices, emphasises that CPT must be an integral and required part of an established curriculum applying to all students in the programme, regardless of citizenship."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does Day-1 CPT affect OPT eligibility?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "CPT itself does not automatically remove OPT eligibility. However, 12 months or more of full-time CPT at the same educational level generally eliminates OPT eligibility at that level."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can a university guarantee CPT approval?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No general marketing guarantee can replace the DSO's assessment of the student's programme, curriculum, job and timing under current rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What should I verify before choosing a Day-1 CPT programme?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Review the published curriculum, whether the internship is required for all students, the school's current SEVP guidance, DSO procedures, attendance rules, accreditation and programme fit."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "day 1 CPT universities list and USCIS risks",
+ "secondaryKeywords": [
+  "CPT vs OPT rules USA",
+  "F1 status compliance"
+ ],
+ "intent": "Informational",
+ "seoTitle": "Day-1 CPT Universities in USA: Compliance Rules, SEVP Guidance & Risks",
+ "metaDescription": "Understand Day-1 CPT in the USA, current SEVP curricular training guidance, CPT vs OPT, F-1 compliance requirements and risks Indian students should check before enrolling.",
+ "slug": "/day-1-cpt-usa-compliance-risks/",
+ "destination": "usa",
+ "topic": "visas",
+ "topicLabel": "Visas and paperwork",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "USC – Important Update Regarding CPT Requirements (25 August 2026)",
+   "url": "https://ois.usc.edu/important-update-regarding-curricular-practical-training/",
+   "note": "University international office summary of SEVP Broadcast Message 2608-02 dated 24 August 2026 and the required-curriculum clarification."
+  },
+  {
+   "title": "USC – Curricular Practical Training",
+   "url": "https://ois.usc.edu/employment/curricular-practical-training-cpt/",
+   "note": "Explains CPT as an integral and required part of the curriculum and its relationship to OPT eligibility."
+  },
+  {
+   "title": "ICE – CPT overview",
+   "url": "https://www.ice.gov/doclib/sevis/pdf/CurricularPracticalTraining.pdf",
+   "note": "Federal programme overview of CPT requirements, DSO authorisation and full-time CPT impact on OPT."
+  },
+  {
+   "title": "Study in the States – F-1 CPT",
+   "url": "https://studyinthestates.dhs.gov/sevis-help-hub/student-records/fm-student-employment/f-1-curricular-practical-training-cpt",
+   "note": "SEVP CPT guidance. Verify the live page directly; the search result indicates an update dated 24 August 2026."
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "80b0f94a-USA_Study_Abroad_SEO_GEO_Content_Pack_6_Articles.docx",
+ "words": 996,
+ "readMinutes": 5
+}

@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
 import { hiddenFromSearch } from '../lib/noindex.js';
 const path = '/english-test/';
 ---
@@ -50,4 +52,5 @@ const path = '/english-test/';
     </div>
   </section>
   <p class="note">Test formats here are general guidance, not the requirements of any particular university. Every university publishes its own, and theirs is the one that counts.</p>
+  <RelatedArticles list={forTopics(TOOL_TOPICS['english-test'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />
 </Base>

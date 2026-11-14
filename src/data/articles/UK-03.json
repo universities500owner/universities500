@@ -1,0 +1,452 @@
+{
+ "id": "UK-03",
+ "category": "Post-Study & PR",
+ "priority": "High",
+ "title": "Graduate Route Visa (PSW) Rules: Transitioning to a Skilled Worker Visa in the UK",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The Graduate Route allows eligible international students to remain in the UK after successfully completing an eligible course. It is an unsponsored route, which means a graduate does not need an employer to sponsor the Graduate visa itself. However, the route is time-limited and cannot be extended. Graduates who want to remain longer may need to qualify for another route, such as the Skilled Worker visa."
+    }
+   ]
+  },
+  {
+   "t": "callout",
+   "title": "Major date change",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For applications made on or before 31 December 2026, the standard Graduate Route period is 2 years. For applications made on or after 1 January 2027, it is 18 months. Doctoral graduates receive 3 years, subject to eligibility."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "quick": [],
+ "sections": [
+  {
+   "title": "Who can apply for the Graduate Route?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "You must be in the UK when you apply."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "You must have or last have had permission as a Student or Tier 4 (General) student."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "You must have successfully completed an eligible UK course."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Your education provider must have reported successful course completion to the Home Office."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "You must apply before your Student permission expires."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How long can you stay?",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Application date",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Bachelor's / master's and other eligible non-doctoral qualification",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Doctoral qualification",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "On or before 31 December 2026"
+        }
+       ],
+       [
+        {
+         "t": "2 years"
+        }
+       ],
+       [
+        {
+         "t": "3 years"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "On or after 1 January 2027"
+        }
+       ],
+       [
+        {
+         "t": "18 months"
+        }
+       ],
+       [
+        {
+         "t": "3 years"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The visa period is based on the date of application, not simply the date the course started. Students approaching completion should check the latest rules and ensure their university has reported course completion before applying."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What can you do on a Graduate visa?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Work in most jobs, subject to the route's restrictions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Look for work and change employers without Skilled Worker sponsorship."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Be self-employed, subject to the route's conditions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Travel and return to the UK while permission remains valid."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Study only courses that are not eligible for a Student visa; ATAS may apply for some study."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Switching to a Skilled Worker visa",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "To switch, a graduate normally needs a job offer from a Home Office-approved sponsor, a Certificate of Sponsorship, an eligible occupation and pay that meets the relevant salary rules. The exact salary requirement depends on the occupation's going rate, the general threshold and whether a permitted discount applies."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Skilled Worker salary: avoid relying on one headline number",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The published general salary threshold is currently £41,700 per year, or the occupation's going rate if that is higher. Some applicants may qualify for a lower threshold under specific provisions, including eligible new entrants, but the salary must still meet the applicable percentage of the going rate and minimum threshold. The current GOV.UK page lists £33,400 as the minimum threshold for certain discounted cases, subject to conditions."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Category (illustrative)",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Published general threshold / floor",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Important condition",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Standard Skilled Worker"
+        }
+       ],
+       [
+        {
+         "t": "£41,700 or the occupation's going rate, whichever is higher."
+        }
+       ],
+       [
+        {
+         "t": "Occupation must be eligible and all sponsorship requirements met."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Eligible new entrant / certain discounted cases"
+        }
+       ],
+       [
+        {
+         "t": "May be as low as £33,400, with 70% of the going rate in specified cases."
+        }
+       ],
+       [
+        {
+         "t": "Must meet the relevant new entrant or other qualifying conditions; time limits apply."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not use £41,700 or £33,400 as a universal salary promise. Check the occupation code, going rate, hours, pay structure, new entrant eligibility and current Immigration Rules for the individual job."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Graduate Route to Skilled Worker: practical sequence",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Complete the eligible course and confirm that the university has reported completion to the Home Office."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Apply for the Graduate Route before Student permission expires, if eligible."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Search for employers that hold a Skilled Worker sponsor licence and roles that meet the occupation rules."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check the salary threshold and going rate for the exact occupation code."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Obtain a valid Certificate of Sponsorship and submit the Skilled Worker application before current permission expires."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Plan beyond the Graduate Route",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Graduate Route is not itself a settlement route. A later Skilled Worker visa may lead to settlement if the applicant meets the relevant qualifying residence and other requirements, but this is not automatic. Immigration rules can change during a graduate's stay."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is the UK Graduate Route still two years?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is 2 years for standard eligible graduates who apply on or before 31 December 2026. Applications made on or after 1 January 2027 receive 18 months. Doctoral graduates receive 3 years."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I extend the Graduate visa?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The Graduate visa cannot be extended. Eligible graduates may be able to switch to another route, such as Skilled Worker."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Do I need a job offer for the Graduate Route?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The Graduate Route is unsponsored. You need to meet the route's eligibility and course-completion requirements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What salary is required for a Skilled Worker visa?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The general threshold is currently £41,700 or the job's going rate, whichever is higher. Some qualifying applicants may use discounted thresholds, subject to conditions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does the Graduate Route lead directly to permanent residence?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The Graduate Route is not a settlement route. A person may later qualify under another route if they meet that route's requirements."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "Graduate route visa UK rules switching to skilled worker",
+ "secondaryKeywords": [
+  "UK post study work visa 2 years",
+  "minimum salary threshold UK"
+ ],
+ "intent": "Informational",
+ "seoTitle": "UK Graduate Route Visa Rules: Switching to Skilled Worker",
+ "metaDescription": "Understand UK Graduate Route eligibility and duration, the 2027 change to 18 months, and how graduates may switch to a Skilled Worker visa.",
+ "slug": "/uk-graduate-route-switch-skilled-worker/",
+ "destination": "uk",
+ "topic": "after-study",
+ "topicLabel": "Work after study",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "GOV.UK – Graduate visa overview",
+   "url": "https://www.gov.uk/graduate-visa",
+   "note": "Current eligibility, duration, application timing, fees and conditions."
+  },
+  {
+   "title": "GOV.UK – Immigration Rules Appendix Graduate",
+   "url": "https://www.gov.uk/guidance/immigration-rules/immigration-rules-appendix-graduate",
+   "note": "Formal Graduate route rules, including 1 January 2027 duration change."
+  },
+  {
+   "title": "GOV.UK – Skilled Worker visa overview",
+   "url": "https://www.gov.uk/skilled-worker-visa",
+   "note": "Eligibility, sponsor, job and salary conditions."
+  },
+  {
+   "title": "GOV.UK – Skilled Worker: when you can be paid less",
+   "url": "https://www.gov.uk/skilled-worker-visa/when-you-can-be-paid-less",
+   "note": "Discounted salary categories and minimums."
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "a68625f0-UK_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 788,
+ "readMinutes": 4
+}

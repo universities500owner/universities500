@@ -1,0 +1,605 @@
+{
+ "id": "NLD-02",
+ "category": "Universities & Courses",
+ "priority": "High",
+ "title": "Research Universities (WO) vs Universities of Applied Sciences (HBO) & Numerus Fixus",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The Netherlands has two distinct forms of higher education: research-oriented university education (WO) and higher professional education at universities of applied sciences (HBO). Neither is universally “better”. The right choice depends on the student’s academic preparation, learning style, intended profession and whether they want a research-intensive or professionally oriented programme."
+    }
+   ]
+  }
+ ],
+ "quick": [],
+ "sections": [
+  {
+   "title": "Quick comparison: WO vs HBO",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Dimension",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "WO – Research university",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "HBO – University of applied sciences",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Main orientation"
+        }
+       ],
+       [
+        {
+         "t": "Academic and research-led; develops scientific thinking and analytical methods."
+        }
+       ],
+       [
+        {
+         "t": "Applied and profession-oriented; connects learning to professional practice."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Typical learning"
+        }
+       ],
+       [
+        {
+         "t": "Theory, research methods, academic reading, independent analysis and research projects."
+        }
+       ],
+       [
+        {
+         "t": "Projects, practical assignments, applied research, placements and professional skills."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Bachelor structure"
+        }
+       ],
+       [
+        {
+         "t": "Often 3 years."
+        }
+       ],
+       [
+        {
+         "t": "Often 4 years."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Master’s route"
+        }
+       ],
+       [
+        {
+         "t": "Research and specialist academic Master’s; many programmes expect a relevant WO background or equivalent preparation."
+        }
+       ],
+       [
+        {
+         "t": "Professional Master’s programmes; admission requirements and progression routes vary by institution and subject."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Good fit"
+        }
+       ],
+       [
+        {
+         "t": "Students interested in research, analytical depth, academic progression or professions requiring a research-university route."
+        }
+       ],
+       [
+        {
+         "t": "Students who prefer applied learning, professional practice, projects and industry-facing education."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Admissions"
+        }
+       ],
+       [
+        {
+         "t": "Diploma equivalence, subject prerequisites, mathematics/science requirements and programme selection."
+        }
+       ],
+       [
+        {
+         "t": "Diploma equivalence and programme-specific subject, portfolio, language or practical requirements."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is a WO research university?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "WO institutions offer research-oriented higher education. Their programmes emphasise scientific thinking, academic methods and solving research questions. A WO route may be a natural fit for students planning research-intensive careers or further academic study, but the course content and professional outcomes still need to be checked programme by programme."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is an HBO university of applied sciences?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "HBO institutions provide higher professional education. Programmes are generally designed around applied knowledge and professional practice, with projects, placements or practical assignments depending on the course. HBO is not simply a lower-quality version of WO: it is a different educational route with a different purpose."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Which route should an Indian student choose?",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Student profile / goal",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to investigate",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Strong academic/research interest"
+        }
+       ],
+       [
+        {
+         "t": "WO programme curriculum, research methods, thesis options, academic prerequisites and progression to research Master’s/PhD."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Career-focused applied learning"
+        }
+       ],
+       [
+        {
+         "t": "HBO curriculum, industry projects, internships, professional accreditation and employer links."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Indian 12th-standard applicant"
+        }
+       ],
+       [
+        {
+         "t": "Check whether the school-leaving qualification meets the institution’s WO or HBO entry standard. The institution decides equivalence; do not infer it from percentage alone."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Indian bachelor’s graduate applying for Master’s"
+        }
+       ],
+       [
+        {
+         "t": "Check whether the previous degree, subject coverage and credit level meet that exact Master’s admission regulation."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Student seeking a later transfer"
+        }
+       ],
+       [
+        {
+         "t": "Ask the institution whether a bridging/pre-master’s route exists, what credits can be recognised and whether progression is guaranteed. It usually is not automatic."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What does Numerus Fixus mean?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Numerus fixus is a capacity limit for a programme. If applications exceed the available places, the institution runs a selection procedure. It can apply to programmes at both WO and HBO institutions. Selection criteria and assessment methods are set by the institution and may include academic performance, motivation, personality, previous school performance or programme-specific tests."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Numerus Fixus: deadlines and application rules",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "The general Studielink deadline for a numerus fixus programme is 15 January, 23:59 CET, for the relevant academic year. Check the programme page because the institution may specify additional steps or earlier internal deadlines."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The general limit is two numerus fixus applications per academic year, subject to exceptions for certain programmes such as Medicine, Dentistry, Dental Hygiene and Physiotherapy."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Selection takes place after the application deadline. Applicants receive a ranking number through Studielink on 15 April under the general process described by Study in NL."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "If offered a place, accept it in Studielink within two weeks; otherwise the offer may lapse and the place can be offered to another applicant."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "These are general national process notes. The programme’s own selection regulations and current Studielink instructions take precedence."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "TU Delft and non-EU applicants: avoid assuming a single entry rule",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "TU Delft is one example of an institution where specific Bachelor’s programmes can have a numerus fixus selection process. Its Computer Science & Engineering programme published a 2027–28 selection process with a 15 January 2027 deadline and 590 places across the English and bilingual tracks. That example is programme- and intake-specific; it should not be generalised to every TU Delft programme or to Master’s admissions."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For international applicants, check the exact programme page for accepted school-leaving qualifications, subject prerequisites, mathematics level, English-language evidence, selection tests, application portal and deadlines. Non-EU status does not remove academic selection requirements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Application route: Studielink and the institution",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Find the exact programme in the institution’s official course catalogue or Studyfinder."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Read the admission and selection page for your qualification, nationality and intended intake."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether the programme requires Studielink, a direct institutional application or both."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare transcripts, qualification certificates, subject descriptions, English-language evidence, portfolio or motivation documents if requested."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Submit by the earliest applicable deadline. For numerus fixus, do not wait until the general non-fixus deadline."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Monitor the institution’s portal and Studielink for selection tasks, ranking number and offer acceptance."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "WO vs HBO decision checklist",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Does the student prefer research-led learning or applied professional learning?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Does the programme’s curriculum match the student’s academic background and career goal?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Does the institution accept the student’s Indian qualification for this exact programme?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Are mathematics, science, portfolio or subject prerequisites specified?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is the programme numerus fixus? What is the intake-specific deadline?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How many numerus fixus applications has the student already made this academic year?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is the application through Studielink, the university portal or both?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What are the internship, accreditation and progression options after graduation?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is WO always better than HBO?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. WO is research-oriented and HBO is professionally oriented. Compare programme outcomes, content, accreditation and the student’s goals rather than treating one route as universally superior."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can an HBO graduate apply for a WO Master’s?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It depends on the Master’s programme and the applicant’s academic preparation. Some programmes may require a pre-master’s or additional credits; others may not accept the background. Obtain a written assessment from the institution."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is Numerus Fixus only for Medicine?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. It can apply to programmes across both WO and HBO. Each institution publishes its own selection procedure."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is 15 January the deadline for every Dutch programme?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. It is the general deadline for numerus fixus programmes. The general deadline for other programmes is often 1 May, but international applicants may face earlier institution-specific deadlines."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does TU Delft have the same admissions criteria for every course?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Entry requirements and selection are programme-specific. Check the exact Bachelor’s or Master’s page for the intended intake."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "research university vs university of applied sciences Netherlands",
+ "secondaryKeywords": [
+  "numerus fixus programs Netherlands",
+  "TU Delft admission non-EU"
+ ],
+ "intent": "Informational / Commercial",
+ "seoTitle": "WO vs HBO in the Netherlands: Differences, Admissions & Numerus Fixus",
+ "metaDescription": "Compare Dutch research universities (WO) and universities of applied sciences (HBO), understand Numerus Fixus selection and plan your application deadlines.",
+ "slug": "/netherlands/wo-vs-hbo-numerus-fixus/",
+ "internalLinks": "Netherlands university application process; Indian qualification equivalence; TU Delft programme guide; cost of studying in the Netherlands.",
+ "destination": "netherlands",
+ "topic": "universities-and-courses",
+ "topicLabel": "Universities and courses",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "IND – Orientation year permit (updated 7 October 2026)",
+   "url": "https://ind.nl/en/residence-permits/work/residence-permit-for-orientation-year",
+   "note": ""
+  },
+  {
+   "title": "IND – Highly skilled migrant permit (updated 29 October 2026)",
+   "url": "https://ind.nl/en/residence-permits/work/highly-skilled-migrant",
+   "note": ""
+  },
+  {
+   "title": "IND – Required amounts and income requirements",
+   "url": "https://ind.nl/en/required-amounts-income-requirements",
+   "note": ""
+  },
+  {
+   "title": "Government.nl – Orientation year for highly educated persons",
+   "url": "https://www.government.nl/themes/migration-and-travel/immigration-to-the-netherlands/options-for-entrepreneurs-and-employees-from-abroad/orientation-year-highly-educated-persons",
+   "note": ""
+  },
+  {
+   "title": "Nuffic – Higher education in the Netherlands (WO/HBO)",
+   "url": "https://www.nuffic.nl/en/education-systems/the-netherlands/higher-education",
+   "note": ""
+  },
+  {
+   "title": "Study in NL – How to apply / Numerus Fixus",
+   "url": "https://www.studyinnl.org/plan-your-stay/how-to-apply",
+   "note": ""
+  },
+  {
+   "title": "TU Delft – Computer Science & Engineering selection procedure 2027–28",
+   "url": "https://www.tudelft.nl/en/onderwijs/opleidingen/bachelors/computer-science-and-engineering/bachelor-of-computer-science-and-engineering/from-application-to-enrollment/selection-procedure",
+   "note": ""
+  },
+  {
+   "title": "Study in NL – Finding a place to live",
+   "url": "https://www.studyinnl.org/life-in-nl/finding-a-place-to-live",
+   "note": ""
+  },
+  {
+   "title": "Study in NL – Tuition fees",
+   "url": "https://www.studyinnl.org/finances/tuition-fees",
+   "note": ""
+  },
+  {
+   "title": "Study in NL – Daily student expenses and cost of living",
+   "url": "https://www.studyinnl.org/finances/daily-student-expenses-and-cost-of-living-in-the-netherlands",
+   "note": ""
+  },
+  {
+   "title": "IND – Student residence permit and work rules",
+   "url": "https://ind.nl/en/residence-permits/study/student-residence-permit-for-university-or-higher-professional-education",
+   "note": ""
+  },
+  {
+   "title": "DUWO – International students",
+   "url": "https://www.duwo.nl/en/i-search/student-room/international-students",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "36fc0683-Netherlands_Study_Abroad_SEO_GEO_Content_Pack_3_Articles.docx",
+ "words": 1036,
+ "readMinutes": 5
+}

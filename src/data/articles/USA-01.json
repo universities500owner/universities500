@@ -1,0 +1,569 @@
+{
+ "id": "USA-01",
+ "category": "Cost & Budgeting",
+ "priority": "High",
+ "title": "Cost of MS in USA for Indian Students: Public vs Private Universities & Living Costs",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The cost of an MS in the United States depends on the university, programme, length of study and city. Public universities may offer lower published tuition than many private universities, but international students usually pay the institution's non-resident or international rate. Compare the full cost of attendance—not tuition alone—before choosing a programme."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For a realistic two-year MS budget, add tuition and mandatory fees for every term, housing, food, health insurance, transport, books, visa and SEVIS charges, travel and initial set-up. Use the university's own cost-of-attendance estimate for the programme and academic year."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Public vs private universities: what is the difference?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Public universities receive state or public funding and often publish different tuition rates for in-state, out-of-state and international students. An Indian student should not assume that the lower in-state rate applies."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Private universities generally set their own tuition rates and do not use the same in-state/out-of-state structure. Some private institutions may offer substantial institutional scholarships or assistantships, so the published sticker price is not always the final net cost."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Factor",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Public university",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Private university",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Tuition pricing"
+        }
+       ],
+       [
+        {
+         "t": "Often separate resident and non-resident/international rates."
+        }
+       ],
+       [
+        {
+         "t": "Institution sets its own tuition; usually no in-state rate distinction."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Funding"
+        }
+       ],
+       [
+        {
+         "t": "Departmental assistantships and scholarships may be available; varies by campus."
+        }
+       ],
+       [
+        {
+         "t": "Institutional scholarships, fellowships and assistantships may be available; varies by campus."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Cost comparison"
+        }
+       ],
+       [
+        {
+         "t": "Compare the international tuition rate and mandatory fees."
+        }
+       ],
+       [
+        {
+         "t": "Compare net cost after confirmed aid, not advertised scholarship possibilities."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Best way to compare"
+        }
+       ],
+       [
+        {
+         "t": "Official graduate tuition schedule + programme cost of attendance."
+        }
+       ],
+       [
+        {
+         "t": "Official programme tuition + aid offer + cost of attendance."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What does an MS in the USA cost?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "There is no reliable single national price for an MS. Programmes differ in credit requirements, length, lab or course fees, campus charges and annual tuition changes. EducationUSA recommends building a budget from tuition, fees and living expenses and checking the exact institution for current costs."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For public/private comparisons, use the National Center for Education Statistics (NCES) IPEDS data as sector-level context, but do not present undergraduate averages as MS tuition. Graduate tuition varies substantially by field and institution. For an individual student, the university's official graduate tuition page and programme cost sheet are the decision-grade sources."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Living costs: compare the city and the campus location",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Published 2026–2027 examples show why students must compare the exact programme and cost basis."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "City / institution",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Published 2026–2027 estimate",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What is included / excluded",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "New York – NYU graduate students"
+        }
+       ],
+       [
+        {
+         "t": "NYU estimates indirect expenses of $42,274 for traditional graduate programmes across fall/spring semesters (9 credits)."
+        }
+       ],
+       [
+        {
+         "t": "Includes food, housing, books, transport, personal expenses and health insurance. Tuition and fees are additional and vary by school/programme."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Boston – Boston University, College of Arts & Sciences MA/MS"
+        }
+       ],
+       [
+        {
+         "t": "$95,998 for a full-time 9-month academic year."
+        }
+       ],
+       [
+        {
+         "t": "Includes tuition ($73,024), fees ($1,048) and estimated living expenses ($21,926). BU's standard health insurance rate of $4,054 may also apply; check eligibility and waiver rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "San Francisco – San Francisco State University graduate/master's"
+        }
+       ],
+       [
+        {
+         "t": "Published base cost of attendance: $40,028 on campus or $41,734 off campus for two semesters."
+        }
+       ],
+       [
+        {
+         "t": "SFSU separately states that out-of-state and international students pay an additional $471 per unit on top of the tuition shown. Calculate this using actual enrolled units."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "These examples are not directly comparable: NYU's figure is indirect expenses only, BU's is a full-time MA/MS academic-year budget, and SFSU's published total excludes the additional per-unit international surcharge."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "New York, Boston and the San Francisco Bay Area can have high housing costs, but the exact budget depends on neighbourhood, shared housing, commute and lifestyle. A campus in a lower-cost suburb may produce a very different budget from a downtown campus in the same metropolitan area."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Location",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Budget factors to compare",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "New York City"
+        }
+       ],
+       [
+        {
+         "t": "Rent near campus, shared accommodation, transit pass, health insurance, groceries and mandatory campus fees."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Boston"
+        }
+       ],
+       [
+        {
+         "t": "Housing availability around the university, winter utilities, transit and whether the programme is in central Boston or a nearby suburb."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "San Francisco Bay Area"
+        }
+       ],
+       [
+        {
+         "t": "Rent and deposits, public transport or commuting, campus location, food and health insurance."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Other U.S. cities"
+        }
+       ],
+       [
+        {
+         "t": "Compare the actual campus town, not just state-level or city-wide averages."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Build a two-year budget correctly",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Tuition: calculate credits or terms required and apply the fee schedule for each academic year."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Mandatory fees: include student services, technology, lab, recreation, international student and other required charges."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Housing: use the university's graduate housing estimate or current local rental evidence; include deposits and utilities."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Food and daily living: estimate groceries, meals, phone, clothing and personal costs."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Health insurance: check whether the university requires its own plan or allows a waiver."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Books, equipment and travel: include programme-specific equipment, flights and local travel."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Funding: subtract only confirmed scholarships, assistantships or tuition waivers stated in a written award."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "callout",
+     "title": "Worked budget template",
+     "blocks": [
+      {
+       "t": "p",
+       "runs": [
+        {
+         "t": "Annual cost = tuition + mandatory fees + housing + food + insurance + transport + books/personal costs. Two-year estimate = Year 1 cost + Year 2 cost, adjusted for published fee increases and any funding that is confirmed for each year."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to reduce the cost without choosing a poor-fit programme",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Compare total net cost and programme outcomes, not tuition alone."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask departments whether assistantships are available to master's students and whether funding is guaranteed or competitive."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check scholarship renewal conditions, GPA requirements and whether the award covers tuition, fees or living costs."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare housing options before accepting an offer; campus housing is not always the cheapest option."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Do not assume part-time campus work will cover tuition or living costs."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is an MS in the USA cheaper at a public university?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It can be, but not always. International students generally pay non-resident or international tuition at public universities. Compare the programme's full cost and confirmed funding with private university offers."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How much does a two-year MS in the USA cost?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "There is no single figure. Calculate the actual tuition and mandatory fees for the programme, then add two years of living expenses, insurance, books, travel and one-off costs."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are New York, Boston and San Francisco expensive for students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Housing and everyday costs can be high in these metro areas, but the actual budget depends on campus location, shared accommodation, transport and lifestyle. Use the university's city-specific cost estimate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can Indian students get scholarships for an MS in the USA?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some universities and departments offer merit scholarships, fellowships or assistantships to international graduate students. Availability and eligibility vary by programme."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work part-time to pay my tuition?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "F-1 employment is restricted by immigration rules and school authorisation. Do not rely on future employment income to meet tuition or visa financial requirements."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "cost of MS in USA for Indian students",
+ "secondaryKeywords": [
+  "living expenses NY Boston SF",
+  "total cost 2 year MS USA"
+ ],
+ "intent": "Informational / Commercial",
+ "seoTitle": "Cost of MS in USA for Indian Students: Public vs Private Universities",
+ "metaDescription": "Compare the cost of an MS in the USA for Indian students. Understand public vs private tuition, living costs in New York, Boston and San Francisco, and budgeting tips.",
+ "slug": "/cost-of-ms-in-usa-indian-students/",
+ "destination": "usa",
+ "topic": "cost-and-budgeting",
+ "topicLabel": "Costs and budgeting",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "EducationUSA – Finance Your Studies (Graduate)",
+   "url": "https://www.educationusa.state.gov/your-5-steps-us-study/finance-your-studies/graduate",
+   "note": "Explains that graduate study budgets include tuition, fees and living expenses, and directs students to institution-specific costs."
+  },
+  {
+   "title": "EducationUSA – Finance Your U.S. Studies",
+   "url": "https://educationusa.state.gov/your-5-steps-us-study/finance-your-studies",
+   "note": "Explains variation in tuition and living costs across the United States and the need to assess institutional funding."
+  },
+  {
+   "title": "NCES IPEDS Data Explorer – Tuition and required fees",
+   "url": "https://nces.ed.gov/ipeds/search/viewtable?tableId=36557",
+   "note": "National data context. Select graduate level and the correct year; do not confuse undergraduate and graduate data."
+  },
+  {
+   "title": "Official graduate/master's cost-of-attendance table and separate $471 per-unit charge for out-of-state and international students.",
+   "url": "https://www.sfsu.edu/departments/financial-aid/cost-attendance/",
+   "note": ""
+  },
+  {
+   "title": "Programme-specific full-time nine-month budget, including tuition, fees and estimated living expenses.",
+   "url": "https://www.bu.edu/cas/admissions/ma-ms/cost-of-attendance/",
+   "note": ""
+  },
+  {
+   "title": "Graduate indirect expense estimate for traditional programmes; tuition varies by school and programme.",
+   "url": "https://bulletins.nyu.edu/nyu/cost-attendance/",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "80b0f94a-USA_Study_Abroad_SEO_GEO_Content_Pack_6_Articles.docx",
+ "words": 1077,
+ "readMinutes": 5
+}

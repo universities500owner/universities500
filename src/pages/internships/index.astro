@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import InternList from '../../components/InternList.astro';
 import { hiddenFromSearch } from '../../lib/noindex.js';
 import { countries } from '../../lib/data.js';
@@ -74,4 +76,5 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
   </section>
 
   {PUBLISH && rows.length > 0 && <script>import '../../scripts/internships.js';</script>}
+  <RelatedArticles list={forTopics(TOOL_TOPICS['internships'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />
 </Base>

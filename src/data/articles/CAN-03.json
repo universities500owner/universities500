@@ -1,0 +1,518 @@
+{
+ "id": "CAN-03",
+ "category": "Post-Study & PR",
+ "priority": "High",
+ "title": "Canada After Study: Provincial Nominee Programmes and Express Entry",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "There is no province that guarantees permanent residence (PR) simply because a student studies there. Canadian PR pathways are based on federal and provincial immigration criteria that can change with labour-market priorities, nomination allocations, occupation, work experience, language ability and invitation rounds. Choosing a province should therefore be a decision about education and employment fit first, not a promise of immigration status."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Compare the province’s current nomination streams, eligible occupations, job-offer requirements, work-experience rules and invitation process. Then assess whether the graduate may qualify for a federal programme such as the Canadian Experience Class (CEC) or an Express Entry category. A Canadian credential by itself does not guarantee an invitation or nomination."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Understand the main routes",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Route",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What it does",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What a graduate must check",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Provincial Nominee Program (PNP)"
+        }
+       ],
+       [
+        {
+         "t": "A province or territory nominates eligible candidates whose skills and experience match local priorities."
+        }
+       ],
+       [
+        {
+         "t": "Current stream, occupation, job offer, work experience, education, language, residence intent and nomination allocation."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Express Entry – Canadian Experience Class"
+        }
+       ],
+       [
+        {
+         "t": "Federal economic immigration route for eligible skilled workers with qualifying Canadian work experience."
+        }
+       ],
+       [
+        {
+         "t": "NOC/TEER classification, eligible work experience, language test, timing and pool ranking."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Express Entry – category-based rounds"
+        }
+       ],
+       [
+        {
+         "t": "Invitations may target candidates with selected language ability or work experience in priority occupations."
+        }
+       ],
+       [
+        {
+         "t": "The current category list, minimum work-experience period and round-specific instructions."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Quebec selection"
+        }
+       ],
+       [
+        {
+         "t": "Quebec has its own selection system and does not participate in the PNP."
+        }
+       ],
+       [
+        {
+         "t": "Current Quebec programme rules and separate federal admission stage."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Ontario: do not rely on the old Masters Graduate Stream",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The source keyword set specifically names the Ontario Immigrant Nominee Program (OINP) Masters Graduate Stream. This requires an important current-policy correction: Ontario’s official information states that the Masters Graduate Stream closed on 30 May 2026 as part of the OINP redesign. Ontario subsequently announced a new Workforce Priority Stream and closure of the former streams. The old Masters Graduate Stream should not be promoted as an open route."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For a current Ontario graduate, review the live OINP programme page and the Workforce Priority Stream criteria. Do not assume that completing a master’s degree in Ontario creates a nomination entitlement. A graduate may also assess federal Express Entry eligibility, including CEC where the work-experience requirements are met."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "British Columbia: nomination is selective and labour-market led",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The BC PNP has Skills Immigration and Entrepreneur Immigration pathways. Its official programme updates state that it will not launch new student streams. International graduates may explore existing worker streams only if they meet the current requirements. A Canadian degree or diploma alone is not a nomination pathway."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students considering British Columbia should compare their likely occupation, employer demand, job-offer prospects, wage level and current BC PNP invitation priorities. The programme has limited nomination spaces and can change its focus."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Express Entry: understand the federal selection logic",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Express Entry manages applications for three federal economic programmes: the Federal Skilled Worker Program, Federal Skilled Trades Program and Canadian Experience Class. Candidates who meet one programme’s eligibility criteria can enter the pool and receive a Comprehensive Ranking System (CRS) score. An invitation depends on the type of draw and the candidate’s ranking."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Category-based selection is not a separate immigration programme. Candidates must first be eligible for an Express Entry programme and then meet the category-specific instructions. The 2026 categories include French-language proficiency, healthcare and social services, STEM, trades, education, transport, and selected groups such as physicians, researchers and senior managers with Canadian work experience. Category lists and qualifying work-experience rules should be checked at the time of application."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Why “best province for PR” is the wrong first question",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "The province with a lower tuition fee may not offer the strongest job market for the student’s intended occupation."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "A province may have a relevant stream but no current intake, limited nomination allocation or invitation thresholds that the student cannot meet."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "A graduate may qualify for a PGWP but still need skilled work experience, language results and a competitive profile for PR."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Provincial nomination streams may require a genuine intention to live and work in the nominating province."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Quebec uses a separate selection system; do not include it in a standard PNP comparison."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Build a province comparison matrix",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Comparison field",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Questions for the student",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Study-to-work fit"
+        }
+       ],
+       [
+        {
+         "t": "Are there employers in the region hiring for the intended occupation?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "PGWP and programme"
+        }
+       ],
+       [
+        {
+         "t": "Is the exact programme PGWP-eligible and does the credential meet the student’s career plan?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Provincial streams"
+        }
+       ],
+       [
+        {
+         "t": "Which streams are open today, and what are their current eligibility and invitation rules?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Employment requirements"
+        }
+       ],
+       [
+        {
+         "t": "Is a job offer required? Does it need a minimum wage, hours, occupation or employer status?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Federal eligibility"
+        }
+       ],
+       [
+        {
+         "t": "Could the student later qualify for CEC or another Express Entry programme?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Language and French"
+        }
+       ],
+       [
+        {
+         "t": "Would stronger English or French materially improve eligibility or competitiveness?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Cost and lifestyle"
+        }
+       ],
+       [
+        {
+         "t": "Can the student afford housing and transport while building work experience?"
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Which province is easiest for PR after study?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "There is no reliably “easiest” province. Streams open and close, invitation criteria change and eligibility depends on the graduate’s occupation, work experience, language and other factors."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is the Ontario Masters Graduate Stream open in 2026?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Ontario’s official information says it closed on 30 May 2026 as part of the OINP redesign. Check the new Workforce Priority Stream and current OINP updates."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a Canadian master’s degree guarantee PR?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. A degree may support eligibility or CRS points, but it does not guarantee a provincial nomination or federal invitation."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I apply for Express Entry immediately after graduation?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Only if you already meet the eligibility criteria for one of the Express Entry programmes. A Canadian credential alone is not enough for the Canadian Experience Class."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a provincial nomination guarantee PR?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A nomination is an important step, not the final decision. The federal government assesses the permanent residence application and admissibility."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "best provinces for PR in Canada after study",
+ "secondaryKeywords": [
+  "Ontario immigrant nominee program Masters stream",
+  "Express Entry STEM"
+ ],
+ "intent": "Informational",
+ "seoTitle": "PR in Canada After Study: Provinces, PNP and Express Entry",
+ "metaDescription": "Compare current provincial nomination and Express Entry routes after studying in Canada. Eligibility depends on work, occupation and current selection rules.",
+ "slug": "canada-pr-after-study-provinces-pnp-express-entry",
+ "destination": "canada",
+ "topic": "after-study",
+ "topicLabel": "Work after study",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "IRCC – End of the Student Direct Stream and Nigeria Student Express",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/end-student-direct-stream-nigeria-student-express.html",
+   "note": "SDS closure date and transition to regular study permit stream."
+  },
+  {
+   "title": "IRCC – Proof of financial support",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+   "note": "Required financial categories and 2026 living-expense amounts."
+  },
+  {
+   "title": "IRCC – PAL/TAL requirements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/provincial-attestation-letter.html",
+   "note": "PAL/TAL requirement, exemptions and validity."
+  },
+  {
+   "title": "IRCC – 2026 study permit cap allocations",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html",
+   "note": "2026 cap context and public master’s/doctoral PAL exemption."
+  },
+  {
+   "title": "IRCC – PGWP: Who can apply",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html",
+   "note": "General PGWP, language, programme and application requirements."
+  },
+  {
+   "title": "IRCC – PGWP field of study",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html",
+   "note": "CIP codes, exemptions and 2026 field-of-study list freeze."
+  },
+  {
+   "title": "IRCC – Student work placements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/intern.html",
+   "note": "Co-op permit change effective 1 April 2026 and placement conditions."
+  },
+  {
+   "title": "IRCC – Work off campus",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html",
+   "note": "24-hour weekly limit and scheduled-break rules."
+  },
+  {
+   "title": "IRCC – Express Entry category-based selection",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html",
+   "note": "Federal categories and eligibility framework."
+  },
+  {
+   "title": "IRCC – Provincial Nominee Program / Express Entry",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/express-entry/eligibility.html",
+   "note": "Federal and provincial eligibility relationship."
+  },
+  {
+   "title": "Ontario – OINP programme updates",
+   "url": "https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp",
+   "note": "Current Ontario stream status and redesign."
+  },
+  {
+   "title": "Ontario – OINP document checklists",
+   "url": "https://www.ontario.ca/document/print/book/108677",
+   "note": "Masters Graduate Stream closure notice."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/the-bc-provincial-nominee-program",
+   "note": "Current BC PNP pathway overview."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme news",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/news",
+   "note": "No new student streams and current programme updates."
+  },
+  {
+   "title": "Statistics Canada – Quarterly rent statistics, Q2 2026",
+   "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.pdf",
+   "note": "Asking rent data for Toronto, Vancouver and Calgary."
+  },
+  {
+   "title": "University of Toronto – Living costs in Toronto",
+   "url": "https://www.studentlife.utoronto.ca/task/living-costs-in-toronto/",
+   "note": "Institution-specific 2026 student living-cost estimate."
+  },
+  {
+   "title": "ICICI Bank Canada – Student Banking Partnership",
+   "url": "https://www.icicibank.ca/personal-banking/newcomer/student-partnership",
+   "note": "Example of current instalment GIC and student account options."
+  },
+  {
+   "title": "ICICI Bank Canada – Student GIC FAQ",
+   "url": "https://www.icicibank.ca/faq/student-partnership-program",
+   "note": "Payout structure and product details; verify current terms."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "eebc48f5-Canada_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 941,
+ "readMinutes": 4
+}
