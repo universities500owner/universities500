@@ -16,6 +16,7 @@ Be polite: one request at a time, a pause between requests, and your email in th
 OpenAlex can contact you if something goes wrong (their "polite pool").
 """
 import argparse
+import collections
 import csv
 import datetime
 import json
@@ -157,6 +158,15 @@ def write_outputs(all_rows, ccs, min_works, when):
             cells.append(str(n))
         lines.append(f"| {COUNTRIES.get(cc, cc)} | " + " | ".join(cells) + " |")
     lines.append("| **Total** | " + " | ".join(f"**{totals[t]}**" for t in THRESHOLDS if t >= min_works) + " |")
+    parents = sorted((r for r in all_rows if r["is_child"] == "no"), key=lambda r: -r["works_count"])
+    if len(ccs) > 2:
+        lines += ["", "If one global cut-off were used instead of per-country counts, the biggest institutions by publications would split like this:", ""]
+        for n in (300, 500):
+            if len(parents) >= n and parents[n - 1]["works_count"] >= min_works:
+                top = parents[:n]
+                split = collections.Counter(r["country"] for r in top)
+                lines.append(f"- Biggest {n} (cut-off about {top[-1]['works_count']:,} publications): "
+                             + ", ".join(f"{COUNTRIES.get(c, c)} {k}" for c, k in split.most_common()))
     lines += [
         "",
         "Notes",
@@ -168,12 +178,22 @@ def write_outputs(all_rows, ccs, min_works, when):
     print("\n".join(lines))
 
 
+def print_list(all_rows, print_min):
+    """Print the parent institutions at or above print_min publications, so they can be read in the run log."""
+    rows = sorted((r for r in all_rows if r["is_child"] == "no" and r["works_count"] >= print_min),
+                  key=lambda r: (r["country"], -r["works_count"]))
+    print(f"\nInstitutions with at least {print_min:,} publications ({len(rows)}):")
+    for r in rows:
+        print(f"{r['country']}\t{r['works_count']:>8,}\t{r['name']}\t{r['wikidata']}\t{r['homepage']}")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--mailto", default="", help="your email, sent to OpenAlex so they can contact you (recommended)")
     ap.add_argument("--countries", default=",".join(COUNTRIES), help="comma-separated ISO codes, e.g. AU,CA")
     ap.add_argument("--min-works", type=int, default=1000, help="stop below this many publications (default 1000)")
     ap.add_argument("--base-url", default="https://api.openalex.org", help="API root (only change this for testing)")
+    ap.add_argument("--print-min", type=int, default=0, help="also print institutions with at least this many publications")
     ap.add_argument("--pause", type=float, default=0.5, help="seconds to wait between requests")
     a = ap.parse_args(argv)
 
@@ -193,6 +213,8 @@ def main(argv=None):
         all_rows += fetch_country(a.base_url, cc, a.min_works, a.mailto, a.pause)
         time.sleep(a.pause)
     write_outputs(all_rows, ccs, a.min_works, datetime.date.today().isoformat())
+    if a.print_min:
+        print_list(all_rows, a.print_min)
 
 
 if __name__ == "__main__":

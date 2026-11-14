@@ -84,4 +84,24 @@ assert r.returncode != 0
 assert "HTTP 401" in r.stderr and "stub says no" in r.stderr and "API key" in r.stderr, r.stderr
 assert "SECRETKEY123" not in r.stderr and "SECRETKEY123" not in r.stdout
 STATE["status"] = None
+# global split + listing, using synthetic rows (no network)
+sys.path.insert(0, HERE)
+import pool_pilot as pp
+rows = []
+for cc, n, top in (("US", 400, 900000), ("AU", 150, 300000), ("CA", 150, 200000)):
+    for i in range(n):
+        rows.append({"country": cc, "name": f"{cc} Uni {i}", "openalex_id": f"I{cc}{i}", "wikidata": "", "homepage": "",
+                     "works_count": top - i * 100, "cited_by_count": 0, "h_index": "", "is_child": "no"})
+cwd = os.getcwd(); os.chdir(tempfile.mkdtemp())
+import io, contextlib
+buf = io.StringIO()
+with contextlib.redirect_stdout(buf):
+    pp.write_outputs(rows, ["US", "AU", "CA"], 1000, "2026-01-01")
+    pp.print_list(rows, 290000)
+out = buf.getvalue(); os.chdir(cwd)
+assert "Biggest 500 (cut-off about 290,100 publications): United States 400, Australia 100" in out
+assert "Biggest 300 (cut-off about 870,100 publications): United States 300" in out
+listing = out.split("Institutions with at least")[1]
+assert "AU Uni 100" in listing and "AU Uni 101" not in listing, "listing respects print-min (290,000)"
+assert "CA Uni" not in listing
 print("ok: paging, minimum, child flag, thresholds, select fallback, api_key, 401 message")

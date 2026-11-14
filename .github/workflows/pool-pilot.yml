@@ -8,7 +8,7 @@ on:
       countries:
         description: "ISO codes, comma-separated (blank = all 14)"
         required: false
-        default: "AU,CA"
+        default: ""
       min_works:
         description: "Skip institutions with fewer publications than this"
         required: false
@@ -30,7 +30,7 @@ jobs:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
         run: |
           mkdir -p out && cd out
-          ARGS="--min-works ${{ inputs.min_works }}"
+          ARGS="--min-works ${{ inputs.min_works }} --print-min 5000"
           if [ -n "$CONTACT_EMAIL" ]; then ARGS="$ARGS --mailto $CONTACT_EMAIL"; fi
           if [ -n "${{ inputs.countries }}" ]; then ARGS="$ARGS --countries ${{ inputs.countries }}"; fi
           python3 ../scripts/pool/pool_pilot.py $ARGS
