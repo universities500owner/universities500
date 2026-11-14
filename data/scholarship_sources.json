@@ -40,6 +40,41 @@
       "id": "malaysia-international-scholarship", "name": "Malaysia International Scholarship (MIS)", "provider": "Ministry of Higher Education Malaysia", "country": "malaysia",
       "levels": ["Master"], "levelsSource": "MOHE portal: postgraduate studies in Malaysia",
       "urls": ["https://biasiswa.mohe.gov.my/INTER/index.php"], "expect": "malaysia international scholarship"
+    },
+    {
+      "id": "daad-study-masters", "name": "DAAD Study Scholarships for Master's studies", "provider": "DAAD (German Academic Exchange Service)", "country": "germany",
+      "levels": ["Master"], "levelsSource": "DAAD scholarship database entry: Study Scholarships, Master Studies for All Academic Disciplines",
+      "urls": ["https://daad.de/go/en/stipa50026200", "https://www.daad.org/en/find-funding/scholarship-database/"], "expect": "daad"
+    },
+    {
+      "id": "si-global-professionals", "name": "SI Scholarship for Global Professionals", "provider": "Swedish Institute", "country": "sweden",
+      "levels": ["Master"], "levelsSource": "Swedish Institute page: academic scholarships for master's studies in Sweden",
+      "urls": ["https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/"], "expect": "global professionals"
+    },
+    {
+      "id": "nl-scholarship", "name": "NL Scholarship (national programme, formerly Holland Scholarship)", "provider": "Study in NL (Nuffic)", "country": "netherlands",
+      "levels": ["Bachelor", "Master"], "levelsSource": "Study in NL page: full-time bachelor's or master's at a participating Dutch institution, non-EEA nationality",
+      "urls": ["https://www.studyinnl.org/finances/nl-scholarship"], "expect": "nl scholarship"
+    },
+    {
+      "id": "manaaki-nz", "name": "Manaaki New Zealand Scholarships (undergraduate and postgraduate study)", "provider": "New Zealand Government (MFAT)", "country": "new-zealand",
+      "levels": ["Bachelor", "Master"], "levelsSource": "MFAT and NZ Scholarships pages list scholarships for undergraduate and postgraduate study",
+      "urls": ["https://www.nzscholarships.govt.nz/types-of-manaaki-scholarships/", "https://www.mfat.govt.nz/en/aid-and-development/scholarships/"], "expect": "manaaki"
+    },
+    {
+      "id": "rhodes", "name": "Rhodes Scholarship", "provider": "Rhodes Trust (University of Oxford)", "country": "uk",
+      "levels": ["Master"], "levelsSource": "Rhodes Trust: full-time postgraduate courses at Oxford, including master's degrees",
+      "urls": ["https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/", "https://www.rhodeshouse.ox.ac.uk/scholarships/"], "expect": "rhodes"
+    },
+    {
+      "id": "gates-cambridge", "name": "Gates Cambridge Scholarship", "provider": "Gates Cambridge Trust (University of Cambridge)", "country": "uk",
+      "levels": ["Master"], "levelsSource": "Gates Cambridge: master's and PhD study at Cambridge for students from outside the UK",
+      "urls": ["https://www.gatescambridge.org/apply/", "https://www.gatescambridge.org/"], "expect": "gates cambridge"
+    },
+    {
+      "id": "pearson-toronto", "name": "Lester B. Pearson International Scholarship", "provider": "University of Toronto", "providerSlug": "university-of-toronto", "providerType": "university", "country": "canada",
+      "levels": ["Bachelor"], "levelsSource": "University of Toronto: first-entry undergraduate programs, for international students",
+      "urls": ["https://internationalexperience.utoronto.ca/global-experiences/global-scholarships/lester-b-pearson-scholarship", "https://future.utoronto.ca/pearson/"], "expect": "pearson"
     }
   ],
   "directories": [

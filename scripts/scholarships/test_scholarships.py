@@ -13,6 +13,8 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
+import details as D  # noqa: E402
+import official as O  # noqa: E402
 import extract as X  # noqa: E402
 import quality as Q  # noqa: E402
 import textutil as T  # noqa: E402
@@ -240,6 +242,82 @@ class PipelineTests(unittest.TestCase):
             self.assertIn('Stopped by the sanity check', (d / 'rep' / 'scholarship_report.md').read_text())
             r2 = subprocess.run(cmd + ['--allow-drop'], capture_output=True, text=True)
             self.assertEqual(r2.returncode, 0, r2.stdout + r2.stderr)
+
+
+class Details(unittest.TestCase):
+    """The extra facts come only from sentences on the page. Anything unclear stays empty."""
+
+    def test_awards(self):
+        self.assertEqual(D.find_awards('Up to 10 scholarships are available each year for international students.'), {'n': 10, 'upTo': True})
+        self.assertEqual(D.find_awards('We offer five awards annually.'), {'n': 5, 'upTo': False})
+        self.assertIsNone(D.find_awards('The 2026 Awards ceremony takes place in May.'))
+        self.assertIsNone(D.find_awards('A $5,000 scholarship is available each year.'))
+
+    def test_duration(self):
+        self.assertEqual(D.find_duration('The scholarship is awarded for the duration of the degree programme.'), 'Full length of the course')
+        self.assertEqual(D.find_duration('The scholarship is for up to 4 years of undergraduate study.'), 'Up to 4 years')
+        self.assertEqual(D.find_duration('This is a one-year scholarship for master\'s students.'), '1 year')
+        self.assertIsNone(D.find_duration('The course runs for 3 years.'))
+
+    def test_covers_skips_negations(self):
+        self.assertEqual(D.find_covers('The award covers tuition fees, a living allowance and return airfare. It does not cover visa fees.'),
+                         ['Tuition', 'Living costs', 'Travel'])
+        self.assertEqual(D.find_covers('The scholarship does not cover living costs.'), [])
+
+    def test_covers_from_a_list(self):
+        lines = ['What it covers', 'Full tuition fees', 'A monthly living stipend', 'Health insurance', 'Apply now']
+        self.assertEqual(D.find_covers('', lines), ['Tuition', 'Living costs', 'Health insurance'])
+
+    def test_apply_mode(self):
+        self.assertEqual(D.find_apply_mode('Students are automatically considered for this scholarship when they apply for admission.'), 'automatic')
+        self.assertEqual(D.find_apply_mode('Apply online before 31 March 2027 to be considered for the scholarship.'), 'application')
+        self.assertIsNone(D.find_apply_mode('A scholarship for students.'))
+
+    def test_record_carries_the_new_fields_and_hash(self):
+        text = 'Up to 3 scholarships are available each year. The award covers tuition fees. Apply online before 31 March 2027.'
+        kw = dict(name='Example Excellence Scholarship', provider='P', provider_slug='p', provider_type='university', country='uk',
+                  url='https://example.edu/s/', today='2026-11-14', origin='page')
+        a = X.make_record(text=text, **kw)
+        self.assertEqual(a['awards'], {'n': 3, 'upTo': True})
+        self.assertEqual(a['covers'], ['Tuition'])
+        self.assertEqual(a['applyMode'], 'application')
+        b = X.make_record(text=text.replace('Up to 3', 'Up to 4'), **kw)
+        self.assertNotEqual(a['hash'], b['hash'], 'a change in the new fields must count as a change')
+
+    def test_missed_sentences_are_only_for_the_log(self):
+        m = D.missed('Applications close on 5 June each year. Awards of $4,000 are made.', True, True)
+        self.assertIn('deadline', m)
+        self.assertIn('value', m)
+        self.assertEqual(D.missed('Nothing here.', True, True), {})
+        self.assertEqual(D.missed('Applications close on 5 June each year.', False, False), {})
+
+    def test_programme_options(self):
+        """A programme can list several accepted names, carry a university slug, and gets the new fields."""
+        class Res:
+            ok = True
+            ctype = 'text/html'
+            final_url = 'https://example.org/p/'
+            error = None
+            status = 200
+            text = ('<html><head><title>NL Scholarship | Example</title></head><body><main><h1>NL Scholarship</h1>'
+                    '<p>The scholarship covers tuition fees and a living allowance. It is awarded for the first year only.</p>'
+                    '<p>Apply online before 1 May 2027.</p></main></body></html>')
+
+        class Fx:
+            def get(self, url):
+                return Res()
+        src = {'programmes': [{'id': 'x', 'name': 'Example Programme', 'provider': 'Example University', 'providerSlug': 'example-university',
+                               'providerType': 'university', 'country': 'canada', 'levels': ['Bachelor'], 'urls': ['https://example.org/p/'],
+                               'expect': ['holland scholarship', 'nl scholarship']}]}
+        recs, report = O.read_programmes(src, Fx(), '2026-11-14')
+        self.assertEqual(len(recs), 1, report)
+        r = recs[0]
+        self.assertEqual((r['providerSlug'], r['providerType'], r['origin']), ('example-university', 'university', 'official'))
+        self.assertEqual(r['covers'], ['Tuition', 'Living costs'])
+        self.assertEqual(r['duration'], 'First year only')
+        src['programmes'][0]['expect'] = 'something else'
+        recs, report = O.read_programmes(src, Fx(), '2026-11-14')
+        self.assertEqual(recs, [])
 
 
 if __name__ == '__main__':

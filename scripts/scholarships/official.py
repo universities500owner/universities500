@@ -15,8 +15,10 @@ def read_programmes(sources, fx, today):
                 continue
             page = X.Page(res.final_url, res.text, p['country'], p['provider'])
             hay = (page.title_tag + ' ' + page.h1 + ' ' + page.text[:4000]).lower()
-            if p.get('expect') and p['expect'].lower() not in hay:
-                report.append((p['id'], url, f"page does not mention '{p['expect']}'"))
+            want = p.get('expect')
+            want = [want] if isinstance(want, str) else (want or [])
+            if want and not any(w.lower() in hay for w in want):
+                report.append((p['id'], url, f"page does not mention '{want[0]}'"))
                 continue
             got = (res.final_url, page)
             break
@@ -24,9 +26,9 @@ def read_programmes(sources, fx, today):
             continue
         url, page = got
         rec = X.make_record(
-            name=p['name'], provider=p['provider'], provider_slug=None, provider_type='government', country=p['country'],
+            name=p['name'], provider=p['provider'], provider_slug=p.get('providerSlug'), provider_type=p.get('providerType', 'government'), country=p['country'],
             url=url, text=page.text, today=today, origin='official', apply_url=X.find_apply_url(page),
-            description=X.find_description(page), eligibility=X.find_eligibility(page), levels=p['levels'], intl='yes')
+            description=X.find_description(page), eligibility=X.find_eligibility(page), levels=p['levels'], intl='yes', lines=page.lines)
         rec['programmeId'] = p['id']
         records.append(rec)
         report.append((p['id'], url, 'ok'))
