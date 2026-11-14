@@ -25,15 +25,18 @@ STATE = {'lever_down': False}
 def feeds():
     return {
         '/v1/boards/acme/jobs': {'jobs': [
-            {'title': 'Software Engineer Intern', 'location': {'name': 'Sydney, Australia'}, 'absolute_url': 'https://boards.example/acme/1', 'first_published': '2026-11-10T01:00:00Z'},
+            {'id': 1001, 'title': 'Software Engineer Intern', 'location': {'name': 'Sydney, Australia'}, 'absolute_url': 'https://boards.example/acme/1', 'first_published': '2026-11-10T01:00:00Z'},
             {'title': 'Internal Auditor', 'location': {'name': 'London, United Kingdom'}, 'absolute_url': 'https://boards.example/acme/2'},
             {'title': 'Marketing Intern', 'location': {'name': 'Remote - US'}, 'absolute_url': 'https://boards.example/acme/3'},
             {'title': 'Data Science Intern', 'location': {'name': 'London or New York'}, 'absolute_url': 'https://boards.example/acme/4'},
             {'title': 'Research Intern (PhD)', 'location': {'name': 'Dublin, Ireland'}, 'absolute_url': 'https://boards.example/acme/5'},
             {'title': 'Design Intern', 'location': {'name': 'Narnia'}, 'absolute_url': 'https://boards.example/acme/6'},
         ]},
+        '/v1/boards/acme/jobs/1001': {'id': 1001, 'title': 'Software Engineer Intern', 'departments': [{'name': 'Engineering'}],
+                                      'pay_input_ranges': [{'min_cents': 4500, 'max_cents': 5500, 'currency_type': 'AUD', 'title': 'Hourly rate', 'blurb': ''}]},
         '/v0/postings/leverco': [
-            {'text': 'Product Design Co-op', 'categories': {'location': 'Toronto, ON', 'allLocations': ['Toronto, ON']}, 'hostedUrl': 'https://jobs.example/leverco/a', 'createdAt': 1762732800000},
+            {'text': 'Product Design Co-op', 'categories': {'location': 'Toronto, ON', 'allLocations': ['Toronto, ON'], 'team': 'Design'}, 'hostedUrl': 'https://jobs.example/leverco/a', 'createdAt': 1762732800000,
+             'workplaceType': 'hybrid', 'salaryRange': {'currency': 'CAD', 'interval': 'per-year-salary', 'min': 60000, 'max': 70000}},
             {'text': 'Analyst', 'categories': {'location': 'Singapore', 'commitment': 'Intern'}, 'hostedUrl': 'https://jobs.example/leverco/b', 'createdAt': 1762732800000},
             {'text': 'Senior Analyst', 'categories': {'location': 'Singapore', 'commitment': 'Full-time'}, 'hostedUrl': 'https://jobs.example/leverco/c'},
         ],
@@ -51,7 +54,7 @@ def feeds():
             {'title': 'Engineer', 'city': 'Dubai', 'country': 'United Arab Emirates', 'url': 'https://apply.example/wkco/y'},
         ]},
         '/search': {'hits': [
-            {'id': 'j1', 'headline': 'Praktikant ekonomi', 'employer': {'name': 'Svensk AB'}, 'workplace_address': {'municipality': 'Stockholm', 'country': 'Sverige'}, 'webpage_url': 'https://arbetsformedlingen.example/ad/j1', 'publication_date': '2026-11-09T00:00:00'},
+            {'id': 'j1', 'headline': 'Praktikant ekonomi', 'employer': {'name': 'Svensk AB'}, 'workplace_address': {'municipality': 'Stockholm', 'country': 'Sverige'}, 'webpage_url': 'https://arbetsformedlingen.example/ad/j1', 'publication_date': '2026-11-09T00:00:00', 'application_deadline': '2026-12-15T23:59:59'},
             {'id': 'j2', 'headline': 'Sjuksköterska', 'employer': {'name': 'Vård AB'}, 'workplace_address': {'municipality': 'Lund', 'country': 'Sverige'}, 'webpage_url': 'https://arbetsformedlingen.example/ad/j2'},
         ]},
     }
@@ -74,7 +77,7 @@ class H(BaseHTTPRequestHandler):
             return self.reply(200, b'User-agent: *\nDisallow: /posting-api/job-board/blockedco\n', 'text/plain')
         if path == '/api/job-board-api':
             page = int(self.path.split('page=')[1].split('&')[0]) if 'page=' in self.path else 1
-            data = {1: [{'title': 'Werkstudent Marketing', 'company_name': 'Berliner GmbH', 'location': 'Berlin', 'url': 'https://www.arbeitnow.example/jobs/1', 'job_types': [], 'created_at': 1762732800},
+            data = {1: [{'title': 'Werkstudent Marketing', 'company_name': 'Berliner GmbH', 'location': 'Berlin', 'url': 'https://www.arbeitnow.example/jobs/1', 'job_types': [], 'created_at': 1762732800, 'tags': ['Marketing']},
                         {'title': 'Senior Developer', 'company_name': 'Berliner GmbH', 'location': 'Berlin', 'url': 'https://www.arbeitnow.example/jobs/2', 'job_types': []}],
                     2: [{'title': 'Business Analyst', 'company_name': 'Hamburg AG', 'location': 'Hamburg', 'url': 'https://www.arbeitnow.example/jobs/3', 'job_types': ['Internship']}]}.get(page, [])
             return self.reply(200, {'data': data, 'links': {'next': 'x' if page == 1 else None}})
@@ -217,6 +220,48 @@ def run(tmp, *extra):
         return R.main()
     finally:
         sys.argv = old
+
+
+class ExtraFactsTests(unittest.TestCase):
+    def test_pay_is_copied_as_stated_and_never_guessed(self):
+        self.assertEqual(S.fmt_pay('aud', 45, 55, 'hour'), 'AUD 45\u201355 / hour')
+        self.assertEqual(S.fmt_pay('NZD', 60000, 70000, 'year'), 'NZD 60k\u201370k / year')
+        self.assertEqual(S.fmt_pay('EUR', 1200, 1200, 'month'), 'EUR 1,200 / month')
+        self.assertEqual(S.fmt_pay('USD', 20, 20, ''), 'USD 20')  # the feed gave no period: none is added
+        self.assertEqual(S.fmt_pay('USD', 0, 0, 'hour'), '')
+        self.assertEqual(S.fmt_pay('USD', None, None), '')
+        self.assertEqual(S.interval_of('per-bi-weekly-salary'), '')  # unclear: left out
+        self.assertEqual(S.interval_of('per-hour-wage'), 'hour')
+
+    def test_readers_copy_what_the_feed_states(self):
+        _, rows = S.lever(fx(), 'leverco')
+        co = next(r for r in rows if r['title'] == 'Product Design Co-op')
+        self.assertEqual((co['team'], co['mode'], co['pay']), ('Design', 'Hybrid', 'CAD 60k\u201370k / year'))
+        sg = next(r for r in rows if r['title'] == 'Analyst')
+        self.assertEqual((sg['team'], sg['mode'], sg['pay']), ('', '', ''))  # nothing stated, nothing shown
+        _, rows = S.jobtech(fx(), terms=('praktik',))
+        self.assertEqual(next(r for r in rows if r['title'] == 'Praktikant ekonomi')['deadline'], '2026-12-15')
+        _, rows = S.arbeitnow(fx())
+        self.assertEqual(next(r for r in rows if r['title'].startswith('Werkstudent'))['team'], 'Marketing')
+
+    def test_greenhouse_detail_is_read_once_and_kept(self):
+        st, d = S.greenhouse_job(fx(), 'acme', '1001')
+        self.assertEqual((st, d), ('ok', {'team': 'Engineering', 'pay': 'AUD 45\u201355 / hour'}))
+        self.assertEqual(S.greenhouse_job(fx(), 'acme', '9999')[0], 'missing')
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(run(tmp), 0)
+            out = Path(tmp) / 'out.json'
+            d = json.loads(out.read_text())
+            gh = next(i for i in d['items'] if i['title'] == 'Software Engineer Intern')
+            self.assertEqual((gh['team'], gh['pay'], gh['detail']), ('Engineering', 'AUD 45\u201355 / hour', 1))
+            other = next(i for i in d['items'] if i['title'] == 'Data Science Intern' and i['country'] == 'uk')
+            self.assertNotIn('pay', other)  # no pay stated for this one, so none is shown
+            # second run: the saved detail is kept even though the list feed does not carry it
+            (Path(tmp) / 'prev.json').write_text(out.read_text())
+            self.assertEqual(run(tmp), 0)
+            d2 = json.loads(out.read_text())
+            gh2 = next(i for i in d2['items'] if i['title'] == 'Software Engineer Intern')
+            self.assertEqual((gh2['team'], gh2['pay']), ('Engineering', 'AUD 45\u201355 / hour'))
 
 
 class RecheckTests(unittest.TestCase):

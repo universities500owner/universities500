@@ -33,6 +33,7 @@ async function run(q) {
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.href = e.u;
+    if (/^https?:\/\//.test(e.u) && new URL(e.u).origin !== location.origin) { a.target = '_blank'; a.rel = 'noopener'; }
     a.textContent = e.t;
     li.appendChild(a);
     if (e.d) {

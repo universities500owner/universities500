@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import fs from 'node:fs';
 import { hiddenFromSearch } from './src/lib/noindex.js';
+import externalLinks from './scripts/external-links.mjs';
 
 // Pages that must not be listed in the sitemap: drafts, and university pages that are still thin.
 const unis = JSON.parse(fs.readFileSync(new URL('./src/data/universities.json', import.meta.url), 'utf-8'));
@@ -16,5 +17,6 @@ export default defineConfig({
     sitemap({
       filter: (page) => { const p = new URL(page).pathname; return !hidden.has(p) && !hiddenFromSearch(p); },
     }),
+    externalLinks(),
   ],
 });

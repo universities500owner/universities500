@@ -1,0 +1,30 @@
+---
+// One internship result card. Shows only what the employer's own feed stated; anything else says "check the listing".
+import Icons from './Icons.astro';
+import { KIND_SLUG, effDate, isNew, initials, hue, countryName, fmtIso, internshipPill } from '../lib/internships.js';
+const { r, today } = Astro.props;
+const date = effDate(r);
+const pill = internshipPill(r.deadline, date, Boolean(r.posted), today);
+const where = [r.city, countryName(r.country)].filter(Boolean).join(', ');
+---
+<li class="rc int" data-id={`int:${r.id}`} data-name={`${r.title} ${r.org} ${r.city} ${r.team || ''}`.toLowerCase()} data-country={r.country} data-kind={KIND_SLUG[r.kind]} data-date={date} data-posted={r.posted ? '1' : ''} data-deadline={r.deadline || ''} data-org={r.org.toLowerCase()} data-title={r.title.toLowerCase()}>
+  <div class="rc-head">
+    <span class="rc-mono" aria-hidden="true" style={`--h:${hue(r.org)}`}>{initials(r.org)}</span>
+    <p class="rc-org">{r.org}</p>
+    {isNew(r, today) && <span class="rc-new" data-newb>New</span>}
+    <button type="button" class="rc-save" data-save aria-pressed="false" aria-label={`Save ${r.title} at ${r.org}`} title="Save on this device"><Icons name="bookmark" /></button>
+  </div>
+  <h3 class="rc-title">{r.title}</h3>
+  <p class="rc-pillrow">{pill && <span class={`rc-pill rc-${pill.tone}`} data-pill><Icons name="clock" /><span data-pill-text>{pill.text}</span></span>}</p>
+  <p class="rc-where"><Icons name="pin" /><span>{where}{r.mode ? ` · ${r.mode}` : ''}</span></p>
+  {r.pay ? <p class="rc-pay">{r.pay}</p> : <p class="rc-pay none">Pay: check the listing</p>}
+  <dl class="rc-facts">
+    <div><dt>Type</dt><dd>{r.kind}</dd></div>
+    {r.team && <div><dt>Team</dt><dd>{r.team}</dd></div>}
+    {date && <div><dt>{r.posted ? 'Posted' : 'Added'}</dt><dd>{fmtIso(date)}</dd></div>}
+    {r.deadline && <div><dt>Closes</dt><dd>{fmtIso(r.deadline)}</dd></div>}
+  </dl>
+  <div class="rc-act">
+    <a class="btn rc-go" href={r.url} target="_blank" rel="noopener nofollow" aria-label={`Apply for ${r.title} at ${r.org} on the employer's site`}>Apply on employer site <Icons name="external" /></a>
+  </div>
+</li>

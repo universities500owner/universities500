@@ -3,12 +3,12 @@
 import data from '../data/internships.json';
 import gate from '../data/internship_publish.json';
 import { countries, countryName } from './data.js';
-import { fmtIso } from './scholarships.js';
+import { fmtIso, internshipPill } from './when.js';
 
 export const PUBLISH = gate.publish === true;
 export const generatedAt = data.generatedAt;
 export const portals = (data.portals || []).filter((p) => p.ok);
-export { countryName, fmtIso };
+export { countryName, fmtIso, internshipPill };
 
 export const KIND_SLUG = { Internship: 'internship', 'Co-op': 'coop', Placement: 'placement', 'Working student': 'working' };
 export const KIND_LABEL = { internship: 'Internship', coop: 'Co-op', placement: 'Placement', working: 'Working student' };

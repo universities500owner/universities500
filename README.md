@@ -24,3 +24,7 @@ Static site built with Astro. Every page is plain HTML, so search engines and AI
 
 Destination guides (they contain rank numbers and need a review first), scholarships, accounts, the
 dashboard and the Content Admin.
+
+## Links to other websites
+
+`scripts/external-links.mjs` runs at the end of every build. It finds each link to another website in the finished HTML and makes it open in a new tab (`target="_blank" rel="noopener"`, plus a screen-reader note). Links to universities500.com stay in the same tab. It works without JavaScript. Test: `node --test scripts/external-links.test.mjs`.

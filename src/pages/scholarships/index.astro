@@ -2,7 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import { hiddenFromSearch } from '../../lib/noindex.js';
 import { countries } from '../../lib/data.js';
-import { items, PUBLISH, generatedAt, statusOf, STATUS_LABEL, statusNote, fmtIso, levelsText, CHECK, lookGroups, countryName } from '../../lib/scholarships.js';
+import SchCard from '../../components/SchCard.astro';
+import { items, PUBLISH, generatedAt, statusOf, STATUS_LABEL, fmtIso, CHECK, lookGroups } from '../../lib/scholarships.js';
 
 const path = '/scholarships/';
 const today = new Date().toISOString().slice(0, 10);
@@ -70,23 +71,11 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
           <option value="name">Name A to Z</option>
           <option value="country">Destination</option>
         </select>
+        <label class="int-new"><input type="checkbox" id="sch-sv" /> Saved only</label>
       </div>
       <p class="tally" id="sch-tally" role="status">{rows.length} scholarships</p>
-      <ol class="sch-list" id="sch-list">
-        {rows.map((r) => (
-          <li class="sch" data-name={(r.name + ' ' + r.provider).toLowerCase()} data-country={r.country} data-levels={r.levels.map((l) => l.toLowerCase()).join(' ')} data-deadline={r.deadline || ''} data-opens={r.opens || ''} data-rolling={r.rolling ? '1' : ''} data-status={r.st}>
-            <div class="sch-main">
-              <h3><a href={`/scholarships/${r.slug}/`}>{r.name}</a></h3>
-              <p class="sch-sub">{r.provider} · {countryName(r.country)}</p>
-            </div>
-            <p class="st-wrap"><span class={`st st-${r.st}`} data-st>{STATUS_LABEL[r.st]}</span><small data-stnote>{statusNote(r, r.st)}</small></p>
-            <dl class="sch-facts">
-              <div><dt>Value</dt><dd>{r.value ? r.value.display : CHECK}</dd></div>
-              <div><dt>Deadline</dt><dd>{r.deadline ? fmtIso(r.deadline) : (r.deadlinePartial ? `${r.deadlinePartial} (year not stated)` : CHECK)}</dd></div>
-              <div><dt>Level</dt><dd>{levelsText(r.levels)}</dd></div>
-            </dl>
-          </li>
-        ))}
+      <ol class="rc-list" id="sch-list">
+        {rows.map((r) => <SchCard r={r} today={today} />)}
       </ol>
       <p class="more"><button type="button" class="btn-ghost" id="sch-more" hidden>Show more</button></p>
       <p class="small">Last read {updated}. Dates and values are copied from the official page and can change. Check the official page before you apply.</p>

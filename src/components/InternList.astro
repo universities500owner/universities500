@@ -1,10 +1,11 @@
 ---
 // Search bar and list of internships. Used by /internships/ (all destinations) and /internships/<country>/.
-import { KIND_SLUG, KIND_LABEL, effDate, isNew, initials, hue, countryName } from '../lib/internships.js';
+import IntCard from './IntCard.astro';
+import { KIND_LABEL } from '../lib/internships.js';
 const { rows, today, byDestination = false, destinations = [] } = Astro.props;
 ---
 <div class="filterbar" id="int-bar">
-  <input id="int-q" type="search" placeholder="Role, company or city" aria-label="Search internships by role, company or city" />
+  <input id="int-q" type="search" placeholder="Role, company, team or city" aria-label="Search internships by role, company, team or city" />
   {byDestination && (
     <select id="int-c" aria-label="Destination">
       <option value="">All destinations</option>
@@ -21,22 +22,10 @@ const { rows, today, byDestination = false, destinations = [] } = Astro.props;
     <option value="title">Role A to Z</option>
   </select>
   <label class="int-new"><input type="checkbox" id="int-n" /> New this week</label>
+  <label class="int-new"><input type="checkbox" id="int-sv" /> Saved only</label>
 </div>
 <p class="tally" id="int-tally" role="status">{rows.length} internships</p>
-<ol class="int-list" id="int-list">
-  {rows.map((r) => (
-    <li class="int" data-name={`${r.title} ${r.org} ${r.city}`.toLowerCase()} data-country={r.country} data-kind={KIND_SLUG[r.kind]} data-date={effDate(r)} data-org={r.org.toLowerCase()} data-title={r.title.toLowerCase()}>
-      <span class="int-mono" aria-hidden="true" style={`--h:${hue(r.org)}`}>{initials(r.org)}</span>
-      <div class="int-main">
-        <h3><a href={r.url} rel="noopener nofollow">{r.title}</a></h3>
-        <p class="int-sub">{r.org}{r.city ? ` · ${r.city}` : ''}{byDestination ? ` · ${countryName(r.country)}` : ''}</p>
-      </div>
-      <p class="int-side">
-        {isNew(r, today) && <span class="int-badge" data-newb>New</span>}
-        <span class="int-kind">{r.kind}</span>
-      </p>
-      <a class="btn ghost int-go" href={r.url} rel="noopener nofollow" aria-label={`View ${r.title} at ${r.org} on the employer's site`}>View listing</a>
-    </li>
-  ))}
+<ol class="rc-list" id="int-list">
+  {rows.map((r) => <IntCard r={r} today={today} />)}
 </ol>
 <p class="more"><button type="button" class="btn-ghost" id="int-more" hidden>Show more</button></p>

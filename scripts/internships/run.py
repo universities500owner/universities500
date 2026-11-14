@@ -36,6 +36,8 @@ def item_id(url, country):
     return hashlib.sha1(f'{url}|{country}'.encode()).hexdigest()[:12]
 
 
+EXTRA = ('team', 'pay', 'deadline', 'mode')
+ENRICH_CAP = 150  # Greenhouse postings read one by one per run, so a run stays short. The rest follow on later runs.
 ORG_ALIAS = {}  # lower-case name an open feed uses -> the company's own name (set from the sources file)
 
 
@@ -59,8 +61,15 @@ def normalise(raw, source, board, org, unplaced):
         seen.add((city, country))
         who = (raw.get('org') or org or '').strip()
         who = ORG_ALIAS.get(who.lower(), who)
-        out.append({'id': item_id(url, country), 'title': title, 'org': who, 'city': city or '',
-                    'country': country, 'kind': kind, 'url': url, 'source': source, 'board': board, 'posted': raw.get('posted') or ''})
+        it = {'id': item_id(url, country), 'title': title, 'org': who, 'city': city or '',
+              'country': country, 'kind': kind, 'url': url, 'source': source, 'board': board, 'posted': raw.get('posted') or ''}
+        # Optional facts, copied only when the feed states them: department, pay range, closing date, on-site/hybrid/remote.
+        for k in EXTRA:
+            if raw.get(k):
+                it[k] = raw[k]
+        if source == 'greenhouse' and raw.get('ref'):
+            it['ref'] = raw['ref']
+        out.append(it)
     if not places and classify(title, None, raw.get('structured')):
         for loc in raw.get('locations') or []:
             if isinstance(loc, str):
@@ -85,12 +94,35 @@ def recheck(items):
     return kept, len(items) - len(kept)
 
 
+def enrich_greenhouse(fx, items, prev_items, cap=ENRICH_CAP):
+    """Reads each Greenhouse posting's own page of data once, for its department and pay range.
+    Postings read before are skipped. Returns (read_ok, with_pay, tried)."""
+    done = {i['id'] for i in prev_items if i.get('detail')}
+    todo = [i for i in items if i.get('source') == 'greenhouse' and i.get('ref') and i['id'] not in done][:cap]
+    ok = paid = 0
+    for it in todo:
+        st, d = S.greenhouse_job(fx, it['board'], it['ref'])
+        if st != 'ok':
+            continue
+        ok += 1
+        it['detail'] = 1
+        for k in ('team', 'pay'):
+            if d.get(k):
+                it[k] = d[k]
+        paid += 1 if d.get('pay') else 0
+    return ok, paid, len(todo)
+
+
 def merge(prev_items, new_items, ok_boards, today):
     prev = {i['id']: i for i in prev_items}
     out = {}
     for it in new_items:
         old = prev.get(it['id'])
         it['firstSeen'] = old['firstSeen'] if old and old.get('firstSeen') else today
+        if old and old.get('detail') and it.get('source') == 'greenhouse':  # the list feed does not carry these: keep what we read before
+            for k in ('team', 'pay', 'detail'):
+                if old.get(k) and not it.get(k):
+                    it[k] = old[k]
         out[it['id']] = it
     for pid, old in prev.items():
         if pid in out:
@@ -206,6 +238,8 @@ def main():
     uniq = {}
     for it in new_items:
         uniq.setdefault(it['id'], it)
+    enr = enrich_greenhouse(fx, list(uniq.values()), prev.get('items', []))
+    print(f'Greenhouse detail: {enr[2]} postings asked, {enr[0]} read, {enr[1]} with a pay range.')
     merged = merge(prev.get('items', []), list(uniq.values()), ok_boards, today)
 
     # ---- link-only portals: is the link alive? We read the front page and robots.txt, nothing else ----
