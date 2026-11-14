@@ -1,4 +1,19 @@
-:root { --ink: #0B2447; --muted: #3F4F68; --solid: #0B2447; --solid-on: #FFFFFF; --paper: #FFFFFF; --surface: #F3F7FD; --field: #FFFFFF; --hover: #EAF1FC; --hover-2: #D5E3F8; --accent: #2563C9; --accent-on: #FFFFFF; --ready: #2563C9; --ready-chip: #2563C9; --ready-text: #FFFFFF; --blocked: #EC4D25; --blocked-chip: #FF634A; --blocked-text: #0B2447; --ok-chip: #79ED91; --ok-text: #0B2447; --info: #12356B; --info-chip: #12356B; --info-text: #FFFFFF; --tint: #5B7FB0; --line: #CBD6E6; --display: "Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif; --body: "Instrument Sans",ui-sans-serif,system-ui,sans-serif; --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%233F4F68' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E"); --chev-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%230B2447' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E"); --pad: clamp(1.25rem,5vw,4.5rem); --maxw: 1180px; }
-html[data-theme="dark"] { --ink: #EAF1FC; --muted: #A9B9D3; --solid: #FFFFFF; --solid-on: #0B2447; --paper: #0B2447; --surface: #12356B; --field: #0B2447; --hover: #12356B; --hover-2: #1B4687; --accent: #4C8DF0; --accent-on: #0B2447; --ready: #4C8DF0; --ready-chip: #4C8DF0; --ready-text: #0B2447; --blocked: #FF634A; --blocked-chip: #FF634A; --blocked-text: #0B2447; --ok-chip: #79ED91; --ok-text: #0B2447; --info: #2563C9; --info-chip: #2563C9; --info-text: #FFFFFF; --tint: #7FA3D6; --line: #2A4A7F; --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%23A9B9D3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E"); --chev-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%230B2447' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E"); }
-html[data-theme="dark"] { color-scheme: dark; }
+/* Home page tokens. The palette itself lives in global.css; these are the extra names the home view uses. */
+:root {
+  --solid: var(--deep); --solid-on: var(--deep-on); --field: #FFFFFF;
+  --ready: var(--accent); --ready-chip: var(--accent); --ready-text: var(--accent-on);
+  --blocked: #FF3300; --blocked-chip: #FF3300; --blocked-text: #FFFFFF;
+  --ok-chip: var(--grow-bg); --ok-text: var(--grow-on);
+  --info: var(--deep); --info-chip: var(--deep); --info-text: var(--deep-on);
+  --tint: #5B8FB5;
+  --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%232F5873' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  --chev-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%23FFFFFF' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  --pad: clamp(1.25rem, 5vw, 4.5rem); --maxw: 1180px;
+}
+html[data-theme="dark"] {
+  --solid: var(--cta); --solid-on: var(--cta-on); --field: #001522;
+  --tint: #55BDFF;
+  --chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%23B8D4E8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+  --chev-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%23001522' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+}
 :root { --bt: var(--ink); --bg: var(--paper); }

@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import ArticleBlocks from '../../components/ArticleBlocks.astro';
 import ArtRuns from '../../components/ArtRuns.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
-import { articles, TOPICS, related, readLabel, checkedLabel, blockText, flat, slugify } from '../../lib/articles.js';
+import { articles, TOPICS, related, readLabel, checkedLabel, blockText, flat, slugify, shortSources } from '../../lib/articles.js';
 import { SITE } from '../../lib/data.js';
 
 export function getStaticPaths() {
@@ -29,6 +29,7 @@ const description = a.metaDescription || (lead.length > 158 ? lead.slice(0, 157)
 
 const { sameDest, sameTopic } = related(a);
 const tools = TOPICS[a.topic]?.tools || [];
+const srcs = shortSources(a, 3);
 const careful = a.topic === 'visas' || a.topic === 'after-study';
 
 const ld = [
@@ -79,6 +80,8 @@ if (a.faq.length) {
       <p class="tip-meta">{readLabel(a)}{checked && <> <span aria-hidden="true">·</span> Facts as of {checked}</>}</p>
     </header>
 
+    <div class="tip-lay">
+    <div class="tip-main">
     <div class="tip-body">
       {a.intro.length > 0 && <div class="tip-intro"><ArticleBlocks blocks={a.intro} /></div>}
 
@@ -115,6 +118,17 @@ if (a.faq.length) {
         </section>
       )}
     </div>
+    </div>
+    {(secs.length > 1 || a.faq.length > 0) && (
+      <aside class="tip-side" aria-label="In this article">
+        <h2>In this article</h2>
+        <ol>
+          {secs.map((s) => <li><a href={`#${s.id}`}>{s.title}</a></li>)}
+          {a.faq.length > 0 && <li><a href="#faq">Common questions</a></li>}
+        </ol>
+      </aside>
+    )}
+    </div>
 
     <section class="tip-next" aria-labelledby="next-h">
       <h2 id="next-h">Put this to use</h2>
@@ -125,20 +139,17 @@ if (a.faq.length) {
       </ul>
     </section>
 
-    {a.sources.length > 0 && (
+    {srcs.length > 0 && (
       <section class="tip-src" id="sources" aria-labelledby="src-h">
-        <h2 id="src-h">Where this comes from</h2>
-        <p class="small">{a.sourcesScope === 'destination' ? `Official sources we used for our ${a.destName} articles. Not every source supports every sentence here.` : 'Official sources behind this article.'}</p>
+        <h2 id="src-h">Official sources</h2>
         <ul>
-          {a.sources.map((s) => (
-            <li><a href={s.url}>{s.title}</a>{s.note && <span class="tip-src-note"> {s.note}</span>}</li>
-          ))}
+          {srcs.map((s) => <li><a href={s.url}>{s.title}</a></li>)}
         </ul>
       </section>
     )}
 
     <p class="tip-care small">
-      Fees, rules and deadlines change. Check the official pages above before you act on anything here.{careful && ' This is general information, not immigration or legal advice.'}{checked && ` Facts as of ${checked}.`}
+      Fees, rules and deadlines change. Check the official pages before you act.{careful && ' General information, not immigration or legal advice.'}
     </p>
   </article>
 

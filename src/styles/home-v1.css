@@ -23,22 +23,22 @@
 .home-v1 .scope > div:last-child{border-right: 0px; padding-right: 0px; margin-right: 0px;}
 .home-v1 .scope dt{font-family: var(--display); font-weight: 800; font-size: 1.9rem; line-height: 1; letter-spacing: -0.035em;}
 .home-v1 .scope dd{margin: 0.25rem 0px 0px; font-size: 0.82rem; color: var(--muted); max-width: 19ch; line-height: 1.45;}
-.home-v1 .promo{background: var(--accent); color: var(--accent-on); border-radius: 18px; padding: clamp(1.4rem, 4vw, 2.25rem); display: grid; gap: 1.5rem; align-items: center;}
+.home-v1 .promo{background: var(--deep); color: var(--deep-on); border-radius: 18px; padding: clamp(1.4rem, 4vw, 2.25rem); display: grid; gap: 1.5rem; align-items: center;}
 @media (min-width: 820px){.home-v1 .promo{grid-template-columns: minmax(0px, 1fr) 15rem;}}
 .home-v1 .promo h2{font-size: clamp(1.5rem, 3.4vw, 2.2rem); max-width: 20ch; margin-bottom: 0.6rem;}
 .home-v1 .promo p{font-size: 0.95rem; max-width: 52ch; margin-bottom: 1.25rem; line-height: 1.6;}
-.home-v1 .btn-on-accent{background: var(--accent-on); color: var(--accent); border: 0px; border-radius: 999px; padding: 0.85rem 1.6rem; font-weight: 600; font-size: 1.0625rem;}
-.home-v1 .btn-on-accent:hover{opacity: 0.85;}
+.home-v1 .btn-on-accent{background: var(--cta); color: var(--cta-on); border: 0px; border-radius: 999px; padding: 0.85rem 1.6rem; font-weight: 600; font-size: 1.0625rem;}
+.home-v1 .btn-on-accent:hover{background: var(--cta-hover);}
 .home-v1 .promo-stat{text-align: left;}
-@media (min-width: 820px){.home-v1 .promo-stat{text-align: right; border-left: 1px solid var(--accent-on); padding-left: 1.5rem;}}
-.home-v1 .promo-stat b{font-family: var(--display); font-weight: 800; font-size: clamp(3rem, 7vw, 4.25rem); line-height: 0.9; letter-spacing: -0.045em; display: block;}
+@media (min-width: 820px){.home-v1 .promo-stat{text-align: right; border-left: 1px solid var(--blue-3); padding-left: 1.5rem;}}
+.home-v1 .promo-stat b{color: var(--blue-7); font-family: var(--display); font-weight: 800; font-size: clamp(3rem, 7vw, 4.25rem); line-height: 0.9; letter-spacing: -0.045em; display: block;}
 .home-v1 .promo-stat span{font-size: 0.84rem; display: block; margin-top: 0.4rem; line-height: 1.45;}
 .home-v1 .count{display: flex; align-items: flex-end; gap: 1.1rem; flex-wrap: wrap; margin-bottom: 1.5rem;}
 .home-v1 .count-n{font-family: var(--display); font-weight: 800; font-size: clamp(3.5rem, 11vw, 6.5rem); line-height: 0.82; letter-spacing: -0.045em; color: var(--accent-on); background: var(--accent); padding: 0.04em 0.16em; border-radius: 6px;}
 .home-v1 .count-txt{padding-bottom: 0.45rem; max-width: 24ch; color: var(--muted); font-size: 0.95rem;}
 .home-v1 .count-txt b{color: var(--ink); font-weight: 600;}
-.home-v1 .btn{background: var(--solid); color: var(--solid-on); border: 0px; border-radius: 999px; padding: 0.85rem 1.6rem; font-weight: 600; font-size: 1.0625rem;}
-.home-v1 .btn:hover{background: var(--accent); color: var(--accent-on);}
+.home-v1 .btn{background: var(--cta); color: var(--cta-on); border: 0px; border-radius: 999px; padding: 0.85rem 1.6rem; font-weight: 700; font-size: 1.0625rem;}
+.home-v1 .btn:hover{background: var(--cta-hover); color: var(--cta-on);}
 .home-v1 .btn:disabled{opacity: 0.4; cursor: not-allowed;}
 .home-v1 .btn-ghost{background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 0.85rem 1.6rem; font-weight: 600;}
 .home-v1 .btn-ghost:hover{border-color: var(--ink); background: transparent; color: var(--ink);}
@@ -48,7 +48,7 @@
 .home-v1 .steps{list-style: none; margin: 0px; padding: 0px; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;}
 @media (min-width: 760px){.home-v1 .steps{grid-template-columns: repeat(4, 1fr);}}
 .home-v1 .step{background: var(--paper); padding: 1.25rem 1.15rem 1.4rem;}
-.home-v1 .step-n{font-family: var(--display); font-weight: 800; font-size: 1.6rem; color: var(--tint); line-height: 1; margin-bottom: 0.6rem;}
+.home-v1 .step-n{font-family: var(--display); font-weight: 800; font-size: 1.6rem; color: var(--accent); line-height: 1; margin-bottom: 0.6rem;}
 .home-v1 .step h3{font-size: 1.0625rem; margin-bottom: 0.3rem; letter-spacing: -0.01em;}
 .home-v1 .steplink{background: none; border: 0px; padding: 0px; font: inherit; color: inherit; text-align: left;}
 .home-v1 .steplink:hover{text-decoration: underline; text-underline-offset: 3px;}
@@ -62,7 +62,7 @@
 .home-v1 .bigsearch{position: relative; z-index: 5; max-width: 40rem; margin: 0px 0px 0.85rem;}
 .home-v1 .bs-box{position: relative;}
 .home-v1 .bs-try{position: relative; z-index: 4; margin: 0px 0px clamp(1.5rem, 3.5vw, 2.25rem);}
-.home-v1 .bs-field{display: flex; align-items: center; gap: 0.6rem; background: var(--field); border: 1.5px solid var(--ink); border-radius: 999px; padding: 0.3rem 0.35rem 0.3rem 1.15rem;}
+.home-v1 .bs-field{display: flex; align-items: center; gap: 0.6rem; background: var(--field); border: 1.5px solid var(--accent); border-radius: 999px; padding: 0.3rem 0.35rem 0.3rem 1.15rem;}
 .home-v1 .bs-field svg{flex: 0 0 auto; color: var(--muted);}
 .home-v1 .bs-field input{flex: 1 1 0%; min-width: 0px; border: 0px; outline: 0px; background: transparent; color: var(--ink); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 1.0625rem; padding: 0.6rem 0px;}
 .home-v1 .bs-field input::placeholder{color: var(--muted); opacity: 1;}

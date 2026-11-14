@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/bricolage-grotesque/wght.css';
+import '@fontsource-variable/instrument-sans/wght.css';
 import '../styles/global.css';
 import '../styles/tools.css';
 import '../styles/articles.css';
@@ -7,7 +9,7 @@ import { NAV } from '../lib/nav.js';
 import { englishGuides, otherGuides, guides } from '../lib/guides.js';
 import { topics as articleTopics, articles as allArticles } from '../lib/articles.js';
 
-const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false } = Astro.props;
+const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true } = Astro.props;
 const url = new URL(path, SITE).href;
 const ld = jsonld ? JSON.stringify(jsonld).replace(/</g, '\\u003c') : null;
 const inGroup = (g) => g.items.some((i) => i[2] === current);
@@ -29,6 +31,8 @@ const onGuide = current === 'guide';
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/owi7oys.css" />
     <script is:inline>
       (function () {
         var t = 'light';
@@ -38,7 +42,7 @@ const onGuide = current === 'guide';
     </script>
     {ld && <script type="application/ld+json" set:html={ld} />}
   </head>
-  <body>
+  <body id="top">
     <a class="skip" href="#main">Skip to content</a>
     <header class="site-head">
       <div class="wrap">
@@ -86,6 +90,7 @@ const onGuide = current === 'guide';
         <div class="head-right">
           <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
           <div class="head-actions">
+            <a class="head-cta" href="/universities/">Find my university</a>
             <a class="head-search" href="/search/" aria-label="Search the site">
               <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
             </a>
@@ -100,41 +105,61 @@ const onGuide = current === 'guide';
     <main id="main" class={wide ? undefined : 'wrap'}>
       <slot />
     </main>
+    {share && (
+      <div class="wrap">
+        <div class="share-row" data-share>
+          <p>Know someone thinking about studying abroad?</p>
+          <span class="share"></span>
+        </div>
+      </div>
+    )}
     <footer class="site-foot">
       <div class="wrap">
-        <div class="foot-cols">
-          <div>
-            <h2>Guides</h2>
-            <ul>{guides.map((g) => <li><a href={`/study-in/${g.slug}/`}>Study in {g.name}</a></li>)}</ul>
+        <div class="foot-top">
+          <div class="foot-about">
+            <h2>About us</h2>
+            <p>We help you plan studying abroad on your own. Browse universities by country, then check costs, visa rules and scholarships in one place, with a source for every fact.</p>
+            <p>Fees, deadlines and visa rules come from university and government sources and change often. Use them to get started, then check the official page before you act.</p>
           </div>
-          {NAV.map((g) => (
-            <div>
-              <h2>{g.label}</h2>
-              <ul>{g.items.map(([href, label]) => <li><a href={href}>{label}</a></li>)}</ul>
-            </div>
-          ))}
-          {allArticles.length > 0 && (
-            <div>
-              <h2>Key topics</h2>
-              <ul>
-                {articleTopics.map((t) => <li><a href={`/articles/topic/${t.slug}/`}>{t.label}</a></li>)}
-                <li><a href="/articles/">All articles</a></li>
-              </ul>
-            </div>
-          )}
+          <div class="foot-cols">
+            {NAV.map((g) => (
+              <div>
+                <h2>{g.label}</h2>
+                <ul>{g.items.map(([href, label]) => <li><a href={href}>{label}</a></li>)}</ul>
+              </div>
+            ))}
+          </div>
         </div>
-        <p>
-          University overviews are text from <a href="https://www.wikipedia.org/">Wikipedia</a>, licensed{' '}
-          <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Facts such as founding year,
-          campuses and student numbers come from <a href="https://www.wikidata.org/">Wikidata</a> (CC0), which can be
-          out of date. Each page links to its sources.
-        </p>
-        <ul>
-          <li><a href="/method/">How we choose universities</a></li>
-          <li><a href="/privacy/">Privacy</a></li>
-          <li><a href="/terms/">Terms</a></li>
-        </ul>
-        <p>© 2026 Universities500</p>
+        <div class="foot-guides">
+          <h2>Destination guides</h2>
+          <ul>{guides.map((g) => <li><a href={`/study-in/${g.slug}/`}>{g.name}</a></li>)}</ul>
+        </div>
+        {allArticles.length > 0 && (
+          <div class="foot-guides">
+            <h2>Key topics</h2>
+            <ul>
+              {articleTopics.map((t) => <li><a href={`/articles/topic/${t.slug}/`}>{t.label}</a></li>)}
+              <li><a href="/articles/">All articles</a></li>
+            </ul>
+          </div>
+        )}
+        <div class="foot-legal">
+          <p>
+            University overviews are text from <a href="https://www.wikipedia.org/">Wikipedia</a>, licensed{' '}
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Facts such as founding year,
+            campuses and student numbers come from <a href="https://www.wikidata.org/">Wikidata</a> (CC0), which can be
+            out of date. Each page links to its sources.
+          </p>
+          <div class="foot-base">
+            <ul>
+              <li><a href="/method/">How we choose universities</a></li>
+              <li><a href="/privacy/">Privacy</a></li>
+              <li><a href="/terms/">Terms</a></li>
+              <li>© 2026 Universities500</li>
+            </ul>
+            <a class="totop" href="#top" id="to-top">Back to top</a>
+          </div>
+        </div>
       </div>
     </footer>
     <script is:inline>
@@ -166,6 +191,69 @@ const onGuide = current === 'guide';
         document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape') { closeAll(null); }
         });
+      })();
+      (function () {
+        // Share with a friend: shares only the page address and a one-line description. Nothing a student has typed is in the link.
+        var row = document.querySelector('[data-share] .share');
+        if (row) {
+          var info = { title: document.title, text: 'Worth a look if you are thinking about studying abroad.', url: location.origin + location.pathname };
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'share-btn';
+          b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
+          b.appendChild(document.createTextNode('Share with a friend'));
+          var toast = function (msg) {
+            var t = document.getElementById('share-toast');
+            if (!t) { t = document.createElement('div'); t.id = 'share-toast'; t.setAttribute('role', 'status'); t.setAttribute('aria-live', 'polite'); document.body.appendChild(t); }
+            t.textContent = msg; t.hidden = false;
+            clearTimeout(toast.t); toast.t = setTimeout(function () { t.hidden = true; }, 3200);
+          };
+          b.addEventListener('click', function () {
+            if (navigator.share) { navigator.share(info).catch(function () {}); return; }
+            var done = function () { toast('Link copied. Paste it into WhatsApp or a message.'); };
+            var fail = function () { toast('Could not copy. Copy the address from the browser bar instead.'); };
+            if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(info.url).then(done, fail); else fail();
+          });
+          row.appendChild(b);
+          if (!navigator.share) {
+            var w = document.createElement('a');
+            w.className = 'share-btn'; w.textContent = 'WhatsApp';
+            w.href = 'https://wa.me/?text=' + encodeURIComponent(info.text + ' ' + info.url);
+            w.target = '_blank'; w.rel = 'noopener noreferrer';
+            w.setAttribute('aria-label', 'Share on WhatsApp (opens in a new tab)');
+            row.appendChild(w);
+          }
+        }
+      })();
+      (function () {
+        // Scroll up / down buttons on every page.
+        var box = document.createElement('div');
+        box.className = 'scrollnav'; box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Scroll the page'); box.hidden = true;
+        function mk(label, path) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.setAttribute('aria-label', label); b.title = label;
+          b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="' + path + '"/></svg>';
+          return b;
+        }
+        var up = mk('Back to top', 'M6 15l6-6 6 6'), down = mk('Jump to the bottom', 'M6 9l6 6 6-6');
+        box.appendChild(up); box.appendChild(down); document.body.appendChild(box);
+        var smooth = function () { return window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; };
+        up.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: smooth() }); });
+        down.addEventListener('click', function () { window.scrollTo({ top: document.documentElement.scrollHeight, behavior: smooth() }); });
+        var raf = 0;
+        function sync() {
+          raf = 0;
+          var d = document.documentElement, y = window.pageYOffset || d.scrollTop, left = d.scrollHeight - window.innerHeight - y;
+          var cu = y > 240, cd = left > 240;
+          up.hidden = !cu; down.hidden = !cd; box.hidden = !(cu || cd);
+        }
+        function queue() { if (!raf) raf = requestAnimationFrame(sync); }
+        window.addEventListener('scroll', queue, { passive: true });
+        window.addEventListener('resize', queue);
+        document.addEventListener('click', function () { setTimeout(queue, 80); });
+        if (window.ResizeObserver) new ResizeObserver(queue).observe(document.documentElement);
+        queue();
+        var t = document.getElementById('to-top');
+        if (t) t.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: smooth() }); });
       })();
       (function () {
         var b = document.getElementById('theme');
