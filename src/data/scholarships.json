@@ -62,7 +62,7 @@
    "countries": [
     "germany"
    ],
-   "error": "HTTP 404",
+   "error": "blocked by robots.txt",
    "id": "daad-database",
    "note": "The German Academic Exchange Service. The first place to search for funding in Germany.",
    "ok": false,
@@ -137,9 +137,10 @@
    "url": "https://studyinnorway.no/scholarships-degree-students"
   }
  ],
- "generatedAt": "2026-11-14T16:29:26Z",
+ "generatedAt": "2026-11-14T18:21:04Z",
  "items": [
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -155,7 +156,7 @@
     "not be an International Sponsored Student entitled to a tuition fee waiver equal to or greater than the scholarship value, in which case the fee waiver amount will apply."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "dc5bc8e3d8bb",
+   "hash": "ee22d0ded667",
    "id": "601c8b8f9e21",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -180,6 +181,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -197,7 +199,7 @@
     "Approved Partner Institution means an Adelaide University pathway provider, articulation or credit transfer partner, or a high school or other education institution, that has been expressly approved by Adelaide University as an Approved Partner Institution from time to time."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "c95820816f10",
+   "hash": "7ce9fb2a2c63",
    "id": "1cd66671bc11",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -222,6 +224,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -237,7 +240,7 @@
     "not be an International Sponsored Student entitled to a tuition fee waiver equal to or greater than the scholarship value, in which case the fee waiver amount will apply."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "4c7f49bd37d3",
+   "hash": "a7e4aeab2a91",
    "id": "d5ee5c65f4d7",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -262,6 +265,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -275,7 +279,7 @@
     "Grade Point Average (GPA) of 5.5 or above"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "3659ba3d5d9f",
+   "hash": "44937b9e6b9e",
    "id": "1a3997022a5c",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -310,7 +314,7 @@
     "Applicants must: ⦁ Be an Australian Citizen, Permanent Resident of Australia, Holder of a Permanent Humanitarian Visa, New Zealand Citizen or International Student ⦁ Be enrolled in a minimum of 6 units in Adelaide University Bachelor of Laws or associated double degrees ⦁ Provides a written statemen"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "13e1bbcc31d1",
+   "hash": "2c4af11e23bd",
    "id": "84d2eef082e1",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -342,7 +346,7 @@
     "The eligible undergraduate programs are: ⦁ Bachelor of Social Work ⦁ Bachelor of Social Work (Honours) ⦁ Bachelor of Psychology ⦁ Bachelor of Psychology (Honours) ⦁ Bachelor of Psychological Science and Sociology ⦁ Bachelor of Psychological Science (Counselling and Interpersonal Skills) Eligibility "
    ],
    "firstSeen": "2026-11-14",
-   "hash": "89084b7614d8",
+   "hash": "a646f841e368",
    "id": "d786d81fc7f7",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -379,7 +383,7 @@
     "Attend an interview."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "ded8a47b6fb1",
+   "hash": "e527aa55ca8d",
    "id": "c057a40456e2",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -411,7 +415,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "08a042fdfc83",
+   "hash": "2ecc1a33bfc8",
    "id": "86021a6cbe20",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -445,7 +449,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "af62a6381f37",
+   "hash": "f8426f107bb4",
    "id": "71bd1e86d53c",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -478,7 +482,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "d09e87e34043",
+   "hash": "3ef6d18034b8",
    "id": "e950026e09bf",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -511,7 +515,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "13254edabb7e",
+   "hash": "0c2b589352e1",
    "id": "04c08aa52921",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -537,6 +541,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": "https://student-anu.studylink.com/index.cfm?event=security.showLogin&msg=eventsecured&fr=sp&en=default",
    "country": "australia",
    "deadline": null,
@@ -556,7 +561,7 @@
     "is not the recipient of an external sponsorship that covers all or part of the students tuition fees at the University; and"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "91c7c803f85f",
+   "hash": "76b725f16a96",
    "id": "67184452ffb4",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -580,10 +585,16 @@
   {
    "applyUrl": null,
    "country": "australia",
+   "covers": [
+    "Tuition",
+    "Living costs",
+    "Travel"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "The Fulbright Program is the flagship foreign exchange scholarship program of the United States of America, aimed at increasing binational research collaboration, cultural understanding, and the exchange of",
+   "duration": "Full length of the course",
    "eligibility": [
     "Have Australian citizenship (or non-US dual citizenship)",
     "hold undergraduate degree",
@@ -594,7 +605,7 @@
     "Ambassadorial skills"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "d0457d6cc4b6",
+   "hash": "d386d0e55ae0",
    "id": "c2c2b34d58e2",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -619,6 +630,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -627,7 +639,7 @@
    "description": "Discover Flinders Academy Scholarships for your pathway to a university degree.",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "0465b6a3215f",
+   "hash": "71ff16d3ce60",
    "id": "4eb8aa251f53",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -651,6 +663,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -669,7 +682,7 @@
     "have not previously received a RA Simpson International Scholarship."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "99c02593a0c2",
+   "hash": "ca7a9bfce56b",
    "id": "56d9e911a9a1",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -694,7 +707,12 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://students.flinders.edu.au/finances-and-admin/support/scholarships",
+   "awards": {
+    "n": 1,
+    "upTo": false
+   },
    "country": "australia",
    "deadline": null,
    "deadlinePartial": null,
@@ -708,7 +726,7 @@
     "be able to demonstrate an interest in the study and/or manufacture of HVAC products."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f995b2ecd19d",
+   "hash": "2f86646ae857",
    "id": "6fbd49297261",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -742,7 +760,7 @@
     "Be commencing full-time study in a UNSW undergraduate coursework degree program in Term 1, 2027. Be an international student from Asia."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "6f9a929c86d1",
+   "hash": "2abdc91ddd71",
    "id": "b61487cd5c97",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -777,7 +795,7 @@
     "Be commencing full-time study in a UNSW undergraduate or postgraduate coursework degree program (excluding UNSW online and UNSW Canberra) in Term 1, 2027."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "d04f6ca55224",
+   "hash": "541173b7aaf3",
    "id": "0244ba6257a8",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -800,12 +818,14 @@
    "value": null
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "The UNSW Scientia Scholarship has been established to encourage students who achieve a raw ATAR* score (or equivalent) of 99.90 or above in an Australian Senior Secondary Certificate, or equivalent qualification, to undertake full-time undergraduate study at",
+   "duration": "Up to 1 year",
    "eligibility": [
     "Be commencing an eligible UNSW undergraduate degree program The scholarship is available to students in most undergraduate degree programs, except for the BMed MD program. Only a very limited number of scholarships may be available to students enrolling in the BMed MD program.",
     "The scholarship is available to students in most undergraduate degree programs, except for the BMed MD program. Only a very limited number of scholarships may be available to students enrolling in the BMed MD program.",
@@ -816,7 +836,7 @@
     "Must have submitted a UAC Undergraduate Admission application and listed UNSW as one of their preferences by the December Round 2 offer round (19 December 2026)."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "fdf4bb715acc",
+   "hash": "b8178757f477",
    "id": "2daa25494ca1",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -850,7 +870,7 @@
     "Be commencing full-time study in a UNSW Business School undergraduate coursework degree program (excluding any program offered by AGSM) in Term 1, 2027, and; Not have previously undertaken any other tertiary studies prior to commencing study at UNSW, and; Must have undertaken an undergraduate articu"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "2ccdadeb384c",
+   "hash": "8a9dadae97ac",
    "id": "886df90b014f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -885,7 +905,7 @@
     "Be commencing in an eligible undergraduate or postgraduate coursework degree program offered by UNSW Business School in Term 1, 2027. Undergraduate applicants must have completed an assessable Senior Secondary School qualification immediately prior to commencing study at UNSW and not have undertaken"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "a58b13039ade",
+   "hash": "3dc3224bb445",
    "id": "56432b8ece19",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -921,7 +941,7 @@
     "Be commencing full-time study in a UNSW undergraduate coursework degree program in Term 1, 2027. Be an international student, who is a citizen of Hong Kong at the time of application."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "3359bc2b83f7",
+   "hash": "2107d893eb36",
    "id": "2fe24c0d70c0",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -956,7 +976,7 @@
     "Be commencing full-time study in a UNSW Law and Justice undergraduate or postgraduate coursework degree program (LLB, JD or LLM programs) in Term 1, 2027."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f4c38caf3038",
+   "hash": "725d162e8604",
    "id": "ef6e43ac7cab",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -999,7 +1019,7 @@
     "Be studying a UTS online degree or distance degree; or"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "02a822f7adad",
+   "hash": "07a557ff721b",
    "id": "11083f04a722",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1036,7 +1056,7 @@
     "A recipient of other UTS scholarships or grants or the UTS Alumni Advantage Program for the duration of this Scholarship."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f479161b0674",
+   "hash": "68d9de7f5fcd",
    "id": "90adb17642c6",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1058,6 +1078,7 @@
    "value": null
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "australia",
    "deadline": "2026-06-22",
@@ -1072,7 +1093,7 @@
     "All candidates must apply using the UTS online Scholarships Application form to be eligible."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "576b2fdf5b46",
+   "hash": "8fe9727697b2",
    "id": "3fa9eea61e3f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1096,6 +1117,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -1115,7 +1137,7 @@
     "A recipient of another UTS scholarship for the duration of this Scholarship."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "8eb36796936a",
+   "hash": "5760d31ff235",
    "id": "509b99ac2a73",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1154,7 +1176,7 @@
     "A recipient of other UTS scholarships or grants or the UTS Alumni Advantage Program for the duration of this Scholarship and be a government sponsored student."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "9fa8fc56a3f4",
+   "hash": "7415d0a4de6c",
    "id": "f80147523053",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1198,7 +1220,7 @@
     "Thailand; or"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "da312b474dba",
+   "hash": "014b2d10c43d",
    "id": "a60f34b4f141",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1223,6 +1245,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -1241,7 +1264,7 @@
     "A recipient of other UTS International Grants or Scholarships, unless approved by exception and outlined in the Conditions of Award."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "893caa4d5f2a",
+   "hash": "24a8a2207b15",
    "id": "c65192a720d2",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1262,6 +1285,7 @@
    "value": null
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "australia",
    "deadline": null,
@@ -1280,7 +1304,7 @@
     "A recipient of other UTS International Grants or Scholarships, unless approved by exception and outlined in the Conditions of Award."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "47e17186a9bd",
+   "hash": "95a01533ff45",
    "id": "c9415531345d",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1304,6 +1328,11 @@
   {
    "applyUrl": null,
    "country": "australia",
+   "covers": [
+    "Tuition",
+    "Living costs",
+    "Health insurance"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -1312,7 +1341,7 @@
     "For eligibility and participating countries, please refer to country specific eligibility criteria and direct your queries to in-country contacts ."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "38fe04549181",
+   "hash": "70c8aa7c9553",
    "id": "51ae384e29c3",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1345,7 +1374,7 @@
    "description": "As the anchor university of the Greater Western Sydney region, Western Sydney University has been proudly educating and supporting linguistically and culturally diverse domestic and ...",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "e0499a6f1a8d",
+   "hash": "67e96412587c",
    "id": "5d73952b2bfe",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1378,7 +1407,7 @@
    "description": "The Eiffel Excellence Scholarship Program is awarded to two types of",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "8f278c2a8ad4",
+   "hash": "b15c7de63c5d",
    "id": "248cd3c0dfc0",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1402,8 +1431,15 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "canada",
+   "covers": [
+    "Living costs",
+    "Travel",
+    "Health insurance",
+    "Accommodation"
+   ],
    "deadline": "2027-02-01",
    "deadlinePartial": null,
    "deadlineText": "Research students may begin their exchange as early as August 1, 2026 and no later than February 1, 2027.",
@@ -1421,7 +1457,7 @@
     "Are already enrolled in a degree, diploma or certificate program at a Canadian post-secondary institution."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "3bf55f6b5920",
+   "hash": "6e802d3337f3",
    "id": "ab0850727e6d",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1446,7 +1482,12 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://dalhousiefgs.secure-platform.com:443/a/solicitations/21/home",
+   "awards": {
+    "n": 1,
+    "upTo": false
+   },
    "country": "canada",
    "deadline": null,
    "deadlinePartial": null,
@@ -1460,7 +1501,7 @@
     "Students who are enrolled in or have applied to doctoral programs are eligible to apply."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "280b05404554",
+   "hash": "8b99a64e00ea",
    "id": "e2d60ff1749a",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1486,15 +1527,19 @@
   {
    "applyUrl": null,
    "country": "canada",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2027-01-15",
    "deadlinePartial": null,
    "deadlineText": "Deadline: January 15, 2027.",
    "description": "The Excellence and Commitment components of Université Laval’s Citizens of the World scholarships aim to attract the world’s top talent by awarding international recruitment scholarships and nurturing the leaders of",
+   "duration": "1 year",
    "eligibility": [
     "Eligibility and selection criteria can be found on the scholarship’s directory listing ."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "08fbf32d2b8e",
+   "hash": "69167927cb3d",
    "id": "1d2ceca9f206",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1526,7 +1571,7 @@
    "description": "The Ministère de l’Enseignement supérieur (MES) offers scholarships to international students for graduate programs, postdoctoral fellowships, and short-term research or professional development",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "0b530ae240ee",
+   "hash": "d57da9d5b605",
    "id": "64c1956fe381",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1550,8 +1595,18 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://www.sfu.ca/students/admission/apply.html",
+   "awards": {
+    "n": 10,
+    "upTo": false
+   },
    "country": "canada",
+   "covers": [
+    "Tuition",
+    "Accommodation",
+    "Books and materials"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -1560,7 +1615,7 @@
     "Available to domestic (Canadian) students admitted for the fall term to any undergraduate degree."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "6427fa849b64",
+   "hash": "7cfecbb2399a",
    "id": "0812eeb41ae8",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1592,7 +1647,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "803f898822d8",
+   "hash": "850d5cadd36c",
    "id": "b95f77bcb32f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1624,7 +1679,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "b38d25d9a254",
+   "hash": "dc764a1dd574",
    "id": "255065f42863",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1656,7 +1711,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "65b733745cf8",
+   "hash": "5c8365221c19",
    "id": "bf756ac4c469",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1688,7 +1743,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "8035043422e8",
+   "hash": "d71b213bd2cd",
    "id": "8da939c0d9de",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1714,13 +1769,16 @@
   {
    "applyUrl": null,
    "country": "canada",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "1f2bd7192019",
+   "hash": "0b8b354ce1a0",
    "id": "cf9f71785e40",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1745,7 +1803,45 @@
   },
   {
    "applyUrl": null,
+   "country": "canada",
+   "covers": [
+    "Living costs"
+   ],
+   "deadline": null,
+   "deadlinePartial": null,
+   "deadlineText": null,
+   "description": "The Lester B. Pearson International Scholarships at the University of Toronto provide an unparalleled opportunity for outstanding international students to study at one of the world’s best universities in one [...]",
+   "duration": "4 years",
+   "eligibility": [],
+   "firstSeen": "2026-11-14",
+   "hash": "074499a81ae1",
+   "id": "849cdfe05869",
+   "intl": "yes",
+   "lastChanged": "2026-11-14",
+   "lastVerified": "2026-11-14",
+   "levels": [
+    "Bachelor"
+   ],
+   "misses": 0,
+   "name": "Lester B. Pearson International Scholarship",
+   "opens": null,
+   "origin": "official",
+   "programmeId": "pearson-toronto",
+   "provider": "University of Toronto",
+   "providerSlug": "university-of-toronto",
+   "providerType": "university",
+   "rolling": false,
+   "slug": "lester-b-pearson-international-scholarship-university-of-toronto",
+   "url": "https://internationalexperience.utoronto.ca/global-experiences/global-scholarships/lester-b-pearson-scholarship",
+   "value": null
+  },
+  {
+   "applyMode": "application",
+   "applyUrl": null,
    "country": "france",
+   "covers": [
+    "Living costs"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -1757,7 +1853,7 @@
     "Must be applying for the Eiffel Scholarship for the first time (it cannot be combined with another French government scholarship). Applicants who have previously received an Eiffel Scholarship at Master’s level may apply again, except for the 36-month doctoral scholarship."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "b63ebc6d18b3",
+   "hash": "c41a01db853f",
    "id": "e24d1c21aaa4",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1781,12 +1877,14 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "france",
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "The Eiffel scholarship enables international students to benefit from a mobility grant and pursue courses at the master’s and doctorate levels. Submit your application starting October 13th 2025 and before November 7th 2025",
+   "duration": "First year only",
    "eligibility": [
     "Foreign students aged 29 or under (born after March 31st 1996) not studying in France at the time of their application.",
     "Must be applying to the Eiffel scholarship for the first time (Eiffel scholarship cannot be combined with another French government scholarship)",
@@ -1794,7 +1892,7 @@
     "Must be applying for the first time for a PhD with the Eiffel scholarship (which cannot be combined with another French government scholarship)."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "962daab0d367",
+   "hash": "2a27ac559422",
    "id": "677c7cc2139f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1818,6 +1916,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "france",
    "deadline": "2026-11-06",
@@ -1826,7 +1925,7 @@
    "description": "Developed by the French Ministry of Foreign Affairs, the France Excellence Eiffel scholarship programme contributes to the education at master's and PhD level of future international leaders and decision-makers, in both public and private sectors.Paris-Saclay University accepts, supports and submits applications to Cam",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "5c19cd113272",
+   "hash": "7596b2b2d4f8",
    "id": "08fdaabf3b11",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1850,8 +1949,12 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "france",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2027-01-13",
    "deadlinePartial": null,
    "deadlineText": "Deadlines: Deadline for. undergraduate programme (applicants from foreign secondary schools). : January 13, 2027 (results in April).",
@@ -1869,7 +1972,7 @@
     "Candidates for the 1 year Master's programmes"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "4291fd08e805",
+   "hash": "23856c8f1ff9",
    "id": "987c59aa2c26",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1902,7 +2005,7 @@
    "description": "Für Alumni des UROP International Programms gibt es nun die Möglichkeit, mit Hilfe des UROP International Alumni Award an die RWTH Aachen zurückzukehren. Die Universität vergibt Stipendien an UROP International Alumni, d.h. an Studierende, die an UROP International teilgenommen haben. Mit dem Stipendium kann entweder…",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "5399dfd0465b",
+   "hash": "d7d99c55d32b",
    "id": "b6e1cfe7b344",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1929,6 +2032,9 @@
   {
    "applyUrl": null,
    "country": "ireland",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": "1 May",
    "deadlineText": "1 May",
@@ -1938,7 +2044,7 @@
     "Motivation letter for CSP (about 200 words describing how you will contribute to DCU)"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "eab31ef96ec1",
+   "hash": "81f2e00abae1",
    "id": "0310c3ab1821",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1960,6 +2066,7 @@
    "value": null
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "ireland",
    "deadline": null,
@@ -1968,7 +2075,7 @@
    "description": "DCU offers partial merit-based scholarships to some non-EU students. You are automatically considered for a scholarship when you apply as a non-EU student to DCU. We’ll let you know if you have qualified for a scholarship when we contact you to advise if your application to study at DCU has been",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "cbb38d4de6a2",
+   "hash": "9c1b3a2cacb3",
    "id": "353c1956baa4",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -1993,7 +2100,12 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
+   "awards": {
+    "n": 2,
+    "upTo": false
+   },
    "country": "ireland",
    "deadline": "2027-01-15",
    "deadlinePartial": null,
@@ -2001,7 +2113,7 @@
    "description": "The DCU Nigerian Talent Postgraduate Scholarship is designed to support students showing high academic performance, who wish to pursue a full time postgraduate programme at DCU. As well as a commitment to academic excellence, the scholarship seeks candidates who are dedicated to promoting links between Nigeria and DCU…",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "4263489a5816",
+   "hash": "3574bc33cfc2",
    "id": "796c2c32e1a3",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2026,12 +2138,18 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "ireland",
+   "covers": [
+    "Tuition",
+    "Living costs"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "The Government of Ireland International Education Scholarship (GOI-IES) programme supports high-calibre international students who wish to study at NFQ level 9 (master level only) in Dublin City University (DCU). GOI-IES application is not applicable to postgraduate cert, diploma or PhD study at",
+   "duration": "1 year",
    "eligibility": [
     "Apply to DCU: Applicants must have a conditional or final offer of admission to DCU at the time of applying for a Government of Ireland International Education Scholarship.",
     "You will find full information on the DCU Application Process .",
@@ -2041,7 +2159,7 @@
     "3 DCU GOI-IES scholarships are available . DCU will not accept more than one scholar per programme."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "94ad1dcdce1f",
+   "hash": "612adc4b1e40",
    "id": "0043c0c8d4d2",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2065,12 +2183,14 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://www.dcu.ie/registry/how-to-apply-dcu",
    "country": "ireland",
    "deadline": "2027-07-01",
    "deadlinePartial": null,
    "deadlineText": "IDEA Scholarship Applications open on 21st October 2026 and close on 1st July 2027.",
    "description": "The Irish Diaspora Education Alliance (IDEA) Scholarship initiative aims to provide affordable college opportunities in Ireland for American-born students, including undergraduate and postgraduate programmes. The programme is open to eligible US students considering a full-time degree at DCU (applies to Non-EU fees…",
+   "duration": "1 year",
    "eligibility": [
     "Apply and receive an offer to a full-time undergraduate or postgraduate degree programme at DCU. Part-time programmes are not eligible.",
     "United States students of Irish heritage or friends of the Irish diaspora",
@@ -2084,7 +2204,7 @@
     "All applicants to DCU must pay the Admission Application Fee of €70."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "9de2b7350dd3",
+   "hash": "2a857e1c730f",
    "id": "c024fa6a64b4",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2109,18 +2229,27 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
+   "awards": {
+    "n": 60,
+    "upTo": false
+   },
    "country": "ireland",
+   "covers": [
+    "Living costs"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "Government of Ireland International Education Scholarships 2026 Call Closed",
+   "duration": "1 year",
    "eligibility": [
     "In order to be eligible for a Government of Ireland International Education Scholarship, applicants must have a domiciliary of origin outside the EU/EEA, Switzerland and the United Kingdom. Candidates will first need to apply for admission to a master’s, postgraduate diploma or PhD programme offered",
     "Applicants must have a conditional or final offer of admission to an eligible Irish higher education institution at the time of applying for a Government of Ireland International Education Scholarship. Proof of admission must be submitted with the GOI-IES application, in the relevant section of the "
    ],
    "firstSeen": "2026-11-14",
-   "hash": "4fe280e6dba8",
+   "hash": "c80e595c193e",
    "id": "cac9983e7acc",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2145,6 +2274,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "ireland",
    "deadline": null,
@@ -2157,7 +2287,7 @@
     "LLB Law Plus"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "b3765e253073",
+   "hash": "1c28895aadb6",
    "id": "c5800452a4b1",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2181,6 +2311,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "ireland",
    "deadline": null,
@@ -2189,7 +2320,7 @@
    "description": "Master Degree Scholarships - €2,000 scholarship available for the following programmes: MSc in Clinical and Community Psychology, MA in Psychology, MSc in Psychological Science, MSc in Sports Performance, MSc in Sports, Exercise and Performance Psychology and the Master of Science in Mental Skills and Mental Health in…",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "c35af2d6d940",
+   "hash": "ff7a844db7fc",
    "id": "b39a8b845409",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2213,6 +2344,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "ireland",
    "deadline": null,
@@ -2221,7 +2353,7 @@
    "description": "Faculty of Education and Health Science Scholarships have a number of generous merit-based international (Non-EU) scholarships available for the 2025/6 academic",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "202978c007df",
+   "hash": "38d2f8477fa0",
    "id": "76f11579cabe",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2247,6 +2379,9 @@
   {
    "applyUrl": null,
    "country": "ireland",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2026-01-29",
    "deadlinePartial": null,
    "deadlineText": "Application Deadline: The 2026 call will open on 29 January 2026, and the application deadline is 5pm (Irish time) on 12. th.",
@@ -2256,7 +2391,7 @@
     "A conditional or unconditional offer for an eligible UL programme (see below for the list of eligible programmes)"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "3a6a59de7c05",
+   "hash": "0755dc2e4651",
    "id": "363285958188",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2287,9 +2422,10 @@
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "The Kemmy Business School (KBS) ‘Jim Kemmy India Scholarship’ is available to undergraduate Indian students. This generous scholarship is worth €4,000 and is available to students for the four years of the Degree programme (providing progressions rates are reached).The requirements for the scholarship are as follows:…",
+   "duration": "4 years",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "3ae72b0aa847",
+   "hash": "cbbb406f9601",
    "id": "8649f8f6cc81",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2321,7 +2457,7 @@
    "description": "Malaysia International Scholarship (MIS) is an initiative by the Malaysian Government to attract top talents from around the world to pursue postgraduate studies in Malaysia. This scholarship is parallel with Malaysia's aspiration to emerge as one of the global centres of academic excellence by attracting, motivating…",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "47548feb2c3a",
+   "hash": "1770100b8b81",
    "id": "180a173e7629",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2351,7 +2487,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "93de0511ae62",
+   "hash": "5301b6a95947",
    "id": "dee68202ce9f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2381,7 +2517,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "06175136b377",
+   "hash": "4fed5a8aed62",
    "id": "e20e3c7131ef",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2405,6 +2541,10 @@
   {
    "applyUrl": null,
    "country": "netherlands",
+   "covers": [
+    "Tuition",
+    "Living costs"
+   ],
    "deadline": "2024-04-10",
    "deadlinePartial": null,
    "deadlineText": "10 April 2024: deadline for MPP-accepted applicants to apply to.",
@@ -2416,7 +2556,7 @@
     "H ave been admitted to the master's in Public Policy and Human Development at UNU-MERIT/Maastricht University (which requires the payment of a handling fee of € 100 [excluding bank costs] - refunded to you once you have started your studies)."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "5e619edbfca0",
+   "hash": "850b8cf206de",
    "id": "97bd21e4332a",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2449,7 +2589,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "18f81d8a49b9",
+   "hash": "c97c0fbdb4a1",
    "id": "a3cc6648c349",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2479,7 +2619,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "233a4d479c9e",
+   "hash": "9b8e3a407318",
    "id": "6f42cb19f5b9",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2509,7 +2649,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "05a597c595ec",
+   "hash": "6576834b0af7",
    "id": "3fba8f97237e",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2539,7 +2679,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "7c67a3fc68b7",
+   "hash": "b8488470a73e",
    "id": "009fe462a2e7",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2569,7 +2709,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "6b077afe4be7",
+   "hash": "f9996639fab9",
    "id": "3fe821b0477f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2599,7 +2739,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "7b9625ee90fc",
+   "hash": "83db8086822f",
    "id": "30bc225a10d9",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2629,7 +2769,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "790d68db2cad",
+   "hash": "3312772cf4de",
    "id": "c306c69542cf",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2659,7 +2799,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "3b4054834c51",
+   "hash": "8f5314e65042",
    "id": "0cc4aa012468",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2689,7 +2829,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "9d890174e135",
+   "hash": "1b8a07ab02f6",
    "id": "6df14493e48f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2719,7 +2859,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "e020275b5fac",
+   "hash": "b9702f421832",
    "id": "b409f4dde630",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2749,7 +2889,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "70b0b80e8245",
+   "hash": "1028c0be48a4",
    "id": "6d418208034d",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2779,7 +2919,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "c0ec76df67c5",
+   "hash": "c189a0f69715",
    "id": "7389c5a8e2fd",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2806,7 +2946,50 @@
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
+   "description": "The NL Scholarship is meant for international students from outside the European Economic Area (EEA) who want to do their bachelor’s or master’s in the Netherlands. Are you ready for the chance of a lifetime? Apply for the NL Scholarship!",
+   "eligibility": [],
+   "firstSeen": "2026-11-14",
+   "hash": "3e2fb1ec3a46",
+   "id": "62b671fe7e81",
+   "intl": "yes",
+   "lastChanged": "2026-11-14",
+   "lastVerified": "2026-11-14",
+   "levels": [
+    "Bachelor",
+    "Master"
+   ],
+   "misses": 0,
+   "name": "NL Scholarship (national programme, formerly Holland Scholarship)",
+   "opens": null,
+   "origin": "official",
+   "programmeId": "nl-scholarship",
+   "provider": "Study in NL (Nuffic)",
+   "providerSlug": null,
+   "providerType": "government",
+   "rolling": false,
+   "slug": "nl-scholarship-national-programme-formerly-holland-scholarsh-study-in-nl-nuffic",
+   "url": "https://www.studyinnl.org/finances/nl-scholarship",
+   "value": {
+    "context": "The scholarship amounts to € 5,000.",
+    "display": "EUR 5,000"
+   }
+  },
+  {
+   "applyMode": "application",
+   "applyUrl": null,
+   "awards": {
+    "n": 21,
+    "upTo": false
+   },
+   "country": "netherlands",
+   "covers": [
+    "Tuition"
+   ],
+   "deadline": null,
+   "deadlinePartial": null,
+   "deadlineText": null,
    "description": "The Tilburg University Waiver halves the institutional tuition fee for international master’s applicants who hold a non-EEA nationality and completed their previous degree in an eligible country. With 21 awards each year, it supports talented students worldwide to pursue their graduate studies at Tilburg University and",
+   "duration": "2 years",
    "eligibility": [
     "Citizenship and prior education – You must hold a non-EEA nationality and have completed, or be due to complete before the start of the Master’s program , your most recent degree in one of the eligible countries listed below This must be your first Master’s program at Tilburg University. Applicants ",
     "This must be your first Master’s program at Tilburg University.",
@@ -2816,7 +2999,7 @@
     "Applicants for Research Master’s programs are not eligible. Please refer instead to the Research Master Scholarship webpage ."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "449363052ad9",
+   "hash": "9d211126160e",
    "id": "61f47ce1dd4b",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2840,12 +3023,17 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "netherlands",
+   "covers": [
+    "Living costs"
+   ],
    "deadline": "2027-02-01",
    "deadlinePartial": null,
    "deadlineText": "The deadline for the 2027–2028 academic year is 1 February 2027 (23:59 CET).",
    "description": "NL Scholarships for international students from outside the EEA",
+   "duration": "1 year",
    "eligibility": [
     "You do not hold the nationality of one of the EEA countries and are not eligible for the lower EU/EEA tuition fee for any other reason.",
     "You are enrolled at the University of Groningen as a full-time student for the academic year and Master’s programme for which the scholarship is awarded.",
@@ -2856,7 +3044,7 @@
     "You have not obtained the NL Scholarship before."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "0d7030f26615",
+   "hash": "d7ceca394c11",
    "id": "f174db5099a1",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2881,6 +3069,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "netherlands",
    "deadline": null,
@@ -2889,7 +3078,7 @@
    "description": "The Richard A. Freund International Scholarship supports graduate studies in quality control, quality assurance, quality improvement, and total quality...",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "338db1835d59",
+   "hash": "6a1db0b0de8f",
    "id": "66991b433ad2",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2914,15 +3103,19 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "netherlands",
+   "covers": [
+    "Living costs"
+   ],
    "deadline": null,
    "deadlinePartial": "1 May",
    "deadlineText": "1 May",
    "description": "Partial scholarships from the University of Groningen for talented students who need some financial support but are able to pay part of the fees...",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "647b203a0382",
+   "hash": "d9e2d4b7acaf",
    "id": "acafebc32c28",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2944,15 +3137,20 @@
    "value": null
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://osiris.utwente.nl/inkomend/WelkomPagina.do?proces=ESP-SCHOLAR-1",
    "country": "netherlands",
+   "covers": [
+    "Tuition",
+    "Living costs"
+   ],
    "deadline": "2027-03-01",
    "deadlinePartial": null,
    "deadlineText": "Application deadline: 1 March 2027.",
    "description": "The University of Twente offers scholarship possibilities for students applying for a bachelor's, master's or PhD programme. Find your scholarship now!",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "5110f95e0a3e",
+   "hash": "9dae0c83f079",
    "id": "1080914d3685",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -2977,15 +3175,20 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://www.utwente.nl/en/education/scholarship-finder/application-forms/preapl-hs/",
    "country": "netherlands",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2027-04-01",
    "deadlinePartial": null,
    "deadlineText": "Application deadline: 1 April 2027.",
    "description": "The University of Twente offers scholarship possibilities for students applying for a bachelor's, master's or PhD programme. Find your scholarship now!",
+   "duration": "First year only",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "78cfbe65f0fa",
+   "hash": "930099389c40",
    "id": "d73aabcecf41",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3010,15 +3213,20 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://qalaascholarships.org/apply/",
    "country": "netherlands",
+   "covers": [
+    "Tuition",
+    "Living costs"
+   ],
    "deadline": null,
    "deadlinePartial": "15 April",
    "deadlineText": "15 April",
    "description": "The University of Twente offers scholarship possibilities for students applying for a bachelor's, master's or PhD programme. Find your scholarship now!",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "059551133ed5",
+   "hash": "432f3691fc67",
    "id": "1c67775e2997",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3042,15 +3250,19 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "netherlands",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2027-04-01",
    "deadlinePartial": null,
    "deadlineText": "Application deadline: 1 April 2027.",
    "description": "The University of Twente offers scholarship possibilities for students applying for a bachelor's, master's or PhD programme. Find your scholarship now!",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "76ea026c03a7",
+   "hash": "792b33c41de6",
    "id": "831e41d8f55b",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3084,7 +3296,7 @@
     "The International Creative Excellence Masters Degree Scholarship acknowledges the creative excellence and strength of creative vision to support international students enrolling in the first year of a masters degree with the College of Creative Arts Massey University."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "2a596f747166",
+   "hash": "a2381c64c0b5",
    "id": "b4b08beb1a62",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3118,7 +3330,7 @@
     "The International Creative Excellence Undergraduate Scholarship acknowledges the creative excellence and strength of creative vision to support international students enrolling in the first year of an undergraduate degree with the College of Creative Arts Massey University."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "daae5f49ea33",
+   "hash": "299644cc167d",
    "id": "8b3dcf1edd09",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3152,7 +3364,7 @@
     "This bursary commemorates Marcus Kitt, a long-serving member of Colliers staff and a former student of Massey University. It was established in 2014 and is financed by Colliers New Zealand Limited."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f786c5888cd2",
+   "hash": "7d84c2c24d61",
    "id": "754b5ddb0b23",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3184,7 +3396,7 @@
    "description": "Soroptimist International is an organisation committed to advancing the welfare and status of women and empowering women through education.",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "d27e72757785",
+   "hash": "a57704180932",
    "id": "e09b7813d671",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3208,8 +3420,12 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "new-zealand",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2027-01-31",
    "deadlinePartial": null,
    "deadlineText": "Closing date: 31 January 2027.",
@@ -3218,7 +3434,7 @@
     "Embarking on a journey to study abroad is like the majestic Toroa bird’s incredible oceanic adventure. It's a leap into the unknown, filled with challenges, and a quest for knowledge and growth. The Toroa bird symbolizes resilience, strength, and the courage to venture into the unknown - just like y"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "77386ae2a50f",
+   "hash": "32d16b8194ad",
    "id": "6be310f8ebfb",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3242,15 +3458,51 @@
    }
   },
   {
+   "applyUrl": null,
+   "country": "new-zealand",
+   "deadline": null,
+   "deadlinePartial": null,
+   "deadlineText": null,
+   "description": "Manaaki scholarships include undergraduate study, postgraduate study, vocational training, thematic training and English language courses.",
+   "eligibility": [],
+   "firstSeen": "2026-11-14",
+   "hash": "a20bf629e355",
+   "id": "c7a695affc10",
+   "intl": "yes",
+   "lastChanged": "2026-11-14",
+   "lastVerified": "2026-11-14",
+   "levels": [
+    "Bachelor",
+    "Master"
+   ],
+   "misses": 0,
+   "name": "Manaaki New Zealand Scholarships (undergraduate and postgraduate study)",
+   "opens": null,
+   "origin": "official",
+   "programmeId": "manaaki-nz",
+   "provider": "New Zealand Government (MFAT)",
+   "providerSlug": null,
+   "providerType": "government",
+   "rolling": false,
+   "slug": "manaaki-new-zealand-scholarships-undergraduate-and-postgradu-new-zealand-government-m",
+   "url": "https://www.nzscholarships.govt.nz/types-of-manaaki-scholarships/",
+   "value": null
+  },
+  {
+   "applyMode": "application",
    "applyUrl": "https://www.canterbury.ac.nz/study/getting-started/scholarships/apply-for-scholarship",
    "country": "new-zealand",
+   "covers": [
+    "Tuition",
+    "Living costs"
+   ],
    "deadline": null,
    "deadlinePartial": "31 October",
    "deadlineText": "31 October",
    "description": "UC offers a number of scholarships for international students from a low-socio economic backgrounds. Check out what's available.",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "29a3c5d1ef22",
+   "hash": "1aede112328b",
    "id": "fdc3d9df37bb",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3275,6 +3527,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "new-zealand",
    "deadline": null,
@@ -3283,7 +3536,7 @@
    "description": "This scholarship supports international students attending a New Zealand or overseas high school to enrol in the Bachelor of Commerce at the University of",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "6449da45a693",
+   "hash": "97918b1a3982",
    "id": "856e5f9b6ad9",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3308,6 +3561,10 @@
   },
   {
    "applyUrl": null,
+   "awards": {
+    "n": 5,
+    "upTo": true
+   },
    "country": "new-zealand",
    "deadline": "2026-03-15",
    "deadlinePartial": null,
@@ -3317,7 +3574,7 @@
     "Regulations (120 KB) (opens in a new tab)"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "2b628cdfad4d",
+   "hash": "7e29826a3d6a",
    "id": "7b2088f24dbd",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3342,6 +3599,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://my.waikato.ac.nz/sitsvision/wrd/siw_lgn",
    "country": "new-zealand",
    "deadline": "2027-03-31",
@@ -3352,7 +3610,7 @@
     "Regulations (129 KB) (opens in a new tab)"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "c533ecab1745",
+   "hash": "25e19978b096",
    "id": "bcf5616315fd",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3376,6 +3634,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "uk",
    "deadline": null,
@@ -3384,7 +3643,7 @@
    "description": "Overview Host organisation programmes How to apply Advice for applicants Fellow eligibility Eligible countries Completing the application form Financial assistance General conditions Immigration conditions Enquiries Overview From 2026/27, the CSC has launched a",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "e4b6a472111b",
+   "hash": "715eb5792387",
    "id": "427b4da529f1",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3406,6 +3665,37 @@
    "value": null
   },
   {
+   "applyUrl": null,
+   "country": "uk",
+   "deadline": null,
+   "deadlinePartial": null,
+   "deadlineText": null,
+   "description": "International postgraduate scholarships at the University of Cambridge",
+   "eligibility": [],
+   "firstSeen": "2026-11-14",
+   "hash": "741dfa50f13f",
+   "id": "c7fd059b65bb",
+   "intl": "yes",
+   "lastChanged": "2026-11-14",
+   "lastVerified": "2026-11-14",
+   "levels": [
+    "Master"
+   ],
+   "misses": 0,
+   "name": "Gates Cambridge Scholarship",
+   "opens": null,
+   "origin": "official",
+   "programmeId": "gates-cambridge",
+   "provider": "Gates Cambridge Trust (University of Cambridge)",
+   "providerSlug": null,
+   "providerType": "government",
+   "rolling": false,
+   "slug": "gates-cambridge-scholarship-gates-cambridge-trust-un",
+   "url": "https://www.gatescambridge.org/",
+   "value": null
+  },
+  {
+   "applyMode": "application",
    "applyUrl": "https://app.geckoform.com/public/",
    "country": "uk",
    "deadline": "2026-12-04",
@@ -3421,7 +3711,7 @@
     "A minimum of 32 points overall and strong academic performance (scores of 5 or higher) in subject areas related to programme of study."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "e40ceb3d886e",
+   "hash": "2b66a12d4a0e",
    "id": "f4c20441d55c",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3452,12 +3742,13 @@
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "Providing support to international fee-paying students enrolling in January or September 2027.",
+   "duration": "First year only",
    "eligibility": [
     "Eligibility criteria will vary by region, as stated above please contact the relevant regional manager for more details. Please note that online and Postgraduate research programmes are not included in these scholarships.",
     "Please be aware the scholarships are only available to Overseas fee status students that are residing overseas. Students currently residing in the UK but classed as an overseas fee status are not eligible under this scholarship category.”"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "51881beac6df",
+   "hash": "da6ef6636c07",
    "id": "67dd55ad6b95",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3484,6 +3775,9 @@
   {
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -3492,7 +3786,7 @@
     "If you are interested in studying one of our MSc programmes based at our Orkney Campus, please register your interest for this scholarship using the form below."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "6806c0c50755",
+   "hash": "6aee7f5a4f35",
    "id": "a00d92dab0f5",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3518,6 +3812,11 @@
   {
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Living costs",
+    "Health insurance",
+    "Books and materials"
+   ],
    "deadline": "2026-05-19",
    "deadlinePartial": null,
    "deadlineText": "Competition opens 5 April 2026 and. closes on 19 May 2026.",
@@ -3526,7 +3825,7 @@
     "To apply for a n ANID-Imperial scholarship, you must comply with the BECAS Chile eligibility criteria. At the moment these are: - Be Chilean or foreigner with permanent residency in Chile -Hold a Licenciado (the Chilean 6 year degree) - Academic excellence (better average grade than 5 out of possibl"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "612eabdf1c90",
+   "hash": "2c8f7bbb34c5",
    "id": "08e2ef05851b",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3550,12 +3849,22 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
+   "awards": {
+    "n": 15,
+    "upTo": false
+   },
    "country": "uk",
+   "covers": [
+    "Tuition",
+    "Living costs"
+   ],
    "deadline": "2025-01-13",
    "deadlinePartial": null,
    "deadlineText": "Prospective. scholars must follow all of the following steps in this order: Prospective PhD students must approach individual Imperial Departments and supervisors with details of their proposed project well before the PhD application deadli",
    "description": "The Imperial College London–China Scholarship Council (CSC) PhD Scholarship Programme is not currently accepting applications for the 2027/28 a...",
+   "duration": "2 years",
    "eligibility": [
     "Chinese students with a strong academic background.",
     "Students must hold a PR Chinese passport (applicants from Hong Kong or Taiwan are not eligible). Applicants can either be resident in China (domestic applicants) at the time of application or Chinese applicants studying overseas.",
@@ -3566,7 +3875,7 @@
     "Students currently studying a Master’s in China are eligible to apply for these scholarships. Students must apply via their academic institution in China."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "4862e49b1b11",
+   "hash": "e4543c663b12",
    "id": "4a3a9338e80e",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3591,8 +3900,12 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://www.imperial.ac.uk/study/apply/postgraduate-taught/application-process/",
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2026-03-02",
    "deadlinePartial": null,
    "deadlineText": "Important to note: Applications will open on 6 January 2026 and close at 23:59 (Colombia time) on 2 March 2026.",
@@ -3602,7 +3915,7 @@
     "Other eligibility criteria also apply – see How to apply below."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "d34b7e90fe17",
+   "hash": "2502a2b1589b",
    "id": "f0a5775b06a1",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3626,8 +3939,14 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition",
+    "Living costs",
+    "Accommodation"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -3638,7 +3957,7 @@
     "Have applied for a postgraduate one year Master's degree in science, engineering, business (except MBA) or medical subject (except those courses which involve direct patient contact) to start in Autumn 2027-28"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "167ccb5ccb70",
+   "hash": "410c610c1c5b",
    "id": "ec2057c598e7",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3674,7 +3993,7 @@
     "Please note: This scholarship is available to new entrants only. Students already studying the course are not eligible."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f8d9a6d64f3d",
+   "hash": "a8e101b32bb4",
    "id": "ede98f95e0e8",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3709,7 +4028,7 @@
     "Please note: This scholarship is available to new entrants only. Students already studying the course are not eligible."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "fbcd38759ae2",
+   "hash": "77543d71d4c0",
    "id": "8406e45c8637",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3730,6 +4049,7 @@
    "value": null
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "uk",
    "deadline": "2026-03-13",
@@ -3746,7 +4066,7 @@
     "The duration of your course is longer than one year"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "b051bf4312f4",
+   "hash": "38673ed8679e",
    "id": "01fa3d555a65",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3770,8 +4090,14 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition",
+    "Living costs",
+    "Health insurance"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -3789,7 +4115,7 @@
     "Health Insurance"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "7eea57571e60",
+   "hash": "0c3e12204cec",
    "id": "79f20f0d1010",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3813,6 +4139,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "uk",
    "deadline": "2026-10-01",
@@ -3828,7 +4155,7 @@
     "must not have studied for GCSEs or A Levels taken at school in the UK"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "a37138f2f9fb",
+   "hash": "4cb23ef52a7a",
    "id": "be5c59013cbe",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3853,19 +4180,21 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "uk",
    "deadline": "2026-04-24",
    "deadlinePartial": null,
    "deadlineText": "Application deadline: 24/04/2026.",
    "description": null,
+   "duration": "Full length of the course",
    "eligibility": [
     "studying the International Baccalaureate (IB) diploma programme;",
     "an international student paying the Overseas rate of tuition;",
     "applying for an undergraduate course within the Faculty of Engineering, the Faculty of Natural Sciences, or Imperial Business School."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "e74f48d3bd7d",
+   "hash": "94154a3bd29d",
    "id": "c842eed28685",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3903,7 +4232,7 @@
     "Exhibiting exceptional leadership"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f3ea6f913e84",
+   "hash": "16522b2a81ca",
    "id": "204080e21ba4",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3940,7 +4269,7 @@
     "Be able to evidence financial disadvantage or identify as a first-generation student"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "dad2632f6b46",
+   "hash": "9cb1fbe0519b",
    "id": "47799b75566b",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -3976,7 +4305,7 @@
     "be assessed as international for fee purposes"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "a88a0a3f9c66",
+   "hash": "263e16e0253c",
    "id": "1b9db2dd8380",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4013,7 +4342,7 @@
     "must submit a course application via UCAS by the Equal Consideration Deadline of 13 th January 2027. Applicants who receive an offer from the University by 31 st March 2027, must accept Newcastle University as a Firm or Insurance choice by 3 rd May 2027."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "52471b085eaf",
+   "hash": "6bd59049c105",
    "id": "8f0a067ff71d",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4037,6 +4366,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
    "deadline": null,
@@ -4049,7 +4379,7 @@
     "Further details can be found in the Vice-Chancellor’s EU Scholarship Regulations 2026-27 (PDF: 118KB)"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "02fa92cd592c",
+   "hash": "d4e99af5ebda",
    "id": "b069ac7f5184",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4072,6 +4402,44 @@
   {
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition",
+    "Living costs",
+    "Accommodation"
+   ],
+   "deadline": null,
+   "deadlinePartial": null,
+   "deadlineText": null,
+   "description": "When different people come together in a shared spirit, an exciting new journey begins. The Rhodes Scholarship is a life-changing postgraduate opportunity to...",
+   "eligibility": [],
+   "firstSeen": "2026-11-14",
+   "hash": "baa5c92a73a2",
+   "id": "2b208a686479",
+   "intl": "yes",
+   "lastChanged": "2026-11-14",
+   "lastVerified": "2026-11-14",
+   "levels": [
+    "Master"
+   ],
+   "misses": 0,
+   "name": "Rhodes Scholarship",
+   "opens": null,
+   "origin": "official",
+   "programmeId": "rhodes",
+   "provider": "Rhodes Trust (University of Oxford)",
+   "providerSlug": null,
+   "providerType": "government",
+   "rolling": false,
+   "slug": "rhodes-scholarship-rhodes-trust-university",
+   "url": "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/",
+   "value": {
+    "context": "The Rhodes Scholarship covers University of Oxford course fees, as well as providing an annual stipend.",
+    "display": "Stipend"
+   }
+  },
+  {
+   "applyUrl": null,
+   "country": "uk",
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -4080,7 +4448,7 @@
     "Are you eligible for a scholarship? Learn more about Chevening’s eligibility and work experience requirements."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "ac8cd6f1047c",
+   "hash": "32c2206b8dd6",
    "id": "8a40dc2072bb",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4105,6 +4473,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "uk",
    "deadline": "2027-02-04",
@@ -4113,7 +4482,7 @@
    "description": "How to apply for the Bath Global Excellence Scholarship",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "bff2f697d925",
+   "hash": "c4d1d798d44c",
    "id": "6e501b4bdb2a",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4145,7 +4514,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "9c3738435e4c",
+   "hash": "1aecd4fa5aca",
    "id": "8e8c88a39483",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4179,7 +4548,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "abb53e14c658",
+   "hash": "c5387b31fc12",
    "id": "b99206587a1a",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4213,7 +4582,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "1ff3fa0e4976",
+   "hash": "dc3a5bc25183",
    "id": "bfc1dc02d3f7",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4247,7 +4616,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "4740a2a1543a",
+   "hash": "adfd1d7b6b9b",
    "id": "24bcec6c80c5",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4285,7 +4654,7 @@
     "enrolling on a new postgraduate taught Master’s course at Kent for the 2026–27 academic year"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f148708219cd",
+   "hash": "482dc90760ce",
    "id": "47f111f152f9",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4310,6 +4679,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
    "deadline": null,
@@ -4320,7 +4690,7 @@
     "To be eligible for the Alumni Loyalty Scholarship you must hold an undergraduate or master’s degree awarded by Lancaster University, achieved at any time, including one delivered through an associated institution. Alumni who completed an undergraduate or postgraduate qualification that included Lanc"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "6fd6d266099d",
+   "hash": "f4d7bb217300",
    "id": "563a55901bfe",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4345,6 +4715,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://www.lancaster.ac.uk/study/postgraduate/applying-for-postgraduate-study/",
    "country": "uk",
    "deadline": null,
@@ -4357,7 +4728,7 @@
     "Applicants must not be in receipt of any other source of funding from an external funding body"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "14a4fc49c467",
+   "hash": "60f4c611e550",
    "id": "5602754b3d83",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4381,6 +4752,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://www.lancaster.ac.uk/study/postgraduate/applying-for-postgraduate-study/",
    "country": "uk",
    "deadline": null,
@@ -4391,7 +4763,7 @@
     "You must hold an offer of study for the MSc Marketing or MSc Digital and Social Media Marketing for 2027 entry, with a minimum of a 2:1 Hons degree (UK or equivalent)."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "e58c91b911f5",
+   "hash": "1260b228c3a8",
    "id": "f89bc4b3c838",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4415,19 +4787,24 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "A 10% fee reduction for applicants with a 2:2 classification to support their progression to postgraduate",
+   "duration": "Full length of the course",
    "eligibility": [
     "have an average grade to date of a 2:2 in your undergraduate studies (to include equivalent classifications). If you have already completed your undergraduate studies, then you will be eligible if you achieved a 2:2. Students predicted or who have achieved a 2:1 or 1st are eligible for our Master’s ",
     "accept a conditional or unconditional offer from Lancaster University for 2027 entry",
     "If an applicant is eligible for both the Management School Progression Scholarship and a scholarship and/or tuition fee discount from any of our international teaching partnerships, only the award of the highest value will be made."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "457df9b54ebd",
+   "hash": "fc5676b262da",
    "id": "a739455187a9",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4452,8 +4829,53 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
+   "deadline": null,
+   "deadlinePartial": null,
+   "deadlineText": null,
+   "description": "A 15% fee reduction scholarship, valued at up to £4,635, for students who achieve a 2:1 or first-class degree in their undergraduate",
+   "duration": "Full length of the course",
+   "eligibility": [
+    "have an average grade to date of a 1st or 2:1 in your undergraduate studies (to include equivalent classifications). If you have already completed your undergraduate studies, then you will need to have already achieved a 1st or 2:1 degree",
+    "accept a conditional or unconditional offer from Lancaster University for 2027 entry"
+   ],
+   "firstSeen": "2026-11-14",
+   "hash": "79b8cb20f597",
+   "id": "830fa6cf7ab9",
+   "intl": "yes",
+   "lastChanged": "2026-11-14",
+   "lastVerified": "2026-11-14",
+   "levels": [
+    "Bachelor",
+    "Master"
+   ],
+   "misses": 0,
+   "name": "Master's Excellence Scholarship",
+   "opens": null,
+   "origin": "page",
+   "provider": "University of Lancaster",
+   "providerSlug": "lancaster-university",
+   "providerType": "university",
+   "rolling": false,
+   "slug": "master-s-excellence-scholarship-university-of-lancaster",
+   "url": "https://www.lancaster.ac.uk/study/fees-and-funding/scholarships-and-bursaries/masters-excellence-scholarship/",
+   "value": {
+    "context": "A 15% fee reduction scholarship, valued at up to £4,635, for students who achieve a 2:1 or first-class degree in their undergraduate studies.",
+    "display": "Up to GBP 4,635; 15% fee reduction"
+   }
+  },
+  {
+   "applyMode": "automatic",
+   "applyUrl": null,
+   "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -4464,7 +4886,7 @@
     "accept a conditional or unconditional offer from Lancaster University for 2027 entry"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "c6280e276a74",
+   "hash": "f150345e7378",
    "id": "d02c72caa9fa",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4489,8 +4911,12 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -4500,7 +4926,7 @@
     "accept your offer by 23:59 BST on Wednesday 7 April 2027"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "0cd9d939b745",
+   "hash": "87921ebb51c8",
    "id": "381df963b09a",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4524,8 +4950,12 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -4535,7 +4965,7 @@
     "Indonesia"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "e46cefa9257d",
+   "hash": "0bf13fb36b4f",
    "id": "29f3dbc76979",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4560,6 +4990,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://www.lancaster.ac.uk/study/postgraduate/applying-for-postgraduate-study/",
    "country": "uk",
    "deadline": null,
@@ -4574,7 +5005,7 @@
     "MRes Management Science"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f58e39d8c4bf",
+   "hash": "4d2f1f4a2d7c",
    "id": "377267d1a8fd",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4599,6 +5030,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
    "deadline": null,
@@ -4610,7 +5042,7 @@
     "are an international fee paying applicant"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "6234964b9075",
+   "hash": "81a81a1b325d",
    "id": "97f7d6b4e7a2",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4634,6 +5066,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
    "deadline": null,
@@ -4645,7 +5078,7 @@
     "are an international fee paying applicant"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "56e16cb240a9",
+   "hash": "ef1ad7c355ae",
    "id": "b6b04cf02fc5",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4669,6 +5102,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
    "deadline": null,
@@ -4681,7 +5115,7 @@
     "are an international fee paying applicant"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "de6fc1f6ee4b",
+   "hash": "ef9e28fd81fe",
    "id": "70f16b63e66f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4705,6 +5139,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": null,
    "country": "uk",
    "deadline": null,
@@ -4716,7 +5151,7 @@
     "Indonesia"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "3d53332219d5",
+   "hash": "fd54450ebed8",
    "id": "bb9e6a3cc73a",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4742,10 +5177,14 @@
   {
    "applyUrl": null,
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "Apply now for the International Excellence Award Scholarship, supporting international postgraduate students studying at Surrey.",
+   "duration": "2 years",
    "eligibility": [
     "Be an overseas fee-paying student",
     "Hold a conditional offer to study a full-time masters programme*",
@@ -4759,7 +5198,7 @@
     "MSc Food Science"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "8a81c1689858",
+   "hash": "2b12c4a81dd4",
    "id": "7e533fa9c41a",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4783,12 +5222,14 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=kyaQa3QQqkCeIdiURqLrtfOWE42xqjZBh8MyD7JVYwtUQU43M1pIUlVRWE80TDQ4NjU4SzUyNUIzMCQlQCN0PWcu",
    "country": "uk",
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "Apply for the International Excellence Award at Surrey — a competitive £5,000 tuition fee waiver for international undergraduate students.",
+   "duration": "First year only",
    "eligibility": [
     "Be an overseas fee-paying student",
     "Choose Surrey as your insurance or firm choice on your UCAS application to be considered for the award. To secure the award, you need to select Surrey as your firm choice (students applying to us via Clearing can also apply to this award).",
@@ -4802,7 +5243,7 @@
     "This award is not open to students from Surrey International Study Centre (SISC)"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "23d8de859d57",
+   "hash": "4723249a5975",
    "id": "b8e3bc2da1c3",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4832,6 +5273,7 @@
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "Apply for the International Excellence Award for Nursing at Surrey — a competitive £5,000 tuition fee waiver for international undergraduate students.",
+   "duration": "First year only",
    "eligibility": [
     "Be an overseas fee-paying student",
     "Choose Surrey as your firm choice on your UCAS application. Students applying to us via Clearing are also eligible for this award.",
@@ -4842,7 +5284,7 @@
     "This award is not deferrable to the following year. If you defer, you will need to reapply for the award, subject to award availability."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "f5ab2a7d98ca",
+   "hash": "2906efacf5eb",
    "id": "c072ef83ff6a",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4866,8 +5308,12 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://forms.office.com/e/ygfNH9mLTN",
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2026-06-22",
    "deadlinePartial": null,
    "deadlineText": "Application deadline: 22 June 2026.",
@@ -4884,7 +5330,7 @@
     "Dr Ning Wu."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "94b9d2345b8f",
+   "hash": "5ebb61bb4b5e",
    "id": "f67e9aa0126d",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4908,19 +5354,24 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://forms.office.com/pages/responsepage.aspx?id=kyaQa3QQqkCeIdiURqLrtbD_vIg3UYRJu7T_xlNL_o9UOUNROUNSVDQ5S0lCN1BOU1lES1hFQVg3Ny4u&route=shorturl",
    "country": "uk",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": "2026-06-22",
    "deadlinePartial": null,
    "deadlineText": "All scholarship applications will be reviewed after the deadline of 22 June 2026.",
    "description": "The scholarship provides £15,000, as a tuition fee reduction, for a full-time postgraduate programme at the University of Surrey.",
+   "duration": "2 years",
    "eligibility": [
     "Be an overseas fee-paying student from selected countries (please see a list of qualifying countries below)",
     "Have an offer for any postgraduate programme at the University of Surrey for September 2026",
     "Be from a low-income family background."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "ca7b3d704695",
+   "hash": "6c987f6cc731",
    "id": "6ded825d1833",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4944,12 +5395,14 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=kyaQa3QQqkCeIdiURqLrtfOWE42xqjZBh8MyD7JVYwtUQUc1VDdJSUtNVVZXV1FXQUU0WVI3VFQxNSQlQCN0PWcu",
    "country": "uk",
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "A £7,500 fee waiver open to self-funded international fee-paying postgraduate students domiciled in specific countries.",
+   "duration": "2 years",
    "eligibility": [
     "Hold an offer to study a full-time masters degree programme* at Surrey",
     "Be self-funded (you must be paying for your studies independently rather than being sponsored or in receipt of another scholarship)",
@@ -4957,7 +5410,7 @@
     "Be an overseas fee-paying student domiciled in one of the following countries:"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "41ebf87b7d6f",
+   "hash": "0208d73d1353",
    "id": "1a26f5385471",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -4981,12 +5434,14 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=kyaQa3QQqkCeIdiURqLrtfOWE42xqjZBh8MyD7JVYwtUNTY2U09ZVTU1RjRXWkZRQldQMlM2U1AzRyQlQCN0PWcu",
    "country": "uk",
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "A £7,500 fee waiver open to self-funded international fee-paying undergraduate students domiciled in specific countries.",
+   "duration": "First year only",
    "eligibility": [
     "Hold an offer to study a full-time Bachelor degree at FHEQ Level 4* at Surrey",
     "Be self-funded (you must be paying for your studies independently rather than being sponsored or in receipt of another scholarship)",
@@ -4995,7 +5450,7 @@
     "Be an overseas fee-paying student domiciled in one of the following countries:"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "fbecd8995f9e",
+   "hash": "e5dc4c7aff7c",
    "id": "86e36c8472dc",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5019,7 +5474,12 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
+   "awards": {
+    "n": 2,
+    "upTo": false
+   },
    "country": "usa",
    "deadline": null,
    "deadlinePartial": null,
@@ -5033,7 +5493,7 @@
     "Demonstrate exceptional leadership while enrolled at IU."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "b928d9cb3b6a",
+   "hash": "ac169fa62074",
    "id": "1e6c05a018c3",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5057,7 +5517,12 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
+   "awards": {
+    "n": 2,
+    "upTo": false
+   },
    "country": "usa",
    "deadline": null,
    "deadlinePartial": null,
@@ -5070,7 +5535,7 @@
     "Demonstrate financial need."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "1a9f441728a3",
+   "hash": "fa961c09901b",
    "id": "85d9f0825bed",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5095,12 +5560,14 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": "https://bloomington.iu.edu/admissions/apply/international/",
    "country": "usa",
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
    "description": "Learn about the C.V. Starr Foundation Scholarship for incoming IU Bloomington international freshmen who are citizens of China.",
+   "duration": "1 year",
    "eligibility": [
     "Be admitted and enrolled in a baccalaureate degree program at IU Bloomington.",
     "Maintain Chinese citizenship.",
@@ -5109,7 +5576,7 @@
     "Maintain nonimmigrant student visa status while studying at IU (example: F-1 visa)."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "9fd8fe0c24cb",
+   "hash": "0fa90782f5c5",
    "id": "90b5fd2c8c9e",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5130,8 +5597,12 @@
    "value": null
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "usa",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -5145,7 +5616,7 @@
     "Be nearing degree completion."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "e8fc2e3250c3",
+   "hash": "7cf16566d7b2",
    "id": "89ca0f871944",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5167,8 +5638,16 @@
    "value": null
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
+   "awards": {
+    "n": 1,
+    "upTo": false
+   },
    "country": "usa",
+   "covers": [
+    "Tuition"
+   ],
    "deadline": null,
    "deadlinePartial": null,
    "deadlineText": null,
@@ -5186,7 +5665,7 @@
     "Studio art"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "7ec4491b2007",
+   "hash": "9687fd563cc8",
    "id": "e963647305a7",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5208,6 +5687,7 @@
    "value": null
   },
   {
+   "applyMode": "automatic",
    "applyUrl": "https://bloomington.iu.edu/admissions/apply/international/",
    "country": "usa",
    "deadline": null,
@@ -5220,7 +5700,7 @@
     "Be enrolled or planning to enroll as an undergraduate student at IU Bloomington."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "60901263211e",
+   "hash": "9f51fda96e0b",
    "id": "89b6c5c8fa32",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5241,6 +5721,7 @@
    "value": null
   },
   {
+   "applyMode": "application",
    "applyUrl": "https://bloomington.iu.edu/admissions/apply/international/",
    "country": "usa",
    "deadline": null,
@@ -5252,7 +5733,7 @@
     "First preference is for undergraduate students from Latin America, second preference is for first-generation undergraduate students whose parents are from Latin America, third preference is for other undergraduate international students, and fourth preference is for graduate international students."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "7b930dbe7460",
+   "hash": "b780d49a9e7e",
    "id": "c572788983d9",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5281,7 +5762,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "8c072b4f2ced",
+   "hash": "eafb8dce9701",
    "id": "8332f6f7966c",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5314,7 +5795,7 @@
    "description": null,
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "c309a8cd9f54",
+   "hash": "5aa4dd948718",
    "id": "171cbaa5f76d",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5349,7 +5830,7 @@
     "See calculator below"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "eae2326147fd",
+   "hash": "06c0de9978c6",
    "id": "6d09d4eee0d2",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5384,7 +5865,7 @@
     "Minimum 3.70"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "1c5012e122e7",
+   "hash": "45d9d197822a",
    "id": "d69f0a91154d",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5419,7 +5900,7 @@
     "3.50–3.69"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "3d1a93561961",
+   "hash": "b01d6fb71c6c",
    "id": "6ecb914f6a81",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5454,7 +5935,7 @@
     "See calculator below"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "fb49acb4b97e",
+   "hash": "d1c0808d933b",
    "id": "a77d3b26504f",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5489,7 +5970,7 @@
     "3.50–3.69"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "a1b3ca3fd503",
+   "hash": "a2f22e98c719",
    "id": "7f693fe73caa",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5514,6 +5995,7 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "usa",
    "deadline": null,
@@ -5525,7 +6007,7 @@
     "Complete a minimum of 30 transferable academic semester credits"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "a9e497d25886",
+   "hash": "28d6a2fb1bd3",
    "id": "8c1682c65550",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5559,7 +6041,7 @@
     "Minimum 3.70"
    ],
    "firstSeen": "2026-11-14",
-   "hash": "791b5ef45306",
+   "hash": "5c9ebe1d0447",
    "id": "e9e23923dac5",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5584,6 +6066,7 @@
    }
   },
   {
+   "applyMode": "automatic",
    "applyUrl": "https://www.carvertrust.org/",
    "country": "usa",
    "deadline": "2027-03-01",
@@ -5599,7 +6082,7 @@
     "Must be pursuing the first bachelor's degree; students who have already earned an undergraduate degree are not eligible."
    ],
    "firstSeen": "2026-11-14",
-   "hash": "2a1e234945d6",
+   "hash": "b4cc60b7128f",
    "id": "59c8d14dee11",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5624,15 +6107,20 @@
    }
   },
   {
+   "applyMode": "application",
    "applyUrl": null,
    "country": "usa",
+   "covers": [
+    "Tuition",
+    "Health insurance"
+   ],
    "deadline": null,
    "deadlinePartial": "15 March",
    "deadlineText": "15 March",
    "description": "In support of students whose education has been impacted by global conflict, Stony Brook University offers the following scholarship opportunity. Scholarships are limited. Please review all qualifications and details before submitting an application. Questions can be directed to globalaffairs@stonybrook.edu",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "cea09f7a8524",
+   "hash": "e45fb1f95426",
    "id": "7ad1cc866bce",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5662,7 +6150,7 @@
    "description": "The Fulbright Foreign Student Program provides awards for graduate students, young professionals and artists from abroad to conduct research and study in the United States.",
    "eligibility": [],
    "firstSeen": "2026-11-14",
-   "hash": "07c0425ca1de",
+   "hash": "946c90dd3d26",
    "id": "540a0bb6c708",
    "intl": "yes",
    "lastChanged": "2026-11-14",
@@ -5685,12 +6173,12 @@
   }
  ],
  "stats": {
-  "added": 411,
+  "added": 6,
   "carriedOver": 0,
-  "changed": 0,
+  "changed": 157,
   "dropped": 0,
-  "items": 157,
-  "requests": 3769,
+  "items": 163,
+  "requests": 3790,
   "universitiesRead": 152,
   "universitiesTried": 260
  },
@@ -5752,8 +6240,8 @@
   "adelaide-university": {
    "checked": "2026-11-14",
    "count": 7,
-   "hubTitle": "Scholarships",
-   "hubUrl": "https://adelaide.edu.au/study/scholarships/",
+   "hubTitle": null,
+   "hubUrl": null,
    "status": "ok"
   },
   "aix-marseille-university": {
@@ -6053,8 +6541,8 @@
   "goethe-universitat-frankfurt-am-main": {
    "checked": "2026-11-14",
    "count": 0,
-   "hubTitle": null,
-   "hubUrl": null,
+   "hubTitle": "Winfried Wilcke Scholarship Program",
+   "hubUrl": "https://www.uni-frankfurt.de/en/fachbereich-13/studium-lehre/wilcke-stipendien",
    "status": "ok"
   },
   "griffith-university": {
@@ -6111,7 +6599,7 @@
    "count": 0,
    "hubTitle": null,
    "hubUrl": null,
-   "status": "ok"
+   "status": "no-scholarship-pages"
   },
   "iowa-state-university": {
    "checked": "2026-11-14",
@@ -6192,7 +6680,7 @@
   },
   "lancaster-university": {
    "checked": "2026-11-14",
-   "count": 12,
+   "count": 13,
    "hubTitle": "Lancaster Sanctuary Scholarship",
    "hubUrl": "https://www.lancaster.ac.uk/study/fees-and-funding/scholarships-and-bursaries/lancaster-sanctuary-scholarship/",
    "status": "ok"
@@ -6272,7 +6760,7 @@
    "count": 0,
    "hubTitle": "Scholarships",
    "hubUrl": "https://www.mq.edu.au/study/admissions-and-entry/scholarships",
-   "status": "ok"
+   "status": "no-scholarship-pages"
   },
   "massachusetts-institute-of-technology": {
    "checked": null,
@@ -6284,8 +6772,8 @@
   "massey-university": {
    "checked": "2026-11-14",
    "count": 5,
-   "hubTitle": "Scholarships and awards",
-   "hubUrl": "https://www.massey.ac.nz/study/scholarships-and-awards/",
+   "hubTitle": "Research funding and scholarships",
+   "hubUrl": "https://www.massey.ac.nz/research/research-funding-and-scholarships/",
    "status": "ok"
   },
   "mcgill-university": {
@@ -6746,8 +7234,8 @@
   "universitat-bayreuth": {
    "checked": "2026-11-14",
    "count": 0,
-   "hubTitle": "Scholarships and Grants",
-   "hubUrl": "https://www.uni-bayreuth.de/en/scholarships-grants",
+   "hubTitle": "Small contribution, big impact: The Deutschlandstipendium (Germany Scholarship)",
+   "hubUrl": "https://www.uni-bayreuth.de/en/germany-scholarship",
    "status": "ok"
   },
   "universitat-erlangen-nurnberg": {
@@ -6844,8 +7332,8 @@
   "universite-paris-cite": {
    "checked": "2026-11-14",
    "count": 2,
-   "hubTitle": "[SMARTS-UP Graduate Schools call for applications] Outgoing mobility scholarships for master’s students",
-   "hubUrl": "https://u-paris.fr/language/en/smarts-up-call-for-applications-outgoing-mobility-scholarships-for-masters-students/",
+   "hubTitle": "Université Paris Cité welcomes the SMARTS-UP Scholarship Recipients",
+   "hubUrl": "https://u-paris.fr/language/en/universite-de-paris-welcomes-the-smarts-up-scholarship-recipients/",
    "status": "ok"
   },
   "universite-paris-saclay": {
@@ -7054,8 +7542,8 @@
   "university-of-canberra": {
    "checked": "2026-11-14",
    "count": 0,
-   "hubTitle": "International scholarships",
-   "hubUrl": "https://www.canberra.edu.au/uc-college/courses/international-scholarships",
+   "hubTitle": "The impact of a scholarship",
+   "hubUrl": "https://www.canberra.edu.au/future-students/study-at-uc/international/international-student-experience-at-uc/the-impact-of-a-scholarship",
    "status": "ok"
   },
   "university-of-canterbury": {
@@ -7383,8 +7871,8 @@
   "university-of-sussex": {
    "checked": "2026-11-14",
    "count": 0,
-   "hubTitle": "Tuition fees",
-   "hubUrl": "https://www.sussex.ac.uk/study/fees-funding/tuition-fees",
+   "hubTitle": "Fees and funding",
+   "hubUrl": "https://www.sussex.ac.uk/study/fees-funding",
    "status": "ok"
   },
   "university-of-tasmania": {
@@ -7410,7 +7898,7 @@
   },
   "university-of-toronto": {
    "checked": "2026-11-14",
-   "count": 0,
+   "count": 1,
    "hubTitle": "School of Graduate Studies",
    "hubUrl": "https://www.sgs.utoronto.ca/awards-funding/",
    "status": "ok"
@@ -7518,7 +8006,7 @@
    "count": 0,
    "hubTitle": null,
    "hubUrl": null,
-   "status": "ok"
+   "status": "no-scholarship-pages"
   },
   "washington-state-university": {
    "checked": "2026-11-14",
@@ -7532,7 +8020,7 @@
    "count": 0,
    "hubTitle": null,
    "hubUrl": null,
-   "status": "ok"
+   "status": "no-scholarship-pages"
   },
   "western-sydney-university": {
    "checked": "2026-11-14",
