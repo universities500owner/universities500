@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
+const path = '/english-test/';
+---
+<Base
+  title="Which English test to sit: IELTS, TOEFL or PTE | Universities500"
+  description="How IELTS Academic, TOEFL iBT and PTE Academic differ, why the score matters for admission, visas and funding, and how to prepare for each skill."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="english-test"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>English test</nav>
+  <div class="q-head">
+    <h1>English test</h1>
+    <p>Which test to sit, why the score matters, and how to prepare for each skill.</p>
+  </div>
+
+  <section class="sec" aria-labelledby="h-test">
+    <h2 id="h-test">Which English test to sit</h2>
+    <p class="sec-lede">All three are widely accepted, but they suit different people. Check your university's accepted list and minimum scores before you book anything.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th><span class="sr-only">Feature</span></th><th>IELTS Academic</th><th>TOEFL iBT</th><th>PTE Academic</th></tr></thead>
+        <tbody>
+          <tr><td>Format</td><td>Paper or computer; speaking is a live interview</td><td>Computer; speaking is recorded</td><td>Computer only; scored by machine</td></tr>
+          <tr><td>Sections</td><td>Listening, reading, writing, speaking</td><td>Reading, listening, speaking, writing</td><td>Speaking and writing, reading, listening, mixed together</td></tr>
+          <tr><td>Scale</td><td>Bands 0 to 9, in half bands</td><td>0 to 120</td><td>10 to 90</td></tr>
+          <tr><td>Length</td><td>About 2 hours 45 minutes</td><td>About 2 hours</td><td>About 2 hours</td></tr>
+          <tr><td>Suits you if</td><td>You would rather speak to a person than a microphone</td><td>You are comfortable with lecture-style English and typing</td><td>You want a fast result and a fully computer-based test</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Formats change. Confirm on the official IELTS, ETS and Pearson sites.</p>
+
+    <h3 class="sec-sub">Why the score matters more than you think</h3>
+    <div class="dgrid">
+      <div class="dcard"><h3>Admission</h3><p>Most universities set a minimum overall score and, often, a minimum per section. One weak section can sink an otherwise strong application.</p></div>
+      <div class="dcard"><h3>Visa</h3><p>Several student visa routes only accept particular tests. Sitting the wrong one can cost you the application, not just the fee.</p></div>
+      <div class="dcard"><h3>Your first term</h3><p>The score is a rough proxy for whether you can follow a lecture and write an assignment from week one, which is what it is really for.</p></div>
+      <div class="dcard"><h3>Funding</h3><p>Some scholarships set their own language threshold, usually above the university's.</p></div>
+    </div>
+
+    <h3 class="sec-sub">Preparing, by skill</h3>
+    <div class="dgrid">
+      <div class="dcard"><h3>Listening</h3><p>Practise across British, American and Australian accents, and take notes while you listen rather than after.</p></div>
+      <div class="dcard"><h3>Reading</h3><p>Work to the clock. Skim for the argument first, then go back for the details the questions ask about.</p></div>
+      <div class="dcard"><h3>Writing</h3><p>Learn the task types cold, plan for five minutes before writing, and get feedback on every practice essay.</p></div>
+      <div class="dcard"><h3>Speaking</h3><p>Record yourself and listen back. Answer aloud daily, ideally to a person rather than a screen.</p></div>
+    </div>
+  </section>
+  <p class="note">Test formats here are general guidance, not the requirements of any particular university. Every university publishes its own, and theirs is the one that counts.</p>
+</Base>

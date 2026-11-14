@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
+const path = '/loan/';
+---
+<Base
+  title="Education loan calculator: what borrowing really costs | Universities500"
+  description="See the monthly instalment, the interest during study and the total you repay on an education loan, and where Indian applicants can compare lenders."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="loan"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Education loan</nav>
+  <div class="q-head">
+    <h1>Education loan</h1>
+    <p>What borrowing actually costs over the life of the loan, and where to compare lenders.</p>
+  </div>
+
+  <section class="sec" aria-labelledby="h-loan">
+    <h2 id="h-loan">If you borrow</h2>
+    <p class="sec-lede">An education loan is usually the largest financial commitment a student makes before they have an income. Worth seeing the full cost, not just the monthly figure.</p>
+    <div class="calc">
+      <div class="tcard">
+        <div class="grid2">
+          <div class="f"><label for="l-amt">Loan amount</label><input id="l-amt" type="number" value="30000" /></div>
+          <div class="f"><label for="l-rate">Interest rate, % a year</label><input id="l-rate" type="number" step="0.1" value="9" /></div>
+          <div class="f"><label for="l-course">Course length, years</label><input id="l-course" type="number" step="0.5" value="2" /></div>
+          <div class="f"><label for="l-term">Repayment term, years</label><input id="l-term" type="number" step="0.5" value="7" /></div>
+        </div>
+        <div class="f" style="margin-top:1rem">
+          <label for="l-mode">While you are studying</label>
+          <select id="l-mode">
+            <option value="0">Pay nothing, interest is added to the loan</option>
+            <option value="1">Pay the interest as it accrues</option>
+          </select>
+          <p class="hint">Paying interest during study costs less overall but needs income you may not have.</p>
+        </div>
+      </div>
+      <div class="panel" id="l-out" aria-live="polite"></div>
+    </div>
+    <p class="src">A simplified model: interest during study is not compounded and repayment is a level monthly instalment on a reducing balance. Real lenders differ on fees, moratorium terms and compounding.</p>
+
+    <h3 class="sec-sub">Where to compare lenders in India</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Lender</th><th>Type</th><th>Where to look</th></tr></thead>
+        <tbody>
+          <tr><td>Vidya Lakshmi</td><td>Government portal, many banks</td><td>vidyalakshmi.co.in</td></tr>
+          <tr><td>State Bank of India</td><td>Public bank</td><td>sbi.co.in</td></tr>
+          <tr><td>Bank of Baroda</td><td>Public bank</td><td>bankofbaroda.in</td></tr>
+          <tr><td>HDFC Credila</td><td>Non-bank lender</td><td>hdfccredila.com</td></tr>
+          <tr><td>Avanse</td><td>Non-bank lender</td><td>avanse.com</td></tr>
+          <tr><td>Auxilo</td><td>Non-bank lender</td><td>auxilo.com</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">A starting point for an Indian applicant, not a ranking and not complete. Rates, collateral rules and limits change constantly, so check each lender directly.</p>
+  </section>
+  <p class="note">Every figure here is yours to enter. Nothing is a lending offer. Confirm rates and terms with the lender before acting on any of it.</p>
+
+  <script>import '../scripts/loan.js';</script>
+</Base>

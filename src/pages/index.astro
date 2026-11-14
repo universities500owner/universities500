@@ -22,10 +22,10 @@ for (const c of countries) counts[c.code] = { n: c.count, name: c.name };
 const quick = [...countries].sort((a, b) => b.count - a.count).slice(0, 4);
 
 const steps = [
-  ['Find the fit', 'Score every course against what you’ve already studied, not just what you can afford.'],
-  ['Build the file', 'Documents, test scores, letters. One profile you reuse for every application.'],
-  ['Fund it', 'True cost, scholarships and loan repayments, before you commit to a country.'],
-  ['Land it', 'Visa readiness, what to pack, and who to find in your first week.'],
+  ['Find the fit', 'Score every course against what you’ve already studied, not just what you can afford.', '/course-fitment/'],
+  ['Build the file', 'Documents, test scores, letters. One checklist you reuse for every application.', '/application-prep/'],
+  ['Fund it', 'True cost, scholarships and loan repayments, before you commit to a country.', '/budget/'],
+  ['Land it', 'Visa readiness, what to pack, and who to find in your first week.', '/before-you-fly/'],
 ];
 
 const ld = [
@@ -75,7 +75,7 @@ const ld = [
           </div>
         </form>
         <p class="sx-try bs-try" aria-label="Browse by country">
-          {quick.map((c) => <a class="sx-q" href={`/study-in/${c.code}/`}>Universities in {c.name}</a>)}
+          {quick.map((c) => <a class="sx-q" href={`/study-in/${c.code}/`}>Study in {c.name}</a>)}
         </p>
 
         <p class="madlib">
@@ -95,7 +95,7 @@ const ld = [
 
         <div class="row">
           <a class="btn" id="go" href="/universities/">Show these universities</a>
-          <a class="btn-ghost" href="/study-in/">Browse by country</a>
+          <a class="btn-ghost" href="/study-in/">Read a country guide</a>
         </div>
 
         <dl class="scope">
@@ -127,12 +127,12 @@ const ld = [
 
     <section class="band">
       <div class="wrap">
-        <h2>Coming next: four steps from fit to landing.</h2>
+        <h2>Four steps from fit to landing.</h2>
         <ol class="steps">
-          {steps.map(([t, d], i) => (
+          {steps.map(([t, d, href], i) => (
             <li class="step">
               <span class="step-n">{i + 1}</span>
-              <h3>{t} <span class="soon">Soon</span></h3>
+              <h3><a href={href}>{t}</a></h3>
               <p>{d}</p>
             </li>
           ))}
@@ -165,7 +165,8 @@ const ld = [
   <style is:global>
     .home-v1 a.btn, .home-v1 a.btn-ghost, .home-v1 a.btn-on-accent, .home-v1 a.sx-q { text-decoration: none; display: inline-flex; align-items: center; }
     .home-v1 .sx-q:hover { border-color: var(--ink); }
-    .home-v1 .soon { font-family: var(--body); font-weight: 600; font-size: .7rem; letter-spacing: 0; background: var(--hover); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: .05rem .5rem; margin-left: .35rem; vertical-align: middle; }
+    .home-v1 .step h3 a { color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent); }
+    .home-v1 .step h3 a:hover { background: var(--hover); }
     .home-v1 .scope dd { max-width: 22ch; }
     @media (max-width: 600px) {
       .home-v1 .scope { display: grid; gap: 1.1rem; }

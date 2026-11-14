@@ -1,15 +1,15 @@
 ---
 import '../styles/global.css';
+import '../styles/tools.css';
 import { SITE } from '../lib/data.js';
+import { NAV } from '../lib/nav.js';
+import { englishGuides, otherGuides, guides } from '../lib/guides.js';
 
 const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false } = Astro.props;
 const url = new URL(path, SITE).href;
 const ld = jsonld ? JSON.stringify(jsonld).replace(/</g, '\\u003c') : null;
-const nav = [
-  ['/universities/', 'Universities', 'universities'],
-  ['/study-in/', 'Study in', 'study-in'],
-  ['/rankings/', 'Rankings', 'rankings'],
-];
+const inGroup = (g) => g.items.some((i) => i[2] === current);
+const onGuide = current === 'guide';
 ---
 <!doctype html>
 <html lang="en">
@@ -44,18 +44,54 @@ const nav = [
           <img class="logo-light" src="/brand/full-light.png" alt="Universities500" width="155" height="30" />
           <img class="logo-dark" src="/brand/full-dark.png" alt="" width="155" height="30" aria-hidden="true" />
         </a>
+      <nav class="mainnav" aria-label="Main">
+          <ul class="nav-list" id="nav-list">
+            {NAV.map((g) => (
+              <li class="nav-group">
+                <button class="nav-btn" type="button" aria-expanded="false" aria-controls={`nav-${g.id}`} data-here={inGroup(g) ? '' : undefined}>
+                  {g.label}
+                  <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </button>
+                <div class="nav-panel" id={`nav-${g.id}`} hidden>
+                  <ul>
+                    {g.items.map(([href, label, key]) => (
+                      <li><a href={href} aria-current={current === key ? 'page' : undefined}>{label}</a></li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))}
+            <li class="nav-group">
+              <button class="nav-btn" type="button" aria-expanded="false" aria-controls="nav-guides" data-here={onGuide ? '' : undefined}>
+                Guides
+                <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </button>
+              <div class="nav-panel wide" id="nav-guides" hidden>
+                <div>
+                  <h2>Study and live in English</h2>
+                  <ul>{englishGuides.map((g) => <li><a href={`/study-in/${g.slug}/`}>{g.name}</a></li>)}</ul>
+                </div>
+                <div>
+                  <h2>Study in English, live in another language</h2>
+                  <ul>{otherGuides.map((g) => <li><a href={`/study-in/${g.slug}/`}>{g.name}</a></li>)}</ul>
+                </div>
+                <a class="all" href="/study-in/">Compare all destinations</a>
+              </div>
+            </li>
+          </ul>
+      </nav>
+
         <div class="head-right">
-          <nav aria-label="Main">
-            <ul>
-              {nav.map(([href, label, key]) => (
-                <li><a href={href} aria-current={current === key ? 'page' : undefined}>{label}</a></li>
-              ))}
-            </ul>
-          </nav>
-          <button class="theme" id="theme" type="button" aria-label="Switch to dark theme">
-            <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
-            <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
-          </button>
+          <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
+          <div class="head-actions">
+            <a class="head-search" href="/search/" aria-label="Search the site">
+              <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
+            </a>
+            <button class="theme" id="theme" type="button" aria-label="Switch to dark theme">
+              <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
+              <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -64,6 +100,18 @@ const nav = [
     </main>
     <footer class="site-foot">
       <div class="wrap">
+        <div class="foot-cols">
+          <div>
+            <h2>Guides</h2>
+            <ul>{guides.map((g) => <li><a href={`/study-in/${g.slug}/`}>Study in {g.name}</a></li>)}</ul>
+          </div>
+          {NAV.map((g) => (
+            <div>
+              <h2>{g.label}</h2>
+              <ul>{g.items.map(([href, label]) => <li><a href={href}>{label}</a></li>)}</ul>
+            </div>
+          ))}
+        </div>
         <p>
           University overviews are text from <a href="https://www.wikipedia.org/">Wikipedia</a>, licensed{' '}
           <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Facts such as founding year,
@@ -79,6 +127,35 @@ const nav = [
       </div>
     </footer>
     <script is:inline>
+      (function () {
+        var list = document.getElementById('nav-list'), tog = document.getElementById('nav-toggle');
+        var btns = Array.prototype.slice.call(document.querySelectorAll('.nav-btn'));
+        function closeAll(except) {
+          btns.forEach(function (b) {
+            if (b === except) return;
+            b.setAttribute('aria-expanded', 'false');
+            document.getElementById(b.getAttribute('aria-controls')).hidden = true;
+          });
+        }
+        btns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            var open = b.getAttribute('aria-expanded') === 'true';
+            closeAll(b);
+            b.setAttribute('aria-expanded', String(!open));
+            document.getElementById(b.getAttribute('aria-controls')).hidden = open;
+          });
+        });
+        tog.addEventListener('click', function () {
+          var open = list.classList.toggle('open');
+          tog.setAttribute('aria-expanded', String(open));
+        });
+        document.addEventListener('click', function (e) {
+          if (!e.target.closest('.nav-group') && !e.target.closest('#nav-toggle')) closeAll(null);
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { closeAll(null); }
+        });
+      })();
       (function () {
         var b = document.getElementById('theme');
         function label() { b.setAttribute('aria-label', 'Switch to ' + (document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark') + ' theme'); }

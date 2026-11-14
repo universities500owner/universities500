@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
+const path = '/application-prep/';
+const docs = [
+  'Passport, valid well past your course start',
+  'Transcripts, with certified translation if not in English',
+  'Degree or school completion certificate',
+  'English test result',
+  'Statement of purpose',
+  'Two or three recommendation letters',
+  'CV',
+  'Evidence of funds',
+  'Passport photographs to the required specification',
+];
+---
+<Base
+  title="Application preparation: documents, letters, statement and CV | Universities500"
+  description="The usual document set for a study abroad application, how to handle recommendation letters and the statement of purpose, and what to check for your CV."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="application-prep"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Application prep</nav>
+  <div class="q-head">
+    <h1>Application preparation</h1>
+    <p>Documents, recommendation letters, the statement of purpose and your CV.</p>
+  </div>
+
+  <section class="sec" aria-labelledby="h-docs">
+    <h2 id="h-docs">Documents</h2>
+    <p class="sec-lede">The usual set. Individual universities and countries add to it, so treat this as the floor rather than the whole list. Ticks are saved in this browser only.</p>
+    <div class="prog">
+      <b id="dk-pct">0 of {docs.length}</b>
+      <span class="meter"><i id="dk-bar" style="width:0"></i></span>
+      <span id="dk-say"></span>
+    </div>
+    <div class="tcard" id="dk-list">
+      {docs.map((d) => <label class="check"><input type="checkbox" data-k={d} /><span>{d}</span></label>)}
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-letters">
+    <h2 id="h-letters">Letters and statement</h2>
+    <p class="sec-lede">The two parts of an application nobody can write for you, and the two that decide most borderline cases.</p>
+    <div class="grid2">
+      <div class="tcard">
+        <h3>Recommendation letters</h3>
+        <ol class="numlist">
+          <li>Pick two or three people who have seen your actual work, not the most senior names you can find.</li>
+          <li>Ask six to eight weeks before the deadline.</li>
+          <li>Send each a short brief: your goal, the course, the projects you worked on together, the deadline.</li>
+          <li>Remind them gently at the two-week mark.</li>
+          <li>Thank them, and tell them the outcome either way.</li>
+        </ol>
+      </div>
+      <div class="tcard">
+        <h3>Statement of purpose</h3>
+        <ol class="numlist">
+          <li>Why this field, and why now.</li>
+          <li>Two or three experiences that prove the interest is real.</li>
+          <li>Why this university and this course specifically.</li>
+          <li>What you intend to do afterwards.</li>
+          <li>Get it read by someone honest, then cut it to the word limit.</li>
+        </ol>
+      </div>
+    </div>
+
+    <h3 class="sec-sub">CV</h3>
+    <div class="dgrid">
+      <div class="dcard"><h3>Pick the right form</h3><p>An academic CV and a one-page resume are different documents. Which one you need depends on the country and the course.</p></div>
+      <div class="dcard"><h3>Rewrite the bullets</h3><p>Lead with a verb, end with a number. “Ran the lab rota” becomes “Scheduled 14 students across 3 labs weekly”.</p></div>
+      <div class="dcard"><h3>Check the local norms</h3><p>Photo or no photo, date of birth or not, one page or two. This varies by country and getting it wrong reads as careless.</p></div>
+    </div>
+  </section>
+  <p class="note">Document lists and letter conventions here are general guidance, not the requirements of any particular university. Every university publishes its own, and theirs is the one that counts.</p>
+
+  <script>
+    import { $, wireChecklist } from '../scripts/lib.js';
+    wireChecklist({
+      root: $('dk-list'), key: 'u500-docs', pctEl: 'dk-pct', barEl: 'dk-bar', sayEl: 'dk-say',
+      say: (d, t) => d === t ? 'The usual set is complete. Individual universities will ask for more.' : d === 0 ? 'Start with the passport and transcripts. Both take longest to replace.' : 'Keep going. ' + (t - d) + ' left in the standard set.',
+    });
+  </script>
+</Base>

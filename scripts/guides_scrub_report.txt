@@ -1,0 +1,336 @@
+slug	change	text (first 260 characters)
+singapore	dropped stat	4 | In the QS global top 500
+singapore	dropped stat	#10 | NUS, global rank
+singapore	dropped stat	2 | In the global top 15
+singapore	dropped item	Two Universities in the Global Top 15. Singapore places 2 universities inside the world’s top 15 and 4 universities inside the global top 500 in the QS World University Rankings 2027, led by the National University of Singapore (NUS) at #10 and Nanyang Technol
+singapore	dropped sentence	Singapore consistently ranks among the safest cities in the world with low crime rates, world-class public transit, and direct flight connections across Asia, Australia, and Europe.
+singapore	dropped item	Unmatched Safety and Connectivity. Singapore consistently ranks among the safest cities in the world with low crime rates, world-class public transit, and direct flight connections across Asia, Australia, and Europe.
+singapore	trimmed heading	Public Autonomous Universities (QS World University Rankings 2027)
+singapore	trimmed	National University of Singapore (NUS) – World Rank #10
+singapore	trimmed	Nanyang Technological University (NTU Singapore) – World Rank #12
+singapore	trimmed	Singapore University of Technology and Design (SUTD) – World Rank #266
+singapore	trimmed	Singapore Management University (SMU) – World Rank #411
+singapore	dropped sentence	Singapore’s public universities—led by NUS (#10) and NTU (#12) in the QS World University Rankings 2027—are among the highest-ranked universities in Asia and the world.
+uae	dropped stat	6 | In the QS global top 500
+uae	dropped stat	#177 | Khalifa University, global rank
+uae	dropped sentence	The United Arab Emirates (UAE) has rapidly emerged as the Middle East’s premier international education hub, combining globally ranked national universities with over 30 accredited international branch campuses from the UK, USA, Australia, and France.
+uae	dropped item	Global Top 500 Universities: The UAE places 6 universities inside the global top 500 in the QS World University Rankings 2027, led by Khalifa University (#177) and United Arab Emirates University (#229).
+uae	dropped sentence	Abu Dhabi, Dubai, and Sharjah consistently rank among the safest cities in the world, featuring ultramodern public transport, healthcare, and multicultural communities where English is widely spoken.
+uae	dropped item	Unmatched Safety and Modern Infrastructure: Abu Dhabi, Dubai, and Sharjah consistently rank among the safest cities in the world, featuring ultramodern public transport, healthcare, and multicultural communities where English is widely spoken.
+uae	trimmed heading	Top 500 Global Universities (QS World University Rankings 2027)
+uae	dropped heading	Top 500 Global Universities
+uae	dropped sentence	Khalifa University – Abu Dhabi (World Rank #177)
+uae	dropped item	Khalifa University – Abu Dhabi (World Rank #177)
+uae	dropped sentence	United Arab Emirates University (UAEU) – Al Ain, Abu Dhabi (World Rank #229)
+uae	dropped item	United Arab Emirates University (UAEU) – Al Ain, Abu Dhabi (World Rank #229)
+uae	dropped sentence	American University of Sharjah (AUS) – Sharjah (World Rank #272)
+uae	dropped item	American University of Sharjah (AUS) – Sharjah (World Rank #272)
+uae	dropped sentence	University of Sharjah – Sharjah (World Rank #328)
+uae	dropped item	University of Sharjah – Sharjah (World Rank #328)
+uae	dropped sentence	Abu Dhabi University – Abu Dhabi and Dubai (World Rank #391)
+uae	dropped item	Abu Dhabi University – Abu Dhabi and Dubai (World Rank #391)
+uae	dropped sentence	Ajman University – Ajman (World Rank #440)
+uae	dropped item	Ajman University – Ajman (World Rank #440)
+uae	dropped sentence	Graduates from top-ranked global universities (including top 500 institutions) can apply for a self-sponsored Job Exploration Visa without requiring a local host or sponsor, allowing them to stay in the UAE and interview with employers.
+uae	dropped item	Job Exploration Entry Visa (60, 90, or 120 Days): Graduates from top-ranked global universities (including top 500 institutions) can apply for a self-sponsored Job Exploration Visa without requiring a local host or sponsor, allowing them to stay in the UAE and
+uae	dropped sentence	Graduates from top 100 global universities worldwide also qualify for the 10-year Golden Visa with a minimum GPA of 3.5.
+uae	dropped item	Graduates from top 100 global universities worldwide also qualify for the 10-year Golden Visa with a minimum GPA of 3.5.
+malaysia	dropped stat	10 | In the QS global top 500
+malaysia	dropped stat	#56 | Universiti Malaya, global rank
+malaysia	dropped sentence	Known for its globally ranked public and private universities, international branch campuses from the UK and Australia, and English-taught programs, Malaysia allows students to earn internationally recognized degrees at a fraction of Western tuition and living
+malaysia	dropped item	10 Universities in the Global Top 500: Malaysia places 1 university in the global top 60 (Universiti Malaya at #56) and 10 universities inside the global top 500 in the QS World University Rankings 2027.
+malaysia	dropped sentence	Kuala Lumpur, Penang, and Johor Bahru consistently rank among the world’s most affordable student cities, with monthly living expenses averaging MYR 1,500 to MYR 2,500 (roughly USD 350 to USD 580).
+malaysia	dropped item	Highly Affordable Living Costs: Kuala Lumpur, Penang, and Johor Bahru consistently rank among the world’s most affordable student cities, with monthly living expenses averaging MYR 1,500 to MYR 2,500 (roughly USD 350 to USD 580).
+malaysia	dropped sentence	Malaysia’s higher education system includes 20 public universities, over 40 private universities, and 10 foreign university branch campuses, with 10 universities ranked in the global top 500 of the QS World University Rankings 2027:
+malaysia	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+malaysia	dropped heading	Top 100 Global Universities
+malaysia	dropped sentence	Universiti Malaya (UM) – Kuala Lumpur (World Rank #56)
+malaysia	dropped item	Universiti Malaya (UM) – Kuala Lumpur (World Rank #56)
+malaysia	trimmed heading	Top 101–500 Global Universities (QS World University Rankings 2027)
+malaysia	dropped heading	Top 101–500 Global Universities
+malaysia	dropped sentence	Universiti Sains Malaysia (USM) – Penang (World Rank #128)
+malaysia	dropped item	Universiti Sains Malaysia (USM) – Penang (World Rank #128)
+malaysia	dropped sentence	Universiti Kebangsaan Malaysia (UKM) – Bangi, Selangor (World Rank #130)
+malaysia	dropped item	Universiti Kebangsaan Malaysia (UKM) – Bangi, Selangor (World Rank #130)
+malaysia	dropped sentence	Universiti Putra Malaysia (UPM) – Serdang, Selangor (World Rank #138)
+malaysia	dropped item	Universiti Putra Malaysia (UPM) – Serdang, Selangor (World Rank #138)
+malaysia	dropped sentence	Universiti Teknologi Malaysia (UTM) – Johor Bahru and Kuala Lumpur (World Rank #158)
+malaysia	dropped item	Universiti Teknologi Malaysia (UTM) – Johor Bahru and Kuala Lumpur (World Rank #158)
+malaysia	dropped sentence	Universiti Teknologi PETRONAS (UTP) – Seri Iskandar, Perak (World Rank #261)
+malaysia	dropped item	Universiti Teknologi PETRONAS (UTP) – Seri Iskandar, Perak (World Rank #261)
+malaysia	dropped sentence	Taylor’s University – Subang Jaya, Selangor (World Rank #272)
+malaysia	dropped item	Taylor’s University – Subang Jaya, Selangor (World Rank #272)
+malaysia	dropped sentence	UCSI University – Kuala Lumpur (World Rank #282)
+malaysia	dropped item	UCSI University – Kuala Lumpur (World Rank #282)
+malaysia	dropped sentence	Sunway University – Bandar Sunway, Selangor (World Rank #354)
+malaysia	dropped item	Sunway University – Bandar Sunway, Selangor (World Rank #354)
+malaysia	dropped sentence	INTI International University – Nilai, Negeri Sembilan (World Rank #406)
+malaysia	dropped item	INTI International University – Nilai, Negeri Sembilan (World Rank #406)
+malaysia	dropped sentence	Malaysia offers some of the lowest tuition and living costs among globally ranked study destinations:
+norway	dropped stat	4 | In the QS global top 500
+norway	dropped item	Global Top 500 Presence: Norway places 4 universities inside the global top 500 in the QS World University Rankings 2027, led by the University of Oslo (#120) and the University of Bergen (#205).
+norway	dropped sentence	Norway consistently ranks among the top countries globally in the UN Human Development Index (HDI), offering high part-time and graduate wages alongside strong labor protections.
+norway	dropped item	High Wages and Living Standards: Norway consistently ranks among the top countries globally in the UN Human Development Index (HDI), offering high part-time and graduate wages alongside strong labor protections.
+norway	dropped sentence	Norway’s higher education system consists of public universities, specialized university institutions, university colleges (høgskoler), and accredited private institutions, with 4 universities ranked in the global top 500 of the QS World University Rankings 20
+norway	trimmed heading	Top 500 Global Universities (QS World University Rankings 2027)
+norway	dropped heading	Top 500 Global Universities
+norway	dropped sentence	University of Oslo (UiO) – Oslo (World Rank #120)
+norway	dropped item	University of Oslo (UiO) – Oslo (World Rank #120)
+norway	dropped sentence	University of Bergen (UiB) – Bergen (World Rank #205)
+norway	dropped item	University of Bergen (UiB) – Bergen (World Rank #205)
+norway	dropped sentence	Norwegian University of Science and Technology (NTNU) – Trondheim, Gjøvik, and Ålesund (World Rank #264)
+norway	dropped item	Norwegian University of Science and Technology (NTNU) – Trondheim, Gjøvik, and Ålesund (World Rank #264)
+norway	dropped sentence	UiT The Arctic University of Norway – Tromsø, Alta, Narvik, and Harstad (World Rank #492)
+norway	dropped item	UiT The Arctic University of Norway – Tromsø, Alta, Narvik, and Harstad (World Rank #492)
+australia	dropped stat	27 | In the QS global top 500
+australia	dropped sentence	Known for its globally ranked institutions, practical teaching approach, and strong post-study career pathways, Australia offers international students a safe, multicultural environment with high living standards.
+australia	dropped item	Global Top 100 Presence: Australia has 9 universities ranked in the global top 100 and 27 universities ranked in the global top 500 in the QS World University Rankings.
+australia	dropped sentence	Australian universities rank in the world’s top 100 across 54 academic subject areas, including engineering, medicine, business, and computer science.
+australia	dropped item	Subject Excellence: Australian universities rank in the world’s top 100 across 54 academic subject areas, including engineering, medicine, business, and computer science.
+australia	dropped sentence	Cities such as Melbourne, Sydney, Brisbane, Perth, and Adelaide consistently rank among the world’s most livable and student-friendly cities.
+australia	dropped item	High Quality of Life: Cities such as Melbourne, Sydney, Brisbane, Perth, and Adelaide consistently rank among the world’s most livable and student-friendly cities.
+australia	dropped sentence	Australia is home to 43 universities, with 27 ranked in the global top 500 in the QS World University Rankings 2027.
+australia	dropped heading	Top 100 Global Universities
+australia	dropped sentence	The University of New South Wales (UNSW Sydney) – Sydney, New South Wales (World Rank #19)
+australia	dropped item	The University of New South Wales (UNSW Sydney) – Sydney, New South Wales (World Rank #19)
+australia	dropped sentence	The University of Melbourne – Melbourne, Victoria (World Rank #22)
+australia	dropped item	The University of Melbourne – Melbourne, Victoria (World Rank #22)
+australia	dropped sentence	The University of Sydney – Sydney, New South Wales (World Rank #28)
+australia	dropped item	The University of Sydney – Sydney, New South Wales (World Rank #28)
+australia	dropped sentence	Australian National University (ANU) – Canberra, Australian Capital Territory (World Rank #29)
+australia	dropped item	Australian National University (ANU) – Canberra, Australian Capital Territory (World Rank #29)
+australia	dropped sentence	Monash University – Melbourne, Victoria (World Rank #31)
+australia	dropped item	Monash University – Melbourne, Victoria (World Rank #31)
+australia	dropped sentence	The University of Queensland (UQ) – Brisbane, Queensland (World Rank #40)
+australia	dropped item	The University of Queensland (UQ) – Brisbane, Queensland (World Rank #40)
+australia	dropped sentence	The University of Western Australia (UWA) – Perth, Western Australia (World Rank #77)
+australia	dropped item	The University of Western Australia (UWA) – Perth, Western Australia (World Rank #77)
+australia	dropped sentence	Adelaide University – Adelaide, South Australia (World Rank #79)
+australia	dropped item	Adelaide University – Adelaide, South Australia (World Rank #79)
+australia	dropped heading	Top 101–500 Global Universities
+canada	dropped stat	16 | In the QS global top 500
+canada	dropped stat	4 | In the global top 100
+canada	dropped item	Global Top 100 Universities. Canada places 4 universities inside the world’s top 100 and 16 universities inside the global top 500 in the QS World University Rankings 2027.
+canada	dropped sentence	Canadian cities such as Toronto, Vancouver, Montreal, Ottawa, and Calgary consistently rank among the safest and most livable cities in the world.
+canada	dropped item	High Quality of Life and Safety. Canadian cities such as Toronto, Vancouver, Montreal, Ottawa, and Calgary consistently rank among the safest and most livable cities in the world.
+canada	dropped sentence	Canada has over 100 public and private universities, with 16 institutions ranked in the global top 500 in the QS World University Rankings 2027.
+canada	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+canada	dropped heading	Top 100 Global Universities
+canada	dropped sentence	McGill University – Montreal, Quebec (World Rank #30)
+canada	dropped item	McGill University – Montreal, Quebec (World Rank #30)
+canada	dropped sentence	University of Toronto – Toronto, Ontario (World Rank #32)
+canada	dropped item	University of Toronto – Toronto, Ontario (World Rank #32)
+canada	dropped sentence	University of British Columbia (UBC) – Vancouver, British Columbia (World Rank #45)
+canada	dropped item	University of British Columbia (UBC) – Vancouver, British Columbia (World Rank #45)
+canada	dropped sentence	University of Alberta – Edmonton, Alberta (World Rank #96)
+canada	dropped item	University of Alberta – Edmonton, Alberta (World Rank #96)
+canada	dropped heading	Top 101–500 Global Universities
+new-zealand	dropped stat	8 | Public universities, all in the QS top 500
+new-zealand	dropped stat	#67 | University of Auckland, global rank
+new-zealand	dropped sentence	Regulated under the New Zealand Qualifications and Credentials Framework (NZQCF), all eight of New Zealand’s public universities rank inside the global top 500.
+new-zealand	dropped item	100% of Public Universities in the Global Top 500. Every single one of New Zealand’s eight public universities ranks in the top 500 of the QS World University Rankings 2027, led by The University of Auckland at #67 globally.
+new-zealand	dropped sentence	New Zealand consistently ranks among the top 5 safest and most peaceful nations in the Global Peace Index.
+new-zealand	dropped item	Safe and Peaceful Society. New Zealand consistently ranks among the top 5 safest and most peaceful nations in the Global Peace Index.
+new-zealand	dropped sentence	All 8 public universities in New Zealand rank in the global top 500 of the QS World University Rankings 2027:
+new-zealand	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+new-zealand	dropped heading	Top 100 Global Universities
+new-zealand	dropped sentence	The University of Auckland – Auckland (World Rank #67)
+new-zealand	dropped item	The University of Auckland – Auckland (World Rank #67)
+new-zealand	trimmed heading	Top 101–500 Global Universities (QS World University Rankings 2027)
+new-zealand	dropped heading	Top 101–500 Global Universities
+new-zealand	dropped sentence	University of Otago – Dunedin (World Rank #198)
+new-zealand	dropped item	University of Otago – Dunedin (World Rank #198)
+new-zealand	dropped sentence	Massey University – Palmerston North, Auckland, and Wellington (World Rank #215)
+new-zealand	dropped item	Massey University – Palmerston North, Auckland, and Wellington (World Rank #215)
+new-zealand	dropped sentence	Victoria University of Wellington – Wellington (World Rank #241)
+new-zealand	dropped item	Victoria University of Wellington – Wellington (World Rank #241)
+new-zealand	dropped sentence	University of Canterbury – Christchurch (World Rank #257)
+new-zealand	dropped item	University of Canterbury – Christchurch (World Rank #257)
+new-zealand	dropped sentence	University of Waikato – Hamilton and Tauranga (World Rank #293)
+new-zealand	dropped item	University of Waikato – Hamilton and Tauranga (World Rank #293)
+new-zealand	dropped sentence	Lincoln University – Lincoln, Canterbury (World Rank #419)
+new-zealand	dropped item	Lincoln University – Lincoln, Canterbury (World Rank #419)
+new-zealand	dropped sentence	Auckland University of Technology (AUT) – Auckland (World Rank #431)
+new-zealand	dropped item	Auckland University of Technology (AUT) – Auckland (World Rank #431)
+new-zealand	dropped section (empty after scrub)	Universities
+sweden	dropped stat	8 | In the QS global top 500
+sweden	dropped stat	3 | In the global top 100
+sweden	dropped item	Global Top 100 Presence: Sweden places 3 comprehensive universities inside the world’s top 100 and 8 universities inside the global top 500 in the QS World University Rankings 2027, led by Lund University at #71 globally.
+sweden	dropped sentence	Swedish cities rank among the cleanest, safest, and most environmentally sustainable in the world, with strong work-life balance and gender equality.
+sweden	dropped item	High Quality of Life and Sustainability: Swedish cities rank among the cleanest, safest, and most environmentally sustainable in the world, with strong work-life balance and gender equality.
+sweden	dropped sentence	Sweden has over 35 universities and university colleges, with 8 universities ranked in the global top 500 of the QS World University Rankings 2027 (alongside specialist medical university Karolinska Institutet):
+sweden	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+sweden	dropped heading	Top 100 Global Universities
+sweden	dropped sentence	Lund University – Lund (World Rank #71)
+sweden	dropped item	Lund University – Lund (World Rank #71)
+sweden	dropped sentence	KTH Royal Institute of Technology – Stockholm (World Rank #82)
+sweden	dropped item	KTH Royal Institute of Technology – Stockholm (World Rank #82)
+sweden	dropped sentence	Uppsala University – Uppsala (World Rank #87)
+sweden	dropped item	Uppsala University – Uppsala (World Rank #87)
+sweden	trimmed heading	Top 101–500 Global Universities (QS World University Rankings 2027)
+sweden	dropped heading	Top 101–500 Global Universities
+sweden	dropped sentence	Stockholm University – Stockholm (World Rank #167)
+sweden	dropped item	Stockholm University – Stockholm (World Rank #167)
+sweden	dropped sentence	Chalmers University of Technology – Gothenburg (World Rank #174)
+sweden	dropped item	Chalmers University of Technology – Gothenburg (World Rank #174)
+sweden	dropped sentence	University of Gothenburg – Gothenburg (World Rank #225)
+sweden	dropped item	University of Gothenburg – Gothenburg (World Rank #225)
+sweden	dropped sentence	Linköping University – Linköping (World Rank #308)
+sweden	dropped item	Linköping University – Linköping (World Rank #308)
+sweden	dropped sentence	Umeå University – Umeå (World Rank #438)
+sweden	dropped item	Umeå University – Umeå (World Rank #438)
+sweden	trimmed	Karolinska Institutet – Stockholm (World-renowned specialist medical university; ranked #55 globally in THE World University Rankings 2027)
+uk	dropped stat	4 | In the global top 10
+uk	dropped stat	16 | In the global top 100
+uk	dropped item	Global Top 10 Dominance. The UK places 4 universities inside the world’s top 10 and 16 universities inside the global top 100 in the QS World University Rankings 2027.
+uk	dropped sentence	The UK is home to over 160 degree-awarding institutions, with 45+ universities ranked in the global top 500 in the QS World University Rankings 2027.
+uk	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+uk	dropped heading	Top 100 Global Universities
+uk	dropped sentence	Imperial College London – London (World Rank #2)
+uk	dropped item	Imperial College London – London (World Rank #2)
+uk	dropped sentence	University of Oxford – Oxford, England (World Rank #4)
+uk	dropped item	University of Oxford – Oxford, England (World Rank #4)
+uk	dropped sentence	University of Cambridge – Cambridge, England (World Rank #6)
+uk	dropped item	University of Cambridge – Cambridge, England (World Rank #6)
+uk	dropped sentence	UCL (University College London) – London (World Rank #8)
+uk	dropped item	UCL (University College London) – London (World Rank #8)
+uk	dropped sentence	The University of Edinburgh – Edinburgh, Scotland (World Rank #35)
+uk	dropped item	The University of Edinburgh – Edinburgh, Scotland (World Rank #35)
+uk	dropped sentence	King’s College London – London (World Rank #37)
+uk	dropped item	King’s College London – London (World Rank #37)
+uk	dropped sentence	The University of Manchester – Manchester, England (World Rank #40)
+uk	dropped item	The University of Manchester – Manchester, England (World Rank #40)
+uk	dropped sentence	University of Bristol – Bristol, England (World Rank #57)
+uk	dropped item	University of Bristol – Bristol, England (World Rank #57)
+uk	dropped sentence	London School of Economics and Political Science (LSE) – London (World Rank #62)
+uk	dropped item	London School of Economics and Political Science (LSE) – London (World Rank #62)
+uk	dropped sentence	University of Warwick – Coventry, England (World Rank #68)
+uk	dropped item	University of Warwick – Coventry, England (World Rank #68)
+uk	dropped sentence	University of Birmingham – Birmingham, England (World Rank #68)
+uk	dropped item	University of Birmingham – Birmingham, England (World Rank #68)
+uk	dropped sentence	University of Leeds – Leeds, England (World Rank #77)
+uk	dropped item	University of Leeds – Leeds, England (World Rank #77)
+uk	dropped sentence	University of Glasgow – Glasgow, Scotland (World Rank #80)
+uk	dropped item	University of Glasgow – Glasgow, Scotland (World Rank #80)
+uk	dropped sentence	The University of Sheffield – Sheffield, England (World Rank #82)
+uk	dropped item	The University of Sheffield – Sheffield, England (World Rank #82)
+uk	dropped sentence	Durham University – Durham, England (World Rank #85)
+uk	dropped item	Durham University – Durham, England (World Rank #85)
+uk	dropped sentence	University of Nottingham – Nottingham, England (World Rank #97)
+uk	dropped item	University of Nottingham – Nottingham, England (World Rank #97)
+uk	dropped heading	Other Leading Top 500 Global Universities
+germany	dropped stat	25+ | In the QS global top 500
+germany	dropped item	Global Top 100 Presence. Germany places 4 universities inside the world’s top 100 and over 25 universities inside the global top 500 in the QS World University Rankings 2027, led by the Technical University of Munich at #25 globally.
+germany	dropped sentence	Germany has over 400 state-recognized higher education institutions, with over 25 ranked in the global top 500 of the QS World University Rankings 2027.
+germany	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+germany	dropped heading	Top 100 Global Universities
+germany	dropped sentence	Technical University of Munich (TUM) – Munich (World Rank #25)
+germany	dropped item	Technical University of Munich (TUM) – Munich (World Rank #25)
+germany	dropped sentence	Ludwig-Maximilians-Universität München (LMU Munich) – Munich (World Rank #61)
+germany	dropped item	Ludwig-Maximilians-Universität München (LMU Munich) – Munich (World Rank #61)
+germany	dropped sentence	Universität Heidelberg – Heidelberg (World Rank #86)
+germany	dropped item	Universität Heidelberg – Heidelberg (World Rank #86)
+germany	dropped sentence	Freie Universität Berlin – Berlin (World Rank #98)
+germany	dropped item	Freie Universität Berlin – Berlin (World Rank #98)
+germany	trimmed heading	Top 101–500 Global Universities (QS World University Rankings 2027)
+germany	dropped heading	Top 101–500 Global Universities
+germany	dropped sentence	RWTH Aachen University – Aachen (World Rank #104)
+germany	dropped item	RWTH Aachen University – Aachen (World Rank #104)
+germany	dropped sentence	Karlsruhe Institute of Technology (KIT) – Karlsruhe (World Rank #110)
+germany	dropped item	Karlsruhe Institute of Technology (KIT) – Karlsruhe (World Rank #110)
+germany	dropped sentence	Humboldt-Universität zu Berlin – Berlin (World Rank #140)
+germany	dropped item	Humboldt-Universität zu Berlin – Berlin (World Rank #140)
+germany	dropped sentence	Technische Universität Berlin (TU Berlin) – Berlin (World Rank #158)
+germany	dropped item	Technische Universität Berlin (TU Berlin) – Berlin (World Rank #158)
+germany	dropped sentence	Technische Universität Dresden – Dresden (World Rank #185)
+germany	dropped item	Technische Universität Dresden – Dresden (World Rank #185)
+germany	dropped sentence	Rheinische Friedrich-Wilhelms-Universität Bonn – Bonn (World Rank #209)
+germany	dropped item	Rheinische Friedrich-Wilhelms-Universität Bonn – Bonn (World Rank #209)
+germany	dropped sentence	Universität Hamburg – Hamburg (World Rank #209)
+germany	dropped item	Universität Hamburg – Hamburg (World Rank #209)
+germany	dropped sentence	Friedrich-Alexander-Universität Erlangen-Nürnberg – Erlangen and Nuremberg (World Rank #218)
+germany	dropped item	Friedrich-Alexander-Universität Erlangen-Nürnberg – Erlangen and Nuremberg (World Rank #218)
+germany	dropped sentence	Eberhard Karls Universität Tübingen – Tübingen (World Rank #230)
+germany	dropped item	Eberhard Karls Universität Tübingen – Tübingen (World Rank #230)
+germany	dropped sentence	Albert-Ludwigs-Universität Freiburg – Freiburg im Breisgau (World Rank #245)
+germany	dropped item	Albert-Ludwigs-Universität Freiburg – Freiburg im Breisgau (World Rank #245)
+germany	dropped sentence	Technical University of Darmstadt – Darmstadt (World Rank #250)
+germany	dropped item	Technical University of Darmstadt – Darmstadt (World Rank #250)
+germany	dropped sentence	University of Göttingen – Göttingen (World Rank #261)
+germany	dropped item	University of Göttingen – Göttingen (World Rank #261)
+usa	dropped stat	80+ | In the QS global top 500
+usa	dropped stat	4 | Of the world’s top 10 universities
+usa	dropped sentence	The United States of America is the world’s top destination for international higher education, hosting over one million international students from around the globe.
+usa	dropped sentence	The USA holds the highest number of top-ranked institutions worldwide, including 4 of the world’s top 10 universities and over 80 universities in the global top 500 in the QS World University Rankings.
+usa	dropped item	Global Academic Dominance: The USA holds the highest number of top-ranked institutions worldwide, including 4 of the world’s top 10 universities and over 80 universities in the global top 500 in the QS World University Rankings.
+usa	dropped sentence	The USA is home to numerous premier institutions featured in global rankings, including MIT, Stanford, Harvard, Caltech, the University of Pennsylvania, and many other leading public and private universities.
+ireland	dropped stat	6 | In the QS global top 500
+ireland	dropped stat	2 | In the global top 100
+ireland	dropped item	Global Top 100 Presence. Ireland places 2 universities inside the world’s top 100 and 6 universities inside the global top 500 in the QS World University Rankings 2027.
+ireland	dropped sentence	Ireland’s higher education system includes traditional research universities, technological universities, and specialized colleges, with 6 universities ranked in the global top 500 in the QS World University Rankings 2027.
+ireland	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+ireland	dropped heading	Top 100 Global Universities
+ireland	dropped sentence	Trinity College Dublin, The University of Dublin – Dublin (World Rank #75)
+ireland	dropped item	Trinity College Dublin, The University of Dublin – Dublin (World Rank #75)
+ireland	dropped sentence	University College Dublin (UCD) – Dublin (World Rank #100)
+ireland	dropped item	University College Dublin (UCD) – Dublin (World Rank #100)
+ireland	dropped heading	Top 101–500 Global Universities
+ireland	dropped sentence	University College Cork (UCC) – Cork (World Rank #220)
+ireland	dropped item	University College Cork (UCC) – Cork (World Rank #220)
+ireland	dropped sentence	University of Galway – Galway (World Rank #275)
+ireland	dropped item	University of Galway – Galway (World Rank #275)
+ireland	dropped sentence	University of Limerick (UL) – Limerick (World Rank #388)
+ireland	dropped item	University of Limerick (UL) – Limerick (World Rank #388)
+ireland	dropped sentence	Dublin City University (DCU) – Dublin (World Rank #408)
+ireland	dropped item	Dublin City University (DCU) – Dublin (World Rank #408)
+netherlands	dropped stat	13 | In the QS global top 500
+netherlands	dropped sentence	Known for its innovative, problem-based teaching style, globally ranked research universities, and international business environment, the Netherlands provides internationally recognized degrees governed by the European Bologna Process (ECTS credit system).
+netherlands	dropped item	Global Top 100 Presence. The Netherlands places 2 universities inside the world’s top 100 and 13 universities inside the global top 500 in the QS World University Rankings 2027, led by Delft University of Technology at #48 globally.
+netherlands	dropped sentence	All 13 public research universities in the Netherlands rank in the global top 500 of the QS World University Rankings 2027:
+netherlands	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+netherlands	dropped heading	Top 100 Global Universities
+netherlands	dropped sentence	Delft University of Technology (TU Delft) – Delft (World Rank #48)
+netherlands	dropped item	Delft University of Technology (TU Delft) – Delft (World Rank #48)
+netherlands	dropped sentence	University of Amsterdam (UvA) – Amsterdam (World Rank #60)
+netherlands	dropped item	University of Amsterdam (UvA) – Amsterdam (World Rank #60)
+netherlands	trimmed heading	Top 101–500 Global Universities (QS World University Rankings 2027)
+netherlands	dropped heading	Top 101–500 Global Universities
+netherlands	dropped sentence	Utrecht University – Utrecht (World Rank #113)
+netherlands	dropped item	Utrecht University – Utrecht (World Rank #113)
+netherlands	dropped sentence	Leiden University – Leiden and The Hague (World Rank #119)
+netherlands	dropped item	Leiden University – Leiden and The Hague (World Rank #119)
+netherlands	dropped sentence	Erasmus University Rotterdam – Rotterdam (World Rank #148)
+netherlands	dropped item	Erasmus University Rotterdam – Rotterdam (World Rank #148)
+netherlands	dropped sentence	Eindhoven University of Technology (TU/e) – Eindhoven (World Rank #152)
+netherlands	dropped item	Eindhoven University of Technology (TU/e) – Eindhoven (World Rank #152)
+netherlands	dropped sentence	Wageningen University & Research – Wageningen (World Rank #154)
+netherlands	dropped item	Wageningen University & Research – Wageningen (World Rank #154)
+netherlands	dropped sentence	University of Groningen – Groningen (World Rank #157)
+netherlands	dropped item	University of Groningen – Groningen (World Rank #157)
+netherlands	dropped sentence	Vrije Universiteit Amsterdam (VU Amsterdam) – Amsterdam (World Rank #185)
+netherlands	dropped item	Vrije Universiteit Amsterdam (VU Amsterdam) – Amsterdam (World Rank #185)
+netherlands	dropped sentence	University of Twente – Enschede (World Rank #223)
+netherlands	dropped item	University of Twente – Enschede (World Rank #223)
+netherlands	dropped sentence	Maastricht University – Maastricht (World Rank #254)
+netherlands	dropped item	Maastricht University – Maastricht (World Rank #254)
+netherlands	dropped sentence	Radboud University – Nijmegen (World Rank #283)
+netherlands	dropped item	Radboud University – Nijmegen (World Rank #283)
+netherlands	dropped sentence	Tilburg University – Tilburg (World Rank #429)
+netherlands	dropped item	Tilburg University – Tilburg (World Rank #429)
+france	dropped stat	20+ | Institutions in the QS global top 500
+france	dropped stat	4 | In the global top 100
+france	dropped item	Global Top 100 Presence: France places 4 universities inside the world’s top 100 and over 20 institutions inside the global top 500 in the QS World University Rankings 2027, led by Université PSL in the global top 30.
+france	dropped sentence	France consistently dominates global Financial Times rankings for Master’s in Management (MiM), Finance, and MBA programs through institutions like HEC Paris, ESSEC, ESCP, INSEAD, and EDHEC.
+france	dropped item	World-Leading Business Schools: France consistently dominates global Financial Times rankings for Master’s in Management (MiM), Finance, and MBA programs through institutions like HEC Paris, ESSEC, ESCP, INSEAD, and EDHEC.
+france	dropped sentence	France’s higher education system consists of public universities, elite Grandes Écoles (specialized business and engineering schools), and specialized art/architecture schools, with over 20 institutions ranked in the global top 500 of the QS World University R
+france	trimmed heading	Top 100 Global Universities (QS World University Rankings 2027)
+france	dropped heading	Top 100 Global Universities
+france	dropped sentence	Université PSL (Paris Sciences & Lettres) – Paris (World Rank #28)
+france	dropped item	Université PSL (Paris Sciences & Lettres) – Paris (World Rank #28)
+france	dropped sentence	Institut Polytechnique de Paris – Palaiseau / Paris (World Rank #41)
+france	dropped item	Institut Polytechnique de Paris – Palaiseau / Paris (World Rank #41)
+france	dropped sentence	Université Paris-Saclay – Gif-sur-Yvette / Paris (World Rank #70)
+france	dropped item	Université Paris-Saclay – Gif-sur-Yvette / Paris (World Rank #70)
+france	dropped sentence	Sorbonne University – Paris (World Rank #72)
+france	dropped item	Sorbonne University – Paris (World Rank #72)
+france	dropped heading	Top 101–500 Global Universities and Leading Institutions

@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
+import tools from '../data/tools.json';
+const path = '/course-fitment/';
+const data = JSON.stringify({
+  FIELDS: tools.FIELDS, GOALS: tools.GOALS, GRADES: tools.GRADES, YEARS: tools.YEARS, NATS: tools.NATS,
+  BUDGETS: tools.BUDGETS, DEST: tools.DEST, REL: tools.REL, GREL: tools.GREL, COURSES: tools.COURSES,
+}).replace(/</g, '\\u003c');
+---
+<Base
+  title="Course fitment: four questions, then your matches | Universities500"
+  description="Answer four questions about what you have studied, the work you have done and where you want to end up, and see sample courses scored against your answers."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="course-fitment"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Course fitment</nav>
+
+  <section id="quiz">
+    <div class="q-head">
+      <h1 id="q-title">About you</h1>
+      <p id="q-sub">Nothing here is sent anywhere. It only shapes your match scores.</p>
+    </div>
+    <div class="stamps" id="stamps"></div>
+    <div class="tbox">
+      <fieldset class="q-step" data-step="0">
+        <legend>Where you’re starting from</legend>
+        <div class="grid2">
+          <div class="f"><label for="q-nat">Nationality</label><select id="q-nat"></select></div>
+          <div class="f">
+            <label for="q-level">Highest level you’ve finished</label>
+            <select id="q-level"><option>Secondary school</option><option selected>Bachelor</option><option>Master</option></select>
+          </div>
+        </div>
+        <div class="f" style="margin-top:1rem">
+          <label for="q-budget">Most you can spend on tuition a year</label>
+          <select id="q-budget"></select>
+          <p class="hint">Figures on this page use one notional currency, so they compare with each other and nothing else.</p>
+        </div>
+        <div class="f" style="margin-top:1rem">
+          <label id="l-grade">How you did in it</label>
+          <div class="segs" id="q-grade" role="group" aria-labelledby="l-grade"></div>
+          <p class="hint">Rough is fine. Grade bands move your score by about 8 points.</p>
+        </div>
+        <div class="f" style="margin-top:1rem">
+          <label id="l-env">Living in English</label>
+          <div class="segs" id="q-env" role="group" aria-labelledby="l-env"></div>
+          <p class="hint">Plenty of countries teach in English but run on another language outside class. Worth being honest about.</p>
+        </div>
+      </fieldset>
+
+      <fieldset class="q-step" data-step="1" hidden>
+        <legend>What you’ve studied</legend>
+        <div class="grid2">
+          <div class="f"><label for="q-sfield">Field of your last qualification</label><select id="q-sfield"></select></div>
+          <div class="f">
+            <label for="q-lang">English test</label>
+            <select id="q-lang">
+              <option value="0" selected>Not taken yet</option>
+              <option value="1">Taken, below what I need</option>
+              <option value="2">Taken, meets the requirement</option>
+            </select>
+          </div>
+        </div>
+        <div class="f" style="margin-top:1rem">
+          <label for="q-score">IELTS overall, if you have one</label>
+          <input id="q-score" type="number" min="4" max="9" step="0.5" placeholder="e.g. 6.5" />
+          <p class="hint">Leave it blank if you haven’t sat the test. We’ll flag courses you can’t meet yet.</p>
+        </div>
+      </fieldset>
+
+      <fieldset class="q-step" data-step="2" hidden>
+        <legend>Work you’ve done</legend>
+        <div class="grid2">
+          <div class="f"><label for="q-wfield">Field you’ve worked in</label><select id="q-wfield"></select></div>
+          <div class="f"><label for="q-years">Years of it</label><select id="q-years"></select></div>
+        </div>
+        <p class="hint" style="margin-top:1rem">Internships and serious university projects count. Say so in your statement later.</p>
+      </fieldset>
+
+      <fieldset class="q-step" data-step="3" hidden>
+        <legend>Where you want to end up</legend>
+        <div class="f"><label for="q-goal">Career area you’re aiming at</label><select id="q-goal"></select></div>
+        <div class="f" style="margin-top:1rem">
+          <label for="q-line">Your goal in one line</label>
+          <input id="q-line" type="text" placeholder="Lead data teams in healthcare" />
+          <p class="hint">Visa officers look for a clear thread from study to work to goal. This is where it starts.</p>
+        </div>
+      </fieldset>
+
+      <div class="q-nav">
+        <button class="btn-ghost" id="q-back" type="button">Back</button>
+        <span class="spacer"></span>
+        <button class="btn" id="q-next" type="button">Next</button>
+      </div>
+    </div>
+    <p class="note draft">Courses, fees and entry rules here are illustrative placeholders. Nothing here is advice to apply.</p>
+  </section>
+
+  <section id="results" hidden>
+    <div class="q-head">
+      <h1 id="r-title">Your matches</h1>
+      <p id="r-sub"></p>
+    </div>
+    <div class="readout" id="readout"></div>
+    <div id="matches"></div>
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0">
+      <button class="btn-ghost" id="r-edit" type="button">Change my answers</button>
+      <button class="btn-ghost" id="r-home" type="button">Start again</button>
+    </div>
+    <p class="note draft">
+      Scores come from a placeholder model weighting prior study 40, work 25 and career goal 35. Real matching would use each university’s published entry requirements. Figures are normalised to a single notional currency for comparison only.
+      Always confirm fees, entry rules and visa requirements on the university’s and government’s own pages.
+    </p>
+  </section>
+
+  <script type="application/json" id="tool-data" set:html={data} />
+  <script>import '../scripts/fitment.js';</script>
+</Base>

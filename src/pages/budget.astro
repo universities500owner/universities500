@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
+import tools from '../data/tools.json';
+const path = '/budget/';
+const data = JSON.stringify({ COURSES: tools.COURSES }).replace(/</g, '\\u003c');
+---
+<Base
+  title="Study abroad budget planner | Universities500"
+  description="Add up tuition, living costs and the one-time costs people forget, and see what is left to cover against your savings and scholarship."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="budget"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Budget planner</nav>
+  <div class="q-head">
+    <h1>Budget planner</h1>
+    <p>Tuition, living costs and the one-time costs people forget, against what you have.</p>
+  </div>
+
+  <section class="sec" aria-labelledby="h-budget">
+    <h2 id="h-budget">What it will actually cost</h2>
+    <p class="sec-lede">Tuition is the number everyone quotes. Living costs over the full course are usually larger, and the one-time costs are what catch people out.</p>
+    <div class="calc">
+      <div class="tcard">
+        <div class="f"><label for="b-course">Course</label><select id="b-course"></select></div>
+        <div class="grid2" style="margin-top:1rem">
+          <div class="f"><label for="b-sch">Scholarship a year</label><input id="b-sch" type="number" value="0" /></div>
+          <div class="f"><label for="b-funds">Savings and family support</label><input id="b-funds" type="number" value="10000" /></div>
+          <div class="f"><label for="b-visa">Visa and application fees</label><input id="b-visa" type="number" value="500" /></div>
+          <div class="f"><label for="b-flight">Flights</label><input id="b-flight" type="number" value="900" /></div>
+          <div class="f"><label for="b-dep">Housing deposit</label><input id="b-dep" type="number" value="1500" /></div>
+          <div class="f"><label for="b-ship">Shipping and setup</label><input id="b-ship" type="number" value="600" /></div>
+        </div>
+      </div>
+      <div class="panel" id="b-out" aria-live="polite"></div>
+    </div>
+  </section>
+  <p class="note draft">The courses in the list and every figure here are labelled placeholders, normalised to one notional currency. Nothing is a quoted fee, a real scholarship or a visa requirement. Confirm costs with the university and visa rules with the relevant government before acting on any of it.</p>
+
+  <script type="application/json" id="tool-data" set:html={data} />
+  <script>import '../scripts/budget.js';</script>
+</Base>

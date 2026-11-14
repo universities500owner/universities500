@@ -1,0 +1,13 @@
+---
+import Runs from './Runs.astro';
+const { items = [] } = Astro.props;
+---
+<ul>
+  {items.map((it) => (
+    <li>
+      {it.lead && <strong><Runs runs={it.lead} /></strong>}
+      <Runs runs={it.runs} />
+      {it.sub && <Astro.self items={it.sub} />}
+    </li>
+  ))}
+</ul>

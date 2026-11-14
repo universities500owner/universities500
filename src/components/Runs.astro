@@ -1,0 +1,4 @@
+---
+const { runs = [] } = Astro.props;
+---
+{runs.map((r) => (r.b && r.i ? <strong><em>{r.t}</em></strong> : r.b ? <strong>{r.t}</strong> : r.i ? <em>{r.t}</em> : r.t))}

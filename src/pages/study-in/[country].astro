@@ -1,45 +1,100 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { countries, byCountry } from '../../lib/data.js';
+import GuideBlocks from '../../components/GuideBlocks.astro';
+import { byCountry, countries, SITE } from '../../lib/data.js';
+import { guides, runsText } from '../../lib/guides.js';
 
 export function getStaticPaths() {
-  return countries.map((c) => ({ params: { country: c.code }, props: { c } }));
+  return guides.map((g) => ({ params: { country: g.slug }, props: { g } }));
 }
-const { c } = Astro.props;
-const list = byCountry(c.code);
-const ld = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: `Universities in ${c.name}`,
-  numberOfItems: list.length,
-  itemListElement: list.map((u, i) => ({
-    '@type': 'ListItem',
-    position: i + 1,
-    name: u.name,
-    url: `https://universities500.com/universities/${u.slug}/`,
-  })),
-};
+const { g } = Astro.props;
+const c = countries.find((x) => x.code === g.slug);
+const list = c ? byCountry(c.code) : [];
+
+const plain = (blocks) =>
+  blocks
+    .map((b) => (b.t === 'p' ? runsText(b.runs) : b.t === 'ul' ? b.items.map((i) => runsText(i.lead) + runsText(i.runs)).join(' ') : ''))
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+const overview = g.sections.find((s) => s.key === 'overview');
+const first = overview?.blocks.find((b) => b.t === 'p');
+const lede = first ? runsText(first.runs).split(/(?<=[.!?])\s+/)[0] : `A guide to studying in ${g.name}.`;
+const faq = g.sections.find((s) => s.key === 'faq');
+const faqItems = (faq?.blocks || []).filter((b) => b.t === 'qa');
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: g.title,
+    about: g.name,
+    mainEntityOfPage: `${SITE}/study-in/${g.slug}/`,
+    publisher: { '@type': 'Organization', name: 'Universities500' },
+  },
+];
+if (faqItems.length) {
+  ld.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((q) => ({
+      '@type': 'Question',
+      name: q.q,
+      acceptedAnswer: { '@type': 'Answer', text: plain(q.a) },
+    })),
+  });
+}
+const toc = g.sections.filter((s) => s.blocks.length);
 ---
 <Base
-  title={`Universities in ${c.name} | Universities500`}
-  description={`Browse ${list.length} ${list.length === 1 ? 'university' : 'universities'} in ${c.name}. Each profile shows the official website, campuses and founding year, with a source link.`}
-  path={`/study-in/${c.code}/`}
+  title={`Study in ${g.name}: guide for international students | Universities500`}
+  description={lede.length > 160 ? lede.slice(0, 157).replace(/\s+\S*$/, '') + '…' : lede}
+  path={`/study-in/${g.slug}/`}
   jsonld={ld}
-  current="study-in"
+  current="guide"
 >
   <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/study-in/">Study in</a><span aria-hidden="true">/</span>{c.name}
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/study-in/">Study in</a><span aria-hidden="true">/</span>{g.name}
   </nav>
-  <h1>Universities in {c.name}</h1>
-  <p class="lede">{list.length} {list.length === 1 ? 'university' : 'universities'}, listed alphabetically.</p>
-  <ul class="grid">
-    {list.map((u) => (
-      <li>
-        <a class="card" href={`/universities/${u.slug}/`}>
-          <strong>{u.name}</strong>
-          <span>{u.founded ? `Founded ${u.founded.v}` : c.name}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
+  <h1>{g.title}</h1>
+  <p class="lede">{lede}</p>
+  {g.stats.length > 0 && (
+    <div class="gstats">
+      {g.stats.map((s) => <div class="gstat"><b>{s.v}</b><span>{s.l}</span></div>)}
+    </div>
+  )}
+  <p class="guide-note">Fees, visa settings and work rules change often. Check each one on the official government or university site before you rely on it.</p>
+
+  <div class="guide-lay">
+    <nav class="toc" aria-label="In this guide">
+      <h2>In this guide</h2>
+      <ol>
+        {toc.map((s) => <li><a href={`#s-${s.key}`}>{s.title}</a></li>)}
+        {list.length > 0 && <li><a href="#s-universities-here">Universities in {g.name} on this site</a></li>}
+      </ol>
+    </nav>
+    <article class="gbody">
+      {toc.map((s) => (
+        <section class="gsec" id={`s-${s.key}`}>
+          <h2>{s.title}</h2>
+          <GuideBlocks blocks={s.blocks} />
+        </section>
+      ))}
+      {list.length > 0 && (
+        <section class="gsec uni-in-country" id="s-universities-here">
+          <h2>Universities in {g.name} on this site</h2>
+          <p>{list.length} {list.length === 1 ? 'university' : 'universities'}, listed alphabetically. Each profile links to its sources.</p>
+          <ul class="grid">
+            {list.map((u) => (
+              <li>
+                <a class="card" href={`/universities/${u.slug}/`}>
+                  <strong>{u.name}</strong>
+                  <span>{u.founded ? `Founded ${u.founded.v}` : c.name}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </article>
+  </div>
 </Base>

@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
+import tools from '../data/tools.json';
+const path = '/visa-readiness/';
+const data = JSON.stringify({ VISA: tools.VISA, VITEM: tools.VITEM }).replace(/</g, '\\u003c');
+---
+<Base
+  title="Student visa readiness: what each destination asks for | Universities500"
+  description="Pick a destination, see the shape of its student visa application and the official source, and tick off what you already have."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="visa-readiness"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Visa readiness</nav>
+  <div class="q-head">
+    <h1>Visa readiness</h1>
+    <p>What a student visa asks for in each destination, and how much of it you have.</p>
+  </div>
+
+  <section class="sec" aria-labelledby="h-visa">
+    <h2 id="h-visa">Mark off what you have</h2>
+    <p class="sec-lede">Pick a destination and tick what you have. This checks the shape of a student visa application, not the figures. Financial thresholds change often enough that a number here would mislead you.</p>
+    <div class="calc">
+      <div class="tcard">
+        <div class="f"><label for="v-dest">Destination</label><select id="v-dest"></select></div>
+        <div id="v-req" style="margin-top:1rem"></div>
+      </div>
+      <div>
+        <div class="prog">
+          <b id="v-pct">0%</b>
+          <span class="meter"><i id="v-bar" style="width:0"></i></span>
+          <span id="v-say"></span>
+        </div>
+        <div class="tcard" id="v-items"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-all">
+    <h2 id="h-all">Student visas at a glance</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Destination</th><th>Visa</th><th>Official source</th></tr></thead>
+        <tbody>{tools.VISA.map((v) => <tr><td>{v.c}</td><td>{v.v}</td><td>{v.src}</td></tr>)}</tbody>
+      </table>
+    </div>
+  </section>
+  <p class="note">Nothing here is a quoted fee, a real scholarship, a lending offer or a visa requirement. Confirm costs with the university and visa rules with the relevant government before acting on any of it.</p>
+
+  <script type="application/json" id="tool-data" set:html={data} />
+  <script>import '../scripts/visa.js';</script>
+</Base>

@@ -1,24 +1,43 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { countries, all } from '../../lib/data.js';
+import { countries, all, byCountry } from '../../lib/data.js';
+import { englishGuides, otherGuides } from '../../lib/guides.js';
+
+const groups = [
+  ['Study and live in English', 'Classes and daily life both run in English.', englishGuides],
+  ['Study in English, live in another language', 'Degrees are taught in English; daily life runs on another language.', otherGuides],
+];
+const count = (slug) => byCountry(slug).length;
 ---
 <Base
-  title="Study abroad: countries and universities | Universities500"
-  description={`Choose from ${countries.length} study destinations and browse ${all.length} universities, with official websites, campuses and sources.`}
+  title="Study abroad: a guide for each destination | Universities500"
+  description={`Pick a destination and read its guide: study levels, universities, intakes, costs, work rights and visas. ${all.length} universities in ${countries.length} countries.`}
   path="/study-in/"
   current="study-in"
 >
   <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Study in</nav>
-  <h1>Study abroad: pick a country</h1>
-  <p class="lede">Each country page lists its universities. Open one to see its facts and sources.</p>
-  <ul class="grid">
-    {countries.map((c) => (
-      <li>
-        <a class="card" href={`/study-in/${c.code}/`}>
-          <strong>{c.name}</strong>
-          <span>{c.count} {c.count === 1 ? 'university' : 'universities'}</span>
-        </a>
-      </li>
-    ))}
-  </ul>
+  <div class="q-head">
+    <h1>Pick a country.</h1>
+    <p>Each tile opens a full guide: study levels, universities, intakes, costs, work rights and visas.</p>
+  </div>
+
+  {groups.map(([title, sub, list]) => (
+    <section class="tile-sec">
+      <div class="tile-group">
+        <h2>{title}</h2>
+        <p>{sub}</p>
+      </div>
+      <div class="tiles">
+        {list.map((g) => (
+          <a class="tile" href={`/study-in/${g.slug}/`}>
+            <h3>{g.name}</h3>
+            {g.stats[0] && <div class="tile-fact"><b>{g.stats[0].v}</b><span>{g.stats[0].l}</span></div>}
+            <span class="tile-go">Read the guide <i>to {g.name}</i></span>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <p class="note">Every figure on a tile comes from that country’s guide, which carries its own information note. {all.length} universities from {countries.length} countries are listed under <a href="/universities/">Find my university</a>.</p>
 </Base>

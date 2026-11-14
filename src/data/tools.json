@@ -1,0 +1,1239 @@
+{
+ "FIELDS": [
+  "Computer Science & IT",
+  "Mathematics & Statistics",
+  "Engineering",
+  "Business & Economics",
+  "Life Sciences",
+  "Health & Nursing",
+  "Social Sciences",
+  "Arts & Humanities"
+ ],
+ "GOALS": [
+  "Data & AI",
+  "Software",
+  "Engineering & industry",
+  "Management & consulting",
+  "Research & academia",
+  "Healthcare & biotech",
+  "Policy & public sector",
+  "Design & media"
+ ],
+ "GRADES": [
+  "Top of class",
+  "Above average",
+  "Average"
+ ],
+ "YEARS": [
+  "None",
+  "Under a year",
+  "1 to 2 years",
+  "3 to 5 years",
+  "More than 5"
+ ],
+ "NATS": [
+  "India",
+  "Nigeria",
+  "Vietnam",
+  "Nepal",
+  "Pakistan",
+  "Bangladesh",
+  "Sri Lanka",
+  "Kenya",
+  "Somewhere else"
+ ],
+ "BUDGETS": [
+  {
+   "l": "5,000",
+   "v": 5000
+  },
+  {
+   "l": "15,000",
+   "v": 15000
+  },
+  {
+   "l": "25,000",
+   "v": 25000
+  },
+  {
+   "l": "40,000",
+   "v": 40000
+  },
+  {
+   "l": "60,000",
+   "v": 60000
+  }
+ ],
+ "DEST": [
+  {
+   "c": "United States",
+   "eng": 1,
+   "fee": [
+    25000,
+    60000
+   ],
+   "live": [
+    1200,
+    2200
+   ],
+   "psw": "1 year, 3 for STEM",
+   "cov": 1
+  },
+  {
+   "c": "United Kingdom",
+   "eng": 1,
+   "fee": [
+    20000,
+    45000
+   ],
+   "live": [
+    1100,
+    1800
+   ],
+   "psw": "2 years",
+   "cov": 1
+  },
+  {
+   "c": "Australia",
+   "eng": 1,
+   "fee": [
+    20000,
+    45000
+   ],
+   "live": [
+    1300,
+    1800
+   ],
+   "psw": "2 to 4 years",
+   "cov": 1
+  },
+  {
+   "c": "Canada",
+   "eng": 1,
+   "fee": [
+    15000,
+    40000
+   ],
+   "live": [
+    1000,
+    1600
+   ],
+   "psw": "Up to 3 years",
+   "cov": 1
+  },
+  {
+   "c": "Malaysia",
+   "eng": 1,
+   "fee": [
+    3000,
+    10000
+   ],
+   "live": [
+    400,
+    800
+   ],
+   "psw": "Limited",
+   "cov": 1
+  },
+  {
+   "c": "New Zealand",
+   "eng": 1,
+   "fee": [
+    20000,
+    35000
+   ],
+   "live": [
+    1100,
+    1600
+   ],
+   "psw": "Up to 3 years",
+   "cov": 1
+  },
+  {
+   "c": "Hong Kong SAR",
+   "eng": 1,
+   "cov": 0
+  },
+  {
+   "c": "Ireland",
+   "eng": 1,
+   "fee": [
+    12000,
+    30000
+   ],
+   "live": [
+    1100,
+    1700
+   ],
+   "psw": "Up to 2 years",
+   "cov": 1
+  },
+  {
+   "c": "South Africa",
+   "eng": 1,
+   "cov": 0
+  },
+  {
+   "c": "Singapore",
+   "eng": 1,
+   "fee": [
+    15000,
+    35000
+   ],
+   "live": [
+    1000,
+    1600
+   ],
+   "psw": "Employment pass route",
+   "cov": 1
+  },
+  {
+   "c": "Philippines",
+   "eng": 1,
+   "cov": 0
+  },
+  {
+   "c": "Brunei",
+   "eng": 1,
+   "cov": 0
+  },
+  {
+   "c": "Rwanda",
+   "eng": 1,
+   "cov": 0
+  },
+  {
+   "c": "China",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Germany",
+   "eng": 0,
+   "taught": "many",
+   "fee": [
+    0,
+    5000
+   ],
+   "live": [
+    950,
+    1300
+   ],
+   "psw": "18 months",
+   "cov": 1
+  },
+  {
+   "c": "Japan",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "South Korea",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Netherlands",
+   "eng": 0,
+   "taught": "many",
+   "fee": [
+    10000,
+    20000
+   ],
+   "live": [
+    1000,
+    1400
+   ],
+   "psw": "1 year",
+   "cov": 1
+  },
+  {
+   "c": "France",
+   "eng": 0,
+   "taught": "some",
+   "fee": [
+    3000,
+    15000
+   ],
+   "live": [
+    900,
+    1500
+   ],
+   "psw": "1 year",
+   "cov": 1
+  },
+  {
+   "c": "Italy",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Spain",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Sweden",
+   "eng": 0,
+   "taught": "many",
+   "fee": [
+    9000,
+    18000
+   ],
+   "live": [
+    900,
+    1300
+   ],
+   "psw": "1 year",
+   "cov": 1
+  },
+  {
+   "c": "Taiwan",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Russia",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Finland",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Switzerland",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Turkey",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "United Arab Emirates",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Denmark",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Belgium",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Saudi Arabia",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Israel",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Austria",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Mexico",
+   "eng": 0,
+   "taught": "few",
+   "cov": 0
+  },
+  {
+   "c": "Iran",
+   "eng": 0,
+   "taught": "few",
+   "cov": 0
+  },
+  {
+   "c": "Norway",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Brazil",
+   "eng": 0,
+   "taught": "few",
+   "cov": 0
+  },
+  {
+   "c": "Greece",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Czech Republic",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Poland",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Indonesia",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Chile",
+   "eng": 0,
+   "taught": "few",
+   "cov": 0
+  },
+  {
+   "c": "Qatar",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Jordan",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Egypt",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Kazakhstan",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Thailand",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Argentina",
+   "eng": 0,
+   "taught": "few",
+   "cov": 0
+  },
+  {
+   "c": "Azerbaijan",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Lebanon",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Estonia",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Luxembourg",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Colombia",
+   "eng": 0,
+   "taught": "few",
+   "cov": 0
+  },
+  {
+   "c": "Costa Rica",
+   "eng": 0,
+   "taught": "few",
+   "cov": 0
+  },
+  {
+   "c": "Belarus",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Lithuania",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  },
+  {
+   "c": "Oman",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Vietnam",
+   "eng": 0,
+   "taught": "some",
+   "cov": 0
+  },
+  {
+   "c": "Cyprus",
+   "eng": 0,
+   "taught": "many",
+   "cov": 0
+  }
+ ],
+ "REL": {
+  "Computer Science & IT": [
+   "Mathematics & Statistics",
+   "Engineering"
+  ],
+  "Mathematics & Statistics": [
+   "Computer Science & IT",
+   "Engineering",
+   "Business & Economics"
+  ],
+  "Engineering": [
+   "Computer Science & IT",
+   "Mathematics & Statistics"
+  ],
+  "Business & Economics": [
+   "Social Sciences",
+   "Mathematics & Statistics"
+  ],
+  "Life Sciences": [
+   "Health & Nursing",
+   "Engineering"
+  ],
+  "Health & Nursing": [
+   "Life Sciences",
+   "Social Sciences"
+  ],
+  "Social Sciences": [
+   "Business & Economics",
+   "Arts & Humanities"
+  ],
+  "Arts & Humanities": [
+   "Social Sciences",
+   "Business & Economics"
+  ]
+ },
+ "GREL": {
+  "Data & AI": [
+   "Software",
+   "Research & academia",
+   "Healthcare & biotech"
+  ],
+  "Software": [
+   "Data & AI",
+   "Engineering & industry",
+   "Design & media"
+  ],
+  "Engineering & industry": [
+   "Software",
+   "Management & consulting"
+  ],
+  "Management & consulting": [
+   "Policy & public sector",
+   "Data & AI"
+  ],
+  "Research & academia": [
+   "Data & AI",
+   "Healthcare & biotech"
+  ],
+  "Healthcare & biotech": [
+   "Research & academia",
+   "Engineering & industry"
+  ],
+  "Policy & public sector": [
+   "Management & consulting",
+   "Research & academia"
+  ],
+  "Design & media": [
+   "Software",
+   "Management & consulting"
+  ]
+ },
+ "COURSES": [
+  {
+   "n": "MSc Data Science",
+   "u": "Public university, Dresden",
+   "c": "Germany",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 0,
+   "live": 980,
+   "ielts": 6.5,
+   "dl": "15 January",
+   "acc": [
+    "Computer Science & IT",
+    "Mathematics & Statistics"
+   ],
+   "work": [
+    "Computer Science & IT",
+    "Mathematics & Statistics",
+    "Engineering"
+   ],
+   "exp": 0,
+   "out": [
+    "Data & AI",
+    "Research & academia"
+   ],
+   "sch": "Several",
+   "workrights": "Limited days per year"
+  },
+  {
+   "n": "MSc Applied Data Science",
+   "u": "Research university, Toronto",
+   "c": "Canada",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 24000,
+   "live": 1400,
+   "ielts": 7,
+   "dl": "1 December",
+   "acc": [
+    "Computer Science & IT",
+    "Mathematics & Statistics",
+    "Engineering"
+   ],
+   "work": [
+    "Computer Science & IT",
+    "Engineering",
+    "Business & Economics"
+   ],
+   "exp": 2,
+   "out": [
+    "Data & AI",
+    "Software"
+   ],
+   "sch": "Few",
+   "workrights": "Capped hours in term"
+  },
+  {
+   "n": "MSc Data Science & Society",
+   "u": "Technical university, Eindhoven",
+   "c": "Netherlands",
+   "lvl": "Masters",
+   "yr": 1,
+   "fee": 15000,
+   "live": 1100,
+   "ielts": 6.5,
+   "dl": "1 April",
+   "acc": [
+    "Computer Science & IT",
+    "Mathematics & Statistics",
+    "Business & Economics"
+   ],
+   "work": [
+    "Business & Economics",
+    "Computer Science & IT"
+   ],
+   "exp": 1,
+   "out": [
+    "Data & AI",
+    "Management & consulting"
+   ],
+   "sch": "Several",
+   "workrights": "Yearly hours limit"
+  },
+  {
+   "n": "Master of Information Technology",
+   "u": "Group of Eight university, Melbourne",
+   "c": "Australia",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 28000,
+   "live": 1500,
+   "ielts": 6.5,
+   "dl": "31 October",
+   "acc": [
+    "Computer Science & IT",
+    "Engineering",
+    "Mathematics & Statistics"
+   ],
+   "work": [
+    "Computer Science & IT",
+    "Engineering"
+   ],
+   "exp": 0,
+   "out": [
+    "Software",
+    "Data & AI"
+   ],
+   "sch": "Several",
+   "workrights": "48 hours a fortnight in term"
+  },
+  {
+   "n": "MSc Computer Science",
+   "u": "Russell Group university, Manchester",
+   "c": "United Kingdom",
+   "lvl": "Masters",
+   "yr": 1,
+   "fee": 26000,
+   "live": 1300,
+   "ielts": 6.5,
+   "dl": "30 June",
+   "acc": [
+    "Computer Science & IT",
+    "Mathematics & Statistics",
+    "Engineering"
+   ],
+   "work": [
+    "Computer Science & IT"
+   ],
+   "exp": 0,
+   "out": [
+    "Software",
+    "Data & AI"
+   ],
+   "sch": "Few",
+   "workrights": "20 hours a week in term"
+  },
+  {
+   "n": "MSc Artificial Intelligence",
+   "u": "University, Dublin",
+   "c": "Ireland",
+   "lvl": "Masters",
+   "yr": 1,
+   "fee": 19000,
+   "live": 1250,
+   "ielts": 6.5,
+   "dl": "1 May",
+   "acc": [
+    "Computer Science & IT",
+    "Mathematics & Statistics"
+   ],
+   "work": [
+    "Computer Science & IT",
+    "Engineering"
+   ],
+   "exp": 0,
+   "out": [
+    "Data & AI",
+    "Software",
+    "Research & academia"
+   ],
+   "sch": "Few",
+   "workrights": "20 hours a week in term"
+  },
+  {
+   "n": "MBA",
+   "u": "Business school, Toronto",
+   "c": "Canada",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 38000,
+   "live": 1400,
+   "ielts": 7,
+   "dl": "15 January",
+   "acc": [
+    "Business & Economics",
+    "Social Sciences",
+    "Engineering"
+   ],
+   "work": [
+    "Business & Economics",
+    "Engineering",
+    "Social Sciences"
+   ],
+   "exp": 3,
+   "out": [
+    "Management & consulting",
+    "Policy & public sector"
+   ],
+   "sch": "Few",
+   "workrights": "Capped hours in term"
+  },
+  {
+   "n": "MSc Management",
+   "u": "University, Amsterdam",
+   "c": "Netherlands",
+   "lvl": "Masters",
+   "yr": 1,
+   "fee": 17000,
+   "live": 1200,
+   "ielts": 6.5,
+   "dl": "1 February",
+   "acc": [
+    "Business & Economics",
+    "Social Sciences"
+   ],
+   "work": [
+    "Business & Economics",
+    "Social Sciences"
+   ],
+   "exp": 1,
+   "out": [
+    "Management & consulting",
+    "Policy & public sector"
+   ],
+   "sch": "Several",
+   "workrights": "Yearly hours limit"
+  },
+  {
+   "n": "MSc Biomedical Engineering",
+   "u": "Technical university, Munich",
+   "c": "Germany",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 0,
+   "live": 1150,
+   "ielts": 6.5,
+   "dl": "31 May",
+   "acc": [
+    "Engineering",
+    "Life Sciences"
+   ],
+   "work": [
+    "Life Sciences",
+    "Engineering"
+   ],
+   "exp": 0,
+   "out": [
+    "Healthcare & biotech",
+    "Engineering & industry",
+    "Research & academia"
+   ],
+   "sch": "Several",
+   "workrights": "Limited days per year"
+  },
+  {
+   "n": "Master of Public Health",
+   "u": "University, Sydney",
+   "c": "Australia",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 26000,
+   "live": 1500,
+   "ielts": 7,
+   "dl": "31 October",
+   "acc": [
+    "Health & Nursing",
+    "Life Sciences",
+    "Social Sciences"
+   ],
+   "work": [
+    "Health & Nursing",
+    "Life Sciences"
+   ],
+   "exp": 1,
+   "out": [
+    "Healthcare & biotech",
+    "Policy & public sector"
+   ],
+   "sch": "Several",
+   "workrights": "48 hours a fortnight in term"
+  },
+  {
+   "n": "Master of Nursing",
+   "u": "University, Auckland campus, Brisbane",
+   "c": "Australia",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 23000,
+   "live": 1450,
+   "ielts": 7,
+   "dl": "30 November",
+   "acc": [
+    "Health & Nursing",
+    "Life Sciences"
+   ],
+   "work": [
+    "Health & Nursing"
+   ],
+   "exp": 2,
+   "out": [
+    "Healthcare & biotech"
+   ],
+   "sch": "Few",
+   "workrights": "48 hours a fortnight in term"
+  },
+  {
+   "n": "MSc Mechanical Engineering",
+   "u": "Technical university, Delft",
+   "c": "Netherlands",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 18500,
+   "live": 1150,
+   "ielts": 6.5,
+   "dl": "1 February",
+   "acc": [
+    "Engineering",
+    "Mathematics & Statistics"
+   ],
+   "work": [
+    "Engineering"
+   ],
+   "exp": 0,
+   "out": [
+    "Engineering & industry",
+    "Research & academia"
+   ],
+   "sch": "Several",
+   "workrights": "Yearly hours limit"
+  },
+  {
+   "n": "BEng Software Engineering",
+   "u": "University of applied sciences, Hamburg",
+   "c": "Germany",
+   "lvl": "Bachelor",
+   "yr": 3,
+   "fee": 0,
+   "live": 1000,
+   "ielts": 6,
+   "dl": "15 July",
+   "acc": [
+    "Computer Science & IT",
+    "Mathematics & Statistics",
+    "Engineering"
+   ],
+   "work": [
+    "Computer Science & IT"
+   ],
+   "exp": 0,
+   "out": [
+    "Software",
+    "Data & AI"
+   ],
+   "sch": "Few",
+   "workrights": "Limited days per year"
+  },
+  {
+   "n": "BSc Business Administration",
+   "u": "University, Rotterdam",
+   "c": "Netherlands",
+   "lvl": "Bachelor",
+   "yr": 3,
+   "fee": 12000,
+   "live": 1100,
+   "ielts": 6.5,
+   "dl": "15 January",
+   "acc": [
+    "Business & Economics",
+    "Social Sciences",
+    "Mathematics & Statistics"
+   ],
+   "work": [
+    "Business & Economics"
+   ],
+   "exp": 0,
+   "out": [
+    "Management & consulting",
+    "Policy & public sector"
+   ],
+   "sch": "Several",
+   "workrights": "Yearly hours limit"
+  },
+  {
+   "n": "MA Design & Communication",
+   "u": "Art institute, Berlin",
+   "c": "Germany",
+   "lvl": "Masters",
+   "yr": 2,
+   "fee": 9000,
+   "live": 1150,
+   "ielts": 6.5,
+   "dl": "31 March",
+   "acc": [
+    "Arts & Humanities",
+    "Social Sciences"
+   ],
+   "work": [
+    "Arts & Humanities",
+    "Social Sciences"
+   ],
+   "exp": 1,
+   "out": [
+    "Design & media",
+    "Policy & public sector"
+   ],
+   "sch": "Few",
+   "workrights": "Limited days per year"
+  },
+  {
+   "n": "MSc Social Policy",
+   "u": "University, Edinburgh",
+   "c": "United Kingdom",
+   "lvl": "Masters",
+   "yr": 1,
+   "fee": 22000,
+   "live": 1300,
+   "ielts": 7,
+   "dl": "30 June",
+   "acc": [
+    "Social Sciences",
+    "Business & Economics",
+    "Arts & Humanities"
+   ],
+   "work": [
+    "Social Sciences",
+    "Business & Economics"
+   ],
+   "exp": 1,
+   "out": [
+    "Policy & public sector",
+    "Research & academia"
+   ],
+   "sch": "Few",
+   "workrights": "20 hours a week in term"
+  }
+ ],
+ "VITEM": {
+  "offer": "Admission offer or acceptance letter",
+  "funds": "Evidence of funds at the level this destination requires",
+  "lang": "An English test result this visa route accepts",
+  "passport": "Passport valid well beyond your course start",
+  "health": "Medical or health examination completed",
+  "insurance": "Health insurance covering your whole stay",
+  "police": "Police or background certificate",
+  "biometrics": "Biometrics appointment completed",
+  "interview": "Visa interview booked or attended",
+  "sevis": "SEVIS fee paid and form I-20 received",
+  "tb": "Tuberculosis test certificate, if required for your country",
+  "intent": "Written statement about your study intentions"
+ },
+ "VISA": [
+  {
+   "c": "Australia",
+   "v": "Student visa, subclass 500",
+   "src": "immi.homeaffairs.gov.au",
+   "need": [
+    "offer",
+    "funds",
+    "lang",
+    "passport",
+    "health",
+    "insurance",
+    "intent"
+   ]
+  },
+  {
+   "c": "United Kingdom",
+   "v": "Student route visa",
+   "src": "gov.uk/student-visa",
+   "need": [
+    "offer",
+    "funds",
+    "lang",
+    "passport",
+    "tb"
+   ]
+  },
+  {
+   "c": "Canada",
+   "v": "Study permit",
+   "src": "canada.ca",
+   "need": [
+    "offer",
+    "funds",
+    "passport",
+    "police",
+    "health",
+    "biometrics"
+   ]
+  },
+  {
+   "c": "United States",
+   "v": "F-1 student visa",
+   "src": "travel.state.gov",
+   "need": [
+    "offer",
+    "funds",
+    "passport",
+    "interview",
+    "sevis"
+   ]
+  },
+  {
+   "c": "New Zealand",
+   "v": "Fee paying student visa",
+   "src": "immigration.govt.nz",
+   "need": [
+    "offer",
+    "funds",
+    "lang",
+    "passport",
+    "health",
+    "police"
+   ]
+  },
+  {
+   "c": "Ireland",
+   "v": "Study visa or preclearance",
+   "src": "irishimmigration.ie",
+   "need": [
+    "offer",
+    "funds",
+    "lang",
+    "passport",
+    "insurance"
+   ]
+  },
+  {
+   "c": "Germany",
+   "v": "National visa for study",
+   "src": "the German mission in your country",
+   "need": [
+    "offer",
+    "funds",
+    "lang",
+    "passport",
+    "insurance"
+   ]
+  },
+  {
+   "c": "Netherlands",
+   "v": "Residence permit, usually applied for by the university",
+   "src": "ind.nl",
+   "need": [
+    "offer",
+    "funds",
+    "lang",
+    "passport",
+    "tb"
+   ]
+  }
+ ],
+ "WORKRIGHTS": [
+  {
+   "c": "Australia",
+   "r": "48 hours a fortnight during term, unrestricted during scheduled course breaks",
+   "s": "immi.homeaffairs.gov.au"
+  },
+  {
+   "c": "United Kingdom",
+   "r": "Up to 20 hours a week in term for degree-level study, full-time in vacations",
+   "s": "gov.uk/student-visa"
+  },
+  {
+   "c": "Canada",
+   "r": "Off-campus work allowed if your study permit says so, with a weekly cap in term and more in breaks",
+   "s": "canada.ca"
+  },
+  {
+   "c": "United States",
+   "r": "On-campus work only in the first year; off-campus work needs separate authorisation",
+   "s": "studyinthestates.dhs.gov"
+  },
+  {
+   "c": "New Zealand",
+   "r": "Commonly up to 20 hours a week in term, and full-time in some breaks",
+   "s": "immigration.govt.nz"
+  },
+  {
+   "c": "Ireland",
+   "r": "20 hours a week in term, 40 hours in the set holiday periods",
+   "s": "irishimmigration.ie"
+  },
+  {
+   "c": "Germany",
+   "r": "A fixed number of full or half days a year, with extra rules for self-employment",
+   "s": "make-it-in-germany.com"
+  },
+  {
+   "c": "Netherlands",
+   "r": "Either a set number of hours a week or full-time over summer, usually needing an employer permit",
+   "s": "ind.nl"
+  }
+ ],
+ "SCH": [
+  {
+   "n": "Placeholder Merit Award",
+   "c": "Germany",
+   "l": "Masters",
+   "f": "Any field",
+   "a": "Full tuition",
+   "d": "15 January"
+  },
+  {
+   "n": "Placeholder Global Leaders Fellowship",
+   "c": "Canada",
+   "l": "Masters",
+   "f": "Engineering",
+   "a": "10,000 a year",
+   "d": "1 December"
+  },
+  {
+   "n": "Placeholder Talent Grant",
+   "c": "Netherlands",
+   "l": "Masters",
+   "f": "Data and IT",
+   "a": "Up to 15,000",
+   "d": "1 February"
+  },
+  {
+   "n": "Placeholder Undergraduate Excellence Scholarship",
+   "c": "Canada",
+   "l": "Bachelor",
+   "f": "Any field",
+   "a": "5,000 a year",
+   "d": "15 February"
+  },
+  {
+   "n": "Placeholder Research Stipend",
+   "c": "Germany",
+   "l": "Masters",
+   "f": "Sciences",
+   "a": "Monthly stipend",
+   "d": "1 March"
+  },
+  {
+   "n": "Placeholder Need-based Bursary",
+   "c": "Netherlands",
+   "l": "Bachelor",
+   "f": "Any field",
+   "a": "Partial tuition",
+   "d": "1 April"
+  },
+  {
+   "n": "Placeholder Commonwealth Award",
+   "c": "United Kingdom",
+   "l": "Masters",
+   "f": "Any field",
+   "a": "Tuition and stipend",
+   "d": "20 December"
+  },
+  {
+   "n": "Placeholder Destination Bursary",
+   "c": "Australia",
+   "l": "Masters",
+   "f": "Health",
+   "a": "Up to 20,000",
+   "d": "31 October"
+  }
+ ]
+}

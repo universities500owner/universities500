@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
+import tools from '../data/tools.json';
+const path = '/working-while-you-study/';
+---
+<Base
+  title="Working while you study: what each destination allows | Universities500"
+  description="A broad summary of student work rights in each destination, with the official page to check, and where to look for part-time work."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="working-while-you-study"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Working while you study</nav>
+  <div class="q-head">
+    <h1>Working while you study</h1>
+    <p>What your visa permits, and where to look for part-time work.</p>
+  </div>
+
+  <section class="sec" aria-labelledby="h-work">
+    <h2 id="h-work">What each destination broadly allows</h2>
+    <p class="sec-lede">Work rights are attached to your visa, not your university, and breaking them can end your stay. These summaries are indicative and change often. The official page is the only version that counts.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Destination</th><th>Broadly what students may do</th><th>Check here</th></tr></thead>
+        <tbody>
+          {tools.WORKRIGHTS.map((w) => <tr><td>{w.c}</td><td>{w.r}</td><td>{w.s}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sec-sub">Where to look for part-time work</h3>
+    <div class="dgrid">
+      <div class="dcard"><h3>Your university careers portal</h3><p>Start here. Campus jobs and student-only listings, and employers who already understand your visa conditions.</p></div>
+      <div class="dcard"><h3>The big job boards</h3><p>Indeed and LinkedIn both filter for part-time and internship. Set alerts rather than searching repeatedly.</p></div>
+      <div class="dcard"><h3>Local student boards</h3><p>Most cities have one, and most countries have a government job bank. Search your city name with “student jobs”.</p></div>
+      <div class="dcard"><h3>Your own department</h3><p>Lab assistant, marker, note-taker, open-day guide. Paid, relevant to your degree, and rarely advertised widely.</p></div>
+    </div>
+  </section>
+  <p class="note">Work rights, registration rules and insurance requirements differ by country and by visa type, and change without much notice. Each destination guide has its own section on part-time work: <a href="/study-in/">see the guides</a>.</p>
+</Base>

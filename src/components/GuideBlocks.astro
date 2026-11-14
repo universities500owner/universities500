@@ -1,0 +1,17 @@
+---
+import Runs from './Runs.astro';
+import GuideList from './GuideList.astro';
+const { blocks = [] } = Astro.props;
+---
+{blocks.map((b) => {
+  if (b.t === 'p') return <p><Runs runs={b.runs} /></p>;
+  if (b.t === 'h') return <h3>{b.text}</h3>;
+  if (b.t === 'ul') return <GuideList items={b.items} />;
+  if (b.t === 'qa') return (
+    <details>
+      <summary>{b.q}</summary>
+      <div><Astro.self blocks={b.a} /></div>
+    </details>
+  );
+  return null;
+})}

@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
+const path = '/before-you-fly/';
+const groups = [
+  ['Three months out', ['Accept the offer and pay the deposit', 'Submit the visa application or book the appointment', 'Arrange and document your proof of funds', 'Start looking at housing']],
+  ['Two months out', ['Book flights, but only once the visa is approved', 'Buy health insurance', 'Tell your bank, and set up a card that works abroad', 'Check which vaccinations you need']],
+  ['One month out', ['Confirm accommodation and your arrival date', 'Arrange airport pickup or work out the route', 'Scan passport, visa and offer letter to cloud storage', 'Pack documents in hand luggage, and medicines with their prescriptions']],
+  ['The last week', ['Register for orientation week', 'Get some local currency for the first few days', 'Save emergency contacts and the university address offline', 'Join the student group for your country']],
+];
+const total = groups.reduce((n, g) => n + g[1].length, 0);
+const week = [
+  ['Arrival', '1', 'day', 'Collect keys, register with the university, get your student card. Sleep when it is dark where you are now, not where you came from.'],
+  ['Admin', '2–3', 'days', 'Bank account, local SIM, city or residence registration, transport pass. Take your passport and offer letter everywhere.'],
+  ['Academic', '3–5', 'days', 'Course induction, library tour, meet your department and your advisor. Ask who to email when something goes wrong.'],
+  ['People', '4–7', 'days', 'Clubs fair, a walk around the city, and the student group from your own country. This is the one most people skip and later regret.'],
+];
+---
+<Base
+  title="Before you fly: a checklist for the weeks before you leave | Universities500"
+  description="Sixteen things to do in the twelve weeks between visa approval and your first day on campus, and what your first week usually looks like."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="before-you-fly"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Before you fly</nav>
+  <div class="q-head">
+    <h1>Before you fly</h1>
+    <p>The twelve weeks between visa approval and your first day on campus.</p>
+  </div>
+
+  <section class="sec" aria-labelledby="h-pre">
+    <h2 id="h-pre">Your checklist</h2>
+    <p class="sec-lede">Ticks are saved in this browser only.</p>
+    <div class="prog">
+      <b id="pd-pct">0 of {total}</b>
+      <span class="meter"><i id="pd-bar" style="width:0"></i></span>
+      <span id="pd-say"></span>
+    </div>
+    <div class="tcard" id="pd-list">
+      {groups.map(([head, items], i) => (
+        <>
+          <h3 class="sec-sub" style={i === 0 ? 'margin-top:0' : 'margin-top:1.25rem'}>{head}</h3>
+          {items.map((t) => <label class="check"><input type="checkbox" data-k={t} /><span>{t}</span></label>)}
+        </>
+      ))}
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-orient">
+    <h2 id="h-orient">Your first week</h2>
+    <p class="sec-lede">Most universities compress registration, banking and introductions into seven days. Knowing the order helps.</p>
+    <div class="dgrid">
+      {week.map(([t, n, u, d]) => (
+        <div class="dcard">
+          <div class="dcard-top"><h3>{t}</h3><div class="big">{n}<small>{u}</small></div></div>
+          <p>{d}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+  <p class="note">Checklists and timings here are general and apply loosely to any destination. Work rights, registration rules and insurance requirements differ by country and by visa type, and change without much notice.</p>
+
+  <script>
+    import { $, wireChecklist } from '../scripts/lib.js';
+    wireChecklist({
+      root: $('pd-list'), key: 'u500-pre', pctEl: 'pd-pct', barEl: 'pd-bar', sayEl: 'pd-say',
+      say: (d, t) => d === t ? 'Ready to fly.' : d === 0 ? 'Sixteen things, spread over three months. The visa one gates the flights.' : (t - d) + ' left. Anything involving money or the visa goes first.',
+    });
+  </script>
+</Base>
