@@ -1,0 +1,4 @@
+# Keep the free *.pages.dev address out of search results while the site is a draft.
+# This rule matches only the pages.dev host, so it does not affect universities500.com once that is attached.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
