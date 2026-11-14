@@ -41,7 +41,7 @@ CITIES = {
     'australia': 'sydney melbourne brisbane perth adelaide canberra gold coast hobart darwin wollongong geelong parramatta north sydney',
     'canada': 'toronto vancouver montreal ottawa calgary edmonton waterloo kitchener mississauga winnipeg halifax quebec city saskatoon regina markham burnaby kelowna',
     'france': "paris lyon marseille toulouse nantes bordeaux lille nice strasbourg montpellier rennes grenoble sophia antipolis boulogne-billancourt issy-les-moulineaux la defense courbevoie puteaux levallois-perret nanterre rueil-malmaison clichy villeneuve-d'ascq",
-    'germany': 'berlin munich munchen hamburg frankfurt cologne koln dusseldorf stuttgart leipzig dresden hannover hanover nuremberg nurnberg bremen karlsruhe mannheim heidelberg aachen bonn essen dortmund darmstadt potsdam walldorf ingolstadt wolfsburg jena freiburg mainz regensburg augsburg munster kiel rostock ulm erlangen braunschweig paderborn',
+    'germany': 'berlin munich munchen hamburg frankfurt cologne koln dusseldorf stuttgart leipzig dresden hannover hanover nuremberg nurnberg bremen karlsruhe mannheim heidelberg aachen bonn essen dortmund darmstadt potsdam walldorf ingolstadt wolfsburg jena freiburg mainz regensburg augsburg munster kiel rostock ulm erlangen braunschweig paderborn immenhausen norderstedt konstanz greven breckerfeld haselunne karben speyer sauerlach ottobrunn',
     'ireland': 'dublin cork galway limerick waterford kilkenny drogheda dundalk sligo athlone maynooth letterkenny',
     'malaysia': 'kuala lumpur penang george town petaling jaya cyberjaya johor bahru shah alam selangor putrajaya subang jaya kota kinabalu kuching iskandar puteri ipoh melaka malacca bangsar',
     'netherlands': "amsterdam rotterdam the hague den haag utrecht eindhoven delft groningen leiden haarlem breda tilburg nijmegen maastricht almere amersfoort enschede arnhem hilversum zwolle schiphol hoofddorp 's-hertogenbosch",
@@ -50,7 +50,7 @@ CITIES = {
     'singapore': 'singapore',
     'sweden': 'stockholm gothenburg goteborg malmo uppsala lund linkoping vasteras orebro umea jonkoping norrkoping helsingborg kista solna sundbyberg lulea karlstad',
     'uae': 'dubai abu dhabi sharjah ajman ras al khaimah fujairah al ain umm al quwain masdar',
-    'uk': 'london manchester birmingham edinburgh glasgow bristol leeds liverpool sheffield cardiff belfast nottingham newcastle upon tyne oxford reading leicester southampton brighton aberdeen cheltenham milton keynes slough guildford bath exeter york coventry swansea dundee norwich plymouth derby ipswich portsmouth canary wharf harwell',
+    'uk': 'london manchester birmingham edinburgh glasgow bristol leeds liverpool sheffield cardiff belfast nottingham newcastle upon tyne oxford reading leicester southampton brighton aberdeen cheltenham milton keynes slough guildford bath exeter york coventry swansea dundee norwich plymouth derby ipswich portsmouth canary wharf harwell daresbury',
     'usa': 'new york nyc san francisco los angeles seattle boston chicago austin denver atlanta dallas houston san diego san jose mountain view palo alto sunnyvale menlo park redwood city santa clara cupertino irvine miami philadelphia pittsburgh minneapolis raleigh durham salt lake city phoenix detroit nashville charlotte san mateo oakland boulder brooklyn bellevue redmond kirkland plano irving cleveland st louis tampa orlando las vegas indianapolis baltimore ann arbor princeton stamford hoboken jersey city',
 }
 # multi-word cities are written above separated by single spaces; list them explicitly so we can split correctly
@@ -116,6 +116,8 @@ def resolve_piece(piece):
     if not raw:
         return None
     f = fold(raw)
+    if re.search(r'\bwashington,?\s*d\.?\s*c\b', f):
+        return ('Washington, D.C.', 'usa')
     # 1. a country (or a region that exists in only one country) is named outright
     named = {ALIASES[m.group(1)] for m in ALIAS_RE.finditer(f)}
     # a US state name inside "Washington DC" etc is fine; but two different countries means we cannot tell
@@ -146,6 +148,9 @@ def resolve_piece(piece):
     if len(hits) == 1:
         c = hits.pop()
         return (_display_city(raw, c), c)
+    # "Foster City, CA": after a comma, CA is California unless a Canadian city was named above
+    if not hits and code == 'CA':
+        return (_display_city(raw, 'usa'), 'usa')
     return None
 
 

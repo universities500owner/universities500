@@ -4,7 +4,7 @@ Reads internship postings and writes `src/data/internships.json`. No AI is used:
 
 ## Where the postings come from
 
-- **Employers' public job-board feeds:** Greenhouse, Lever, Ashby, SmartRecruiters and Workable. Each company has its own board, so the list of companies is in `data/internship_sources.json` under `employers` (`{name, ats, slug}`; the slug is the last part of the company's careers page address on that system). The first list was written from general knowledge and is unverified. A run asks each company live and the report lists the ones that do not exist, so they can be deleted.
+- **Employers' public job-board feeds:** Greenhouse, Lever and Workable (the readers for Ashby and SmartRecruiters stay in the code, but both sites forbid automated reading in robots.txt, so their employers sit under `blockedByRobots` and are not asked). Each company has its own board, so the list of companies is in `data/internship_sources.json` under `employers` (`{name, ats, slug}`; the slug is the last part of the company's careers page address on that system). The first list was written from general knowledge and is unverified. A run asks each company live and the report lists the ones that do not exist, so they can be deleted.
 - **Open feeds:** Sweden's Platsbanken (JobTech open data, CC0) and Arbeitnow (Germany and Europe; free API, asks for a link back).
 - **Link-only portals:** `portals` in the same file. We do not read them. A run only checks that each link loads and records the site's robots.txt in the report.
 
