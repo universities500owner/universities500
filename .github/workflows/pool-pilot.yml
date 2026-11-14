@@ -1,6 +1,7 @@
 name: Pool pilot (open data)
 
 # Run by hand from the Actions tab. Reads OpenAlex only (open data). No ranking is read or used.
+# Needs a free OpenAlex API key stored as the repository secret OPENALEX_API_KEY.
 on:
   workflow_dispatch:
     inputs:
@@ -25,6 +26,7 @@ jobs:
         run: python3 scripts/pool/test_pool.py
       - name: Run pilot
         env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
         run: |
           mkdir -p out && cd out

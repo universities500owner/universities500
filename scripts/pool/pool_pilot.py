@@ -19,6 +19,7 @@ import argparse
 import csv
 import datetime
 import json
+import os
 import sys
 import time
 import urllib.error
@@ -32,11 +33,18 @@ COUNTRIES = {
 }
 THRESHOLDS = [1000, 2500, 5000, 10000, 20000]
 FIELDS = "id,display_name,country_code,type,works_count,cited_by_count,summary_stats,ids,homepage_url,lineage"
+API_KEY = ""  # set in main() from the OPENALEX_API_KEY environment variable; never printed
 UA = "Universities500-pool-pilot/0.1 (research list building; https://universities500.com)"
 
 
+def redact(text):
+    return text.replace(API_KEY, "***") if API_KEY else text
+
+
 def get(url, tries=4):
-    """GET a JSON document. Retries on rate limits and server errors; a 400 is raised to the caller."""
+    """GET a JSON document. Retries on rate limits and server errors.
+    A 400 is raised as HTTPError so the caller can adjust the request; other client errors stop the run
+    with OpenAlex's own message."""
     last = None
     for k in range(tries):
         try:
@@ -46,13 +54,19 @@ def get(url, tries=4):
         except urllib.error.HTTPError as e:
             if e.code == 400:
                 raise
-            last = e
-            if e.code not in (429, 500, 502, 503, 504):
-                raise
+            if e.code in (429, 500, 502, 503, 504):
+                last = e
+            else:
+                body = redact(e.read().decode("utf-8", "replace")[:300])
+                hint = ""
+                if e.code in (401, 402, 403):
+                    hint = (" OpenAlex now needs a free API key (openalex.org/settings/api). "
+                            "Set it as OPENALEX_API_KEY; without one the daily quota is very small.")
+                raise RuntimeError(f"OpenAlex returned HTTP {e.code}: {body}{hint}") from None
         except urllib.error.URLError as e:
             last = e
         time.sleep(2 ** (k + 1))
-    raise RuntimeError(f"giving up on {url}: {last}")
+    raise RuntimeError(f"giving up on {redact(url)}: {last}")
 
 
 def qid_of(ids):
@@ -93,6 +107,8 @@ def fetch_country(base, cc, min_works, mailto, pause):
             params["select"] = FIELDS
         if mailto:
             params["mailto"] = mailto
+        if API_KEY:
+            params["api_key"] = API_KEY
         url = base.rstrip("/") + "/institutions?" + urllib.parse.urlencode(params, safe=":,*")
         try:
             data = get(url)
@@ -165,8 +181,11 @@ def main(argv=None):
     bad = [c for c in ccs if c not in COUNTRIES]
     if bad:
         sys.exit(f"Unknown country code(s): {', '.join(bad)}. Use any of: {', '.join(COUNTRIES)}")
-    if not a.mailto:
-        print("Tip: add --mailto your@email so OpenAlex can reach you if needed.", file=sys.stderr)
+    global API_KEY
+    API_KEY = os.environ.get("OPENALEX_API_KEY", "").strip()
+    if not API_KEY:
+        print("Note: OPENALEX_API_KEY is not set. OpenAlex allows only a very small daily quota without a key, "
+              "so this will probably stop part-way. A free key: openalex.org/settings/api", file=sys.stderr)
 
     all_rows = []
     for cc in ccs:
@@ -177,4 +196,7 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except RuntimeError as err:
+        sys.exit(f"Stopped: {err}")

@@ -24,12 +24,16 @@ DATA = {
 }
 CALLS = []
 REJECT = {"on": False}
+STATE = {"status": None}
 
 class H(http.server.BaseHTTPRequestHandler):
     def log_message(self, *a): pass
     def do_GET(self):
         q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
         CALLS.append(q)
+        if STATE["status"]:
+            body = json.dumps({"error": "stub says no"}).encode()
+            self.send_response(STATE["status"]); self.send_header("Content-Type", "application/json"); self.end_headers(); self.wfile.write(body); return
         cc = q["filter"][0].split(",")[0].split(":")[1]
         rows = DATA[cc]
         cur = q["cursor"][0]
@@ -41,7 +45,7 @@ class H(http.server.BaseHTTPRequestHandler):
         body = json.dumps({"meta": {"next_cursor": nxt}, "results": page}).encode()
         self.send_response(200); self.send_header("Content-Type", "application/json"); self.end_headers(); self.wfile.write(body)
 
-def run(env_extra=None):
+def run(env_extra=None, expect_fail=False):
     srv = http.server.HTTPServer(("127.0.0.1", 0), H)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     d = tempfile.mkdtemp()
@@ -50,10 +54,12 @@ def run(env_extra=None):
                         "--base-url", f"http://127.0.0.1:{srv.server_port}", "--mailto", "t@example.com"],
                        cwd=d, capture_output=True, text=True, env=env)
     srv.shutdown()
+    if expect_fail:
+        return r
     assert r.returncode == 0, r.stderr
     return d
 
-d = run()
+d = run({"OPENALEX_API_KEY": "SECRETKEY123"})
 rows = list(csv.DictReader(open(os.path.join(d, "pool_candidates.csv"), encoding="utf-8")))
 names = [r["name"] for r in rows]
 assert "Tiny College" not in names, "stops below the minimum"
@@ -64,10 +70,18 @@ summ = open(os.path.join(d, "pool_summary.md"), encoding="utf-8").read()
 assert "| Australia | 3 | 3 | 2 | 2 | 1 |" in summ, summ
 assert "| Canada | 2 | 1 | 1 | 1 | 1 |" in summ, summ
 assert all("mailto" in c for c in CALLS)
+assert all(c.get("api_key") == ["SECRETKEY123"] for c in CALLS), "key is sent as api_key"
 # a server that rejects the field list: the script must retry without it
 CALLS.clear()
 REJECT["on"] = True
 d2 = run()
 assert os.path.exists(os.path.join(d2, "pool_candidates.csv"))
 assert any("select" not in c for c in CALLS)
-print("ok: paging, minimum, child flag, thresholds, select fallback")
+# a 401 stops the run with OpenAlex's message and a key hint, and never prints the key
+STATE["status"] = 401
+r = run({"OPENALEX_API_KEY": "SECRETKEY123"}, expect_fail=True)
+assert r.returncode != 0
+assert "HTTP 401" in r.stderr and "stub says no" in r.stderr and "API key" in r.stderr, r.stderr
+assert "SECRETKEY123" not in r.stderr and "SECRETKEY123" not in r.stdout
+STATE["status"] = None
+print("ok: paging, minimum, child flag, thresholds, select fallback, api_key, 401 message")
