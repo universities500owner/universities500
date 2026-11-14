@@ -1,4 +1,6 @@
-# Keep the free *.pages.dev address out of search results while the site is a draft.
-# This rule matches only the pages.dev host, so it does not affect universities500.com once that is attached.
+# Keep the free preview addresses out of search results while the site is a draft.
+# These rules match only the pages.dev and workers.dev hosts, so they do not affect universities500.com once that is attached.
 https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+https://:project.:account.workers.dev/*
   X-Robots-Tag: noindex
