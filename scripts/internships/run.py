@@ -246,6 +246,9 @@ def write_report(args, fx, boards, merged, prev_n, unplaced, portals, today, now
         rt = (p.get('robotsText') or '').replace('\n', ' / ')[:160]
         L.append(f'| {p["title"]} | {"yes" if p["ok"] else "no"} | {rt} |')
     (rep / 'internship_report.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
+    summ = os.environ.get('GITHUB_STEP_SUMMARY')  # the run's summary page on GitHub shows the top of the report
+    if summ:
+        Path(summ).open('a', encoding='utf-8').write('\n'.join(L[:60]) + '\n')
     with (rep / 'boards.csv').open('w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
         w.writerow(['source', 'slug', 'name', 'status', 'postings', 'matched', 'note'])

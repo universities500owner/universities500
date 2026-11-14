@@ -1,0 +1,41 @@
+{
+  "_readme": "Pages whose scholarships must not be listed, found by checking the site by hand. A record is dropped when its page address starts with a prefix here. Add a line and give the reason.",
+  "urlPrefixes": [
+    {
+      "prefix": "https://www.purdue.edu/niso/scholarship/additional/",
+      "why": "A list of outside funders. Many fund study in other countries (for example Gates Cambridge), not at Purdue or in the United States."
+    },
+    {
+      "prefix": "https://www.flinders.edu.au/scholarships/zonta-international-amelia-earhart-fellowships",
+      "why": "Amelia Earhart Fellowships are for women doing a PhD in aerospace science. Judged from the name, not checked on the page."
+    },
+    {
+      "prefix": "https://www.lmu.de/en/about-lmu/international-network/lmu-csc-scholarship-program/",
+      "why": "LMU-CSC is, as far as we know, for doctoral candidates and visiting researchers. Not checked on the page. Remove this line if the page says Bachelor's or Master's."
+    },
+    {
+      "prefix": "https://tu-freiberg.de/en/study/study/freiberg-abroad/",
+      "why": "PROMOS funds German students going abroad (outbound)."
+    },
+    {
+      "prefix": "https://tu-freiberg.de/en/iuz/study-completion-grant",
+      "why": "For students already enrolled who need help finishing, not for new applicants."
+    },
+    {
+      "prefix": "https://www.rug.nl/education/scholarships/carlsberg-foundation-internationalisation-fellowships",
+      "why": "A researcher fellowship for people from Denmark, not a degree scholarship."
+    },
+    {
+      "prefix": "https://www.utwente.nl/en/education/scholarship-finder/john-monash-scholarship-programme/",
+      "why": "The John Monash Scholarship sends Australians to study abroad (outbound)."
+    },
+    {
+      "prefix": "https://www.hw.ac.uk/dubai/",
+      "why": "Heriot-Watt Dubai campus. Our UK list covers study in the UK."
+    },
+    {
+      "prefix": "https://www.leeds.ac.uk/international-students/doc/sanctuary-scholarship",
+      "why": "For people seeking sanctuary in the UK, not for applicants from abroad. Judged from the name; remove this line if the page says otherwise."
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 """Offline tests: a stub university website on localhost, no internet, no AI.
 Run: python3 scripts/scholarships/test_scholarships.py"""
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -13,6 +14,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
 import extract as X  # noqa: E402
+import quality as Q  # noqa: E402
 import textutil as T  # noqa: E402
 from fetcher import Fetcher  # noqa: E402
 
@@ -69,6 +71,8 @@ class H(BaseHTTPRequestHandler):
 
 
 def setUpModule():
+    # The tests run the reader on purpose with bad data. Keep their reports out of the real run's summary page.
+    os.environ.pop('GITHUB_STEP_SUMMARY', None)
     srv = HTTPServer(('127.0.0.1', 0), H)
     PORT['p'] = srv.server_address[1]
     PORT['srv'] = srv
@@ -77,6 +81,49 @@ def setUpModule():
 
 def tearDownModule():
     PORT['srv'].shutdown()
+
+
+class QualityTests(unittest.TestCase):
+    def bad(self, name):
+        return Q.name_problem(name, '2026-11-14')
+
+    def test_headings_and_cells_are_not_names(self):
+        for n in ['Find a scholarship', 'Scholarships', 'Fees and scholarships', 'International scholarships', 'All programs',
+                  '£12,600', '$2,000 (non-renewable)', 'January', 'Applying for scholarships', 'Scholarship eligibility']:
+            self.assertIsNotNone(self.bad(n), n)
+
+    def test_real_names_pass(self):
+        for n in ['Chevening Scholarships', 'International Merit Scholarship', 'Global Leaders Scholarship', "Dean's Award",
+                  'Adelaide Partner Award (10%)', 'Study in Canada Scholarships', 'UM NL Global Studies Scholarship']:
+            self.assertIsNone(self.bad(n), n)
+
+    def test_wrong_kind_of_record(self):
+        for n in ['PhD Scholarships', 'Staff Scholarships', 'Alex Rodgers Travel Grant', 'New Colombo Plan Scholarship',
+                  'Bruce Liley Prize', 'Eiffel Scholarship 2024 call for applications is launched!', 'Undergraduate Home Excellence Scholarship']:
+            self.assertIsNotNone(self.bad(n), n)
+
+    def test_old_year_but_not_current(self):
+        self.assertEqual(self.bad('Eiffel Excellence scholarship 2025'), 'old-year')
+        self.assertIsNone(self.bad('Eiffel Excellence scholarship 2027'))
+
+    def test_pages_for_enrolled_or_outbound(self):
+        self.assertIsNotNone(Q.url_problem('https://x.edu/scholarships/domestic/bachelors-honours/study-overseas.html'))
+        self.assertIsNotNone(Q.url_problem('https://x.edu/scholarships/dom/some-bursary/'))
+        self.assertIsNone(Q.url_problem('https://x.edu/international/students-from-abroad/scholarships/study-in-canada'))
+
+    def test_review_list_wins(self):
+        self.assertEqual(Q.url_problem('https://www.purdue.edu/niso/scholarship/additional/international.html'), 'excluded-by-review')
+
+    def test_old_records_are_cleaned(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / 's.json'
+            f.write_text(json.dumps({'stats': {'items': 2}, 'universities': {'a': {'count': 2}}, 'items': [
+                {'name': 'Find a scholarship', 'origin': 'page', 'providerSlug': 'a', 'url': 'https://x.edu/a'},
+                {'name': 'Chevening Scholarships', 'origin': 'official', 'providerSlug': None, 'url': 'https://chevening.org/'}]}))
+            kept, dropped = Q.clean_file(f, '2026-11-14')
+            self.assertEqual([k['name'] for k in kept], ['Chevening Scholarships'])
+            doc = json.loads(f.read_text())
+            self.assertEqual((doc['stats']['items'], doc['universities']['a']['count']), (1, 0))
 
 
 class TextTests(unittest.TestCase):
@@ -178,7 +225,7 @@ class PipelineTests(unittest.TestCase):
             d = Path(d)
             # 40 old records, each already missed twice. The university is readable and none of them exists any more,
             # so this run would remove all 40. The gate must refuse to write.
-            old = [{'id': f'x{i}', 'slug': f's{i}', 'name': f'N{i}', 'provider': 'P', 'providerSlug': 'test-university', 'country': 'uk',
+            old = [{'id': f'x{i}', 'slug': f's{i}', 'name': f'Example Excellence Scholarship {i}', 'provider': 'P', 'providerSlug': 'test-university', 'country': 'uk',
                     'url': f'http://127.0.0.1:{PORT["p"]}/old{i}/', 'origin': 'page', 'hash': 'h', 'misses': 2,
                     'firstSeen': '2026-01-01', 'lastVerified': '2026-01-01', 'lastChanged': '2026-01-01'} for i in range(40)]
             before = json.dumps({'items': old, 'generatedAt': '2026-01-01T00:00:00Z'})

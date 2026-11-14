@@ -2,6 +2,7 @@
 """Offline tests: stub job-board feeds on localhost, no internet, no AI.
 Run: python3 scripts/internships/test_internships.py"""
 import json
+import os
 import sys
 import tempfile
 import threading
@@ -88,6 +89,7 @@ class H(BaseHTTPRequestHandler):
 
 
 def setUpModule():
+    os.environ.pop('GITHUB_STEP_SUMMARY', None)  # test reports must not land in a real run's summary page
     srv = HTTPServer(('127.0.0.1', 0), H)
     PORT['srv'] = srv
     base = f'http://127.0.0.1:{srv.server_address[1]}'
