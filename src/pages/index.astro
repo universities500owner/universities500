@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 import '../styles/home-v1.tokens.css';
 import '../styles/home-v1.css';
 import { all, countries, latestRead, SITE } from '../lib/data.js';
+import { PUBLISH as SCH_ON, items as schItems } from '../lib/scholarships.js';
+import { PUBLISH as INT_ON, items as intItems } from '../lib/internships.js';
 
 const listed = all.filter((u) => u.listed).length;
 const shortDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
@@ -20,6 +22,30 @@ for (const c of countries) counts[c.code] = { n: c.count, name: c.name };
 
 // The first four countries by number of universities become the quick links under the search box.
 const quick = [...countries].sort((a, b) => b.count - a.count).slice(0, 4);
+
+// Scholarships and internships: show a count only when listings are published and there is something to count.
+const nPlaces = (list) => new Set(list.map((i) => i.country)).size;
+const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const tools = [
+  {
+    name: 'Scholarships',
+    text: 'Open to international students on Bachelor’s and Master’s courses. Each one shows its value, deadline and official page, and whether it is open or closed.',
+    href: '/scholarships/',
+    cta: 'Search scholarships',
+    live: SCH_ON && schItems.length > 0,
+    stat: `${plural(schItems.length, 'scholarship', 'scholarships')} in ${plural(nPlaces(schItems), 'destination', 'destinations')}`,
+    wait: 'Listings are being checked. The official places to look in each destination are ready.',
+  },
+  {
+    name: 'Internships',
+    text: 'Internships, co-ops and placements in the countries you can study in. Every listing opens on the employer’s own page.',
+    href: '/internships/',
+    cta: 'Find an internship',
+    live: INT_ON && intItems.length > 0,
+    stat: `${plural(intItems.length, 'listing', 'listings')} in ${plural(nPlaces(intItems), 'destination', 'destinations')}`,
+    wait: 'Listings are being checked. Where to look in each destination is ready.',
+  },
+];
 
 const steps = [
   ['Find the fit', 'Score every course against what you’ve already studied, not just what you can afford.', '/course-fitment/'],
@@ -106,6 +132,22 @@ const ld = [
       </div>
     </section>
 
+    <section class="band" aria-labelledby="h-tools">
+      <div class="wrap">
+        <h2 id="h-tools">Fund your course. Find work experience.</h2>
+        <ul class="tools">
+          {tools.map((t) => (
+            <li class="tool">
+              <h3>{t.name}</h3>
+              <p class="tool-txt">{t.text}</p>
+              <p class={`tool-stat${t.live ? ' on' : ''}`}>{t.live ? t.stat : t.wait}</p>
+              <a class="btn" href={t.href}>{t.cta}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
     <section class="band">
       <div class="wrap">
         <div class="promo">
@@ -168,6 +210,15 @@ const ld = [
     .home-v1 .step h3 a { color: inherit; text-decoration: none; border-bottom: 2px solid var(--accent); }
     .home-v1 .step h3 a:hover { background: var(--hover); }
     .home-v1 .scope dd { max-width: 22ch; }
+    .home-v1 #h-tools { max-width: none; }
+    .home-v1 .tools { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+    @media (min-width: 760px) { .home-v1 .tools { grid-template-columns: repeat(2, 1fr); } }
+    .home-v1 .tool { display: flex; flex-direction: column; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: clamp(1.25rem, 3vw, 1.75rem); }
+    .home-v1 .tool h3 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); margin-bottom: 0.6rem; }
+    .home-v1 .tool-txt { color: var(--muted); font-size: 0.95rem; line-height: 1.55; max-width: 44ch; }
+    .home-v1 .tool-stat { font-size: 0.9rem; line-height: 1.45; color: var(--muted); margin: 1rem 0 1.25rem; max-width: 44ch; }
+    .home-v1 .tool-stat.on { color: var(--ink); font-weight: 600; }
+    .home-v1 .tool .btn { margin-top: auto; }
     @media (max-width: 600px) {
       .home-v1 .scope { display: grid; gap: 1.1rem; }
       .home-v1 .scope > div { border-right: 0; padding-right: 0; margin-right: 0; }

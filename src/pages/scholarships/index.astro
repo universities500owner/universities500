@@ -11,6 +11,8 @@ const rows = items
   .sort((a, b) => ['open', 'upcoming', 'unknown', 'closed'].indexOf(a.st) - ['open', 'upcoming', 'unknown', 'closed'].indexOf(b.st) || (a.deadline || '9999').localeCompare(b.deadline || '9999') || a.name.localeCompare(b.name));
 const withItems = [...new Set(rows.map((r) => r.country))];
 const countryOpts = countries.filter((c) => withItems.includes(c.code));
+const perCountry = Object.fromEntries(countryOpts.map((c) => [c.code, rows.filter((r) => r.country === c.code).length]));
+const tiles = [...countryOpts].sort((a, b) => perCountry[b.code] - perCountry[a.code] || a.name.localeCompare(b.name));
 const groups = lookGroups();
 const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
 ---
@@ -28,6 +30,21 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
   </div>
 
   {PUBLISH && rows.length > 0 ? (
+    <>
+    <section class="sec" aria-labelledby="h-dest">
+      <h2 id="h-dest">Choose a destination</h2>
+      <ul class="int-dests">
+        {tiles.map((c) => (
+          <li>
+            <a class="int-dest" href={`/scholarships/?c=${c.code}#sch-bar`}>
+              <span class="int-dest-name">{c.name}</span>
+              <span class="int-dest-n">{perCountry[c.code]} scholarship{perCountry[c.code] === 1 ? '' : 's'}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
     <section class="sec" aria-labelledby="h-find">
       <h2 id="h-find" class="sr-only">Search</h2>
       <div class="filterbar" id="sch-bar">
@@ -74,6 +91,7 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
       <p class="more"><button type="button" class="btn-ghost" id="sch-more" hidden>Show more</button></p>
       <p class="small">Last read {updated}. Dates and values are copied from the official page and can change. Check the official page before you apply.</p>
     </section>
+    </>
   ) : (
     <div class="note draft">
       <p><strong>Scholarship listings are being checked.</strong> Each entry will appear here once it has an official source and a check date. Until then, use the official places below.</p>
