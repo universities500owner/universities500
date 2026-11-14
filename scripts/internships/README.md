@@ -34,3 +34,16 @@ We store the title, company, city, destination, link, source and the dates. We d
 python3 scripts/internships/test_internships.py
 python3 scripts/internships/run.py --only open --out /tmp/int.json --report /tmp/int-report
 ```
+
+## Extra facts on a posting
+
+Each posting always has a title, company, city, link and the date it was posted. Four more facts are copied **only when the employer's own feed states them**. If the feed is silent, the card says "check the listing". Nothing is estimated, converted or guessed.
+
+| Field | Where it comes from |
+|---|---|
+| `pay` | Lever `salaryRange`; Greenhouse `pay_input_ranges` (read from each posting's own page, see below). Shown exactly as stated, for example `USD 45–55 / hour`. The period (hour, month, year) is added only when the feed names it. If one posting lists several location-based ranges, the card shows the lowest to the highest. |
+| `team` | Lever team or department; Greenhouse department; Workable department; the first tag on an Arbeitnow listing. |
+| `deadline` | Sweden's JobTech `application_deadline`. The other feeds do not publish a closing date. |
+| `mode` | On-site, hybrid or remote, where Lever says so, or remote where Workable or Arbeitnow flag it. |
+
+Greenhouse's list feed carries neither pay nor department, so each Greenhouse posting is read once from its own page (`/jobs/<id>`). A run reads at most 150 per run (`ENRICH_CAP` in `run.py`), and a posting already read is not asked again. The log prints `Greenhouse detail: N postings asked, N read, N with a pay range`.

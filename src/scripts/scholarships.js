@@ -1,40 +1,24 @@
 // Filters and sort for the scholarship list. The list is already in the page, so this only shows, hides and reorders.
 // Status is worked out again here from the dates, so it stays right between site builds.
 import { $ } from './lib.js';
+import { statusOf, scholarshipPill } from '../lib/when.js';
+import { wireSaves, isSaved } from './saved.js';
 
 const list = $('sch-list');
 const rows = [...list.children];
-const q = $('sch-q'), c = $('sch-c'), l = $('sch-l'), s = $('sch-s'), o = $('sch-o'), tally = $('sch-tally'), more = $('sch-more');
+const q = $('sch-q'), c = $('sch-c'), l = $('sch-l'), s = $('sch-s'), o = $('sch-o'), sv = $('sch-sv'), tally = $('sch-tally'), more = $('sch-more');
 const PAGE = 30;
 let shown = PAGE;
-const LABEL = { open: 'Open', closed: 'Closed', upcoming: 'Yet to open', unknown: 'Check the official page' };
-const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const fmt = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MON[m - 1]} ${y}`; };
 const pad = (n) => String(n).padStart(2, '0');
 const today = (() => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; })();
 
-function statusOf(r) {
-  const { deadline: dl, opens: op, rolling } = r.dataset;
-  if (dl && today > dl) return 'closed';
-  if (op && today < op) return 'upcoming';
-  if (dl || rolling) return 'open';
-  return 'unknown';
-}
-
-// Refresh each row's status chip if the date has moved on since the site was built.
+// Refresh each card's status pill if the date has moved on since the site was built.
 for (const r of rows) {
-  const st = statusOf(r);
-  if (st !== r.dataset.status) {
-    r.dataset.status = st;
-    const chip = r.querySelector('[data-st]');
-    chip.className = `st st-${st}`;
-    chip.textContent = LABEL[st];
-    r.querySelector('[data-stnote]').textContent =
-      st === 'closed' ? `Closed ${fmt(r.dataset.deadline)}. Check the official page for the next round.`
-      : st === 'upcoming' ? `Opens ${fmt(r.dataset.opens)}`
-      : st === 'open' ? (r.dataset.deadline ? `Closes ${fmt(r.dataset.deadline)}` : 'No fixed deadline stated')
-      : 'No dates found on the page';
-  }
+  const st = statusOf(r.dataset, today);
+  r.dataset.status = st;
+  const pill = r.querySelector('[data-pill]');
+  pill.className = `rc-pill rc-${st}`;
+  pill.querySelector('[data-pill-text]').textContent = scholarshipPill(r.dataset, st, today);
 }
 
 const rank = { open: 0, upcoming: 1, unknown: 2, closed: 3 };
@@ -72,18 +56,20 @@ function apply(reset) {
     (!term || term.split(/\s+/).every((w) => r.dataset.name.includes(w))) &&
     (!c.value || r.dataset.country === c.value) &&
     (!l.value || r.dataset.levels.split(' ').includes(l.value)) &&
-    (!s.value || r.dataset.status === s.value));
+    (!s.value || r.dataset.status === s.value) &&
+    (!sv.checked || isSaved(r.dataset.id)));
   matches.sort(sorters[o.value]);
   const keep = new Set(matches);
   matches.forEach((r) => list.appendChild(r));
   rows.filter((r) => !keep.has(r)).forEach((r) => { r.hidden = true; list.appendChild(r); });
   matches.forEach((r, i) => { r.hidden = i >= shown; });
-  tally.textContent = matches.length === 0 ? 'No scholarships match. Try fewer filters.' : `${matches.length} scholarship${matches.length === 1 ? '' : 's'}` + (matches.length > shown ? `, showing ${shown}` : '');
+  tally.textContent = matches.length === 0 ? (sv.checked ? 'Nothing saved yet. Use the bookmark on a card to save it on this device.' : 'No scholarships match. Try fewer filters.') : `${matches.length} scholarship${matches.length === 1 ? '' : 's'}` + (matches.length > shown ? `, showing ${shown}` : '');
   more.hidden = matches.length <= shown;
   writeUrl();
 }
 
-[q, c, l, s, o].forEach((el) => el.addEventListener(el === q ? 'input' : 'change', () => apply(true)));
+[q, c, l, s, o, sv].forEach((el) => el.addEventListener(el === q ? 'input' : 'change', () => apply(true)));
+wireSaves(list, () => { if (sv.checked) apply(true); });
 more.addEventListener('click', () => { shown += PAGE; apply(false); });
 readUrl();
 apply(true);

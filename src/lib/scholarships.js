@@ -13,30 +13,7 @@ export const hubFor = (slug) => (PUBLISH ? data.universities?.[slug] : null);
 export const itemsFor = (slug) => items.filter((i) => i.providerSlug === slug);
 export const bySlug = (slug) => items.find((i) => i.slug === slug);
 
-// Open, closed, yet to open, or unknown. Decided only from dates found on the official page.
-export function statusOf(it, todayIso = new Date().toISOString().slice(0, 10)) {
-  const { deadline, opens, rolling } = it;
-  if (deadline && todayIso > deadline) return 'closed';
-  if (opens && todayIso < opens) return 'upcoming';
-  if (deadline) return 'open';
-  if (rolling) return 'open';
-  return 'unknown';
-}
-export const STATUS_LABEL = { open: 'Open', closed: 'Closed', upcoming: 'Yet to open', unknown: 'Check the official page' };
-
-const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-export function fmtIso(iso) {
-  if (!iso) return '';
-  const [y, m, d] = iso.split('-').map(Number);
-  return `${d} ${MON[m - 1]} ${y}`;
-}
-
-export function statusNote(it, st) {
-  if (st === 'open') return it.deadline ? `Closes ${fmtIso(it.deadline)}` : 'No fixed deadline stated';
-  if (st === 'closed') return `Closed ${fmtIso(it.deadline)}. Check the official page for the next round.`;
-  if (st === 'upcoming') return `Opens ${fmtIso(it.opens)}`;
-  return it.deadlinePartial ? `Deadline ${it.deadlinePartial} (year not stated)` : 'No dates found on the page';
-}
+export { statusOf, STATUS_LABEL, statusNote, scholarshipPill, fmtIso } from './when.js';
 
 export const CHECK = 'Check the official page';
 export const levelsText = (l) => (l && l.length ? l.join(', ') : CHECK);

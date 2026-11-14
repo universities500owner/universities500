@@ -3,6 +3,7 @@ status is 'ok', 'missing' (the board does not exist), 'blocked' (robots.txt says
 A row is {title, locations: [text or (city, country)], url, posted, structured}.
 Only public, documented feeds. Nothing is scraped from a web page."""
 import json
+import re
 import urllib.parse
 
 import places as P
@@ -49,6 +50,50 @@ def _date(v):
     return s[:10] if len(s) >= 10 and s[4] == '-' and s[7] == '-' else ''
 
 
+_INTERVAL = (('hour', 'hour'), ('day', 'day'), ('week', 'week'), ('month', 'month'), ('year', 'year'), ('annual', 'year'))
+
+
+def interval_of(text):
+    """'per-hour-wage' -> 'hour'. '' when the feed does not say (we never guess)."""
+    t = str(text or '').lower()
+    if re.search(r'bi-?week|fortnight|semi-?month', t):
+        return ''
+    for key, name in _INTERVAL:
+        if key in t:
+            return name
+    return ''
+
+
+def _amount(v, per):
+    v = float(v)
+    if per in ('year', '') and v >= 10000:  # 62500 -> 62.5k, 60000 -> 60k
+        k = round(v / 1000, 1)
+        return f"{int(k) if k == int(k) else k}k"
+    if v == int(v):
+        return f"{int(v):,}"
+    return f"{v:,.2f}"
+
+
+def fmt_pay(currency, lo, hi, per=''):
+    """Pay exactly as the feed states it: 'USD 45-55 / hour'. Nothing is converted, estimated or guessed."""
+    try:
+        lo = float(lo) if lo not in (None, '') else None
+        hi = float(hi) if hi not in (None, '') else None
+    except (TypeError, ValueError):
+        return ''
+    if not lo and not hi:
+        return ''
+    lo, hi = lo or hi, hi or lo
+    if lo > hi:
+        lo, hi = hi, lo
+    cur = str(currency or '').strip().upper()[:3]
+    amt = _amount(lo, per) if lo == hi else f"{_amount(lo, per)}\u2013{_amount(hi, per)}"
+    return ' '.join(x for x in (cur, amt) if x) + (f" / {per}" if per else '')
+
+
+MODES = {'onsite': 'On-site', 'on-site': 'On-site', 'hybrid': 'Hybrid', 'remote': 'Remote'}
+
+
 def greenhouse(fx, slug):
     st, d = _get_json(fx, f"{BASES['greenhouse']}/v1/boards/{urllib.parse.quote(slug)}/jobs")
     if st != 'ok':
@@ -57,8 +102,31 @@ def greenhouse(fx, slug):
     for j in (d.get('jobs') if isinstance(d, dict) else None) or []:
         loc = (j.get('location') or {}).get('name') if isinstance(j.get('location'), dict) else j.get('location')
         rows.append({'title': j.get('title'), 'locations': [loc] if loc else [], 'url': j.get('absolute_url'),
-                     'posted': _date(j.get('first_published')), 'structured': False})
+                     'posted': _date(j.get('first_published')), 'structured': False, 'ref': str(j.get('id') or '')})
     return 'ok', rows
+
+
+def greenhouse_job(fx, slug, ref):
+    """One Greenhouse posting's own page of data: department and, where the employer publishes it, the pay range.
+    Returns (status, {'team':..., 'pay':...}). Only what the feed states."""
+    st, d = _get_json(fx, f"{BASES['greenhouse']}/v1/boards/{urllib.parse.quote(slug)}/jobs/{urllib.parse.quote(str(ref))}?pay_transparency=true")
+    if st != 'ok' or not isinstance(d, dict):
+        return st, {}
+    out = {}
+    deps = [x.get('name') for x in (d.get('departments') or []) if isinstance(x, dict) and x.get('name')]
+    if deps:
+        out['team'] = deps[0].strip()[:60]
+    rngs = [r for r in (d.get('pay_input_ranges') or []) if isinstance(r, dict) and (r.get('min_cents') or r.get('max_cents'))]
+    cur = {str(r.get('currency_type') or '').upper() for r in rngs}
+    if rngs and len(cur) == 1:
+        per = {interval_of(f"{r.get('title') or ''} {r.get('blurb') or ''}") for r in rngs}
+        per = per.pop() if len(per) == 1 else ''
+        lo = min((r.get('min_cents') or r.get('max_cents')) for r in rngs) / 100
+        hi = max((r.get('max_cents') or r.get('min_cents')) for r in rngs) / 100
+        pay = fmt_pay(cur.pop(), lo, hi, per)
+        if pay:
+            out['pay'] = pay
+    return 'ok', out
 
 
 def lever(fx, slug):
@@ -72,8 +140,12 @@ def lever(fx, slug):
         for j in d:
             cat = j.get('categories') or {}
             locs = cat.get('allLocations') or ([cat['location']] if cat.get('location') else [])
+            sr = j.get('salaryRange') if isinstance(j.get('salaryRange'), dict) else {}
             rows.append({'title': j.get('text'), 'locations': locs, 'url': j.get('hostedUrl'),
-                         'posted': _date(j.get('createdAt')), 'structured': structured_intern(cat.get('commitment'))})
+                         'posted': _date(j.get('createdAt')), 'structured': structured_intern(cat.get('commitment')),
+                         'team': (cat.get('team') or cat.get('department') or '').strip()[:60],
+                         'mode': MODES.get(str(j.get('workplaceType') or '').lower(), ''),
+                         'pay': fmt_pay(sr.get('currency'), sr.get('min'), sr.get('max'), interval_of(sr.get('interval')))})
         if len(d) < page or skip >= 2000:
             return 'ok', rows
         skip += page
@@ -131,7 +203,8 @@ def workable(fx, slug):
     for j in (d.get('jobs') if isinstance(d, dict) else None) or []:
         loc = ', '.join(x for x in (j.get('city'), j.get('state'), j.get('country')) if x)
         rows.append({'title': j.get('title'), 'locations': [loc] if loc else [], 'url': j.get('url') or j.get('shortlink') or j.get('application_url'),
-                     'posted': _date(j.get('published_on') or j.get('created_at')), 'structured': structured_intern(j.get('employment_type'))})
+                     'posted': _date(j.get('published_on') or j.get('created_at')), 'structured': structured_intern(j.get('employment_type')),
+                     'team': str(j.get('department') or '').strip()[:60], 'mode': 'Remote' if j.get('telecommuting') is True else ''})
     return 'ok', rows
 
 
@@ -157,7 +230,8 @@ def jobtech(fx, terms=('praktik', 'praktikant', 'internship', 'intern')):
                 city = wa.get('municipality') or wa.get('city') or None
                 rows.append({'title': h.get('headline'), 'org': (h.get('employer') or {}).get('name'),
                              'locations': [(city, 'sweden')] if wa.get('country') in (None, '', 'Sverige', 'Sweden') else [],
-                             'url': h.get('webpage_url'), 'posted': _date(h.get('publication_date')), 'structured': False})
+                             'url': h.get('webpage_url'), 'posted': _date(h.get('publication_date')), 'structured': False,
+                             'deadline': _date(h.get('application_deadline'))})
             if len(hits) < 100:
                 break
             offset += 100
@@ -178,7 +252,8 @@ def arbeitnow(fx, max_pages=40):
             types = j.get('job_types') or []
             struct = any('intern' in str(t).lower() or 'praktik' in str(t).lower() for t in types)
             rows.append({'title': j.get('title'), 'org': j.get('company_name'), 'locations': [j.get('location')] if j.get('location') else [],
-                         'url': j.get('url'), 'posted': _date(j.get('created_at')), 'structured': struct})
+                         'url': j.get('url'), 'posted': _date(j.get('created_at')), 'structured': struct,
+                         'team': str((j.get('tags') or [''])[0] or '').strip()[:60], 'mode': 'Remote' if j.get('remote') is True else ''})
         if not ((d.get('links') or {}).get('next')):
             break
         page += 1

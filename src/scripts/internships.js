@@ -1,28 +1,36 @@
 // Filters and sort for the internship list. The list is already in the page, so this only shows, hides and reorders.
 import { $ } from './lib.js';
+import { internshipPill } from '../lib/when.js';
+import { wireSaves, isSaved } from './saved.js';
 
 const list = $('int-list');
 const rows = [...list.children];
-const q = $('int-q'), c = $('int-c'), k = $('int-k'), o = $('int-o'), n = $('int-n'), tally = $('int-tally'), more = $('int-more');
+const q = $('int-q'), c = $('int-c'), k = $('int-k'), o = $('int-o'), n = $('int-n'), sv = $('int-sv'), tally = $('int-tally'), more = $('int-more');
 const PAGE = 30;
 let shown = PAGE;
 const pad = (x) => String(x).padStart(2, '0');
 const d = new Date();
-const today = Date.parse(`${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`);
+const todayIso = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const today = Date.parse(todayIso);
 const isNew = (r) => {
   if (!r.dataset.date) return false;
   const age = Math.round((today - Date.parse(r.dataset.date)) / 86400000);
   return age >= 0 && age <= 7;
 };
-// Keep the "New" badge right between site builds.
+// Keep the "New" badge and the date pill right between site builds.
 for (const r of rows) {
+  const pill = r.querySelector('[data-pill]');
+  if (pill) {
+    const p = internshipPill(r.dataset.deadline, r.dataset.date, Boolean(r.dataset.posted), todayIso);
+    if (p) { pill.className = `rc-pill rc-${p.tone}`; pill.querySelector('[data-pill-text]').textContent = p.text; }
+  }
   const has = r.querySelector('[data-newb]');
   if (isNew(r) && !has) {
     const b = document.createElement('span');
-    b.className = 'int-badge';
+    b.className = 'rc-new';
     b.dataset.newb = '';
     b.textContent = 'New';
-    r.querySelector('.int-side').prepend(b);
+    r.querySelector('.rc-head').insertBefore(b, r.querySelector('[data-save]'));
   } else if (!isNew(r) && has) has.remove();
 }
 
@@ -59,20 +67,22 @@ function apply(reset) {
     words.every((w) => r.dataset.name.includes(w)) &&
     (!c || !c.value || r.dataset.country === c.value) &&
     (!k.value || r.dataset.kind === k.value) &&
-    (!n.checked || isNew(r)));
+    (!n.checked || isNew(r)) &&
+    (!sv.checked || isSaved(r.dataset.id)));
   matches.sort(sorters[o.value]);
   const keep = new Set(matches);
   matches.forEach((r) => list.appendChild(r));
   rows.filter((r) => !keep.has(r)).forEach((r) => { r.hidden = true; list.appendChild(r); });
   matches.forEach((r, i) => { r.hidden = i >= shown; });
   tally.textContent = matches.length === 0
-    ? 'No internships match. Try fewer filters.'
+    ? (sv.checked ? 'Nothing saved yet. Use the bookmark on a card to save it on this device.' : 'No internships match. Try fewer filters.')
     : `${matches.length} internship${matches.length === 1 ? '' : 's'}` + (matches.length > shown ? `, showing ${shown}` : '');
   more.hidden = matches.length <= shown;
   writeUrl();
 }
 
-[q, c, k, o, n].filter(Boolean).forEach((el) => el.addEventListener(el === q ? 'input' : 'change', () => apply(true)));
+[q, c, k, o, n, sv].filter(Boolean).forEach((el) => el.addEventListener(el === q ? 'input' : 'change', () => apply(true)));
+wireSaves(list, () => { if (sv.checked) apply(true); });
 more.addEventListener('click', () => { shown += PAGE; apply(false); });
 readUrl();
 apply(true);

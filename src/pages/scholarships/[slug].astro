@@ -31,7 +31,7 @@ const desc = s.description || `${s.name} at ${s.provider}. Value, deadline and e
 
   {s.description && (<section><h2>About</h2><p>{s.description}</p></section>)}
   <section>
-    <h2>Eligibility</h2>
+    <h2 id="eligibility">Eligibility</h2>
     {s.eligibility && s.eligibility.length ? (<ul>{s.eligibility.map((e) => <li>{e}</li>)}</ul>) : (<p>{CHECK} for who can apply.</p>)}
   </section>
 
