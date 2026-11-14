@@ -1,0 +1,587 @@
+{
+ "id": "SGP-03",
+ "category": "Admissions & Tests",
+ "priority": "Medium",
+ "title": "NUS vs NTU vs SMU: Admission Requirements for Indian CBSE, ISC & IB Students",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "NUS, NTU and SMU are highly selective Singapore universities, but they do not use one common admissions formula. Indian applicants should compare the exact qualification route—CBSE, ISC or IB—the programme’s subject prerequisites, required tests, application window and selection process. A published minimum requirement means an applicant may apply; it does not guarantee an offer."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For Indian Standard 12 applicants, NTU’s published 2027 entry page states a minimum average of 93% including English, with exclusions for certain language and technical subjects. NUS’s Indian Standard 12 page requires a good pass in five subjects including English and states that JEE Main/Advanced are not required. SMU’s 2027–28 international qualifications page states at least 90% in five subjects including English for Indian Standard 12 and requires an accepted standardised test for most applicants; IB applicants are exempt from that test requirement under the published guidance. Always check the live page for the applicant’s board, programme and year."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "University comparison at a glance",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "University",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Indian school-leaving route",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Published 2027-cycle point to note",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "NUS"
+        }
+       ],
+       [
+        {
+         "t": "CBSE / ISC Indian Standard 12; separate IB route."
+        }
+       ],
+       [
+        {
+         "t": "Good pass in five subjects including English on the Indian Standard 12 page; standardised tests and English test not required under that route. Holistic assessment; programme-specific prerequisites apply."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "NTU"
+        }
+       ],
+       [
+        {
+         "t": "India Standard 12; separate IB route."
+        }
+       ],
+       [
+        {
+         "t": "Minimum average 93% including English on the published India Standard 12 page; programme subject requirements and English-test conditions may apply."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "SMU"
+        }
+       ],
+       [
+        {
+         "t": "India Standard 12 (CBSE, ISC and other state boards); separate IB route."
+        }
+       ],
+       [
+        {
+         "t": "At least 90% in five subjects including English; standardised test score required for most applicants, with IB exemption noted on the page."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "NUS: Indian Standard 12 (CBSE and ISC)",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "NUS lists Indian Standard 12 as an accepted international qualification. Its published page for foreign applicants states a good pass in five subjects including English. It states that SAT, ACT with Writing and Advanced Placement tests are not required for this qualification route, and that an English-language test is not required under the stated conditions. NUS says applicants are assessed holistically on academic and non-academic achievements."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "JEE Main/Advanced are not required for NUS admission under this route."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Programme eligibility and subject prerequisites still apply; Medicine, Dentistry, Law and Nursing may have additional restrictions for applicants whose final results are not yet available at the application stage."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Applicants must follow the intake-specific result submission deadlines. NUS publishes separate dates for CBSE and ISC result updates."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "NTU: India Standard 12",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "NTU’s published India Standard 12 page sets a minimum average score of 93%, including English, to apply. Certain language and technical subjects are excluded from the calculation. JEE Main is not required and does not enhance admission chances; a strong JEE Advanced ranking may be viewed favourably. Programme eligibility depends on the required subjects and the applicant’s actual results."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "NTU states that admission is highly competitive, particularly for non-citizens; meeting the minimum does not guarantee admission."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "English-language test evidence may be required if English was not the medium of instruction or is shown as a second/additional language on the transcript."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Some programmes require senior-high-school Mathematics or specific subject combinations. Business Mathematics or Applied Mathematics may not meet every stated Mathematics prerequisite."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "SMU: Indian Standard 12 and standardised tests",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "SMU’s AY2027–28 international/other qualifications page lists India Standard 12, including CBSE, ISC and other state boards. It states a minimum of 90% in five subjects including English. Applicants generally need one accepted standardised test score—such as SAT, ACT, IELTS, TOEFL, C1 Advanced, PTE Academic or AST—subject to the stated exemptions. The published page says applicants with an IB Diploma do not need the listed standardised test."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For non-law applicants, SMU lists a minimum SAT score of 1,350 with at least 650 in Evidence-Based Reading and Writing. For Law, the stated SAT total remains 1,350 but the Evidence-Based Reading and Writing minimum is 700. These are minimum test thresholds, not a guarantee of admission. The application page also states that predicted scores must be attested by the school; self-declared predicted scores are not accepted."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "IB applicants: do not reuse CBSE/ISC thresholds",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The universities assess the IB Diploma through separate qualification routes. Students should check the exact subject-level requirements, predicted/actual result rules, Higher Level subjects and any course-specific requirements. Do not apply the Indian Standard 12 percentage thresholds to an IB applicant. SMU’s page explicitly notes an IB exemption from the standardised test requirement; confirm the current NUS and NTU IB guidance independently."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Curriculum and course-fit comparison",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Intended subject",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Subject preparation to check",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Additional checks",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Computer Science / Computing"
+        }
+       ],
+       [
+        {
+         "t": "Mathematics at the required level; relevant science/technical subjects where specified."
+        }
+       ],
+       [
+        {
+         "t": "Programme-specific Mathematics prerequisites, aptitude/selection requirements and competitiveness."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Engineering"
+        }
+       ],
+       [
+        {
+         "t": "Mathematics and Physics; Chemistry or other subjects where the programme specifies them."
+        }
+       ],
+       [
+        {
+         "t": "Exact engineering discipline, subject combinations and any additional assessment."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Business / Accountancy / Finance"
+        }
+       ],
+       [
+        {
+         "t": "Mathematics requirements can vary by programme and university."
+        }
+       ],
+       [
+        {
+         "t": "SMU/NUS/NTU course structure, quantitative preparation, interviews and selection tasks."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Economics"
+        }
+       ],
+       [
+        {
+         "t": "Mathematics preparation and any programme-specific prerequisites."
+        }
+       ],
+       [
+        {
+         "t": "Distinguish economics from business/management; check course-specific selection."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Law"
+        }
+       ],
+       [
+        {
+         "t": "Strong academic profile and language/communication preparation."
+        }
+       ],
+       [
+        {
+         "t": "Separate law admissions requirements, tests, interviews and writing requirements."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Medicine / Dentistry"
+        }
+       ],
+       [
+        {
+         "t": "Required sciences and exceptionally competitive academic selection."
+        }
+       ],
+       [
+        {
+         "t": "Additional aptitude tests, interviews, clinical suitability and nationality-specific restrictions."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Application calendar and document checklist",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Application windows differ by university and qualification. For the 2027–28 cycle, NTU states that international qualification applications open on 15 October 2026 and generally run to 19 March 2027, depending on qualification. SMU lists 16 November 2026 to 19 March 2027 for international/other qualifications. NUS publishes a separate window for international qualifications; check its live important-dates page before applying. Do not copy one university’s deadline to another."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Passport details and contact information."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Class 10 results and complete Class 11/12 transcripts or predicted results, as applicable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Final CBSE/ISC/state board results submitted within the university’s stated post-result deadline."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "IB predicted and final results, including subject levels, where applicable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "English-language test results if the qualification route or university requires them."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "SAT/ACT/other standardised test result if required for the chosen university and applicant category."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Programme-specific materials: portfolio, written responses, achievements, recommendations or interview preparation if requested."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check application fee, portal category and document-upload rules."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to interpret admission scores responsibly",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Universities may publish minimum eligibility thresholds, but selection depends on applicant pool strength, programme capacity, subject prerequisites, academic performance and other components of the application. Use historical outcomes only when the university itself publishes comparable data, and label them by year and applicant category."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is 90% enough for NUS, NTU or SMU?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It depends on the university, qualification, programme and applicant pool. The published minimums differ: NTU’s Indian Standard 12 page states 93%; SMU states 90% in five subjects including English; NUS uses “good pass” in five subjects including English. None is an admission guarantee."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Do Indian students need JEE for NUS or NTU?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "NUS says JEE Main/Advanced are not required for its Indian Standard 12 route. NTU says JEE Main is not required and does not enhance the chance of admission; a strong JEE Advanced ranking may be viewed favourably."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is SAT mandatory for NUS?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "NUS’s published Indian Standard 12 route says SAT/ACT with Writing/AP are not required. Other qualification routes and universities have different rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does SMU require SAT for IB students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "SMU’s published guidance states that standardised tests are not required for applicants with the IB Diploma. Check the current programme and cycle guidance."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I use the same application documents for all three universities?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "You can prepare a common academic document set, but each university has its own portal, application category, tests, deadlines and programme-specific requirements."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "NUS and NTU admission requirements for international students",
+ "secondaryKeywords": [
+  "SAT score for NUS NTU",
+  "best courses Singapore CS Finance"
+ ],
+ "intent": "Commercial",
+ "seoTitle": "NUS vs NTU vs SMU: Admission Requirements for Indian Students",
+ "metaDescription": "Compare NUS, NTU and SMU admission requirements for CBSE, ISC and IB students, including academic thresholds, SAT rules, subject prerequisites and deadlines.",
+ "slug": "/singapore/nus-ntu-smu-admission-indian-students/",
+ "internalLinks": "Singapore tuition and scholarships; Singapore cost of living; course comparison pages; application document checklist.",
+ "destination": "singapore",
+ "topic": "admissions",
+ "topicLabel": "Admissions and tests",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "NTU – Tuition fees and grants, AY2026/27",
+   "url": "https://www.ntu.edu.sg/admissions/undergraduate/fees-and-funding/tuition-fees",
+   "note": ""
+  },
+  {
+   "title": "NUS – Undergraduate tuition fee schedule",
+   "url": "https://nus.edu.sg/registrar/docs/default-source/administrative-policies-procedures/ugtuitioncurrent.pdf",
+   "note": ""
+  },
+  {
+   "title": "SMU – Tuition Grant FAQ and service obligation",
+   "url": "https://admissions.smu.edu.sg/faq/all",
+   "note": ""
+  },
+  {
+   "title": "MOE – Tuition Grant Scheme",
+   "url": "https://www.moe.gov.sg/financial-matters/tuition-grant-scheme",
+   "note": ""
+  },
+  {
+   "title": "MOM – Employment Pass eligibility and COMPASS",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+   "note": ""
+  },
+  {
+   "title": "MOM – Work pass exemption for foreign students",
+   "url": "https://www.mom.gov.sg/passes-and-permits/work-pass-exemption-for-foreign-students/",
+   "note": ""
+  },
+  {
+   "title": "ICA – Student’s Pass",
+   "url": "https://www.ica.gov.sg/reside/STP",
+   "note": ""
+  },
+  {
+   "title": "NUS – Indian Standard 12 (foreign applicants)",
+   "url": "https://nus.edu.sg/oam/admissions/international-qualifications-for-foreigners/international-qualifications/indian-standard-12-cbse-and-isc",
+   "note": ""
+  },
+  {
+   "title": "NUS – Important dates",
+   "url": "https://nus.edu.sg/oam/admissions/important-dates",
+   "note": ""
+  },
+  {
+   "title": "NTU – India Standard 12",
+   "url": "https://www.ntu.edu.sg/admissions/undergraduate/admissions/general-admission-requirements/international-qualifications/india-standard-12",
+   "note": ""
+  },
+  {
+   "title": "NTU – Undergraduate admissions and application windows",
+   "url": "https://www.ntu.edu.sg/undergraduate/admissions",
+   "note": ""
+  },
+  {
+   "title": "SMU – International and other qualifications",
+   "url": "https://admissions.smu.edu.sg/admissions-requirements/international-and-other-qualifications",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "5147351b-Singapore_Study_Abroad_SEO_GEO_Content_Pack_3_Articles.docx",
+ "words": 1239,
+ "readMinutes": 6
+}

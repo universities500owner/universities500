@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
 import { hiddenFromSearch } from '../lib/noindex.js';
 const path = '/before-you-fly/';
 const groups = [
@@ -68,4 +70,5 @@ const week = [
       say: (d, t) => d === t ? 'Ready to fly.' : d === 0 ? 'Sixteen things, spread over three months. The visa one gates the flights.' : (t - d) + ' left. Anything involving money or the visa goes first.',
     });
   </script>
+  <RelatedArticles list={forTopics(TOOL_TOPICS['before-you-fly'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />
 </Base>

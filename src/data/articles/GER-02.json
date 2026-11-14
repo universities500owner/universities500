@@ -1,0 +1,524 @@
+{
+ "id": "GER-02",
+ "category": "Cost & Budgeting",
+ "priority": "High",
+ "title": "Blocked Account (Sperrkonto) Germany: Updated Monthly Amount & Expatrio vs Coracle",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "A blocked account (Sperrkonto) is one way to demonstrate that you can finance your living costs while studying in Germany. For 2026, the German student-visa financial benchmark is €992 per month, or €11,904 for 12 months. The amount is blocked and released in monthly instalments. A blocked account is not the only possible proof of funds: a scholarship or a formal Declaration of Commitment may also be accepted, subject to the applicable rules."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Confirm the amount and accepted evidence in the Consular Services Portal or German Mission instructions for your application. Compare providers on total fees, transfer costs, account activation, payout arrangements, customer support and refund/closure process—not just the headline opening fee."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What is a Sperrkonto?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A Sperrkonto is a bank or financial-provider account in which a specified amount is blocked for a defined period. After arrival and completion of the relevant steps, the student can withdraw only the permitted monthly amount. The Federal Foreign Office explains that the account is designed to ensure that funds intended to last a year cannot all be withdrawn immediately."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Study visa financial benchmark",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "2026 amount",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Monthly living-funds amount"
+        }
+       ],
+       [
+        {
+         "t": "€992"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "12-month amount"
+        }
+       ],
+       [
+        {
+         "t": "€11,904"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Monthly release cap"
+        }
+       ],
+       [
+        {
+         "t": "Generally €992, subject to the account confirmation and applicable authority instructions"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "These figures are the 2026 financial proof benchmark shown by the German Missions in India and the official “Make it in Germany” information. Recheck the amount for the date of application; it may be revised."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Is a blocked account compulsory?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No, not in every case. Official German guidance recognises other ways to prove financial support, including a scholarship and a formal Declaration of Commitment (Verpflichtungserklärung) from a sponsor in Germany. The German Missions in India list an education loan as supporting evidence, but students should follow the exact visa checklist and not assume that a loan sanction letter alone replaces the required proof of available funds."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Expatrio vs Coracle: how to compare",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Expatrio and Coracle are commercial providers, not government-approved or government-recommended brands. The Federal Foreign Office explicitly says students are free to choose a provider and that it does not recommend providers or accept liability for provider failures. The former government provider list was removed."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Comparison criterion",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What students should verify with each provider",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Setup and account fees"
+        }
+       ],
+       [
+        {
+         "t": "One-time setup fee, monthly fee, account closure fee and any bundled service charges."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Transfer costs"
+        }
+       ],
+       [
+        {
+         "t": "International transfer fee, intermediary-bank deductions, FX spread and receiving-bank charges."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Funding confirmation"
+        }
+       ],
+       [
+        {
+         "t": "How quickly the provider issues a formal blocked-account confirmation after funds clear."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Monthly payouts"
+        }
+       ],
+       [
+        {
+         "t": "Payout date, receiving account requirements, transfer charges and handling of public holidays."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Refund / closure"
+        }
+       ],
+       [
+        {
+         "t": "Process if visa is refused, application withdrawn or student does not travel; documents and charges required."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Support"
+        }
+       ],
+       [
+        {
+         "t": "Support channels, response times, language availability and escalation process."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Bundled services"
+        }
+       ],
+       [
+        {
+         "t": "Health insurance, current account or other add-ons; compare the price and whether the student actually needs them."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Fees, exchange rates, bundled offers and terms can change. Make the student compare the amount they must remit in INR and the net EUR amount credited to the blocked account."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How much should you budget beyond the blocked account?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The €11,904 amount is a visa living-funds benchmark, not the total cost of studying in Germany. Add tuition where charged, semester contribution, health insurance, rent deposit, travel, visa fee, local transport, study materials and initial setup costs. Some public universities charge no general tuition for many consecutive programmes, but there are important exceptions, including certain states, non-consecutive or continuing-education programmes and private institutions."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Budget component",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Examples to include",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Tuition"
+        }
+       ],
+       [
+        {
+         "t": "Programme tuition, if applicable; private university fees; non-EU tuition where charged."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Semester contribution"
+        }
+       ],
+       [
+        {
+         "t": "Student services, student union and transport components where included."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Living costs"
+        }
+       ],
+       [
+        {
+         "t": "Rent, utilities, food, phone, internet, clothing and personal expenses."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Insurance"
+        }
+       ],
+       [
+        {
+         "t": "Statutory or private health insurance that meets the relevant requirements."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "One-off costs"
+        }
+       ],
+       [
+        {
+         "t": "Visa, flights, accommodation deposit, residence permit, household setup."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Step-by-step blocked-account process",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Confirm the current financial amount and permitted evidence for your visa category."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare providers and read the terms, fee schedule and closure/refund rules."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Open the account in the student’s correct legal name and follow identity verification."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Transfer the required amount, allowing for FX and intermediary-bank charges."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Obtain the blocked-account confirmation in the format required by the German Mission or Consular Services Portal."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Submit the confirmation with the rest of the visa application evidence."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "After arrival, complete the provider’s activation and receiving-account steps to access monthly payouts."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What if the visa is refused or plans change?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Federal Foreign Office says a visa rejection notice can be used to request release of the blocked funds. In other circumstances, the account beneficiary (the mission or foreigners authority) may need to agree to lift the blocking notice. Read the provider’s own terms and the official closure guidance before transferring money."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "How much money is required in a German blocked account in 2026?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The 2026 student living-funds benchmark is €992 per month, or €11,904 for 12 months. Check the German Mission or Consular Services Portal for the amount applicable when you apply."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I use a scholarship instead of a blocked account?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A scholarship can be accepted as proof of financial support if it meets the relevant requirements and covers the required amount. A formal Declaration of Commitment may also be an option."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is Expatrio better than Coracle?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "There is no universal answer. Compare current fees, transfer costs, confirmation timing, monthly payouts, support, bundled services and closure terms. The Federal Foreign Office does not recommend providers."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is Germany tuition-free for international students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not universally. Many public universities have low or no general tuition for some programmes, but semester contributions and exceptions apply. Some states, institutions and programmes charge tuition, and private universities generally charge fees."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I withdraw all my blocked money after arriving?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The purpose of the account is to release funds in monthly instalments. The exact payout arrangements are set out in the blocked-account confirmation and provider terms."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Will the blocked account be refunded if my visa is rejected?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Federal Foreign Office says the rejection notice is sufficient to lift the blocking notice. The provider’s procedures and any fees still need to be checked."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "Blocked account Germany amount Sperrkonto",
+ "secondaryKeywords": [
+  "cost of studying in Germany tuition free",
+  "semester contribution fees"
+ ],
+ "intent": "Informational / Commercial",
+ "seoTitle": "Blocked Account Germany: €11,904 & Provider Comparison",
+ "metaDescription": "Learn the 2026 German blocked-account amount, monthly release rules and how to compare Expatrio, Coracle and other providers.",
+ "slug": "blocked-account-germany-sperrkonto",
+ "destination": "germany",
+ "topic": "cost-and-budgeting",
+ "topicLabel": "Costs and budgeting",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "auswaertiges-amt.de",
+   "url": "https://www.auswaertiges-amt.de/en/visa-service/visabestimmungen-node/sperrkonto-seite",
+   "note": "German Federal Foreign Office – Blocked account"
+  },
+  {
+   "title": "make-it-in-germany.com",
+   "url": "https://www.make-it-in-germany.com/en/visa-recognition/visa-types/studying",
+   "note": "Make it in Germany – Visa for studying"
+  },
+  {
+   "title": "india.diplo.de",
+   "url": "https://india.diplo.de/in-en/service/2756350-2756350",
+   "note": "German Missions in India – Study visa"
+  },
+  {
+   "title": "digital.diplo.de",
+   "url": "https://digital.diplo.de/studium/",
+   "note": "Consular Services Portal"
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "3dfbcc48-Germany_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 1005,
+ "readMinutes": 5
+}

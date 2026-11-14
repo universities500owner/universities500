@@ -1,0 +1,699 @@
+{
+ "id": "SGP-02",
+ "category": "Post-Study & PR",
+ "priority": "High",
+ "title": "Singapore Employment Pass (EP) & COMPASS Framework: Post-Study Work Rules",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Graduating from a Singapore university does not automatically give an international student the right to remain and work. During study, eligible Student’s Pass holders may work without a separate work pass only within specific rules. After graduation, the Student’s Pass does not function as a post-study work visa: the graduate needs a suitable immigration status and, for employment, the employer must apply for the relevant work pass."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For an Employment Pass (EP), the candidate must first meet the qualifying salary for their age and sector and, unless exempt, pass the COMPASS points framework with at least 40 points. From 1 January 2027, the minimum EP qualifying salary for new applications rises to S$6,000 outside financial services and S$6,600 in financial services for applicants aged 23 or below, with higher age-banded thresholds. The EP is employer-led; a degree alone does not qualify a graduate."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Working while studying on a Student’s Pass",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "MOM allows certain full-time students at listed institutions—including NUS, NTU and SMU—to work during term without a work pass if they meet the conditions. The standard term-time route is a maximum of 16 hours per week, or work under an eligible industrial attachment/internship conducted by the institution that contributes to graduation requirements. During vacation, eligible full-time students at listed institutions may work without a work pass, subject to the rules."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Study period",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "General exemption conditions for eligible listed institutions",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "During academic term"
+        }
+       ],
+       [
+        {
+         "t": "Full-time matriculated/registered student with a valid ICA Student’s Pass; work no more than 16 hours per week, or undertake qualifying institution-run industrial attachment that contributes to graduation requirements."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "During vacation / term break"
+        }
+       ],
+       [
+        {
+         "t": "Full-time matriculated/registered student with a valid Student’s Pass at a listed institution; may work during vacation without a work pass, subject to the exemption rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "After completing studies / Student’s Pass expires"
+        }
+       ],
+       [
+        {
+         "t": "The student exemption no longer provides a right to work. The employer must obtain an appropriate work pass before employment begins."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not assume every private college, exchange programme or internship is covered. Check the current MOM institution list and the exact nature of the placement. Working outside the exemption can be an offence."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is the Employment Pass?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The EP is a work pass for foreign professionals, managers and executives. The employer or appointed employment agent applies. The candidate must satisfy the two-stage eligibility framework: (1) meet the EP qualifying salary and (2) pass COMPASS unless exempt. Meeting one stage does not compensate for failing the other."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "EP qualifying salary: current and announced 2027 levels",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Age",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Non-financial services: new applications before 1 Jan 2027",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Non-financial services: new applications from 1 Jan 2027",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "23 or below"
+        }
+       ],
+       [
+        {
+         "t": "S$5,600"
+        }
+       ],
+       [
+        {
+         "t": "S$6,000"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "25"
+        }
+       ],
+       [
+        {
+         "t": "S$6,064"
+        }
+       ],
+       [
+        {
+         "t": "S$6,500"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "30"
+        }
+       ],
+       [
+        {
+         "t": "S$7,223"
+        }
+       ],
+       [
+        {
+         "t": "S$7,750"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "35"
+        }
+       ],
+       [
+        {
+         "t": "S$8,382"
+        }
+       ],
+       [
+        {
+         "t": "S$9,000"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "40"
+        }
+       ],
+       [
+        {
+         "t": "S$9,541"
+        }
+       ],
+       [
+        {
+         "t": "S$10,250"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "45 and above"
+        }
+       ],
+       [
+        {
+         "t": "S$10,700"
+        }
+       ],
+       [
+        {
+         "t": "S$11,500"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Financial-services thresholds are higher: S$6,200 for applicants aged 23 or below before 1 January 2027, rising to S$6,600 from that date; the age-banded maximum rises from S$11,800 to S$12,700. The salary threshold increases progressively with age. Use MOM’s live table for the exact age and sector rather than relying on the illustrative rows above."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "COMPASS: the 40-point framework",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Most EP applications must score at least 40 points under COMPASS. The framework assesses the candidate and the employer’s workforce profile. A graduate should understand that COMPASS is not an individual test that can be passed solely by collecting certificates: several criteria depend on the employer’s workforce and hiring profile."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Criterion",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What it assesses",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Typical points",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "C1 Salary"
+        }
+       ],
+       [
+        {
+         "t": "Candidate salary compared with local PMET salary benchmarks in the sector."
+        }
+       ],
+       [
+        {
+         "t": "0 / 10 / 20"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "C2 Qualifications"
+        }
+       ],
+       [
+        {
+         "t": "Degree-equivalent qualifications and recognised institutions / professional qualifications."
+        }
+       ],
+       [
+        {
+         "t": "0 / 10 / 20"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "C3 Diversity"
+        }
+       ],
+       [
+        {
+         "t": "How the candidate’s nationality affects the employer’s PMET workforce diversity."
+        }
+       ],
+       [
+        {
+         "t": "0 / 10 / 20"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "C4 Support for local employment"
+        }
+       ],
+       [
+        {
+         "t": "Employer’s share of local PMET employment compared with industry peers."
+        }
+       ],
+       [
+        {
+         "t": "0 / 10 / 20"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The four foundational criteria contribute up to 20 points each. Additional bonus points may be available under the Skills Bonus and Strategic Economic Priorities Bonus where the specific conditions are met. Some applications are exempt from COMPASS, including qualifying high-salary cases and other prescribed categories. Check MOM’s guide for the exact rules and current lists."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "COMPASS 40-point score breakdown",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Criterion",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Score to model",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Data needed",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "C1 Salary"
+        }
+       ],
+       [
+        {
+         "t": "0 / 10 / 20"
+        }
+       ],
+       [
+        {
+         "t": "Fixed monthly salary, age, sector and MOM salary benchmarks."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "C2 Qualifications"
+        }
+       ],
+       [
+        {
+         "t": "0 / 10 / 20"
+        }
+       ],
+       [
+        {
+         "t": "Qualification level, awarding institution and verification evidence."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "C3 Diversity"
+        }
+       ],
+       [
+        {
+         "t": "0 / 10 / 20"
+        }
+       ],
+       [
+        {
+         "t": "Employer’s PMET workforce nationality composition."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "C4 Local employment support"
+        }
+       ],
+       [
+        {
+         "t": "0 / 10 / 20"
+        }
+       ],
+       [
+        {
+         "t": "Employer’s local PMET share relative to sector benchmarks."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Bonus criteria"
+        }
+       ],
+       [
+        {
+         "t": "Potential additional points"
+        }
+       ],
+       [
+        {
+         "t": "Eligible shortage occupation / strategic economic priority conditions and employer participation."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It must not claim to predict an EP outcome from a student’s grades or university ranking. Include a disclaimer that MOM makes the final assessment."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What happens after graduation?",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Before the Student’s Pass expires, check whether the graduate has a lawful basis to remain in Singapore while seeking employment. Do not assume an automatic post-study open work visa."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "If the graduate receives a job offer, the employer checks the appropriate pass route, salary and other eligibility conditions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "For an EP, the employer or employment agent submits the application and supporting documents."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The candidate must not start work until the required work authorisation is in force."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "If EP is not suitable, the employer may assess another pass category where the role and candidate qualify; do not assume every job fits the EP."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "PR after study: keep expectations realistic",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Singapore permanent residence is a separate application and is not guaranteed by a Singapore degree, Tuition Grant agreement or Employment Pass. Graduates who work in Singapore may later explore eligibility under the applicable ICA categories, but approval is discretionary and based on the circumstances and prevailing criteria. Avoid promising a fixed PR timeline or guaranteed outcome."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Can I work 20 hours a week while studying at NUS or NTU?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The general exemption for listed institutions allows up to 16 hours per week during term, or a qualifying institution-run industrial attachment that contributes to graduation requirements. Do not assume a 20-hour allowance."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I stay in Singapore after my Student’s Pass expires to look for a job?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A Student’s Pass is not an open post-study work permit. Check the current ICA rules and whether a separate short-term visit or other status is available in your circumstances. Do not work without valid work authorisation."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is 40 COMPASS points enough for an EP?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A score of at least 40 is generally required where COMPASS applies, but the candidate must also meet the EP qualifying salary and all other conditions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a Master’s degree guarantee COMPASS qualification points?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Qualification points depend on the recognised qualification and institution criteria. A degree does not guarantee an EP."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does the employer apply for the Employment Pass?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Yes. The employer or appointed employment agent submits the EP application."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "COMPASS framework Employment Pass Singapore after study",
+ "secondaryKeywords": [
+  "Singapore student pass application",
+  "part-time work restrictions"
+ ],
+ "intent": "Informational",
+ "seoTitle": "Singapore Employment Pass & COMPASS: Post-Study Work Rules",
+ "metaDescription": "Understand Singapore Student’s Pass work limits, EP salary requirements, COMPASS 40-point criteria and post-study work options.",
+ "slug": "/singapore/employment-pass-compass-after-study/",
+ "internalLinks": "Singapore Student Pass guide; Tuition Grant bond; Singapore graduate jobs; NUS/NTU/SMU admissions.",
+ "destination": "singapore",
+ "topic": "after-study",
+ "topicLabel": "Work after study",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "NTU – Tuition fees and grants, AY2026/27",
+   "url": "https://www.ntu.edu.sg/admissions/undergraduate/fees-and-funding/tuition-fees",
+   "note": ""
+  },
+  {
+   "title": "NUS – Undergraduate tuition fee schedule",
+   "url": "https://nus.edu.sg/registrar/docs/default-source/administrative-policies-procedures/ugtuitioncurrent.pdf",
+   "note": ""
+  },
+  {
+   "title": "SMU – Tuition Grant FAQ and service obligation",
+   "url": "https://admissions.smu.edu.sg/faq/all",
+   "note": ""
+  },
+  {
+   "title": "MOE – Tuition Grant Scheme",
+   "url": "https://www.moe.gov.sg/financial-matters/tuition-grant-scheme",
+   "note": ""
+  },
+  {
+   "title": "MOM – Employment Pass eligibility and COMPASS",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+   "note": ""
+  },
+  {
+   "title": "MOM – Work pass exemption for foreign students",
+   "url": "https://www.mom.gov.sg/passes-and-permits/work-pass-exemption-for-foreign-students/",
+   "note": ""
+  },
+  {
+   "title": "ICA – Student’s Pass",
+   "url": "https://www.ica.gov.sg/reside/STP",
+   "note": ""
+  },
+  {
+   "title": "NUS – Indian Standard 12 (foreign applicants)",
+   "url": "https://nus.edu.sg/oam/admissions/international-qualifications-for-foreigners/international-qualifications/indian-standard-12-cbse-and-isc",
+   "note": ""
+  },
+  {
+   "title": "NUS – Important dates",
+   "url": "https://nus.edu.sg/oam/admissions/important-dates",
+   "note": ""
+  },
+  {
+   "title": "NTU – India Standard 12",
+   "url": "https://www.ntu.edu.sg/admissions/undergraduate/admissions/general-admission-requirements/international-qualifications/india-standard-12",
+   "note": ""
+  },
+  {
+   "title": "NTU – Undergraduate admissions and application windows",
+   "url": "https://www.ntu.edu.sg/undergraduate/admissions",
+   "note": ""
+  },
+  {
+   "title": "SMU – International and other qualifications",
+   "url": "https://admissions.smu.edu.sg/admissions-requirements/international-and-other-qualifications",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "5147351b-Singapore_Study_Abroad_SEO_GEO_Content_Pack_3_Articles.docx",
+ "words": 1156,
+ "readMinutes": 5
+}

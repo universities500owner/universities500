@@ -1,0 +1,155 @@
+NOR-01: title changed from 'Tuition-Free Public Universities in Norway & UDI Proof of Funds (NOK Block Account)' to 'Cost of Studying in Norway: Tuition Fees and UDI Proof of Funds' (the pack headline says 'Tuition-Free', but the article explains that fees depend on the programme)
+NOR-01: Cost of Studying in Norway: Tuition Fees and UDI Proof of Funds | sections 8, faq 6, sources 8 (destination), quick yes, slug /norway-study-cost-tuition-fees-proof-of-funds/
+NOR-02: title changed from 'Best English-Taught Master’s in Norway: Energy, Marine Engineering & ICT Careers' to 'English-Taught Master's in Norway: Energy, Marine Engineering and ICT' (the site does not name a 'best' programme)
+NOR-02: English-Taught Master's in Norway: Energy, Marine Engineering and ICT | sections 9, faq 6, sources 8 (article), quick yes, slug /english-taught-masters-norway-energy-marine-ict/
+NLD-01: RANKING wording, check against the no-rankings rule: The Dutch orientation year residence permit, commonly called the zoekjaar, gives eligible graduates and researchers up to one year to look for work or
+NLD-01: Orientation Year Visa (Zoekjaar) Netherlands: Rules, Application & Highly Skille | sections 7, faq 5, sources 12 (destination), quick yes, slug /netherlands/orientation-year-visa-zoekjaar/
+NLD-02: Research Universities (WO) vs Universities of Applied Sciences (HBO) & Numerus F | sections 9, faq 5, sources 12 (destination), quick NO, slug /netherlands/wo-vs-hbo-numerus-fixus/
+NLD-03: editor sentence dropped: Verification note: The links above identify platforms to investigate, not verified vacancies or endorsements.
+NLD-03: editor sentence dropped: Before publishing, test each link, check that it serves the destination city and label private marketplaces separately from university or ho
+NLD-03: OUTCOME wording, check: University housing office | First contact after admission; ask about reserved rooms and partner providers. | Eligibility, allocation deadline, guarant
+NLD-03: Navigating the Dutch Student Housing Crisis: Room.nl, Cooperatives & Living Cost | sections 7, faq 5, sources 12 (article), quick yes, slug /netherlands/student-housing-room-nl-living-costs/
+GER-01: editor sentence dropped: Do not hard-code a rupee amount into evergreen content unless it has been checked immediately before publication.
+GER-01: APS Certificate India Process: Complete Document Checklist, Fees & Processing Ti | sections 8, faq 6, sources 5 (article), quick yes, slug aps-certificate-india-germany-process
+GER-02: editor sentence dropped: Do not publish a price comparison table without capturing the providers’ current fee schedules on the same date and under the same assumptio
+GER-02: Blocked Account (Sperrkonto) Germany: Updated Monthly Amount & Expatrio vs Corac | sections 6, faq 6, sources 4 (article), quick yes, slug blocked-account-germany-sperrkonto
+GER-03: Uni-Assist VPD Process & Consecutive vs Non-Consecutive Master’s ECTS Requiremen | sections 7, faq 6, sources 5 (article), quick yes, slug uni-assist-vpd-ects-germany-masters
+GER-04: 18-Month Job Seeker Visa Germany & Transitioning to an EU Blue Card | sections 7, faq 6, sources 4 (article), quick yes, slug germany-post-study-job-search-eu-blue-card
+GER-05: title changed from 'Top TU9 Public Universities in Germany for English-Taught MS in Engineering & CS' to 'The Nine TU9 Universities: English-Taught Master's in Engineering and Computer Science' (the site does not rank universities)
+GER-05: The Nine TU9 Universities: English-Taught Master's in Engineering and Computer S | sections 6, faq 6, sources 6 (article), quick yes, slug tu9-universities-english-taught-masters
+UAE-01: International Branch Campuses in Dubai: BITS Pilani, Heriot-Watt & Degree Validi | sections 6, faq 5, sources 10 (destination), quick yes, slug /uae/dubai-international-branch-campuses-degree-validity/
+UAE-02: RANKING wording, check against the no-rankings rule: Can an Indian graduate from a top-100 university in India qualify?
+UAE-02: UAE Student Visa Sponsorship & 10-Year Golden Visa Eligibility for University Gr | sections 9, faq 5, sources 10 (article), quick yes, slug /uae/student-visa-golden-visa-graduates/
+SGP-01: editor sentence dropped: Recommended interactive table fields: university; programme; academic year; normal duration; annual subsidised fee; annual non-subsidised fe
+SGP-01: editor sentence dropped: Show a clear warning beside every calculation: estimates exclude annual fee changes, living-cost inflation, currency movement and personal e
+SGP-01: removed 1 section(s) matching 'Subsidised vs non-subsidised fee comparison' (the section was only a note for a table that is not in the pack)
+SGP-01: Cost of Studying in Singapore: NUS/NTU Fees & MOE Tuition Grant 3-Year Bond Expl | sections 5, faq 5, sources 12 (destination), quick yes, slug /singapore/cost-of-studying-tuition-grant-bond/
+SGP-02: editor sentence dropped: Build a calculator that clearly labels C3 and C4 as employer-dependent and asks for employer-provided information.
+SGP-02: Singapore Employment Pass (EP) & COMPASS Framework: Post-Study Work Rules | sections 7, faq 5, sources 12 (destination), quick yes, slug /singapore/employment-pass-compass-after-study/
+SGP-03: editor sentence dropped: Avoid publishing a single “cut-off” as if it guarantees admission.
+SGP-03: OUTCOME wording, check: It depends on the university, qualification, programme and applicant pool. The published minimums differ: NTU’s Indian Standard 12 page states 93%; SM
+SGP-03: NUS vs NTU vs SMU: Admission Requirements for Indian CBSE, ISC & IB Students | sections 8, faq 5, sources 12 (article), quick yes, slug /singapore/nus-ntu-smu-admission-indian-students/
+USA-01: Cost of MS in USA for Indian Students: Public vs Private Universities & Living C | sections 5, faq 5, sources 6 (article), quick yes, slug /cost-of-ms-in-usa-indian-students/
+USA-02: F-1 Visa Interview Blueprint: Top 50 Questions & How to Overcome 214(b) Rejectio | sections 11, faq 5, sources 4 (article), quick yes, slug /f1-visa-interview-questions-214b-guide/
+USA-03: OPT & STEM OPT Extension Rules: Form I-983, E-Verify & Cap-Exempt H-1B Alternati | sections 7, faq 6, sources 5 (article), quick yes, slug /usa-opt-stem-opt-extension-form-i983/
+USA-04: editor sentence dropped: The linked official university pages should be checked immediately before publication and application.
+USA-04: WES Credential Evaluation for 3-Year Indian Degrees & GRE-Optional US Universiti | sections 6, faq 5, sources 6 (article), quick yes, slug /wes-evaluation-3-year-indian-degree-usa/
+USA-05: How to Secure Graduate Assistantships (RA/TA/GA) & Tuition Waivers in the USA | sections 6, faq 5, sources 3 (article), quick yes, slug /graduate-assistantships-usa-ra-ta-ga/
+USA-06: Day-1 CPT Universities in USA: Compliance Mechanics, SEVP Audits & USCIS Risks | sections 7, faq 6, sources 4 (article), quick NO, slug /day-1-cpt-usa-compliance-risks/
+NZ-01: New Zealand 3-Year Post-Study Work Visa & Green List Straight-to-Residence Pathw | sections 8, faq 5, sources 5 (article), quick yes, slug new-zealand-post-study-work-visa-green-list
+NZ-02: Cost of Studying in New Zealand: Tuition Fees, NZD $20,000 Proof of Funds & Livi | sections 7, faq 5, sources 5 (article), quick yes, slug cost-of-studying-in-new-zealand
+NZ-03: editor sentence dropped: The QS New Zealand overview page lists the following positions for the edition displayed when researched for this pack.
+NZ-03: editor sentence dropped: Before publication, the ranking year and live QS result should be checked again and shown next to every number.
+NZ-03: editor sentence dropped: Ranking caveat: the QS page is a dynamic page and its displayed ranks must be rechecked before the article goes live.
+NZ-03: editor sentence dropped: Do not mix ranking years, subject rankings and overall world rankings in one table.
+NZ-03: editor sentence dropped: The University of Auckland is the highest-ranked New Zealand university in the QS World University Rankings edition displayed on the QS New 
+NZ-03: editor sentence dropped: Always show the ranking edition and recheck the live QS page before publication.
+NZ-03: title changed from 'Top 8 Universities in New Zealand: Best Courses for IT, Engineering & Healthcare PR' to 'New Zealand's Eight Universities: Courses for IT, Engineering and Healthcare' (the site does not publish ranking numbers or ranking claims)
+NZ-03: removed 1 section(s) matching 'QS World University Rankings' (the site does not publish ranking numbers or ranking claims)
+NZ-03: removed 0 FAQ(s) matching 'ranked' (the site does not publish ranking numbers or ranking claims)
+NZ-03: removed 0 FAQ(s) matching 'highest' (the site does not publish ranking numbers or ranking claims)
+NZ-03: RANKING wording, check against the no-rankings rule: New Zealand has eight universities, each with a distinct mix of research strengths, professional programmes and campus environments. For international
+NZ-03: New Zealand's Eight Universities: Courses for IT, Engineering and Healthcare | sections 6, faq 5, sources 5 (article), quick yes, slug /new-zealand-universities-it-engineering-healthcare/
+AUS-01: Total Cost of Studying in Australia for Indian Students (2026–2027 Breakdown) | sections 9, faq 8, sources 6 (article), quick yes, slug /cost-of-studying-in-australia-indian-students/
+AUS-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+AUS-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+AUS-04: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+AUS-05: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+AUS-06: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+USA-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+USA-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+USA-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+USA-04: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+USA-05: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+USA-06: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+UK-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+UK-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+UK-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+UK-04: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+UK-05: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+CAN-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+CAN-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+CAN-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+CAN-04: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+CAN-05: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+IRE-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+IRE-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+IRE-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+IRE-04: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+NZ-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+NZ-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+NZ-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GER-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GER-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GER-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GER-04: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GER-05: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+FRA-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+FRA-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+FRA-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+FRA-04: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+NLD-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+NLD-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+NLD-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+SGP-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+SGP-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+SGP-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+UAE-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+UAE-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+MYS-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+MYS-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+SWE-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+SWE-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+NOR-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+NOR-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GLB-01: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GLB-02: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GLB-03: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GLB-04: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GLB-05: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+GLB-06: skipped, no body found (8328600c-Study_Abroad_Editorial_SEO_GEO_Playbook_AUS01.docx)
+MYS-01: editor sentence dropped: The workbook’s “save 60%” framing is a comparison hypothesis, not a guaranteed saving.
+MYS-01: title changed from 'Twinning Programs & Branch Campuses in Malaysia: Save 60% on UK & Australian Degrees' to 'Twinning Programmes and Branch Campuses in Malaysia: UK and Australian Degrees Compared' (the pack headline promises 'Save 60%', which its own text says is a hypothesis, not a guaranteed saving)
+MYS-01: Twinning Programmes and Branch Campuses in Malaysia: UK and Australian Degrees C | sections 7, faq 5, sources 14 (destination), quick yes, slug /malaysia-twinning-programmes-branch-campuses/
+MYS-02: EMGS Visa Approval Letter (VAL) Process & Cost of Living in Kuala Lumpur for Stu | sections 8, faq 6, sources 14 (article), quick yes, slug /malaysia-emgs-eval-student-pass-kuala-lumpur-cost/
+SWE-01: RANKING wording, check against the no-rankings rule: The order in which you rank programmes matters. Sweden’s central admissions system considers your highest-ranked choice first; if you receive an offer
+SWE-01: Swedish Institute (SI) Scholarships & University Admissions Sweden Ranking Strat | sections 8, faq 6, sources 11 (destination), quick yes, slug /swedish-institute-scholarships-indian-students/
+SWE-02: editor sentence dropped: For the student-facing calculator, show both the official maintenance requirement and the student’s estimated monthly budget.
+SWE-02: Cost of Studying in Sweden & 12-Month Job Seeker Residence Permit After Graduati | sections 9, faq 6, sources 11 (article), quick yes, slug /cost-of-studying-in-sweden-job-seeker-permit/
+UK-01: Cost of Studying a 1-Year Master's in UK: Tuition, London Living & IHS Surcharge | sections 7, faq 5, sources 3 (article), quick yes, slug /cost-1-year-masters-uk-indian-students/
+UK-02: UKVI Credibility Interview & CAS Letter Process: Complete Document Checklist | sections 11, faq 5, sources 3 (article), quick yes, slug /ukvi-credibility-interview-cas-checklist/
+UK-03: Graduate Route Visa (PSW) Rules: Transitioning to a Skilled Worker Visa in the U | sections 7, faq 5, sources 4 (article), quick NO, slug /uk-graduate-route-switch-skilled-worker/
+UK-04: UK Universities Accepting Medium of Instruction (MOI) Instead of IELTS | sections 7, faq 5, sources 4 (article), quick yes, slug /uk-universities-accepting-moi-instead-ielts/
+UK-05: editor sentence dropped: Many UK universities do not publish a comparable course-level acceptance rate.
+UK-05: title changed from 'Russell Group Universities vs Modern UK Universities: ROI, Rankings & Acceptance Rates' to 'Russell Group vs Modern UK Universities: Return on Investment and Entry Requirements' (the site does not publish ranking claims)
+UK-05: Russell Group vs Modern UK Universities: Return on Investment and Entry Requirem | sections 8, faq 5, sources 5 (article), quick yes, slug /russell-group-vs-modern-uk-universities/
+IRE-01: OUTCOME wording, check: Treating Stamp 1G as a guaranteed two-year permission or a guaranteed PR route.
+IRE-01: Ireland Third Level Graduate Programme: Stamp 1G to Longer-Term Work Permission  | sections 6, faq 5, sources 12 (destination), quick yes, slug ireland-stamp-1g-graduate-scheme
+IRE-02: Critical Skills Employment Permit in Ireland: Eligible Tech and Pharma Occupatio | sections 7, faq 5, sources 12 (destination), quick yes, slug ireland-critical-skills-employment-permit-occupations
+IRE-03: Dublin Student Accommodation: Finding Housing, Daft.ie Tips and Scam Prevention | sections 6, faq 5, sources 12 (destination), quick yes, slug dublin-student-accommodation-guide
+IRE-04: editor sentence dropped: For publication, populate this comparison with two or three named programmes and the exact 2026/27 or 2027/28 fee shown by the university.
+IRE-04: editor sentence dropped: Record the source URL, date checked, student fee category and whether the amount is annual or for the full programme.
+IRE-04: editor sentence dropped: Do not invent a representative Trinity or UCD fee where the programme is unspecified.
+IRE-04: editor sentence dropped: For a student-facing calculator, collect current residence prices and room listings separately, show the date and accommodation type, and le
+IRE-04: Cost of Studying in Ireland for Indian Students: Trinity, UCD and Financial Proo | sections 7, faq 5, sources 12 (destination), quick yes, slug cost-of-studying-in-ireland-indian-students
+CAN-01: editor sentence dropped: The source blueprint specifically identifies Scotiabank and ICICI Bank as comparison examples.
+CAN-01: editor sentence dropped: The comparison should be refreshed against each provider’s live product terms before publication.
+CAN-01: editor sentence dropped: The proposed interactive element is a monthly payout table.
+CAN-01: editor sentence dropped: It should let the student enter the amount invested, term, payout structure and provider.
+CAN-01: editor sentence dropped: Show the estimated monthly principal release, interest treatment, fees and final balance only when the provider’s current formula is known.
+CAN-01: Canada Study Permit: SDS Closure, GIC Amount and Bank Options | sections 6, faq 5, sources 18 (destination), quick yes, slug canada-study-permit-gic-proof-of-funds
+CAN-02: editor sentence dropped: Do not publish a single universal “three-year PGWP” claim.
+CAN-02: OUTCOME wording, check: The student is told that a PAL exemption guarantees study permit approval.
+CAN-02: Canada PGWP Eligibility Changes: Public Colleges vs Universities and PAL | sections 6, faq 5, sources 18 (destination), quick yes, slug canada-pgwp-eligibility-public-private-colleges
+CAN-03: title changed from 'Best Provinces for PR in Canada After Study: Provincial Nominee Programmes and Express Entry' to 'Canada After Study: Provincial Nominee Programmes and Express Entry' (the pack headline ranks provinces for PR, which the article itself calls the wrong question)
+CAN-03: Canada After Study: Provincial Nominee Programmes and Express Entry | sections 6, faq 5, sources 18 (destination), quick yes, slug canada-pr-after-study-provinces-pnp-express-entry
+CAN-04: editor sentence dropped: Rental prices can change quickly; refresh the Statistics Canada table before publication.
+CAN-04: Cost of Living in Toronto, Vancouver and Calgary: Student Housing and Budgeting | sections 5, faq 5, sources 18 (destination), quick yes, slug cost-of-living-toronto-vancouver-calgary-students
+CAN-05: editor sentence dropped: A calculator should not assume that every student will secure a paid placement or earn a full-time salary throughout the academic year.
+CAN-05: editor sentence dropped: A transparent earnings-offset model can use: estimated hourly wage × paid hours per week × paid weeks, less payroll deductions, commuting, a
+CAN-05: Co-op Programs in Canada: Work Placements, Tuition Planning and Career Value | sections 7, faq 5, sources 18 (destination), quick yes, slug canada-coop-programs-international-students
+FRA-01: Campus France Procedure & Interview Questions: Mastering the Études en France Po | sections 6, faq 6, sources 4 (article), quick yes, slug campus-france-etudes-en-france-procedure
+FRA-02: title changed from 'CAF Housing Benefit in France: Step-by-Step Guide to Slashing Your Monthly Student Rent' to 'CAF Housing Benefit in France: A Step-by-Step Guide for International Students' (the pack headline promises to 'slash' rent; eligibility is conditional)
+FRA-02: CAF Housing Benefit in France: A Step-by-Step Guide for International Students | sections 7, faq 6, sources 5 (article), quick yes, slug caf-housing-benefit-france-international-students
+FRA-03: Grandes Écoles vs Public Universities in France: Fees, Luxury Management & MBA R | sections 7, faq 6, sources 5 (article), quick yes, slug grandes-ecoles-vs-public-universities-france
+FRA-04: Post-Study Work Visa (APS/RECE) & Talent Passport Pathways in France for Indians | sections 7, faq 6, sources 5 (article), quick yes, slug france-post-study-work-visa-aps-talent-passport

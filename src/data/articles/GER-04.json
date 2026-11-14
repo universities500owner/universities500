@@ -1,0 +1,375 @@
+{
+ "id": "GER-04",
+ "category": "Post-Study & PR",
+ "priority": "High",
+ "title": "18-Month Job Seeker Visa Germany & Transitioning to an EU Blue Card",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Graduates of a German higher education institution can generally apply for a residence permit for up to 18 months to look for qualified employment matching their skills. During this job-search period, they may work in any occupation to support themselves. Once they find suitable qualified employment, they may be able to switch to a skilled-worker residence permit or an EU Blue Card, depending on the job, qualification and salary."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The 18-month post-study job-search permit is a temporary bridge to qualified employment, not permanent residence. For 2026, the EU Blue Card salary threshold is €50,700 gross per year for standard occupations and €45,934.20 for shortage occupations and certain eligible new entrants, subject to the detailed legal conditions."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Who can receive the 18-month job-search residence permit?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The route is intended for people who successfully completed a degree at a German higher education institution and want to find qualified employment. The permit can be issued for up to 18 months. Applicants must continue to meet the applicable livelihood, health insurance and other residence requirements. Check the local foreigners authority process and apply before the current student residence permit expires."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What work can you do during the 18 months?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The official “Make it in Germany” guidance says graduates may work in any occupation while searching for skilled employment. This flexibility is different from the work conditions after the graduate has moved to an employment-based residence title. Students should not assume that any temporary job will qualify as the skilled job needed for the next permit."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Transitioning to an EU Blue Card in 2026",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "2026 Blue Card salary threshold",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Gross annual salary",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Who it applies to",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Standard threshold"
+        }
+       ],
+       [
+        {
+         "t": "€50,700"
+        }
+       ],
+       [
+        {
+         "t": "Most occupations, where other Blue Card conditions are met."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Reduced threshold"
+        }
+       ],
+       [
+        {
+         "t": "€45,934.20"
+        }
+       ],
+       [
+        {
+         "t": "Shortage occupations and certain eligible new entrants, subject to the statutory conditions and any required approval."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The German Missions in India publish these 2026 thresholds. Shortage occupations include specified groups such as mathematics, IT, natural sciences, engineering and human medicine, but the exact occupational classification and job must meet the law. The reduced threshold is not a general discount for every STEM graduate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Other requirements matter as much as salary",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "A recognised or comparable higher education qualification, or another qualifying route under the applicable rules."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "A concrete job offer or employment contract that meets the Blue Card requirements."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The job must be appropriate to the qualification and meet any occupation-specific conditions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The salary must meet the threshold applicable to the job and application date."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "For certain shortage occupations and recent graduates, additional approval or conditions may apply."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Applicants aged 45 or older may face an additional pension-provision or salary requirement."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What if the job does not qualify for a Blue Card?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A graduate may be eligible for another skilled-worker residence permit if the job and qualification meet the relevant requirements. The correct route depends on the job, qualification, salary, regulated-profession rules and employer. A student should not assume that the Blue Card is the only way to remain in Germany."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Permanent residence after graduating in Germany",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Graduates of German higher education institutions may be eligible for a settlement permit after more than two years of working in Germany, subject to the statutory conditions. This is not automatic on the 18-month job-search permit. Applicants must meet the relevant employment, pension contribution, language, livelihood and other requirements in force when they apply."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Planning before graduation",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Start career planning well before the final semester; use university career services and employer events."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether the target occupation is regulated and whether professional recognition is required."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare a German-style CV, references and a clear description of technical skills and projects."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Track the expiry date of the student residence permit and contact the local foreigners authority in time."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare the job offer with the current Blue Card salary threshold and occupation rules."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep employment contract, degree certificate, health insurance and salary documents ready for the residence-permit application."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Can I stay in Germany for 18 months after my Master’s?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Graduates of German higher education institutions can generally apply for a residence permit for up to 18 months to find qualified employment, subject to the requirements and application process."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work full-time during the 18-month job-search period?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Official guidance says graduates may work in any occupation while searching for skilled employment. Check the conditions on the residence permit issued to you."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What is the EU Blue Card salary in Germany in 2026?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The 2026 standard threshold is €50,700 gross per year. The reduced threshold is €45,934.20 for eligible shortage occupations and certain new entrants, subject to detailed rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does an IT or engineering degree automatically qualify me for the lower Blue Card salary?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The role must fall within the relevant eligible occupational category and satisfy all legal conditions. A degree subject alone is not enough."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I get permanent residence after two years in Germany?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Graduates of German universities may qualify for a settlement permit after more than two years of working in Germany if they meet the other legal requirements. It is not automatic."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What if my salary is below the Blue Card threshold?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "You may still qualify for another skilled-worker residence permit depending on the job, qualification and applicable rules. Seek individual advice from the foreigners authority or a qualified adviser."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "18 month job seeker visa Germany after graduation",
+ "secondaryKeywords": [
+  "EU Blue Card Germany salary threshold",
+  "PR after study Germany"
+ ],
+ "intent": "Informational",
+ "seoTitle": "Germany 18-Month Job Search Visa & EU Blue Card",
+ "metaDescription": "Explore the 18-month post-study job-search permit, 2026 EU Blue Card salary thresholds and settlement options for graduates.",
+ "slug": "germany-post-study-job-search-eu-blue-card",
+ "destination": "germany",
+ "topic": "after-study",
+ "topicLabel": "Work after study",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "make-it-in-germany.com",
+   "url": "https://www.make-it-in-germany.com/en/visa-recognition/visa-types/studying",
+   "note": "Make it in Germany – Visa for studying and after graduation"
+  },
+  {
+   "title": "india.diplo.de",
+   "url": "https://india.diplo.de/in-en/service/2755736-2755736",
+   "note": "German Missions in India – Holders of academic degrees / Blue Card salary"
+  },
+  {
+   "title": "make-it-in-germany.com",
+   "url": "https://www.make-it-in-germany.com/en/visa-residence/types/eu-blue-card",
+   "note": "Make it in Germany – EU Blue Card"
+  },
+  {
+   "title": "make-it-in-germany.com",
+   "url": "https://www.make-it-in-germany.com/en/",
+   "note": "Federal Government – Skilled immigration and residence"
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "3dfbcc48-Germany_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 839,
+ "readMinutes": 4
+}

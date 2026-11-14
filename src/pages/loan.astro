@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
 import { hiddenFromSearch } from '../lib/noindex.js';
 const path = '/loan/';
 ---
@@ -59,4 +61,5 @@ const path = '/loan/';
   <p class="note">Every figure here is yours to enter. Nothing is a lending offer. Confirm rates and terms with the lender before acting on any of it.</p>
 
   <script>import '../scripts/loan.js';</script>
+  <RelatedArticles list={forTopics(TOOL_TOPICS['loan'], 3)} heading="Read before you borrow" more={['/articles/', 'All articles']} />
 </Base>

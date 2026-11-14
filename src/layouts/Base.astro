@@ -1,9 +1,11 @@
 ---
 import '../styles/global.css';
 import '../styles/tools.css';
+import '../styles/articles.css';
 import { SITE } from '../lib/data.js';
 import { NAV } from '../lib/nav.js';
 import { englishGuides, otherGuides, guides } from '../lib/guides.js';
+import { topics as articleTopics, articles as allArticles } from '../lib/articles.js';
 
 const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false } = Astro.props;
 const url = new URL(path, SITE).href;
@@ -111,6 +113,15 @@ const onGuide = current === 'guide';
               <ul>{g.items.map(([href, label]) => <li><a href={href}>{label}</a></li>)}</ul>
             </div>
           ))}
+          {allArticles.length > 0 && (
+            <div>
+              <h2>Key topics</h2>
+              <ul>
+                {articleTopics.map((t) => <li><a href={`/articles/topic/${t.slug}/`}>{t.label}</a></li>)}
+                <li><a href="/articles/">All articles</a></li>
+              </ul>
+            </div>
+          )}
         </div>
         <p>
           University overviews are text from <a href="https://www.wikipedia.org/">Wikipedia</a>, licensed{' '}

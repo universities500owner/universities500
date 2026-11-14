@@ -1,0 +1,104 @@
+/* Articles: one narrow column, a serif body, a bold sans headline, bold lead-ins.
+   Modelled on a short email tip so a student can read it on a phone in one go. */
+.tip { --serif: Charter, "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif; max-width: 38rem; margin: 0 auto; padding-bottom: 1rem; }
+.tip header { margin-bottom: 1.5rem; }
+.tip-kick { font: 600 .98rem/1.3 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin: 0 0 .6rem; max-width: none; }
+.tip-kick a { color: var(--accent); text-decoration: none; }
+.tip-kick a:hover { text-decoration: underline; }
+.tip h1 { font: 800 clamp(1.9rem, 6vw, 2.6rem)/1.12 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: -.015em; margin: 0 0 .9rem; text-wrap: balance; }
+.tip-meta { font: .9rem/1.4 system-ui, sans-serif; color: var(--muted); margin: 0; }
+
+.tip-body { font: 1.15rem/1.75 var(--serif); }
+.tip-body p { max-width: none; margin: 0 0 1.35rem; }
+.tip-body a { color: var(--accent); }
+.tip-intro p { font-size: 1.22rem; }
+
+/* the answer, before anything else */
+.tip-quick { margin: 1.75rem 0 2rem; padding: .2rem 0 .2rem 1.1rem; border-left: 4px solid var(--accent); }
+.tip-quick-h { font: 700 .95rem/1.3 system-ui, sans-serif; color: var(--accent); margin: 0 0 .35rem !important; }
+.tip-quick p:last-child { margin-bottom: 0; }
+
+.tip-toc { font: .95rem/1.5 system-ui, sans-serif; margin: 0 0 2.25rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.tip-toc summary { cursor: pointer; padding: .7rem 1rem; font-weight: 600; }
+.tip-toc ol { margin: 0; padding: 0 1rem 1rem 2.2rem; }
+.tip-toc li { margin: .3rem 0; }
+.tip-toc a { color: var(--ink); }
+
+/* each part: a bold heading, then short blocks with room around them */
+.tip-sec { margin: 0 0 2.4rem; scroll-margin-top: 1rem; }
+.tip-sec h2 { font: 700 1.38rem/1.3 var(--serif); margin: 0 0 .9rem; }
+.tip-body h3 { font: 700 1.15rem/1.35 var(--serif); margin: 1.8rem 0 .6rem; }
+.tip-body ul, .tip-body ol { margin: 0 0 1.35rem; padding-left: 1.3rem; }
+.tip-body li { margin: 0 0 .6rem; }
+.tip-body li > ul, .tip-body li > ol { margin: .6rem 0 0; }
+.tip-body ul.tip-leads, .tip-body ol.tip-leads { list-style: none; padding: 0; }
+.tip-body .tip-leads > li { margin: 0 0 1.35rem; }
+.tip-body .lead { font-weight: 700; }
+.tip-body ul.tip-check { list-style: none; padding-left: 0; }
+.tip-body .tip-check > li { position: relative; padding-left: 1.7rem; }
+.tip-body .tip-check > li::before { content: ""; position: absolute; left: 0; top: .42em; width: 1rem; height: 1rem; border: 2px solid var(--accent); border-radius: 3px; }
+.tip-body blockquote { margin: 0 0 1.35rem; padding-left: 1rem; border-left: 3px solid var(--line); color: var(--muted); }
+
+.tip-callout { margin: 0 0 1.5rem; padding: 1rem 1.15rem; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius); }
+.tip-callout > :last-child { margin-bottom: 0; }
+.tip-callout-title { font: 700 1rem/1.3 system-ui, sans-serif; margin: 0 0 .4rem !important; }
+
+/* tables stay tables on a wide screen and become stacked cards on a phone */
+.tip-table { margin: 0 0 1.5rem; overflow-x: auto; }
+.tip-table table { border-collapse: collapse; width: 100%; font: .95rem/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.tip-table th, .tip-table td { text-align: left; vertical-align: top; padding: .6rem .7rem; border-bottom: 1px solid var(--line); }
+.tip-table thead th { background: var(--surface); font-weight: 700; }
+.tip-table tbody th { font-weight: 700; }
+@media (max-width: 40rem) {
+  .tip-table { overflow: visible; }
+  .tip-table table, .tip-table tbody, .tip-table tr, .tip-table th, .tip-table td { display: block; width: 100%; }
+  .tip-table thead { position: absolute; left: -999px; }
+  .tip-table tr { margin: 0 0 .9rem; border: 1px solid var(--line); border-radius: var(--radius); padding: .25rem 0; }
+  .tip-table th[scope="row"] { border-bottom: 0; padding-bottom: .1rem; font-size: 1rem; }
+  .tip-table td { border-bottom: 0; padding-top: .3rem; padding-bottom: .3rem; }
+  .tip-table td[data-label]::before { content: attr(data-label); display: block; font-size: .8rem; font-weight: 700; color: var(--muted); }
+}
+
+/* common questions */
+.tip-faq h2 { margin-bottom: 1rem; }
+.tip-q { border-top: 1px solid var(--line); }
+.tip-q:last-of-type { border-bottom: 1px solid var(--line); }
+.tip-q summary { cursor: pointer; font: 700 1.05rem/1.45 var(--serif); padding: .95rem 1.8rem .95rem 0; position: relative; list-style: none; }
+.tip-q summary::-webkit-details-marker { display: none; }
+.tip-q summary::after { content: "+"; position: absolute; right: .2rem; top: .8rem; font: 400 1.5rem/1 system-ui, sans-serif; color: var(--accent); }
+.tip-q[open] summary::after { content: "–"; }
+.tip-q > div { padding: 0 0 .5rem; }
+
+/* tools, sources, care note */
+.tip-next, .tip-src { font: 1rem/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin: 2.5rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.tip-next h2, .tip-src h2 { font-size: 1.1rem; margin: 0 0 .6rem; }
+.tip-next ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.tip-next a { display: inline-block; padding: .5rem .9rem; border: 1.5px solid var(--accent); border-radius: 999px; color: var(--accent); font-weight: 600; text-decoration: none; }
+.tip-next a:hover { background: var(--hover); }
+.tip-src ul { padding-left: 1.1rem; margin: .5rem 0 0; }
+.tip-src li { margin: .5rem 0; max-width: 62ch; overflow-wrap: anywhere; }
+.tip-src-note { color: var(--muted); }
+.tip-care { margin: 1.5rem 0 0; max-width: none; }
+
+/* cards and lists of articles */
+.acards { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .85rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 40rem) { .acards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 62rem) { .acards.wide { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.acards > li { margin: 0; }
+.acard { display: flex; flex-direction: column; gap: .4rem; height: 100%; padding: 1rem 1.1rem; color: var(--ink); text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.acard:hover { background: var(--hover); border-color: var(--accent); }
+.acard-kick { font: 600 .85rem/1.3 system-ui, sans-serif; color: var(--accent); }
+.acard-title { font: 700 1.08rem/1.3 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.acard-snip { font-size: .93rem; color: var(--muted); line-height: 1.45; }
+.acard-meta { margin-top: auto; font-size: .85rem; color: var(--muted); }
+.pills { list-style: none; padding: 0; margin: .6rem 0 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+.pills a { display: inline-block; padding: .35rem .85rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; font-size: .95rem; }
+.pills a:hover { border-color: var(--accent); background: var(--hover); }
+.pills span { color: var(--muted); font-weight: 400; margin-left: .2rem; }
+.hub-h { font-size: 1.1rem; margin: 2rem 0 .3rem; }
+.related-arts { margin: 3rem 0 0; }
+.related-arts h2 { font-size: 1.35rem; margin: 0 0 .25rem; }
+.tip-more { max-width: 62rem; margin: 3rem auto 0; display: grid; gap: 2rem; }
+@media (min-width: 62rem) { .tip-more { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tip-more h2 { font-size: 1.2rem; margin: 0 0 .25rem; }
+.acards + p { margin-top: 1.25rem; }

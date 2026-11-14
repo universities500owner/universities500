@@ -1,0 +1,792 @@
+{
+ "id": "NOR-01",
+ "category": "Cost & Budgeting",
+ "priority": "High",
+ "title": "Cost of Studying in Norway: Tuition Fees and UDI Proof of Funds",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Norway has a strong public higher-education system, but the phrase “tuition-free universities in Norway” needs an important qualification. Since the policy change introduced for non-EU/EEA students, international degree-seeking students from countries such as India generally pay tuition fees at Norwegian public universities. Some categories remain exempt, including certain exchange students and students covered by specified programmes or legal exemptions."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For an Indian student, the budget therefore has three separate parts: tuition charged by the university, the living-cost funds required by the Norwegian Directorate of Immigration (UDI), and the actual cost of living in the city. The UDI proof-of-funds figure is not a tuition fee and should not be treated as the complete cost of studying."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For the 2026–2027 academic year, Study in Norway and UDI list a living-cost requirement of NOK 170,368 for a full academic year (NOK 15,488 per month). Non-EU/EEA/Swiss students generally pay tuition at public universities, with the amount set by each institution and programme. You must budget for tuition in addition to the living-cost funds, semester fee, permit fee, travel, insurance where required and initial accommodation costs."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Are public universities in Norway tuition-free for Indian students?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not generally. Public higher education institutions in Norway are not automatically tuition-free for students from outside the EU/EEA and Switzerland. Degree-seeking students from these countries normally pay tuition fees, although exemptions apply to specific groups and arrangements. Examples include eligible exchange students, doctoral candidates and students participating in certain funded schemes such as Erasmus Mundus, NORPART, NORHED, Fulbright or Students at Risk, subject to the programme’s rules."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The university decides and publishes its tuition fees. The exact fee can vary by institution, programme, academic year and applicant category. Do not use an old article that says all public universities are tuition-free as the basis for a 2026 or 2027 budget."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Applicant category",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Typical tuition position",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to verify",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Indian student applying for a full degree"
+        }
+       ],
+       [
+        {
+         "t": "Normally subject to tuition fees."
+        }
+       ],
+       [
+        {
+         "t": "Exact programme fee, cohort year and any institution-specific exemption."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Exchange student"
+        }
+       ],
+       [
+        {
+         "t": "Often exempt where covered by an exchange agreement."
+        }
+       ],
+       [
+        {
+         "t": "Home-university partnership and exchange agreement."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Doctoral candidate"
+        }
+       ],
+       [
+        {
+         "t": "Normally exempt from tuition fees at public institutions."
+        }
+       ],
+       [
+        {
+         "t": "Employment/admission status and institution rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Erasmus Mundus / funded programme participant"
+        }
+       ],
+       [
+        {
+         "t": "May be exempt under the scheme."
+        }
+       ],
+       [
+        {
+         "t": "Consortium scholarship and fee arrangement for each partner university."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Other special exemption category"
+        }
+       ],
+       [
+        {
+         "t": "May be exempt if a legal or residence-based criterion applies."
+        }
+       ],
+       [
+        {
+         "t": "Current official eligibility evidence and university confirmation."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is the UDI proof-of-funds amount for 2026–2027?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For the 2026–2027 academic year, the official Study in Norway guidance and UDI study-permit page state that a student must document at least NOK 15,488 per month, or NOK 170,368 for a full academic year. This is intended to demonstrate that the student can support themselves while in Norway."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Study period",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Published 2026–2027 living funds",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Full academic year / two semesters"
+        }
+       ],
+       [
+        {
+         "t": "NOK 170,368"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Autumn semester 2026"
+        }
+       ],
+       [
+        {
+         "t": "NOK 77,440"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Spring semester 2027"
+        }
+       ],
+       [
+        {
+         "t": "NOK 92,928"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Monthly equivalent"
+        }
+       ],
+       [
+        {
+         "t": "NOK 15,488"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The required amount can be documented through accepted sources such as own funds, student loans, grants or a combination, subject to UDI’s rules. The money normally needs to be in a Norwegian bank account or the educational institution’s deposit account. If you have already been offered a part-time job in Norway, UDI says income from this work may be included in the relevant assessment. Confirm the precise acceptable documentation and deposit arrangement with the institution."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Proof of funds is separate from tuition fees",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "If tuition fees apply, you must also show that you can cover them. UDI’s study-permit requirements say that tuition must be paid or otherwise documented as required for the relevant academic year. University of Oslo, for example, explains that tuition invoices are separate from the SiO deposit account used for living funds. Its 2026–2027 page lists NOK 170,368 for two semesters and gives semester-specific amounts for shorter stays."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "This distinction is essential when planning an education loan. A student who can demonstrate NOK 170,368 for living expenses may still need to pay a separate tuition invoice before the permit application can be finalised."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Examples of tuition fees: why programme-level research matters",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "There is no single national tuition price for Indian students. The following examples illustrate the variation and should not be treated as a universal price list:"
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Institution / example",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Published fee information",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Interpretation",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "NHH Norwegian School of Economics"
+        }
+       ],
+       [
+        {
+         "t": "For the 2026/2027 cohort, NOK 204,000 per year for a master’s programme; 2027/2028 cohort fees had not yet been determined on the page at the research cut-off."
+        }
+       ],
+       [
+        {
+         "t": "Fees can be cohort-specific and fixed for the nominal programme duration."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "OsloMet"
+        }
+       ],
+       [
+        {
+         "t": "For 2026/2027, many listed master’s programmes show NOK 67,000–95,000 per year, depending on programme."
+        }
+       ],
+       [
+        {
+         "t": "Some institutions have lower programme fees than other institutions; check exact course."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "University of Oslo"
+        }
+       ],
+       [
+        {
+         "t": "Full degree students receive a separate tuition invoice; amount depends on programme and applicable fee category."
+        }
+       ],
+       [
+        {
+         "t": "Do not assume UiO is tuition-free for non-EU full-degree students."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The examples show why “Norway costs NOK X” is not a useful answer without naming the university, programme and intake. Tuition may change for a new cohort. Some programmes may be closed to non-EU applicants or have specific funding arrangements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Semester fee, insurance and other expenses",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students normally pay a semester fee to the student welfare organisation linked to their institution. Study in Norway gives an indicative amount of approximately NOK 1,000 per semester. This is separate from tuition and living funds. Students may also need to budget for insurance, travel, visa/residence permit fees, books, equipment, deposits and local transport."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Cost item",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "How to plan",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Tuition"
+        }
+       ],
+       [
+        {
+         "t": "Use the exact programme fee for your intake and applicant category."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Living funds"
+        }
+       ],
+       [
+        {
+         "t": "Use the current UDI annual or semester amount and verify acceptable deposit method."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Semester fee"
+        }
+       ],
+       [
+        {
+         "t": "Budget approximately NOK 1,000 per semester as a guide; confirm institution amount."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Residence permit application"
+        }
+       ],
+       [
+        {
+         "t": "Check the current UDI fee for the applicant category and application date."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Accommodation"
+        }
+       ],
+       [
+        {
+         "t": "Confirm student housing availability, deposit, rent period and utilities."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Insurance"
+        }
+       ],
+       [
+        {
+         "t": "Check whether health insurance is required for your course duration and circumstances."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Travel and setup"
+        }
+       ],
+       [
+        {
+         "t": "Include flights, local travel, bedding, winter clothing and initial expenses."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Study permit requirements for Indian students",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Indian citizens who plan to study in Norway for more than three months generally need a study residence permit. UDI’s requirements for university or university-college students include:"
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Admission to an approved Norwegian university or university college."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Full-time study."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Payment of the UDI application fee."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Sufficient funds for living expenses for the relevant period."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Funds to cover tuition fees if the programme charges tuition."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "A place to live in Norway."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "A valid passport and the required supporting documents."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A study permit allows a student to work up to 20 hours per week during the semester and full-time during official holidays, subject to the permit conditions. Do not rely on future part-time income as the main source of funding unless UDI accepts the documented job income in the application."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to budget the total first-year cost",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A practical first-year estimate should include the following formula:"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "First-year budget = tuition fee + NOK 170,368 living-cost funds (for a full 2026–2027 academic year) + semester fee + permit fee + insurance where required + travel + accommodation deposit + study materials + contingency."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The amount of NOK 170,368 is the published living-funds requirement, not a guarantee that every student can live comfortably on that amount. Students in Oslo and other higher-cost locations should compare actual rents, transport and food expenses. Add a buffer for exchange-rate changes between INR and NOK."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Common mistakes to avoid",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Assuming public universities in Norway remain tuition-free for all nationalities."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Using the UDI living-funds amount as if it also includes tuition."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Using a fee from a previous academic year or another programme."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Assuming an exchange-student exemption applies to a full-degree applicant."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Transferring money to an account that is not accepted by the university or UDI."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Underestimating housing deposits, insurance, travel and initial setup costs."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Assuming part-time work is guaranteed or sufficient to fund the degree."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is Norway free for Indian students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not generally for full-degree study. Indian students are non-EU/EEA/Swiss applicants and normally pay tuition fees at Norwegian public universities, unless a specific exemption applies."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What is the Norway proof-of-funds amount for 2026–2027?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The published amount is NOK 170,368 for a full academic year, equivalent to NOK 15,488 per month. Confirm the amount for the year you apply."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does NOK 170,368 include tuition fees?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. It is the living-cost maintenance amount. Tuition fees, where applicable, are separate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I use an education loan as proof of funds?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "UDI allows student loans and grants to form part of the documented funds, subject to its requirements. Check the accepted documentation and account arrangements before transferring money."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work while studying in Norway?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A student residence permit generally allows up to 20 hours of work per week during term and full-time work during holidays. Follow the exact permit conditions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are all public universities required to charge the same tuition?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Tuition is institution- and programme-specific, and exemptions may apply to certain categories."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "cost of studying in Norway tuition free public universities",
+ "secondaryKeywords": [
+  "Norway student residence permit proof of funds",
+  "University of Oslo"
+ ],
+ "intent": null,
+ "seoTitle": "Study in Norway: Tuition Fees and UDI Proof of Funds",
+ "metaDescription": "Are Norwegian public universities tuition-free for Indian students? Understand non-EU tuition fees, 2026–27 living funds and the UDI study permit.",
+ "slug": "/norway-study-cost-tuition-fees-proof-of-funds/",
+ "internalLinks": "Norway study destination; English-taught master’s in Norway; University of Oslo; NTNU; student residence permit checklist; education loan guide.",
+ "destination": "norway",
+ "topic": "cost-and-budgeting",
+ "topicLabel": "Costs and budgeting",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "Study in Norway – Cost and requirements",
+   "url": "https://studyinnorway.no/cost-and-requirements",
+   "note": "Current non-EU tuition policy, 2026–2027 living costs, semester fee and study-permit overview."
+  },
+  {
+   "title": "UDI – Study permit for university / university college",
+   "url": "https://www.udi.no/en/want-to-apply/studies/studietillatelse/",
+   "note": "Study permit requirements, NOK maintenance amount, accepted funding routes and work conditions."
+  },
+  {
+   "title": "UDI – Job seekers",
+   "url": "https://www.udi.no/en/want-to-apply/work-immigration/job-seekers",
+   "note": "Recent graduate eligibility, application timing, NOK 28,448 monthly funds and maximum one-year permit."
+  },
+  {
+   "title": "University of Oslo – Documenting your finances",
+   "url": "https://www.uio.no/english/studies/international-students/before-arrival/residence-permit/non-eu-eea/documenting-finances.html",
+   "note": "2026–2027 full-year and semester funds; tuition invoice and deposit account distinctions."
+  },
+  {
+   "title": "University of Oslo – Study programmes in English",
+   "url": "https://www.uio.no/english/studies/about/academic-system/studyprogramme/",
+   "note": "More than 40 English-taught master’s programmes; no English-taught bachelor’s programmes currently stated."
+  },
+  {
+   "title": "NTNU – Master’s programmes in English",
+   "url": "https://www.ntnu.edu/studies/international/master",
+   "note": "Tentative 2027–2028 international master’s list, programme cities, applicant restrictions and deadlines."
+  },
+  {
+   "title": "NHH – Tuition and financial matters",
+   "url": "https://www.nhh.no/en/study-programmes/application-and-admission/financial-matters/",
+   "note": "Cohort-specific 2026–2027 tuition fees and funding requirements for non-EU/EEA/Swiss students."
+  },
+  {
+   "title": "OsloMet – Tuition fees for international students",
+   "url": "https://student.oslomet.no/en/tuition-fees-for-international-students-from-outside-eu-eea",
+   "note": "2026–2027 examples of programme-specific tuition fees and exemptions."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "01fc4937-Norway_Study_Abroad_SEO_GEO_Content_Pack_2_Articles.docx",
+ "words": 1484,
+ "readMinutes": 7
+}

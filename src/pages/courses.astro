@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
 import { hiddenFromSearch } from '../lib/noindex.js';
 import tools from '../data/tools.json';
 const path = '/courses/';
@@ -49,4 +51,5 @@ const data = JSON.stringify({ FIELDS: tools.FIELDS, COURSES: tools.COURSES }).re
 
   <script type="application/json" id="tool-data" set:html={data} />
   <script>import '../scripts/courses.js';</script>
+  <RelatedArticles list={forTopics(TOOL_TOPICS['courses'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />
 </Base>

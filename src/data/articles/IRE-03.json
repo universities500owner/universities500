@@ -1,0 +1,505 @@
+{
+ "id": "IRE-03",
+ "category": "Student Life & Work",
+ "priority": "High",
+ "title": "Dublin Student Accommodation: Finding Housing, Daft.ie Tips and Scam Prevention",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Finding student accommodation in Dublin can be difficult, particularly close to the start of the academic year. Students should begin early, use university housing services and verified rental channels, understand the lease and deposit rules, and avoid transferring money before checking that a property and landlord or agent are genuine."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Start with the institution’s accommodation office and official student housing options, then compare private rooms by commute, rent, bills and lease terms. Never pay a deposit or rent solely to “reserve” a room advertised online without verifying the property, the person offering it and the contractual terms."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Start with the university",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Check on-campus residences, university-managed accommodation, approved housing partners and student support services first. These options may be competitive and have application deadlines, but they provide a more reliable starting point than an unverified social media listing."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Use rental platforms carefully",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Daft.ie is a widely used property-listing platform, but a listing on a recognised website is not proof that the advertiser owns or controls the property. Treat the platform as a search tool, not as a guarantee. Cross-check the address, arrange a live viewing or trusted representative viewing, and verify the identity and authority of the person collecting money."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Search by campus and transport route, not just by “Dublin”."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare a room in a shared home with a private studio or full apartment."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask whether heating, electricity, internet and waste charges are included."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirm the number of occupants, room condition, furniture and access to kitchen/laundry facilities."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask for the lease or licence agreement and read the payment, notice and refund clauses."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether the property is registered with the Residential Tenancies Board (RTB) where registration is required."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Common accommodation scams",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Red flag",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Safer response",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Advertiser says they are overseas and cannot show the property."
+        }
+       ],
+       [
+        {
+         "t": "Do not transfer money; request a live video viewing and independent verification."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Rent is far below comparable listings and you must pay immediately."
+        }
+       ],
+       [
+        {
+         "t": "Compare similar rooms and do not let urgency replace checks."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Payment requested by gift card, cryptocurrency or an unrelated third party."
+        }
+       ],
+       [
+        {
+         "t": "Use traceable payment methods and verify the named recipient."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "No written agreement or refusal to provide a receipt."
+        }
+       ],
+       [
+        {
+         "t": "Do not pay until the agreement and payment terms are clear."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Photos or address appear on multiple unrelated listings."
+        }
+       ],
+       [
+        {
+         "t": "Reverse-search images and check the address independently."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "A “key deposit” is requested before any viewing or contract."
+        }
+       ],
+       [
+        {
+         "t": "Treat as high risk; contact the university or relevant housing support service."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Understand deposits and tenancy rights",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The rules that apply depend on whether the arrangement is a residential tenancy, a licence in owner-occupied accommodation or another type of arrangement. The RTB provides information about tenancy registration, deposits, rent reviews, notices and dispute resolution. Students should identify the type of agreement before assuming all residential tenancy protections apply."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For a standard tenancy, ask for a written record of the rent, deposit, start date, notice requirements and who is responsible for utilities. Keep payment receipts, the inventory and dated photographs of the room at move-in."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Dublin vs Cork vs Galway: compare like with like",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not rely on a single “average student rent” number without defining the accommodation type and data period. RTB/ESRI rent data measures rents in registered tenancies and can distinguish new and existing tenancies; university residence prices and online asking rents are different measures. Dublin City had the highest standardised average rent for existing tenancies among the cities highlighted in RTB’s Q4 2025 update, followed by Cork City and Galway City. These are not student-room prices."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "City comparison",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to compare",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Dublin"
+        }
+       ],
+       [
+        {
+         "t": "Campus distance, room availability, public transport cost, competition at intake peaks and utilities."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Cork"
+        }
+       ],
+       [
+        {
+         "t": "Campus location, room supply, bus links, lease duration and whether accommodation is near the city or suburban campus."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Galway"
+        }
+       ],
+       [
+        {
+         "t": "Campus access, seasonal demand, shared-house availability, transport and whether the room is available for the full academic year."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Pre-arrival housing checklist",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Confirm the campus address and expected weekly timetable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Apply for university accommodation as soon as applications open."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Set a realistic monthly budget and a maximum upfront payment."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Shortlist rooms by commute and total cost including bills."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Verify the advertiser, property address and viewing arrangements."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Read the agreement and check deposit, rent, notice and house rules."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Pay only through a traceable method to the verified recipient."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep the agreement, receipt, messages and move-in condition photos."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Have a temporary, refundable arrival plan if long-term accommodation is not yet verified."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is Daft.ie safe for international students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is a property-listing platform, not a guarantee that each advertiser or property is genuine. Verify the property and person offering it before paying."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "When should I start looking for Dublin student accommodation?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Start as soon as the university opens accommodation applications and well before arrival. Availability is highly seasonal, especially around major academic intakes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Should I pay a deposit before viewing?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Avoid paying before you have independently verified the property, the person collecting payment and the written agreement."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are all student accommodation agreements covered by RTB rules?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not necessarily. The legal position depends on the arrangement, including whether it is a tenancy or a licence. Check the RTB guidance and obtain advice if uncertain."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is Cork or Galway always cheaper than Dublin?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not always. Compare current room prices, transport and availability by campus and accommodation type rather than relying on a city-wide assumption."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "Dublin student accommodation crisis tips",
+ "secondaryKeywords": [
+  "living expenses Dublin vs Cork Galway",
+  "RTB tenancy rights"
+ ],
+ "intent": "How-To / Informational",
+ "seoTitle": "Dublin Student Accommodation: Rent and Scam Prevention",
+ "metaDescription": "Find student housing in Dublin safely. Compare university accommodation, rental listings, tenancy checks and common scams.",
+ "slug": "dublin-student-accommodation-guide",
+ "destination": "ireland",
+ "topic": "student-life",
+ "topicLabel": "Student life and work",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "ISD – Third Level Graduate Programme",
+   "url": "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/third-level-graduate-programme/",
+   "note": "Eligibility, award levels, six-month application deadline and 12/24-month permission."
+  },
+  {
+   "title": "ISD – Immigration permission stamps",
+   "url": "https://www.irishimmigration.ie/registering-your-immigration-permission/information-on-registering/immigration-permission-stamps/",
+   "note": "Stamp 1G conditions, work permission and self-employment restriction."
+  },
+  {
+   "title": "ISD – Planning to study in Ireland",
+   "url": "https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-options/planning-to-study-in-ireland/",
+   "note": "Stamp 2 student work-hour limits and study planning."
+  },
+  {
+   "title": "ISD – Student finances",
+   "url": "https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-visa-options/information-on-student-finances/",
+   "note": "€10,000 financial evidence, subsequent-year funds, bank statements and education bond."
+  },
+  {
+   "title": "DETE – Critical Skills Employment Permit",
+   "url": "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/",
+   "note": "CSEP criteria, job duration, remuneration and application lead time."
+  },
+  {
+   "title": "DETE – Critical Skills Occupations List",
+   "url": "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/employment-permit-eligibility/highly-skilled-eligible-occupations-list/critical%20skills%20occupations%20list.html",
+   "note": "Current eligible occupation categories and specific skills."
+  },
+  {
+   "title": "DETE – Minimum Annual Remuneration thresholds",
+   "url": "https://www.enterprise.gov.ie/en/what-we-do/workplace-and-skills/economic-migration-policy/minimum-annual-remuneration/minimum-annual-remuneration-mar-thresholds.html",
+   "note": "2026 salary thresholds for employment permits."
+  },
+  {
+   "title": "RTB – RTB/ESRI Rent Index",
+   "url": "https://rtb.ie/data-insights/rtb-research-reports/rtb-esri-rent-index/",
+   "note": "Quarterly rent data and methodology for new and existing tenancies."
+  },
+  {
+   "title": "RTB – Renting in Ireland",
+   "url": "https://rtb.ie/",
+   "note": "Tenancy rights, registration, deposits and dispute information."
+  },
+  {
+   "title": "Trinity College Dublin – Fees",
+   "url": "https://www.tcd.ie/academicregistry/fees-and-payments/",
+   "note": "Official fee schedule; select exact programme and academic year."
+  },
+  {
+   "title": "University College Dublin – Fees",
+   "url": "https://www.ucd.ie/students/fees/",
+   "note": "Official tuition and student fee information."
+  },
+  {
+   "title": "QQI – Irish National Framework of Qualifications",
+   "url": "https://www.qqi.ie/what-we-do/the-qualifications-system/national-framework-of-qualifications",
+   "note": "NFQ levels and qualification framework."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "ad1c9968-Ireland_Study_Abroad_SEO_GEO_Content_Pack_4_Articles.docx",
+ "words": 870,
+ "readMinutes": 4
+}

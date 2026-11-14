@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import { hiddenFromSearch } from '../../lib/noindex.js';
 import { countries } from '../../lib/data.js';
 import SchCard from '../../components/SchCard.astro';
@@ -161,4 +163,5 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
 
   <script type="application/json" id="sch-today" set:html={JSON.stringify({ built: today })} />
   {PUBLISH && rows.length > 0 && <script>import '../../scripts/scholarships.js';</script>}
+  <RelatedArticles list={forTopics(TOOL_TOPICS['scholarships'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />
 </Base>

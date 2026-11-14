@@ -1,0 +1,41 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ArticleCard from '../../../components/ArticleCard.astro';
+import { topics, byTopic } from '../../../lib/articles.js';
+import { SITE } from '../../../lib/data.js';
+
+export function getStaticPaths() {
+  return topics.map((t) => ({ params: { topic: t.slug }, props: { t } }));
+}
+const { t } = Astro.props;
+const list = byTopic(t.slug);
+const path = `/articles/topic/${t.slug}/`;
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: t.label,
+    url: `${SITE}${path}`,
+    hasPart: list.map((a) => ({ '@type': 'Article', headline: a.title, url: `${SITE}${a.href}` })),
+  },
+];
+const others = topics.filter((x) => x.slug !== t.slug);
+---
+<Base
+  title={`${t.label} for international students: articles | Universities500`}
+  description={`${t.blurb} ${list.length} ${list.length === 1 ? 'article' : 'articles'}, each with the short answer first.`}
+  path={path}
+  jsonld={ld}
+  current="articles"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/articles/">Articles</a><span aria-hidden="true">/</span>{t.label}</nav>
+  <h1>{t.label}</h1>
+  <p class="lede">{t.blurb}</p>
+  <ul class="acards wide">
+    {list.map((a) => <li><ArticleCard a={a} /></li>)}
+  </ul>
+  <h2 class="hub-h">Other topics</h2>
+  <ul class="pills">
+    {others.map((x) => <li><a href={`/articles/topic/${x.slug}/`}>{x.label} <span>{x.count}</span></a></li>)}
+  </ul>
+</Base>

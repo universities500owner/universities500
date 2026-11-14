@@ -1,0 +1,639 @@
+{
+ "id": "UK-02",
+ "category": "Visa & Compliance",
+ "priority": "High",
+ "title": "UKVI Credibility Interview & CAS Letter Process: Complete Document Checklist",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The Confirmation of Acceptance for Studies (CAS) is an electronic record issued by a licensed UK Student sponsor after the university has decided to sponsor an eligible student. UKVI may assess whether the applicant is a genuine student and may invite them to a credibility interview. The purpose is to understand the student's study plans, course choice, finances and ability to explain the application."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Your CAS is not a visa and does not guarantee approval. Check every CAS detail, ensure your financial evidence meets the current rules, and prepare to explain your course, university, funding and plans truthfully."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What is a CAS?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A CAS is a unique reference number linked to information the university has provided to UKVI about the student and course. You normally need a CAS before applying for a Student visa. It includes details such as the course, sponsor, tuition fees and payments recorded by the university."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What should you check on your CAS?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Name, passport details and personal information."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "University and sponsor details, course title, level, start and end dates."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Tuition fees for the relevant academic year and any payments already made."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Scholarship or sponsorship details, if applicable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "English language assessment information and evidence recorded by the sponsor."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Any additional notes or conditions relevant to the application."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "If you notice an error, contact the university's CAS or international student team before submitting the visa application. Do not edit or reinterpret the CAS yourself."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is a UKVI credibility interview?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "UKVI may interview a Student visa applicant if it needs to assess whether they are a genuine student. The caseworker considers the whole application and evidence, which may include the interview. Topics can include the applicant's education history, course knowledge, reasons for choosing the UK and institution, financial circumstances and future plans."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Course and academic choice",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Why have you chosen this course?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How does it relate to your previous education or work?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Which modules interest you most?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Why this university rather than another?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What do you know about the course structure and assessment?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Why study in the UK rather than India or another country?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "University and location",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Where is your university located?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What do you know about the campus and facilities?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How did you research the university?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Where do you plan to live?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How will you travel between accommodation and campus?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Finances",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "What is the total tuition fee?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How much have you already paid?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Who is funding your studies?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What does your sponsor do?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How will you pay for the remaining tuition and living costs?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Can you explain the source of the funds?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Career and future plans",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "How will the course help your career?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What roles might you pursue after graduation?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What do you understand about the Graduate Route rules?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What will you do if your plans change?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Personal and application history",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Can you explain any study gap?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Why are you changing your subject?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Have you had a previous visa refusal?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Who helped you with your application?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is all information in your application accurate?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The 28-day bank statement rule",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Where the applicant must evidence funds, the required amount generally needs to be held for a consecutive 28-day period. The end date of that period must be within 31 days of the visa application date. The required amount normally includes unpaid course fees for the relevant period and the maintenance amount for the applicant's location. Different evidence rules can apply to official financial sponsorship, qualifying student loans and applicants covered by differentiation arrangements."
+      }
+     ]
+    },
+    {
+     "t": "callout",
+     "title": "Avoid a last-minute deposit",
+     "blocks": [
+      {
+       "t": "p",
+       "runs": [
+        {
+         "t": "A large deposit shortly before the application can make it difficult to demonstrate that the required balance was held for the full 28-day period. Keep clear evidence of the source of funds and follow the exact UKVI rules."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Document checklist",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Document",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Check",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Passport"
+        }
+       ],
+       [
+        {
+         "t": "Valid and consistent with CAS details."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "CAS"
+        }
+       ],
+       [
+        {
+         "t": "Correct reference and all course/fee details checked."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Financial evidence"
+        }
+       ],
+       [
+        {
+         "t": "Correct amount, account holder, format and 28-day holding period where required."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Academic documents"
+        }
+       ],
+       [
+        {
+         "t": "Certificates, transcripts and other evidence requested by the university or UKVI."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "English language evidence"
+        }
+       ],
+       [
+        {
+         "t": "SELT, Ecctis or sponsor assessment route as applicable."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "ATAS"
+        }
+       ],
+       [
+        {
+         "t": "Required only for certain sensitive subject areas and nationalities; check course and nationality rules."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "TB test"
+        }
+       ],
+       [
+        {
+         "t": "Check whether a certificate is required based on country of residence and course duration."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Translations"
+        }
+       ],
+       [
+        {
+         "t": "Certified translations for documents not in English or Welsh, where required."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Interview preparation: what works",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Know your course, modules, campus and tuition facts."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Understand how your funding works and be able to explain it clearly."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Give direct answers based on your real circumstances."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep your answers consistent with the CAS and application."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Do not memorise fabricated scripts or claim facts you cannot support."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Does every UK Student visa applicant attend a credibility interview?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. UKVI may request an interview where it needs to assess the applicant's credibility. Not every applicant is interviewed."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a CAS guarantee a UK Student visa?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. A CAS is issued by the licensed sponsor and is required for the application, but UKVI independently assesses whether the applicant meets the Student route requirements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How many days must funds be held for a UK Student visa?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Where bank evidence is required, the funds generally need to be held for 28 consecutive days, with the end of that period within 31 days of the application date."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can my parents sponsor my UK studies?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Funds may be held in a parent or legal guardian's account if the relevant evidence and relationship requirements are met. Follow current UKVI documentation rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What happens if my CAS has an error?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Contact the university's CAS team and ask them to correct or clarify the record before applying. Do not submit an application with unresolved material errors."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "UK student visa credibility interview questions and answers",
+ "secondaryKeywords": [
+  "CAS letter financial requirements UKVI",
+  "Student Route visa"
+ ],
+ "intent": "How-To / Transactional",
+ "seoTitle": "UKVI Credibility Interview & CAS Letter Process: Document Checklist",
+ "metaDescription": "Prepare for a UKVI Student visa credibility interview. Understand your CAS, 28-day financial evidence rule, key documents and common interview questions.",
+ "slug": "/ukvi-credibility-interview-cas-checklist/",
+ "destination": "uk",
+ "topic": "visas",
+ "topicLabel": "Visas and paperwork",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "GOV.UK – Student visa: Money you need",
+   "url": "https://www.gov.uk/student-visa/money",
+   "note": "Financial requirement and 28-day period."
+  },
+  {
+   "title": "GOV.UK – Student and Child Student caseworker guidance",
+   "url": "https://www.gov.uk/government/publications/student-route-caseworker-guidance/student-and-child-student",
+   "note": "Genuine student assessment and credibility factors."
+  },
+  {
+   "title": "GOV.UK – English language requirements for immigration applicants",
+   "url": "https://www.gov.uk/government/publications/english-language-requirement-levels-for-immigration-applications/english-language-requirement-levels-for-immigration-applications",
+   "note": "Current English language levels and degree-taught-in-English route."
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "a68625f0-UK_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 909,
+ "readMinutes": 4
+}

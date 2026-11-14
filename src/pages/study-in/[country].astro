@@ -3,6 +3,8 @@ import Base from '../../layouts/Base.astro';
 import GuideBlocks from '../../components/GuideBlocks.astro';
 import { byCountry, countries, SITE } from '../../lib/data.js';
 import { guides, runsText } from '../../lib/guides.js';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { byDestination } from '../../lib/articles.js';
 
 export function getStaticPaths() {
   return guides.map((g) => ({ params: { country: g.slug }, props: { g } }));
@@ -44,6 +46,7 @@ if (faqItems.length) {
   });
 }
 const toc = g.sections.filter((s) => s.blocks.length);
+const arts = byDestination(g.slug);
 ---
 <Base
   title={`Study in ${g.name}: guide for international students | Universities500`}
@@ -69,6 +72,7 @@ const toc = g.sections.filter((s) => s.blocks.length);
       <h2>In this guide</h2>
       <ol>
         {toc.map((s) => <li><a href={`#s-${s.key}`}>{s.title}</a></li>)}
+        {arts.length > 0 && <li><a href="#s-articles">Articles on {g.name}</a></li>}
         {list.length > 0 && <li><a href="#s-universities-here">Universities in {g.name} on this site</a></li>}
       </ol>
     </nav>
@@ -79,6 +83,14 @@ const toc = g.sections.filter((s) => s.blocks.length);
           <GuideBlocks blocks={s.blocks} />
         </section>
       ))}
+      {arts.length > 0 && (
+        <section class="gsec" id="s-articles">
+          <h2>Articles on {g.name}</h2>
+          <p>Short answers on costs, visas and more. Each one starts with the answer and names its official sources.</p>
+          <ul class="acards">{arts.map((a) => <li><ArticleCard a={a} compact={true} /></li>)}</ul>
+          <p class="small"><a href={`/articles/destination/${g.slug}/`}>All {g.name} articles</a></p>
+        </section>
+      )}
       {list.length > 0 && (
         <section class="gsec uni-in-country" id="s-universities-here">
           <h2>Universities in {g.name} on this site</h2>

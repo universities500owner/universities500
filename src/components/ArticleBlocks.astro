@@ -1,0 +1,17 @@
+---
+import ArtLeaf from './ArtLeaf.astro';
+import ArtRuns from './ArtRuns.astro';
+const { blocks = [] } = Astro.props;
+---
+{blocks.map((b) =>
+  b.t === 'callout' ? (
+    <aside class="tip-callout">
+      {b.title && <p class="tip-callout-title">{b.title}</p>}
+      {b.blocks.map((x) => <ArtLeaf b={x} />)}
+    </aside>
+  ) : b.t === 'quote' ? (
+    <blockquote>{b.blocks.map((x) => <ArtLeaf b={x} />)}</blockquote>
+  ) : (
+    <ArtLeaf b={b} />
+  )
+)}

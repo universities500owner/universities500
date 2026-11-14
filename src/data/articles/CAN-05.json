@@ -1,0 +1,535 @@
+{
+ "id": "CAN-05",
+ "category": "Universities & Courses",
+ "priority": "Medium",
+ "title": "Co-op Programs in Canada: Work Placements, Tuition Planning and Career Value",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "A co-operative education (co-op) programme combines academic study with structured, supervised work placements related to a student’s field. For international students, a co-op can provide Canadian workplace experience, professional contacts and a chance to test a career path. It should not be treated as guaranteed employment or as a reliable way to fund the full cost of tuition."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Compare the programme’s placement structure, employer network, placement eligibility, work-term schedule, tuition and fees, and historical placement outcomes. From 1 April 2026, post-secondary international students no longer need a separate co-op work permit for qualifying work placements that are required by and approved as part of their programme. The placement must still meet the immigration and institutional conditions."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What makes a programme a co-op?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A formal co-op usually alternates academic terms with paid or unpaid work terms. A qualifying student work placement must be required to complete the study programme and approved by the designated learning institution. Placements can include co-op terms, internships, practicums and other approved work-integrated learning experiences."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not every internship advertised by a university is a mandatory programme placement. Optional work, an independently sourced job or a placement that is not part of the approved curriculum may be treated differently for immigration purposes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Work authorisation change from 1 April 2026",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "IRCC states that, as of 1 April 2026, post-secondary international students do not need a separate co-op work permit for student work placements such as co-ops or internships, where the placement is required by the programme and approved by the DLI. Secondary students still need a co-op work permit. Students must continue to meet the conditions of their study permit and their institution’s placement requirements."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "IRCC also states that student work placements have no weekly hour limit under this placement rule, but the placement cannot total more than 50% of the study programme. This is distinct from ordinary off-campus employment during academic terms, which is generally limited to 24 hours per week for eligible students."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Co-op vs ordinary part-time work",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Feature",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Co-op / required placement",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Ordinary off-campus job",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Purpose"
+        }
+       ],
+       [
+        {
+         "t": "Part of the approved academic programme and required to complete it."
+        }
+       ],
+       [
+        {
+         "t": "Employment outside the required curriculum."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Approval"
+        }
+       ],
+       [
+        {
+         "t": "Must be approved by the DLI and meet IRCC placement conditions."
+        }
+       ],
+       [
+        {
+         "t": "Student and employer must ensure the student meets off-campus work conditions."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Hours"
+        }
+       ],
+       [
+        {
+         "t": "No weekly limit under the qualifying placement rule; total placement cannot exceed 50% of programme."
+        }
+       ],
+       [
+        {
+         "t": "Up to 24 hours per week during regular academic sessions; unlimited during scheduled breaks if eligible."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Career link"
+        }
+       ],
+       [
+        {
+         "t": "Usually related to the field of study and may include structured learning objectives."
+        }
+       ],
+       [
+        {
+         "t": "May be unrelated to the course."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Pay"
+        }
+       ],
+       [
+        {
+         "t": "May be paid or unpaid, depending on programme and employer."
+        }
+       ],
+       [
+        {
+         "t": "Usually paid, subject to applicable employment law."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to assess a college or university co-op programme",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Is co-op compulsory, optional or simply an internship support service?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How many work terms are included, and how long is each term?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Does the institution arrange placements, provide a job board or expect students to secure their own role?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What percentage of eligible students obtained a placement in the latest published cohort?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Are placement rates calculated only for students actively seeking a role, or for the entire class?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Which employers and sectors recruited recently, and are those examples current?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Are international students eligible for all advertised placements?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What happens if a student does not secure a placement—does the programme extend, change or require an alternative course?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Are there additional co-op fees, insurance requirements or travel costs?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Earnings: model a range, not a promise",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Co-op earnings vary by occupation, employer, location, experience, work-term length and market conditions."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It should show conservative, middle and optimistic scenarios and allow the student to enter their own offer details. Clearly label any wage figure as an assumption or cite a current employer or institutional dataset."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Does co-op improve PR chances?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Co-op experience can help a graduate develop skills and professional contacts, but a co-op placement does not automatically create permanent-residence points or count as qualifying work experience for a federal immigration programme. For example, work performed while a person was a full-time student is generally not counted toward the Canadian Experience Class minimum work-experience requirement. Graduates must assess the exact federal and provincial rules applicable to their later employment."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not market a co-op as a direct PR pathway. Its value is primarily educational and career-related. Any immigration benefit depends on the graduate’s later eligibility, work authorisation, occupation, experience, language and the rules in force at that time."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Questions to ask before paying a deposit",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Is the co-op component written into the programme structure and letter of offer?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is the placement mandatory for graduation, and how is it approved?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What are the latest placement outcomes, with the cohort and calculation method disclosed?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Which employers recruited in the last two terms, and for what roles?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What support is available for CVs, interviews, networking and work authorisation?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What is the academic plan if a placement is not secured?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What is the total programme cost including co-op fees, travel and possible extra terms?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Do international students need a co-op work permit in 2026?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For qualifying post-secondary work placements required by and approved as part of the programme, a separate co-op work permit is no longer required from 1 April 2026. Secondary students still need one."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work unlimited hours in a co-op placement?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The qualifying placement rule has no weekly hour limit, but the placement cannot total more than 50% of the study programme. Ordinary off-campus work remains subject to its own limits."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are all co-op placements paid?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Payment depends on the programme, employer and placement. Check the institution’s current terms and outcomes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does co-op work count for Canadian PR?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not assume it does. Work completed while a full-time student is generally not counted toward CEC minimum work experience. Later qualifying employment must be assessed under the rules in force."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Will a college guarantee a co-op job?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A programme may provide placement support, but students should not assume a guaranteed job unless the institution’s written terms clearly say so. Verify placement rates and what happens if no placement is secured."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "co-op programs in Canada for international students",
+ "secondaryKeywords": [
+  "co-op work permit Canada rules",
+  "best colleges co-op"
+ ],
+ "intent": "Commercial",
+ "seoTitle": "Co-op Programs in Canada for International Students",
+ "metaDescription": "Learn how Canadian co-op programmes work, the 2026 work-placement rules, placement outcomes and realistic earnings.",
+ "slug": "canada-coop-programs-international-students",
+ "destination": "canada",
+ "topic": "universities-and-courses",
+ "topicLabel": "Universities and courses",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "IRCC – End of the Student Direct Stream and Nigeria Student Express",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/end-student-direct-stream-nigeria-student-express.html",
+   "note": "SDS closure date and transition to regular study permit stream."
+  },
+  {
+   "title": "IRCC – Proof of financial support",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+   "note": "Required financial categories and 2026 living-expense amounts."
+  },
+  {
+   "title": "IRCC – PAL/TAL requirements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/provincial-attestation-letter.html",
+   "note": "PAL/TAL requirement, exemptions and validity."
+  },
+  {
+   "title": "IRCC – 2026 study permit cap allocations",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html",
+   "note": "2026 cap context and public master’s/doctoral PAL exemption."
+  },
+  {
+   "title": "IRCC – PGWP: Who can apply",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html",
+   "note": "General PGWP, language, programme and application requirements."
+  },
+  {
+   "title": "IRCC – PGWP field of study",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html",
+   "note": "CIP codes, exemptions and 2026 field-of-study list freeze."
+  },
+  {
+   "title": "IRCC – Student work placements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/intern.html",
+   "note": "Co-op permit change effective 1 April 2026 and placement conditions."
+  },
+  {
+   "title": "IRCC – Work off campus",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html",
+   "note": "24-hour weekly limit and scheduled-break rules."
+  },
+  {
+   "title": "IRCC – Express Entry category-based selection",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html",
+   "note": "Federal categories and eligibility framework."
+  },
+  {
+   "title": "IRCC – Provincial Nominee Program / Express Entry",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/express-entry/eligibility.html",
+   "note": "Federal and provincial eligibility relationship."
+  },
+  {
+   "title": "Ontario – OINP programme updates",
+   "url": "https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp",
+   "note": "Current Ontario stream status and redesign."
+  },
+  {
+   "title": "Ontario – OINP document checklists",
+   "url": "https://www.ontario.ca/document/print/book/108677",
+   "note": "Masters Graduate Stream closure notice."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/the-bc-provincial-nominee-program",
+   "note": "Current BC PNP pathway overview."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme news",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/news",
+   "note": "No new student streams and current programme updates."
+  },
+  {
+   "title": "Statistics Canada – Quarterly rent statistics, Q2 2026",
+   "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.pdf",
+   "note": "Asking rent data for Toronto, Vancouver and Calgary."
+  },
+  {
+   "title": "University of Toronto – Living costs in Toronto",
+   "url": "https://www.studentlife.utoronto.ca/task/living-costs-in-toronto/",
+   "note": "Institution-specific 2026 student living-cost estimate."
+  },
+  {
+   "title": "ICICI Bank Canada – Student Banking Partnership",
+   "url": "https://www.icicibank.ca/personal-banking/newcomer/student-partnership",
+   "note": "Example of current instalment GIC and student account options."
+  },
+  {
+   "title": "ICICI Bank Canada – Student GIC FAQ",
+   "url": "https://www.icicibank.ca/faq/student-partnership-program",
+   "note": "Payout structure and product details; verify current terms."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "eebc48f5-Canada_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 991,
+ "readMinutes": 5
+}

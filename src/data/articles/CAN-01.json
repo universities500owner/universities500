@@ -1,0 +1,620 @@
+{
+ "id": "CAN-01",
+ "category": "Visa & Compliance",
+ "priority": "High",
+ "title": "Canada Study Permit: SDS Closure, GIC Amount and Bank Options",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Indian students researching a Canada study permit may still encounter references to the Student Direct Stream (SDS). SDS is no longer open. Since 8 November 2024, new applications are processed through the regular study permit stream. A Guaranteed Investment Certificate (GIC) remains one accepted way to demonstrate access to funds, but it is not a separate fast-track visa category."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Build the study permit application around a valid letter of acceptance, any required provincial attestation letter (PAL/TAL), proof of tuition payment or funds, living-expense funds, travel funds and a credible explanation of how the full programme will be financed. A GIC is one possible financial document; it does not guarantee approval."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "SDS ended — what changed for Indian applicants?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "IRCC ended SDS and the Nigeria Student Express initiative at 2 p.m. Eastern Time on 8 November 2024. New applications submitted on or after that time are handled under the regular study permit process. The change did not remove the requirement to demonstrate financial capacity or satisfy the other study permit criteria."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Avoid old checklists that describe SDS-specific language scores, GIC amounts or bank-partner arrangements as current mandatory requirements. A student should follow the document checklist generated for their own application and the current instructions for applicants applying from India."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What funds must a student demonstrate?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "IRCC requires evidence that the student can pay tuition, living expenses for themselves and accompanying family members, and transportation to and from Canada. Applicants must demonstrate enough resources for the first year and explain how they will finance the remaining duration of a programme longer than one year. IRCC assesses the amount, source and availability of funds."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For applications submitted on or after 1 September 2026, the published living-expense requirement for one applicant outside Quebec is CAD 23,448 for one year, excluding tuition and transportation. Quebec has separate financial-capacity rules. The amount is a minimum immigration benchmark, not a complete city-specific student budget."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Applicant group (outside Quebec)",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Annual living-expense amount (CAD)",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Notes",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "One person"
+        }
+       ],
+       [
+        {
+         "t": "$23,448"
+        }
+       ],
+       [
+        {
+         "t": "Excludes tuition and travel"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Two people"
+        }
+       ],
+       [
+        {
+         "t": "$29,192"
+        }
+       ],
+       [
+        {
+         "t": "Applicant plus one family member"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Three people"
+        }
+       ],
+       [
+        {
+         "t": "$35,888"
+        }
+       ],
+       [
+        {
+         "t": "Applicant plus two family members"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Four people"
+        }
+       ],
+       [
+        {
+         "t": "$43,572"
+        }
+       ],
+       [
+        {
+         "t": "Applicant plus three family members"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Each additional person above seven"
+        }
+       ],
+       [
+        {
+         "t": "+$6,318"
+        }
+       ],
+       [
+        {
+         "t": "Check IRCC table for full family sizes"
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Is a GIC compulsory?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. IRCC lists a GIC from a Canadian financial institution as one example of acceptable proof of funds. Other evidence may include bank statements, an education loan, scholarship documentation, tuition and housing receipts, sponsor support and income evidence. The documents should make the source and availability of funds understandable."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A GIC can be useful because it places funds with a Canadian financial institution and may provide a structured release of money after arrival. Students should not assume that buying a GIC alone satisfies every financial requirement. Tuition, living costs, travel and the financial plan for later years still need to be addressed."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Comparing GIC options: focus on the payout design",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not present a provider as “IRCC approved” or imply that IRCC endorses one bank."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Comparison point",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Scotiabank Student GIC",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "ICICI Bank Canada student option",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Product structure"
+        }
+       ],
+       [
+        {
+         "t": "Confirm current student GIC product and account-opening terms directly with the bank."
+        }
+       ],
+       [
+        {
+         "t": "Offers student banking options including instalment GICs for 6, 9 or 12 months, cashable GICs and full upfront access options."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Monthly access"
+        }
+       ],
+       [
+        {
+         "t": "Explain the bank’s current instalment schedule and any required chequing account activation."
+        }
+       ],
+       [
+        {
+         "t": "Monthly instalment payouts may be selected for a portion of funds; product and payout terms depend on the chosen option."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Interest"
+        }
+       ],
+       [
+        {
+         "t": "Check the current quoted rate, compounding and maturity terms."
+        }
+       ],
+       [
+        {
+         "t": "Confirm whether interest is paid monthly or at maturity for the selected product."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Fees and transfer"
+        }
+       ],
+       [
+        {
+         "t": "Check account, wire, FX and closure charges."
+        }
+       ],
+       [
+        {
+         "t": "Provider information lists processing and bank charges; confirm current amounts before transfer."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Refund if visa refused"
+        }
+       ],
+       [
+        {
+         "t": "Obtain written refund conditions, timelines and deductions."
+        }
+       ],
+       [
+        {
+         "t": "Provider describes refund procedures and deductions; confirm current terms and processing time."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The table is a due-diligence framework, not a live rate or fee quotation. Provider products, interest rates, foreign-exchange costs, account requirements and refund rules can change."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What a GIC monthly payout schedule should show",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not assume every GIC divides the full amount into equal monthly instalments."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Show the total CAD transferred and the INR amount debited, with the FX rate and timestamp."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Separate the amount held in a chequing account from the amount locked in a non-redeemable GIC."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Show payout dates and the amount expected on each date, using provider-confirmed terms."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Include bank fees, wire charges, early withdrawal restrictions and refund conditions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Label the output as an illustration, not a guarantee of approval or future interest."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Study permit document checklist",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Confirm the institution is a designated learning institution (DLI) and the programme is eligible for the intended study plan."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Obtain the letter of acceptance and confirm programme title, duration, tuition and start date."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether a PAL/TAL is required. A qualifying master’s or doctoral student at a public DLI is exempt in 2026, but the student must verify the exact institution and programme conditions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare proof of tuition payment, GIC or other financial evidence, sponsor documents and the source-of-funds trail."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare academic records, language evidence where required, passport and country-specific documents."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Explain why the programme fits the student’s academic and career history and why the chosen institution is appropriate."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Complete the current IRCC forms, biometrics and medical requirements that apply to the applicant."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is SDS available for Indian students in 2026?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. SDS ended on 8 November 2024. New study permit applications use the regular stream."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I apply without a GIC?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A GIC is one accepted proof-of-funds option, not a universal requirement. You must still demonstrate enough accessible funds and explain the source and full study-period funding plan."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a GIC guarantee a study permit?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. It addresses only part of the financial evidence. IRCC assesses the full application, including study purpose, admissibility and supporting documents."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How much money is required for one student?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For applications on or after 1 September 2026, IRCC lists CAD 23,448 for living expenses outside Quebec, in addition to tuition and transportation."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can parents fund the GIC?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Provider rules differ. Keep clear evidence of the relationship, source of funds and transfer trail, and confirm the bank’s permitted funding sources."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "Canada student direct stream SDS requirements documents",
+ "secondaryKeywords": [
+  "GIC amount for Canada student visa",
+  "Scotiabank vs ICICI GIC"
+ ],
+ "intent": "Transactional / Informational",
+ "seoTitle": "Canada Study Permit, SDS Closure, GIC and Bank Options",
+ "metaDescription": "Canada study permit requirements after SDS closure: GIC, proof of funds and bank options for Indian students.",
+ "slug": "canada-study-permit-gic-proof-of-funds",
+ "destination": "canada",
+ "topic": "visas",
+ "topicLabel": "Visas and paperwork",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "IRCC – End of the Student Direct Stream and Nigeria Student Express",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/end-student-direct-stream-nigeria-student-express.html",
+   "note": "SDS closure date and transition to regular study permit stream."
+  },
+  {
+   "title": "IRCC – Proof of financial support",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+   "note": "Required financial categories and 2026 living-expense amounts."
+  },
+  {
+   "title": "IRCC – PAL/TAL requirements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/provincial-attestation-letter.html",
+   "note": "PAL/TAL requirement, exemptions and validity."
+  },
+  {
+   "title": "IRCC – 2026 study permit cap allocations",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html",
+   "note": "2026 cap context and public master’s/doctoral PAL exemption."
+  },
+  {
+   "title": "IRCC – PGWP: Who can apply",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html",
+   "note": "General PGWP, language, programme and application requirements."
+  },
+  {
+   "title": "IRCC – PGWP field of study",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html",
+   "note": "CIP codes, exemptions and 2026 field-of-study list freeze."
+  },
+  {
+   "title": "IRCC – Student work placements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/intern.html",
+   "note": "Co-op permit change effective 1 April 2026 and placement conditions."
+  },
+  {
+   "title": "IRCC – Work off campus",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html",
+   "note": "24-hour weekly limit and scheduled-break rules."
+  },
+  {
+   "title": "IRCC – Express Entry category-based selection",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html",
+   "note": "Federal categories and eligibility framework."
+  },
+  {
+   "title": "IRCC – Provincial Nominee Program / Express Entry",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/express-entry/eligibility.html",
+   "note": "Federal and provincial eligibility relationship."
+  },
+  {
+   "title": "Ontario – OINP programme updates",
+   "url": "https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp",
+   "note": "Current Ontario stream status and redesign."
+  },
+  {
+   "title": "Ontario – OINP document checklists",
+   "url": "https://www.ontario.ca/document/print/book/108677",
+   "note": "Masters Graduate Stream closure notice."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/the-bc-provincial-nominee-program",
+   "note": "Current BC PNP pathway overview."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme news",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/news",
+   "note": "No new student streams and current programme updates."
+  },
+  {
+   "title": "Statistics Canada – Quarterly rent statistics, Q2 2026",
+   "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.pdf",
+   "note": "Asking rent data for Toronto, Vancouver and Calgary."
+  },
+  {
+   "title": "University of Toronto – Living costs in Toronto",
+   "url": "https://www.studentlife.utoronto.ca/task/living-costs-in-toronto/",
+   "note": "Institution-specific 2026 student living-cost estimate."
+  },
+  {
+   "title": "ICICI Bank Canada – Student Banking Partnership",
+   "url": "https://www.icicibank.ca/personal-banking/newcomer/student-partnership",
+   "note": "Example of current instalment GIC and student account options."
+  },
+  {
+   "title": "ICICI Bank Canada – Student GIC FAQ",
+   "url": "https://www.icicibank.ca/faq/student-partnership-program",
+   "note": "Payout structure and product details; verify current terms."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "eebc48f5-Canada_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 1027,
+ "readMinutes": 5
+}

@@ -1,0 +1,567 @@
+{
+ "id": "FRA-03",
+ "category": "Universities & Courses",
+ "priority": "Medium",
+ "title": "Grandes Écoles vs Public Universities in France: Fees, Luxury Management & MBA ROI",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "France offers several types of higher-education institutions, including public universities, Grandes Écoles, specialised schools and private institutions. The right choice depends on the subject, degree recognition, teaching model, total cost and career objective. A prestigious school may offer a strong network and specialised career services, but it does not automatically deliver a better return on investment than a public university."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Compare the exact programme, not just the institution label. Public universities can offer comparatively low national tuition rates, while Grandes Écoles and specialised business schools often charge institution-specific fees. For luxury brand management, management and MBA programmes, compare employer links, internships, alumni outcomes, accreditation and total cost before deciding."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What is a public university in France?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Public universities are state-supported higher-education institutions offering a wide range of Bachelor’s, Master’s and doctoral programmes. For 2026–2027, Campus France lists differentiated tuition for many non-EU students at institutions under the Ministry of Higher Education: €2,902 per year for Bachelor’s and €3,950 per year for Master’s. These rates are subject to exemptions and institution-level tuition waivers. Doctoral tuition is listed at €398."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is a Grande École?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Grandes Écoles are selective higher-education institutions or programmes with distinctive admission routes and specialised academic or professional positioning. The term covers different types of schools, including management and engineering institutions. Not every Grande École has the same status, fee structure, degree recognition or accreditation. Students should verify the exact diploma and its recognition."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Tuition comparison for 2026–2027",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Institution / programme type",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Indicative tuition position for non-EU students",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Important caveat",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Public university Master’s under Ministry rates"
+        }
+       ],
+       [
+        {
+         "t": "€3,950 per year"
+        }
+       ],
+       [
+        {
+         "t": "Differentiated fee applies unless the student/programme/institution qualifies for an exemption or waiver."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Public university Bachelor’s under Ministry rates"
+        }
+       ],
+       [
+        {
+         "t": "€2,902 per year"
+        }
+       ],
+       [
+        {
+         "t": "Check the exact cycle and applicable exemption."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Doctoral programme"
+        }
+       ],
+       [
+        {
+         "t": "€398 per year in the Campus France table"
+        }
+       ],
+       [
+        {
+         "t": "Doctoral programmes are not subject to differentiated tuition in the same way."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Grandes Écoles / business schools"
+        }
+       ],
+       [
+        {
+         "t": "Institution- and programme-specific; often substantially higher."
+        }
+       ],
+       [
+        {
+         "t": "Use the official programme fee schedule, not the national public-university rate."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "MBA / executive education"
+        }
+       ],
+       [
+        {
+         "t": "Highly variable and often priced separately."
+        }
+       ],
+       [
+        {
+         "t": "Compare tuition, mandatory fees, living costs and opportunity cost."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The €2,902 and €3,950 amounts are national differentiated rates for the specified public institutions and cycles, not a universal price for every French institution. Some public institutions apply exemptions or set different fee policies. Engineering schools and other institutions under different ministries may have separate fee schedules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "HEC, ESSEC and ESCP: compare programme to programme",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "HEC Paris, ESSEC Business School and ESCP Business School are prominent business schools, but their fees and admissions requirements differ by programme and intake. A Master in Management, MSc in Luxury Management, specialised Master’s and MBA are not interchangeable products. Their tuition, duration, internships, career outcomes and candidate profiles differ materially."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Comparison dimension",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Questions to ask",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Degree and recognition"
+        }
+       ],
+       [
+        {
+         "t": "What exact diploma is awarded? Is it a national Master’s degree, a specialised degree, an MSc label or an MBA?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Programme content"
+        }
+       ],
+       [
+        {
+         "t": "Does it cover luxury brand strategy, retail, marketing, finance, analytics, sustainability or supply chain?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Internship / work exposure"
+        }
+       ],
+       [
+        {
+         "t": "Is an internship included, optional or required? Is it paid? What is the placement support?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Career outcomes"
+        }
+       ],
+       [
+        {
+         "t": "Are employment rates and salary outcomes published for this exact programme and cohort? How are they measured?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Accreditation"
+        }
+       ],
+       [
+        {
+         "t": "Which institutional or programme accreditations apply, and what do they actually certify?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Total cost"
+        }
+       ],
+       [
+        {
+         "t": "Tuition, application fees, living costs, travel, insurance, materials and lost earnings during study."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Luxury brand management: what should students look for?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A luxury management programme may cover brand strategy, fashion and luxury markets, customer experience, retail operations, merchandising, digital marketing, sustainability, finance and global supply chains. Students should check whether the curriculum includes live projects, internships, company exposure and relevant electives. A programme title containing “luxury” is not sufficient evidence of industry access or employment outcomes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to assess ROI realistically",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Return on investment should be calculated using total programme cost and realistic post-graduation outcomes—not marketing claims or a single average salary. Consider tuition, living costs, scholarships, internship earnings, loan interest, currency risk, taxes, job-search time and whether the graduate can work in the intended country."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "ROI input",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to include",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Total investment"
+        }
+       ],
+       [
+        {
+         "t": "Tuition + fees + living costs + travel + insurance + financing costs."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Funding"
+        }
+       ],
+       [
+        {
+         "t": "Scholarships, fee waivers, savings, family support and education loan."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Career outcome"
+        }
+       ],
+       [
+        {
+         "t": "Published programme-specific employment rate, median salary, sector and geography."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Time to employment"
+        }
+       ],
+       [
+        {
+         "t": "Time from graduation to first relevant role; clarify the reporting definition."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Work authorisation"
+        }
+       ],
+       [
+        {
+         "t": "Applicable post-study residence and employment rules; do not assume a job offer."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Sensitivity test"
+        }
+       ],
+       [
+        {
+         "t": "Model lower salary, longer job search, exchange-rate change and no internship income."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Decision framework: public university or Grande École?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Choose a public university when the programme curriculum, research fit and national degree structure align with your goals and the cost advantage is meaningful."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Choose a Grande École when its exact programme offers a stronger fit in specialisation, employer network, internship access or career services that justify the additional cost."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "For MBA applicants, compare work experience profile, cohort, accreditation, career transition support and opportunity cost."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "For luxury management, verify the school’s employer relationships and the actual internship/job outcomes for that specific programme."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Never choose solely by brand reputation or ranking position."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Are public universities in France cheaper than Grandes Écoles?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Often, particularly under the national public-university fee framework. For 2026–2027, the differentiated non-EU Master’s rate is €3,950 at relevant public institutions, but exemptions and institution-specific policies apply. Grandes Écoles set programme-specific fees."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are HEC, ESSEC and ESCP all Grandes Écoles?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "They are prominent French business schools, but students should compare the exact programme and diploma rather than assume every qualification has identical status or recognition."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is a luxury brand management degree worth it?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It depends on the programme’s curriculum, industry exposure, internship, career outcomes and total cost. Check programme-specific employment data and do not rely only on brand reputation."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Do public universities in France offer English-taught Master’s programmes?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Yes. Availability depends on the discipline and institution. Check the exact course language, English test requirements and any French-language components."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a Grande École guarantee a higher salary?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Salary depends on programme, prior experience, role, sector, location and labour-market conditions. Use published programme-specific outcomes and understand how they are measured."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can non-EU students receive a public-university tuition waiver?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some students may be exempt or receive an institutional waiver depending on status, scholarship, agreement or institution policy. Confirm directly with the university for the intended intake."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "Grandes Écoles vs public universities France ROI",
+ "secondaryKeywords": [
+  "luxury brand management masters France",
+  "HEC ESSEC ESCP fees"
+ ],
+ "intent": "Commercial",
+ "seoTitle": "Grandes Écoles vs Public Universities in France",
+ "metaDescription": "Compare French public university tuition, Grandes Écoles, HEC, ESSEC and ESCP programme fees and return on investment.",
+ "slug": "grandes-ecoles-vs-public-universities-france",
+ "destination": "france",
+ "topic": "universities-and-courses",
+ "topicLabel": "Universities and courses",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "campusfrance.org",
+   "url": "https://www.campusfrance.org/en/tuition-fees-France",
+   "note": "Campus France – Tuition fees in France (2026–2027)"
+  },
+  {
+   "title": "enseignementsup-recherche.gouv.fr",
+   "url": "https://www.enseignementsup-recherche.gouv.fr/",
+   "note": "Ministry of Higher Education – Differentiated fees FAQ"
+  },
+  {
+   "title": "hec.edu",
+   "url": "https://www.hec.edu/en",
+   "note": "HEC Paris – Programmes and fees"
+  },
+  {
+   "title": "essec.edu",
+   "url": "https://www.essec.edu/en/",
+   "note": "ESSEC Business School – Programmes"
+  },
+  {
+   "title": "escp.eu",
+   "url": "https://escp.eu/",
+   "note": "ESCP Business School – Programmes"
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "f935b0c0-France_Study_Abroad_SEO_GEO_Content_Pack_4_Articles.docx",
+ "words": 1060,
+ "readMinutes": 5
+}

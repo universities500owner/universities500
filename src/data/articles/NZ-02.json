@@ -1,0 +1,505 @@
+{
+ "id": "NZ-02",
+ "category": "Cost & Budgeting",
+ "priority": "Medium",
+ "title": "Cost of Studying in New Zealand: Tuition Fees, NZD $20,000 Proof of Funds & Living Costs",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The cost of studying in New Zealand depends on the qualification, institution, city and accommodation choice. International students should budget for tuition, living expenses, insurance, visa costs, travel and initial setup. The student-visa funds requirement is a minimum evidence threshold—not a reliable estimate of what every student will spend."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For tertiary study lasting one year or more, INZ currently requires evidence of NZD 20,000 for living costs for each year of study, or NZD 1,667 per month for shorter study. Tuition fees and outward travel are additional. Published university estimates show that a realistic annual living budget can be higher, particularly in Auckland or Wellington."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Understand the main cost categories",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Cost category",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to include",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "How to estimate",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Tuition"
+        }
+       ],
+       [
+        {
+         "t": "Course fees, student services fee, lab or programme charges where applicable."
+        }
+       ],
+       [
+        {
+         "t": "Use the exact programme fee for the intended year and study load."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Living costs"
+        }
+       ],
+       [
+        {
+         "t": "Accommodation, food, utilities, transport, phone, internet and personal spending."
+        }
+       ],
+       [
+        {
+         "t": "Use the university’s city-specific budget and accommodation type."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Visa and insurance"
+        }
+       ],
+       [
+        {
+         "t": "Student visa charge, medical/travel insurance and any required medical checks."
+        }
+       ],
+       [
+        {
+         "t": "Check INZ and provider requirements at application time."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Travel and setup"
+        }
+       ],
+       [
+        {
+         "t": "Flights, airport transfer, bond/deposit, bedding, kitchen items and winter clothing."
+        }
+       ],
+       [
+        {
+         "t": "Create a one-off arrival budget separate from monthly costs."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What does the NZD 20,000 proof-of-funds rule mean?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For tertiary-level, English-language and other non-compulsory study, INZ requires NZD 20,000 for each year if the course is one year or longer, or NZD 1,667 for each month if the course is shorter than a year. Prepaid accommodation may be deducted in the calculation where accepted. Students must also show evidence of outward travel or enough additional money to buy a ticket."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "This amount is not tuition. It is not a guarantee that NZD 20,000 will cover the student’s actual living costs. INZ expects the money to be genuinely available and from a source it can verify. Funds may be held by the student, an acceptable sponsor or a guarantor/third party under the relevant rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Tuition fees: use course-level figures",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "New Zealand’s official Study with New Zealand portal gives broad indicative ranges, but it also warns that fees vary by provider and course. Its published guide lists bachelor’s tuition at roughly NZD 35,000–55,000 per year and postgraduate tuition at roughly NZD 20,000–45,000, with higher fees for some subjects. The guide labels the bachelor’s range as updated March 2025; do not present these figures as guaranteed 2027 fees."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A concrete programme example is the University of Auckland’s Master of Information Technology. Its published 2027 international tuition estimate is NZD 57,974, excluding the student services fee, books, travel, insurance and living costs. This is a programme-specific example, not a national average or a price applicable to every IT master’s."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Auckland versus Wellington: compare the whole student budget",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Budget item",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Auckland",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Wellington",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to check",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Accommodation"
+        }
+       ],
+       [
+        {
+         "t": "Compare halls, shared flats and private rentals near the campus."
+        }
+       ],
+       [
+        {
+         "t": "Compare halls and shared flats; consider hills, commute and campus location."
+        }
+       ],
+       [
+        {
+         "t": "Weekly rent, bond, utilities, furnished/unfurnished status and contract dates."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Transport"
+        }
+       ],
+       [
+        {
+         "t": "Public transport cost depends on suburb, campus and travel frequency."
+        }
+       ],
+       [
+        {
+         "t": "Compare bus/train routes and the distance between housing and campus."
+        }
+       ],
+       [
+        {
+         "t": "Student concessions, weekly caps and whether walking is practical."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Food and essentials"
+        }
+       ],
+       [
+        {
+         "t": "Groceries and eating out vary by habits and location."
+        }
+       ],
+       [
+        {
+         "t": "Same principle; plan around supermarket access and shared cooking."
+        }
+       ],
+       [
+        {
+         "t": "Build a weekly grocery plan rather than relying on a generic monthly figure."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Part-time work"
+        }
+       ],
+       [
+        {
+         "t": "Larger labour market, but job availability and competition vary."
+        }
+       ],
+       [
+        {
+         "t": "Employment opportunities vary by sector, season and schedule."
+        }
+       ],
+       [
+        {
+         "t": "Do not assume a job will be available immediately or cover tuition."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A useful official starting point is the Study with New Zealand living-cost guide, which cites university estimates of around NZD 20,000–27,000 annually for Auckland and Wellington, and NZD 18,000–21,000 for Otago/Dunedin. Treat these as broad planning references and check the latest university budget for your programme and accommodation."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Can part-time work reduce the cost?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some student visas allow up to 25 hours of work per week during study and full-time work during specified holidays. The right to work depends on the course and the conditions printed on the eVisa. Students should not assume that every student visa carries work rights."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Part-time earnings may help with weekly expenses, but they are uncertain. A student needs to secure a job, balance shifts with academic workload and account for tax, travel time and seasonal availability. Do not build a visa funding plan around future wages that have not yet been earned."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Build a realistic first-year budget",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Add the exact tuition fee from the offer of place or official programme fee page."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Add at least the INZ living-funds requirement, then compare it with the university’s realistic annual living estimate."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Add outward travel and the student visa fee."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Add insurance, accommodation bond/deposit, initial supplies and arrival travel."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Create a monthly budget for rent, groceries, utilities, transport and personal spending."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep a contingency reserve for exchange-rate movements and unexpected costs."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Indian student financial planning",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students paying from India should plan for currency movements between INR and NZD. Convert the budget using a current, clearly dated exchange rate and keep a buffer rather than relying on a single conversion made months before payment. Bank transfer charges, foreign exchange margins and instalment dates can also affect the amount received by the institution."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For visa evidence, document the source and availability of funds. If a parent or other person is supporting the student, prepare evidence that explains the relationship, source of funds and ability to provide support. Follow INZ’s current evidence requirements rather than relying on generic “six-month bank statement” claims from unofficial websites."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is NZD 20,000 enough to study in New Zealand for one year?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "NZD 20,000 is the current INZ living-funds evidence requirement for a year of tertiary study. It is not a guarantee that this amount will cover actual living costs. Tuition and outward travel are additional, and university estimates may be higher."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How much are tuition fees in New Zealand for international students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Fees vary by programme and provider. The official Study with New Zealand guide gives broad indicative ranges, but students should use the exact fee published for their course and intended year."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is Auckland more expensive than Wellington?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Costs depend heavily on accommodation, commute and lifestyle. Compare current university budgets and actual housing options rather than relying on a single city-wide average."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work 25 hours per week on a New Zealand student visa?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some eligible student visas allow up to 25 hours per week during study, with full-time work during specified holidays. The student must check the conditions on their own eVisa."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can part-time work pay my tuition fees?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It should not be treated as a guaranteed way to fund tuition. Work availability, permitted hours, wages, tax and academic workload vary. Plan tuition and visa funds independently of future earnings."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "cost of studying in New Zealand for international students",
+ "secondaryKeywords": [
+  "living costs Wellington vs Auckland",
+  "University of Auckland fees"
+ ],
+ "intent": "Informational / Commercial",
+ "seoTitle": "Cost of Studying in New Zealand: Fees & Living Costs",
+ "metaDescription": "Plan New Zealand tuition, NZD 20,000 visa funds, Auckland and Wellington living costs, and part-time work assumptions.",
+ "slug": "cost-of-studying-in-new-zealand",
+ "destination": "new-zealand",
+ "topic": "cost-and-budgeting",
+ "topicLabel": "Costs and budgeting",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "INZ – Student fund requirements",
+   "url": "https://www.immigration.govt.nz/process-to-apply/applying-for-a-visa/providing-evidence-and-documents-to-support-your-visa-application/student-fund-requirements/",
+   "note": ""
+  },
+  {
+   "title": "Study with New Zealand – Tuition fees and cost of living",
+   "url": "https://www.studywithnewzealand.govt.nz/en/plan-with-new-zealand/cost-of-living",
+   "note": ""
+  },
+  {
+   "title": "INZ – Working on a student visa",
+   "url": "https://www.immigration.govt.nz/study/once-you-have-a-student-visa/working-on-a-student-visa/",
+   "note": ""
+  },
+  {
+   "title": "University of Auckland – Master of Information Technology",
+   "url": "https://www.auckland.ac.nz/en/study/study-options/find-a-study-option/master-of-information-technology-minfotech.html",
+   "note": ""
+  },
+  {
+   "title": "Study with New Zealand – Student visa requirements",
+   "url": "https://www.studywithnewzealand.govt.nz/en/how-to-apply/visas",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "818c0241-New_Zealand_Study_Abroad_SEO_GEO_Content_Pack_3_Articles.docx",
+ "words": 1129,
+ "readMinutes": 5
+}

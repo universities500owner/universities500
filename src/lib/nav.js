@@ -8,6 +8,7 @@ export const NAV = [
       ['/study-in/', 'Destinations', 'study-in', 'Pick a country and read its guide.'],
       ['/universities/', 'Find my university', 'universities', 'Every university in the list, with sources.'],
       ['/course-fitment/', 'Course fitment', 'course-fitment', 'Four questions, then sample courses scored against your answers.'],
+      ['/articles/', 'Articles', 'articles', 'Short answers on costs, visas, admissions, work after study and student life.'],
       ['/rankings/', 'Check rankings yourself', 'rankings', 'Links to the ranking sites. We publish no ranking of our own.'],
     ],
   },

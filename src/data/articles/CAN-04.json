@@ -1,0 +1,506 @@
+{
+ "id": "CAN-04",
+ "category": "Cost & Budgeting",
+ "priority": "Medium",
+ "title": "Cost of Living in Toronto, Vancouver and Calgary: Student Housing and Budgeting",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The cost of living in Canada varies substantially by city, neighbourhood, housing type and lifestyle. Toronto and Vancouver are usually among the more expensive rental markets, while Calgary can offer lower asking rents for comparable accommodation. However, the cheapest rent is not always the lowest total cost: transport, distance to campus, utilities and the availability of student housing also matter."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Compare current room or apartment rents near the actual campus, then add utilities, food, transport, phone, insurance and personal expenses. IRCC’s living-expense amount is a study-permit financial benchmark, not a city-specific budget or a guarantee that the money will cover a student’s real costs."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "IRCC financial benchmark vs real living costs",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For study permit applications submitted on or after 1 September 2026, a single applicant studying outside Quebec must show CAD 23,448 for one year of living expenses, excluding tuition and transportation. This is a minimum immigration financial-capacity figure. Students should prepare a realistic budget for the city and housing they will actually use."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Compare the rental market carefully",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Statistics Canada publishes asking-rent estimates based on rental listings. These are not the same as average rents paid by existing tenants, university residence prices or a guaranteed quote for a particular neighbourhood. For the second quarter of 2026, the published average asking rent for a two-bedroom apartment was CAD 2,650 in Toronto, CAD 3,030 in Vancouver and CAD 1,890 in Calgary."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "City",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Average asking rent: 2-bedroom (Q2 2026)",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "How to interpret it",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Toronto"
+        }
+       ],
+       [
+        {
+         "t": "CAD 2,650/month"
+        }
+       ],
+       [
+        {
+         "t": "Metro-wide asking rent; sharing can reduce the individual cost."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Vancouver"
+        }
+       ],
+       [
+        {
+         "t": "CAD 3,030/month"
+        }
+       ],
+       [
+        {
+         "t": "Highest of the three in this comparison; campus and transit location matter."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Calgary"
+        }
+       ],
+       [
+        {
+         "t": "CAD 1,890/month"
+        }
+       ],
+       [
+        {
+         "t": "Lower asking rent in this comparison, but compare commute and job access."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "These are market-level averages, not student-specific room rents. Students should search by campus and compare a room in a shared home with a full apartment."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "A practical monthly student budget",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Expense",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "How to estimate it",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Accommodation"
+        }
+       ],
+       [
+        {
+         "t": "Use a current room or residence quote near campus; include deposit and possible utilities."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Utilities and internet"
+        }
+       ],
+       [
+        {
+         "t": "Check whether heat, water, electricity and internet are included in rent."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Groceries and meals"
+        }
+       ],
+       [
+        {
+         "t": "Build a weekly grocery plan and include occasional meals outside."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Transport"
+        }
+       ],
+       [
+        {
+         "t": "Check the city transit pass, student concession and whether a campus U-Pass is included in fees."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Phone"
+        }
+       ],
+       [
+        {
+         "t": "Compare prepaid and monthly plans; include tax."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Books and course materials"
+        }
+       ],
+       [
+        {
+         "t": "Use the programme’s list and distinguish one-time from recurring costs."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Health and personal expenses"
+        }
+       ],
+       [
+        {
+         "t": "Check provincial health coverage rules, institution insurance and uncovered expenses."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Emergency buffer"
+        }
+       ],
+       [
+        {
+         "t": "Keep a separate reserve for deposits, winter clothing, travel and unexpected costs."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Housing search: reduce cost and avoid scams",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Start with the university’s residence office and official off-campus housing resources."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check the commute to the exact campus, not just the city centre. A cheaper room can create high transport costs."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirm whether the rent includes utilities, internet, furniture, laundry and parking."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Do not send deposits before verifying the property, landlord or authorised agent and the tenancy terms."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Be cautious of pressure to pay immediately, unusually low rents, requests for gift cards or refusal to arrange a viewing."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Read the province’s tenancy rules and understand the deposit limits, lease term and notice requirements."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep copies of the listing, lease, payment receipts and communications."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The housing crisis is local, not identical across Canada",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Avoid describing every Canadian city as having the same “housing crisis”. Vacancy rates, new supply, student demand and rental prices vary by market and neighbourhood. The Canada Mortgage and Housing Corporation (CMHC) and Statistics Canada provide useful market-level context, but students still need campus-level research. A city average cannot predict the availability of a room when a particular intake begins."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is Toronto more expensive than Calgary for students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Rental asking-rent data for Q2 2026 shows higher two-bedroom asking rents in Toronto than Calgary. Total cost still depends on campus location, sharing, transport and lifestyle."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is Vancouver the most expensive city in Canada?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is among the most expensive major rental markets. Avoid a universal ranking without defining the city set, housing type and data period."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is CAD 23,448 enough to live in Canada for a year?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is IRCC’s minimum living-expense financial benchmark for one applicant outside Quebec from 1 September 2026. Actual costs may be higher, particularly for private housing in expensive markets."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Should I book accommodation before my visa is approved?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students should understand cancellation terms and avoid non-refundable commitments they cannot afford to lose. Use verified university and housing resources."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work part-time to pay my rent?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Eligible students may work off campus up to 24 hours per week during regular academic sessions and unlimited hours during scheduled breaks. Do not rely on future earnings to satisfy the study permit proof-of-funds requirement."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "cost of living in Toronto for international students",
+ "secondaryKeywords": [
+  "housing crisis Toronto international students",
+  "Calgary vs Vancouver"
+ ],
+ "intent": "Informational",
+ "seoTitle": "Cost of Living in Toronto, Vancouver and Calgary for Students",
+ "metaDescription": "Compare student housing, rent, transport and everyday costs in Toronto, Vancouver and Calgary using current market data.",
+ "slug": "cost-of-living-toronto-vancouver-calgary-students",
+ "destination": "canada",
+ "topic": "cost-and-budgeting",
+ "topicLabel": "Costs and budgeting",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "IRCC – End of the Student Direct Stream and Nigeria Student Express",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/end-student-direct-stream-nigeria-student-express.html",
+   "note": "SDS closure date and transition to regular study permit stream."
+  },
+  {
+   "title": "IRCC – Proof of financial support",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/financial-support.html",
+   "note": "Required financial categories and 2026 living-expense amounts."
+  },
+  {
+   "title": "IRCC – PAL/TAL requirements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/get-documents/provincial-attestation-letter.html",
+   "note": "PAL/TAL requirement, exemptions and validity."
+  },
+  {
+   "title": "IRCC – 2026 study permit cap allocations",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices/2026-provincial-territorial-allocations-under-international-student-cap.html",
+   "note": "2026 cap context and public master’s/doctoral PAL exemption."
+  },
+  {
+   "title": "IRCC – PGWP: Who can apply",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html",
+   "note": "General PGWP, language, programme and application requirements."
+  },
+  {
+   "title": "IRCC – PGWP field of study",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility/field-of-study.html",
+   "note": "CIP codes, exemptions and 2026 field-of-study list freeze."
+  },
+  {
+   "title": "IRCC – Student work placements",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/intern.html",
+   "note": "Co-op permit change effective 1 April 2026 and placement conditions."
+  },
+  {
+   "title": "IRCC – Work off campus",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html",
+   "note": "24-hour weekly limit and scheduled-break rules."
+  },
+  {
+   "title": "IRCC – Express Entry category-based selection",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/rounds-invitations/category-based-selection.html",
+   "note": "Federal categories and eligibility framework."
+  },
+  {
+   "title": "IRCC – Provincial Nominee Program / Express Entry",
+   "url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/provincial-nominees/express-entry/eligibility.html",
+   "note": "Federal and provincial eligibility relationship."
+  },
+  {
+   "title": "Ontario – OINP programme updates",
+   "url": "https://www.ontario.ca/page/ontario-immigrant-nominee-program-oinp",
+   "note": "Current Ontario stream status and redesign."
+  },
+  {
+   "title": "Ontario – OINP document checklists",
+   "url": "https://www.ontario.ca/document/print/book/108677",
+   "note": "Masters Graduate Stream closure notice."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/the-bc-provincial-nominee-program",
+   "note": "Current BC PNP pathway overview."
+  },
+  {
+   "title": "WelcomeBC – BC PNP programme news",
+   "url": "https://www.welcomebc.ca/immigrate-to-b-c/about-the-bc-provincial-nominee-program/news",
+   "note": "No new student streams and current programme updates."
+  },
+  {
+   "title": "Statistics Canada – Quarterly rent statistics, Q2 2026",
+   "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260909/dq260909c-eng.pdf",
+   "note": "Asking rent data for Toronto, Vancouver and Calgary."
+  },
+  {
+   "title": "University of Toronto – Living costs in Toronto",
+   "url": "https://www.studentlife.utoronto.ca/task/living-costs-in-toronto/",
+   "note": "Institution-specific 2026 student living-cost estimate."
+  },
+  {
+   "title": "ICICI Bank Canada – Student Banking Partnership",
+   "url": "https://www.icicibank.ca/personal-banking/newcomer/student-partnership",
+   "note": "Example of current instalment GIC and student account options."
+  },
+  {
+   "title": "ICICI Bank Canada – Student GIC FAQ",
+   "url": "https://www.icicibank.ca/faq/student-partnership-program",
+   "note": "Payout structure and product details; verify current terms."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "eebc48f5-Canada_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 778,
+ "readMinutes": 4
+}

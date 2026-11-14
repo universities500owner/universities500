@@ -1,0 +1,548 @@
+{
+ "id": "GER-01",
+ "category": "Visa & Compliance",
+ "priority": "High",
+ "title": "APS Certificate India Process: Complete Document Checklist, Fees & Processing Timeline",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For most Indian students applying to study in Germany, the Academic Evaluation Centre (APS India) is an important early step. APS verifies academic documents and qualifications issued by Indian institutions. It does not grant university admission and it does not issue a visa. Students should identify the correct APS procedure and prepare the matching checklist before paying the non-refundable fee."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Check the APS requirements quiz, download the checklist for your academic category, register online, pay the current fee, submit the required documents by post or courier and monitor the application through the APS portal. APS India says processing takes at least two weeks and may take longer; it does not promise a fixed processing time."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What does APS verify?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "APS India is part of the Science Section of the German Embassy in New Delhi and operates in cooperation with the German Academic Exchange Service (DAAD). It verifies Indian academic documents and qualifications for applicants intending to study in Germany. A successful APS outcome is generally part of the student-visa documentation, but it is not an admission decision or a visa approval."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Who generally needs an APS certificate?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The German Missions in India state that applicants who completed school leaving qualifications in India, studied semesters at an Indian institution or hold Indian degrees almost always require APS. The missions list exemptions including PhD/PostDoc applicants, recipients of EU or German public funding, applicants pursuing a non-German degree, holders of a non-Indian foreign degree and applicants with certain international Indian school-leaving qualifications such as the IB. Always verify the current exemption wording and your individual case."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Choose the correct APS procedure",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Applicant background",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "APS checklist to consult",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Important note",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Class XII graduate"
+        }
+       ],
+       [
+        {
+         "t": "Class XII procedure"
+        }
+       ],
+       [
+        {
+         "t": "Use the relevant school-leaving and examination records."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Class XII with JEE Main/Advanced"
+        }
+       ],
+       [
+        {
+         "t": "JEE Main and Advanced procedure"
+        }
+       ],
+       [
+        {
+         "t": "Follow the separate checklist where applicable."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Undergraduate student with at least 2 completed semesters"
+        }
+       ],
+       [
+        {
+         "t": "Undergraduates with 2 semesters"
+        }
+       ],
+       [
+        {
+         "t": "Apply only after meeting the academic-stage requirement in the checklist."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Bachelor’s or Master’s graduate"
+        }
+       ],
+       [
+        {
+         "t": "Graduates / Postgraduates"
+        }
+       ],
+       [
+        {
+         "t": "Selected Master’s applicants may have an additional dMAT requirement."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Exchange or formal university partnership"
+        }
+       ],
+       [
+        {
+         "t": "Process A or Process P"
+        }
+       ],
+       [
+        {
+         "t": "Use only if the partnership is officially recognised under the APS process."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The current APS website also lists a mandatory Student Authorisation Letter and a separate Landesrecht N-procedure for participating institutions. Do not use a partnership or special procedure simply because it appears faster; confirm eligibility first."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Document checklist for Bachelor’s/Master’s graduates",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Printed and signed APS application form with a recent passport-size photograph."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "APS fee payment receipt."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Aadhaar card copy with linked mobile number, as specified in the current checklist."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Passport copy (first and last page)."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Class X and Class XII marksheets and certificates; Class XII admit card if available."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Marksheets for all university semesters."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Bachelor’s degree certificate; if not yet issued, the provisional certificate permitted by the current checklist."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Master’s degree and transcripts, if applicable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "dMAT certificate only where the current APS instructions require it for the applicant’s category."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Language certificate copy, if available; APS states language proficiency is not itself a requirement for APS verification."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Signed Student Authorisation Letter."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "This is an orientation checklist, not a substitute for the latest PDF checklist. APS may request additional documents. Documents issued only in a regional Indian language require notarised English translations; bilingual documents containing English generally do not require an additional translation, according to the APS FAQ."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Fee and processing time: avoid outdated claims",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The APS application fee is non-refundable once paid. APS India does not publish a guaranteed completion time for every applicant. Its application page says processing takes at least two weeks and may take longer depending on application volume and how quickly schools, boards, universities and other institutions respond to verification requests. The FAQ likewise says processing varies and applicants should monitor their portal."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The current APS website should be treated as the authoritative source for the fee displayed during registration. Fee amounts and payment instructions can change."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Step-by-step APS filing tracker",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Check eligibility and select the correct procedure using the APS requirements quiz."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Download the matching checklist and Student Authorisation Letter."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare clear A4 colour copies and translations exactly as required; do not send original documents unless APS specifically asks for them."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Create an APS account and complete personal, education and other relevant sections accurately."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Pay the fee using the current payment instructions and save the receipt."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Send the complete document set by post or courier to APS India as directed."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Track the application in the APS portal. Respond promptly if APS requests clarification or additional documents."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "After successful verification, follow the digital certificate instructions and submit it to the relevant university and visa process as required."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "dMAT: a recent additional requirement for selected applicants",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "APS India announced a Digital Master Test (dMAT) for selected Master’s applicants whose previous degree falls within affected fields published by APS. The APS news page identifies test dates of 16 January 2027 and 13 March 2027 in its 29 October 2026 notice. This is not a universal requirement for every Master’s applicant. Check the current APS notice and your exact academic category before planning."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Common mistakes",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Using the wrong APS procedure or an outdated checklist."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Submitting incomplete semester marksheets or unclear copies."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Assuming APS sets English/German admission requirements."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Assuming APS guarantees admission or visa approval."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Paying before confirming the correct category; the fee is non-refundable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Relying on unofficial fixed processing-time promises."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is APS mandatory for all Indian students going to Germany?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is generally required for applicants with Indian academic documents, but APS India and the German Missions list specific exemptions. Check your own academic background and intended study route against the current official guidance."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does APS guarantee admission to a German university?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. APS verifies academic documents. The university or its authorised application service makes the admission decision."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How long does APS India take?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "APS says the process takes at least two weeks, but it cannot provide a fixed time for every case. Verification may take longer if institutions are slow to respond or documents are incomplete."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I check my APS status online?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Yes. Applicants can log in to the APS student portal to check status. APS says it will email applicants when verification is complete or if further information is required."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is IELTS or German language proof compulsory for APS?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "APS does not require a specific language level for the verification process. The university and visa authorities set the language requirements for the intended programme and visa."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What is dMAT and do all Master’s applicants need it?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "dMAT is an additional test introduced for selected Master’s applicants whose prior degree falls within affected fields. It is not a universal requirement; consult the current APS notice."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "APS certificate India process timeline documents",
+ "secondaryKeywords": [
+  "APS certificate status check",
+  "mandatory APS rules Germany"
+ ],
+ "intent": "How-To / Transactional",
+ "seoTitle": "APS Certificate India: Process, Documents & Timeline",
+ "metaDescription": "Understand APS India eligibility, document checklists, fees, dMAT and processing timelines for students planning to study in Germany.",
+ "slug": "aps-certificate-india-germany-process",
+ "destination": "germany",
+ "topic": "visas",
+ "topicLabel": "Visas and paperwork",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "aps-india.de",
+   "url": "https://aps-india.de/",
+   "note": "APS India – Home and process overview"
+  },
+  {
+   "title": "aps-india.de",
+   "url": "https://aps-india.de/checklists/",
+   "note": "APS India – Checklists"
+  },
+  {
+   "title": "aps-india.de",
+   "url": "https://aps-india.de/faqs/",
+   "note": "APS India – FAQs"
+  },
+  {
+   "title": "aps-india.de",
+   "url": "https://aps-india.de/news/",
+   "note": "APS India – News and updates"
+  },
+  {
+   "title": "india.diplo.de",
+   "url": "https://india.diplo.de/in-en/service/2756350-2756350",
+   "note": "German Missions in India – Study visa information"
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "3dfbcc48-Germany_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 1093,
+ "readMinutes": 5
+}

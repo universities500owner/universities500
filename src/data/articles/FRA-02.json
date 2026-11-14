@@ -1,0 +1,611 @@
+{
+ "id": "FRA-02",
+ "category": "Student Life & Work",
+ "priority": "High",
+ "title": "CAF Housing Benefit in France: A Step-by-Step Guide for International Students",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "France has several types of housing assistance, including APL, ALS and ALF, administered through the Caisse d’Allocations Familiales (CAF). However, international students should not assume that they will qualify. From 1 July 2026, eligibility rules changed for certain non-EU/EEA/Swiss students holding a study residence document. This change is especially important for Indian students planning their monthly budget."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "A student may qualify for housing assistance only if the accommodation, tenancy, residence status and financial conditions are met. From 1 July 2026, a non-EU student holding a residence document for studies generally needs to receive a means-tested CROUS or qualifying regional social scholarship to remain eligible, unless another stated exception applies, such as working or an apprenticeship/professionalisation contract. Check the official CAF and Service Public rules before budgeting for any benefit."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What are APL, ALS and ALF?",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Benefit",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Meaning",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "General purpose",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "APL"
+        }
+       ],
+       [
+        {
+         "t": "Aide personnalisée au logement"
+        }
+       ],
+       [
+        {
+         "t": "Personalised housing assistance for eligible accommodation."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "ALS"
+        }
+       ],
+       [
+        {
+         "t": "Allocation de logement sociale"
+        }
+       ],
+       [
+        {
+         "t": "Housing assistance for eligible households not covered by APL/ALF."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "ALF"
+        }
+       ],
+       [
+        {
+         "t": "Allocation de logement familiale"
+        }
+       ],
+       [
+        {
+         "t": "Housing assistance for eligible households meeting family-related criteria."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students do not choose a benefit simply by preference. CAF determines the applicable assistance based on accommodation type and the applicant’s circumstances."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Important eligibility change from 1 July 2026",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The French CAF announced that certain non-EU students holding a long-stay visa or residence permit marked for study will only be eligible for personal housing assistance if they receive a means-tested higher-education scholarship. Service Public also identifies exceptions for students who work, are in an apprenticeship or professionalisation contract, and certain protected categories such as refugees and stateless persons. The exact rule and any exception must be checked against the student’s status."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "This means an Indian student who is not receiving an eligible means-tested scholarship should not assume that CAF housing assistance will reduce their rent. Do not advertise a universal CAF benefit or subtract a presumed allowance from a student’s budget."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "General conditions and accommodation requirements",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "A valid residence document where required."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "A qualifying, decent rental property."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The applicant must generally be named on the lease or meet the relevant occupancy conditions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The applicant must not be related to the landlord in a prohibited way."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Resources and household circumstances must satisfy the applicable rules."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The accommodation must meet minimum standards and be eligible for the relevant benefit."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For shared accommodation, each eligible tenant generally submits an individual application based on their share of the rent. The exact treatment depends on the lease and occupancy arrangement."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to apply if you appear eligible",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Secure accommodation and obtain a signed tenancy agreement or other accepted proof of occupancy."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Validate your VLS-TS or obtain the required residence document and prepare your identity details."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Create or access your CAF account and use the official housing-aid application."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Provide the lease, rent amount, landlord details, bank details and income information requested."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Upload any scholarship, employment or apprenticeship evidence relevant to the 2026 eligibility rules."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Submit the application and respond to CAF requests for additional information."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Track the decision and payment details in your CAF account."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "CROUS accommodation: a separate housing route",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "CROUS manages student services and offers student residences in many university cities. CROUS accommodation is often more affordable than private-market housing, but availability is limited and allocation depends on the residence, application process and priority criteria. A CROUS room does not automatically mean that a student qualifies for CAF assistance; housing eligibility and benefit eligibility are separate questions."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Check the CROUS regional website for the city where you will study."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Review application dates, eligibility, residence types and required documents."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare room size, private/shared facilities, deposit, utilities and contract dates."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask whether the residence can provide the documents needed for any housing-benefit application."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Paris vs Lyon: plan rent, not just the headline cost",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Paris generally has a more expensive private rental market than Lyon, but actual cost depends on neighbourhood, commute, room type, furnished status and availability. CROUS and university residences can materially change the budget in either city. Use current listings and the institution’s accommodation guidance rather than treating a single city average as a personal rent quote."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Budget line",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Paris",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Lyon",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to compare",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Rent"
+        }
+       ],
+       [
+        {
+         "t": "Often higher in central and well-connected districts."
+        }
+       ],
+       [
+        {
+         "t": "Often lower than Paris, but central/student areas can still be competitive."
+        }
+       ],
+       [
+        {
+         "t": "Private room vs studio vs CROUS; utilities included or extra."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Transport"
+        }
+       ],
+       [
+        {
+         "t": "Metro/RER and regional travel; cost depends on zone and commute."
+        }
+       ],
+       [
+        {
+         "t": "Metro, tram and bus; consider campus location."
+        }
+       ],
+       [
+        {
+         "t": "Monthly pass, student discount and travel time."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Housing availability"
+        }
+       ],
+       [
+        {
+         "t": "High competition, especially near major campuses."
+        }
+       ],
+       [
+        {
+         "t": "Competition varies by institution and intake."
+        }
+       ],
+       [
+        {
+         "t": "Start early; beware of requests to pay before viewing/verification."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Daily expenses"
+        }
+       ],
+       [
+        {
+         "t": "Food, phone, insurance and leisure vary by lifestyle."
+        }
+       ],
+       [
+        {
+         "t": "Same categories; compare actual student budget."
+        }
+       ],
+       [
+        {
+         "t": "Use university estimates and a weekly spending plan."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Housing scam prevention",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Never transfer a deposit solely because someone sends a passport or property photo."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Verify the landlord or agency and confirm the person has authority to rent the property."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Do not pay via unusual methods, gift cards or cryptocurrency."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Read the lease, rent, charges, deposit and notice terms before signing."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Use official CROUS, university and established rental platforms; remain alert to cloned listings."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep written records of payments, inventory and communications."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Can Indian students get CAF housing assistance in France?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some may qualify, but from 1 July 2026 many non-EU students with a study residence document are restricted unless they receive a means-tested CROUS or qualifying regional scholarship. Students who work or hold qualifying apprenticeship/professionalisation contracts may fall under exceptions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does living in CROUS accommodation guarantee APL?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. CROUS accommodation and CAF benefit eligibility are separate. The student must meet the applicable residence, accommodation and personal eligibility rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can students in a shared apartment apply for CAF?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Potentially. Each eligible colocataire generally applies individually based on their own share of the rent and their personal circumstances."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is CAF assistance available from the first month?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not assume immediate payment. Processing and payment timing depend on the application and CAF assessment. Submit promptly after moving in and check your CAF account."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is Paris more expensive than Lyon for students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Paris generally has higher private rent, but the actual difference depends on accommodation type, location and commute. Compare current listings and university estimates."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I include expected CAF assistance in my visa budget?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It is safer not to rely on an unapproved benefit. Prepare funding for tuition and living costs independently, then treat any confirmed assistance as a later budget adjustment."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "CAF housing benefit France student application",
+ "secondaryKeywords": [
+  "CROUS student accommodation France",
+  "living expenses Paris vs Lyon"
+ ],
+ "intent": "How-To / Informational",
+ "seoTitle": "CAF Housing Benefit in France: Student Eligibility",
+ "metaDescription": "Check CAF housing aid eligibility, the July 2026 rule change, CROUS accommodation and student rent planning in Paris and Lyon.",
+ "slug": "caf-housing-benefit-france-international-students",
+ "destination": "france",
+ "topic": "student-life",
+ "topicLabel": "Student life and work",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "caf.fr",
+   "url": "https://www.caf.fr/allocataires/actualites/actualites-nationales/apl-ce-qui-change-pour-certains-etudiants-partir-du-1er-juillet-2026",
+   "note": "CAF – Housing aid changes from 1 July 2026"
+  },
+  {
+   "title": "service-public.gouv.fr",
+   "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F35848",
+   "note": "Service Public – Student housing benefit eligibility"
+  },
+  {
+   "title": "caf.fr",
+   "url": "https://www.caf.fr/",
+   "note": "CAF – Official housing benefit simulator"
+  },
+  {
+   "title": "etudiant.gouv.fr",
+   "url": "https://www.etudiant.gouv.fr/",
+   "note": "CROUS – Student services and accommodation"
+  },
+  {
+   "title": "sciencespo.fr",
+   "url": "https://www.sciencespo.fr/students/en/living/housing/housing-benefit/",
+   "note": "Sciences Po – Housing benefit and student housing guidance"
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "f935b0c0-France_Study_Abroad_SEO_GEO_Content_Pack_4_Articles.docx",
+ "words": 1059,
+ "readMinutes": 5
+}

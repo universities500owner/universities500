@@ -5,6 +5,8 @@ import '../styles/home-v1.css';
 import { all, countries, latestRead, SITE } from '../lib/data.js';
 import { PUBLISH as SCH_ON, items as schItems } from '../lib/scholarships.js';
 import { PUBLISH as INT_ON, items as intItems } from '../lib/internships.js';
+import ArticleCard from '../components/ArticleCard.astro';
+import { featured } from '../lib/articles.js';
 
 const listed = all.filter((u) => u.listed).length;
 const shortDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
@@ -147,6 +149,18 @@ const ld = [
         </ul>
       </div>
     </section>
+
+    {featured(6).length > 0 && (
+      <section class="band" aria-labelledby="h-arts">
+        <div class="wrap">
+          <h2 id="h-arts">Short answers before you apply.</h2>
+          <ul class="acards wide">
+            {featured(6).map((a) => <li><ArticleCard a={a} /></li>)}
+          </ul>
+          <p><a class="btn-ghost" href="/articles/">All articles</a></p>
+        </div>
+      </section>
+    )}
 
     <section class="band">
       <div class="wrap">

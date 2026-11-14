@@ -1,0 +1,371 @@
+{
+ "id": "GER-03",
+ "category": "Admissions & Tests",
+ "priority": "High",
+ "title": "Uni-Assist VPD Process & Consecutive vs Non-Consecutive Master’s ECTS Requirements",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The uni-assist process can be confusing because not every German university uses the same application route. Some institutions ask international applicants to apply directly to the university; others use uni-assist for a preliminary review; and some require a VPD (Vorprüfungsdokumentation) from uni-assist before the student submits a separate university application. A VPD is not an admission offer."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "First check the target university’s programme page and application instructions. If it requires a VPD, apply to uni-assist for that specific university and degree, upload the required academic records and translations, pay the processing fee and allow enough time. Then submit the VPD to the university’s own portal before its deadline."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What does uni-assist do?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "uni-assist is a service organisation used by participating German universities to process applications from international applicants. Depending on the university’s arrangement, it may check formal application documents and calculate or assess aspects of the foreign qualification. The university remains responsible for admission decisions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What is a VPD?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A Vorprüfungsdokumentation is a preliminary review document issued by uni-assist for a specified university and application context. Where a university requires a VPD, the applicant usually applies to uni-assist first and then submits the issued VPD through the university’s own application portal. The VPD is not interchangeable between institutions unless the university explicitly says so."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "VPD process: step by step",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Open the exact degree programme page on the university website. Confirm whether it says direct application, uni-assist application or VPD."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check the country-specific document requirements and whether APS is required for Indian academic documents."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Create a uni-assist account and select the correct university, degree and semester."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Upload school and university certificates, transcripts, grading information, translations and any additional documents requested."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Pay the applicable uni-assist fee and ensure payment is received before processing."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Monitor the application and respond to requests for missing or corrected documents."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Download the VPD when issued."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Submit the VPD and any remaining documents to the university portal before the university’s deadline."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Processing time is institution- and season-dependent. Freie Universität Berlin, for example, advises that its VPD process usually takes four to six weeks and may take longer during peak periods. This is an example for that university, not a universal uni-assist service guarantee."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Consecutive vs non-consecutive Master’s programmes",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Term",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Meaning for applicants",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to verify",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Consecutive Master’s"
+        }
+       ],
+       [
+        {
+         "t": "A programme builds academically on a related Bachelor’s degree and normally expects relevant subject-specific prior study."
+        }
+       ],
+       [
+        {
+         "t": "Required subject area, minimum relevant credits, modules, grades and degree equivalence."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Non-consecutive / continuing-education Master’s"
+        }
+       ],
+       [
+        {
+         "t": "A programme may accept a broader prior degree or require relevant work experience; fee and admission rules may differ."
+        }
+       ],
+       [
+        {
+         "t": "Whether the programme is genuinely open to other disciplines, required experience, tuition and special conditions."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "German universities often use “consecutive” to describe a Master’s that continues a related undergraduate subject. It is not a blanket promise that every three-year Indian Bachelor’s degree will qualify. A programme may require a defined number of credits in mathematics, computer science, engineering fundamentals or another subject area."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ECTS: why a simple percentage conversion is misleading",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "ECTS (European Credit Transfer and Accumulation System) credits represent learning volume and are used within European higher education. A German programme may state that applicants need a Bachelor’s degree with a certain total number of credits and a minimum number of credits in named subject areas. Indian credit systems, contact hours, course content and grading structures are not automatically equivalent to ECTS."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Do not convert one Indian credit to a fixed ECTS value and treat the result as an official recognition. Universities may review transcripts, module descriptions, learning outcomes, contact hours and the awarding institution. The final assessment belongs to the university or authorised evaluation body."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Three-year Indian Bachelor’s degrees and Master’s admission",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A three-year Bachelor’s degree is not automatically accepted or rejected across Germany. Admission depends on the university, programme, recognition status of the institution and degree, academic subject, credit volume and programme-specific rules. Some programmes accept certain three-year degrees; others require a four-year Bachelor’s or a specified total of relevant credits. Check the exact programme page and the university’s country-specific admission rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "TUM and programme-specific requirements",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Technical University of Munich (TUM) uses programme-specific aptitude assessment and subject requirements. A general statement such as “TUM accepts 180 ECTS” or “TUM requires four years” is too broad. Students must check the exact Master’s programme, degree type, required subject credits, language proof, application period and any aptitude-assessment documents."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Do all German universities use uni-assist?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Some accept direct applications, some use uni-assist, and some require a uni-assist VPD followed by a separate university application. Follow the exact programme instructions."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is a VPD an admission letter?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. It is a preliminary evaluation document. The university makes the admission decision and may require additional documents or steps."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How long does a VPD take?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It varies. Freie Universität Berlin advises four to six weeks for its VPD process and warns that peak periods can take longer. Check the target university’s own guidance."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I convert Indian credits directly into ECTS?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "There is no universal conversion that guarantees admission. Universities assess the degree, transcript, course content, learning outcomes and programme-specific credit requirements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can a three-year Indian Bachelor’s degree be accepted in Germany?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some programmes may accept eligible three-year degrees; others require a four-year degree or specified subject credits. Check the exact programme and university country-specific rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does APS replace uni-assist?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. APS verifies Indian academic documents; uni-assist may evaluate application documents for participating universities. They serve different purposes."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "uni-assist VPD process for German universities",
+ "secondaryKeywords": [
+  "consecutive masters degree ECTS Germany",
+  "TU Munich admission"
+ ],
+ "intent": "How-To / Informational",
+ "seoTitle": "Uni-Assist VPD & ECTS Requirements for German Masters",
+ "metaDescription": "Understand the VPD process, consecutive Master’s requirements, ECTS credits and how German universities assess Indian degrees.",
+ "slug": "uni-assist-vpd-ects-germany-masters",
+ "destination": "germany",
+ "topic": "admissions",
+ "topicLabel": "Admissions and tests",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "uni-assist.de",
+   "url": "https://www.uni-assist.de/en/how-to-apply/",
+   "note": "uni-assist – How to apply"
+  },
+  {
+   "title": "uni-assist.de",
+   "url": "https://www.uni-assist.de/en/how-to-apply/plan-your-application/vpd/",
+   "note": "uni-assist – VPD procedure"
+  },
+  {
+   "title": "fu-berlin.de",
+   "url": "https://www.fu-berlin.de/en/studium/bewerbung/bachelor/ausl-hzb",
+   "note": "Freie Universität Berlin – VPD application example"
+  },
+  {
+   "title": "tum.de",
+   "url": "https://www.tum.de/en/studies/application",
+   "note": "TUM – Application and admission information"
+  },
+  {
+   "title": "aps-india.de",
+   "url": "https://aps-india.de/faqs/",
+   "note": "APS India – FAQs"
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "3dfbcc48-Germany_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 882,
+ "readMinutes": 4
+}

@@ -1,0 +1,805 @@
+{
+ "id": "SWE-02",
+ "category": "Post-Study & PR",
+ "priority": "Medium",
+ "title": "Cost of Studying in Sweden & 12-Month Job Seeker Residence Permit After Graduation",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Sweden can be an attractive destination for international students looking for English-taught master’s programmes, research-led universities and strong links between education, innovation and industry. But non-EU/EEA students need to plan for tuition fees, living costs, the residence-permit maintenance requirement and the timing of any post-study application."
+    }
+   ]
+  },
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Eligible graduates may apply for a residence permit to look for work or explore starting a business after completing higher education in Sweden. For bachelor’s and master’s graduates, the permit can be granted for up to 12 months. It is not permanent residence and does not guarantee a job or a later work permit."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "For 2026 applications, the Swedish Migration Agency lists a maintenance requirement of at least SEK 10,656 per month for a student residence permit and for the post-study job-seeking permit. The application fee for an adult is SEK 1,500. A graduate who has completed the full higher-education programme may be granted up to 12 months to seek employment or explore starting a business, provided the application is submitted before the current study permit expires and the other requirements are met."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Tuition fees for non-EU/EEA students",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students who are citizens of countries outside the EU/EEA and Switzerland generally pay application and tuition fees, subject to the exemptions listed by University Admissions. Tuition varies by university, subject, degree and programme length. Engineering, architecture, business and specialised programmes can have very different fee levels."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "KTH provides one example: its published fee information states that most two-year programmes with both years spent at KTH have a total tuition fee of SEK 385,000, but the fee varies by programme. The University Admissions application fee is SEK 900 for applicants who are required to pay. These are KTH examples, not a national average or a quote for every Swedish university."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Cost item",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to budget for",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "How to verify",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Tuition"
+        }
+       ],
+       [
+        {
+         "t": "Full programme tuition, usually billed by semester."
+        }
+       ],
+       [
+        {
+         "t": "Exact university and programme fee page for the relevant intake."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Application fee"
+        }
+       ],
+       [
+        {
+         "t": "SEK 900 through University Admissions for fee-paying applicants."
+        }
+       ],
+       [
+        {
+         "t": "University Admissions fee rules and exemptions."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Residence permit"
+        }
+       ],
+       [
+        {
+         "t": "SEK 1,500 adult application fee under the current Migration Agency schedule."
+        }
+       ],
+       [
+        {
+         "t": "Swedish Migration Agency fee page at application date."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Living expenses"
+        }
+       ],
+       [
+        {
+         "t": "Housing, food, local transport, phone, course materials and personal spending."
+        }
+       ],
+       [
+        {
+         "t": "City and university budget guidance plus actual accommodation listings."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Insurance"
+        }
+       ],
+       [
+        {
+         "t": "Comprehensive health insurance may be required for studies shorter than one year if the student is not registered in Sweden."
+        }
+       ],
+       [
+        {
+         "t": "University and Migration Agency instructions for the course duration."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Travel and setup"
+        }
+       ],
+       [
+        {
+         "t": "Flights, accommodation deposit, bedding, winter clothing and initial costs."
+        }
+       ],
+       [
+        {
+         "t": "Personal estimates and current provider quotes."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Sweden’s 2026 maintenance requirement",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Swedish Migration Agency states that applicants who applied in 2026 must show at least SEK 10,656 per month to support themselves. The amount is used in residence-permit assessments; it should not be treated as a guaranteed real-world budget for every city or lifestyle."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The authority also publishes reductions where an applicant can document free food or free housing through the higher-education institution or an organisation working with international exchange. For 2026 applications, the published reductions are SEK 2,960 per month for free food and SEK 4,736 per month for free housing. Family members increase the maintenance amount."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Item",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "2026 amount",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Student maintenance requirement"
+        }
+       ],
+       [
+        {
+         "t": "SEK 10,656 per month"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Post-study job-seeking permit maintenance"
+        }
+       ],
+       [
+        {
+         "t": "SEK 10,656 per month"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Reduction for documented free food"
+        }
+       ],
+       [
+        {
+         "t": "SEK 2,960 per month"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Reduction for documented free housing"
+        }
+       ],
+       [
+        {
+         "t": "SEK 4,736 per month"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Adult residence-permit application fee"
+        }
+       ],
+       [
+        {
+         "t": "SEK 1,500"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Child application fee"
+        }
+       ],
+       [
+        {
+         "t": "SEK 750"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The authority updates the maintenance amount. A student applying in a later calendar year must use the amount that applies to the actual application date, not automatically reuse the 2026 figure."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Living expenses in Stockholm and other Swedish cities",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Stockholm is often a higher-cost option for accommodation, but the total budget depends on housing availability, commute, food habits and whether the student lives in a student corridor, shared apartment or private rental. Other university cities can also have tight student housing markets. A city-level estimate should be built from current accommodation options rather than a generic national figure."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Budget category",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Planning questions",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Housing"
+        }
+       ],
+       [
+        {
+         "t": "Student corridor, shared apartment or studio? Is the rent inclusive of utilities? What deposit is required?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Food"
+        }
+       ],
+       [
+        {
+         "t": "Will you cook most meals? What is the cost of groceries and campus meals?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Transport"
+        }
+       ],
+       [
+        {
+         "t": "Can you walk or cycle? What is the monthly public transport pass?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Utilities and communication"
+        }
+       ],
+       [
+        {
+         "t": "Are electricity, heating, broadband and mobile included in rent?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Study costs"
+        }
+       ],
+       [
+        {
+         "t": "Does the programme require books, software, lab materials, equipment or field trips?"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Personal and seasonal"
+        }
+       ],
+       [
+        {
+         "t": "Winter clothing, leisure, travel, health and one-off setup costs."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The two numbers answer different questions: one is an immigration financial requirement; the other is a personal cost estimate."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Student residence permit: key requirements before travel",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For higher-education studies, the Swedish Migration Agency requires a valid passport and final admission to full-time studies. University-level full-time study is generally 30 credits per semester. Applicants must pay any tuition fee before applying; the university informs the Migration Agency when the fee has been paid. Applicants must also show that they can support themselves financially and provide comprehensive health insurance where required for studies lasting less than one year."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A student should not assume that an admission notification alone is enough. The residence-permit application depends on final admission, tuition payment where applicable, valid documentation and sufficient maintenance funds."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The 12-month job-seeking residence permit after graduation",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "After completing a higher-education programme in Sweden, an eligible graduate may apply for a residence permit to look for work or explore the possibility of starting a business. The Migration Agency states that a bachelor’s or master’s graduate can be granted a permit for up to one year. Doctoral graduates may be granted between one year and 18 months."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The permit is an opportunity to remain in Sweden while searching for employment or exploring a business idea. It is not a job offer, work permit guarantee, permanent residence route or automatic transition to a work-based permit."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Who can apply?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "You must have completed the entire higher-education programme to which you were admitted, with passing grades in all courses."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "You must apply for the job-seeking permit before your current residence permit for studies expires."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "You must be able to support yourself financially for the requested period."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "You must have comprehensive health insurance for the period if the applicable rules require it."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "You must hold a valid passport and provide the required supporting documents."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Migration Agency’s guidance says higher vocational education programmes do not count as the completed higher-education programme for this particular permit. Students who have not yet received all final passing grades should pay close attention to the timing instructions and apply before their current permit expires where the authority permits an application to be supplemented later."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to apply before your student permit expires",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Check the expiry date of your current study residence permit and work backwards from it."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirm that the entire programme is completed and collect official evidence of completed studies and passing grades."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare proof of maintenance funds for the full requested period. The 2026 amount is SEK 10,656 per month; use the current amount for the actual application year."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Arrange comprehensive health insurance if required."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Prepare a valid passport and the other documents listed by the Migration Agency."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Submit the online application before the current study permit expires and pay the adult application fee."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Keep copies of the application, payment receipt and all supporting documents; monitor messages from the Migration Agency."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What happens after the job-seeking permit?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "If you receive a suitable job offer, you may be able to apply for a work permit under the rules in force at that time. The employer, employment terms, salary, insurance and other conditions matter. If you plan to start a business, separate requirements apply. Do not assume that a job-seeking permit automatically converts into a work permit or permanent residence."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students should treat post-study employment as a separate planning stage. Research the Swedish labour market, build Swedish-language ability where relevant, develop industry connections and target roles that match the qualification and experience. A degree alone does not guarantee employment."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Common financial and immigration mistakes",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Using the maintenance requirement as the only estimate of actual living costs."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Assuming the 2026 SEK amount will remain unchanged for later applications."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Forgetting that tuition must be paid before a study residence-permit application is considered final."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Underestimating the accommodation deposit and initial setup costs."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Waiting until after the study permit expires to apply for the job-seeking permit."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Assuming any course or vocational programme qualifies for the post-study job-seeking permit."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Assuming the 12-month permit guarantees a job, work permit or permanent residence."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "How long can I stay in Sweden after completing a master’s degree?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Eligible graduates may be granted a residence permit for up to 12 months to seek employment or explore starting a business. You must meet the requirements and apply before your current study permit expires."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What is the Sweden proof-of-funds amount for 2026?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Swedish Migration Agency lists SEK 10,656 per month for applications made in 2026. Check the amount that applies in the calendar year you submit your application."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I apply for a job-seeking permit before my final results are published?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The authority requires completion of the entire higher-education programme with passing grades. Its guidance addresses cases where the current permit is expiring before all grades are received; applicants should follow the current instructions and apply before expiry where permitted."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is the 12-month permit a work permit?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. It is a residence permit to look for work or explore starting a business. A separate work permit may be required once you have a qualifying job offer."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is studying in Stockholm more expensive than other Swedish cities?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It can be, particularly for housing, but costs depend on the actual accommodation and lifestyle. Compare current student housing options and transport costs in each university city."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "How much is the Swedish residence-permit application fee?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The Migration Agency currently lists SEK 1,500 for adults and SEK 750 for children under 18. Recheck the fee at the time of application."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "job seeker residence permit Sweden after studies",
+ "secondaryKeywords": [
+  "cost of studying in Sweden non EU",
+  "living expenses Stockholm"
+ ],
+ "intent": null,
+ "seoTitle": "Study in Sweden: Costs and 12-Month Job-Seeking Permit",
+ "metaDescription": "Estimate Sweden tuition and living costs, understand the 2026 maintenance requirement and learn how graduates can apply for a 12-month job-seeking permit.",
+ "slug": "/cost-of-studying-in-sweden-job-seeker-permit/",
+ "internalLinks": "Sweden scholarships; Swedish universities; SI Scholarship; residence permit checklist; KTH fees; study abroad budget planner.",
+ "destination": "sweden",
+ "topic": "after-study",
+ "topicLabel": "Work after study",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "Swedish Institute – Scholarships for Global Professionals",
+   "url": "https://si.se/en/apply/scholarships/",
+   "note": "Official scholarship programme hub; verify current country list, eligibility, dates, templates and benefits."
+  },
+  {
+   "title": "University Admissions – Autumn semester dates",
+   "url": "https://www.universityadmissions.se/en/key-dates-and-deadlines/autumn-semester-dates/",
+   "note": "Autumn 2027 application, ranking, document and result dates."
+  },
+  {
+   "title": "University Admissions – Rank your selections, master’s",
+   "url": "https://www.universityadmissions.se/en/apply-to-masters/rank-your-selections-masters/",
+   "note": "Up to four choices, ranking order and deletion of lower-ranked choices."
+  },
+  {
+   "title": "University Admissions – Selection process, master’s",
+   "url": "https://www.universityadmissions.se/en/selection-and-admissions-results/selection-process-masters/",
+   "note": "Selection groups, merit ratings and university-specific criteria."
+  },
+  {
+   "title": "University Admissions – Application fee instructions",
+   "url": "https://www.universityadmissions.se/en/fees-scholarships-residence-permit/instructions-regarding-the-application-fee/",
+   "note": "Fee and exemption information."
+  },
+  {
+   "title": "Swedish Migration Agency – Residence permit for studies at higher education",
+   "url": "https://www.migrationsverket.se/en/you-want-to-apply/study/higher-education.html",
+   "note": "Full-time admission, tuition payment, maintenance, insurance and application fee."
+  },
+  {
+   "title": "Swedish Migration Agency – Look for work after completing studies",
+   "url": "https://www.migrationsverket.se/en/you-want-to-extend/study/look-for-work-after-completing-your-studies-in-sweden.html",
+   "note": "Post-study permit eligibility, duration, maintenance requirement and application fee."
+  },
+  {
+   "title": "KTH – How to apply for master’s studies",
+   "url": "https://www.kth.se/en/studies/master/admissions",
+   "note": "KTH programme application process and ranking instructions."
+  },
+  {
+   "title": "KTH – Entry requirements for master’s studies",
+   "url": "https://www.kth.se/en/studies/master/entry-requirements-for-master-s-studies-1.6915",
+   "note": "Bachelor’s degree, English proficiency and programme-specific prerequisites."
+  },
+  {
+   "title": "KTH – Application and tuition fees",
+   "url": "https://www.kth.se/en/studies/master/admissions/application-and-tuition-fees-for-master-s-studies-1.65817",
+   "note": "Published KTH tuition example, application fee and scholarship overview."
+  },
+  {
+   "title": "Study in Sweden – Official study information",
+   "url": "https://studyinsweden.se/",
+   "note": "General country, university and student-life information; verify changing cost guidance."
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "a5bd7230-Sweden_Study_Abroad_SEO_GEO_Content_Pack_2_Articles.docx",
+ "words": 1658,
+ "readMinutes": 8
+}

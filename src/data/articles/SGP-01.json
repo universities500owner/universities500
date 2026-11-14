@@ -1,0 +1,594 @@
+{
+ "id": "SGP-01",
+ "category": "Cost & Budgeting",
+ "priority": "High",
+ "title": "Cost of Studying in Singapore: NUS/NTU Fees & MOE Tuition Grant 3-Year Bond Explained",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Singapore can be an attractive study destination for Indian students, but the headline tuition fee does not tell the full story. The amount payable depends on the university, programme, academic year and whether the student accepts the Ministry of Education (MOE) Tuition Grant. For eligible international undergraduates who accept the grant, the tuition subsidy comes with a three-year service obligation to work for a Singapore entity after graduation."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Build the budget using the exact programme fee for the admitted cohort, then compare the subsidised fee with the non-subsidised fee. If you accept the MOE Tuition Grant as an international student, understand and sign the Tuition Grant Agreement: the usual obligation is to work for a Singapore entity for three years after graduation. The grant is not a scholarship and the bond is not optional once the grant agreement is accepted."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What does the total cost include?",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Cost head",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to include in your estimate",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Tuition"
+        }
+       ],
+       [
+        {
+         "t": "Programme fee per academic year, normal course duration, annual fee policy and any lab/professional charges."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Living costs"
+        }
+       ],
+       [
+        {
+         "t": "Accommodation, food, transport, phone, utilities, personal expenses and study materials."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Student Pass and medical"
+        }
+       ],
+       [
+        {
+         "t": "Student Pass application/issuance charges and any required medical examination or insurance. Check ICA and university instructions."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "One-off costs"
+        }
+       ],
+       [
+        {
+         "t": "Flights, initial accommodation deposit, bedding, laptop/software, books and local set-up."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Funding risk"
+        }
+       ],
+       [
+        {
+         "t": "Exchange-rate movement, fee changes, delayed part-time work and emergency funds."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "MOE Tuition Grant: subsidised fee versus full fee",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The MOE Tuition Grant is a government subsidy that reduces tuition fees at participating publicly funded institutions for eligible students. International students may apply for the Tier C grant where available. At NTU, for example, the 2026/27 undergraduate fee schedule distinguishes subsidised international-student fees from non-subsidised fees. The grant normally covers the normal duration of the programme, subject to the scheme rules."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "NTU AY 2026/27 example",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "International student with Tuition Grant",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "International student without Tuition Grant",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Most programmes (non-lab based)"
+        }
+       ],
+       [
+        {
+         "t": "S$18,050 per year"
+        }
+       ],
+       [
+        {
+         "t": "S$36,350 per year"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Most programmes (lab based)"
+        }
+       ],
+       [
+        {
+         "t": "S$18,050 per year"
+        }
+       ],
+       [
+        {
+         "t": "S$40,600 per year"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Business / Accountancy group"
+        }
+       ],
+       [
+        {
+         "t": "S$20,700–S$21,800 per year"
+        }
+       ],
+       [
+        {
+         "t": "S$45,600 per year"
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Medicine"
+        }
+       ],
+       [
+        {
+         "t": "S$80,850 per year"
+        }
+       ],
+       [
+        {
+         "t": "Not applicable in the published table"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "These are NTU published examples for AY2026/27, not a universal Singapore fee schedule. The university’s programme-specific table, fee cohort and GST treatment determine the actual amount. NUS also publishes programme- and cohort-specific fee schedules; do not transpose NTU amounts to NUS."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The three-year service obligation: what Indian students must understand",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "International students who accept the MOE Tuition Grant must sign the Tuition Grant Agreement and undertake to work for a Singapore entity for three years after graduation."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The service obligation is generally counted after completion of the subsidised course; the exact agreement terms govern the student’s case."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "It is a work obligation, not a guarantee of a job, salary, employer sponsorship or permanent residence."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "A student who does not fulfil the agreement may face liquidated damages under the agreement. Read the official terms before accepting the subsidy."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Two sureties are required under NTU’s published registration guidance; check the current surety criteria and signing process with the university/MOE."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The bond does not mean that the student is guaranteed an Employment Pass. The graduate must separately qualify for the relevant work pass and find an employer willing and able to apply for it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to compare the financial choices",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Question",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "If you accept the Tuition Grant",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "If you decline the Tuition Grant",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Tuition fee"
+        }
+       ],
+       [
+        {
+         "t": "Lower subsidised fee, if awarded and accepted."
+        }
+       ],
+       [
+        {
+         "t": "Higher non-subsidised fee."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Work obligation"
+        }
+       ],
+       [
+        {
+         "t": "Three-year Singapore-entity service obligation for international recipients."
+        }
+       ],
+       [
+        {
+         "t": "No Tuition Grant service obligation."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Availability"
+        }
+       ],
+       [
+        {
+         "t": "Subject to eligibility, university process and grant availability."
+        }
+       ],
+       [
+        {
+         "t": "Generally pay full non-subsidised fee."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Career flexibility"
+        }
+       ],
+       [
+        {
+         "t": "Plan for a Singapore-based job after graduation; work pass still required."
+        }
+       ],
+       [
+        {
+         "t": "No grant bond, but no automatic right to remain or work in Singapore."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Decision test"
+        }
+       ],
+       [
+        {
+         "t": "Compare savings against the value and practical feasibility of the three-year obligation."
+        }
+       ],
+       [
+        {
+         "t": "Assess whether the higher tuition can be funded without relying on future employment."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Living costs and realistic budgeting",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Living costs vary significantly depending on whether the student lives in university accommodation, a shared private room or a private apartment. Use the university’s current cost-of-living guide as a starting point and obtain current accommodation quotes. Do not use a single national estimate as a guaranteed budget."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Accommodation and utilities: confirm whether utilities, internet and air-conditioning charges are included."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Food: estimate a realistic mix of campus meals, hawker centres, groceries and occasional dining out."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Transport: compare campus location, public transport and travel frequency."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Books and equipment: include laptop, software, lab materials and course-specific expenses."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Emergency reserve: keep funds for medical needs, travel and unexpected housing changes."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Do all international students receive the MOE Tuition Grant?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Eligibility and availability depend on the institution, programme and grant rules. Some universities have a limited number of grants for international students, and selection may be competitive."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does the three-year bond apply to Indian students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Yes, where an international student accepts the MOE Tuition Grant and signs the agreement. The obligation is to work for a Singapore entity for three years after graduation."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work in Singapore after graduation without an Employment Pass?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Not simply because you graduated or received the Tuition Grant. After the Student’s Pass ends, you need an appropriate immigration/work authorisation to work."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does the tuition grant guarantee permanent residence?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The grant creates a service obligation, not a PR entitlement. Permanent residence is a separate immigration decision."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Is the NUS fee the same as NTU?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Fees vary by university, programme, academic year and student category. Always use the exact course fee table."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "cost of studying in Singapore for Indian students",
+ "secondaryKeywords": [
+  "Singapore MOE Tuition Grant service obligation bond",
+  "NUS fees"
+ ],
+ "intent": "Informational / Commercial",
+ "seoTitle": "Cost of Studying in Singapore: NUS & NTU Fees and Tuition Grant Bond",
+ "metaDescription": "Compare Singapore university tuition fees, MOE Tuition Grant savings, the three-year work obligation and living costs for Indian students.",
+ "slug": "/singapore/cost-of-studying-tuition-grant-bond/",
+ "internalLinks": "Singapore university admissions; Singapore Student Pass; Singapore part-time work rules; NUS/NTU/SMU course comparisons.",
+ "destination": "singapore",
+ "topic": "cost-and-budgeting",
+ "topicLabel": "Costs and budgeting",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "NTU – Tuition fees and grants, AY2026/27",
+   "url": "https://www.ntu.edu.sg/admissions/undergraduate/fees-and-funding/tuition-fees",
+   "note": ""
+  },
+  {
+   "title": "NUS – Undergraduate tuition fee schedule",
+   "url": "https://nus.edu.sg/registrar/docs/default-source/administrative-policies-procedures/ugtuitioncurrent.pdf",
+   "note": ""
+  },
+  {
+   "title": "SMU – Tuition Grant FAQ and service obligation",
+   "url": "https://admissions.smu.edu.sg/faq/all",
+   "note": ""
+  },
+  {
+   "title": "MOE – Tuition Grant Scheme",
+   "url": "https://www.moe.gov.sg/financial-matters/tuition-grant-scheme",
+   "note": ""
+  },
+  {
+   "title": "MOM – Employment Pass eligibility and COMPASS",
+   "url": "https://www.mom.gov.sg/passes-and-permits/employment-pass/eligibility",
+   "note": ""
+  },
+  {
+   "title": "MOM – Work pass exemption for foreign students",
+   "url": "https://www.mom.gov.sg/passes-and-permits/work-pass-exemption-for-foreign-students/",
+   "note": ""
+  },
+  {
+   "title": "ICA – Student’s Pass",
+   "url": "https://www.ica.gov.sg/reside/STP",
+   "note": ""
+  },
+  {
+   "title": "NUS – Indian Standard 12 (foreign applicants)",
+   "url": "https://nus.edu.sg/oam/admissions/international-qualifications-for-foreigners/international-qualifications/indian-standard-12-cbse-and-isc",
+   "note": ""
+  },
+  {
+   "title": "NUS – Important dates",
+   "url": "https://nus.edu.sg/oam/admissions/important-dates",
+   "note": ""
+  },
+  {
+   "title": "NTU – India Standard 12",
+   "url": "https://www.ntu.edu.sg/admissions/undergraduate/admissions/general-admission-requirements/international-qualifications/india-standard-12",
+   "note": ""
+  },
+  {
+   "title": "NTU – Undergraduate admissions and application windows",
+   "url": "https://www.ntu.edu.sg/undergraduate/admissions",
+   "note": ""
+  },
+  {
+   "title": "SMU – International and other qualifications",
+   "url": "https://admissions.smu.edu.sg/admissions-requirements/international-and-other-qualifications",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "5147351b-Singapore_Study_Abroad_SEO_GEO_Content_Pack_3_Articles.docx",
+ "words": 930,
+ "readMinutes": 4
+}

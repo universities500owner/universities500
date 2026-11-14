@@ -1,0 +1,502 @@
+{
+ "id": "IRE-04",
+ "category": "Cost & Budgeting",
+ "priority": "Medium",
+ "title": "Cost of Studying in Ireland for Indian Students: Trinity, UCD and Financial Proof Rules",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "The cost of studying in Ireland depends on the university, course, level of study, accommodation and lifestyle. Indian students should budget for tuition, living costs, private medical insurance, visa and registration costs where applicable, travel and initial accommodation deposits. The financial evidence required for immigration is a separate minimum test and should not be mistaken for a complete personal budget."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Use the exact tuition fee published for the programme and intake, add a realistic accommodation and living budget, and demonstrate the required funds through acceptable documentary evidence. For courses longer than eight months, the current student finance guidance requires evidence of immediate access to at least €10,000 for one academic year, in addition to tuition and funding for subsequent years."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "Tuition: compare the exact programme",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Trinity College Dublin and University College Dublin (UCD) publish course-specific fees. Fees can differ significantly by school, programme, student category and academic year. Do not use a university-wide average as the price of a particular master’s programme."
+      }
+     ]
+    },
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "University",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What students should verify",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Official fee source",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Trinity College Dublin"
+        }
+       ],
+       [
+        {
+         "t": "Programme title, academic year, non-EU fee, student levy/other charges and deposit terms."
+        }
+       ],
+       [
+        {
+         "t": "Trinity programme fee pages and official fee schedule."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "University College Dublin"
+        }
+       ],
+       [
+        {
+         "t": "Programme title, academic year, non-EU fee, ancillary charges, deposit and payment deadlines."
+        }
+       ],
+       [
+        {
+         "t": "UCD course pages and official fee schedule."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Financial proof for an Irish study visa",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For academic courses beginning after 1 July 2023, the current ISD guidance requires visa-required students to show evidence of immediate access to at least €10,000 for one academic year. For each subsequent year of a multi-year course, the student and/or sponsor must demonstrate ready access to at least €10,000 in addition to the course fees for that year."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For courses with a duration of less than eight months, the required amount is €833 per month of stay or €6,665, whichever is lower. The applicant must show that they can support themselves without relying on public funds or casual employment."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What financial documents are expected?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "An up-to-date bank statement showing transactions over the previous six months."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "The account holder’s name, address, account number and account type."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "An explanation and supporting evidence for large or irregular deposits, such as education loans, sale proceeds or savings certificate encashment."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "If using a deposit or savings account, a bank letter confirming that the funds can be accessed."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Where a sponsor is paying, evidence of the relationship, sponsor’s income and ability to support the student, plus the sponsor’s bank statements."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Proof of tuition payment or the funds available to pay tuition, according to the application requirements."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Private medical insurance evidence; the institution may arrange cover, but the acceptance letter should confirm this if so."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Credit cards are not accepted as proof of finances under the published guidance. Applicants should follow the current visa application checklist and ensure that every document is genuine, complete and consistent."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Education bond alternative for eligible degree students",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "ISD describes a pilot alternative finance method for degree-programme students: an education bond with a minimum value of €10,000 lodged with an approved student fees payment service. The bond must remain in place from the initial visa application until immigration registration. The receipt may be accepted as evidence, but the visa officer can still request additional financial documents. ISD is not a party to the student’s contract with the bond provider."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Build a realistic total-cost budget",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Cost category",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to include",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Tuition"
+        }
+       ],
+       [
+        {
+         "t": "Full programme fee, annual fee changes, deposit, student levy and course-specific charges."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Accommodation"
+        }
+       ],
+       [
+        {
+         "t": "Rent, deposit, advance rent, utilities, internet and temporary stay on arrival."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Food and household"
+        }
+       ],
+       [
+        {
+         "t": "Groceries, meals, cleaning supplies and personal essentials."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Transport"
+        }
+       ],
+       [
+        {
+         "t": "Local travel, student fares, airport transfer and travel to campus."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Insurance and healthcare"
+        }
+       ],
+       [
+        {
+         "t": "Private medical insurance and any additional cover or out-of-pocket costs."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Visa and registration"
+        }
+       ],
+       [
+        {
+         "t": "Application and immigration registration charges where applicable."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Study costs"
+        }
+       ],
+       [
+        {
+         "t": "Books, laptop/software, lab materials, printing and professional memberships."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Travel and contingency"
+        }
+       ],
+       [
+        {
+         "t": "Flights, baggage, winter clothing and emergency reserve."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Dublin, Cork and Galway living-cost comparison",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Use a current and consistent data source. RTB/ESRI rent index data is based on registered tenancy data and distinguishes new and existing tenancies; it is not a direct measure of student residence fees or room listings. In the RTB’s Q4 2025 update, average rents for existing tenancies were highest in Dublin City (€1,875), followed by Cork City (€1,413) and Galway City (€1,409). These figures describe standardised average rents for existing tenancies, not the price of a student room."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Avoid converting the RTB city figures into an assumed per-student cost."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Example budget structure for an Indian student",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A useful planning model should calculate the first-year cash requirement separately from the total programme cost. First-year cash requirement = tuition due before enrolment + required financial proof + visa/registration/insurance costs + travel + accommodation deposit and initial rent. The student should then model later-year tuition and living costs, including the source of funds for each year."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Is €10,000 enough to study in Ireland?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "€10,000 is the current minimum immediate-access living-funds requirement for a visa-required student on a course longer than eight months. It is separate from tuition and may be below the student’s actual living costs."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Do I need to show €10,000 every year?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For each subsequent year of a multi-year course, the guidance requires evidence of ready access to at least €10,000 in addition to that year’s course fees."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can an education loan be used as proof of funds?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A loan may be relevant evidence, but the applicant must provide documentary proof of the funds and explain large or irregular deposits. Follow the current ISD evidence requirements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are Trinity and UCD fees the same for all master’s courses?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Fees are programme-specific and can change by academic year and student category. Check the exact course fee page."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I work part-time to meet the financial requirement?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Students must demonstrate they can support themselves without relying on casual employment. Stamp 2 work permission is subject to separate weekly-hour limits."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "cost of studying in Ireland for Indian students",
+ "secondaryKeywords": [
+  "Trinity College Dublin MS data science fees",
+  "€10",
+  "000 proof of funds"
+ ],
+ "intent": "Commercial / Informational",
+ "seoTitle": "Cost of Studying in Ireland for Indian Students",
+ "metaDescription": "Compare Ireland tuition, living costs, Trinity and UCD fees, and the €10,000 financial evidence requirement for students.",
+ "slug": "cost-of-studying-in-ireland-indian-students",
+ "destination": "ireland",
+ "topic": "cost-and-budgeting",
+ "topicLabel": "Costs and budgeting",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "ISD – Third Level Graduate Programme",
+   "url": "https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/third-level-graduate-programme/",
+   "note": "Eligibility, award levels, six-month application deadline and 12/24-month permission."
+  },
+  {
+   "title": "ISD – Immigration permission stamps",
+   "url": "https://www.irishimmigration.ie/registering-your-immigration-permission/information-on-registering/immigration-permission-stamps/",
+   "note": "Stamp 1G conditions, work permission and self-employment restriction."
+  },
+  {
+   "title": "ISD – Planning to study in Ireland",
+   "url": "https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-options/planning-to-study-in-ireland/",
+   "note": "Stamp 2 student work-hour limits and study planning."
+  },
+  {
+   "title": "ISD – Student finances",
+   "url": "https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-visa-options/information-on-student-finances/",
+   "note": "€10,000 financial evidence, subsequent-year funds, bank statements and education bond."
+  },
+  {
+   "title": "DETE – Critical Skills Employment Permit",
+   "url": "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/permit-types/critical-skills-employment-permit/",
+   "note": "CSEP criteria, job duration, remuneration and application lead time."
+  },
+  {
+   "title": "DETE – Critical Skills Occupations List",
+   "url": "https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/employment-permit-eligibility/highly-skilled-eligible-occupations-list/critical%20skills%20occupations%20list.html",
+   "note": "Current eligible occupation categories and specific skills."
+  },
+  {
+   "title": "DETE – Minimum Annual Remuneration thresholds",
+   "url": "https://www.enterprise.gov.ie/en/what-we-do/workplace-and-skills/economic-migration-policy/minimum-annual-remuneration/minimum-annual-remuneration-mar-thresholds.html",
+   "note": "2026 salary thresholds for employment permits."
+  },
+  {
+   "title": "RTB – RTB/ESRI Rent Index",
+   "url": "https://rtb.ie/data-insights/rtb-research-reports/rtb-esri-rent-index/",
+   "note": "Quarterly rent data and methodology for new and existing tenancies."
+  },
+  {
+   "title": "RTB – Renting in Ireland",
+   "url": "https://rtb.ie/",
+   "note": "Tenancy rights, registration, deposits and dispute information."
+  },
+  {
+   "title": "Trinity College Dublin – Fees",
+   "url": "https://www.tcd.ie/academicregistry/fees-and-payments/",
+   "note": "Official fee schedule; select exact programme and academic year."
+  },
+  {
+   "title": "University College Dublin – Fees",
+   "url": "https://www.ucd.ie/students/fees/",
+   "note": "Official tuition and student fee information."
+  },
+  {
+   "title": "QQI – Irish National Framework of Qualifications",
+   "url": "https://www.qqi.ie/what-we-do/the-qualifications-system/national-framework-of-qualifications",
+   "note": "NFQ levels and qualification framework."
+  }
+ ],
+ "sourcesScope": "destination",
+ "sourceFile": "ad1c9968-Ireland_Study_Abroad_SEO_GEO_Content_Pack_4_Articles.docx",
+ "words": 968,
+ "readMinutes": 4
+}

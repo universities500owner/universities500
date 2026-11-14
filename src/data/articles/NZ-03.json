@@ -1,0 +1,449 @@
+{
+ "id": "NZ-03",
+ "category": "Universities & Courses",
+ "priority": "Medium",
+ "title": "New Zealand's Eight Universities: Courses for IT, Engineering and Healthcare",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "New Zealand has eight universities, each with a distinct mix of research strengths, professional programmes and campus environments. For international students comparing IT, engineering and healthcare, the best choice is not simply the highest-ranked university. Course content, professional accreditation, entry requirements, internships, location, tuition and post-study employment eligibility should all influence the decision."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Compare all eight universities against the exact programme you want to study. QS rankings can provide one broad comparison point, but they do not establish course quality for every subject, guarantee admission or create a pathway to residence. Immigration outcomes depend on the job and current visa rules, not the university name."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "New Zealand’s eight universities",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "University",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Main location(s)",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Useful starting point for course research",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "University of Auckland"
+        }
+       ],
+       [
+        {
+         "t": "Auckland"
+        }
+       ],
+       [
+        {
+         "t": "Broad research-intensive portfolio; IT, engineering, health and biomedical fields."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Auckland University of Technology (AUT)"
+        }
+       ],
+       [
+        {
+         "t": "Auckland"
+        }
+       ],
+       [
+        {
+         "t": "Applied and industry-oriented programmes across computing, engineering technology and health."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "University of Waikato"
+        }
+       ],
+       [
+        {
+         "t": "Hamilton"
+        }
+       ],
+       [
+        {
+         "t": "Computing, engineering, science, business and health-related study options."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Massey University"
+        }
+       ],
+       [
+        {
+         "t": "Palmerston North, Auckland and Wellington"
+        }
+       ],
+       [
+        {
+         "t": "Computing, engineering-related disciplines, health, agriculture and veterinary fields."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Victoria University of Wellington"
+        }
+       ],
+       [
+        {
+         "t": "Wellington"
+        }
+       ],
+       [
+        {
+         "t": "Computer science, engineering, health and public-policy-related fields."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "University of Canterbury"
+        }
+       ],
+       [
+        {
+         "t": "Christchurch"
+        }
+       ],
+       [
+        {
+         "t": "Strong engineering and technology options, alongside health and science programmes."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Lincoln University"
+        }
+       ],
+       [
+        {
+         "t": "Lincoln, near Christchurch"
+        }
+       ],
+       [
+        {
+         "t": "Specialist land-based university; agriculture, environment, food and related sciences."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "University of Otago"
+        }
+       ],
+       [
+        {
+         "t": "Dunedin"
+        }
+       ],
+       [
+        {
+         "t": "Well-known health sciences, biomedical sciences, dentistry, pharmacy and other disciplines."
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Universities New Zealand identifies eight universities nationally and describes seven as comprehensive, with Lincoln as a specialist land-based university. The table above is a starting map, not a ranking or an exhaustive course list."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "IT and computing: compare curriculum, not only the title",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A Master of Information Technology can be structured differently across institutions. Compare whether the programme includes software development, information systems, cybersecurity, data analytics, cloud platforms, project delivery and an industry project or internship. Check whether the programme is designed for graduates with an IT background or also accepts applicants from other disciplines."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For example, the University of Auckland’s Master of Information Technology has 120-, 180- and 240-point options and includes a 10-week full-time industry internship in its published programme structure. Its 2027 indicative international tuition fee is NZD 57,974, excluding additional charges. Entry requirements differ by study option and academic background; the published minimum is not a guarantee of admission."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Engineering: accreditation and professional recognition",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For engineering, check the exact qualification and whether it is accredited or recognised by Engineering New Zealand and relevant international accords. A university may offer several engineering disciplines with different accreditation status. Students should verify the programme, specialisation and graduation year—not infer accreditation from the university name."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Compare laboratory access, design projects, industry placements, research facilities, software and equipment, as well as the city’s relevant employers. For international graduates, professional registration and the specific job requirements may matter as much as the academic qualification."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Healthcare: professional registration is essential",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Healthcare programmes can lead to regulated professions. Nursing, medicine, pharmacy, physiotherapy, medical laboratory science and other clinical roles may require registration with the relevant New Zealand professional body. Admission to a university programme does not itself guarantee registration, a job or residence."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For each healthcare course, check clinical placement requirements, health and character checks, English-language standards, professional accreditation and registration eligibility. Confirm whether international applicants are eligible for the specific intake and whether clinical placement capacity is available."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Does choosing an IT, engineering or healthcare course improve PR prospects?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A course can build skills relevant to New Zealand’s labour market, but residence is not awarded for studying a subject in isolation. The Green List is based on occupations and detailed criteria. Tier 1 roles may offer a Straight to Residence route when the applicant has a qualifying job or offer with an accredited employer and meets all role requirements. Tier 2 roles generally require 24 months of qualifying work in New Zealand before a Work to Residence application."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Students should therefore reverse-plan carefully: identify the occupation they may realistically pursue, check the live Green List requirements, review professional registration, then compare programmes that build the required skills. Do not select a course solely because a marketing page labels it “PR-friendly”."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to shortlist the right university",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Choose the intended occupation and subject area, then identify the relevant professional registration or accreditation requirements."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Shortlist programmes by curriculum, qualification level, duration, entry requirements and learning outcomes."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check the exact tuition fee for the intended year, plus compulsory fees and insurance."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare internships, clinical placements, capstone projects, employer links and research opportunities."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Compare city-level living costs, housing availability, transport and part-time work conditions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Verify Post-Study Work Visa eligibility for the exact qualification and current Green List rules for any later employment-based pathway."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "How many universities are there in New Zealand?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "New Zealand has eight universities: Auckland, AUT, Waikato, Massey, Victoria University of Wellington, Canterbury, Lincoln and Otago."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Which New Zealand university is best for IT?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "There is no single best choice for every student. Compare the exact computing programme, technical content, internship, entry requirements, fees, location and graduate outcomes. The University of Auckland Master of IT is one example with an industry internship."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Which university is best for engineering?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Compare the exact engineering discipline and programme accreditation, not just the institution. Check Engineering New Zealand recognition, curriculum, labs, industry projects and professional outcomes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does studying healthcare in New Zealand guarantee a job or PR?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Healthcare roles may require professional registration, and residence depends on the specific occupation, job offer, employer and current immigration requirements."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does a high QS ranking guarantee better employment outcomes?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. Overall rankings measure institutional performance across several indicators. They do not guarantee admission, employment, salary or immigration outcomes for an individual graduate."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "best universities in New Zealand for international students",
+ "secondaryKeywords": [
+  "University of Auckland Master of IT",
+  "Otago University rankings"
+ ],
+ "intent": "Commercial",
+ "seoTitle": "New Zealand Universities for IT, Engineering and Healthcare",
+ "metaDescription": "Compare New Zealand's eight universities for IT, engineering and healthcare by course fit, tuition fees and professional accreditation.",
+ "slug": "/new-zealand-universities-it-engineering-healthcare/",
+ "destination": "new-zealand",
+ "topic": "universities-and-courses",
+ "topicLabel": "Universities and courses",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "Universities New Zealand – The eight universities",
+   "url": "https://www.universitiesnz.ac.nz/universities",
+   "note": ""
+  },
+  {
+   "title": "QS – Top universities in New Zealand",
+   "url": "https://www.topuniversities.com/university-rankings-articles/world-university-rankings/top-universities-new-zealand",
+   "note": ""
+  },
+  {
+   "title": "University of Auckland – Master of Information Technology",
+   "url": "https://www.auckland.ac.nz/en/study/study-options/find-a-study-option/master-of-information-technology-minfotech.html",
+   "note": ""
+  },
+  {
+   "title": "INZ – Green List roles",
+   "url": "https://www.immigration.govt.nz/work/requirements-for-work-visas/green-list-occupations-qualifications-and-skills/green-list-roles-jobs-we-need-people-for-in-new-zealand/",
+   "note": ""
+  },
+  {
+   "title": "INZ – Green List pathway to residence",
+   "url": "https://www.immigration.govt.nz/live/resident-visas-to-live-in-new-zealand/skilled-residence-pathways-in-new-zealand/green-list-pathway-to-residence/",
+   "note": ""
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "818c0241-New_Zealand_Study_Abroad_SEO_GEO_Content_Pack_3_Articles.docx",
+ "words": 927,
+ "readMinutes": 4
+}

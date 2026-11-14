@@ -1,0 +1,304 @@
+{
+ "id": "UK-04",
+ "category": "Admissions & Tests",
+ "priority": "High",
+ "title": "UK Universities Accepting Medium of Instruction (MOI) Instead of IELTS",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Some UK universities may accept a Medium of Instruction (MOI) letter as evidence that a previous degree was taught and assessed in English. However, MOI acceptance is not universal. Each university sets its own admissions policy, and the UK Student visa English-language rules must also be satisfied through an accepted route."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "An MOI letter may help meet a university's English-language admission requirement where the institution explicitly accepts it. It does not automatically replace IELTS for every university or guarantee that UKVI requirements are met."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What is an MOI letter?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A Medium of Instruction letter is an official document from the awarding institution confirming that the student's programme was taught and assessed in English. Universities may ask for it on official letterhead, signed or digitally verified by an authorised office."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What should an MOI letter include?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Student's full name and registration or enrolment number."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Exact qualification and programme dates."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirmation that teaching and assessment were conducted in English—not simply that English was one subject."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Name and contact details of the issuing university office."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Official letterhead, authorised signature/stamp or verifiable digital credential."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "University admission vs UKVI English requirement",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "These are related but separate checks. A university may accept an MOI letter for admission under its own policy. For a Student visa, the sponsor must ensure the applicant meets the applicable English language requirement and record the assessment method on the CAS. For degree-level study, the required level is generally B2 CEFR. A qualifying higher education provider with a track record of compliance may assess English using a method it considers appropriate; other applicants may need an approved Secure English Language Test or another permitted route."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Where a degree from outside the UK is used to prove English through the degree-taught-in-English route under the relevant rules, an Ecctis assessment may be required. An MOI letter alone should not be assumed to replace that assessment."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Example: a university that publishes MOI acceptance",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "The University of Bristol publishes an English-language profile in which certain applicants with a university-level qualification taught and examined in English may meet the requirement using an official MOI letter, subject to its listed conditions. The policy includes country/qualification conditions and a time limit on how recently the qualification was awarded. This is an example of one university's policy—not a UK-wide rule."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Russell Group MOI policy: why a directory needs careful checking",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Russell Group membership does not determine English-language policy. Each university has its own English language profiles, country requirements and programme-level exceptions. Some departments may require IELTS or another test even when a university accepts MOI in other cases."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to check whether your target university accepts MOI",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Open the university's official English language requirements page."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether MOI is accepted for your country, awarding institution and qualification type."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check how recent the degree must be and whether all four language skills are assessed."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Confirm whether the specific course or department has a higher requirement."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask whether the MOI route is accepted for admission only or also recorded as the sponsor's Student visa English assessment."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Get written confirmation from admissions before deciding not to book an English test."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "If MOI is not accepted",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Check whether the university accepts IELTS Academic, PTE Academic, TOEFL iBT or another test for the relevant course and visa route. Test acceptance varies and some programmes require higher scores in individual components. Do not book a test until you have checked the exact requirement."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Can I study in the UK without IELTS using an MOI certificate?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some universities accept MOI for admission, but acceptance depends on the university, course, prior institution and applicant profile. It is not a universal IELTS waiver."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does MOI automatically satisfy UKVI English requirements?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. The university's admission policy and the Student route's English-language rules are distinct. The sponsor must record an accepted assessment method on the CAS."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Do Russell Group universities accept MOI?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "There is no single Russell Group MOI policy. Each member university and programme sets its own rules."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "What should an MOI letter say?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "It should confirm that the student's named qualification was taught and assessed in English, with the qualification dates and official issuer details."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I use MOI if my degree was completed several years ago?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some universities impose a recency limit or ask for evidence of continued English use. Check the target university's current policy."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "universities accepting medium of instruction MOI instead of IELTS UK",
+ "secondaryKeywords": [
+  "study in UK without IELTS",
+  "Russell Group MOI policy"
+ ],
+ "intent": "Commercial / Informational",
+ "seoTitle": "UK Universities Accepting Medium of Instruction (MOI) Instead of IELTS",
+ "metaDescription": "Find out which UK universities may accept an MOI letter instead of IELTS. Understand university admission policies, UKVI English requirements and how to verify exemptions.",
+ "slug": "/uk-universities-accepting-moi-instead-ielts/",
+ "destination": "uk",
+ "topic": "admissions",
+ "topicLabel": "Admissions and tests",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "GOV.UK – English language requirement levels for immigration applications",
+   "url": "https://www.gov.uk/government/publications/english-language-requirement-levels-for-immigration-applications/english-language-requirement-levels-for-immigration-applications",
+   "note": "Current CEFR levels and the degree-taught-in-English route."
+  },
+  {
+   "title": "GOV.UK – Assessing the English language requirement",
+   "url": "https://www.gov.uk/government/publications/english-language-requirements-for-immigration-applicants/assessing-the-english-language-requirement-accessible-version",
+   "note": "Sponsor assessment and CAS English language fields."
+  },
+  {
+   "title": "University of Bristol – English language profile D",
+   "url": "https://www.bristol.ac.uk/study/language-requirements/profile-d/",
+   "note": "Example of MOI acceptance under specific degree, country and recency conditions."
+  },
+  {
+   "title": "GOV.UK – Prove English with a degree taught in English",
+   "url": "https://www.gov.uk/english-language/degrees-in-english",
+   "note": "Ecctis assessment route for degrees awarded outside the UK under settlement/citizenship rules; do not conflate routes."
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "a68625f0-UK_Study_Abroad_SEO_GEO_Content_Pack_5_Articles.docx",
+ "words": 680,
+ "readMinutes": 3
+}

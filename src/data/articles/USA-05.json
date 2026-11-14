@@ -1,0 +1,512 @@
+{
+ "id": "USA-05",
+ "category": "Finance & Scholarships",
+ "priority": "Medium",
+ "title": "How to Secure Graduate Assistantships (RA/TA/GA) & Tuition Waivers in the USA",
+ "intro": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "Graduate assistantships can help reduce the cost of a U.S. graduate degree while giving students experience in teaching, research or university operations. Common roles include Research Assistant (RA), Teaching Assistant (TA) and Graduate Assistant (GA). Funding is competitive and varies by department, degree level, workload and appointment terms."
+    }
+   ]
+  }
+ ],
+ "quick": [
+  {
+   "t": "p",
+   "runs": [
+    {
+     "t": "An assistantship may include a stipend, tuition remission or waiver, and sometimes health insurance. These benefits are not automatic. Check the written offer for appointment percentage, duration, fees not covered, renewal conditions and expected duties."
+    }
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "title": "What is a graduate assistantship?",
+   "blocks": [
+    {
+     "t": "table",
+     "head": [
+      [
+       {
+        "t": "Role",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "Typical work",
+        "b": 1
+       }
+      ],
+      [
+       {
+        "t": "What to look for",
+        "b": 1
+       }
+      ]
+     ],
+     "rows": [
+      [
+       [
+        {
+         "t": "Research Assistant (RA)"
+        }
+       ],
+       [
+        {
+         "t": "Supports a faculty member or research project through data, experiments, analysis, literature reviews or lab work."
+        }
+       ],
+       [
+        {
+         "t": "Research fit, supervisor funding, project duration, tuition benefit and stipend."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Teaching Assistant (TA)"
+        }
+       ],
+       [
+        {
+         "t": "Supports courses through labs, tutorials, grading, office hours or instructional support."
+        }
+       ],
+       [
+        {
+         "t": "Teaching needs, language requirements, workload and tuition remission."
+        }
+       ]
+      ],
+      [
+       [
+        {
+         "t": "Graduate Assistant (GA)"
+        }
+       ],
+       [
+        {
+         "t": "May support academic departments, student services, administration or specialised campus functions."
+        }
+       ],
+       [
+        {
+         "t": "Eligibility, department duties, hours and whether the role includes tuition benefits."
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What can the funding package include?",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Stipend: a salary or payment for the assistantship appointment, usually paid on a schedule."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Tuition remission or waiver: the university may reduce or cover some tuition charges."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Health insurance: some appointments provide eligibility for a university health plan or a subsidy."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Fees: student, international, programme, lab or other mandatory fees may remain payable."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Summer support: a nine-month academic-year appointment may not include summer funding."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "For example, the University of Wisconsin–Madison describes qualifying graduate assistantship appointments that may include a monthly stipend, tuition remission and health insurance eligibility. Cornell also publishes assistantship packages that include tuition credit, stipend and health insurance. These are examples of institution-specific terms, not a national guarantee."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Who is more likely to receive an assistantship?",
+   "blocks": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Funding patterns differ by degree and discipline. Research-intensive doctoral programmes may offer structured funding more often than professional master's programmes. Master's students may still find assistantships, but positions can be limited and may not cover the full cost."
+      }
+     ]
+    },
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Students with a strong academic record and relevant research or teaching experience."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Applicants whose interests align with an active faculty project or funded research area."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Students with technical, laboratory, quantitative, language or subject expertise relevant to a department's needs."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Applicants who can clearly explain how their skills support the role."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "How to search for RA, TA and GA opportunities",
+   "blocks": [
+    {
+     "t": "ol",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "Start with the department's graduate funding and assistantship page."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Review faculty profiles, research centres and funded project descriptions."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Check whether master's students and international students are eligible."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Ask whether the role is offered with admission, after enrolment or through a separate hiring process."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Contact the graduate coordinator or faculty member with a concise, relevant message."
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Apply through the official university portal where required."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Professor cold-email template",
+   "blocks": [
+    {
+     "t": "callout",
+     "title": "Subject",
+     "blocks": [
+      {
+       "t": "p",
+       "runs": [
+        {
+         "t": "Prospective graduate student interested in research opportunities in [research area]"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Dear Professor [Surname],"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "I am preparing to apply to the [programme name] at [university] for [term/year]. My academic background is in [field], and I have worked on [brief project, dissertation or relevant experience]."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "I read about your work on [specific research topic/publication/project] and am particularly interested in [one specific connection]. I would be grateful to know whether you anticipate any research assistant opportunities for incoming graduate students, or whether there is a recommended departmental process for expressing interest."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "I have attached my CV and [one relevant document, if appropriate]. Thank you for your time and consideration."
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Kind regards,"
+      },
+      {
+       "br": 1
+      },
+      {
+       "t": "[Full name]"
+      },
+      {
+       "br": 1
+      },
+      {
+       "t": "[Current institution]"
+      },
+      {
+       "br": 1
+      },
+      {
+       "t": "[Email / LinkedIn]"
+      }
+     ]
+    },
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Personalise every message. Do not send mass emails, claim to have read research you have not read or ask for funding without showing relevant fit."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Questions to ask before accepting an assistantship",
+   "blocks": [
+    {
+     "t": "ul",
+     "items": [
+      {
+       "runs": [
+        {
+         "t": "What is the appointment percentage and expected weekly workload?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How much is the stipend, and over how many months is it paid?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Which tuition charges are waived, and which fees remain?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is health insurance included or subsidised?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Is summer funding included?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "How long is the award guaranteed, and what are the renewal conditions?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "What academic standing or performance is required to retain the assistantship?"
+        }
+       ]
+      },
+      {
+       "runs": [
+        {
+         "t": "Does the appointment require additional work authorisation or university onboarding steps?"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "faq": [
+  {
+   "q": "Do U.S. universities offer assistantships to international students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Many institutions do consider international graduate students for assistantships, but eligibility and availability depend on the university, department, role and programme."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does an RA or TA position cover full tuition?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "Some appointments include full or partial tuition remission, while others cover only a portion or provide a stipend. Read the written award carefully."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Are assistantships available for master's students?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "They may be available, but funding is often more limited and competitive for master's programmes than for some research doctoral programmes."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Can I email professors for funding?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "A concise, personalised email can be appropriate where the department encourages faculty contact. Follow the programme's process and do not treat an email as a funding application."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "q": "Does an assistantship guarantee an F-1 visa?",
+   "a": [
+    {
+     "t": "p",
+     "runs": [
+      {
+       "t": "No. An assistantship may be relevant evidence of funding, but visa eligibility is determined separately by the U.S. consular officer."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "primaryKeyword": "how to get research assistantship in US universities MS",
+ "secondaryKeywords": [
+  "scholarships for Indian students USA",
+  "cold email template RA"
+ ],
+ "intent": "How-To",
+ "seoTitle": "Graduate Assistantships in the USA: RA, TA, GA & Tuition Waivers",
+ "metaDescription": "Learn how Indian students can find U.S. graduate assistantships. Compare RA, TA and GA roles, stipends, tuition waivers, eligibility and professor email tips.",
+ "slug": "/graduate-assistantships-usa-ra-ta-ga/",
+ "destination": "usa",
+ "topic": "scholarships-and-funding",
+ "topicLabel": "Scholarships and funding",
+ "reviewed": "2026-11-14",
+ "sources": [
+  {
+   "title": "University of Wisconsin–Madison Graduate School – Graduate Assistantships",
+   "url": "https://grad.wisc.edu/funding/graduate-assistantships/",
+   "note": "Example of stipend, tuition remission and health insurance eligibility linked to appointment conditions."
+  },
+  {
+   "title": "Cornell Graduate School – Assistantships",
+   "url": "https://gradschool.cornell.edu/policies/assistantships/",
+   "note": "Example of assistantship funding components and degree/field administration."
+  },
+  {
+   "title": "Stanford – Tuition Allowance for Research Assistants",
+   "url": "https://doresearch.stanford.edu/policies/research-policy-handbook/financial-aspects-sponsored-projects-administration/tuition-allowance-research-assistants",
+   "note": "Example of research assistant tuition allowance linked to appointment percentage."
+  }
+ ],
+ "sourcesScope": "article",
+ "sourceFile": "80b0f94a-USA_Study_Abroad_SEO_GEO_Content_Pack_6_Articles.docx",
+ "words": 810,
+ "readMinutes": 4
+}
