@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { hiddenFromSearch } from '../../lib/noindex.js';
 import { countries } from '../../lib/data.js';
 import SchCard from '../../components/SchCard.astro';
-import { items, PUBLISH, generatedAt, statusOf, VALUE_LABEL, fmtIso, CHECK, lookGroups } from '../../lib/scholarships.js';
+import { items, PUBLISH, generatedAt, statusOf, VALUE_LABEL, fmtIso, CHECK, lookGroups, universityLinks } from '../../lib/scholarships.js';
 
 const path = '/scholarships/';
 const today = new Date().toISOString().slice(0, 10);
@@ -15,6 +15,8 @@ const countryOpts = countries.filter((c) => withItems.includes(c.code));
 const perCountry = Object.fromEntries(countryOpts.map((c) => [c.code, rows.filter((r) => r.country === c.code).length]));
 const tiles = [...countryOpts].sort((a, b) => perCountry[b.code] - perCountry[a.code] || a.name.localeCompare(b.name));
 const groups = lookGroups();
+const uniGroups = universityLinks();
+const uniTotal = uniGroups.reduce((n, g) => n + g.list.length, 0);
 const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
 ---
 <Base
@@ -123,6 +125,27 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
         ))}
       </div>
     )}
+  </section>
+
+  <section class="sec uni-links" aria-labelledby="h-unis">
+    <h2 id="h-unis">Every university's scholarships</h2>
+    <p class="sec-lede">{uniTotal} universities, by destination. Where our reader found a university's own scholarships page, the link goes straight to it. Where it could not read the site, the link searches that university's website for scholarships. Not every university lists them in the same place.</p>
+    {uniGroups.map((g) => (
+      <details>
+        <summary>{g.name} <span class="muted">({g.list.length} universities)</span></summary>
+        <ul>
+          {g.list.map(({ u, link, n }) => (
+            <li>
+              <a href={`/universities/${u.slug}/`}>{u.name}</a>
+              <small>
+                <a href={link.url} rel="noopener">{link.kind === 'page' ? 'Its scholarships page' : 'Search its website for scholarships'}</a>
+                {n > 0 && <Fragment> · <a href={`/scholarships/?c=${u.country}&u=${u.slug}#sch-bar`}>{n} listed here</a></Fragment>}
+              </small>
+            </li>
+          ))}
+        </ul>
+      </details>
+    ))}
   </section>
 
   <section class="sec" aria-labelledby="h-how">

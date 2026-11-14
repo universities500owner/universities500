@@ -30,6 +30,23 @@ After a run, the workflow commits `src/data/scholarships.json` to `main`, and Cl
 
 Add an entry to `data/scholarship_sources.json` under `programmes` with candidate `urls`, an `expect` phrase that must appear on the page (the entry is published only if it does), and `levels` with a `levelsSource`. Directories (lists of scholarships) go under `directories`. Third-party sites go under `thirdParty` with `scrape: false` until their robots.txt and terms are checked.
 
+Optional keys on a programme: `providerSlug` and `providerType` (for a scholarship run by one university, so it also shows on that university's page), and `expect` as a list when the page may carry either of two names. New programmes are only published when the page loads and contains an expected name; a wrong address just shows up in the run log as a failure.
+
+## Extra facts (`details.py`)
+
+Besides value, deadline, level and eligibility, the reader looks for four more things, each from one sentence on the page and never worked out:
+
+- `awards`: how many are given ("Up to 10 scholarships are available each year").
+- `duration`: "Full length of the course", "Up to 4 years", "First year only".
+- `covers`: tuition, living costs, travel, health insurance, accommodation, books. Sentences with "not", "except" and similar are skipped.
+- `applyMode`: `automatic` when the page says no separate application is needed, `application` when it asks you to apply.
+
+A field the page does not state stays empty and the site shows nothing for it.
+
+## Reading the run log
+
+The log ends with fill rates (the share of records that have each field) and up to 18 pages where the text looks like it holds a deadline or value the reader did not take, with the sentence. Use those lines to improve the patterns in `textutil.py` and `details.py`.
+
 ## Run it locally
 
 ```

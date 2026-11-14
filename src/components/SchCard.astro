@@ -1,18 +1,21 @@
 ---
 // One scholarship result card. Value, dates and level are copied from the official page; anything missing says so.
 import Icons from './Icons.astro';
-import { statusOf, scholarshipPill, fmtIso, levelsText, CHECK, countryName, valueType, shortAbout } from '../lib/scholarships.js';
+import { statusOf, scholarshipPill, fmtIso, levelsText, CHECK, countryName, valueType, shortAbout, awardsText } from '../lib/scholarships.js';
+import { all } from '../lib/data.js';
 import { initials, hue } from '../lib/internships.js';
 const { r, today } = Astro.props;
 const st = statusOf(r, today);
 const apply = r.applyUrl || r.url;
 const n = (r.eligibility || []).length;
 const about = shortAbout(r.description, 150);
+const uni = r.providerSlug ? all.find((x) => x.slug === r.providerSlug) : null;
+const covers = (r.covers || []).slice(0, 4);
 ---
 <li class="rc sch" data-id={`sch:${r.slug}`} data-name={(r.name + ' ' + r.provider).toLowerCase()} data-country={r.country} data-levels={r.levels.map((l) => l.toLowerCase()).join(' ')} data-deadline={r.deadline || ''} data-opens={r.opens || ''} data-rolling={r.rolling ? '1' : ''} data-status={st} data-provider={r.providerSlug || r.provider.toLowerCase()} data-pname={r.provider} data-vt={valueType(r.value && r.value.display)}>
   <div class="rc-head">
     <span class="rc-mono" aria-hidden="true" style={`--h:${hue(r.provider)}`}>{initials(r.provider)}</span>
-    <p class="rc-org">{r.provider}</p>
+    <p class="rc-org">{uni ? <a href={`/universities/${uni.slug}/`}>{r.provider}</a> : r.provider}</p>
     <button type="button" class="rc-save" data-save aria-pressed="false" aria-label={`Save ${r.name}`} title="Save on this device"><Icons name="bookmark" /></button>
   </div>
   <h3 class="rc-title"><a href={`/scholarships/${r.slug}/`}>{r.name}</a></h3>
@@ -20,10 +23,14 @@ const about = shortAbout(r.description, 150);
   <p class="rc-where"><Icons name="pin" /><span>{countryName(r.country)}</span></p>
   {r.value ? <p class="rc-pay">{r.value.display}</p> : <p class="rc-pay none">Value: check the official page</p>}
   {about && <p class="rc-note">{about}</p>}
+  {covers.length > 0 && <ul class="rc-chips" aria-label="What it covers">{covers.map((c) => <li>{c}</li>)}</ul>}
   <dl class="rc-facts">
     <div><dt>Deadline</dt><dd>{r.deadline ? fmtIso(r.deadline) : (r.deadlinePartial ? `${r.deadlinePartial} (year not stated)` : 'Not stated')}</dd></div>
     <div><dt>Level</dt><dd>{levelsText(r.levels)}</dd></div>
     {r.opens && <div><dt>Opens</dt><dd>{fmtIso(r.opens)}</dd></div>}
+    {r.duration && <div><dt>Lasts</dt><dd>{r.duration}</dd></div>}
+    {r.awards && <div><dt>Awards</dt><dd>{awardsText(r.awards)}</dd></div>}
+    {r.applyMode === 'automatic' && <div class="wide"><dt>How to apply</dt><dd>Considered automatically</dd></div>}
     <div class="wide"><dt>Open to</dt><dd>International students{n > 0 && <Fragment> · <a href={`/scholarships/${r.slug}/#eligibility`}>{n} condition{n === 1 ? '' : 's'}</a></Fragment>}</dd></div>
   </dl>
   <div class="rc-act">

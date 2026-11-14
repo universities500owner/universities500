@@ -9,6 +9,7 @@ import urllib.parse
 
 from bs4 import BeautifulSoup
 
+import details as Det
 import quality as Q
 import textutil as T
 
@@ -217,12 +218,14 @@ def find_apply_url(page):
 
 
 def _hash(rec):
-    keys = ('name', 'value', 'deadline', 'deadlineText', 'opens', 'rolling', 'eligibility', 'description', 'applyUrl', 'levels')
+    keys = ('name', 'value', 'deadline', 'deadlineText', 'opens', 'rolling', 'eligibility', 'description', 'applyUrl', 'levels',
+            'awards', 'duration', 'covers', 'applyMode')
     return hashlib.sha1(json.dumps({k: rec.get(k) for k in keys}, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
 
 
 def make_record(*, name, provider, provider_slug, provider_type, country, url, text, today, origin,
-                apply_url=None, description=None, eligibility=None, levels=None, intl=None, row_dates=None, row_value=None):
+                apply_url=None, description=None, eligibility=None, levels=None, intl=None, row_dates=None, row_value=None,
+                lines=None):
     dates = T.find_dates(text)
     if row_dates:
         dates['deadlines'] = row_dates.get('deadlines', []) + dates['deadlines']
@@ -255,6 +258,10 @@ def make_record(*, name, provider, provider_slug, provider_type, country, url, t
         'origin': origin,
         'intl': intl,
     }
+    rec.update(Det.extra(text, lines, apply_url))
+    miss = Det.missed(text, not (dl or dates['partial'] or dates['rolling']), not value)
+    if miss:
+        rec['_miss'] = miss  # for the run log only; run.py removes it before saving
     rec['hash'] = _hash(rec)
     rec['id'] = hashlib.sha1(f"{provider_slug or provider}|{rec['url']}|{name.lower()}".encode()).hexdigest()[:12]
     return rec
@@ -289,7 +296,8 @@ def detail_record(page, uni, today, same_domain=None):
     rec = make_record(
         name=name, provider=uni['name'], provider_slug=uni['slug'], provider_type='university', country=uni['country'],
         url=page.url, text=text, today=today, origin='page', apply_url=find_apply_url(page),
-        description=find_description(page), eligibility=find_eligibility(page), levels=levels, intl=intl)
+        description=find_description(page), eligibility=find_eligibility(page), levels=levels, intl=intl,
+        lines=page.lines)
     if not (rec['value'] or rec['deadline'] or rec['deadlinePartial'] or rec['rolling'] or rec['eligibility']):
         return None, 'no-details'
     return rec, 'ok'

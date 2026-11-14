@@ -125,7 +125,11 @@ def main():
     uni_by_slug = {u['slug']: u for u in unis}
     readable = {s for s, r in results.items() if r['status'] in ('ok', 'no-scholarship-pages') and s not in skipped_by_deadline}
     fresh = {}
+    miss_log = []  # sentences that look like a deadline or value the reader did not take (printed for the run log only)
     for rec in off_records + [x for r in results.values() for x in r['records']]:
+        miss = rec.pop('_miss', None)
+        if miss:
+            miss_log.append((rec['provider'], rec['name'], rec['url'], miss))
         fresh[rec['id']] = rec
 
     merged = {}
@@ -185,6 +189,7 @@ def main():
     old_n, new_n = len(prev_items), len(merged)
     if not args.allow_drop and old_n >= 20 and new_n < 0.5 * old_n:
         write_report(args, fx, results, off_report, directories, third, merged, prev_items, today, now, t0, gate_failed=(old_n, new_n))
+        print_diagnostics(merged.values(), miss_log)
         print(f'STOP: records fell from {old_n} to {new_n}. Not writing. Re-run with --allow-drop if this is real.')
         return 3
 
@@ -226,8 +231,34 @@ def main():
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     Path(args.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
     write_report(args, fx, results, off_report, directories, third, merged, prev_items, today, now, t0)
+    print_diagnostics(items, miss_log)
     print(f'wrote {len(items)} scholarships ({added} new, {changed} changed, {dropped} removed) to {args.out}')
     return 0
+
+
+FIELDS = ('value', 'deadline', 'deadlinePartial', 'opens', 'rolling', 'description', 'eligibility', 'applyUrl',
+          'awards', 'duration', 'covers', 'applyMode')
+
+
+def print_diagnostics(items, miss_log, sample=18):
+    """Fill rates and a sample of what the reader missed, printed so they show in the GitHub Actions log."""
+    items = list(items)
+    n = len(items) or 1
+    print('\nFill rates (share of records with each field):')
+    for f in FIELDS:
+        have = sum(1 for i in items if i.get(f))
+        print(f'  {f:16} {have:4} / {len(items)}  ({100 * have // n}%)')
+    full = sum(1 for i in items if i.get('value') and i.get('deadline') and i.get('eligibility') and i.get('description'))
+    print(f'  value+deadline+eligibility+description: {full}')
+    if not miss_log:
+        return
+    print(f'\nPages where the text looks like it holds a deadline or value that was not taken: {len(miss_log)}')
+    random.Random(7).shuffle(miss_log)
+    for prov, name, url, miss in miss_log[:sample]:
+        print(f'- {prov} | {name} | {url}')
+        for k, lines in miss.items():
+            for ln in lines:
+                print(f'    [{k}] {ln}')
 
 
 def write_report(args, fx, results, off_report, directories, third, merged, prev_items, today, now, t0, gate_failed=None):

@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { hiddenFromSearch } from '../../lib/noindex.js';
-import { items, statusOf, STATUS_LABEL, statusNote, fmtIso, levelsText, CHECK, countryName } from '../../lib/scholarships.js';
+import { items, statusOf, STATUS_LABEL, statusNote, fmtIso, levelsText, CHECK, countryName, awardsText, APPLY_MODE_LABEL } from '../../lib/scholarships.js';
 import { all } from '../../lib/data.js';
 
 export function getStaticPaths() {
@@ -25,11 +25,15 @@ const desc = s.description || `${s.name} at ${s.provider}. Value, deadline and e
     <div><dt>Deadline</dt><dd>{s.deadline ? fmtIso(s.deadline) : (s.deadlinePartial ? `${s.deadlinePartial} (year not stated)` : CHECK)}</dd></div>
     <div><dt>Opens</dt><dd>{s.opens ? fmtIso(s.opens) : CHECK}</dd></div>
     <div><dt>Level</dt><dd>{levelsText(s.levels)}</dd></div>
+    {s.duration && <div><dt>Lasts</dt><dd>{s.duration}</dd></div>}
+    {s.awards && <div><dt>Awards</dt><dd>{awardsText(s.awards)}</dd></div>}
   </dl>
 
   <p><a class="btn" href={apply} rel="noopener">{s.applyUrl ? 'Apply on the official site' : 'Open the official page'}</a></p>
 
   {s.description && (<section><h2>About</h2><p>{s.description}</p></section>)}
+  {s.covers && s.covers.length > 0 && (<section><h2>What it covers</h2><ul class="rc-chips">{s.covers.map((c) => <li>{c}</li>)}</ul><p class="small">As the official page describes it. Check the page for the exact amounts and limits.</p></section>)}
+  {s.applyMode && (<section><h2>How to apply</h2><p>{APPLY_MODE_LABEL[s.applyMode]}.</p></section>)}
   <section>
     <h2 id="eligibility">Eligibility</h2>
     {s.eligibility && s.eligibility.length ? (<ul>{s.eligibility.map((e) => <li>{e}</li>)}</ul>) : (<p>{CHECK} for who can apply.</p>)}
