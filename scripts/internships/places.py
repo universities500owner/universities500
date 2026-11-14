@@ -103,6 +103,10 @@ def _display_city(piece, country_hit):
         return None
     if f in CITY:
         return first
+    # "9th arrondissement of Paris", "The Italian Shot Maxvorstadt München": show only the city we know
+    m = CITY_RE.search(f)
+    if m and len(f) == len(first):
+        return first[m.start(1):m.end(1)]
     return first if len(first) <= 40 and re.search(r'[A-Za-z]', first) else None
 
 
@@ -160,3 +164,12 @@ def resolve(text):
 
 def from_iso2(code):
     return ISO.get((code or '').upper()) or {'CA': 'canada', 'DE': 'germany', 'NL': 'netherlands'}.get((code or '').upper())
+
+
+def tidy_city(city):
+    """A saved city string -> just the city we know, when the text around it is noise."""
+    f = fold(city or '')
+    if not f or f in CITY:
+        return city
+    m = CITY_RE.search(f)
+    return city[m.start(1):m.end(1)] if m and len(f) == len(city) else city
