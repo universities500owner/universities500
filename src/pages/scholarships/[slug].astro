@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import { hiddenFromSearch } from '../../lib/noindex.js';
+import { items, statusOf, STATUS_LABEL, statusNote, fmtIso, levelsText, CHECK, countryName } from '../../lib/scholarships.js';
+import { all } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  return items.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props;
+const path = `/scholarships/${s.slug}/`;
+const st = statusOf(s);
+const uni = s.providerSlug ? all.find((u) => u.slug === s.providerSlug) : null;
+const apply = s.applyUrl || s.url;
+const desc = s.description || `${s.name} at ${s.provider}. Value, deadline and eligibility, with the official page.`;
+---
+<Base title={`${s.name}, ${s.provider} | Universities500`} description={desc.slice(0, 155)} path={path} noindex={hiddenFromSearch(path)} current="scholarships">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/scholarships/">Scholarships</a><span aria-hidden="true">/</span>{s.name}</nav>
+  <h1>{s.name}</h1>
+  <p class="sch-sub lead">{uni ? <a href={`/universities/${uni.slug}/`}>{s.provider}</a> : s.provider} · {countryName(s.country)}</p>
+  <p class="st-wrap"><span class={`st st-${st}`}>{STATUS_LABEL[st]}</span> <small>{statusNote(s, st)}</small></p>
+
+  <dl class="sch-facts big">
+    <div><dt>Value</dt><dd>{s.value ? s.value.display : CHECK}</dd></div>
+    <div><dt>Deadline</dt><dd>{s.deadline ? fmtIso(s.deadline) : (s.deadlinePartial ? `${s.deadlinePartial} (year not stated)` : CHECK)}</dd></div>
+    <div><dt>Opens</dt><dd>{s.opens ? fmtIso(s.opens) : CHECK}</dd></div>
+    <div><dt>Level</dt><dd>{levelsText(s.levels)}</dd></div>
+  </dl>
+
+  <p><a class="btn" href={apply} rel="noopener">{s.applyUrl ? 'Apply on the official site' : 'Open the official page'}</a></p>
+
+  {s.description && (<section><h2>About</h2><p>{s.description}</p></section>)}
+  <section>
+    <h2>Eligibility</h2>
+    {s.eligibility && s.eligibility.length ? (<ul>{s.eligibility.map((e) => <li>{e}</li>)}</ul>) : (<p>{CHECK} for who can apply.</p>)}
+  </section>
+
+  <section>
+    <h2>Where this comes from</h2>
+    <ul>
+      <li>Official page: <a href={s.url} rel="noopener">{s.url}</a></li>
+      <li>Last read on {fmtIso(s.lastVerified)}. First seen {fmtIso(s.firstSeen)}.</li>
+      {s.value && s.value.context && <li class="quote">Value, as the page says: “{s.value.context}”</li>}
+      {s.deadlineText && <li class="quote">Dates, as the page says: “{s.deadlineText}”</li>}
+    </ul>
+    <p class="small">Read by a program, not by a person. Scholarship details change, so check the official page before you apply.</p>
+  </section>
+</Base>

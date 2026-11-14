@@ -1,6 +1,7 @@
 import { NAV } from '../lib/nav.js';
 import { guides, runsText } from '../lib/guides.js';
 import { all } from '../lib/data.js';
+import { items as scholarships } from '../lib/scholarships.js';
 
 const blockText = (b) =>
   b.t === 'p' ? runsText(b.runs)
@@ -24,6 +25,7 @@ export function GET() {
       }
     }
   }
+  for (const x of scholarships) out.push({ t: x.name, u: `/scholarships/${x.slug}/`, d: `${x.provider}, scholarship`, k: [x.value && x.value.display, x.description].filter(Boolean).join(' ').slice(0, 300) });
   for (const u of all) out.push({ t: u.name, u: `/universities/${u.slug}/`, d: u.countryName, k: '' });
   return new Response(JSON.stringify(out), { headers: { 'Content-Type': 'application/json' } });
 }

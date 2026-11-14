@@ -1,0 +1,116 @@
+---
+import Base from '../../layouts/Base.astro';
+import { hiddenFromSearch } from '../../lib/noindex.js';
+import { countries } from '../../lib/data.js';
+import { items, PUBLISH, generatedAt, statusOf, STATUS_LABEL, statusNote, fmtIso, levelsText, CHECK, lookGroups, countryName } from '../../lib/scholarships.js';
+
+const path = '/scholarships/';
+const today = new Date().toISOString().slice(0, 10);
+const rows = items
+  .map((i) => ({ ...i, st: statusOf(i, today) }))
+  .sort((a, b) => ['open', 'upcoming', 'unknown', 'closed'].indexOf(a.st) - ['open', 'upcoming', 'unknown', 'closed'].indexOf(b.st) || (a.deadline || '9999').localeCompare(b.deadline || '9999') || a.name.localeCompare(b.name));
+const withItems = [...new Set(rows.map((r) => r.country))];
+const countryOpts = countries.filter((c) => withItems.includes(c.code));
+const groups = lookGroups();
+const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
+---
+<Base
+  title="Scholarship search for international students | Universities500"
+  description="Search scholarships for international Bachelor's and Master's students. Each one shows its value, deadline, eligibility and the official page to apply, and whether it is open, closed or yet to open."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="scholarships"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Scholarships</nav>
+  <div class="q-head">
+    <h1>Scholarship search</h1>
+    <p>Scholarships open to international students on Bachelor's and Master's courses. Every entry links to the official page it was read from.</p>
+  </div>
+
+  {PUBLISH && rows.length > 0 ? (
+    <section class="sec" aria-labelledby="h-find">
+      <h2 id="h-find" class="sr-only">Search</h2>
+      <div class="filterbar" id="sch-bar">
+        <input id="sch-q" type="search" placeholder="Name or university" aria-label="Search scholarships by name or university" />
+        <select id="sch-c" aria-label="Destination">
+          <option value="">All destinations</option>
+          {countryOpts.map((c) => <option value={c.code}>{c.name}</option>)}
+        </select>
+        <select id="sch-l" aria-label="Level">
+          <option value="">All levels</option>
+          <option value="bachelor">Bachelor</option>
+          <option value="master">Master</option>
+        </select>
+        <select id="sch-s" aria-label="Status">
+          <option value="">Any status</option>
+          <option value="open">Open</option>
+          <option value="upcoming">Yet to open</option>
+          <option value="closed">Closed</option>
+          <option value="unknown">Check the official page</option>
+        </select>
+        <select id="sch-o" aria-label="Sort by">
+          <option value="status">Open first</option>
+          <option value="name">Name A to Z</option>
+          <option value="country">Destination</option>
+        </select>
+      </div>
+      <p class="tally" id="sch-tally" role="status">{rows.length} scholarships</p>
+      <ol class="sch-list" id="sch-list">
+        {rows.map((r) => (
+          <li class="sch" data-name={(r.name + ' ' + r.provider).toLowerCase()} data-country={r.country} data-levels={r.levels.map((l) => l.toLowerCase()).join(' ')} data-deadline={r.deadline || ''} data-opens={r.opens || ''} data-rolling={r.rolling ? '1' : ''} data-status={r.st}>
+            <div class="sch-main">
+              <h3><a href={`/scholarships/${r.slug}/`}>{r.name}</a></h3>
+              <p class="sch-sub">{r.provider} · {countryName(r.country)}</p>
+            </div>
+            <p class="st-wrap"><span class={`st st-${r.st}`} data-st>{STATUS_LABEL[r.st]}</span><small data-stnote>{statusNote(r, r.st)}</small></p>
+            <dl class="sch-facts">
+              <div><dt>Value</dt><dd>{r.value ? r.value.display : CHECK}</dd></div>
+              <div><dt>Deadline</dt><dd>{r.deadline ? fmtIso(r.deadline) : (r.deadlinePartial ? `${r.deadlinePartial} (year not stated)` : CHECK)}</dd></div>
+              <div><dt>Level</dt><dd>{levelsText(r.levels)}</dd></div>
+            </dl>
+          </li>
+        ))}
+      </ol>
+      <p class="more"><button type="button" class="btn-ghost" id="sch-more" hidden>Show more</button></p>
+      <p class="small">Last read {updated}. Dates and values are copied from the official page and can change. Check the official page before you apply.</p>
+    </section>
+  ) : (
+    <div class="note draft">
+      <p><strong>Scholarship listings are being checked.</strong> Each entry will appear here once it has an official source and a check date. Until then, use the official places below.</p>
+    </div>
+  )}
+
+  <section class="sec" aria-labelledby="h-look">
+    <h2 id="h-look">Official places to look</h2>
+    <p class="sec-lede">Government and agency pages for each destination. These are directories, so they list more than we can show here.</p>
+    {groups.length === 0 ? (
+      <p>The list is being checked.</p>
+    ) : (
+      <div class="look">
+        {groups.map((g) => (
+          <div class="look-c">
+            <h3>{g.name}</h3>
+            <ul>
+              {g.dirs.map((d) => <li><a href={d.url} rel="noopener">{d.title}</a>{d.note && <span class="muted"> {d.note}</span>}</li>)}
+              {g.tp.map((t) => <li><a href={t.url} rel="noopener">{t.title}</a> <span class="muted">(independent site) {t.note}</span></li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <section class="sec" aria-labelledby="h-how">
+    <h2 id="h-how">How this list is made</h2>
+    <ul>
+      <li>A program reads public scholarship pages from official programme sites and from each university's own website every two days. It follows each site's robots.txt and reads slowly.</li>
+      <li>Only scholarships open to international students on Bachelor's or Master's courses are kept.</li>
+      <li>Every entry shows the page it was read from and the date it was last read. If the program cannot read a field with confidence, the entry says "{CHECK}" instead of guessing.</li>
+      <li>Open, closed or yet to open comes only from dates on the official page. With no dates, the status is "{CHECK}".</li>
+    </ul>
+    <p><a href="/bot/">About our reader</a></p>
+  </section>
+
+  <script type="application/json" id="sch-today" set:html={JSON.stringify({ built: today })} />
+  {PUBLISH && rows.length > 0 && <script>import '../../scripts/scholarships.js';</script>}
+</Base>

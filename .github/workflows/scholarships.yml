@@ -1,0 +1,89 @@
+name: Scholarships (read official pages)
+
+# Reads scholarship pages from the official programme sites and from every university website on the list,
+# then commits src/data/scholarships.json to main. Cloudflare rebuilds the site from that commit.
+# No AI is used anywhere: the reader works from page structure and patterns only.
+#
+# Cadence: GitHub fires this once a day. The script does the work only if the last good run is at least
+# 46 hours old, so in practice it runs every two days (and never twice in a row if one day is missed).
+# A manual run from the Actions tab always goes ahead.
+#
+# Settings: add a repository variable CONTACT_EMAIL (Settings > Secrets and variables > Actions > Variables).
+# It goes in the crawler's User-Agent so a website owner can reach you.
+on:
+  schedule:
+    - cron: "23 20 * * *"   # 20:23 UTC = 01:53 India time
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these university slugs, comma-separated (blank = all)"
+        required: false
+        default: ""
+      limit:
+        description: "Only the first N universities (0 = all). Handy for a small trial."
+        required: false
+        default: "0"
+      commit:
+        description: "Commit the result to main"
+        type: boolean
+        default: true
+
+concurrency:
+  group: scholarships
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install beautifulsoup4 lxml
+      - name: Self-test (stub website, no internet)
+        run: python3 scripts/scholarships/test_scholarships.py
+      - name: Read scholarship pages
+        id: run
+        continue-on-error: true
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
+        run: |
+          ARGS="--report out --max-minutes 170"
+          if [ "${{ github.event_name }}" = "schedule" ]; then ARGS="$ARGS --if-older-than-hours 46"; fi
+          if [ -n "${{ inputs.only }}" ]; then ARGS="$ARGS --only ${{ inputs.only }}"; fi
+          if [ "${{ inputs.limit }}" != "" ] && [ "${{ inputs.limit }}" != "0" ]; then ARGS="$ARGS --limit ${{ inputs.limit }}"; fi
+          if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The crawler's User-Agent has no contact address."; fi
+          python3 scripts/scholarships/run.py $ARGS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scholarship-run
+          path: out/
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Commit the new data
+        if: steps.run.outcome == 'success' && steps.run.outputs.skip != 'true' && (github.event_name == 'schedule' || inputs.commit)
+        run: |
+          git config user.name "universities500-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/scholarships.json
+          if git diff --cached --quiet; then
+            echo "No change to commit."
+          else
+            git commit -m "Scholarships: refresh $(date -u +%F)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Fail the run if the reader stopped itself
+        if: steps.run.outcome == 'failure'
+        run: |
+          echo "The reader stopped (see the run summary and the scholarship-run artifact). Nothing was published."
+          exit 1
