@@ -1,14 +1,14 @@
 {
  "version": 1,
- "generatedAt": "2026-11-14T17:42:56Z",
+ "generatedAt": "2026-11-14T17:55:19Z",
  "today": "2026-11-14",
  "stats": {
-  "items": 729,
+  "items": 728,
   "byCountry": {
    "australia": 1,
    "canada": 28,
    "france": 134,
-   "germany": 232,
+   "germany": 231,
    "ireland": 5,
    "netherlands": 44,
    "new-zealand": 2,
@@ -19,7 +19,7 @@
    "usa": 221
   },
   "bySource": {
-   "arbeitnow": 381,
+   "arbeitnow": 380,
    "greenhouse": 260,
    "jobtech": 25,
    "lever": 63
@@ -39,6 +39,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-05-29",
+   "team": "Delta",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -52,6 +54,10 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2023-08-04",
+   "ref": "6865687002",
+   "detail": 1,
+   "team": "University Recruiting - Engineering",
+   "pay": "USD 40–60",
    "firstSeen": "2026-11-14"
   },
   {
@@ -65,6 +71,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-08-07",
+   "ref": "6138140004",
+   "detail": 1,
+   "team": "Engineering Specialist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -78,6 +87,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-28",
+   "ref": "8802222002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -91,6 +103,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-24",
+   "ref": "8817900002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -104,6 +119,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8797376002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -117,6 +135,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8767697002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -130,6 +151,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8767536002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -143,6 +167,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8796052002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -156,6 +183,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-10-02",
+   "ref": "8862215002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -169,6 +199,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-28",
+   "ref": "8817930002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -182,6 +215,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8796054002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -195,6 +231,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8767710002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -208,6 +247,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8797859002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -221,6 +263,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8802332002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -234,6 +279,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8767534002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -247,6 +295,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-28",
+   "ref": "8817932002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -260,6 +311,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-10-02",
+   "ref": "8862007002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -273,6 +327,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8797069002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -286,6 +343,10 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-01",
+   "ref": "8138080",
+   "detail": 1,
+   "team": "University Engineering",
+   "pay": "CAD 8,000–8,600",
    "firstSeen": "2026-11-14"
   },
   {
@@ -299,6 +360,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-01",
+   "ref": "8138039",
+   "detail": 1,
+   "team": "University Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -312,6 +376,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7993736003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -325,6 +390,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7993738003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -338,6 +404,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7990043003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -351,6 +418,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-11",
+   "ref": "7991769003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -364,6 +432,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-10-01",
+   "ref": "8194287",
    "firstSeen": "2026-11-14"
   },
   {
@@ -377,6 +446,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-10-30",
+   "ref": "8333122",
    "firstSeen": "2026-11-14"
   },
   {
@@ -390,6 +460,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-11-05",
+   "ref": "8332683",
    "firstSeen": "2026-11-14"
   },
   {
@@ -403,6 +474,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-08-31",
+   "ref": "8130805",
    "firstSeen": "2026-11-14"
   },
   {
@@ -416,6 +488,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "DOPS - Services aux professionnels et Offre de soins - Porta",
    "firstSeen": "2026-11-14"
   },
   {
@@ -429,6 +502,10 @@
    "source": "greenhouse",
    "board": "airbnb",
    "posted": "2026-11-11",
+   "ref": "8376005",
+   "detail": 1,
+   "team": "Intern",
+   "pay": "USD 25k / year",
    "firstSeen": "2026-11-14"
   },
   {
@@ -442,6 +519,10 @@
    "source": "greenhouse",
    "board": "airbnb",
    "posted": "2026-11-11",
+   "ref": "8376124",
+   "detail": 1,
+   "team": "Intern",
+   "pay": "EUR 25k / year",
    "firstSeen": "2026-11-14"
   },
   {
@@ -455,6 +536,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Intern",
    "firstSeen": "2026-11-14"
   },
   {
@@ -468,6 +550,10 @@
    "source": "greenhouse",
    "board": "airbnb",
    "posted": "2026-11-11",
+   "ref": "8372325",
+   "detail": 1,
+   "team": "Intern",
+   "pay": "EUR 25k / year",
    "firstSeen": "2026-11-14"
   },
   {
@@ -481,6 +567,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -494,6 +581,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Product & Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -507,6 +595,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Data Scientist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -520,6 +609,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Production",
    "firstSeen": "2026-11-14"
   },
   {
@@ -533,6 +623,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Collection",
    "firstSeen": "2026-11-14"
   },
   {
@@ -546,6 +637,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Collection",
    "firstSeen": "2026-11-14"
   },
   {
@@ -559,6 +651,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Contrôle de Gestion",
    "firstSeen": "2026-11-14"
   },
   {
@@ -572,6 +665,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -585,6 +679,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Production",
    "firstSeen": "2026-11-14"
   },
   {
@@ -598,6 +693,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -611,6 +707,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -624,6 +721,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "AI Applied Engineer",
    "firstSeen": "2026-11-14"
   },
   {
@@ -637,6 +735,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -650,6 +749,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "AI Applied Engineer",
    "firstSeen": "2026-11-14"
   },
   {
@@ -663,6 +763,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "AI Applied Engineer",
    "firstSeen": "2026-11-14"
   },
   {
@@ -676,6 +777,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "AI Applied Engineer",
    "firstSeen": "2026-11-14"
   },
   {
@@ -689,6 +791,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -702,6 +805,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -715,6 +819,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -728,6 +833,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -741,6 +847,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -754,6 +861,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -767,6 +875,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "AI Strategist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -780,6 +889,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "AI Applied Engineer",
    "firstSeen": "2026-11-14"
   },
   {
@@ -793,6 +903,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -806,6 +917,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -819,6 +931,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -832,6 +945,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Marketing Assistant",
    "firstSeen": "2026-11-14"
   },
   {
@@ -845,6 +959,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "INTERNSHIPS",
    "firstSeen": "2026-11-14"
   },
   {
@@ -858,6 +973,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "INTERNSHIPS",
    "firstSeen": "2026-11-14"
   },
   {
@@ -871,6 +987,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "INTERNSHIPS",
    "firstSeen": "2026-11-14"
   },
   {
@@ -884,6 +1001,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "INTERNSHIPS",
    "firstSeen": "2026-11-14"
   },
   {
@@ -897,6 +1015,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "INTERNSHIPS",
    "firstSeen": "2026-11-14"
   },
   {
@@ -910,6 +1029,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Product",
    "firstSeen": "2026-11-14"
   },
   {
@@ -923,6 +1043,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Legal",
    "firstSeen": "2026-11-14"
   },
   {
@@ -936,6 +1057,9 @@
    "source": "greenhouse",
    "board": "celonis",
    "posted": "2026-07-01",
+   "ref": "7767090003",
+   "detail": 1,
+   "team": "Value Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -949,6 +1073,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Value Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -962,6 +1087,9 @@
    "source": "greenhouse",
    "board": "celonis",
    "posted": "2026-08-24",
+   "ref": "7962340003",
+   "detail": 1,
+   "team": "Value Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -975,6 +1103,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Value Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -988,6 +1117,9 @@
    "source": "greenhouse",
    "board": "datadog",
    "posted": "2026-09-08",
+   "ref": "8181440",
+   "detail": 1,
+   "team": "Engineering Interns",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1001,6 +1133,9 @@
    "source": "greenhouse",
    "board": "datadog",
    "posted": "2026-09-08",
+   "ref": "8129799",
+   "detail": 1,
+   "team": "Engineering Interns",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1014,6 +1149,9 @@
    "source": "greenhouse",
    "board": "datadog",
    "posted": "2026-09-08",
+   "ref": "8114186",
+   "detail": 1,
+   "team": "Engineering Interns",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1027,6 +1165,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Regional Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1040,6 +1179,9 @@
    "source": "greenhouse",
    "board": "deliveroo",
    "posted": "2026-11-12",
+   "ref": "8383006",
+   "detail": 1,
+   "team": "New Verticals France",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1053,6 +1195,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "AI",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1066,6 +1209,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1079,6 +1223,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1092,6 +1237,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1105,6 +1251,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1118,6 +1265,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Customer Services & Solutions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1131,6 +1279,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Customer Services & Solutions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1144,6 +1293,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1157,6 +1307,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1170,6 +1321,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1183,6 +1335,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1196,6 +1349,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1209,6 +1363,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1222,6 +1377,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1235,6 +1391,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Product",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1248,6 +1405,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1261,6 +1419,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1274,6 +1433,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1287,6 +1447,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1300,6 +1461,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1313,6 +1475,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1326,6 +1489,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-07",
+   "team": "Support - Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1339,6 +1503,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1352,6 +1517,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Logistics and Supply Chain",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1365,6 +1531,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "CRM",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1378,6 +1545,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Géotechnique",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1391,6 +1559,9 @@
    "source": "greenhouse",
    "board": "hellofresh",
    "posted": "2026-03-22",
+   "ref": "7741137",
+   "detail": 1,
+   "team": "Logistics",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1404,6 +1575,9 @@
    "source": "greenhouse",
    "board": "hellofresh",
    "posted": "2026-03-11",
+   "ref": "7704587",
+   "detail": 1,
+   "team": "Growth Analytics",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1417,6 +1591,9 @@
    "source": "greenhouse",
    "board": "hellofresh",
    "posted": "2026-11-12",
+   "ref": "8383114",
+   "detail": 1,
+   "team": "Product Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1430,6 +1607,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Stage/Alternance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1443,6 +1621,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Stage/Alternance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1456,6 +1635,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Stage/Alternance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1469,6 +1649,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Stage/Alternance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1482,6 +1663,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Stage/Alternance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1508,6 +1690,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Customer Delivery Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1521,6 +1704,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Customer Support",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1534,6 +1718,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Product",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1547,6 +1732,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Communication et Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1560,6 +1746,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Electronique et mécanique",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1573,6 +1760,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Retail Magasins",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1586,6 +1774,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Logistique",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1599,6 +1788,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-07",
+   "team": "Marketing & Communicatie",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1612,6 +1802,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Business",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1625,6 +1816,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Revenue",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1638,6 +1830,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "AI Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1651,6 +1844,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "RF Systems & Signal Processing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1664,6 +1858,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Ground Platform",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1677,6 +1872,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Satellite Systems Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1690,6 +1886,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Founders",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1703,6 +1900,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Legal",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1716,6 +1914,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "AI Research & Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1729,6 +1928,9 @@
    "source": "greenhouse",
    "board": "mirakl",
    "posted": "2026-10-01",
+   "ref": "6212914004",
+   "detail": 1,
+   "team": "Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1742,6 +1944,9 @@
    "source": "greenhouse",
    "board": "mirakl",
    "posted": "2026-10-08",
+   "ref": "6220219004",
+   "detail": 1,
+   "team": "G&A",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1755,6 +1960,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "G&A",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1781,6 +1987,9 @@
    "source": "greenhouse",
    "board": "mirakl",
    "posted": "2026-11-04",
+   "ref": "6247172004",
+   "detail": 1,
+   "team": "G&A",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1794,6 +2003,9 @@
    "source": "greenhouse",
    "board": "mirakl",
    "posted": "2025-10-10",
+   "ref": "5676006004",
+   "detail": 1,
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1807,6 +2019,9 @@
    "source": "greenhouse",
    "board": "mirakl",
    "posted": "2026-10-06",
+   "ref": "6218264004",
+   "detail": 1,
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1820,6 +2035,9 @@
    "source": "greenhouse",
    "board": "mirakl",
    "posted": "2025-03-31",
+   "ref": "5490504004",
+   "detail": 1,
+   "team": "G&A",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1833,6 +2051,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Human Resources",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1846,6 +2065,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Media",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1859,6 +2079,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-05-11",
+   "team": "Echo",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1872,6 +2094,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-05-06",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1885,6 +2109,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Software Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1898,6 +2123,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Software Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1911,6 +2137,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Software Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1924,6 +2151,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Growth",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1937,6 +2165,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Innovation Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1950,6 +2179,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Finance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1963,6 +2193,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "G&A",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1976,6 +2207,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Apparel & Fashion",
    "firstSeen": "2026-11-14"
   },
   {
@@ -1989,6 +2221,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Apparel & Fashion",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2002,6 +2235,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "R&D",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2015,6 +2249,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Tech",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2028,6 +2263,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2041,6 +2277,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Ops & Retail",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2054,6 +2291,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Supply",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2067,6 +2305,7 @@
    "source": "greenhouse",
    "board": "sumup",
    "posted": "2026-08-26",
+   "ref": "8737288002",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2093,6 +2332,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "People",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2106,6 +2346,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Students",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2119,6 +2360,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Finance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2132,6 +2374,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Digital Systems",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2145,6 +2388,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Consumer Electronics",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2158,6 +2402,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Marketing and Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2171,6 +2416,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Customer Service",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2184,6 +2430,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2197,6 +2444,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2210,6 +2458,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Recruitment and Selection",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2223,21 +2472,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "People & Culture",
    "firstSeen": "2026-11-14"
-  },
-  {
-   "id": "9d369e0a1490",
-   "title": "Werkstudent* Software Engineering",
-   "org": "Accso – Accelerated Solutions GmbH",
-   "city": "Darmstadt",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/accso-accelerated-solutions-gmbh/werkstudent-software-engineering-darmstadt-210512",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-09",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "5b1867ca3413",
@@ -2250,6 +2486,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2263,6 +2500,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "adjoe",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2276,6 +2514,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2289,6 +2528,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2302,6 +2543,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Personnel Specialist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2315,6 +2557,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2328,6 +2572,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2341,6 +2586,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Marketing and Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2354,6 +2600,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Business Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2367,6 +2614,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Arsipa GmbH",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2380,6 +2628,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2393,6 +2642,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Marketing and Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2406,6 +2656,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Marketing and Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2419,6 +2670,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2432,6 +2684,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Controlling",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2445,6 +2698,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2458,6 +2713,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2471,6 +2728,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2484,6 +2743,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2497,6 +2758,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2523,7 +2786,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
-   "firstSeen": "2026-11-14"
+   "firstSeen": "2026-11-14",
+   "misses": 1
   },
   {
    "id": "61407cad139f",
@@ -2536,6 +2800,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "M&A",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2549,6 +2814,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Automation Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2562,6 +2828,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Asset",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2575,6 +2842,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Healthcare",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2588,6 +2856,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-07",
+   "team": "Transformation Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2601,6 +2870,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-07",
+   "team": "Operate",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2614,6 +2884,9 @@
    "source": "greenhouse",
    "board": "celonis",
    "posted": "2026-10-21",
+   "ref": "7925721003",
+   "detail": 1,
+   "team": "Value Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2627,6 +2900,9 @@
    "source": "greenhouse",
    "board": "celonis",
    "posted": "2026-11-03",
+   "ref": "8156989003",
+   "detail": 1,
+   "team": "Value Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2640,6 +2916,9 @@
    "source": "greenhouse",
    "board": "celonis",
    "posted": "2026-07-27",
+   "ref": "7813096003",
+   "detail": 1,
+   "team": "Legal",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2653,6 +2932,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Legal",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2666,6 +2946,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Automatisierung & Elektrotechnik",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2679,6 +2960,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2692,6 +2974,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Early Career Internships",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2705,6 +2988,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Tech",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2718,6 +3002,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2731,6 +3017,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "CLG - Customer Focus & Growth",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2744,6 +3031,9 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2025-08-29",
+   "ref": "8145776002",
+   "detail": 1,
+   "team": "University Recruiting - Product",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2757,6 +3047,9 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2023-09-01",
+   "ref": "6866531002",
+   "detail": 1,
+   "team": "University Recruiting - Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2783,6 +3076,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Marketing and pr",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2796,6 +3090,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2809,6 +3104,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2822,6 +3118,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2835,6 +3132,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2848,6 +3146,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2861,6 +3160,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2874,6 +3174,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "IT & Security",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2887,6 +3188,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Marketing Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2900,6 +3202,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2913,6 +3216,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "IT Security",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2926,6 +3230,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Business",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2939,6 +3244,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Business",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2952,6 +3258,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2965,6 +3272,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2978,6 +3286,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -2991,6 +3300,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Marketing and Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3004,6 +3314,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Marketing Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3017,6 +3328,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Personnel Specialist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3030,6 +3342,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Headquarter Growth",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3043,6 +3356,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Headquarter Growth",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3056,6 +3370,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Tech",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3069,6 +3384,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Tech",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3082,6 +3398,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Tech",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3095,6 +3412,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Headquarter Growth",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3108,6 +3426,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3121,6 +3440,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Project Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3134,6 +3454,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Marketing/Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3147,6 +3468,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-07",
+   "team": "Business Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3160,6 +3482,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Stations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3173,6 +3496,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Business Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3186,6 +3510,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Marketing Assistant",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3199,6 +3524,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Marketing Assistant",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3212,6 +3538,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "General",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3225,6 +3552,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "General",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3277,6 +3605,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Marketing and Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3290,6 +3619,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Marketing & Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3303,6 +3633,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Product Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3316,6 +3647,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Personnel Specialist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3329,6 +3661,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Finance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3342,6 +3675,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3355,6 +3689,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Marketing Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3368,6 +3703,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3381,6 +3717,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3394,6 +3731,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Mergers & Acquisitions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3407,6 +3745,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Personalabteilung",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3420,6 +3759,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3433,6 +3773,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "System and Network Administration",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3446,6 +3787,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Data Scientist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3459,6 +3801,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Business Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3472,6 +3815,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Graphic Arts and Communication Design",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3485,6 +3829,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Business Consulting",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3498,6 +3843,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Career Starters",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3511,6 +3857,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Software Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3524,6 +3871,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Business Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3537,6 +3885,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Software Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3550,6 +3899,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "IT",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3563,6 +3913,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3576,6 +3928,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Personalabteilung",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3589,6 +3942,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3602,6 +3956,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Ground Systems",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3615,6 +3970,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Finance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3628,6 +3984,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3641,6 +3998,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Customer Service",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3654,6 +4012,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Data Scientist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3667,6 +4026,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Business Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3693,6 +4053,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3706,6 +4068,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Customer Service",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3719,6 +4082,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3732,6 +4096,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Process Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3745,6 +4110,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Marketing Assistant",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3758,6 +4124,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Revenue",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3771,6 +4138,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3784,6 +4152,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3797,6 +4166,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3810,6 +4181,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3823,6 +4196,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Business Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3836,6 +4210,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3849,6 +4224,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Software Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3862,6 +4238,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "System and Network Administration",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3875,6 +4252,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3888,6 +4266,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3901,6 +4280,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3914,6 +4294,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Customer Service",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3927,6 +4308,9 @@
    "source": "greenhouse",
    "board": "n26",
    "posted": "2026-11-03",
+   "ref": "8330667",
+   "detail": 1,
+   "team": "Executive Office",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3940,6 +4324,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Graphic Arts and Communication Design",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3953,6 +4338,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3966,6 +4352,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Administration",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3979,6 +4366,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Working Students",
    "firstSeen": "2026-11-14"
   },
   {
@@ -3992,6 +4380,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4005,6 +4394,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Recruitment and Selection",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4018,6 +4408,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Media",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4031,6 +4422,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Entwicklung",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4044,6 +4436,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4057,6 +4450,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Finance",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4070,6 +4464,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4083,6 +4478,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Software Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4096,6 +4492,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Controlling",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4109,6 +4506,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Quality Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4122,6 +4520,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4135,6 +4535,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4148,6 +4549,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-07",
+   "team": "Germany Division",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4161,6 +4563,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Student & Early Professionals",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4174,6 +4577,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Student & Early Professionals",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4187,6 +4591,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Student & Early Professionals",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4200,6 +4605,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Student & Early Professionals",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4213,6 +4619,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Student & Early Professionals",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4226,6 +4633,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Student & Early Professionals",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4239,6 +4647,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Advertising",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4252,6 +4661,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4265,6 +4676,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4278,6 +4690,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4291,6 +4704,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Marketing and Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4304,6 +4718,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Marketing and Communication",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4317,6 +4732,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Public Relations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4330,6 +4746,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Public Relations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4343,6 +4760,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4356,6 +4774,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Marketing Assistant",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4369,6 +4788,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Recruitment and Selection",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4382,6 +4802,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4395,6 +4816,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Controlling",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4408,6 +4830,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Process Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4421,6 +4844,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Data Scientist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4434,6 +4858,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4447,6 +4872,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Structures",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4460,6 +4886,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Customer Success",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4473,6 +4900,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Administration",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4486,6 +4914,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Administration",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4499,6 +4928,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "CEO Office",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4512,6 +4942,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "CEO Office",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4525,6 +4956,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "CEO Office",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4538,6 +4970,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Business Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4551,6 +4984,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Mergers & Acquisitions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4564,6 +4998,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Students",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4577,6 +5012,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Students",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4590,6 +5026,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Students",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4603,6 +5040,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "Students",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4616,6 +5054,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "TECOSIM Wiesbaden",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4629,6 +5068,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Customer Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4642,6 +5082,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "General",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4655,6 +5096,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Mitarbeiter:in im Restaurant",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4668,6 +5110,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4681,6 +5124,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4694,6 +5138,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4707,6 +5153,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Software Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4720,6 +5167,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4733,6 +5181,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4746,6 +5195,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4759,6 +5209,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Business Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4772,6 +5223,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-08",
+   "team": "People",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4785,6 +5237,7 @@
    "source": "greenhouse",
    "board": "trivago",
    "posted": "2026-11-09",
+   "ref": "8929674002",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4798,6 +5251,7 @@
    "source": "greenhouse",
    "board": "trivago",
    "posted": "2026-10-27",
+   "ref": "8905047002",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4811,6 +5265,7 @@
    "source": "greenhouse",
    "board": "trivago",
    "posted": "2026-10-23",
+   "ref": "8885174002",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4824,6 +5279,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4837,6 +5293,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Automation Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4850,6 +5307,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4863,6 +5322,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-07",
+   "team": "Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4876,6 +5336,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Growth",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4889,6 +5350,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Strategy & Org",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4902,6 +5364,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Business Consulting",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4915,6 +5378,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4928,6 +5393,8 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Remote",
+   "mode": "Remote",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4941,6 +5408,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "HR",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4954,6 +5422,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Customer Support",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4967,6 +5436,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "HR",
    "firstSeen": "2026-11-14"
   },
   {
@@ -4980,6 +5450,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5006,6 +5477,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Graphic Arts and Communication Design",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5019,6 +5491,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Business Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5032,6 +5505,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Customer Service",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5045,6 +5519,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Werraenergie GmbH",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5058,6 +5533,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "WerraEnergiedienste GmbH",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5071,6 +5547,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Technology & Data",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5084,6 +5561,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Client Teams",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5097,6 +5575,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Business Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5110,6 +5589,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Social Media Manager",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5123,6 +5603,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Consulting",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5136,6 +5617,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5149,6 +5631,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5162,6 +5645,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5175,6 +5659,9 @@
    "source": "greenhouse",
    "board": "mongodb",
    "posted": "2026-10-09",
+   "ref": "8258279",
+   "detail": 1,
+   "team": "Intern",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5188,6 +5675,9 @@
    "source": "greenhouse",
    "board": "mongodb",
    "posted": "2026-10-23",
+   "ref": "8267099",
+   "detail": 1,
+   "team": "PTO Interns",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5201,6 +5691,10 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-05",
+   "ref": "8244922",
+   "detail": 1,
+   "team": "University Engineering",
+   "pay": "EUR 5,000–6,250",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5214,6 +5708,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-01",
+   "ref": "8138034",
+   "detail": 1,
+   "team": "University Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5227,6 +5724,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-08-17",
+   "ref": "8097801",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5240,6 +5738,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Internship",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5253,6 +5752,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Internship",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5266,6 +5766,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Corporate Functions",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5279,6 +5780,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Trading",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5292,6 +5794,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Cefetra B.V.",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5305,6 +5808,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Afstudeerstage",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5318,6 +5822,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Stage",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5331,6 +5836,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Stage",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5344,6 +5850,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Stage",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5357,6 +5864,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Stage",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5370,6 +5878,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Stage",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5383,6 +5892,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5396,6 +5906,9 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2025-08-29",
+   "ref": "8133715002",
+   "detail": 1,
+   "team": "University Recruiting - Product",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5409,6 +5922,9 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2023-09-01",
+   "ref": "6866534002",
+   "detail": 1,
+   "team": "University Recruiting - Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5422,6 +5938,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "People",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5435,6 +5952,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5448,6 +5966,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Bouw en Vastgoed Amsterdam",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5461,6 +5980,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Bouw en Vastgoed Hengelo",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5474,6 +5994,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Internships",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5487,6 +6008,9 @@
    "source": "greenhouse",
    "board": "hellofresh",
    "posted": "2026-11-04",
+   "ref": "8352477",
+   "detail": 1,
+   "team": "Product Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5500,6 +6024,9 @@
    "source": "greenhouse",
    "board": "hellofresh",
    "posted": "2026-11-03",
+   "ref": "8349401",
+   "detail": 1,
+   "team": "Product Development",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5513,6 +6040,9 @@
    "source": "greenhouse",
    "board": "hellofresh",
    "posted": "2026-09-24",
+   "ref": "8230615",
+   "detail": 1,
+   "team": "Legal",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5526,6 +6056,9 @@
    "source": "greenhouse",
    "board": "hellofresh",
    "posted": "2026-11-11",
+   "ref": "8371654",
+   "detail": 1,
+   "team": "Special Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5539,6 +6072,9 @@
    "source": "greenhouse",
    "board": "hellofresh",
    "posted": "2026-10-29",
+   "ref": "8331372",
+   "detail": 1,
+   "team": "Growth Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5552,6 +6088,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Stage",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5578,6 +6115,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Medical",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5591,6 +6129,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "People & Culture",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5604,6 +6143,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Stages",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5630,6 +6170,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-09",
+   "team": "Stages",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5643,6 +6184,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Stages",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5656,6 +6198,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Stages",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5669,6 +6212,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Stage",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5682,6 +6226,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-10",
+   "team": "Communications",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5695,6 +6240,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Internships",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5708,6 +6254,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Students",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5721,6 +6268,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "The Trainee Company",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5734,6 +6282,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "The Trainee Company",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5747,6 +6296,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "HR & Recruitment",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5760,6 +6310,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Stage & Afstuderen",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5773,6 +6324,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Stage & Afstuderen",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5786,6 +6338,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-13",
+   "team": "Stage & Afstuderen",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5799,6 +6352,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Management",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5812,6 +6366,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-08-02",
+   "ref": "7821140003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5825,6 +6380,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-08-02",
+   "ref": "7819101003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5838,6 +6394,9 @@
    "source": "greenhouse",
    "board": "carta",
    "posted": "2026-11-02",
+   "ref": "8154341003",
+   "detail": 1,
+   "team": "Demand Generation",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5851,6 +6410,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-10-21",
+   "ref": "8175873",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "SGD 25 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5864,6 +6427,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-01-14",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5877,6 +6442,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-09-24",
+   "ref": "8186442",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5890,6 +6456,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-09-22",
+   "ref": "8186367",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5903,6 +6470,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-09-07",
+   "ref": "8130883",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5916,6 +6484,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-19",
+   "deadline": "2026-11-30",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5929,6 +6498,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-06-23",
+   "deadline": "2026-12-20",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5942,6 +6512,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-16",
+   "deadline": "2026-11-20",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5955,6 +6526,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-06",
+   "deadline": "2026-12-06",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5968,6 +6540,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-21",
+   "deadline": "2026-11-20",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5981,6 +6554,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-12",
+   "deadline": "2026-12-12",
    "firstSeen": "2026-11-14"
   },
   {
@@ -5994,6 +6568,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-21",
+   "deadline": "2026-11-20",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6007,6 +6582,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-15",
+   "deadline": "2026-11-14",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6020,6 +6596,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-06",
+   "deadline": "2026-12-06",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6033,6 +6610,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-27",
+   "deadline": "2026-11-26",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6046,6 +6624,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-12",
+   "deadline": "2026-12-12",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6059,6 +6638,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-19",
+   "deadline": "2026-11-18",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6072,6 +6652,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-09",
+   "deadline": "2026-11-30",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6085,6 +6666,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-14",
+   "deadline": "2026-12-14",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6098,6 +6680,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-06",
+   "deadline": "2027-04-04",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6111,6 +6694,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-20",
+   "deadline": "2026-11-29",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6124,6 +6708,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-01",
+   "deadline": "2026-12-01",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6137,6 +6722,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-01",
+   "deadline": "2026-12-01",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6150,6 +6736,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-09",
+   "deadline": "2026-12-09",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6163,6 +6750,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-19",
+   "deadline": "2026-11-27",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6176,6 +6764,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-11",
+   "deadline": "2026-11-30",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6189,6 +6778,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-13",
+   "deadline": "2026-12-20",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6202,6 +6792,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-13",
+   "deadline": "2026-12-20",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6215,6 +6806,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-11-13",
+   "deadline": "2026-12-20",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6228,6 +6820,7 @@
    "source": "jobtech",
    "board": "sweden",
    "posted": "2026-10-21",
+   "deadline": "2026-11-20",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6241,6 +6834,7 @@
    "source": "greenhouse",
    "board": "tamara",
    "posted": "2026-10-04",
+   "ref": "4996993101",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6254,6 +6848,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Interns",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6267,6 +6862,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Interns",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6280,6 +6876,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Interns",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6293,6 +6890,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6306,6 +6904,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "Expression of Interest",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6319,6 +6918,9 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2026-10-02",
+   "ref": "8847738002",
+   "detail": 1,
+   "team": "University Recruiting - Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6332,6 +6934,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-08-07",
+   "ref": "5708589004",
+   "detail": 1,
+   "team": "Engineering Specialist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6345,6 +6950,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-08-28",
+   "ref": "6163851004",
+   "detail": 1,
+   "team": "Engineering Specialist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6358,6 +6966,9 @@
    "source": "greenhouse",
    "board": "figma",
    "posted": "2026-09-14",
+   "ref": "6152695004",
+   "detail": 1,
+   "team": "Early Career",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6371,6 +6982,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8894965002",
+   "detail": 1,
+   "team": "Cloud Platform",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6384,6 +6998,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8894770002",
+   "detail": 1,
+   "team": "SW Device",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6397,6 +7014,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8894753002",
+   "detail": 1,
+   "team": "HW Circuit Design",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6410,6 +7030,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8894363002",
+   "detail": 1,
+   "team": "PTD",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6423,6 +7046,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8894375002",
+   "detail": 1,
+   "team": "Quality",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6436,6 +7062,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8879329002",
+   "detail": 1,
+   "team": "Verification",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6449,6 +7078,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8894868002",
+   "detail": 1,
+   "team": "Core",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6462,6 +7094,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8894376002",
+   "detail": 1,
+   "team": "SW Device",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6475,6 +7110,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-10-20",
+   "ref": "8894797002",
+   "detail": 1,
+   "team": "Core",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6488,6 +7126,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2021-07-01",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6501,6 +7141,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2019-01-29",
+   "team": "Design",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6514,6 +7156,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2021-07-01",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6527,6 +7171,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-06-26",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6540,6 +7186,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-10-19",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6553,6 +7201,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-11-05",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6566,6 +7216,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-11",
+   "team": "Operations",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6579,6 +7230,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-14",
+   "team": "3600 - Systems Architecture",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6592,6 +7244,7 @@
    "source": "greenhouse",
    "board": "scaleai",
    "posted": "2026-09-14",
+   "ref": "4730846005",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6605,6 +7258,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-08-31",
+   "ref": "8130867",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6618,6 +7272,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-06-15",
+   "ref": "5162206007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6631,6 +7286,7 @@
    "source": "arbeitnow",
    "board": "germany",
    "posted": "2026-11-12",
+   "team": "Internship Program",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6644,6 +7300,9 @@
    "source": "greenhouse",
    "board": "affirm",
    "posted": "2026-10-09",
+   "ref": "8011375003",
+   "detail": 1,
+   "team": "Information Security",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6657,6 +7316,9 @@
    "source": "greenhouse",
    "board": "affirm",
    "posted": "2026-10-02",
+   "ref": "8011590003",
+   "detail": 1,
+   "team": "Consumer Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6670,6 +7332,10 @@
    "source": "greenhouse",
    "board": "airbnb",
    "posted": "2026-11-11",
+   "ref": "8380007",
+   "detail": 1,
+   "team": "Intern",
+   "pay": "USD 40",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6683,6 +7349,10 @@
    "source": "greenhouse",
    "board": "celonis",
    "posted": "2026-09-02",
+   "ref": "7977884003",
+   "detail": 1,
+   "team": "Marketing",
+   "pay": "USD 28",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6696,6 +7366,9 @@
    "source": "greenhouse",
    "board": "celonis",
    "posted": "2026-11-10",
+   "ref": "8198760003",
+   "detail": 1,
+   "team": "Value Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6709,6 +7382,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175363",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6722,6 +7399,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8173991",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6735,6 +7416,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175471",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 50 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6748,6 +7433,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175366",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6761,6 +7450,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175369",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6774,6 +7467,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175429",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6787,6 +7484,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-10-09",
+   "ref": "8175510",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 50 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6800,6 +7501,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175569",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6813,6 +7518,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-21",
+   "ref": "8221238",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 50 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6826,6 +7535,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175432",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6839,6 +7552,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175514",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6852,6 +7569,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175441",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 60 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6865,6 +7586,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175447",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6878,6 +7603,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175517",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6891,6 +7620,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175556",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6904,6 +7637,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175339",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 60 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6917,6 +7654,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175507",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6930,6 +7671,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8187551",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6943,6 +7688,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8168315",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 60 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6956,6 +7705,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-11-10",
+   "ref": "8376084",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6969,6 +7722,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-21",
+   "ref": "8221241",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6982,6 +7739,10 @@
    "source": "greenhouse",
    "board": "coinbase",
    "posted": "2026-09-08",
+   "ref": "8175453",
+   "detail": 1,
+   "team": "Internships & Emerging Talent Positions",
+   "pay": "USD 40 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -6995,6 +7756,10 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2023-08-17",
+   "ref": "6866538002",
+   "detail": 1,
+   "team": "University Recruiting - Engineering",
+   "pay": "USD 54–60 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7008,6 +7773,10 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2026-10-09",
+   "ref": "8787352002",
+   "detail": 1,
+   "team": "University Recruiting - Product",
+   "pay": "USD 34–42 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7021,6 +7790,10 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2023-08-17",
+   "ref": "6883068002",
+   "detail": 1,
+   "team": "University Recruiting - Product",
+   "pay": "USD 51.50–56 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7034,6 +7807,10 @@
    "source": "greenhouse",
    "board": "databricks",
    "posted": "2023-08-04",
+   "ref": "6865687002",
+   "detail": 1,
+   "team": "University Recruiting - Engineering",
+   "pay": "USD 40–60",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7047,6 +7824,10 @@
    "source": "greenhouse",
    "board": "datadog",
    "posted": "2026-09-08",
+   "ref": "8052118",
+   "detail": 1,
+   "team": "Engineering Interns",
+   "pay": "USD 100k–110k / year",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7060,6 +7841,10 @@
    "source": "greenhouse",
    "board": "duolingo",
    "posted": "2026-11-09",
+   "ref": "8933791002",
+   "detail": 1,
+   "team": "University",
+   "pay": "USD 43–45 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7073,6 +7858,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-11-09",
+   "ref": "6251540004",
+   "detail": 1,
+   "team": "Engineering Specialist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7086,6 +7874,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-09-14",
+   "ref": "6152496004",
+   "detail": 1,
+   "team": "General Communications",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7099,6 +7890,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-09-21",
+   "ref": "6202675004",
+   "detail": 1,
+   "team": "Data Science",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7112,6 +7906,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-09-21",
+   "ref": "6202659004",
+   "detail": 1,
+   "team": "Engineering Generalist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7125,6 +7922,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-09-17",
+   "ref": "6193647004",
+   "detail": 1,
+   "team": "General Design",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7138,6 +7938,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-09-14",
+   "ref": "6148799004",
+   "detail": 1,
+   "team": "General Design",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7151,6 +7954,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-08-31",
+   "ref": "6173450004",
+   "detail": 1,
+   "team": "General Design",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7164,6 +7970,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-11-06",
+   "ref": "6218206004",
+   "detail": 1,
+   "team": "General Marketing",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7177,6 +7986,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-09-29",
+   "ref": "6161289004",
+   "detail": 1,
+   "team": "Product Mgmt",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7190,6 +8002,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-10-07",
+   "ref": "6219626004",
+   "detail": 1,
+   "team": "QA",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7203,6 +8018,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-08-19",
+   "ref": "6147154004",
+   "detail": 1,
+   "team": "Art",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7216,6 +8034,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-08-19",
+   "ref": "6147167004",
+   "detail": 1,
+   "team": "Engineering Generalist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7229,6 +8050,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-09-18",
+   "ref": "6200355004",
+   "detail": 1,
+   "team": "Engineering Generalist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7242,6 +8066,9 @@
    "source": "greenhouse",
    "board": "epicgames",
    "posted": "2026-09-09",
+   "ref": "6183401004",
+   "detail": 1,
+   "team": "Engineering Specialist",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7255,6 +8082,9 @@
    "source": "greenhouse",
    "board": "faire",
    "posted": "2026-10-06",
+   "ref": "8870975002",
+   "detail": 1,
+   "team": "Algorithms & Data",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7268,6 +8098,10 @@
    "source": "greenhouse",
    "board": "figma",
    "posted": "2026-09-23",
+   "ref": "6178851004",
+   "detail": 1,
+   "team": "Early Career",
+   "pay": "USD 46 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7281,6 +8115,10 @@
    "source": "greenhouse",
    "board": "figma",
    "posted": "2026-09-14",
+   "ref": "6180005004",
+   "detail": 1,
+   "team": "Early Career",
+   "pay": "USD 46 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7294,6 +8132,10 @@
    "source": "greenhouse",
    "board": "figma",
    "posted": "2026-09-14",
+   "ref": "6143238004",
+   "detail": 1,
+   "team": "Early Career",
+   "pay": "USD 55 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7307,6 +8149,9 @@
    "source": "greenhouse",
    "board": "graphcore",
    "posted": "2026-09-30",
+   "ref": "8857642002",
+   "detail": 1,
+   "team": "DC Engineering*",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7320,6 +8165,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8767723002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7333,6 +8181,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8796124002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7346,6 +8197,9 @@
    "source": "greenhouse",
    "board": "lyft",
    "posted": "2026-09-11",
+   "ref": "8767726002",
+   "detail": 1,
+   "team": "Early Talent",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7359,6 +8213,10 @@
    "source": "greenhouse",
    "board": "mongodb",
    "posted": "2026-10-23",
+   "ref": "8209134",
+   "detail": 1,
+   "team": "Intern",
+   "pay": "USD 86,528–123,552 / week",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7372,6 +8230,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-12-11",
+   "team": "Echo",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7385,6 +8245,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-10-31",
+   "team": "Finance",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7398,6 +8260,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2016-02-24",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7411,6 +8275,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-06-30",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7424,6 +8290,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-03-10",
+   "team": "Delta",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7437,6 +8305,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-12-11",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7450,6 +8320,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2022-06-30",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7463,6 +8335,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2021-07-01",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7476,6 +8350,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-10-22",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7489,6 +8365,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2022-08-03",
+   "team": "Information Security",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7502,6 +8380,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-04-09",
+   "team": "Business Development",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7515,6 +8395,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2016-10-06",
+   "team": "Engineering",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7528,6 +8410,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2019-10-10",
+   "team": "Design",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7541,6 +8425,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-08-12",
+   "team": "Design",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7554,6 +8440,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-07-31",
+   "team": "Design",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7567,6 +8455,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2024-08-19",
+   "team": "Design",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7580,6 +8470,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-11-04",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7593,6 +8485,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-11-10",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7606,6 +8500,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2024-08-29",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7619,6 +8515,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2022-06-30",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7632,6 +8530,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2021-07-01",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7645,6 +8545,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2021-07-01",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7658,6 +8560,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-11-04",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7671,6 +8575,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2024-08-05",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7684,6 +8590,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2024-08-05",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7697,6 +8605,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2024-08-05",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7710,6 +8620,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-06-26",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7723,6 +8635,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-08-19",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7736,6 +8650,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-06-26",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7749,6 +8665,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-06-26",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7762,6 +8680,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2025-08-19",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7775,6 +8695,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-10-19",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7788,6 +8710,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-11-05",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7801,6 +8725,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-06-24",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7814,6 +8740,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-03-20",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7827,6 +8755,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-04-23",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7840,6 +8770,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-03-20",
+   "team": "Delta",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7853,6 +8785,8 @@
    "source": "lever",
    "board": "palantir",
    "posted": "2026-03-20",
+   "team": "Dev",
+   "mode": "On-site",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7866,6 +8800,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-11-04",
+   "ref": "8334884",
+   "detail": 1,
+   "team": "University Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7879,6 +8816,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-01",
+   "ref": "8138097",
+   "detail": 1,
+   "team": "University Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7892,6 +8832,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-01",
+   "ref": "8138090",
+   "detail": 1,
+   "team": "University",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7905,6 +8848,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-11-09",
+   "ref": "8350814",
+   "detail": 1,
+   "team": "University Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7918,6 +8864,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-11-12",
+   "ref": "8214783",
+   "detail": 1,
+   "team": "University Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7931,6 +8880,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-01",
+   "ref": "7838577",
+   "detail": 1,
+   "team": "University Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7944,6 +8896,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-08",
+   "ref": "8214788",
+   "detail": 1,
+   "team": "University Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7957,6 +8912,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-11-06",
+   "ref": "8334878",
+   "detail": 1,
+   "team": "University Sales",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7970,6 +8928,9 @@
    "source": "greenhouse",
    "board": "pinterest",
    "posted": "2026-10-01",
+   "ref": "8140217",
+   "detail": 1,
+   "team": "University Engineering",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7983,6 +8944,9 @@
    "source": "greenhouse",
    "board": "riotgames",
    "posted": "2026-11-10",
+   "ref": "8356855",
+   "detail": 1,
+   "team": "Riot Game Studios",
    "firstSeen": "2026-11-14"
   },
   {
@@ -7996,6 +8960,9 @@
    "source": "greenhouse",
    "board": "riotgames",
    "posted": "2026-11-10",
+   "ref": "8356866",
+   "detail": 1,
+   "team": "Riot Game Studios",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8009,6 +8976,9 @@
    "source": "greenhouse",
    "board": "riotgames",
    "posted": "2026-11-10",
+   "ref": "8356716",
+   "detail": 1,
+   "team": "Riot Game Studios",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8022,6 +8992,9 @@
    "source": "greenhouse",
    "board": "riotgames",
    "posted": "2026-11-11",
+   "ref": "8356372",
+   "detail": 1,
+   "team": "Riot Game Studios",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8035,6 +9008,9 @@
    "source": "greenhouse",
    "board": "riotgames",
    "posted": "2026-11-10",
+   "ref": "8356815",
+   "detail": 1,
+   "team": "Riot Game Studios",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8048,6 +9024,9 @@
    "source": "greenhouse",
    "board": "riotgames",
    "posted": "2026-11-11",
+   "ref": "8356807",
+   "detail": 1,
+   "team": "Riot Game Studios",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8061,6 +9040,9 @@
    "source": "greenhouse",
    "board": "riotgames",
    "posted": "2026-11-11",
+   "ref": "8356830",
+   "detail": 1,
+   "team": "Riot Game Studios",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8074,6 +9056,9 @@
    "source": "greenhouse",
    "board": "riotgames",
    "posted": "2026-11-11",
+   "ref": "8356525",
+   "detail": 1,
+   "team": "Riot Game Studios",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8087,6 +9072,10 @@
    "source": "greenhouse",
    "board": "robinhood",
    "posted": "2026-11-13",
+   "ref": "8357464",
+   "detail": 1,
+   "team": "Finance Division",
+   "pay": "USD 33 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8100,6 +9089,10 @@
    "source": "greenhouse",
    "board": "robinhood",
    "posted": "2026-09-14",
+   "ref": "8198187",
+   "detail": 1,
+   "team": "Robinhood Ventures",
+   "pay": "USD 47 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8113,6 +9106,10 @@
    "source": "greenhouse",
    "board": "robinhood",
    "posted": "2026-09-14",
+   "ref": "8197614",
+   "detail": 1,
+   "team": "PeopleX Division",
+   "pay": "USD 38 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8126,6 +9123,10 @@
    "source": "greenhouse",
    "board": "roblox",
    "posted": "2026-08-05",
+   "ref": "8072713",
+   "detail": 1,
+   "team": "Early Career Internship - Engineering",
+   "pay": "USD 62 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8139,6 +9140,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7984600003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8152,6 +9154,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7986748003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8165,6 +9168,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-10",
+   "ref": "7990683003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8178,6 +9182,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7998598003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8191,6 +9196,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-12",
+   "ref": "8013534003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8204,6 +9210,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7989724003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8217,6 +9224,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7989722003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8230,6 +9238,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7990365003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8243,6 +9252,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7986794003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8256,6 +9266,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-02",
+   "ref": "7992752003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8269,6 +9280,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-02",
+   "ref": "8001399003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8282,6 +9294,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-02",
+   "ref": "7992754003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8295,6 +9308,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-02",
+   "ref": "8001401003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8308,6 +9322,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-12",
+   "ref": "8007204003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8321,6 +9336,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-11-02",
+   "ref": "8042094003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8334,6 +9350,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-19",
+   "ref": "8007202003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8347,6 +9364,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-11-02",
+   "ref": "8042092003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8360,6 +9378,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7990268003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8373,6 +9392,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-11",
+   "ref": "7989035003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8386,6 +9406,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-11",
+   "ref": "7989063003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8399,6 +9420,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7984943003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8412,6 +9434,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7987020003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8425,6 +9448,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7984564003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8438,6 +9462,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7988835003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8451,6 +9476,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7996623003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8464,6 +9490,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7989904003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8477,6 +9504,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-13",
+   "ref": "7991448003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8490,6 +9518,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7992102003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8503,6 +9532,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7994892003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8516,6 +9546,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-11",
+   "ref": "7990245003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8529,6 +9560,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986824003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8542,6 +9574,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986820003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8555,6 +9588,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-29",
+   "ref": "8042031003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8568,6 +9602,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7996578003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8581,6 +9616,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7996576003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8594,6 +9630,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986872003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8607,6 +9644,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986954003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8620,6 +9658,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986965003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8633,6 +9672,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986874003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8646,6 +9686,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986956003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8659,6 +9700,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986961003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8672,6 +9714,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-16",
+   "ref": "7986963003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8685,6 +9728,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-05",
+   "ref": "7984786003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8698,6 +9742,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7985032003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8711,6 +9756,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7986131003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8724,6 +9770,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7990069003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8737,6 +9784,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7990378003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8750,6 +9798,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7984568003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8763,6 +9812,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7990063003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8776,6 +9826,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-10-16",
+   "ref": "7999237003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8789,6 +9840,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7987046003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8802,6 +9854,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7990138003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8815,6 +9868,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7990270003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8828,6 +9882,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7990272003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8841,6 +9896,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7987042003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8854,6 +9910,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7990352003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8867,6 +9924,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-24",
+   "ref": "8003533003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8880,6 +9938,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-17",
+   "ref": "7990350003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8893,6 +9952,7 @@
    "source": "greenhouse",
    "board": "rocketlab",
    "posted": "2026-09-09",
+   "ref": "7987208003",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8906,6 +9966,10 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-08-21",
+   "ref": "8103119",
+   "detail": 1,
+   "team": "Account Development Representative",
+   "pay": "USD 21.70 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8919,6 +9983,10 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-10-26",
+   "ref": "8325057",
+   "detail": 1,
+   "team": "Account Development Representative",
+   "pay": "USD 21.70 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8932,6 +10000,10 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-10-26",
+   "ref": "8325373",
+   "detail": 1,
+   "team": "Account Development Representative",
+   "pay": "USD 21.70 / hour",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8945,6 +10017,7 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-08-21",
+   "ref": "8099799",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8958,6 +10031,7 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-10-23",
+   "ref": "8319784",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8971,6 +10045,7 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-10-26",
+   "ref": "8325056",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8984,6 +10059,7 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-11-10",
+   "ref": "8226608",
    "firstSeen": "2026-11-14"
   },
   {
@@ -8997,6 +10073,7 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-09-24",
+   "ref": "8226602",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9010,6 +10087,7 @@
    "source": "greenhouse",
    "board": "samsara",
    "posted": "2026-11-06",
+   "ref": "8358786",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9023,6 +10101,7 @@
    "source": "greenhouse",
    "board": "scaleai",
    "posted": "2026-10-19",
+   "ref": "4735665005",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9036,6 +10115,7 @@
    "source": "greenhouse",
    "board": "scaleai",
    "posted": "2026-09-04",
+   "ref": "4730845005",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9049,6 +10129,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-11-06",
+   "ref": "8357739",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9062,6 +10143,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-10-01",
+   "ref": "8194291",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9075,6 +10157,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-10-30",
+   "ref": "8333074",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9088,6 +10171,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-11-05",
+   "ref": "8332681",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9101,6 +10185,7 @@
    "source": "greenhouse",
    "board": "stripe",
    "posted": "2026-08-31",
+   "ref": "8128745",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9114,6 +10199,7 @@
    "source": "greenhouse",
    "board": "twitch",
    "posted": "2026-10-22",
+   "ref": "8886748002",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9127,6 +10213,7 @@
    "source": "greenhouse",
    "board": "twitch",
    "posted": "2026-10-22",
+   "ref": "8886605002",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9140,6 +10227,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-08-25",
+   "ref": "5210813007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9153,6 +10241,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-08-25",
+   "ref": "5211595007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9166,6 +10255,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-08-25",
+   "ref": "5210942007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9179,6 +10269,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-08-25",
+   "ref": "5219131007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9192,6 +10283,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2025-09-09",
+   "ref": "4866879007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9205,6 +10297,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-11-02",
+   "ref": "4995135007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9218,6 +10311,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-08-25",
+   "ref": "5213881007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9231,6 +10325,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-09-08",
+   "ref": "5056164007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9244,6 +10339,7 @@
    "source": "greenhouse",
    "board": "verkada",
    "posted": "2026-09-08",
+   "ref": "5233011007",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9257,6 +10353,7 @@
    "source": "greenhouse",
    "board": "waymo",
    "posted": "2026-09-17",
+   "ref": "8210170",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9270,6 +10367,7 @@
    "source": "greenhouse",
    "board": "waymo",
    "posted": "2026-11-06",
+   "ref": "8350832",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9283,6 +10381,7 @@
    "source": "greenhouse",
    "board": "waymo",
    "posted": "2026-09-01",
+   "ref": "8165014",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9296,6 +10395,7 @@
    "source": "greenhouse",
    "board": "waymo",
    "posted": "2026-09-15",
+   "ref": "8198582",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9309,6 +10409,7 @@
    "source": "greenhouse",
    "board": "waymo",
    "posted": "2026-09-14",
+   "ref": "8197014",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9322,6 +10423,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-07",
+   "team": "Safety Policy and Strategy",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9335,6 +10438,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-06",
+   "team": "Data Science",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9348,6 +10453,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-12",
+   "team": "System Design & Mission Assurance",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9361,6 +10468,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-14",
+   "team": "Product",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9374,6 +10483,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-02",
+   "team": "Manufacturing Operations",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9387,6 +10498,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-02",
+   "team": "Vehicle Development",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9400,6 +10513,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-02",
+   "team": "Advanced Hardware Engineering",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9413,6 +10528,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-13",
+   "team": "Vehicle Development",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9426,6 +10543,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-02",
+   "team": "Information Technology",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9439,6 +10558,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-07",
+   "team": "Fleet Operations",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9452,6 +10573,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-07",
+   "team": "Safety Policy and Strategy",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9465,6 +10588,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-10-30",
+   "team": "Software",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9478,6 +10603,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-10-30",
+   "team": "Software",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9491,6 +10618,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-10-30",
+   "team": "Software",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   },
   {
@@ -9504,6 +10633,8 @@
    "source": "lever",
    "board": "zoox",
    "posted": "2026-11-12",
+   "team": "System Design & Mission Assurance",
+   "mode": "Hybrid",
    "firstSeen": "2026-11-14"
   }
  ],
