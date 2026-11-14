@@ -24,9 +24,12 @@ jobs:
       - name: Self-test (stub server, no internet)
         run: python3 scripts/pool/test_pool.py
       - name: Run pilot
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}
         run: |
           mkdir -p out && cd out
-          ARGS="--mailto ${{ vars.CONTACT_EMAIL }} --min-works ${{ inputs.min_works }}"
+          ARGS="--min-works ${{ inputs.min_works }}"
+          if [ -n "$CONTACT_EMAIL" ]; then ARGS="$ARGS --mailto $CONTACT_EMAIL"; fi
           if [ -n "${{ inputs.countries }}" ]; then ARGS="$ARGS --countries ${{ inputs.countries }}"; fi
           python3 ../scripts/pool/pool_pilot.py $ARGS
           cat pool_summary.md >> "$GITHUB_STEP_SUMMARY"
