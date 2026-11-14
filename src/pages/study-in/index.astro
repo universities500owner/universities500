@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import { countries, all } from '../../lib/data.js';
+---
+<Base
+  title="Study abroad: countries and universities | Universities500"
+  description={`Choose from ${countries.length} study destinations and browse ${all.length} universities, with official websites, campuses and sources.`}
+  path="/study-in/"
+  current="study-in"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Study in</nav>
+  <h1>Study abroad: pick a country</h1>
+  <p class="lede">Each country page lists its universities. Open one to see its facts and sources.</p>
+  <ul class="grid">
+    {countries.map((c) => (
+      <li>
+        <a class="card" href={`/study-in/${c.code}/`}>
+          <strong>{c.name}</strong>
+          <span>{c.count} {c.count === 1 ? 'university' : 'universities'}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>

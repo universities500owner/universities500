@@ -1,0 +1,175 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/home-v1.tokens.css';
+import '../styles/home-v1.css';
+import { all, countries, latestRead, SITE } from '../lib/data.js';
+
+const listed = all.filter((u) => u.listed).length;
+const shortDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+
+// Decorative rings, drawn once at build time (same shape as the earlier home).
+const rings = Array.from({ length: 26 }, (_, i) => ({
+  rx: 70 + i * 13,
+  ry: 26 + i * 6.2,
+  rot: i * 7,
+  op: (0.5 - i * 0.012).toFixed(3),
+}));
+
+const counts = { _all: { n: all.length, name: '' } };
+for (const c of countries) counts[c.code] = { n: c.count, name: c.name };
+
+// The first four countries by number of universities become the quick links under the search box.
+const quick = [...countries].sort((a, b) => b.count - a.count).slice(0, 4);
+
+const steps = [
+  ['Find the fit', 'Score every course against what you’ve already studied, not just what you can afford.'],
+  ['Build the file', 'Documents, test scores, letters. One profile you reuse for every application.'],
+  ['Fund it', 'True cost, scholarships and loan repayments, before you commit to a country.'],
+  ['Land it', 'Visa readiness, what to pack, and who to find in your first week.'],
+];
+
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Universities500',
+    url: SITE + '/',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: SITE + '/universities/?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+  { '@context': 'https://schema.org', '@type': 'Organization', name: 'Universities500', url: SITE + '/', logo: SITE + '/brand/mark-light.png' },
+];
+---
+<Base
+  title="Universities500: where could I actually go?"
+  description={`Browse ${all.length} universities in ${countries.length} countries. Each profile shows the official website, campuses and founding year, with a source for every fact.`}
+  path="/"
+  jsonld={ld}
+  wide={true}
+>
+  <div class="home-v1">
+    <section class="hero">
+      <svg class="guilloche" viewBox="0 0 800 420" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1">
+        <g>
+          {rings.map((r) => (
+            <ellipse cx="560" cy="300" rx={r.rx} ry={r.ry} transform={`rotate(${r.rot} 560 300)`} opacity={r.op} />
+          ))}
+        </g>
+      </svg>
+      <div class="wrap hero-in">
+        <h1>Where could I actually go?</h1>
+        <p class="hero-sub">
+          Pick a country and see the universities there, with the facts and the sources for each one.
+        </p>
+
+        <form class="bigsearch" action="/universities/" method="get" role="search" autocomplete="off">
+          <div class="bs-box">
+            <div class="bs-field">
+              <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
+              <input id="bs-q" name="q" type="search" placeholder="Search universities" aria-label="Search universities by name" enterkeyhint="search" />
+              <button class="btn" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+        <p class="sx-try bs-try" aria-label="Browse by country">
+          {quick.map((c) => <a class="sx-q" href={`/study-in/${c.code}/`}>Universities in {c.name}</a>)}
+        </p>
+
+        <p class="madlib">
+          I want to study in
+          <span class="slot">
+            <select id="s-country" aria-label="Country you want to study in">
+              <option value="">any country</option>
+              {countries.map((c) => <option value={c.code}>{c.name}</option>)}
+            </select>
+          </span>.
+        </p>
+
+        <div class="count">
+          <span class="count-n" id="count" aria-hidden="true">{all.length}</span>
+          <span class="count-txt" id="count-txt" role="status"><b>universities</b> across {countries.length} countries. Pick a country to narrow it down.</span>
+        </div>
+
+        <div class="row">
+          <a class="btn" id="go" href="/universities/">Show these universities</a>
+          <a class="btn-ghost" href="/study-in/">Browse by country</a>
+        </div>
+
+        <dl class="scope">
+          <div><dt>{all.length}</dt><dd>universities, each with a source for its facts</dd></div>
+          <div><dt>{countries.length}</dt><dd>countries, from Australia to the United States</dd></div>
+          {latestRead && <div><dt>{shortDate(latestRead)}</dt><dd>when the data was last read</dd></div>}
+        </dl>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="promo">
+          <div class="promo-txt">
+            <h2>Every fact shows where it came from.</h2>
+            <p>
+              Each university page names its sources, links to them and shows the date we last read the data.
+              Facts change, so check the university's own website before you apply.
+            </p>
+            <a class="btn-on-accent" href="/universities/">Browse universities</a>
+          </div>
+          <div class="promo-stat">
+            <b>{listed}</b>
+            <span>profiles with an overview, official website, founding year and campus</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>Coming next: four steps from fit to landing.</h2>
+        <ol class="steps">
+          {steps.map(([t, d], i) => (
+            <li class="step">
+              <span class="step-n">{i + 1}</span>
+              <h3>{t} <span class="soon">Soon</span></h3>
+              <p>{d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  </div>
+
+  <script id="country-counts" type="application/json" set:html={JSON.stringify(counts)} />
+  <script is:inline>
+    (function () {
+      var data = JSON.parse(document.getElementById('country-counts').textContent);
+      var sel = document.getElementById('s-country'), n = document.getElementById('count'), txt = document.getElementById('count-txt'), go = document.getElementById('go');
+      var total = Object.keys(data).length - 1;
+      function run() {
+        var v = sel.value, d = data[v || '_all'];
+        n.textContent = d.n;
+        var b = document.createElement('b');
+        b.textContent = d.n === 1 ? 'university' : 'universities';
+        txt.textContent = '';
+        txt.appendChild(b);
+        txt.appendChild(document.createTextNode(v ? ' in ' + d.name + '. Open one to see its facts and sources.' : ' across ' + total + ' countries. Pick a country to narrow it down.'));
+        go.setAttribute('href', v ? '/universities/?c=' + encodeURIComponent(v) : '/universities/');
+      }
+      sel.addEventListener('change', run);
+      run();
+    })();
+  </script>
+
+  <style is:global>
+    .home-v1 a.btn, .home-v1 a.btn-ghost, .home-v1 a.btn-on-accent, .home-v1 a.sx-q { text-decoration: none; display: inline-flex; align-items: center; }
+    .home-v1 .sx-q:hover { border-color: var(--ink); }
+    .home-v1 .soon { font-family: var(--body); font-weight: 600; font-size: .7rem; letter-spacing: 0; background: var(--hover); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: .05rem .5rem; margin-left: .35rem; vertical-align: middle; }
+    .home-v1 .scope dd { max-width: 22ch; }
+    @media (max-width: 600px) {
+      .home-v1 .scope { display: grid; gap: 1.1rem; }
+      .home-v1 .scope > div { border-right: 0; padding-right: 0; margin-right: 0; }
+    }
+  </style>
+</Base>

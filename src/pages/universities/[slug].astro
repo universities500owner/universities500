@@ -1,0 +1,136 @@
+---
+import Base from '../../layouts/Base.astro';
+import { all, blurb, related, fmtDate, SITE } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  return all.map((u) => ({ params: { slug: u.slug }, props: { u } }));
+}
+const { u } = Astro.props;
+const peers = related(u);
+
+const title = `${u.name}: facts, campuses and official links | Universities500`;
+const description = u.overview
+  ? blurb(u.overview, 150)
+  : `${u.name} in ${u.countryName}: official website and basic facts, with sources.`;
+
+const sameAs = [u.wikidata, u.overviewSrc].filter(Boolean);
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'CollegeOrUniversity',
+  name: u.name,
+  url: u.web || undefined,
+  foundingDate: u.founded?.v,
+  address: { '@type': 'PostalAddress', addressCountry: u.countryName },
+  sameAs,
+};
+---
+<Base title={title} description={description} path={`/universities/${u.slug}/`} noindex={!u.listed} jsonld={ld} current="universities">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span>
+    <a href="/universities/">Universities</a><span aria-hidden="true">/</span>
+    <a href={`/study-in/${u.country}/`}>{u.countryName}</a>
+  </nav>
+
+  <h1>{u.name}</h1>
+  <ul class="chips">
+    <li>{u.countryName}</li>
+    {u.founded && <li>Founded {u.founded.v}</li>}
+  </ul>
+
+  {u.web && (
+    <ul class="links">
+      <li><a class="btn" href={u.web} rel="noopener">Official website</a></li>
+    </ul>
+  )}
+
+  {u.overview && (
+    <section aria-labelledby="overview">
+      <h2 id="overview">Overview</h2>
+      <p>{u.overview}</p>
+      <p class="small">
+        Text from <a href={u.overviewSrc}>Wikipedia</a>, licensed{' '}
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.{u.overviewTrimmed ? ' Shortened from the original.' : ''}
+      </p>
+    </section>
+  )}
+
+  <section aria-labelledby="facts">
+    <h2 id="facts">Key facts</h2>
+    <table class="facts">
+      <tbody>
+        {u.founded && (
+          <tr>
+            <th scope="row">Founded</th>
+            <td>{u.founded.v}<a class="source" href={u.founded.src}>Source: Wikidata</a></td>
+          </tr>
+        )}
+        {u.campuses && (
+          <tr>
+            <th scope="row">{u.campuses.length > 1 ? 'Locations' : 'Main location'}</th>
+            <td>
+              {u.campuses.map((c) => c.n).join('; ')}
+              <a class="source" href={u.campusSrc}>Source: Wikidata. Other campuses may not be listed.</a>
+            </td>
+          </tr>
+        )}
+        {(u.stats || []).map((s) => (
+          <tr>
+            <th scope="row">{s.l}</th>
+            <td>{s.v}{s.a ? ` (${s.a})` : ''}<a class="source" href={s.src}>Source: Wikidata. Can be out of date.</a></td>
+          </tr>
+        ))}
+        {u.web && (
+          <tr>
+            <th scope="row">Website</th>
+            <td><a href={u.web} rel="noopener">{u.web.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}</a></td>
+          </tr>
+        )}
+        {u.ig && (
+          <tr>
+            <th scope="row">Instagram</th>
+            <td><a href={u.ig} rel="noopener">Official account</a></td>
+          </tr>
+        )}
+        {u.yt && (
+          <tr>
+            <th scope="row">YouTube</th>
+            <td><a href={u.yt} rel="noopener">Official channel</a></td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+    {u.read && <p class="small">Data read on {fmtDate(u.read)}. Check the university's own site for current details.</p>}
+  </section>
+
+  {u.alumni && u.alumni.length > 0 && (
+    <section aria-labelledby="alumni">
+      <h2 id="alumni">People who studied here</h2>
+      <ul class="people">
+        {u.alumni.map((a) => (
+          <li><a href={a.u}>{a.n}</a>{a.w && <small>{a.w}</small>}</li>
+        ))}
+      </ul>
+      <p class="small">From Wikidata, where "educated at" names this university. It is not a complete list.</p>
+    </section>
+  )}
+
+  <section aria-labelledby="rank">
+    <h2 id="rank">Rankings</h2>
+    <div class="note">
+      <p>Ranking sites measure different things, so a university can look very different on each. We don't copy their numbers. See how this university appears on the ranking sites themselves.</p>
+      <p><a href="/rankings/">Where to check the rankings</a></p>
+    </div>
+  </section>
+
+  {peers.length > 0 && (
+    <section aria-labelledby="more">
+      <h2 id="more">More universities in {u.countryName}</h2>
+      <ul class="grid">
+        {peers.map((p) => (
+          <li><a class="card" href={`/universities/${p.slug}/`}><strong>{p.name}</strong><span>{p.countryName}</span></a></li>
+        ))}
+      </ul>
+      <p><a href={`/study-in/${u.country}/`}>All universities in {u.countryName}</a></p>
+    </section>
+  )}
+</Base>

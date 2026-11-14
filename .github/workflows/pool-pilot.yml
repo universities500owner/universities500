@@ -1,0 +1,36 @@
+name: Pool pilot (open data)
+
+# Run by hand from the Actions tab. Reads OpenAlex only (open data). No ranking is read or used.
+on:
+  workflow_dispatch:
+    inputs:
+      countries:
+        description: "ISO codes, comma-separated (blank = all 14)"
+        required: false
+        default: "AU,CA"
+      min_works:
+        description: "Skip institutions with fewer publications than this"
+        required: false
+        default: "1000"
+
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Self-test (stub server, no internet)
+        run: python3 scripts/pool/test_pool.py
+      - name: Run pilot
+        run: |
+          mkdir -p out && cd out
+          ARGS="--mailto ${{ vars.CONTACT_EMAIL }} --min-works ${{ inputs.min_works }}"
+          if [ -n "${{ inputs.countries }}" ]; then ARGS="$ARGS --countries ${{ inputs.countries }}"; fi
+          python3 ../scripts/pool/pool_pilot.py $ARGS
+          cat pool_summary.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pool-pilot
+          path: out/

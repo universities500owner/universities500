@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+
+const sites = [
+  { name: 'QS World University Rankings', by: 'QS Quacquarelli Symonds', url: 'https://www.topuniversities.com/world-university-rankings' },
+  { name: 'Times Higher Education World University Rankings', by: 'Times Higher Education', url: 'https://www.timeshighereducation.com/world-university-rankings' },
+  { name: 'Best Global Universities', by: 'U.S. News & World Report', url: 'https://www.usnews.com/education/best-global-universities' },
+  { name: 'Academic Ranking of World Universities', by: 'ShanghaiRanking Consultancy', url: 'https://www.shanghairanking.com/rankings/arwu' },
+  { name: 'CWTS Leiden Ranking', by: 'CWTS, Leiden University', url: 'https://www.leidenranking.com/', note: 'Looks at research only. It does not consider teaching.' },
+];
+---
+<!-- Draft: noindex until the "how the rankings differ" guide is written and each fact in it has a source. -->
+<Base
+  title="Where to check university rankings | Universities500"
+  description="Links to the main university ranking sites, so you can check each one yourself."
+  path="/rankings/"
+  noindex={true}
+  current="rankings"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Rankings</nav>
+  <h1>Check the university rankings yourself</h1>
+  <p class="lede">Several organisations rank universities, and they measure different things. A university can look very different on each one.</p>
+  <p>We don't copy or show their numbers. Open the sites below to see how a university appears, and read how each ranking works before you rely on it.</p>
+
+  <ul class="grid">
+    {sites.map((s) => (
+      <li>
+        <a class="card" href={s.url} rel="noopener">
+          <strong>{s.name}</strong>
+          <span>{s.by}{s.note ? `. ${s.note}` : ''}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p class="small">These are links to independent organisations. Universities500 is not connected to them.</p>
+</Base>

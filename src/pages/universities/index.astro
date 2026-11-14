@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import { all, countries } from '../../lib/data.js';
+---
+<Base
+  title="All universities | Universities500"
+  description={`Browse ${all.length} universities in ${countries.length} countries. Search by name or filter by country to open a profile with campuses, founding year and official links.`}
+  path="/universities/"
+  current="universities"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Universities</nav>
+  <h1>All universities</h1>
+  <p class="lede">Search by name or filter by country. Open a university to see its facts and sources.</p>
+
+  <div class="filterbar">
+    <label class="skip" for="q">Search by name</label>
+    <input id="q" type="search" placeholder="Search by name" autocomplete="off" />
+    <label class="skip" for="c">Country</label>
+    <select id="c">
+      <option value="">All countries</option>
+      {countries.map((c) => <option value={c.code}>{c.name}</option>)}
+    </select>
+  </div>
+  <p class="tally" id="tally" aria-live="polite">{all.length} universities</p>
+
+  <ul class="grid">
+    {all.map((u) => (
+      <li data-uni data-name={u.name.toLowerCase()} data-country={u.country}>
+        <a class="card" href={`/universities/${u.slug}/`}>
+          <strong>{u.name}</strong>
+          <span>{u.countryName}{u.founded ? ` · Founded ${u.founded.v}` : ''}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <script is:inline>
+    (function () {
+      var q = document.getElementById('q'), c = document.getElementById('c'), tally = document.getElementById('tally');
+      var items = [].slice.call(document.querySelectorAll('[data-uni]'));
+      function run() {
+        var s = q.value.trim().toLowerCase(), cc = c.value, n = 0;
+        items.forEach(function (li) {
+          var ok = (!s || li.dataset.name.indexOf(s) > -1) && (!cc || li.dataset.country === cc);
+          li.hidden = !ok;
+          if (ok) n++;
+        });
+        tally.textContent = n + (n === 1 ? ' university' : ' universities') + (n === items.length ? '' : ' of ' + items.length);
+      }
+      var p = new URLSearchParams(location.search);
+      if (p.get('q')) q.value = p.get('q');
+      if (p.get('c')) c.value = p.get('c');
+      q.addEventListener('input', run);
+      c.addEventListener('change', run);
+      run();
+    })();
+  </script>
+</Base>

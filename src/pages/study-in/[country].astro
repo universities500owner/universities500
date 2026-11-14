@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import { countries, byCountry } from '../../lib/data.js';
+
+export function getStaticPaths() {
+  return countries.map((c) => ({ params: { country: c.code }, props: { c } }));
+}
+const { c } = Astro.props;
+const list = byCountry(c.code);
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Universities in ${c.name}`,
+  numberOfItems: list.length,
+  itemListElement: list.map((u, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: u.name,
+    url: `https://universities500.com/universities/${u.slug}/`,
+  })),
+};
+---
+<Base
+  title={`Universities in ${c.name} | Universities500`}
+  description={`Browse ${list.length} ${list.length === 1 ? 'university' : 'universities'} in ${c.name}. Each profile shows the official website, campuses and founding year, with a source link.`}
+  path={`/study-in/${c.code}/`}
+  jsonld={ld}
+  current="study-in"
+>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/study-in/">Study in</a><span aria-hidden="true">/</span>{c.name}
+  </nav>
+  <h1>Universities in {c.name}</h1>
+  <p class="lede">{list.length} {list.length === 1 ? 'university' : 'universities'}, listed alphabetically.</p>
+  <ul class="grid">
+    {list.map((u) => (
+      <li>
+        <a class="card" href={`/universities/${u.slug}/`}>
+          <strong>{u.name}</strong>
+          <span>{u.founded ? `Founded ${u.founded.v}` : c.name}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</Base>
