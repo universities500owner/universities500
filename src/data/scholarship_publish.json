@@ -1,4 +1,4 @@
 {
- "publish": true,
+ "publish": false,
  "note": "Set to true to show scholarship listings and per-scholarship pages on the site. Leave false until the first run's sample records have been checked against their official pages."
 }
