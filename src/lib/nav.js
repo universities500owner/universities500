@@ -35,6 +35,7 @@ export const NAV = [
     items: [
       ['/before-you-fly/', 'Before you fly', 'before-you-fly', 'The twelve weeks between visa approval and your first day.'],
       ['/working-while-you-study/', 'Working while you study', 'working-while-you-study', 'What each destination broadly allows, and where to look for work.'],
+      ['/internships/', 'Internships', 'internships', 'Search internships, co-ops and placements by destination.'],
     ],
   },
 ];

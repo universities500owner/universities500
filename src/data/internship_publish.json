@@ -1,0 +1,4 @@
+{
+ "publish": false,
+ "note": "Set to true to show internship listings. Leave false until the first run's sample items have been checked against the employers' own pages."
+}

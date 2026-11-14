@@ -1,0 +1,84 @@
+name: Internships (read employer feeds)
+
+# Reads internship postings from employers' public job-board feeds (Greenhouse, Lever, Ashby, SmartRecruiters, Workable)
+# and from two open feeds (Sweden's Platsbanken, Arbeitnow for Germany), then commits src/data/internships.json to main.
+# Cloudflare rebuilds the site from that commit. No AI is used anywhere.
+#
+# Runs once a day. A manual run from the Actions tab always goes ahead.
+# Contact address: add CONTACT_EMAIL under Settings > Secrets and variables > Actions (either a variable or a secret works).
+# It goes in the reader's User-Agent so a website owner can reach you.
+on:
+  schedule:
+    - cron: "41 21 * * *"   # 21:41 UTC = 03:11 India time
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these employer slugs, or 'open' for the open feeds only (blank = everything)"
+        required: false
+        default: ""
+      limit:
+        description: "Only the first N employers (0 = all). Handy for a small trial."
+        required: false
+        default: "0"
+      commit:
+        description: "Commit the result to main"
+        type: boolean
+        default: true
+
+concurrency:
+  group: internships
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Self-test (stub feeds, no internet)
+        run: python3 scripts/internships/test_internships.py
+      - name: Read internship feeds
+        id: run
+        continue-on-error: true
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+        run: |
+          ARGS="--report out --max-minutes 70"
+          if [ "${{ github.event_name }}" = "schedule" ]; then ARGS="$ARGS --if-older-than-hours 20"; fi
+          if [ -n "${{ inputs.only }}" ]; then ARGS="$ARGS --only ${{ inputs.only }}"; fi
+          if [ "${{ inputs.limit }}" != "" ] && [ "${{ inputs.limit }}" != "0" ]; then ARGS="$ARGS --limit ${{ inputs.limit }}"; fi
+          if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The reader's User-Agent has no contact address."; fi
+          python3 scripts/internships/run.py $ARGS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: internship-run
+          path: out/
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Commit the new data
+        if: steps.run.outcome == 'success' && steps.run.outputs.skip != 'true' && (github.event_name == 'schedule' || inputs.commit)
+        run: |
+          git config user.name "universities500-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/internships.json
+          if git diff --cached --quiet; then
+            echo "No change to commit."
+          else
+            git commit -m "Internships: refresh $(date -u +%F)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Fail the run if the reader stopped itself
+        if: steps.run.outcome == 'failure'
+        run: |
+          echo "The reader stopped (see the run summary and the internship-run artifact). Nothing was published."
+          exit 1

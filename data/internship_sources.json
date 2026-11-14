@@ -1,0 +1,1224 @@
+{
+ "_readme": "Where internship postings come from. 'employers' are candidate companies on public job-board systems (Greenhouse, Lever, Ashby, SmartRecruiters, Workable). They were listed from general knowledge and are UNVERIFIED: the run asks each one live, publishes only what it actually returns, and lists the ones that do not exist in the report so they can be removed. Add a company by adding {name, ats, slug}: the slug is the last part of its careers page address on that system. 'openFeeds' are public-sector or open feeds. 'portals' are link-only: we do not read them, we only check that the link loads, and the report records each site's robots.txt for later review.",
+ "employers": [
+  {
+   "name": "1Password",
+   "ats": "ashby",
+   "slug": "1password"
+  },
+  {
+   "name": "Cursor (Anysphere)",
+   "ats": "ashby",
+   "slug": "anysphere"
+  },
+  {
+   "name": "Cohere",
+   "ats": "ashby",
+   "slug": "cohere"
+  },
+  {
+   "name": "Deel",
+   "ats": "ashby",
+   "slug": "deel"
+  },
+  {
+   "name": "ElevenLabs",
+   "ats": "ashby",
+   "slug": "elevenlabs"
+  },
+  {
+   "name": "Harvey",
+   "ats": "ashby",
+   "slug": "harvey"
+  },
+  {
+   "name": "Linear",
+   "ats": "ashby",
+   "slug": "linear"
+  },
+  {
+   "name": "Mercury",
+   "ats": "ashby",
+   "slug": "mercury"
+  },
+  {
+   "name": "n8n",
+   "ats": "ashby",
+   "slug": "n8n"
+  },
+  {
+   "name": "Notion",
+   "ats": "ashby",
+   "slug": "notion"
+  },
+  {
+   "name": "OpenAI",
+   "ats": "ashby",
+   "slug": "openai"
+  },
+  {
+   "name": "PostHog",
+   "ats": "ashby",
+   "slug": "posthog"
+  },
+  {
+   "name": "Ramp",
+   "ats": "ashby",
+   "slug": "ramp"
+  },
+  {
+   "name": "Replit",
+   "ats": "ashby",
+   "slug": "replit"
+  },
+  {
+   "name": "Retool",
+   "ats": "ashby",
+   "slug": "retool"
+  },
+  {
+   "name": "Snowflake",
+   "ats": "ashby",
+   "slug": "snowflake"
+  },
+  {
+   "name": "Supabase",
+   "ats": "ashby",
+   "slug": "supabase"
+  },
+  {
+   "name": "Synthesia",
+   "ats": "ashby",
+   "slug": "synthesia"
+  },
+  {
+   "name": "Vanta",
+   "ats": "ashby",
+   "slug": "vanta"
+  },
+  {
+   "name": "Writer",
+   "ats": "ashby",
+   "slug": "writer"
+  },
+  {
+   "name": "Zapier",
+   "ats": "ashby",
+   "slug": "zapier"
+  },
+  {
+   "name": "Adyen",
+   "ats": "greenhouse",
+   "slug": "adyen"
+  },
+  {
+   "name": "Affirm",
+   "ats": "greenhouse",
+   "slug": "affirm"
+  },
+  {
+   "name": "Airbnb",
+   "ats": "greenhouse",
+   "slug": "airbnb"
+  },
+  {
+   "name": "Airtable",
+   "ats": "greenhouse",
+   "slug": "airtable"
+  },
+  {
+   "name": "Airwallex",
+   "ats": "greenhouse",
+   "slug": "airwallex"
+  },
+  {
+   "name": "Algolia",
+   "ats": "greenhouse",
+   "slug": "algolia"
+  },
+  {
+   "name": "Amplitude",
+   "ats": "greenhouse",
+   "slug": "amplitude"
+  },
+  {
+   "name": "Anduril",
+   "ats": "greenhouse",
+   "slug": "anduril"
+  },
+  {
+   "name": "Anthropic",
+   "ats": "greenhouse",
+   "slug": "anthropic"
+  },
+  {
+   "name": "Asana",
+   "ats": "greenhouse",
+   "slug": "asana"
+  },
+  {
+   "name": "Back Market",
+   "ats": "greenhouse",
+   "slug": "backmarket"
+  },
+  {
+   "name": "Benchling",
+   "ats": "greenhouse",
+   "slug": "benchling"
+  },
+  {
+   "name": "BlaBlaCar",
+   "ats": "greenhouse",
+   "slug": "blablacar"
+  },
+  {
+   "name": "Brex",
+   "ats": "greenhouse",
+   "slug": "brex"
+  },
+  {
+   "name": "Calendly",
+   "ats": "greenhouse",
+   "slug": "calendly"
+  },
+  {
+   "name": "Careem",
+   "ats": "greenhouse",
+   "slug": "careem"
+  },
+  {
+   "name": "Carousell",
+   "ats": "greenhouse",
+   "slug": "carousell"
+  },
+  {
+   "name": "Carta",
+   "ats": "greenhouse",
+   "slug": "carta"
+  },
+  {
+   "name": "Celonis",
+   "ats": "greenhouse",
+   "slug": "celonis"
+  },
+  {
+   "name": "Checkout.com",
+   "ats": "greenhouse",
+   "slug": "checkoutcom"
+  },
+  {
+   "name": "Chime",
+   "ats": "greenhouse",
+   "slug": "chime"
+  },
+  {
+   "name": "Clio",
+   "ats": "greenhouse",
+   "slug": "clio"
+  },
+  {
+   "name": "Cloudflare",
+   "ats": "greenhouse",
+   "slug": "cloudflare"
+  },
+  {
+   "name": "Coinbase",
+   "ats": "greenhouse",
+   "slug": "coinbase"
+  },
+  {
+   "name": "Contentful",
+   "ats": "greenhouse",
+   "slug": "contentful"
+  },
+  {
+   "name": "Contentsquare",
+   "ats": "greenhouse",
+   "slug": "contentsquare"
+  },
+  {
+   "name": "Coursera",
+   "ats": "greenhouse",
+   "slug": "coursera"
+  },
+  {
+   "name": "Culture Amp",
+   "ats": "greenhouse",
+   "slug": "cultureamp"
+  },
+  {
+   "name": "Databricks",
+   "ats": "greenhouse",
+   "slug": "databricks"
+  },
+  {
+   "name": "Datadog",
+   "ats": "greenhouse",
+   "slug": "datadog"
+  },
+  {
+   "name": "Google DeepMind",
+   "ats": "greenhouse",
+   "slug": "deepmind"
+  },
+  {
+   "name": "Deliveroo",
+   "ats": "greenhouse",
+   "slug": "deliveroo"
+  },
+  {
+   "name": "Discord",
+   "ats": "greenhouse",
+   "slug": "discord"
+  },
+  {
+   "name": "Doctolib",
+   "ats": "greenhouse",
+   "slug": "doctolib"
+  },
+  {
+   "name": "DocuSign",
+   "ats": "greenhouse",
+   "slug": "docusign"
+  },
+  {
+   "name": "DoorDash",
+   "ats": "greenhouse",
+   "slug": "doordash"
+  },
+  {
+   "name": "Dropbox",
+   "ats": "greenhouse",
+   "slug": "dropbox"
+  },
+  {
+   "name": "Duolingo",
+   "ats": "greenhouse",
+   "slug": "duolingo"
+  },
+  {
+   "name": "Einride",
+   "ats": "greenhouse",
+   "slug": "einride"
+  },
+  {
+   "name": "Elastic",
+   "ats": "greenhouse",
+   "slug": "elastic"
+  },
+  {
+   "name": "Employment Hero",
+   "ats": "greenhouse",
+   "slug": "employmenthero"
+  },
+  {
+   "name": "Epic Games",
+   "ats": "greenhouse",
+   "slug": "epicgames"
+  },
+  {
+   "name": "Etsy",
+   "ats": "greenhouse",
+   "slug": "etsy"
+  },
+  {
+   "name": "Faire",
+   "ats": "greenhouse",
+   "slug": "faire"
+  },
+  {
+   "name": "Fastly",
+   "ats": "greenhouse",
+   "slug": "fastly"
+  },
+  {
+   "name": "Figma",
+   "ats": "greenhouse",
+   "slug": "figma"
+  },
+  {
+   "name": "Flexport",
+   "ats": "greenhouse",
+   "slug": "flexport"
+  },
+  {
+   "name": "GetYourGuide",
+   "ats": "greenhouse",
+   "slug": "getyourguide"
+  },
+  {
+   "name": "GitLab",
+   "ats": "greenhouse",
+   "slug": "gitlab"
+  },
+  {
+   "name": "GoCardless",
+   "ats": "greenhouse",
+   "slug": "gocardless"
+  },
+  {
+   "name": "Grammarly",
+   "ats": "greenhouse",
+   "slug": "grammarly"
+  },
+  {
+   "name": "Graphcore",
+   "ats": "greenhouse",
+   "slug": "graphcore"
+  },
+  {
+   "name": "Gusto",
+   "ats": "greenhouse",
+   "slug": "gusto"
+  },
+  {
+   "name": "HashiCorp",
+   "ats": "greenhouse",
+   "slug": "hashicorp"
+  },
+  {
+   "name": "HelloFresh",
+   "ats": "greenhouse",
+   "slug": "hellofresh"
+  },
+  {
+   "name": "Instacart",
+   "ats": "greenhouse",
+   "slug": "instacart"
+  },
+  {
+   "name": "Intercom",
+   "ats": "greenhouse",
+   "slug": "intercom"
+  },
+  {
+   "name": "Khan Academy",
+   "ats": "greenhouse",
+   "slug": "khanacademy"
+  },
+  {
+   "name": "Lattice",
+   "ats": "greenhouse",
+   "slug": "lattice"
+  },
+  {
+   "name": "LaunchDarkly",
+   "ats": "greenhouse",
+   "slug": "launchdarkly"
+  },
+  {
+   "name": "Lyft",
+   "ats": "greenhouse",
+   "slug": "lyft"
+  },
+  {
+   "name": "Mambu",
+   "ats": "greenhouse",
+   "slug": "mambu"
+  },
+  {
+   "name": "Marqeta",
+   "ats": "greenhouse",
+   "slug": "marqeta"
+  },
+  {
+   "name": "Mirakl",
+   "ats": "greenhouse",
+   "slug": "mirakl"
+  },
+  {
+   "name": "Miro",
+   "ats": "greenhouse",
+   "slug": "miro"
+  },
+  {
+   "name": "Mixpanel",
+   "ats": "greenhouse",
+   "slug": "mixpanel"
+  },
+  {
+   "name": "Mollie",
+   "ats": "greenhouse",
+   "slug": "mollie"
+  },
+  {
+   "name": "MongoDB",
+   "ats": "greenhouse",
+   "slug": "mongodb"
+  },
+  {
+   "name": "Monzo",
+   "ats": "greenhouse",
+   "slug": "monzo"
+  },
+  {
+   "name": "Mozilla",
+   "ats": "greenhouse",
+   "slug": "mozilla"
+  },
+  {
+   "name": "N26",
+   "ats": "greenhouse",
+   "slug": "n26"
+  },
+  {
+   "name": "New Relic",
+   "ats": "greenhouse",
+   "slug": "newrelic"
+  },
+  {
+   "name": "Nextdoor",
+   "ats": "greenhouse",
+   "slug": "nextdoor"
+  },
+  {
+   "name": "Okta",
+   "ats": "greenhouse",
+   "slug": "okta"
+  },
+  {
+   "name": "Opendoor",
+   "ats": "greenhouse",
+   "slug": "opendoor"
+  },
+  {
+   "name": "Paddle",
+   "ats": "greenhouse",
+   "slug": "paddle"
+  },
+  {
+   "name": "PagerDuty",
+   "ats": "greenhouse",
+   "slug": "pagerduty"
+  },
+  {
+   "name": "Peloton",
+   "ats": "greenhouse",
+   "slug": "peloton"
+  },
+  {
+   "name": "Personio",
+   "ats": "greenhouse",
+   "slug": "personio"
+  },
+  {
+   "name": "Pinterest",
+   "ats": "greenhouse",
+   "slug": "pinterest"
+  },
+  {
+   "name": "Postman",
+   "ats": "greenhouse",
+   "slug": "postman"
+  },
+  {
+   "name": "Reddit",
+   "ats": "greenhouse",
+   "slug": "reddit"
+  },
+  {
+   "name": "Riot Games",
+   "ats": "greenhouse",
+   "slug": "riotgames"
+  },
+  {
+   "name": "Robinhood",
+   "ats": "greenhouse",
+   "slug": "robinhood"
+  },
+  {
+   "name": "Roblox",
+   "ats": "greenhouse",
+   "slug": "roblox"
+  },
+  {
+   "name": "SafetyCulture",
+   "ats": "greenhouse",
+   "slug": "safetyculture"
+  },
+  {
+   "name": "Samsara",
+   "ats": "greenhouse",
+   "slug": "samsara"
+  },
+  {
+   "name": "Scale AI",
+   "ats": "greenhouse",
+   "slug": "scaleai"
+  },
+  {
+   "name": "Sentry",
+   "ats": "greenhouse",
+   "slug": "sentry"
+  },
+  {
+   "name": "Snyk",
+   "ats": "greenhouse",
+   "slug": "snyk"
+  },
+  {
+   "name": "SoundCloud",
+   "ats": "greenhouse",
+   "slug": "soundcloud"
+  },
+  {
+   "name": "SpaceX",
+   "ats": "greenhouse",
+   "slug": "spacex"
+  },
+  {
+   "name": "Squarespace",
+   "ats": "greenhouse",
+   "slug": "squarespace"
+  },
+  {
+   "name": "Starling Bank",
+   "ats": "greenhouse",
+   "slug": "starlingbank"
+  },
+  {
+   "name": "Stitch Fix",
+   "ats": "greenhouse",
+   "slug": "stitchfix"
+  },
+  {
+   "name": "Stripe",
+   "ats": "greenhouse",
+   "slug": "stripe"
+  },
+  {
+   "name": "SumUp",
+   "ats": "greenhouse",
+   "slug": "sumup"
+  },
+  {
+   "name": "Tabby",
+   "ats": "greenhouse",
+   "slug": "tabby"
+  },
+  {
+   "name": "Tailscale",
+   "ats": "greenhouse",
+   "slug": "tailscale"
+  },
+  {
+   "name": "Thought Machine",
+   "ats": "greenhouse",
+   "slug": "thoughtmachine"
+  },
+  {
+   "name": "Tink",
+   "ats": "greenhouse",
+   "slug": "tink"
+  },
+  {
+   "name": "trivago",
+   "ats": "greenhouse",
+   "slug": "trivago"
+  },
+  {
+   "name": "Twilio",
+   "ats": "greenhouse",
+   "slug": "twilio"
+  },
+  {
+   "name": "Twitch",
+   "ats": "greenhouse",
+   "slug": "twitch"
+  },
+  {
+   "name": "Udemy",
+   "ats": "greenhouse",
+   "slug": "udemy"
+  },
+  {
+   "name": "Verkada",
+   "ats": "greenhouse",
+   "slug": "verkada"
+  },
+  {
+   "name": "Vimeo",
+   "ats": "greenhouse",
+   "slug": "vimeo"
+  },
+  {
+   "name": "Voi",
+   "ats": "greenhouse",
+   "slug": "voi"
+  },
+  {
+   "name": "Wayfair",
+   "ats": "greenhouse",
+   "slug": "wayfair"
+  },
+  {
+   "name": "Wayflyer",
+   "ats": "greenhouse",
+   "slug": "wayflyer"
+  },
+  {
+   "name": "Waymo",
+   "ats": "greenhouse",
+   "slug": "waymo"
+  },
+  {
+   "name": "Wayve",
+   "ats": "greenhouse",
+   "slug": "wayve"
+  },
+  {
+   "name": "Webflow",
+   "ats": "greenhouse",
+   "slug": "webflow"
+  },
+  {
+   "name": "Workhuman",
+   "ats": "greenhouse",
+   "slug": "workhuman"
+  },
+  {
+   "name": "Zendesk",
+   "ats": "greenhouse",
+   "slug": "zendesk"
+  },
+  {
+   "name": "Highspot",
+   "ats": "lever",
+   "slug": "highspot"
+  },
+  {
+   "name": "Ledger",
+   "ats": "lever",
+   "slug": "ledger"
+  },
+  {
+   "name": "Mistral AI",
+   "ats": "lever",
+   "slug": "mistral"
+  },
+  {
+   "name": "Netlify",
+   "ats": "lever",
+   "slug": "netlify"
+  },
+  {
+   "name": "Outreach",
+   "ats": "lever",
+   "slug": "outreach"
+  },
+  {
+   "name": "Palantir",
+   "ats": "lever",
+   "slug": "palantir"
+  },
+  {
+   "name": "PayFit",
+   "ats": "lever",
+   "slug": "payfit"
+  },
+  {
+   "name": "Plaid",
+   "ats": "lever",
+   "slug": "plaid"
+  },
+  {
+   "name": "Qonto",
+   "ats": "lever",
+   "slug": "qonto"
+  },
+  {
+   "name": "Spotify",
+   "ats": "lever",
+   "slug": "spotify"
+  },
+  {
+   "name": "Swile",
+   "ats": "lever",
+   "slug": "swile"
+  },
+  {
+   "name": "Veeva Systems",
+   "ats": "lever",
+   "slug": "veeva"
+  },
+  {
+   "name": "Wealthsimple",
+   "ats": "lever",
+   "slug": "wealthsimple"
+  },
+  {
+   "name": "Zoox",
+   "ats": "lever",
+   "slug": "zoox"
+  },
+  {
+   "name": "Bosch",
+   "ats": "smartrecruiters",
+   "slug": "BoschGroup"
+  },
+  {
+   "name": "Delivery Hero",
+   "ats": "smartrecruiters",
+   "slug": "DeliveryHero"
+  },
+  {
+   "name": "Equinix",
+   "ats": "smartrecruiters",
+   "slug": "Equinix"
+  },
+  {
+   "name": "Experian",
+   "ats": "smartrecruiters",
+   "slug": "Experian"
+  },
+  {
+   "name": "ServiceNow",
+   "ats": "smartrecruiters",
+   "slug": "ServiceNow"
+  },
+  {
+   "name": "Skechers",
+   "ats": "smartrecruiters",
+   "slug": "Skechers"
+  },
+  {
+   "name": "Block (Square)",
+   "ats": "smartrecruiters",
+   "slug": "Square"
+  },
+  {
+   "name": "TomTom",
+   "ats": "smartrecruiters",
+   "slug": "TomTom"
+  },
+  {
+   "name": "Visa",
+   "ats": "smartrecruiters",
+   "slug": "Visa"
+  },
+  {
+   "name": "Hugging Face",
+   "ats": "workable",
+   "slug": "huggingface"
+  }
+ ],
+ "openFeeds": {
+  "jobtech": {
+   "enabled": true,
+   "title": "Platsbanken (Arbetsförmedlingen)",
+   "attribution": "Swedish job ads from Arbetsförmedlingen's JobTech open data (CC0)."
+  },
+  "arbeitnow": {
+   "enabled": true,
+   "title": "Arbeitnow",
+   "attribution": "German and European listings from Arbeitnow's free job board API. Each one links back to Arbeitnow."
+  }
+ },
+ "portals": [
+  {
+   "id": "prosple-au",
+   "title": "Prosple Australia",
+   "url": "https://au.prosple.com/",
+   "countries": [
+    "australia"
+   ],
+   "note": "Graduate jobs and internships."
+  },
+  {
+   "id": "gradconnection-au",
+   "title": "GradConnection Australia",
+   "url": "https://au.gradconnection.com/",
+   "countries": [
+    "australia"
+   ],
+   "note": "Graduate jobs and internships."
+  },
+  {
+   "id": "handshake",
+   "title": "Handshake",
+   "url": "https://joinhandshake.com/",
+   "countries": [
+    "usa"
+   ],
+   "note": "Open to students of partner universities. Sign in through your university."
+  },
+  {
+   "id": "simplify",
+   "title": "Simplify Jobs",
+   "url": "https://simplify.jobs/",
+   "countries": [
+    "usa"
+   ],
+   "note": "Internship and new-graduate listings."
+  },
+  {
+   "id": "wayup",
+   "title": "WayUp",
+   "url": "https://www.wayup.com/",
+   "countries": [
+    "usa"
+   ],
+   "note": "Internships and entry-level jobs."
+  },
+  {
+   "id": "ripplematch",
+   "title": "RippleMatch",
+   "url": "https://ripplematch.com/",
+   "countries": [
+    "usa"
+   ],
+   "note": "Early-career roles."
+  },
+  {
+   "id": "wellfound",
+   "title": "Wellfound",
+   "url": "https://wellfound.com/",
+   "countries": [
+    "usa"
+   ],
+   "note": "Start-up jobs and internships."
+  },
+  {
+   "id": "prospects",
+   "title": "Prospects",
+   "url": "https://www.prospects.ac.uk/",
+   "countries": [
+    "uk"
+   ],
+   "note": "Graduate jobs, internships and placements."
+  },
+  {
+   "id": "targetjobs",
+   "title": "targetjobs",
+   "url": "https://targetjobs.co.uk/",
+   "countries": [
+    "uk"
+   ],
+   "note": "Graduate jobs, internships and placements."
+  },
+  {
+   "id": "brightnetwork",
+   "title": "Bright Network",
+   "url": "https://www.brightnetwork.co.uk/",
+   "countries": [
+    "uk"
+   ],
+   "note": "Early-career roles."
+  },
+  {
+   "id": "ratemyplacement",
+   "title": "RateMyPlacement",
+   "url": "https://www.ratemyplacement.co.uk/",
+   "countries": [
+    "uk"
+   ],
+   "note": "Industrial placements and internships."
+  },
+  {
+   "id": "jobbank-youth",
+   "title": "Job Bank: Youth",
+   "url": "https://www.jobbank.gc.ca/youth",
+   "countries": [
+    "canada"
+   ],
+   "note": "Government of Canada student and youth jobs."
+  },
+  {
+   "id": "talentegg",
+   "title": "TalentEgg",
+   "url": "https://talentegg.ca/",
+   "countries": [
+    "canada"
+   ],
+   "note": "Student and graduate jobs, many co-op."
+  },
+  {
+   "id": "magnet",
+   "title": "Magnet",
+   "url": "https://magnet.me/",
+   "countries": [
+    "canada",
+    "netherlands"
+   ],
+   "note": "Student and graduate opportunities."
+  },
+  {
+   "id": "gradireland",
+   "title": "gradireland",
+   "url": "https://gradireland.com/",
+   "countries": [
+    "ireland"
+   ],
+   "note": "Graduate jobs and internships."
+  },
+  {
+   "id": "prosple-ie",
+   "title": "Prosple Ireland",
+   "url": "https://ie.prosple.com/",
+   "countries": [
+    "ireland"
+   ],
+   "note": "Graduate jobs and internships."
+  },
+  {
+   "id": "irishjobs",
+   "title": "IrishJobs",
+   "url": "https://www.irishjobs.ie/",
+   "countries": [
+    "ireland"
+   ],
+   "note": "Jobs board."
+  },
+  {
+   "id": "gradconnection-nz",
+   "title": "GradConnection New Zealand",
+   "url": "https://nz.gradconnection.com/",
+   "countries": [
+    "new-zealand"
+   ],
+   "note": "Graduate jobs and internships."
+  },
+  {
+   "id": "prosple-nz",
+   "title": "Prosple New Zealand",
+   "url": "https://nz.prosple.com/",
+   "countries": [
+    "new-zealand"
+   ],
+   "note": "Graduate jobs and internships."
+  },
+  {
+   "id": "summer-of-tech",
+   "title": "Summer of Tech",
+   "url": "https://summeroftech.co.nz/",
+   "countries": [
+    "new-zealand"
+   ],
+   "note": "IT and design internships in New Zealand."
+  },
+  {
+   "id": "make-it-in-germany",
+   "title": "Make it in Germany",
+   "url": "https://www.make-it-in-germany.com/",
+   "countries": [
+    "germany"
+   ],
+   "note": "German government portal for working in Germany."
+  },
+  {
+   "id": "arbeitnow",
+   "title": "Arbeitnow",
+   "url": "https://www.arbeitnow.com/",
+   "countries": [
+    "germany"
+   ],
+   "note": "Job board with English-language roles."
+  },
+  {
+   "id": "studentjob-de",
+   "title": "StudentJob Germany",
+   "url": "https://studentjob.de/",
+   "countries": [
+    "germany"
+   ],
+   "note": "Student jobs, internships and working-student roles."
+  },
+  {
+   "id": "stellenwerk",
+   "title": "Stellenwerk",
+   "url": "https://www.stellenwerk.de/",
+   "countries": [
+    "germany"
+   ],
+   "note": "Student and graduate jobs."
+  },
+  {
+   "id": "wttj",
+   "title": "Welcome to the Jungle",
+   "url": "https://www.welcometothejungle.com/",
+   "countries": [
+    "france"
+   ],
+   "note": "Jobs and internships, with language and contract filters."
+  },
+  {
+   "id": "jobteaser",
+   "title": "JobTeaser",
+   "url": "https://www.jobteaser.com/",
+   "countries": [
+    "france",
+    "netherlands"
+   ],
+   "note": "Career platform used by many universities."
+  },
+  {
+   "id": "welcome-to-nl",
+   "title": "Welcome to NL",
+   "url": "https://welcome-to-nl.nl/",
+   "countries": [
+    "netherlands"
+   ],
+   "note": "Dutch portal for international talent."
+  },
+  {
+   "id": "studentjob-nl",
+   "title": "StudentJob Netherlands",
+   "url": "https://www.studentjob.nl/",
+   "countries": [
+    "netherlands"
+   ],
+   "note": "Student jobs and internships."
+  },
+  {
+   "id": "undutchables",
+   "title": "Undutchables",
+   "url": "https://www.undutchables.nl/",
+   "countries": [
+    "netherlands"
+   ],
+   "note": "Jobs for international candidates."
+  },
+  {
+   "id": "internsg",
+   "title": "InternSG",
+   "url": "https://www.internsg.com/",
+   "countries": [
+    "singapore"
+   ],
+   "note": "Internship listings in Singapore."
+  },
+  {
+   "id": "glints",
+   "title": "Glints",
+   "url": "https://glints.com/",
+   "countries": [
+    "singapore",
+    "malaysia"
+   ],
+   "note": "Jobs and internships in South-East Asia."
+  },
+  {
+   "id": "mycareersfuture",
+   "title": "MyCareersFuture",
+   "url": "https://www.mycareersfuture.gov.sg/",
+   "countries": [
+    "singapore"
+   ],
+   "note": "Many roles are for citizens and permanent residents. Check each listing."
+  },
+  {
+   "id": "oliv",
+   "title": "Oliv",
+   "url": "https://www.oliv.com/",
+   "countries": [
+    "uae"
+   ],
+   "note": "Built for students and fresh graduates in the UAE."
+  },
+  {
+   "id": "bayt",
+   "title": "Bayt",
+   "url": "https://www.bayt.com/",
+   "countries": [
+    "uae"
+   ],
+   "note": "Jobs board for the Middle East."
+  },
+  {
+   "id": "gulftalent",
+   "title": "GulfTalent",
+   "url": "https://www.gulftalent.com/",
+   "countries": [
+    "uae"
+   ],
+   "note": "Jobs board for the Gulf."
+  },
+  {
+   "id": "hiredly",
+   "title": "Hiredly",
+   "url": "https://hiredly.com/",
+   "countries": [
+    "malaysia"
+   ],
+   "note": "Junior roles and internships in Malaysia."
+  },
+  {
+   "id": "jobstreet-my",
+   "title": "JobStreet Malaysia",
+   "url": "https://www.jobstreet.com.my/",
+   "countries": [
+    "malaysia"
+   ],
+   "note": "Jobs board."
+  },
+  {
+   "id": "academicwork",
+   "title": "Academic Work",
+   "url": "https://www.academicwork.se/",
+   "countries": [
+    "sweden"
+   ],
+   "note": "Jobs for students and graduates in Sweden."
+  },
+  {
+   "id": "platsbanken",
+   "title": "Platsbanken",
+   "url": "https://arbetsformedlingen.se/platsbanken/",
+   "countries": [
+    "sweden"
+   ],
+   "note": "Sweden's public job board. Many of its listings appear in our search."
+  },
+  {
+   "id": "graduateland",
+   "title": "Graduateland",
+   "url": "https://graduateland.com/",
+   "countries": [
+    "sweden",
+    "norway"
+   ],
+   "note": "Graduate jobs and internships."
+  },
+  {
+   "id": "finn-job",
+   "title": "FINN.no Jobs",
+   "url": "https://www.finn.no/job",
+   "countries": [
+    "norway"
+   ],
+   "note": "Norway's largest job board."
+  },
+  {
+   "id": "arbeidsplassen",
+   "title": "Arbeidsplassen",
+   "url": "https://arbeidsplassen.nav.no/",
+   "countries": [
+    "norway"
+   ],
+   "note": "Norway's public job board."
+  },
+  {
+   "id": "eures",
+   "title": "EURES",
+   "url": "https://eures.europa.eu/",
+   "countries": [
+    "germany",
+    "france",
+    "netherlands",
+    "ireland",
+    "sweden",
+    "norway"
+   ],
+   "note": "European Union job portal."
+  },
+  {
+   "id": "iaeste",
+   "title": "IAESTE",
+   "url": "https://iaeste.org/",
+   "countries": [
+    "all"
+   ],
+   "note": "Course-related technical internships arranged through national committees."
+  }
+ ]
+}

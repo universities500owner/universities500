@@ -1,0 +1,80 @@
+---
+import Base from '../../layouts/Base.astro';
+import InternList from '../../components/InternList.astro';
+import { hiddenFromSearch } from '../../lib/noindex.js';
+import { countries } from '../../lib/data.js';
+import { PUBLISH, forCountry, portalsFor, generatedAt, fmtIso, ATTRIBUTION } from '../../lib/internships.js';
+
+export function getStaticPaths() {
+  return countries.map((c) => ({ params: { country: c.code }, props: { c } }));
+}
+const { c } = Astro.props;
+const path = `/internships/${c.code}/`;
+const today = new Date().toISOString().slice(0, 10);
+const CAP = 600;
+const all = forCountry(c.code);
+const rows = all.slice(0, CAP);
+const live = PUBLISH && all.length > 0;
+const places = portalsFor(c.code);
+const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
+const used = new Set(all.map((i) => i.source));
+const attr = [...used].map((s) => ATTRIBUTION[s]).filter(Boolean);
+---
+<Base
+  title={`Internships in ${c.name} for students | Universities500`}
+  description={`Internships, co-ops and placements in ${c.name}. Each one shows the role, the company and the city, and links to the employer's own page.`}
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  current="internships"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/internships/">Internships</a><span aria-hidden="true">/</span>{c.name}</nav>
+  <div class="q-head">
+    <h1>Internships in {c.name}</h1>
+    <p>Internships, co-ops and placements in {c.name}, read from employers' own job pages. Every listing opens on the employer's site.</p>
+  </div>
+
+  {live ? (
+    <section class="sec" aria-labelledby="h-find">
+      <h2 id="h-find" class="sr-only">Listings</h2>
+      <InternList rows={rows} today={today} />
+      {all.length > CAP && <p class="small">Showing the newest {CAP} of {all.length}.</p>}
+      <p class="small">Last read {updated}. Listings can close at any time. Check the listing and the visa rules for your course before you apply.</p>
+    </section>
+  ) : (
+    <div class="note draft">
+      <p><strong>No listings to show yet for {c.name}.</strong> Listings appear here once they have been read from an employer's own page and checked. The places below are a good start.</p>
+    </div>
+  )}
+
+  <section class="sec" aria-labelledby="h-rules">
+    <h2 id="h-rules">Can you do an internship in {c.name} on your visa?</h2>
+    <p>That depends on your visa, your course and the rules in {c.name}. We do not say who is eligible for a listing. Read the work rules first.</p>
+    <p>
+      <a class="btn ghost" href="/working-while-you-study/">Working while you study</a>
+      <a class="btn ghost" href={`/study-in/${c.code}/`}>Study in {c.name}</a>
+    </p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-look">
+    <h2 id="h-look">Other places to look in {c.name}</h2>
+    {places.length === 0 ? (
+      <p class="muted">The list of places is being checked.</p>
+    ) : (
+      <Fragment>
+        <p class="sec-lede">Independent sites. We link to them and do not read them.</p>
+        <ul class="look-list">
+          {places.map((p) => <li><a href={p.url} rel="noopener">{p.title}</a>{p.note && <span class="muted"> {p.note}</span>}</li>)}
+        </ul>
+      </Fragment>
+    )}
+  </section>
+
+  {attr.length > 0 && (
+    <section class="sec" aria-labelledby="h-src">
+      <h2 id="h-src" class="sr-only">Sources</h2>
+      <p class="small">{attr.join(' ')}</p>
+    </section>
+  )}
+
+  {PUBLISH && rows.length > 0 && <script>import '../../scripts/internships.js';</script>}
+</Base>

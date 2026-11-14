@@ -6,6 +6,7 @@ export const UNCHECKED = [
   '/courses/',
   '/course-fitment/',
   '/scholarships/',
+  '/internships/',
   '/budget/',
   '/loan/',
   '/visa-readiness/',
