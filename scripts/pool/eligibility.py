@@ -39,7 +39,7 @@ REGISTERS = {
         label="Register of licensed sponsors: students (UK Visas and Immigration, GOV.UK)",
         page="https://www.gov.uk/government/publications/register-of-licensed-sponsors-students",
         link_re=r"https://assets\.publishing\.service\.gov\.uk/[^\"'\s>]+\.csv",
-        name_keys=["organisation name"], site_keys=[]),
+        name_keys=["sponsor name", "organisation name"], site_keys=[]),
     "CA": dict(
         label="Designated learning institutions list (Immigration, Refugees and Citizenship Canada)",
         page="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/prepare/designated-learning-institutions-list.html",
@@ -86,12 +86,13 @@ def table_from_rows(rows):
 
 
 def read_csv(b):
-    return table_from_rows(list(csv.reader(io.StringIO(decode(b)))))
+    # newline="" lets the csv module see lone carriage returns as row ends (some government files use them)
+    return table_from_rows(list(csv.reader(io.StringIO(decode(b), newline=""))))
 
 
-def read_xlsx(path):
+def read_xlsx(raw):
     import openpyxl  # installed by the workflow
-    ws = openpyxl.load_workbook(path, read_only=True, data_only=True).worksheets[0]
+    ws = openpyxl.load_workbook(io.BytesIO(raw), read_only=True, data_only=True).worksheets[0]
     return table_from_rows([["" if c is None else c for c in r] for r in ws.iter_rows(values_only=True)])
 
 
@@ -138,9 +139,10 @@ def read_html(b):
 def load_register_file(path):
     raw = open(path, "rb").read()
     ext = os.path.splitext(path)[1].lower()
-    if ext == ".xlsx":
-        return read_xlsx(path)
-    if ext in (".html", ".htm"):
+    # trust the file's first bytes over its name: a ".csv" can really be a spreadsheet or a web page
+    if raw[:2] == b"PK" or ext == ".xlsx":
+        return read_xlsx(raw)
+    if raw.lstrip()[:1] == b"<" or ext in (".html", ".htm"):
         return read_html(raw)
     return read_csv(raw)
 
@@ -209,7 +211,15 @@ def fetch(cc, spec, outdir):
 
 
 # ---------- matching ----------
-def match(cand, names, hosts, norms):
+FILLER = {"the", "of", "and", "at", "in", "limited", "ltd", "higher", "education", "corporation", "london", "inc", "plc", "trust", "company"}
+
+
+def core(n):
+    """Name with filler words removed, as a sorted tuple (so word order does not matter)."""
+    return tuple(sorted(t for t in n.split() if t not in FILLER))
+
+
+def match(cand, names, hosts, norms, cores=None):
     h = host(cand.get("homepage", ""))
     if h and h in hosts:
         return "confirmed", "same website", hosts[h]
@@ -218,6 +228,8 @@ def match(cand, names, hosts, norms):
         if n and n in names:
             return "confirmed", "same name", names[n]
     n = norm(cand.get("name", ""))
+    if cores is not None and core(n) and core(n) in cores:
+        return "confirmed", "same name apart from filler words", names[cores[core(n)]]
     if len(n.split()) >= 3:
         pat = f" {n} "
         for k, v in names.items():
@@ -226,7 +238,8 @@ def match(cand, names, hosts, norms):
     cm = difflib.get_close_matches(n, norms, n=1, cutoff=0.9)
     if cm:
         return "likely", "close name", names[cm[0]]
-    return "not_found", "", ""
+    near = difflib.get_close_matches(n, norms, n=3, cutoff=0.6)
+    return "not_found", "nearest: " + " | ".join(names[k] for k in near), ""
 
 
 def main(argv=None):
@@ -251,6 +264,8 @@ def main(argv=None):
         try:
             if a.fetch:
                 path, meta = fetch(cc, spec, a.registers)
+                print(f"\n[{cc}] downloaded {meta['bytes']:,} bytes from {meta['url']}")
+                print(f"  first bytes: {open(path, 'rb').read(160)!r}")
             else:
                 path = next((os.path.join(a.registers, f) for f in sorted(os.listdir(a.registers)) if f.split(".")[0] == cc and not f.endswith(".json")), "")
                 if not path:
@@ -268,7 +283,10 @@ def main(argv=None):
         print(f"  name columns used: {info['name_cols']}{'  (FALLBACK: layout not as expected)' if info['fallback'] else ''}; website columns: {info['site_cols']}")
         print(f"  sample: {[dict(list(r.items())[:4]) for r in rows[:2]]}")
         norms = list(names)
-        result[cc] = (spec, meta, names, hosts, norms, info)
+        cores = {}
+        for k in norms:
+            cores.setdefault(core(k), k)
+        result[cc] = (spec, meta, names, hosts, norms, info, cores)
 
     fields = list(cands[0].keys()) + ["elig_register", "elig_status", "elig_how", "elig_register_name"]
     review = {}
@@ -280,7 +298,7 @@ def main(argv=None):
         elif res is None:
             st, how, rn, reg = "not_checked", "register unavailable in this run", "", REGISTERS[cc]["label"]
         else:
-            st, how, rn = match(c, res[2], res[3], res[4])
+            st, how, rn = match(c, res[2], res[3], res[4], res[6])
             reg = res[0]["label"]
         c.update(elig_register=reg, elig_status=st, elig_how=how, elig_register_name=rn)
         if st in ("likely", "not_found") and c["is_child"] == "no":
@@ -307,7 +325,7 @@ def main(argv=None):
     for cc, rows in review.items():
         print(f"\n[{cc}] needs a look ({len(rows)}):")
         for c in sorted(rows, key=lambda c: -int(c["works_count"] or 0)):
-            print(f"  {int(c['works_count']):>9,}\t{c['name']}\t{c['elig_status']}\t{c['elig_register_name']}\t{c['elig_how']}")
+            print(f"  {int(c['works_count']):>9,}\t{c['name']}\t{c['elig_status']}\t{c['elig_register_name'] or c['elig_how']}\t{c['elig_how'] if c['elig_register_name'] else ''}")
 
 
 if __name__ == "__main__":

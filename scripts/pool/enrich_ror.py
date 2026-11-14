@@ -91,6 +91,7 @@ def facts(rec):
         "ror_established": rec.get("established") or "",
         "ror_country": country,
         "ror_wikidata": wd,
+        "ror_predecessors": ";".join(short(x.get("id")) for x in rec.get("relationships") or [] if x.get("type") == "predecessor"),
     }
 
 
@@ -116,7 +117,8 @@ def main(argv=None):
     index = {short(r.get("id")): r for r in records if short(r.get("id")) in need}
     print(f"ROR dump: {len(records):,} records; {len(index)} of {len(need)} candidate ROR ids found.")
 
-    extra = ["ror_name", "ror_types", "ror_status", "ror_established", "ror_country", "ror_wikidata", "wikidata_final", "ror_note"]
+    extra = ["ror_name", "ror_types", "ror_status", "ror_established", "ror_country", "ror_wikidata", "ror_predecessors",
+             "wikidata_final", "ror_note", "works_combined", "merged_from"]
     out_rows, notes = [], []
     for r in rows:
         rid = short(r.get("ror"))
@@ -139,6 +141,31 @@ def main(argv=None):
         if f["ror_note"]:
             notes.append(r)
 
+    # An active institution formed by a merger starts with little publication history of its own, so its
+    # threshold count includes the institutions it was formed from (found among the candidates).
+    by_ror = {short(r["ror"]): r for r in out_rows if short(r.get("ror"))}
+
+    def combined(r, seen):
+        total, names = int(r["works_count"] or 0), []
+        for pid in filter(None, (r.get("ror_predecessors") or "").split(";")):
+            pr = by_ror.get(pid)
+            if pr and pid not in seen:
+                seen.add(pid)
+                sub_total, sub_names = combined(pr, seen)
+                total += sub_total
+                names += [pr["name"]] + sub_names
+        return total, names
+
+    merged = []
+    for r in out_rows:
+        own = int(r["works_count"] or 0)
+        r["works_combined"], r["merged_from"] = own, ""
+        if r["ror_status"] in ("", "active") and r.get("ror_predecessors"):
+            tot, names = combined(r, {short(r["ror"])})
+            if names:
+                r["works_combined"], r["merged_from"] = tot, ";".join(names)
+                merged.append((r, own, tot))
+
     with open(a.out, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
         w.writeheader()
@@ -147,6 +174,9 @@ def main(argv=None):
     before = sum(1 for r in out_rows if r.get("wikidata"))
     after = sum(1 for r in out_rows if r["wikidata_final"])
     print(f"Wikidata ids: {before} of {len(out_rows)} from OpenAlex, {after} after adding ROR.")
+    print(f"Active institutions formed by a merger (counts combined): {len(merged)}")
+    for r, own, tot in sorted(merged, key=lambda x: (x[0]["country"], -x[2])):
+        print(f"  {r['country']}\t{own:>9,} -> {tot:>9,}\t{r['name']}\tfrom: {r['merged_from']}")
     print(f"Rows with a note: {len(notes)}")
     for r in sorted(notes, key=lambda r: (r["country"], -int(r["works_count"] or 0))):
         print(f"  {r['country']}\t{int(r['works_count']):>9,}\t{r['name']}\t{r['ror_note']}")

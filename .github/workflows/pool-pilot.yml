@@ -1,7 +1,8 @@
 name: Pool pilot (open data)
 
 # Run by hand from the Actions tab. Reads OpenAlex only (open data). No ranking is read or used.
-# Steps: OpenAlex pool -> ROR facts -> official registers (AU, GB, CA, US).
+# Steps: OpenAlex pool -> ROR facts -> official registers (AU, GB, CA, US) -> pool counts.
+# Manual decisions live in data/pool_overrides.csv.
 # Needs a free OpenAlex API key stored as the repository secret OPENALEX_API_KEY.
 on:
   workflow_dispatch:
@@ -50,6 +51,11 @@ jobs:
           cd out
           python3 ../scripts/pool/eligibility.py --fetch
           cat eligibility_summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Build the pool and count it
+        run: |
+          cd out
+          python3 ../scripts/pool/build_pool.py --overrides ../data/pool_overrides.csv
+          cat pool_counts.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
