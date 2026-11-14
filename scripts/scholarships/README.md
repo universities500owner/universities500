@@ -37,3 +37,14 @@ pip install beautifulsoup4 lxml
 python3 scripts/scholarships/test_scholarships.py
 python3 scripts/scholarships/run.py --only monash-university --out /tmp/sch.json --report /tmp/sch-report
 ```
+
+## Quality rules (`quality.py`)
+
+Every record has to pass these before it is kept. They run when a page is read, and again on the saved data at the start of each run, so a mistake from an older version cannot stay.
+
+- The name must name one scholarship. Page headings ("Fees and scholarships", "Find a scholarship"), table cells ("All programs", "£12,600", "January"), news and event posts, and names with an old year are dropped.
+- Not for our students: PhD, postdoc, staff and studentship records; prizes for enrolled students; exchange, travel and study-abroad grants; New Colombo Plan; home-student-only awards.
+- Pages under `/domestic/`, `/dom/`, `/outgoing/`, `/exchange…/` and similar are skipped.
+- `data/scholarship_exclude.json` is a hand-kept list of page addresses to leave out, each with a reason. Add a line there when a check by hand shows a page is wrong. Remove a line to bring a page back.
+
+To clean a saved data file without reading any websites: `python3 scripts/scholarships/quality.py src/data/scholarships.json`

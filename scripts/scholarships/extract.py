@@ -9,6 +9,7 @@ import urllib.parse
 
 from bs4 import BeautifulSoup
 
+import quality as Q
 import textutil as T
 
 DROP_TAGS = ['script', 'style', 'noscript', 'nav', 'header', 'footer', 'aside', 'form', 'svg', 'iframe', 'template', 'button', 'select', 'dialog']
@@ -266,6 +267,9 @@ def detail_record(page, uni, today, same_domain=None):
         return None, 'no-name'
     if not T.NAME_WORDS.search(name):
         return None, 'name-not-a-scholarship'
+    why = Q.name_problem(name, today) or Q.url_problem(page.url)
+    if why:
+        return None, why
     if 'noindex' in page.robots_meta and False:
         return None, 'noindex'
     text = page.text
@@ -334,6 +338,8 @@ def table_records(page, uni, today):
                 continue
             a = cells[ni].find('a', href=True) or tr.find('a', href=True)
             link = urllib.parse.urljoin(page.url, a['href']) if a else page.url
+            if Q.name_problem(name, today) or Q.url_problem(link, page.url):
+                continue
             val = None
             if vi is not None and vi < len(cells):
                 vtxt = T.clean(cells[vi].get_text(' '))

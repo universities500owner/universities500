@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import discover  # noqa: E402
+import quality as Q  # noqa: E402
 import official  # noqa: E402
 import textutil as T  # noqa: E402
 from fetcher import Fetcher  # noqa: E402
@@ -55,6 +56,11 @@ def main():
     now = datetime.now(timezone.utc)
     today = args.today or now.date().isoformat()
     prev = load(args.prev, {})
+    # Records saved before a quality rule existed are checked again, so old mistakes do not linger.
+    kept = [i for i in prev.get('items', []) if not Q.problem(i, today)]
+    args.cleaned = len(prev.get('items', [])) - len(kept)
+    if args.cleaned:
+        prev['items'] = kept
 
     # cadence guard: the workflow fires daily, we only work when the last good run is old enough
     gh_out = os.environ.get('GITHUB_OUTPUT')
@@ -233,6 +239,8 @@ def write_report(args, fx, results, off_report, directories, third, merged, prev
         L.append(f'**Stopped by the sanity check: records fell from {gate_failed[0]} to {gate_failed[1]}. Nothing was written.**\n')
     L.append(f'- Time: {int(time.monotonic() - t0)} s, requests: {fx.stats["requests"]}, data read: {fx.stats["bytes"] // 1024} KB')
     L.append(f'- Records now: {len(merged)} (before: {len(prev_items)})')
+    if getattr(args, 'cleaned', 0):
+        L.append(f'- Removed from the old data by the name and page rules: {args.cleaned}')
     st = Counter(r['status'] for r in results.values())
     L.append('- Universities by outcome: ' + ', '.join(f'{k} {v}' for k, v in st.most_common()))
     L.append(f'- Robots.txt blocked {fx.stats["robots_blocked"]} requests\n')
