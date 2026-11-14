@@ -144,6 +144,12 @@ class TitleTests(unittest.TestCase):
 
 
 class PlaceTests(unittest.TestCase):
+    def test_california_and_dc(self):
+        self.assertEqual(P.resolve('Foster City, CA'), [('Foster City', 'usa')])
+        self.assertEqual(P.resolve('Toronto, CA'), [('Toronto', 'canada')])
+        self.assertEqual(P.resolve('Washington, D.C.'), [('Washington, D.C.', 'usa')])
+        self.assertEqual(P.resolve('Norderstedt'), [('Norderstedt', 'germany')])
+
     def test_city_noise_is_cut_to_the_known_city(self):
         self.assertEqual(P.resolve('9th arrondissement of Paris'), [('Paris', 'france')])
         self.assertEqual(P.resolve('The Italian Shot Maxvorstadt München'), [('München', 'germany')])
