@@ -1,6 +1,7 @@
 name: Pool pilot (open data)
 
 # Run by hand from the Actions tab. Reads OpenAlex only (open data). No ranking is read or used.
+# Steps: OpenAlex pool -> ROR facts -> official registers (AU, GB, CA, US).
 # Needs a free OpenAlex API key stored as the repository secret OPENALEX_API_KEY.
 on:
   workflow_dispatch:
@@ -23,7 +24,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Self-test (stub server, no internet)
-        run: python3 scripts/pool/test_pool.py
+        run: |
+          python3 scripts/pool/test_pool.py
+          python3 scripts/pool/test_pipeline.py
       - name: Run pilot
         env:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
@@ -35,7 +38,20 @@ jobs:
           if [ -n "${{ inputs.countries }}" ]; then ARGS="$ARGS --countries ${{ inputs.countries }}"; fi
           python3 ../scripts/pool/pool_pilot.py $ARGS
           cat pool_summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Install openpyxl (some registers are .xlsx)
+        run: pip install openpyxl
+      - name: Add ROR facts (CC0 data dump)
+        continue-on-error: true
+        run: |
+          cd out
+          python3 ../scripts/pool/enrich_ror.py
+      - name: Check official registers (AU, GB, CA, US)
+        run: |
+          cd out
+          python3 ../scripts/pool/eligibility.py --fetch
+          cat eligibility_summary.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: pool-pilot
           path: out/

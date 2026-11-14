@@ -33,7 +33,7 @@ COUNTRIES = {
     "AE": "United Arab Emirates", "MY": "Malaysia", "SE": "Sweden", "NO": "Norway",
 }
 THRESHOLDS = [1000, 2500, 5000, 10000, 20000]
-FIELDS = "id,display_name,country_code,type,works_count,cited_by_count,summary_stats,ids,homepage_url,lineage"
+FIELDS = "id,display_name,country_code,type,works_count,cited_by_count,summary_stats,ids,ror,homepage_url,lineage"
 API_KEY = ""  # set in main() from the OPENALEX_API_KEY environment variable; never printed
 UA = "Universities500-pool-pilot/0.1 (research list building; https://universities500.com)"
 
@@ -83,6 +83,7 @@ def parse(r):
         "name": r.get("display_name") or "",
         "openalex_id": (r.get("id") or "").rsplit("/", 1)[-1],
         "wikidata": qid_of(r.get("ids")),
+        "ror": ((r.get("ror") or (r.get("ids") or {}).get("ror") or "").rstrip("/").rsplit("/", 1)[-1]),
         "homepage": r.get("homepage_url") or "",
         "works_count": int(r.get("works_count") or 0),
         "cited_by_count": int(r.get("cited_by_count") or 0),
@@ -130,7 +131,7 @@ def fetch_country(base, cc, min_works, mailto, pause):
 
 
 def write_outputs(all_rows, ccs, min_works, when):
-    cols = ["country", "name", "openalex_id", "wikidata", "homepage", "works_count", "cited_by_count", "h_index", "is_child"]
+    cols = ["country", "name", "openalex_id", "wikidata", "ror", "homepage", "works_count", "cited_by_count", "h_index", "is_child"]
     with open("pool_candidates.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=cols)
         w.writeheader()
