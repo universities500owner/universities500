@@ -12,4 +12,5 @@ export const UNCHECKED = [
   '/working-while-you-study/',
   '/search/',
 ];
-export const hiddenFromSearch = (path) => DRAFT.includes(path) || UNCHECKED.includes(path);
+// A path is hidden if it is listed, or sits under a listed path (for example /scholarships/some-award/).
+export const hiddenFromSearch = (path) => [...DRAFT, ...UNCHECKED].some((p) => path === p || (p !== '/' && path.startsWith(p)));

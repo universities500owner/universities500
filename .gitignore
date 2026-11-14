@@ -4,3 +4,4 @@ dist
 shots
 __pycache__
 *.pyc
+out

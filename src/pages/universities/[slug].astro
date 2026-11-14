@@ -1,12 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { all, blurb, related, fmtDate, SITE } from '../../lib/data.js';
+import { itemsFor, hubFor, statusOf, STATUS_LABEL, fmtIso } from '../../lib/scholarships.js';
 
 export function getStaticPaths() {
   return all.map((u) => ({ params: { slug: u.slug }, props: { u } }));
 }
 const { u } = Astro.props;
 const peers = related(u);
+const schol = itemsFor(u.slug).slice(0, 6);
+const hub = hubFor(u.slug);
 
 const title = `${u.name}: facts, campuses and official links | Universities500`;
 const description = u.overview
@@ -101,6 +104,19 @@ const ld = {
     </table>
     {u.read && <p class="small">Data read on {fmtDate(u.read)}. Check the university's own site for current details.</p>}
   </section>
+
+  {(schol.length > 0 || (hub && hub.hubUrl)) && (
+    <section aria-labelledby="schol">
+      <h2 id="schol">Scholarships for international students</h2>
+      {schol.length > 0 && (
+        <ul>
+          {schol.map((s) => <li><a href={`/scholarships/${s.slug}/`}>{s.name}</a> <span class="muted">{STATUS_LABEL[statusOf(s)]}{s.deadline ? `, deadline ${fmtIso(s.deadline)}` : ''}</span></li>)}
+        </ul>
+      )}
+      {hub && hub.hubUrl && <p><a href={hub.hubUrl} rel="noopener">{u.name}'s own scholarships page</a>{hub.checked && <span class="muted"> (checked {fmtIso(hub.checked)})</span>}</p>}
+      <p class="small">Read by a program from the university's website. Check the official page before you apply. <a href="/scholarships/">Search all scholarships</a></p>
+    </section>
+  )}
 
   {u.alumni && u.alumni.length > 0 && (
     <section aria-labelledby="alumni">

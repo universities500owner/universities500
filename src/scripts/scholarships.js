@@ -1,54 +1,89 @@
-import { $, fill, load, save, toolData } from './lib.js';
+// Filters and sort for the scholarship list. The list is already in the page, so this only shows, hides and reorders.
+// Status is worked out again here from the dates, so it stays right between site builds.
+import { $ } from './lib.js';
 
-const { SCH } = toolData();
-const S = load('u500-sch', { list: [] });
-const uniq = (key) => [...new Set(SCH.map((x) => x[key]))].sort();
-fill($('sc-c'), ['All countries', ...uniq('c')]);
-fill($('sc-l'), ['All levels', ...uniq('l')]);
+const list = $('sch-list');
+const rows = [...list.children];
+const q = $('sch-q'), c = $('sch-c'), l = $('sch-l'), s = $('sch-s'), o = $('sch-o'), tally = $('sch-tally'), more = $('sch-more');
+const PAGE = 30;
+let shown = PAGE;
+const LABEL = { open: 'Open', closed: 'Closed', upcoming: 'Yet to open', unknown: 'Check the official page' };
+const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const fmt = (iso) => { const [y, m, d] = iso.split('-').map(Number); return `${d} ${MON[m - 1]} ${y}`; };
+const pad = (n) => String(n).padStart(2, '0');
+const today = (() => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; })();
 
-function render() {
-  const q = $('sc-q').value.trim().toLowerCase();
-  const c = $('sc-c').value;
-  const l = $('sc-l').value;
-  const rows = SCH.filter((x) => (c === 'All countries' || x.c === c) && (l === 'All levels' || x.l === l) && (!q || x.n.toLowerCase().includes(q)));
-  $('sc-tally').textContent = rows.length + (rows.length === 1 ? ' scholarship' : ' scholarships');
-  const box = $('sc-list');
-  box.textContent = '';
-  if (!rows.length) {
-    const e = document.createElement('p');
-    e.className = 'empty';
-    e.textContent = 'Nothing matches those filters.';
-    box.appendChild(e);
-  }
-  rows.forEach((x) => {
-    const card = document.createElement('div');
-    card.className = 'sch';
-    const left = document.createElement('div');
-    const h = document.createElement('h4');
-    h.textContent = x.n;
-    const m = document.createElement('div');
-    m.className = 'meta';
-    m.textContent = x.c + ', ' + x.l + ', ' + x.f + '. Worth ' + x.a + '. Closes ' + x.d + '.';
-    left.append(h, m);
-    const on = S.list.includes(x.n);
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'pill';
-    btn.textContent = on ? 'Shortlisted' : 'Shortlist';
-    btn.setAttribute('aria-pressed', String(on));
-    btn.addEventListener('click', () => {
-      const i = S.list.indexOf(x.n);
-      if (i < 0) S.list.push(x.n);
-      else S.list.splice(i, 1);
-      save('u500-sch', S);
-      render();
-    });
-    card.append(left, btn);
-    box.appendChild(card);
-  });
-  $('sc-short').textContent = S.list.length ? 'Shortlisted ' + S.list.length + ': ' + S.list.join('; ') : 'Nothing shortlisted yet. Pick the ones whose deadline you can actually make.';
+function statusOf(r) {
+  const { deadline: dl, opens: op, rolling } = r.dataset;
+  if (dl && today > dl) return 'closed';
+  if (op && today < op) return 'upcoming';
+  if (dl || rolling) return 'open';
+  return 'unknown';
 }
-$('sc-q').addEventListener('input', render);
-$('sc-c').addEventListener('change', render);
-$('sc-l').addEventListener('change', render);
-render();
+
+// Refresh each row's status chip if the date has moved on since the site was built.
+for (const r of rows) {
+  const st = statusOf(r);
+  if (st !== r.dataset.status) {
+    r.dataset.status = st;
+    const chip = r.querySelector('[data-st]');
+    chip.className = `st st-${st}`;
+    chip.textContent = LABEL[st];
+    r.querySelector('[data-stnote]').textContent =
+      st === 'closed' ? `Closed ${fmt(r.dataset.deadline)}. Check the official page for the next round.`
+      : st === 'upcoming' ? `Opens ${fmt(r.dataset.opens)}`
+      : st === 'open' ? (r.dataset.deadline ? `Closes ${fmt(r.dataset.deadline)}` : 'No fixed deadline stated')
+      : 'No dates found on the page';
+  }
+}
+
+const rank = { open: 0, upcoming: 1, unknown: 2, closed: 3 };
+const sorters = {
+  status: (a, b) => rank[a.dataset.status] - rank[b.dataset.status]
+    || (a.dataset.status === 'closed' ? (b.dataset.deadline || '').localeCompare(a.dataset.deadline || '') : (a.dataset.deadline || '9999').localeCompare(b.dataset.deadline || '9999'))
+    || a.dataset.name.localeCompare(b.dataset.name),
+  name: (a, b) => a.dataset.name.localeCompare(b.dataset.name),
+  country: (a, b) => a.dataset.country.localeCompare(b.dataset.country) || a.dataset.name.localeCompare(b.dataset.name),
+};
+
+function readUrl() {
+  const p = new URLSearchParams(location.search);
+  q.value = p.get('q') || '';
+  for (const [el, k] of [[c, 'c'], [l, 'l'], [s, 's'], [o, 'o']]) {
+    const v = p.get(k);
+    if (v && [...el.options].some((op) => op.value === v)) el.value = v;
+  }
+}
+function writeUrl() {
+  const p = new URLSearchParams();
+  if (q.value) p.set('q', q.value);
+  if (c.value) p.set('c', c.value);
+  if (l.value) p.set('l', l.value);
+  if (s.value) p.set('s', s.value);
+  if (o.value !== 'status') p.set('o', o.value);
+  const qs = p.toString();
+  history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+}
+
+function apply(reset) {
+  if (reset) shown = PAGE;
+  const term = q.value.trim().toLowerCase();
+  const matches = rows.filter((r) =>
+    (!term || term.split(/\s+/).every((w) => r.dataset.name.includes(w))) &&
+    (!c.value || r.dataset.country === c.value) &&
+    (!l.value || r.dataset.levels.split(' ').includes(l.value)) &&
+    (!s.value || r.dataset.status === s.value));
+  matches.sort(sorters[o.value]);
+  const keep = new Set(matches);
+  matches.forEach((r) => list.appendChild(r));
+  rows.filter((r) => !keep.has(r)).forEach((r) => { r.hidden = true; list.appendChild(r); });
+  matches.forEach((r, i) => { r.hidden = i >= shown; });
+  tally.textContent = matches.length === 0 ? 'No scholarships match. Try fewer filters.' : `${matches.length} scholarship${matches.length === 1 ? '' : 's'}` + (matches.length > shown ? `, showing ${shown}` : '');
+  more.hidden = matches.length <= shown;
+  writeUrl();
+}
+
+[q, c, l, s, o].forEach((el) => el.addEventListener(el === q ? 'input' : 'change', () => apply(true)));
+more.addEventListener('click', () => { shown += PAGE; apply(false); });
+readUrl();
+apply(true);

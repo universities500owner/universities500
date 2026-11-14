@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="About the Universities500 reader | Universities500"
+  description="How the Universities500 reader collects public scholarship pages, how often, and how a website owner can stop it."
+  path="/bot/"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>About our reader</nav>
+  <h1>About the Universities500 reader</h1>
+  <p>Universities500Bot is the program that reads public scholarship pages so students can search them in one place. It is run by Universities500. It does not use AI to read pages, and it does not log in, fill in forms or read anything behind a sign-in.</p>
+  <h2>What it does</h2>
+  <ul>
+    <li>Runs about once every two days.</li>
+    <li>Reads robots.txt first and obeys it, including any Crawl-delay.</li>
+    <li>Waits at least three seconds between requests to the same website, and reads no more than about 35 pages per university in a run.</li>
+    <li>Identifies itself as <code>Universities500Bot</code> and links to this page in its User-Agent.</li>
+    <li>Copies facts (name, value, deadline, eligibility) and links back to your page. It does not copy whole pages.</li>
+  </ul>
+  <h2>How to stop it</h2>
+  <p>Add this to your robots.txt and it will stop on the next run:</p>
+  <pre><code>User-agent: Universities500Bot
+Disallow: /</code></pre>
+  <p>To remove or correct an entry about your university, change the official page it links to. The next run picks the change up.</p>
+</Base>

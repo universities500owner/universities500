@@ -1,0 +1,64 @@
+{
+  "_readme": "Official programmes, official directories and third-party link-outs. Built from the list Raja supplied. Nothing here is scraped from memory: a programme is published only when its official page is fetched and passes the 'expect' check. 'urls' are candidates; the first that answers 200 and contains the 'expect' text wins. 'levels' are taken from the programme's official wording (see levelsSource). Not included on purpose: Scholarships@Gov (Singapore citizens only) and the MOE ASEAN Scholarship (school level), because neither is a degree scholarship open to international students.",
+  "programmes": [
+    {
+      "id": "australia-awards", "name": "Australia Awards Scholarships", "provider": "Australian Government (DFAT)", "country": "australia",
+      "levels": ["Bachelor", "Master"], "levelsSource": "Study Australia scholarships page lists Postgraduate and Undergraduate / VET",
+      "urls": ["https://www.australiaawards.gov.au/", "https://www.dfat.gov.au/people-to-people/australia-awards"], "expect": "australia awards"
+    },
+    {
+      "id": "fulbright-foreign-student", "name": "Fulbright Foreign Student Program", "provider": "U.S. Department of State", "country": "usa",
+      "levels": ["Master"], "levelsSource": "Described for international graduate students in the supplied list",
+      "urls": ["https://foreign.fulbrightonline.org/"], "expect": "fulbright"
+    },
+    {
+      "id": "chevening", "name": "Chevening Scholarships", "provider": "UK Government (FCDO)", "country": "uk",
+      "levels": ["Master"], "levelsSource": "GOV.UK: support study for 1-year Master's degrees at any UK university",
+      "urls": ["https://www.chevening.org/scholarships/", "https://www.gov.uk/guidance/foreign-commonwealth-development-office-international-scholarship-programmes"], "expect": "chevening"
+    },
+    {
+      "id": "commonwealth-csc", "name": "Commonwealth Scholarships", "provider": "Commonwealth Scholarship Commission in the UK", "country": "uk",
+      "levels": ["Master"], "levelsSource": "GOV.UK: postgraduate scholarships, applicants need an undergraduate degree",
+      "urls": ["https://cscuk.fcdo.gov.uk/scholarships/", "https://cscuk.fcdo.gov.uk/"], "expect": "commonwealth"
+    },
+    {
+      "id": "goi-ies", "name": "Government of Ireland International Education Scholarships", "provider": "Higher Education Authority (HEA), Ireland", "country": "ireland",
+      "levels": ["Master"], "levelsSource": "HEA call: master's (taught or research) or PhD, one year",
+      "urls": ["https://hea.ie/policy/internationalisation/goi-ies/"], "expect": "government of ireland"
+    },
+    {
+      "id": "ireland-fellows", "name": "Ireland Fellows Programme", "provider": "Irish Aid, Government of Ireland", "country": "ireland",
+      "levels": ["Master"], "levelsSource": "ireland.ie: master's level, one year in Ireland",
+      "urls": ["https://www.ireland.ie/en/irish-aid/get-involved/ireland-fellows-programme/", "https://www.ireland.ie/en/ireland-fellows-programme/"], "expect": "ireland fellows"
+    },
+    {
+      "id": "eiffel", "name": "Eiffel Excellence Scholarship Programme", "provider": "French Ministry for Europe and Foreign Affairs (Campus France)", "country": "france",
+      "levels": ["Master"], "levelsSource": "Described for master's and PhD students in the supplied list",
+      "urls": ["https://www.campusfrance.org/en/eiffel-scholarship-program-of-excellence"], "expect": "eiffel"
+    },
+    {
+      "id": "malaysia-international-scholarship", "name": "Malaysia International Scholarship (MIS)", "provider": "Ministry of Higher Education Malaysia", "country": "malaysia",
+      "levels": ["Master"], "levelsSource": "MOHE portal: postgraduate studies in Malaysia",
+      "urls": ["https://biasiswa.mohe.gov.my/INTER/index.php"], "expect": "malaysia international scholarship"
+    }
+  ],
+  "directories": [
+    {"id": "study-australia", "title": "Study Australia: scholarships", "countries": ["australia"], "urls": ["https://www.studyaustralia.gov.au/en/plan-your-studies/scholarships"], "note": "Australian Government directory of scholarships, grants and bursaries."},
+    {"id": "educationusa", "title": "EducationUSA", "countries": ["usa"], "urls": ["https://educationusa.state.gov/"], "note": "U.S. State Department advising network."},
+    {"id": "govuk-postgraduate", "title": "GOV.UK: postgraduate scholarships for international students", "countries": ["uk"], "urls": ["https://www.gov.uk/postgraduate-scholarships-international-students"], "note": "UK government overview of Chevening, Commonwealth and Marshall scholarships."},
+    {"id": "gac-scholarships", "title": "Global Affairs Canada: international scholarships", "countries": ["canada"], "urls": ["https://www.international.gc.ca/education/scholarships-bourses.aspx?lang=eng", "https://www.scholarships.gc.ca/"], "note": "Mostly short-term study or research exchanges, not full degrees."},
+    {"id": "study-with-nz", "title": "Study with New Zealand: scholarships", "countries": ["new-zealand"], "urls": ["https://www.studywithnewzealand.govt.nz/study/finance-your-study/scholarships", "https://www.studywithnewzealand.govt.nz/en/study-options/scholarships"], "note": "New Zealand government education portal."},
+    {"id": "daad-database", "title": "DAAD scholarship database", "countries": ["germany"], "urls": ["https://www.daad.de/en/study-research-in-germany/scholarships/"], "note": "The German Academic Exchange Service. The first place to search for funding in Germany."},
+    {"id": "campus-bourses", "title": "Campus Bourses (Campus France)", "countries": ["france"], "urls": ["https://campusbourses.campusfrance.org/"], "note": "Search French scholarships by nationality and field."},
+    {"id": "study-in-nl", "title": "Study in NL: scholarships", "countries": ["netherlands"], "urls": ["https://www.studyinnl.org/finances/scholarships"], "note": "Official Dutch study portal."},
+    {"id": "study-in-uae", "title": "Study in UAE", "countries": ["uae"], "urls": ["https://www.studyinuae.ae/", "https://u.ae/en/information-and-services/education/higher-education"], "note": "UAE government education information. Needs a confirmed address."},
+    {"id": "education-malaysia", "title": "Education Malaysia", "countries": ["malaysia"], "urls": ["https://educationmalaysia.gov.my/"], "note": "Official Malaysian portal for international students."},
+    {"id": "study-in-sweden", "title": "Study in Sweden: scholarships", "countries": ["sweden"], "urls": ["https://studyinsweden.se/scholarships/"], "note": "Lists Swedish Institute and university scholarships."},
+    {"id": "study-in-norway", "title": "Study in Norway: scholarships", "countries": ["norway"], "urls": ["https://studyinnorway.no/scholarships-degree-students", "https://www.studyinnorway.no/scholarships-degree-students"], "note": "States that the Norwegian government offers no individual scholarships to degree students, and lists the other schemes."}
+  ],
+  "thirdParty": [
+    {"id": "scholarshipportal", "title": "ScholarshipPortal", "url": "https://www.scholarshipportal.com/", "countries": ["germany", "france", "netherlands", "sweden", "norway"], "note": "European-focused database run by Studyportals.", "scrape": false, "reason": "Commercial site. Terms not yet reviewed, so link-out only."},
+    {"id": "iie-passport", "title": "IIE Passport", "url": "https://www.iiepassport.org/", "countries": ["all"], "note": "Searchable database of study-abroad scholarships, fellowships and grants.", "scrape": false, "reason": "Terms not yet reviewed, so link-out only."},
+    {"id": "ec-study-in-europe", "title": "European Commission: Study in Europe", "url": "https://education.ec.europa.eu/study-in-europe/planning-your-studies/scholarships-and-funding", "countries": ["france", "germany", "ireland", "netherlands", "sweden"], "note": "Official EU page linking to country-level funding schemes.", "scrape": false, "reason": "Terms not yet reviewed, so link-out only."}
+  ]
+}

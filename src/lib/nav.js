@@ -26,7 +26,7 @@ export const NAV = [
       ['/visa-readiness/', 'Visa readiness', 'visa-readiness', 'What a student visa asks for in each destination, and what you have.'],
       ['/budget/', 'Budget planner', 'budget', 'Tuition, living costs and one-time costs against your funds.'],
       ['/loan/', 'Education loan', 'loan', 'What borrowing costs over the life of a loan.'],
-      ['/scholarships/', 'Scholarships', 'scholarships', 'Filter by destination and level and shortlist.'],
+      ['/scholarships/', 'Scholarships', 'scholarships', 'Search by destination, level and status. Official links to apply.'],
     ],
   },
   {
