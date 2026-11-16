@@ -88,11 +88,14 @@ def segments(title):
     return [p for p in parts if L.BACHELOR_TITLE.search(p) or L.MASTER_TITLE.search(p) or not SEG_SKIP.search(p)]
 
 
+GENERIC_H1 = re.compile(r"^(?:(?:undergraduate|postgraduate|graduate)\s+)?(?:study|courses?|programmes?|programs?)(?: and courses?)?(?:\s+\d{4})?$|^(?:overview|degree overview|home|undergraduate|postgraduate|search|results?|admissions?)$", re.I)
+
+
 def programme_name(page):
     cands = [page.h1] + segments(page.og_title) + segments(page.title_tag)
     for c in cands:
         c = T.clean(c)
-        if 3 <= len(c) <= 160:
+        if 3 <= len(c) <= 160 and not GENERIC_H1.match(c):
             return c
     return ''
 
@@ -149,11 +152,16 @@ def read_course(page, html, uni, today, uni_intl=None, strict_international=Fals
     url_out = L.classify_url(page.url)
     if url_out:
         return None, url_out
+    not_prog = L.not_programme_url(page.url, uni.get('country', ''))
+    if not_prog:
+        return None, not_prog
     if count_course_links(page) >= LISTING_LINKS:
         return None, 'listing-page'
     name = programme_name(page)
     if len(name) < 3:
         return None, 'no-name'
+    if L.not_programme_name(name):
+        return None, 'not-a-programme-name'
     sents = sentences_with_labels(page.text)
     nodes = jsonld(html)
     mk = markup_facts(nodes)

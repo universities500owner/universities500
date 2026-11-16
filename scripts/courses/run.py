@@ -9,6 +9,7 @@ Usage: python3 scripts/courses/run.py [--only slug,slug] [--limit N] [--shard 1/
 import argparse
 import csv
 import json
+import re
 import os
 import sys
 import time
@@ -27,7 +28,7 @@ from fetcher import Fetcher  # noqa: E402
 ROOT = HERE.resolve().parents[1]
 MISS_LIMIT = 3        # a course disappears after this many runs in which its page was read but is no longer an eligible course
 SITE_TROUBLE = 0.5    # if more than this share of the known pages we re-read fail, the site probably changed: count no misses
-NOT_A_MISS = {'fetch-failed', 'robots-blocked-page', 'not-html', 'parse-error', 'js-only-or-empty'}  # a bad day, not a removed course
+NOT_A_MISS = {'fetch-failed', 'robots-blocked-page', 'not-html', 'parse-error', 'page-error', 'js-only-or-empty'}  # a bad day, not a removed course
 
 
 def load(p, default):
@@ -51,6 +52,28 @@ def dump(doc):
     parts.append('}')
     parts.append('}')
     return '\n'.join(parts) + '\n'
+
+
+YEAR_TAIL = re.compile(r'(?:/\d{1,3})?/(?:19|20)\d\d/?$|[-/](?:19|20)\d\d(?:[-/]\d{1,2})?/?$')
+
+
+def _facts_count(rec):
+    return sum(1 for k in ('fee', 'duration', 'intakes', 'ielts', 'cricos') if rec.get(k))
+
+
+def duplicates(courses_by_url):
+    """URLs of records that repeat another record of the same programme: the same name, level and degree at addresses that differ only by a
+    query string or a year ('/course/706AA/9/2026', '...?year=2027'). The record with more facts stays; a tie keeps the newer address."""
+    groups = {}
+    for url, c in courses_by_url.items():
+        base = YEAR_TAIL.sub('', url.split('?')[0].split('#')[0]).rstrip('/')
+        groups.setdefault((c['name'].lower(), c['level'], base), []).append(c)
+    drop = []
+    for cs in groups.values():
+        if len(cs) > 1:
+            cs.sort(key=lambda c: (_facts_count(c), c['url']), reverse=True)
+            drop.extend(c['url'] for c in cs[1:])
+    return drop
 
 
 def merge(uni, prev, out, today, now_iso):
@@ -99,6 +122,9 @@ def merge(uni, prev, out, today, now_iso):
         else:
             stats['new'] += 1
         keep[rec['url']] = rec
+    for url in duplicates(keep):      # the same programme under several addresses (one per intake year, say): keep one
+        keep.pop(url, None)
+        stats['dropped'] += 1
     stats['kept'] = len(keep) - stats['new']
     doc['courses'] = sorted(keep.values(), key=lambda c: (c['level'], c['name'].lower(), c['url']))
     seen = dict(prev.get('seen', {}))
@@ -113,6 +139,7 @@ def merge(uni, prev, out, today, now_iso):
     doc['counts'] = {'eligible': len(doc['courses']), 'held': dict(sorted(held.items(), key=lambda kv: -kv[1]))}
     doc['heldSamples'] = {k: v for k, v in out['samples'].items() if k != 'eligible'}
     doc['cleaned'] = cleaned
+    doc['pageErrors'] = out.get('pageErrors', [])[:10]
     return doc, stats
 
 
@@ -237,6 +264,8 @@ def report(args, unis, docs, stats_by, prevs, fx, today, gate_failed, before, af
             top = '; '.join(f'{k}={v}' for k, v in list(d['counts']['held'].items())[:4])
             w.writerow([u['slug'], u['country'], d['status'], d.get('robotsReason', ''), d['pagesRead'], len(d['courses']), st['new'], st['changed'], st['dropped'],
                         top, (d.get('intlOpen') or {}).get('url', ''), d['note']])
+    held_samples = {s: d.get('heldSamples') for s, d in docs.items() if d.get('heldSamples')}
+    (rep / 'held_samples.json').write_text(json.dumps(held_samples, indent=1, ensure_ascii=False), encoding='utf-8')   # example addresses for each held-back reason
     samples = {s: d['courses'][:3] for s, d in docs.items() if d['courses']}
     (rep / 'course_samples.json').write_text(json.dumps(samples, indent=1, ensure_ascii=False), encoding='utf-8')
     L = [f'# Course reader run, {today}', '',
@@ -252,6 +281,11 @@ def report(args, unis, docs, stats_by, prevs, fx, today, gate_failed, before, af
           '## Held back (counted, not published)', '']
     for k, v in held.most_common(14):
         L.append(f'- {k}: {v}')
+    crashed = [(s, d['pageErrors']) for s, d in docs.items() if d.get('pageErrors')]
+    if crashed:
+        L += ['', f'## Pages the reader could not handle ({sum(len(e) for _s, e in crashed)} in {len(crashed)} universities)', '']
+        for slug, errs in crashed[:20]:
+            L.append(f'- {slug}: {errs[0]}')
     L += ['', '## Universities that need a look', '']
     bad = [(u['slug'], docs[u['slug']]) for u in unis if u['slug'] in docs and docs[u['slug']]['status'] != 'ok']
     for slug, d in bad[:60]:

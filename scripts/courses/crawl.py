@@ -34,20 +34,20 @@ LOC = re.compile(r'<loc>\s*(?:<!\[CDATA\[)?\s*([^<\s]+?)\s*(?:\]\]>)?\s*</loc>',
 
 COURSE_PATH = re.compile(r'/(?:courses?|programmes?|programs?|degrees?|undergraduate|postgraduate|graduate|masters?|bachelors?|majors?|study|subjects?|academics|study-areas?|areas-of-study|course-finder|find-a-course)(?:/|-|$)', re.I)
 DEGREE_SLUG = re.compile(r'bachelor|master|(?:^|[-/_])(?:bsc|msc|beng|meng|mba|llb|llm|bba|bcom|mres)(?:[-/_.]|$)|(?:^|[-/_])(?:ba|ma|bs|ms)-|-(?:ba|ma|bs|ms)(?:[-/_.]|$)|honours|-hons', re.I)
-JUNK = re.compile(r'/(?:news|blog|events?|stories|story|press|articles?|alumni|staff|jobs|careers|people|tag|category|feed|login|search|cart|shop|gallery|video|podcast|contact|privacy|terms|cookies?|accessibility|sitemap)(?:/|$)|\.(?:pdf|docx?|xlsx?|pptx?|zip|jpe?g|png|gif|mp4|svg|css|js)$|[?&](?:sort|filter|q|query|search|s)=', re.I)
+JUNK = re.compile(r'/(?:news|news-events?|news-and-events|newsroom|blog|events?|stories|story|press|articles?|alumni|staff|jobs|careers|people|tag|category|feed|login|search|cart|shop|gallery|video|podcast|contact|privacy|terms|cookies?|accessibility|sitemap)(?:/|$)|\.(?:pdf|docx?|xlsx?|pptx?|zip|jpe?g|png|gif|mp4|svg|css|js)$|[?&](?:sort|filter|q|query|search|s)=', re.I)
 OTHER_LANG = re.compile(r'^/(?:de|fr|es|it|nl|sv|se|no|nb|da|fi|pt|ar|zh|zh-cn|zh-tw|ja|ko|ru|pl|tr|cs|hu|ro|el|he|th|vi|id|ms|hi)(?:/|$)', re.I)
 INTL_PATH = re.compile(r'international|overseas|global-students|study-abroad', re.I)
-INTL_PAGE = re.compile(r'admission|apply|application|entry|requirement|fees|visa|english|IELTS|TOEFL', re.I)
+INTL_PAGE = re.compile(r'admission|apply|application|entry|requirement|fees|tuition', re.I)
 SEEN_CAP = 3000
 
 DAY = 86400
 
 
-def url_score(url, text=''):
+def url_score(url, text='', country=''):
     """How likely a URL (and its link text) is to be a course page or a list of courses. 0 = do not fetch."""
     sp = urllib.parse.urlsplit(url)
     path = sp.path or '/'
-    if JUNK.search(url) or OTHER_LANG.search(path) or L.classify_url(url):
+    if JUNK.search(url) or OTHER_LANG.search(path) or L.classify_url(url) or L.not_programme_url(url, country):
         return 0
     if re.search(r'[?&]page=(\d+)', sp.query) and not COURSE_PATH.search(path):
         return 0
@@ -113,12 +113,16 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
     checked by hand: they are read first and may sit on another domain."""
     prev = prev or {}
     seeds = [X.canon(u) for u in (seeds or []) if u]
+    pi = prev.get('intlOpen')
+    if pi and not L.hub_check([str(pi.get('evidence', '')).split(': ', 1)[-1]], pi.get('url', ''), '')[0]:
+        pi = None   # saved under an older, looser rule: look for the admissions page again
     out = {'slug': uni['slug'], 'status': 'ok', 'note': '', 'robotsReason': '', 'pages': 0,
            'results': {},            # url asked for -> 'ok' or the reason it is not an eligible course; 'gone' for 404/410
            'records': {},            # url asked for -> record
            'seen': {},               # url -> [date, reason] for every page read this run
            'reasons': Counter(), 'samples': {}, 'urlSkipped': Counter(), 'partial': False,
-           'intlOpen': prev.get('intlOpen'), 'knownRead': 0, 'knownFailed': 0}
+           'intlOpen': pi, 'knownRead': 0, 'knownFailed': 0, 'pageErrors': []}
+    country = uni.get('country', '')
     base = uni.get('web')
     if not base:
         out['status'] = 'no-website'
@@ -134,13 +138,13 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
     home_ok = home.ok and not home.robots_blocked
     if not home_ok:
         if home.robots_blocked and home.robots_reason == 'unreachable':
-            out['status'], out['note'] = 'unreachable', 'robots.txt could not be read (server error or no answer)'
+            out['status'], out['note'] = 'unreachable', fx.robots_note(base)
         elif home.robots_blocked:
             out['status'] = 'robots'
             out['robotsReason'] = home.robots_reason
             out['note'] = {'disallow': 'robots.txt disallows the home page',
                            'forbidden': 'robots.txt answered 401/403 and strict mode is on',
-                           'unreachable': 'robots.txt could not be read (server error or no answer)'}.get(home.robots_reason, 'robots.txt does not allow us')
+                           'unreachable': fx.robots_note(base)}.get(home.robots_reason, 'robots.txt does not allow us')
         else:
             out['status'], out['note'] = 'unreachable', home.error or 'no response'
         if not seeds:
@@ -173,7 +177,7 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
         c = X.canon(url)
         if c in queued or score <= 0 or not same(c):
             if score <= 0 and c not in skipped and same(c) and c not in queued:
-                why = L.classify_url(c)
+                why = L.classify_url(c) or L.not_programme_url(c, country)
                 if why and (COURSE_PATH.search(urllib.parse.urlsplit(c).path) or DEGREE_SLUG.search(urllib.parse.urlsplit(c).path)):
                     skipped.add(c)
                     note(f'skipped-by-address:{why}', c)   # an online, pathway or doctoral address on a course path: counted, never requested
@@ -187,7 +191,7 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
 
     def consider(href, text, depth, bonus=0, floor=1, kind='new'):
         """Score a link and queue it. An online, pathway or doctoral address on a course path is counted and never requested."""
-        sc = url_score(href, text)
+        sc = url_score(href, text, country)
         if sc == 0:
             push(href, 0, depth, kind)   # push() only counts it
             return
@@ -220,7 +224,7 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
         # 1. international admissions pages: home page links, sitemap, then the usual places
         hp = X.Page(home.final_url, home.text, uni['country'], uni['name'])
         for href, text in hp.all_links:
-            if INTL_PATH.search(urllib.parse.urlsplit(href).path) and not JUNK.search(href) and not OTHER_LANG.search(urllib.parse.urlsplit(href).path):
+            if INTL_PATH.search(urllib.parse.urlsplit(href).path) and not JUNK.search(href) and not L.HUB_URL_NO.search(urllib.parse.urlsplit(href).path) and not OTHER_LANG.search(urllib.parse.urlsplit(href).path):
                 push(href, HUB_SCORE - 1, 1, 'hub')
         try:
             sm = read_sitemaps(fx, scheme, host, same)
@@ -229,17 +233,17 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
             out['note'] = f'sitemap error: {e}'
         for u in sm:
             path = urllib.parse.urlsplit(u).path
-            if INTL_PATH.search(path) and INTL_PAGE.search(path) and len([p for p in path.split('/') if p]) <= 3 and not OTHER_LANG.search(path):
+            if INTL_PATH.search(path) and INTL_PAGE.search(path) and not L.HUB_URL_NO.search(path) and len([p for p in path.split('/') if p]) <= 3 and not OTHER_LANG.search(path):
                 push(u, HUB_SCORE - 2, 1, 'hub')
         if not any(-h[0] >= HUB_SCORE - 2 for h in heap):
             for i, path in enumerate(GUESS_INTL[:5]):
                 push(f'{scheme}://{host}{path}', HUB_SCORE - 5 - i, 1, 'hub')
         # 2. course candidates
-        scored = sorted(((url_score(u), -len(u), u) for u in sm), reverse=True)
+        scored = sorted(((url_score(u, '', country), -len(u), u) for u in sm), reverse=True)
         for sc, _, u in [x for x in scored if x[0] > 0][:SITEMAP_PICKS]:
             push(u, sc, 1)
         for u in sm:
-            if url_score(u) == 0:
+            if url_score(u, '', country) == 0:
                 push(u, 0, 1)
         for href, text in hp.all_links:
             consider(href, text, 1)
@@ -254,16 +258,8 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
                     heapq.heappush(heap, (-3, seq, u, 1, 'list-guess'))
             out['reasons']['guessed-paths'] += 1
 
-    while heap and out['pages'] < max_pages:
-        if fx.deadline and time.monotonic() > fx.deadline:
-            out['partial'] = True
-            break
-        negsc, _, url, depth, kind = heapq.heappop(heap)
-        if url in visited:
-            continue
-        if kind == 'known' and out['knownRead'] >= known_cap:
-            continue  # the rest of the known pages wait for the next run; they are the stalest, so they come first then
-        visited.add(url)
+    def process(url, depth, kind):
+        """Read one page and queue what it links to. Returns True when the whole university should stop."""
         res = fx.get(url)
         out['pages'] += 1
         if kind == 'known':
@@ -272,7 +268,7 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
             out['pages'] -= 1   # no request was made, so it does not use the page budget
             note('robots-blocked-page', url)
             out['results'][url] = 'robots-blocked-page'
-            continue
+            return False
         if not res.ok:
             gone = res.status in (404, 410)
             note('gone' if gone else 'fetch-failed', url)
@@ -280,43 +276,43 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
             if kind == 'known':
                 out['knownFailed'] += 1
             if fx.host_dead(urllib.parse.urlsplit(url).netloc) and urllib.parse.urlsplit(url).netloc == host:
-                break
-            continue
+                return True
+            return False
         if res.ctype and 'html' not in res.ctype.lower():
             note('not-html', url)
             out['results'][url] = 'not-html'
-            continue
+            return False
         try:
             page = X.Page(X.canon(res.final_url), res.text, uni['country'], uni['name'])
         except Exception:
             note('parse-error', url)
             out['results'][url] = 'parse-error'
-            continue
+            return False
         visited.add(X.canon(res.final_url))
         if len(page.text) < 200:
             note('js-only-or-empty', url)
             out['results'][url] = 'js-only-or-empty'
             out['seen'][url] = [today, 'js-only-or-empty']
-            continue
+            return False
 
         # international admissions page?
         if kind == 'hub':
             sents = C.sentences_with_labels(page.text)
-            intl, how, ev = L.international(sents)
-            if intl == 'yes' and re.search(r'international|overseas', page.name + ' ' + url, re.I):
+            ok, ev = L.hub_check(sents, page.url, page.name)
+            if ok and re.search(r'international|overseas', page.name + ' ' + url, re.I) and not out['intlOpen']:
                 out['intlOpen'] = {'url': page.url, 'evidence': ev, 'verified': today}
             out['results'][url] = 'hub'
             out['seen'][url] = [today, 'hub']
             # an admissions page can also be a way into course lists
             for href, text in page.links[:LINKS_PER_PAGE]:
                 consider(href, text, depth + 1)
-            continue
+            return False
 
         rec, reason = C.read_course(page, res.text, uni, today, out['intlOpen'], strict_international)
         # links: from list pages and from pages that are not themselves a course, follow what looks like a course
         # (a course page's own links are mostly menus and "related courses", which are read at lower priority)
         n_links = C.count_course_links(page)
-        is_list = reason == 'listing-page' or n_links >= 3 or (reason == 'not-a-course-page' and url_score(url) >= 2)
+        is_list = reason == 'listing-page' or n_links >= 3 or (reason == 'not-a-course-page' and url_score(url, '', country) >= 2)
         if rec:
             out['records'][url] = rec
             out['results'][url] = 'ok'
@@ -333,5 +329,24 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
         elif depth < 4 and rec:
             for href, text in page.links[:60]:
                 consider(href, text, depth + 1, floor=6)
+        return False
+
+    while heap and out['pages'] < max_pages:
+        if fx.deadline and time.monotonic() > fx.deadline:
+            out['partial'] = True
+            break
+        negsc, _, url, depth, kind = heapq.heappop(heap)
+        if url in visited:
+            continue
+        if kind == 'known' and out['knownRead'] >= known_cap:
+            continue  # the rest of the known pages wait for the next run; they are the stalest, so they come first then
+        visited.add(url)
+        try:
+            if process(url, depth, kind):
+                break
+        except Exception as e:  # one odd page must never cost a whole university
+            note(f'page-error:{type(e).__name__}', url)
+            out['results'][url] = 'page-error'
+            out['pageErrors'].append(f'{type(e).__name__}: {str(e)[:120]} @ {url}')
     out['samples'] = {k: v for k, v in out['samples'].items()}
     return out

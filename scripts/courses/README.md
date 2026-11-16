@@ -5,7 +5,9 @@ It keeps a course only if the page itself shows all three of these:
 
 1. **Bachelor's or Master's degree.** PhD, MPhil, doctorates, diplomas, certificates, foundation years, pathway and pre-master's courses, associate degrees, short courses and executive education are left out.
 2. **Full-time, on campus.** Online, distance and part-time-only courses are left out. A page that says both "on campus" and "fully online" is held back for a person to look at.
-3. **Open to international students.** The page shows an international fee, an Australian CRICOS course code, or a sentence about international applicants. If the course page is silent, the university's own international admissions page can stand in (`how: "university"`). Add `--strict-international` to turn that off.
+3. **Open to international students.** The page shows an international fee with an amount, an Australian CRICOS course code, or a sentence saying international students can apply or are welcome. English-test scores (IELTS, TOEFL), visa lines, work-rights lines and "International admissions" menu labels do not count: they also appear on pages for home students. If the course page is silent, the university's own international admissions page can stand in (`how: "university"`), but only a page about applying, entry or fees, never a visa, news, event, service, exchange, summer-school or pathway page. Add `--strict-international` to turn that off.
+
+A page is also left out when it is *about* a programme but is not the programme: an FAQ, "how to apply", curriculum, fees or deadlines sub-page, a single course unit inside a degree (`/courses/arch-6006/`), a news article, or a branch campus in another country (`/dubai/...` on a UK university). A course that "may include some online delivery" or "blends on-campus with online coursework" is held for a person to look at. A price marked "total" is never shown as a yearly fee.
 
 No AI is used. Every value is copied from a sentence on the page and the sentence is kept next to it (`evidence`, `context`), so anyone can check it. If a value cannot be read with confidence it stays `null`, and the site would say "Check the official page".
 
@@ -71,3 +73,10 @@ By hand: `python3 scripts/courses/run.py --only aston-university --max-pages 40 
 `python3 scripts/courses/test_courses.py` runs a stub university site on localhost (no internet). It covers eligible courses and every kind of page that must be left out (online, distance, part-time only, PhD, diploma, certificate, foundation, pathway, domestic only, robots-blocked), real-world fee wording (tables, whole-course totals, per-credit prices), the page budget, refresh order, merging between runs, the drop rule, the site-trouble rule and the safety gate.
 
 The reader shares `fetcher.py`, `extract.py` and `textutil.py` with `scripts/scholarships/`.
+
+
+## Reading the results of a run
+
+The run summary and the `courses-all` artifact hold `course_report.md`, `universities.csv`, `course_samples.json` (first 3 courses per university) and `held_samples.json` (example addresses for every reason a page was held back, for example `study-mode-unclear`). Look at `held_samples.json` first when a reason count is large: it shows whether a rule is too strict.
+
+`status` in the CSV: `ok`; `unreachable` (the note says why: the robots.txt answer such as `HTTP 502` or a network error, or `HTTP 403` for the home page); `robots` (robots.txt forbids us); `error` (the reader stopped on this university; the note names the error). A page the reader could not handle is counted as `page-error:<name>` and listed in the report; it never stops the rest of the university. The same cleaning is used by the scholarship reader (`scripts/scholarships/fetcher.py`: robots.txt that moves to another address is followed, odd characters in links are encoded).

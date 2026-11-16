@@ -111,6 +111,15 @@ MODE_LABEL = re.compile(
     r"\b(?:study mode|mode of (?:study|attendance|delivery)|attendance|study (?:load|type)|delivery|course type)\b[^.]{0,30}?\b(?:full[- ]?time|on[- ]campus|internal|face[- ]to[- ]face|in[- ]person)\b", re.I)
 
 
+# A course that "may include some online delivery" or "blends on-campus with online coursework" is not the plain on-campus
+# full-time course the person asked for. We hold it for a human look instead of listing it.
+MIXED_MODE = re.compile(
+    r"\b(?:blended (?:learning|delivery|programme|program|course|degree|mode)|hybrid (?:programme|program|course|degree|delivery|learning|mode)|"
+    r"some online (?:delivery|learning|study|classes|content|components?)|(?:may|can|will) include (?:some )?online|partly online|part[- ]online|"
+    r"online (?:and|or) (?:on[- ]campus|face[- ]to[- ]face|in[- ]person)|(?:on[- ]campus|face[- ]to[- ]face|in[- ]person) (?:and|or) online|"
+    r"or (?:studying )?on-?line|virtual options|blends?\b[^.]{0,60}\bonline|online (?:option|options|delivery option|component))\b", re.I)
+
+
 def _says_full_time_on_campus(s):
     if MODE_LABEL.search(s):
         return True
@@ -125,7 +134,7 @@ def study_mode(sentences_, title='', url='', markup_mode=''):
     'yes' needs a sentence that says full-time or on-campus about the course, and nothing on the page that says it is online only.
     A page that says both is 'unclear': a person should look.
     """
-    pos, online, part = '', '', ''
+    pos, online, part, mixed = '', '', '', ''
     out = classify_url(url)
     if out == 'online-or-distance':
         online = f'The address of the page is an online or distance page: {url}'
@@ -136,6 +145,8 @@ def study_mode(sentences_, title='', url='', markup_mode=''):
             online = s
         if not part and PART_TIME_ONLY.search(s):
             part = s
+        if not mixed and MIXED_MODE.search(s) and not NOT_ABOUT_STUDY.search(s):
+            mixed = s
         if not pos and _says_full_time_on_campus(s) and not NEGATED.search(s) and not PART_TIME_ONLY.search(s):
             pos = s
     mm = (markup_mode or '').lower()
@@ -146,6 +157,8 @@ def study_mode(sentences_, title='', url='', markup_mode=''):
             pos = pos or f'The page marks the course mode as "{markup_mode}".'
     if online and pos:
         return 'unclear', f'Conflicting: {pos[:140]} | {online[:140]}'
+    if mixed and not online:
+        return 'unclear', f'Mixed delivery: {mixed[:200]}'
     if online:
         return 'no', online[:240]
     if part and not pos:
@@ -162,16 +175,24 @@ INTL_FEE = re.compile(
     r"non[- ]?(?:EU|EEA|UK|US|U\.S\.|Australian|Canadian|domestic|resident)(?:\s+(?:students?|fees?))?|out[- ]of[- ]state|"
     r"outside (?:the )?(?:EU|EEA|UK|US|Australia|Canada|New Zealand))\b", re.I)
 INTL_APPLY = re.compile(
-    r"\b(?:international (?:students?|applicants?) (?:can|may|are (?:welcome|able|eligible|invited)|should|will|need|must|apply)|"
+    r"\b(?:international (?:students?|applicants?) (?:can|may|are (?:welcome|able|eligible|invited|required|accepted)|should|will|need|must|apply|who)|"
     r"(?:available|open|offered|designed|suitable|intended) (?:only )?(?:to|for) international (?:students?|applicants?)|"
     r"(?:we )?welcome (?:applications? from )?international|apply as an international|how to apply (?:as|for) international|"
-    r"open to (?:all )?international|international (?:admissions?|entry requirements?|applications?)|"
-    r"entry requirements? for international|english language requirements?|visa|student visa|IELTS|TOEFL|Duolingo|PTE)\b", re.I)
+    r"open to (?:all )?international|international (?:entry requirements?|applicants?)|entry requirements? for international|"
+    r"(?:accepts?|admits?|enrols?|enrolls?) international (?:students?|applicants?))\b", re.I)
+# Not enough on their own: English-test scores, visas and "international admissions" menu labels also appear on pages for home students,
+# on FAQ pages and in footers. They used to count as proof; they no longer do.
 INTL_NO = re.compile(
     r"\b(?:(?:this|the) (?:course|programme|program|degree)(?: is)? (?:is )?(?:only )?(?:available|open|offered) (?:only )?(?:to|for) (?:domestic|home|local|[A-Z][a-z]+ (?:citizens|residents)|citizens?|residents?)|"
     r"(?:domestic|home|local) (?:students?|applicants?) only|citizens? (?:and|or) permanent residents? only|"
     r"not (?:available|open|offered|eligible)(?: to| for)? international|international students? (?:are|is) not (?:eligible|able|accepted|admitted)|"
     r"closed to international|unable to accept international|cannot accept international)\b", re.I)
+
+
+# A sentence that mentions international students while talking about work rights, insurance, scholarships or visas is not about
+# being admitted to the course.
+INTL_PAGE_BAD = re.compile(r"\b(?:CPT|OPT|practical training|insurance|health (?:plan|cover)|scholarships?|bursar\w*|visas?|work(?:ing)?|employ\w*|permitted|housing|orientation|"
+                           r"full-time status|purchase|stipends?|assistantships?)\b", re.I)
 
 
 def international(sentences_, cricos_code=''):
@@ -184,9 +205,86 @@ def international(sentences_, cricos_code=''):
     for i, s in enumerate(sentences_[:400]):
         if len(s) > 320:
             continue
-        if INTL_FEE.search(s) and re.search(r"[£€$]|\b(?:fees?|tuition|cost|USD|GBP|EUR|AUD|CAD|NZD|per year|a year|annual)\b", s, re.I):
+        if INTL_FEE.search(s) and re.search(r"\d[\d,. ]{2,}", s) and re.search(r"[£€$]|\b(?:fees?|tuition|cost|USD|GBP|EUR|AUD|CAD|NZD|per year|a year|annual)\b", s, re.I):
             return 'yes', 'fee', s[:240]
     for s in sentences_[:400]:
-        if len(s) <= 320 and INTL_APPLY.search(s) and re.search(r"international|overseas|non-?EU|visa|IELTS|TOEFL|English language", s, re.I):
+        if 25 <= len(s) <= 320 and INTL_APPLY.search(s) and not INTL_PAGE_BAD.search(s):
             return 'yes', 'page', s[:240]
     return 'unclear', '', ''
+
+
+# ---------------- the university's own international admissions page ----------------
+HUB_URL_NO = re.compile(
+    r"/(?:news|events?|stories|story|blog|press|visas?|student-visas?|immigration|services?|support|orientation|arrivals?|welcome|housing|accommodation|"
+    r"life|clubs?|societ\w+|exchange|study-abroad|incoming|outgoing|summer|short[- ]?(?:courses?|programs?|programmes?)|pathways?|foundation|"
+    r"english-(?:language-)?(?:courses?|programs?|programmes?)|language-(?:courses?|programs?)|research|hdr|phd|doctoral|alumni|contact|faq|faqs)(?:/|-|\.|$)", re.I)
+HUB_SENTENCE = re.compile(
+    r"\binternational (?:students?|applicants?|undergraduate|graduate|postgraduate|admissions?|entry)\b|\boverseas (?:students?|applicants?)\b|"
+    r"\bapplicants? from (?:outside|overseas|abroad|other countries)\b|\bstudents? from (?:outside|overseas|abroad|other countries)\b", re.I)
+HUB_ACTION = re.compile(r"\b(?:appl(?:y|ication|ications|ying)|admission|admissions|admitted|entry|requirements?|eligib\w+|deadlines?|tuition|fees?|enrol\w*|welcome|accept\w*)\b", re.I)
+HUB_BAD = re.compile(r"\b(?:events?|webinar|fair|tour|visa|immigration|housing|accommodation|clubs?|societ\w+|warning|scam|fraud|exchange|summer|pathway|foundation|phd|doctoral|research degree|HDR|mitgeteilt|Es wird)\b", re.I)
+
+
+def hub_check(sentences_, url='', name=''):
+    """Is this the university's international admissions page for degree study? Returns (ok, evidence).
+
+    The address must not be a visa, news, event, service, exchange, summer-school, pathway or research page, and a sentence must be about
+    international students AND about applying, entry, fees or admission. The first such sentence is the evidence."""
+    path = re.sub(r'^https?://[^/]+', '', url)
+    if HUB_URL_NO.search(path) or HUB_BAD.search(name or ''):
+        return False, ''
+    strong = re.compile(r"\b(?:appl(?:y|ication|ications|ying)|admission|admissions|admitted|entry|requirements?|eligib\w+|deadlines?)\b", re.I)
+    weak = []
+    for s in sentences_[:300]:
+        if not (40 <= len(s) <= 320):
+            continue
+        if HUB_SENTENCE.search(s) and HUB_ACTION.search(s) and not HUB_BAD.search(s):
+            if strong.search(s):
+                return True, s[:240]          # best evidence: it is about applying or entering
+            weak.append(s)                    # fees, tuition, welcome: good enough if nothing better is on the page
+    return (True, weak[0][:240]) if weak else (False, '')
+
+
+# ---------------- pages that are about a programme but are not the programme ----------------
+# the last part of the address: FAQ, how to apply, curriculum, fees ... (a sub-page of a programme)
+SUBPAGE_LEAF = re.compile(
+    r"^(?:faqs?|frequently-asked-questions|how-to-apply|apply(?:ing)?(?:-now|-online)?|applications?|admissions?|admission-requirements|"
+    r"entry-requirements|requirements|requirements-deadlines|deadlines|curriculum|academics|careers?|career-outcomes|contact(?:-us)?|"
+    r"fees?|fees-and-funding|tuition|funding|scholarships?|news|events?|people|faculty|staff|alumni|financial-aid|costs?|visit|open-days?|"
+    r"stay-touch|ask-admissions[\w-]*|after-your-admission[\w-]*|how-do-i-apply|international-applicants?)(?:\.html?|\.php|\.aspx)?$", re.I)
+# a single course unit inside a degree: .../courses/indg-5011/
+UNIT_URL = re.compile(r"/(?:courses?|units?|subjects?|modules?)/[a-z]{2,6}[-_ ]?\d{3,5}[a-z]?/?$", re.I)
+# a branch campus in another country, as the first part of the address: /dubai/study/..., /malaysia/study/...
+BRANCH_CAMPUS = {'dubai': 'uae', 'abu-dhabi': 'uae', 'malaysia': 'malaysia', 'singapore': 'singapore', 'qatar': 'qatar', 'china': 'china',
+                 'ningbo': 'china', 'suzhou': 'china', 'mauritius': 'mauritius', 'bangalore': 'india', 'india': 'india', 'kazakhstan': 'kazakhstan'}
+# names that are pages about studying, not programmes
+NOT_PROGRAMME_NAME = re.compile(
+    r"^(?:general )?faqs?\b|\bfrequently asked\b|\bhow to apply\b|^apply(?:ing)?\b|\bapplication and admission\b|^admissions?\b|\badmissions? (?:office|overview|requirements?|and tuition)\b|"
+    r"\brequirements?(?: (?:&|and) deadlines)?$|\bcurriculum$|^academics$|^contact\b|\bcontact (?:the|us)\b|\bopen days?\b|\bscholarships?$|^scholarships?\b|\bloans?$|"
+    r"^funding\b|\bgraduate calendar\b|^regulations? for\b|\bassessment procedure\b|^average salary$|^careers?\b|\bcareer experience\b|^levels and degrees$|\bflexible degree options\b|"
+    r"\bafter your admission\b|^ask admissions\b|^programs? and courses$|^study$|^(?:undergraduate|postgraduate|graduate) study\b|^beginner|\bmasterful\b|\bmaster class\b|\bmasters? project \d\b|"
+    r"^[A-Z]{3,5}\s?\d{4}\b", re.I)
+GENERIC_NAME = re.compile(
+    r"^(?:overview )?(?:the )?(?:undergraduate |postgraduate |graduate )?(?:bachelor|master)(?:['’]?s)?(?: (?:degree|degrees|programmes?|programs?|education|studies|overview|open days?))*$", re.I)
+
+
+def not_programme_url(url, country=''):
+    """Reason a web address cannot be a single programme page, or ''."""
+    sp = re.sub(r'^https?://[^/]+', '', url).split('?')[0].split('#')[0]
+    segs = [x for x in sp.split('/') if x]
+    if segs and SUBPAGE_LEAF.match(segs[-1]):
+        return 'programme-subpage'
+    if UNIT_URL.search(sp):
+        return 'course-unit-page'
+    if segs:
+        home = BRANCH_CAMPUS.get(segs[0].lower())
+        if home and home != country:
+            return 'other-country-campus'
+    return ''
+
+
+def not_programme_name(name):
+    n = (name or '').strip()
+    if NOT_PROGRAMME_NAME.search(n) or GENERIC_NAME.match(n):
+        return 'not-a-programme-name'
+    return ''

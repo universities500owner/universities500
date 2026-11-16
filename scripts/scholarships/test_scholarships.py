@@ -170,6 +170,20 @@ class TextTests(unittest.TestCase):
         self.assertEqual(T.detect_international('for home students only'), 'no')
 
 
+class SharedReaderTests(unittest.TestCase):
+    """The page cleaner and address cleaner are shared with the course reader."""
+
+    def test_nested_menu_blocks_do_not_crash_the_cleaner(self):
+        html = ('<html><body><div role="navigation" class="menu"><div role="search" class="menu"><span class="menu">x</span></div></div>'
+                '<main>' + 'A real sentence about the scholarship. ' * 12 + '</main></body></html>')
+        node = X.main_node(X.soup_of(html))
+        self.assertEqual(node.name, 'main')
+
+    def test_addresses_with_spaces_and_accents_are_made_safe(self):
+        from fetcher import clean_url
+        self.assertEqual(clean_url('https://x.de/a b/\u00dc'), 'https://x.de/a%20b/%C3%9C')
+
+
 class PipelineTests(unittest.TestCase):
     def uni(self):
         return {'slug': 'test-university', 'name': 'Test University', 'country': 'uk', 'web': f'http://127.0.0.1:{PORT["p"]}/'}

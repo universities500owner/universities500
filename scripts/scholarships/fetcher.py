@@ -2,6 +2,7 @@
 follows redirects by hand so every hop is checked, and gives up quickly on slow or unhappy sites."""
 import gzip
 import io
+import re
 import threading
 import time
 import urllib.error
@@ -51,6 +52,26 @@ class Result:
             return self.body.decode('utf-8', errors='replace')
 
 
+def clean_url(url):
+    """Make a link from a web page safe to request: drop tabs and line breaks (browsers do), percent-encode spaces and
+    non-ASCII characters, and turn an international host name into its ASCII form. Already-encoded text is left alone."""
+    url = re.sub(r'[\t\r\n]', '', (url or '').strip())
+    try:
+        p = urllib.parse.urlsplit(url)
+    except ValueError:
+        return url
+    host = p.netloc
+    if host and not host.isascii():
+        try:
+            host = host.encode('idna').decode('ascii')
+        except UnicodeError:
+            return url
+    safe = "/%:@!$&'()*+,;=~-._[]"
+    path = urllib.parse.quote(p.path, safe=safe)
+    query = urllib.parse.quote(p.query, safe=safe + '?')
+    return urllib.parse.urlunsplit((p.scheme, host, path, query, ''))
+
+
 def reg_domain(host):
     """Rough registrable domain: ox.ac.uk, unimelb.edu.au, mit.edu. Good enough to keep a crawl on one institution."""
     host = host.lower().split(':')[0]
@@ -86,6 +107,7 @@ class Fetcher:
         self.gone = set()  # URLs that answered 404 or 410
         self.robots_text = {}  # host -> robots.txt body, for the report
         self.robots_status = {}  # host -> HTTP status of robots.txt (0 = no answer), for the report
+        self.robots_detail = {}  # host -> why robots.txt could not be read ('HTTP 503', 'network error: ...'), for the report
         self.slock = threading.Lock()
 
     # ---------- robots ----------
@@ -95,8 +117,22 @@ class Fetcher:
             if key in self._robots:
                 return self._robots[key]
         rp = urllib.robotparser.RobotFileParser()
-        status, body, _ct, _loc = self._raw(f'{scheme}://{host}/robots.txt')
+        # RFC 9309 2.3.1.2: follow at least five redirects. Many sites answer mit.edu/robots.txt with a move to www.mit.edu/robots.txt;
+        # reading that as "no answer" used to put a whole university out of reach.
+        cur = f'{scheme}://{host}/robots.txt'
+        for _hop in range(6):
+            status, body, _ct, loc = self._raw(cur)
+            if status in (301, 302, 303, 307, 308) and loc:
+                nxt = clean_url(urllib.parse.urljoin(cur, loc))
+                if urllib.parse.urlsplit(nxt).scheme in ('http', 'https'):
+                    cur = nxt
+                    continue
+            break
         self.robots_status[host] = status
+        if status == 0:
+            self.robots_detail[host] = self._dead_hosts.get(urllib.parse.urlsplit(cur).netloc) or 'no answer'
+        elif status != 200:
+            self.robots_detail[host] = f'HTTP {status}'
         verdict = 'rules'
         if status == 200:
             txt = body.decode('utf-8', errors='replace')
@@ -132,6 +168,12 @@ class Fetcher:
         if verdict != 'deny':
             return 'disallow'
         return 'forbidden' if self.robots_status.get(p.netloc) in (401, 403) else 'unreachable'
+
+    def robots_note(self, url):
+        """Plain words for why robots.txt could not be read, e.g. 'robots.txt could not be read (HTTP 503)'."""
+        host = urllib.parse.urlsplit(url).netloc
+        self._robots_for(urllib.parse.urlsplit(url).scheme, host)
+        return f'robots.txt could not be read ({self.robots_detail.get(host) or "no answer"})'
 
     def crawl_delay(self, url):
         p = urllib.parse.urlsplit(url)
@@ -222,7 +264,7 @@ class Fetcher:
     # ---------- public ----------
     def get(self, url, accept=None):
         res = Result(url)
-        cur = url
+        cur = clean_url(url)
         for _hop in range(6):
             p = urllib.parse.urlsplit(cur)
             if p.scheme not in ('http', 'https') or not p.netloc:
@@ -245,7 +287,7 @@ class Fetcher:
             self._host_delay[p.netloc] = cd
             status, body, ctype, loc = self._raw(cur, accept=accept)
             if status in (301, 302, 303, 307, 308) and loc:
-                cur = urllib.parse.urljoin(cur, loc)
+                cur = clean_url(urllib.parse.urljoin(cur, loc))
                 continue
             res.final_url = cur
             res.status = status

@@ -92,7 +92,7 @@ def crawl_university(uni, fx, today, max_pages=60, seeds=None):
             out['robotsReason'] = home.robots_reason
             out['note'] = {'disallow': 'robots.txt disallows the home page',
                            'forbidden': 'robots.txt answered 401/403 and strict mode is on',
-                           'unreachable': 'robots.txt could not be read (server error or no answer)'}.get(home.robots_reason, 'robots.txt does not allow us')
+                           'unreachable': fx.robots_note(base)}.get(home.robots_reason, 'robots.txt does not allow us')
         else:
             out['status'], out['note'] = 'unreachable', home.error or 'no response'
         if not seeds:
