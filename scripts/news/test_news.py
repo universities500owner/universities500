@@ -111,6 +111,20 @@ class Rules(unittest.TestCase):
         self.assertEqual(R.relevant('Minister visits the border', 'A speech about trade.'), (False, 'not-about-students'))
         self.assertEqual(R.relevant('Anything at all', '', 'all'), (True, ''))
 
+    def test_relevance_is_not_loose(self):
+        # a department of education publishes much that is not about international students
+        self.assertEqual(R.relevant('Guidance: EHE and CME data collection: guide and validation', 'Elective home education and children missing education: how councils report numbers of pupils and students.')[0], False)
+        self.assertEqual(R.relevant('New college funding guide', 'Funding for colleges and universities in England.')[0], False)
+        # ...but a student word with an international or visa word counts
+        self.assertEqual(R.relevant('Register of licensed sponsors: students', 'Organisations that sponsor students from overseas.')[0], True)
+        self.assertEqual(R.relevant('Scholarship round opens', 'Scholarships for foreign nationals who plan to study.')[0], True)
+        # an immigration authority needs only a student word
+        self.assertEqual(R.relevant('Update for students', 'Changes to the online form.')[0], False)
+        self.assertEqual(R.relevant('Update for students', 'Changes to the online form.', 'student', True)[0], True)
+        # enforcement and crime news is never guidance, even when a student is named
+        self.assertEqual(R.relevant('ICE issues immigration detainer against illegal alien', 'The man, an F-1 student, was charged.'), (False, 'about-something-else'))
+        self.assertEqual(R.relevant('Man arrested after student visa fraud', 'An international student was named.')[0], False)
+
     def test_english(self):
         self.assertTrue(R.english('International students can now apply for the new graduate visa online from next week.'))
         self.assertFalse(R.english('Les étudiants internationaux peuvent demander un visa pour la France en ligne dès maintenant'))

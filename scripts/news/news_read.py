@@ -128,7 +128,7 @@ def read_source(src, fx, today, keep_days=120, known=None):
         if not R.english(f'{title}. {summary}'):
             info['drops']['not-english'] += 1
             continue
-        ok, why = R.relevant(title, summary, src.get('filter', 'student'))
+        ok, why = R.relevant(title, summary, src.get('filter', 'student'), src.get('context') == 'immigration')
         if not ok:
             info['drops'][why] += 1
             if len(info['rejected']) < 4:

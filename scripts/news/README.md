@@ -7,7 +7,7 @@ A daily reader of official news for international students, for the 14 destinati
 - **Sources**: government and immigration bodies, and official study agencies, listed in `data/news_sources.json`. Each source says which website addresses are its own (`domains`); a link anywhere else is dropped.
 - **Text**: the headline, the date and the note are the official body's own words. The note is the first sentences of the official summary, cut at a sentence end (at most about 360 characters). Nothing is rewritten, nothing is generated, no AI is used.
 - **Language**: English official pages only. Items in another language are dropped, never translated.
-- **Relevance**: sources marked `filter: "student"` keep an item only if it is about students or study visas (word lists in `news_rules.py`); items about asylum, border security and the like are dropped even when they mention "student". Sources marked `filter: "all"` (study agencies that only publish for students) keep everything.
+- **Relevance**: sources marked `filter: "student"` keep an item only if it has a strong word (student visa, study permit, graduate route, SEVP, ...), or a student word together with an international or visa word. A source marked `context: "immigration"` is an immigration authority, so a student word alone is enough. Enforcement and crime headlines (arrests, detainers, convictions) and items about asylum or borders are dropped even when a student is named. Sources marked `filter: "all"` (study agencies that only publish for students) keep everything. Word lists are in `news_rules.py`.
 - **Dates**: an item with no readable date is skipped. A numeric date such as 03/04/2026 is never guessed.
 - **Age and size**: an item stays 120 days, at most 30 per country. Six stored items are re-opened each run; one whose official page is gone (404 or 410) is removed.
 - **Safety**: if no source answers in a run, the data file is left exactly as it was and the run fails loudly.
@@ -34,7 +34,7 @@ When the feed has no summary, up to four official article pages per source are o
 
 ## Running it
 
-- **Trial (writes nothing)**: Actions > *Industry news (read official sources)* > Run workflow, leave *probe* ticked. Open the run summary and download the `news-run` artifact: `news_report.md` (per-source table, addresses tried, examples the relevance rule rejected) and `news_probe.json`.
+- **Trial (writes nothing)**: Actions > *Industry news (read official sources)* > Run workflow, leave *probe* ticked. The whole report is also printed in the job log. Or download the `news-run` artifact: `news_report.md` (per-source table, addresses tried, examples the relevance rule rejected) and `news_probe.json`.
 - **Real run**: untick *probe*, tick *commit*, run it from `main`. A run from any other branch never commits.
 - **One country**: type its code in *only* (for example `uk`).
 - **Locally**: `python3 scripts/news/test_news.py`, then `python3 scripts/news/news_run.py --probe --only uk`.

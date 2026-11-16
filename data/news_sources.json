@@ -1,5 +1,5 @@
 {
- "_note": "Official bodies the daily industry-news run reads. Each source: feeds[] (RSS/Atom addresses), fr[] (Federal Register search terms), home (looked at for a feed link), list (a page of dated headlines, read when there is no feed). domains[] = the body's own websites; a link anywhere else is dropped. filter: \"student\" keeps only items about students; \"all\" keeps every item (for bodies that only cover students). English pages only. Edit this file to add or retire a source; the first run reports which addresses answered.",
+ "_note": "Official bodies the daily industry-news run reads. Each source: feeds[] (RSS/Atom addresses), fr[] (Federal Register search terms), home (looked at for a feed link), list (a page of dated headlines, read when there is no feed). domains[] = the body's own websites; a link anywhere else is dropped. context: \"immigration\" marks an immigration authority, where a student word alone is enough; elsewhere an item needs a strong word (student visa, study permit) or a student word with an international or visa word. filter: \"student\" keeps only items about students; \"all\" keeps every item (for bodies that only cover students). English pages only. Edit this file to add or retire a source; the first run reports which addresses answered.",
  "keepDays": 120,
  "sources": [
   {
@@ -43,7 +43,8 @@
     "state.gov"
    ],
    "list": "https://travel.state.gov/content/travel/en/News/visas-news.html",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "us-uscis",
@@ -55,19 +56,8 @@
    ],
    "home": "https://www.uscis.gov/newsroom/all-news",
    "list": "https://www.uscis.gov/newsroom/all-news",
-   "filter": "student"
-  },
-  {
-   "id": "us-ice-sevp",
-   "country": "usa",
-   "body": "ICE, Student and Exchange Visitor Program",
-   "kind": "government",
-   "domains": [
-    "ice.gov"
-   ],
-   "home": "https://www.ice.gov/sevis",
-   "list": "https://www.ice.gov/news/releases",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "uk-ukvi",
@@ -80,7 +70,8 @@
    "feeds": [
     "https://www.gov.uk/government/organisations/uk-visas-and-immigration.atom"
    ],
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "uk-home-office",
@@ -147,7 +138,8 @@
    ],
    "home": "https://www.canada.ca/en/immigration-refugees-citizenship/news.html",
    "list": "https://www.canada.ca/en/immigration-refugees-citizenship/news.html",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "ca-educanada",
@@ -173,7 +165,8 @@
    ],
    "home": "https://immi.homeaffairs.gov.au/news-media/archive",
    "list": "https://immi.homeaffairs.gov.au/news-media/archive",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "au-minister-home-affairs",
@@ -221,7 +214,8 @@
    ],
    "home": "https://www.immigration.govt.nz/about-us/news-centre/",
    "list": "https://www.immigration.govt.nz/about-us/news-centre/",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "nz-enz",
@@ -245,7 +239,8 @@
    ],
    "home": "https://www.irishimmigration.ie/news-and-updates/",
    "list": "https://www.irishimmigration.ie/news-and-updates/",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "ie-dfheris",
@@ -343,7 +338,8 @@
     "diplomatie.gouv.fr"
    ],
    "home": "https://france-visas.gouv.fr/en/",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "fr-mesr",
@@ -367,7 +363,8 @@
    ],
    "home": "https://ind.nl/en/news",
    "list": "https://ind.nl/en/news",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "nl-nuffic",
@@ -417,7 +414,8 @@
    ],
    "home": "https://www.migrationsverket.se/en/",
    "list": "https://www.migrationsverket.se/en/about-the-swedish-migration-agency/news.html",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "se-study-in-sweden",
@@ -454,7 +452,8 @@
    ],
    "home": "https://www.udi.no/en/",
    "list": "https://www.udi.no/en/latest-news/",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "no-study-in-norway",
@@ -491,7 +490,8 @@
    ],
    "home": "https://www.ica.gov.sg/news-and-publications/media-releases",
    "list": "https://www.ica.gov.sg/news-and-publications/media-releases",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "sg-moe",
@@ -539,7 +539,8 @@
     "imi.gov.my"
    ],
    "home": "https://www.imi.gov.my/index.php/en/",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "ae-icp",
@@ -551,7 +552,8 @@
    ],
    "home": "https://icp.gov.ae/en/",
    "list": "https://icp.gov.ae/en/page/1/",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "ae-moe",
