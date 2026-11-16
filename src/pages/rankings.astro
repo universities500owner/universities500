@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { hiddenFromSearch } from '../lib/noindex.js';
 
 const sites = [
   { name: 'QS World University Rankings', by: 'QS Quacquarelli Symonds', url: 'https://www.topuniversities.com/world-university-rankings' },
@@ -9,12 +10,11 @@ const sites = [
   { name: 'CWTS Leiden Ranking', by: 'CWTS, Leiden University', url: 'https://www.leidenranking.com/', note: 'Looks at research only. It does not consider teaching.' },
 ];
 ---
-<!-- Draft: noindex until the "how the rankings differ" guide is written and each fact in it has a source. -->
 <Base
   title="Where to check university rankings | Universities500"
   description="Links to the main university ranking sites, so you can check each one yourself."
   path="/rankings/"
-  noindex={true}
+  noindex={hiddenFromSearch("/rankings/")}
   current="rankings"
 >
   <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Rankings</nav>

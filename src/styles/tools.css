@@ -87,6 +87,7 @@
 .foot-guides ul { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
 .foot-legal { margin: 1.5rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--line); font-size: .88rem; }
 .foot-legal p { margin: 0 0 .9rem; max-width: 80ch; }
+.foot-wip { color: var(--muted); }
 .foot-legal a { text-decoration: underline; text-underline-offset: 3px; }
 .foot-base { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .foot-base ul { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; }

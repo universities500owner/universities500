@@ -26,7 +26,7 @@ We store the title, company, city, destination, link, source and the dates. We d
 
 ## Publishing
 
-`src/data/internship_publish.json` has `"publish": false` until the first run's `sample_items.json` has been checked against the employers' own pages. Set it to `true` to show listings. `/internships/` stays `noindex` until it is removed from the UNCHECKED list in `src/lib/noindex.js`.
+`src/data/internship_publish.json` has `"publish": false` until the first run's `sample_items.json` has been checked against the employers' own pages. Set it to `true` to show listings. `/internships/` is indexed. Add it to the UNCHECKED list in `src/lib/noindex.js` to hide it from search again.
 
 ## Run it locally
 
