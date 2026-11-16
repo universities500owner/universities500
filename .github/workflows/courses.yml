@@ -154,10 +154,11 @@ jobs:
           done
           python3 - <<'PY'
           import glob, json
-          out = {}
-          for f in glob.glob('shards-report/*/course_samples.json'):
-              out.update(json.load(open(f)))
-          json.dump(out, open('combined/course_samples.json', 'w'), indent=1)
+          for name in ('course_samples', 'held_samples'):
+              out = {}
+              for f in glob.glob(f'shards-report/*/{name}.json'):
+                  out.update(json.load(open(f)))
+              json.dump(out, open(f'combined/{name}.json', 'w'), indent=1)
           PY
           cat combined/course_report.md >> "$GITHUB_STEP_SUMMARY"
           echo "Courses on file: $(cat data/courses/*.json 2>/dev/null | grep -c '"level"')" >> "$GITHUB_STEP_SUMMARY"

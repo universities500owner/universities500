@@ -14,7 +14,7 @@ FEE_CUE = re.compile(r"\b(?:fees?|tuition|cost|per (?:year|annum|semester|term|c
 DOMESTIC_CUE = re.compile(r"\b(?:domestic|home|UK|EU|Australian|Canadian|in[- ]state|resident|local|citizens?|Commonwealth|New Zealand)\b", re.I)
 NOT_TUITION = re.compile(r"\b(?:application fee|admission fee|deposit|visa|insurance|health cover|OSHC|living|accommodation|rent|flight|accommodation|student services|SSAF|amenities|laptop|books?|scholarship|bursary|discount|waiver|stipend|salary|earn|income|loan|per credit hour)\b", re.I)
 PER_CREDIT = re.compile(r"per (?:\d+\s+)?(?:credit|unit|module|point)s?", re.I)
-TOTAL_CUE = re.compile(r"\b(?:whole course|entire (?:course|programme|program|degree)|full (?:course|programme|program|degree)|total (?:tuition|cost|fees?|price)|course total|total for the (?:course|degree|programme|program))\b", re.I)
+TOTAL_CUE = re.compile(r"\btotal\b|\b(?:whole course|entire (?:course|programme|program|degree)|full (?:course|programme|program|degree)|total (?:tuition|cost|fees?|price)|course total|total for the (?:course|degree|programme|program))\b", re.I)
 TABLE_ROW = 90   # a short "International students. £34,400." line is a table row: the fee word sits in the table heading
 
 
@@ -162,6 +162,7 @@ def find_ielts(sentences_):
 # ---------------- field of study, from the programme title ----------------
 FIELDS = [
     ('Data science and AI', r"data science|artificial intelligence|machine learning|\bAI\b|data analytics|analytics|big data"),
+    ('Law', r"\blaw\b|legal|\bLLB\b|\bLLM\b|jurisprudence"),
     ('Computer science and IT', r"computer|computing|software|informatics|information (?:technology|systems)|cyber|web development|\bgames?\b"),
     ('Biotechnology and life sciences', r"biotech|bioscience|biolog|biochem|genetic|microbiolog|molecular|life science|neuroscience|zoology|botany|ecology|marine"),
     ('Medicine and health', r"medicine|medical|health|nursing|midwif|dentist|pharmac|physiotherap|public health|clinical|biomedical|paramedic|radiograph|nutrition|veterinar"),
@@ -169,7 +170,6 @@ FIELDS = [
     ('Architecture and design', r"architect|urban plan|interior|industrial design|graphic design|fashion|design"),
     ('Business and management', r"business|management|marketing|\bMBA\b|entrepreneur|supply chain|human resource|commerce|administration|hospitality|tourism|event"),
     ('Finance and economics', r"financ|accounting|economics|banking|actuarial|econometric|investment"),
-    ('Law', r"\blaw\b|legal|\bLLB\b|\bLLM\b|jurisprudence"),
     ('Education', r"education|teaching|teacher|pedagog"),
     ('Psychology and social sciences', r"psycholog|sociolog|anthropolog|criminolog|politic|international relations|social (?:work|science)|geograph|development studies|public policy"),
     ('Natural sciences and maths', r"physics|chemistry|mathemat|statistic|geolog|earth science|astronom|environmental|sustainab|climate|science"),

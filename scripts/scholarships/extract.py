@@ -50,15 +50,21 @@ def meta(soup, *names):
     return ''
 
 
+def _gone(el):
+    """True for an element that went with a parent we already removed (bs4 empties its attributes, so any later .get() fails)."""
+    return el.attrs is None or getattr(el, 'decomposed', False)
+
+
 def main_node(soup):
     for t in soup(DROP_TAGS):
-        t.decompose()
+        if not _gone(t):
+            t.decompose()
     for el in soup.find_all(attrs={'role': True}):
-        if el.get('role') in DROP_ROLES:
+        if not _gone(el) and el.get('role') in DROP_ROLES:
             el.decompose()
     for el in soup.find_all(class_=DROP_CLASS):
         # only drop small chrome blocks, never a wrapper that holds the article
-        if len(el.get_text(' ', strip=True)) < 1500 and el.name not in ('body', 'html', 'main', 'article'):
+        if not _gone(el) and len(el.get_text(' ', strip=True)) < 1500 and el.name not in ('body', 'html', 'main', 'article'):
             el.decompose()
     for sel in ('main', '[role=main]', 'article', '#main-content', '#content', '#main', '.main-content', '.content'):
         node = soup.select_one(sel)

@@ -100,6 +100,8 @@ class H(BaseHTTPRequestHandler):
             self.end_headers()
             return
         self.send_response(pg[2] if len(pg) > 2 else 200)
+        if len(pg) > 3:
+            self.send_header('Location', pg[3])
         self.send_header('Content-Type', pg[0] + '; charset=utf-8')
         self.end_headers()
         self.wfile.write(pg[1].encode())
@@ -182,6 +184,34 @@ class Levels(unittest.TestCase):
         self.assertEqual(L.international(['Learn waves.'])[0], 'unclear')
 
 
+class Admissions(unittest.TestCase):
+    def test_hub_check(self):
+        good = 'International students apply through our online application and must meet the entry requirements below.'
+        self.assertTrue(L.hub_check([good], 'https://u.edu/international/admissions/', 'International admissions')[0])
+        for sent, url in [('Located in the Student Centre, the International Services Office is a dedicated team that provide a wide range of support.', 'https://u.edu/international/'),
+                          ('Events. We coordinate events that are open to all international and domestic students, staff and families.', 'https://u.edu/international/'),
+                          (good, 'https://u.edu/international/student-visas/'), (good, 'https://u.edu/news/international-students-apply/'),
+                          ('Student visas. To study in Australia, you will need to hold an appropriate visa that permits study.', 'https://u.edu/international/')]:
+            self.assertFalse(L.hub_check([sent], url, 'International')[0], sent)
+
+    def test_page_evidence(self):
+        self.assertEqual(L.international(['International students can apply for this course.'])[:2], ('yes', 'page'))
+        for s in ('English language requirements.', 'IELTS overall 6.5.', 'Master & International Admissions.', 'You need a student visa.'):
+            self.assertEqual(L.international([s])[0], 'unclear', s)
+        self.assertEqual(L.international(['International students. Tuition.'])[0], 'unclear')      # no amount: not a fee
+
+    def test_not_programme_names_and_addresses(self):
+        for n in ('General FAQ', 'Applying to MSBTAI', 'Accountancy Curriculum', "Bachelor's programmes", 'Bachelor education', 'Aboriginal Studies Master Class'):
+            self.assertTrue(L.not_programme_name(n), n)
+        for n in ('Bachelor of Education', 'Master of Strategy and Security', 'Biology, MS', 'MSc Data Science'):
+            self.assertFalse(L.not_programme_name(n), n)
+        self.assertEqual(L.not_programme_url('https://u.edu/x/ms/admissions/requirements-deadlines'), 'programme-subpage')
+        self.assertEqual(L.not_programme_url('https://u.edu/study/courses/arch-6006/'), 'course-unit-page')
+        self.assertEqual(L.not_programme_url('https://u.edu/malaysia/study/bba', 'uk'), 'other-country-campus')
+        self.assertEqual(L.not_programme_url('https://u.edu/malaysia/study/bba', 'malaysia'), '')
+        self.assertEqual(L.not_programme_url('https://u.edu/course/706AA/9/2026'), '')
+
+
 class Facts(unittest.TestCase):
     def sents(self, text):
         return C.sentences_with_labels(T.clean(text))
@@ -236,6 +266,13 @@ class Facts(unittest.TestCase):
         self.assertIsNone(r['overall'])           # ambiguous: keep the sentence, no number
         self.assertIn('IELTS', r['context'])
         self.assertIsNone(F.find_ielts(self.sents('Learn about waves.')))
+
+    def test_field_law_before_engineering(self):
+        self.assertEqual(F.find_field('Bachelor in Civil Law'), 'Law')
+        self.assertEqual(F.find_field('Civil Engineering BEng'), 'Engineering')
+
+    def test_total_fee(self):
+        self.assertIsNone(F.find_fee(['International: £33,900 (Total).'], 'uk'))
 
     def test_field(self):
         self.assertEqual(F.find_field('Computer Science BSc (Hons)'), 'Computer science and IT')
@@ -307,6 +344,72 @@ class Reader(unittest.TestCase):
         r, why = self.read('/courses/ba-history-domestic/', uni_intl=ev)
         self.assertEqual(why, 'domestic-only')
 
+    def test_pages_about_a_programme_are_not_the_programme(self):
+        ok = '<p>Full-time on campus. International fee: £22,000 a year. Duration: 1 year full-time.</p>'
+        EXTRA.update({
+            '/courses/msc-data-science/faq/': course('MSc Data Science', ok),                       # a sub-page: FAQ
+            '/study/courses/indg-5011/': course('Master Class in Aboriginal Studies', ok),           # one unit inside a degree
+            '/dubai/study/bba/': course('BBA (Hons) Bachelor of Business Administration', ok),       # a branch campus in another country
+            '/courses/msc-apply/': course('Applying to MSc Data Science', ok),                       # a "how to apply" page
+            '/courses/msc-general/': course('General FAQ', ok, '<meta property="og:title" content="Master programmes FAQ">'),
+        })
+        try:
+            for path, why in [('/courses/msc-data-science/faq/', 'programme-subpage'), ('/study/courses/indg-5011/', 'course-unit-page'),
+                              ('/dubai/study/bba/', 'other-country-campus'), ('/courses/msc-apply/', 'not-a-programme-name')]:
+                r, got = self.read(path)
+                self.assertIsNone(r, path)
+                self.assertEqual(got, why, path)
+        finally:
+            EXTRA.clear()
+
+    def test_mixed_delivery_is_held_for_a_look(self):
+        EXTRA['/courses/msc-blended/'] = course('MSc Data Science Blended', '<p>Full-time. Your studies will be on-campus, and may include some online delivery. International fee: £22,000 a year.</p>')
+        EXTRA['/courses/msc-blend2/'] = course('MSc Data Science Mixed', '<p>This full-time programme blends on-campus teaching with online coursework. International fee: £22,000 a year.</p>')
+        try:
+            for path in ('/courses/msc-blended/', '/courses/msc-blend2/'):
+                r, why = self.read(path)
+                self.assertIsNone(r, path)
+                self.assertEqual(why, 'study-mode-unclear', path)
+        finally:
+            EXTRA.clear()
+
+    def test_total_price_is_not_a_yearly_fee(self):
+        EXTRA['/courses/msc-total/'] = course('MSc Data Science Total', '<p>Full-time on campus.</p><p>International: £33,900 (Total).</p><p>Duration: 1 year full-time.</p>')
+        try:
+            r, why = self.read('/courses/msc-total/')
+            self.assertEqual(why, '')                 # an international price shows international students are taken ...
+            self.assertIsNone(r['fee'])               # ... but a price tagged "total" is never shown as a yearly fee
+        finally:
+            EXTRA.clear()
+
+    def test_english_test_and_visa_lines_are_not_proof_of_international_places(self):
+        EXTRA['/courses/msc-ielts/'] = course('MSc Data Science IELTS', '<p>Full-time on campus.</p><p>English language requirements.</p><p>IELTS overall 6.5. You may need a student visa.</p>')
+        try:
+            r, why = self.read('/courses/msc-ielts/')
+            self.assertEqual(why, 'international-unclear')
+        finally:
+            EXTRA.clear()
+
+    def test_nested_menu_blocks_do_not_crash_the_page_reader(self):
+        nav = '<div role="navigation" class="menu"><div role="search" class="menu"><span class="menu">x</span></div></div>'
+        EXTRA['/courses/msc-nested/'] = course('MSc Data Science Nested', nav + '<p>Full-time on campus. International fee: £22,000 a year.</p>')
+        try:
+            r, why = self.read('/courses/msc-nested/')
+            self.assertEqual(why, '')
+            self.assertEqual(r['fee']['display'], 'GBP 22,000 a year')
+        finally:
+            EXTRA.clear()
+
+    def test_programme_name_skips_a_generic_heading(self):
+        EXTRA['/study/courses/bachelor-of-commerce/'] = course('Study', '<p>Full-time on campus. International fee: £22,000 a year.</p>',
+                                                               '<meta property="og:title" content="Bachelor of Commerce">')
+        try:
+            r, why = self.read('/study/courses/bachelor-of-commerce/')
+            self.assertEqual(why, '')
+            self.assertEqual(r['name'], 'Bachelor of Commerce')
+        finally:
+            EXTRA.clear()
+
 
 class Crawl(unittest.TestCase):
     def run_crawl(self, **kw):
@@ -364,6 +467,61 @@ class Crawl(unittest.TestCase):
         u = dict(uni(), web='http://127.0.0.1:1/')
         r = crawl.crawl_university(u, fx, '2026-11-16', max_pages=5)
         self.assertEqual(r['status'], 'unreachable')
+
+
+class Robust(unittest.TestCase):
+    def fx(self):
+        return Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+
+    def test_robots_txt_that_moves_is_followed(self):
+        EXTRA['/robots.txt'] = ('text/plain', '', 301, '/real-robots.txt')
+        EXTRA['/real-robots.txt'] = ('text/plain', 'User-agent: *\nDisallow: /private/\n')
+        try:
+            fx = self.fx()
+            base = f'http://127.0.0.1:{PORT["p"]}'
+            self.assertTrue(fx.allowed(f'{base}/courses/'))
+            self.assertFalse(fx.allowed(f'{base}/private/x'))      # the rules came through the move
+            self.assertEqual(fx.robots_status[f'127.0.0.1:{PORT["p"]}'], 200)
+        finally:
+            EXTRA.clear()
+
+    def test_unreadable_robots_says_why(self):
+        import urllib.robotparser
+        fx = self.fx()
+        host = f'127.0.0.1:{PORT["p"]}'
+        fx._robots[('http', host)] = (urllib.robotparser.RobotFileParser(), 'deny')
+        fx.robots_detail[host] = 'HTTP 502'
+        self.assertEqual(fx.robots_note(f'http://{host}/'), 'robots.txt could not be read (HTTP 502)')
+
+    def test_odd_addresses_are_cleaned(self):
+        from fetcher import clean_url
+        self.assertEqual(clean_url('https://x.ac.uk/agri-fut\nure/a b/'), 'https://x.ac.uk/agri-future/a%20b/')
+        self.assertEqual(clean_url('https://x.de/studium/Über uns'), 'https://x.de/studium/%C3%9Cber%20uns')
+        self.assertEqual(clean_url('https://münchen.de/a'), 'https://xn--mnchen-3ya.de/a')
+        self.assertEqual(clean_url('https://x.org/a%20b/'), 'https://x.org/a%20b/')       # already encoded: left alone
+        EXTRA['/courses/msc x/'] = course('MSc Data Science Space', '<p>Full-time on campus.</p>')
+        EXTRA['/courses/msc%20x/'] = EXTRA['/courses/msc x/']
+        try:
+            res = self.fx().get(f'http://127.0.0.1:{PORT["p"]}/courses/msc x/')
+            self.assertTrue(res.ok, res.error)
+        finally:
+            EXTRA.clear()
+
+    def test_one_bad_page_does_not_stop_the_university(self):
+        from unittest import mock
+        real = C.read_course
+
+        def flaky(page, html, uni_, today, *a, **k):
+            if 'msc-data-science' in page.url:
+                raise RuntimeError('boom')
+            return real(page, html, uni_, today, *a, **k)
+
+        with mock.patch.object(crawl.C, 'read_course', flaky):
+            out = crawl.crawl_university(uni(), Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5), '2026-11-16', max_pages=40)
+        self.assertEqual(out['status'], 'ok')
+        self.assertTrue(any(v == 'page-error' for v in out['results'].values()))
+        self.assertTrue(out['pageErrors'] and 'boom' in out['pageErrors'][0])
+        self.assertTrue(any(r['name'].startswith('Computer Science') for r in out['records'].values()))   # the other courses were still read
 
 
 class Runner(unittest.TestCase):
@@ -439,7 +597,7 @@ class Runner(unittest.TestCase):
             os.makedirs(Path(tmp) / 'courses')
             fake = {'slug': 'test-university', 'courses': [
                 dict(name=f'Fake {i} BSc', degree='BSc', level='Bachelor', url=f'http://127.0.0.1:{PORT["p"]}/gone/{i}/', university='test-university', lastVerified='2026-10-01',
-                     studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee'}, hash='x', firstSeen='2026-10-01', lastChanged='2026-10-01', misses=2)
+                     studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee', 'evidence': 'International students: GBP 24,000 a year.'}, hash='x', firstSeen='2026-10-01', lastChanged='2026-10-01', misses=2)
                 for i in range(120)], 'seen': {}}
             (Path(tmp) / 'courses' / 'test-university.json').write_text(json.dumps(fake))
             # every known page answers 404 at once: the website probably changed its addresses, so no course is marked as missing
@@ -457,7 +615,7 @@ class Runner(unittest.TestCase):
             os.makedirs(Path(tmp) / 'courses')
             fake = {'slug': 'test-university', 'courses': [
                 dict(name=f'Fake {i} BSc', degree='BSc', level='Bachelor', url=f'http://127.0.0.1:{PORT["p"]}/fake/{i}/', university='test-university', lastVerified='2026-10-01',
-                     studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee'}, hash='x', firstSeen='2026-10-01', lastChanged='2026-10-01', misses=2)
+                     studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee', 'evidence': 'International students: GBP 24,000 a year.'}, hash='x', firstSeen='2026-10-01', lastChanged='2026-10-01', misses=2)
                 for i in range(120)], 'seen': {}}
             path = Path(tmp) / 'courses' / 'test-university.json'
             path.write_text(json.dumps(fake))
@@ -476,7 +634,7 @@ class Runner(unittest.TestCase):
 class Merge(unittest.TestCase):
     def rec(self, url, name='MSc Data Science'):
         return dict(id='x', university='u', name=name, degree='MSc', level='Master', url=url, studyMode={'verdict': 'full-time on campus'},
-                    international={'how': 'fee'}, firstSeen='2026-10-01', lastVerified='2026-10-01', lastChanged='2026-10-01', hash='h1')
+                    international={'how': 'fee', 'evidence': 'International students: GBP 24,000 a year.'}, firstSeen='2026-10-01', lastVerified='2026-10-01', lastChanged='2026-10-01', hash='h1')
 
     def test_redirected_address_keeps_one_record(self):
         import importlib.util
@@ -492,21 +650,42 @@ class Merge(unittest.TestCase):
         self.assertEqual([c['url'] for c in doc['courses']], ['https://u.edu/new/'])
         self.assertEqual(doc['courses'][0]['firstSeen'], '2026-10-01')      # the history of the course is kept
 
+    def test_same_programme_under_several_years_is_kept_once(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('course_run2', HERE / 'run.py')
+        run = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(run)
+        recs = {u: dict(self.rec(u, 'Bachelor of Business Informatics'), name='Bachelor of Business Informatics', level='Bachelor')
+                for u in ('https://u.edu/course/706AA/9/2026', 'https://u.edu/course/706AA/9/2027', 'https://u.edu/course/706AA/8/2023')}
+        recs['https://u.edu/course/706AA/9/2027']['fee'] = {'display': 'AUD 30,000 a year'}
+        drop = run.duplicates(recs)
+        self.assertEqual(sorted(drop), ['https://u.edu/course/706AA/8/2023', 'https://u.edu/course/706AA/9/2026'])    # the one with a fee stays
+        other = {'https://u.edu/a/': self.rec('https://u.edu/a/', 'MSc A'), 'https://u.edu/b/': self.rec('https://u.edu/b/', 'MSc B')}
+        self.assertEqual(run.duplicates(other), [])
+
 
 class Quality(unittest.TestCase):
     def good(self):
         return dict(name='MSc Data Science', degree='MSc', level='Master', url='https://u.edu/c/', lastVerified='2026-11-16',
-                    studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee'}, duration={'years': 1}, fee={'display': 'GBP 24,000 a year'})
+                    studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee', 'evidence': 'International students: GBP 24,000 a year.'}, duration={'years': 1}, fee={'display': 'GBP 24,000 a year'})
 
     def test_problem(self):
         self.assertEqual(Q.problem(self.good()), '')
         for change, why in [({'url': ''}, 'no-source-url'), ({'level': 'PhD'}, 'bad-level'), ({'name': 'Courses'}, 'bad-name'),
                             ({'studyMode': {'verdict': 'unclear'}}, 'not-full-time-on-campus'), ({'international': {}}, 'no-international-evidence'),
                             ({'duration': {'years': 9}}, 'duration-out-of-range'), ({'fee': {'display': 'GBP'}}, 'fee-without-number'),
-                            ({'name': 'PhD Data Science', 'degree': ''}, 'research-degree')]:
+                            ({'name': 'PhD Data Science', 'degree': ''}, 'research-degree'), ({'name': 'General FAQ'}, 'not-a-programme-name'),
+                            ({'url': 'https://u.edu/study/courses/arch-6006/'}, 'course-unit-page'),
+                            ({'international': {'how': 'page', 'evidence': 'English language requirements.'}}, 'weak-international-evidence'),
+                            ({'international': {'how': 'fee', 'evidence': 'International students. Tuition.'}}, 'weak-international-evidence'),
+                            ({'studyMode': {'verdict': 'full-time on campus', 'evidence': 'On-campus, and may include some online delivery.'}}, 'mixed-delivery')]:
             r = self.good()
             r.update(change)
             self.assertEqual(Q.problem(r), why, change)
+        r = self.good()
+        r['fee'] = {'display': 'GBP 33,900 a year', 'context': 'International: £33,900 (Total).'}
+        self.assertEqual(Q.problem(r), '')
+        self.assertIsNone(r['fee'])        # a record saved with a total price as its fee loses the fee, not the course
 
 
 if __name__ == '__main__':
