@@ -1,0 +1,20 @@
+---
+import NewsItem from './NewsItem.astro';
+import { PUBLISH, latest, lastCheckedAny, fmtIso } from '../lib/news.js';
+const rows = latest(4);
+---
+{PUBLISH && rows.length > 0 && (
+  <section class="news-strip" aria-labelledby="news-strip-h">
+    <div class="wrap">
+      <div class="news-strip-head">
+        <h2 id="news-strip-h">Industry news</h2>
+        <a class="news-all" href="/industry-news/">See all industry news</a>
+      </div>
+      <p class="news-lede">The latest updates for international students from government and immigration bodies and official study agencies.</p>
+      <ul class="news-grid">
+        {rows.map((i) => <li><NewsItem item={i} clamp={true} /></li>)}
+      </ul>
+      <p class="news-fine">Short excerpts of the official text, checked every day{lastCheckedAny ? `, last on ${fmtIso(lastCheckedAny)}` : ''}. Open the official notice for the full text. This is not legal or immigration advice.</p>
+    </div>
+  </section>
+)}

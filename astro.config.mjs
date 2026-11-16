@@ -8,6 +8,9 @@ import externalLinks from './scripts/external-links.mjs';
 const unis = JSON.parse(fs.readFileSync(new URL('./src/data/universities.json', import.meta.url), 'utf-8'));
 const hidden = new Set();
 for (const u of unis) if (!u.listed) hidden.add(`/universities/${u.slug}/`);
+// Industry news stays out of the sitemap until src/data/industry_news_publish.json says publish: true.
+const newsGate = JSON.parse(fs.readFileSync(new URL('./src/data/industry_news_publish.json', import.meta.url), 'utf-8'));
+if (newsGate.publish !== true) hidden.add('/industry-news/');
 
 export default defineConfig({
   site: 'https://universities500.com',

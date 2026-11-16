@@ -1,0 +1,580 @@
+{
+ "_note": "Official bodies the daily industry-news run reads. Each source: feeds[] (RSS/Atom addresses), fr[] (Federal Register search terms), home (looked at for a feed link), list (a page of dated headlines, read when there is no feed). domains[] = the body's own websites; a link anywhere else is dropped. filter: \"student\" keeps only items about students; \"all\" keeps every item (for bodies that only cover students). English pages only. Edit this file to add or retire a source; the first run reports which addresses answered.",
+ "keepDays": 120,
+ "sources": [
+  {
+   "id": "us-federal-register",
+   "country": "usa",
+   "body": "US federal agencies (Federal Register)",
+   "kind": "government",
+   "domains": [
+    "federalregister.gov",
+    "govinfo.gov"
+   ],
+   "fr": [
+    "SEVP",
+    "international students",
+    "student visa",
+    "F-1 nonimmigrant students",
+    "Student and Exchange Visitor Program"
+   ],
+   "filter": "student"
+  },
+  {
+   "id": "us-study-in-the-states",
+   "country": "usa",
+   "body": "Study in the States (US Department of Homeland Security)",
+   "kind": "government",
+   "domains": [
+    "studyinthestates.dhs.gov",
+    "dhs.gov"
+   ],
+   "home": "https://studyinthestates.dhs.gov/",
+   "list": "https://studyinthestates.dhs.gov/blog",
+   "filter": "all"
+  },
+  {
+   "id": "us-state-dept-visas",
+   "country": "usa",
+   "body": "US Department of State, Visas",
+   "kind": "government",
+   "domains": [
+    "travel.state.gov",
+    "state.gov"
+   ],
+   "list": "https://travel.state.gov/content/travel/en/News/visas-news.html",
+   "filter": "student"
+  },
+  {
+   "id": "us-uscis",
+   "country": "usa",
+   "body": "US Citizenship and Immigration Services",
+   "kind": "government",
+   "domains": [
+    "uscis.gov"
+   ],
+   "home": "https://www.uscis.gov/newsroom/all-news",
+   "list": "https://www.uscis.gov/newsroom/all-news",
+   "filter": "student"
+  },
+  {
+   "id": "us-ice-sevp",
+   "country": "usa",
+   "body": "ICE, Student and Exchange Visitor Program",
+   "kind": "government",
+   "domains": [
+    "ice.gov"
+   ],
+   "home": "https://www.ice.gov/sevis",
+   "list": "https://www.ice.gov/news/releases",
+   "filter": "student"
+  },
+  {
+   "id": "uk-ukvi",
+   "country": "uk",
+   "body": "UK Visas and Immigration (GOV.UK)",
+   "kind": "government",
+   "domains": [
+    "gov.uk"
+   ],
+   "feeds": [
+    "https://www.gov.uk/government/organisations/uk-visas-and-immigration.atom"
+   ],
+   "filter": "student"
+  },
+  {
+   "id": "uk-home-office",
+   "country": "uk",
+   "body": "Home Office (GOV.UK)",
+   "kind": "government",
+   "domains": [
+    "gov.uk"
+   ],
+   "feeds": [
+    "https://www.gov.uk/government/organisations/home-office.atom"
+   ],
+   "filter": "student"
+  },
+  {
+   "id": "uk-dfe",
+   "country": "uk",
+   "body": "Department for Education (GOV.UK)",
+   "kind": "government",
+   "domains": [
+    "gov.uk"
+   ],
+   "feeds": [
+    "https://www.gov.uk/government/organisations/department-for-education.atom"
+   ],
+   "filter": "student"
+  },
+  {
+   "id": "uk-gov-search",
+   "country": "uk",
+   "body": "GOV.UK news on international students",
+   "kind": "government",
+   "domains": [
+    "gov.uk"
+   ],
+   "feeds": [
+    "https://www.gov.uk/search/news-and-communications.atom?keywords=international+students&order=updated-newest",
+    "https://www.gov.uk/search/news-and-communications.atom?keywords=student+visa&order=updated-newest"
+   ],
+   "filter": "student"
+  },
+  {
+   "id": "uk-british-council",
+   "country": "uk",
+   "body": "British Council, Study UK",
+   "kind": "agency",
+   "domains": [
+    "britishcouncil.org"
+   ],
+   "home": "https://study-uk.britishcouncil.org/",
+   "list": "https://study-uk.britishcouncil.org/news",
+   "filter": "all"
+  },
+  {
+   "id": "ca-ircc",
+   "country": "canada",
+   "body": "Immigration, Refugees and Citizenship Canada",
+   "kind": "government",
+   "domains": [
+    "canada.ca"
+   ],
+   "feeds": [
+    "https://api.io.canada.ca/io-server/gc/news/en/v2?dept=departmentofcitizenshipandimmigration&sort=publishedDate&orderBy=desc&pick=50&format=atom&atomtitle=Immigration,%20Refugees%20and%20Citizenship%20Canada"
+   ],
+   "home": "https://www.canada.ca/en/immigration-refugees-citizenship/news.html",
+   "list": "https://www.canada.ca/en/immigration-refugees-citizenship/news.html",
+   "filter": "student"
+  },
+  {
+   "id": "ca-educanada",
+   "country": "canada",
+   "body": "EduCanada (Government of Canada)",
+   "kind": "agency",
+   "domains": [
+    "educanada.ca",
+    "international.gc.ca",
+    "canada.ca"
+   ],
+   "home": "https://www.educanada.ca/",
+   "list": "https://www.educanada.ca/news-nouvelles/index.aspx?lang=eng",
+   "filter": "all"
+  },
+  {
+   "id": "au-home-affairs",
+   "country": "australia",
+   "body": "Department of Home Affairs",
+   "kind": "government",
+   "domains": [
+    "homeaffairs.gov.au"
+   ],
+   "home": "https://immi.homeaffairs.gov.au/news-media/archive",
+   "list": "https://immi.homeaffairs.gov.au/news-media/archive",
+   "filter": "student"
+  },
+  {
+   "id": "au-minister-home-affairs",
+   "country": "australia",
+   "body": "Minister for Home Affairs, media releases",
+   "kind": "government",
+   "domains": [
+    "homeaffairs.gov.au"
+   ],
+   "home": "https://minister.homeaffairs.gov.au/",
+   "filter": "student"
+  },
+  {
+   "id": "au-dept-education",
+   "country": "australia",
+   "body": "Department of Education",
+   "kind": "government",
+   "domains": [
+    "education.gov.au"
+   ],
+   "home": "https://www.education.gov.au/news",
+   "list": "https://www.education.gov.au/news",
+   "filter": "student"
+  },
+  {
+   "id": "au-study-australia",
+   "country": "australia",
+   "body": "Study Australia (Australian Government)",
+   "kind": "agency",
+   "domains": [
+    "studyaustralia.gov.au",
+    "education.gov.au"
+   ],
+   "home": "https://www.studyaustralia.gov.au/en/news",
+   "list": "https://www.studyaustralia.gov.au/en/news",
+   "filter": "all"
+  },
+  {
+   "id": "nz-inz",
+   "country": "new-zealand",
+   "body": "Immigration New Zealand",
+   "kind": "government",
+   "domains": [
+    "immigration.govt.nz"
+   ],
+   "home": "https://www.immigration.govt.nz/about-us/news-centre/",
+   "list": "https://www.immigration.govt.nz/about-us/news-centre/",
+   "filter": "student"
+  },
+  {
+   "id": "nz-enz",
+   "country": "new-zealand",
+   "body": "Education New Zealand, Ed-News",
+   "kind": "agency",
+   "domains": [
+    "enz.govt.nz"
+   ],
+   "home": "https://www.enz.govt.nz/news-and-research/ed-news/",
+   "list": "https://www.enz.govt.nz/news-and-research/ed-news/",
+   "filter": "all"
+  },
+  {
+   "id": "ie-isd",
+   "country": "ireland",
+   "body": "Irish Immigration Service Delivery",
+   "kind": "government",
+   "domains": [
+    "irishimmigration.ie"
+   ],
+   "home": "https://www.irishimmigration.ie/news-and-updates/",
+   "list": "https://www.irishimmigration.ie/news-and-updates/",
+   "filter": "student"
+  },
+  {
+   "id": "ie-dfheris",
+   "country": "ireland",
+   "body": "Department of Further and Higher Education, Research, Innovation and Science",
+   "kind": "government",
+   "domains": [
+    "gov.ie"
+   ],
+   "home": "https://www.gov.ie/en/department-of-further-and-higher-education-research-innovation-and-science/press-releases/",
+   "list": "https://www.gov.ie/en/department-of-further-and-higher-education-research-innovation-and-science/press-releases/",
+   "filter": "student"
+  },
+  {
+   "id": "ie-education-in-ireland",
+   "country": "ireland",
+   "body": "Education in Ireland",
+   "kind": "agency",
+   "domains": [
+    "educationinireland.com"
+   ],
+   "home": "https://www.educationinireland.com/en/news/",
+   "list": "https://www.educationinireland.com/en/news/",
+   "filter": "all"
+  },
+  {
+   "id": "de-daad",
+   "country": "germany",
+   "body": "DAAD (German Academic Exchange Service)",
+   "kind": "agency",
+   "domains": [
+    "daad.de"
+   ],
+   "home": "https://www.daad.de/en/the-daad/communication-publications/press/press-releases/",
+   "list": "https://www.daad.de/en/the-daad/communication-publications/press/press-releases/",
+   "filter": "student"
+  },
+  {
+   "id": "de-study-in-germany",
+   "country": "germany",
+   "body": "Study in Germany (DAAD)",
+   "kind": "agency",
+   "domains": [
+    "study-in-germany.de",
+    "daad.de"
+   ],
+   "home": "https://www.study-in-germany.de/en/",
+   "list": "https://www.study-in-germany.de/en/news/",
+   "filter": "all"
+  },
+  {
+   "id": "de-auswaertiges-amt",
+   "country": "germany",
+   "body": "German Federal Foreign Office",
+   "kind": "government",
+   "domains": [
+    "auswaertiges-amt.de",
+    "diplo.de"
+   ],
+   "home": "https://www.auswaertiges-amt.de/en/newsroom",
+   "list": "https://www.auswaertiges-amt.de/en/newsroom",
+   "filter": "student"
+  },
+  {
+   "id": "de-make-it-in-germany",
+   "country": "germany",
+   "body": "Make it in Germany (Federal Government)",
+   "kind": "government",
+   "domains": [
+    "make-it-in-germany.com"
+   ],
+   "home": "https://www.make-it-in-germany.com/en/",
+   "list": "https://www.make-it-in-germany.com/en/news",
+   "filter": "student"
+  },
+  {
+   "id": "fr-campus-france",
+   "country": "france",
+   "body": "Campus France",
+   "kind": "agency",
+   "domains": [
+    "campusfrance.org"
+   ],
+   "home": "https://www.campusfrance.org/en",
+   "list": "https://www.campusfrance.org/en/news",
+   "filter": "all"
+  },
+  {
+   "id": "fr-france-visas",
+   "country": "france",
+   "body": "France-Visas (Ministry for Europe and Foreign Affairs)",
+   "kind": "government",
+   "domains": [
+    "france-visas.gouv.fr",
+    "diplomatie.gouv.fr"
+   ],
+   "home": "https://france-visas.gouv.fr/en/",
+   "filter": "student"
+  },
+  {
+   "id": "fr-mesr",
+   "country": "france",
+   "body": "Ministry of Higher Education and Research",
+   "kind": "government",
+   "domains": [
+    "enseignementsup-recherche.gouv.fr"
+   ],
+   "home": "https://www.enseignementsup-recherche.gouv.fr/en",
+   "list": "https://www.enseignementsup-recherche.gouv.fr/en/news",
+   "filter": "student"
+  },
+  {
+   "id": "nl-ind",
+   "country": "netherlands",
+   "body": "Immigration and Naturalisation Service (IND)",
+   "kind": "government",
+   "domains": [
+    "ind.nl"
+   ],
+   "home": "https://ind.nl/en/news",
+   "list": "https://ind.nl/en/news",
+   "filter": "student"
+  },
+  {
+   "id": "nl-nuffic",
+   "country": "netherlands",
+   "body": "Nuffic",
+   "kind": "agency",
+   "domains": [
+    "nuffic.nl"
+   ],
+   "home": "https://www.nuffic.nl/en/news",
+   "list": "https://www.nuffic.nl/en/news",
+   "filter": "student"
+  },
+  {
+   "id": "nl-government",
+   "country": "netherlands",
+   "body": "Government of the Netherlands",
+   "kind": "government",
+   "domains": [
+    "government.nl",
+    "rijksoverheid.nl"
+   ],
+   "home": "https://www.government.nl/latest/news",
+   "list": "https://www.government.nl/latest/news",
+   "filter": "student"
+  },
+  {
+   "id": "nl-study-in-holland",
+   "country": "netherlands",
+   "body": "Study in Holland (Nuffic)",
+   "kind": "agency",
+   "domains": [
+    "studyinnl.org",
+    "nuffic.nl"
+   ],
+   "home": "https://www.studyinnl.org/news",
+   "list": "https://www.studyinnl.org/news",
+   "filter": "all"
+  },
+  {
+   "id": "se-migrationsverket",
+   "country": "sweden",
+   "body": "Swedish Migration Agency",
+   "kind": "government",
+   "domains": [
+    "migrationsverket.se"
+   ],
+   "home": "https://www.migrationsverket.se/en/",
+   "list": "https://www.migrationsverket.se/en/about-the-swedish-migration-agency/news.html",
+   "filter": "student"
+  },
+  {
+   "id": "se-study-in-sweden",
+   "country": "sweden",
+   "body": "Study in Sweden (Swedish Institute)",
+   "kind": "agency",
+   "domains": [
+    "studyinsweden.se",
+    "si.se"
+   ],
+   "home": "https://studyinsweden.se/",
+   "list": "https://studyinsweden.se/news/",
+   "filter": "all"
+  },
+  {
+   "id": "se-university-admissions",
+   "country": "sweden",
+   "body": "University Admissions Sweden",
+   "kind": "agency",
+   "domains": [
+    "universityadmissions.se"
+   ],
+   "home": "https://www.universityadmissions.se/en/",
+   "list": "https://www.universityadmissions.se/en/news/",
+   "filter": "all"
+  },
+  {
+   "id": "no-udi",
+   "country": "norway",
+   "body": "Norwegian Directorate of Immigration (UDI)",
+   "kind": "government",
+   "domains": [
+    "udi.no"
+   ],
+   "home": "https://www.udi.no/en/",
+   "list": "https://www.udi.no/en/latest-news/",
+   "filter": "student"
+  },
+  {
+   "id": "no-study-in-norway",
+   "country": "norway",
+   "body": "Study in Norway (Diku)",
+   "kind": "agency",
+   "domains": [
+    "studyinnorway.no",
+    "hkdir.no"
+   ],
+   "home": "https://www.studyinnorway.no/",
+   "list": "https://www.studyinnorway.no/news",
+   "filter": "all"
+  },
+  {
+   "id": "no-regjeringen",
+   "country": "norway",
+   "body": "Government of Norway",
+   "kind": "government",
+   "domains": [
+    "regjeringen.no"
+   ],
+   "home": "https://www.regjeringen.no/en/aktuelt/",
+   "list": "https://www.regjeringen.no/en/aktuelt/",
+   "filter": "student"
+  },
+  {
+   "id": "sg-ica",
+   "country": "singapore",
+   "body": "Immigration and Checkpoints Authority (ICA)",
+   "kind": "government",
+   "domains": [
+    "ica.gov.sg"
+   ],
+   "home": "https://www.ica.gov.sg/news-and-publications/media-releases",
+   "list": "https://www.ica.gov.sg/news-and-publications/media-releases",
+   "filter": "student"
+  },
+  {
+   "id": "sg-moe",
+   "country": "singapore",
+   "body": "Ministry of Education Singapore",
+   "kind": "government",
+   "domains": [
+    "moe.gov.sg"
+   ],
+   "home": "https://www.moe.gov.sg/news/press-releases",
+   "list": "https://www.moe.gov.sg/news/press-releases",
+   "filter": "student"
+  },
+  {
+   "id": "my-emgs",
+   "country": "malaysia",
+   "body": "Education Malaysia Global Services (EMGS)",
+   "kind": "agency",
+   "domains": [
+    "educationmalaysia.gov.my",
+    "emgs.com.my"
+   ],
+   "home": "https://educationmalaysia.gov.my/",
+   "list": "https://educationmalaysia.gov.my/get-in-touch/media-release/",
+   "filter": "all"
+  },
+  {
+   "id": "my-mohe",
+   "country": "malaysia",
+   "body": "Ministry of Higher Education Malaysia",
+   "kind": "government",
+   "domains": [
+    "mohe.gov.my"
+   ],
+   "home": "https://www.mohe.gov.my/en/",
+   "list": "https://www.mohe.gov.my/en/broadcast/press-release",
+   "filter": "student"
+  },
+  {
+   "id": "my-immigration",
+   "country": "malaysia",
+   "body": "Immigration Department of Malaysia",
+   "kind": "government",
+   "domains": [
+    "imi.gov.my"
+   ],
+   "home": "https://www.imi.gov.my/index.php/en/",
+   "filter": "student"
+  },
+  {
+   "id": "ae-icp",
+   "country": "uae",
+   "body": "Federal Authority for Identity, Citizenship, Customs and Port Security (ICP)",
+   "kind": "government",
+   "domains": [
+    "icp.gov.ae"
+   ],
+   "home": "https://icp.gov.ae/en/",
+   "list": "https://icp.gov.ae/en/page/1/",
+   "filter": "student"
+  },
+  {
+   "id": "ae-moe",
+   "country": "uae",
+   "body": "Ministry of Education UAE",
+   "kind": "government",
+   "domains": [
+    "moe.gov.ae"
+   ],
+   "home": "https://www.moe.gov.ae/En/MediaCenter/News/Pages/default.aspx",
+   "list": "https://www.moe.gov.ae/En/MediaCenter/News/Pages/default.aspx",
+   "filter": "student"
+  },
+  {
+   "id": "ae-mohesr",
+   "country": "uae",
+   "body": "UAE Government portal, education and visas",
+   "kind": "government",
+   "domains": [
+    "u.ae"
+   ],
+   "home": "https://u.ae/en/information-and-services/education",
+   "filter": "student"
+  }
+ ]
+}

@@ -40,6 +40,7 @@
   .site-head .nav-list { display: none; flex-direction: column; align-items: stretch; gap: 0; padding: .5rem 0 1rem; }
   .site-head .nav-list.open { display: flex; }
   .nav-btn { width: 100%; justify-content: space-between; }
+  .nav-link { width: 100%; }
   .nav-group:last-child .nav-panel { right: auto; }
   .nav-panel, .nav-panel.wide { position: static; box-shadow: none; border: 0; border-left: 2px solid var(--line); border-radius: 0; margin: 0 0 .5rem .6rem; min-width: 0; display: block; }
 }
@@ -456,3 +457,26 @@ h1 + .sch-sub + .st-wrap { align-items: flex-start; text-align: left; flex-direc
 .xcta p { margin: 0; color: #d6e8f5; max-width: 52ch; }
 html[data-theme="dark"] .xcta { background: var(--hover); }
 .xgroup .xgrid { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+
+/* ---------- industry news: the strip above the footer and the /industry-news/ page ---------- */
+.news-strip { border-top: 1px solid var(--line); padding: 2.25rem 0 2rem; margin-top: 3rem; }
+.news-strip-head { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem 1.25rem; flex-wrap: wrap; }
+.news-strip-head h2 { margin: 0; }
+.news-all { font-weight: 700; }
+.news-lede { color: var(--muted); max-width: 62ch; margin: .35rem 0 1.1rem; }
+.news-grid, .news-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+.news-grid { grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); }
+.news-list { grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); margin: 1rem 0; }
+.news-item { height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .45rem; }
+.news-item h3 { font-size: 1.05rem; line-height: 1.3; margin: 0; }
+.news-item h3 a { color: var(--ink); text-decoration: none; }
+.news-item h3 a:hover { text-decoration: underline; }
+.news-meta { margin: 0; font-size: .85rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: .1rem .6rem; align-items: baseline; }
+.news-country { font-weight: 700; color: var(--ink); }
+.news-note { margin: 0; font-size: .95rem; color: var(--ink); }
+.news-item.clamp .news-note { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.news-src { margin-top: auto; font-size: .88rem; font-weight: 600; overflow-wrap: anywhere; }
+.news-fine, .news-srcs { font-size: .85rem; color: var(--muted); max-width: 70ch; }
+.news-jump { margin: 1rem 0 .5rem; }
+.news-jump .chips a { text-decoration: none; }
+.news-sec { scroll-margin-top: 1rem; }
