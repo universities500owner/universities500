@@ -25,9 +25,10 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
   <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Internships</nav>
   <div class="q-head">
     <h1>Find an internship abroad</h1>
-    <p>Internships, co-ops and placements in the countries you can study in. Pick a destination, or search by role, company or city. Every listing opens on the employer's own page.</p>
+    <p>Internships, co-ops and placements in the countries you can study in. Search by role, company or city, and narrow by destination or type. Every listing opens on the employer's own page.</p>
   </div>
 
+  {!live && (
   <section class="sec" aria-labelledby="h-dest">
     <h2 id="h-dest">Choose a destination</h2>
     <ul class="int-dests">
@@ -41,6 +42,7 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
       ))}
     </ul>
   </section>
+  )}
 
   <section class="sec" aria-labelledby="h-find">
     <h2 id="h-find">{live ? 'Newest internships' : 'Internship listings'}</h2>
@@ -49,6 +51,7 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
         <InternList rows={rows} today={today} byDestination={true} destinations={dests.filter((c) => counts[c.code] > 0)} />
         {items.length > CAP && <p class="small">Showing the newest {CAP} of {items.length}. Open a destination to see all of its listings.</p>}
         <p class="small">Last read {updated}. Listings are read from employers' own job pages and can close at any time. Check the listing and the visa rules for your course before you apply.</p>
+        <p class="small">Where to look, by destination:{dests.map((c, i) => <Fragment>{i > 0 ? ' · ' : ' '}<a href={`/internships/${c.code}/`}>{c.name}</a></Fragment>)}</p>
       </Fragment>
     ) : (
       <div class="note draft">

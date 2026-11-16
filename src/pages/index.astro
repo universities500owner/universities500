@@ -78,57 +78,59 @@ const ld = [
 >
   <div class="home-v1">
     <section class="hero">
-      <svg class="guilloche" viewBox="0 0 800 420" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1">
-        <g>
-          {rings.map((r) => (
-            <ellipse cx="560" cy="300" rx={r.rx} ry={r.ry} transform={`rotate(${r.rot} 560 300)`} opacity={r.op} />
-          ))}
-        </g>
-      </svg>
       <div class="wrap hero-in">
-        <h1>Where could I actually go?</h1>
-        <p class="hero-sub">
-          Pick a country and see the universities there, with the facts and the sources for each one.
-        </p>
+        <div class="hero-main">
+          <h1>Where could I actually go?</h1>
+          <p class="hero-sub">
+            Pick a country and see the universities there, with the facts and the sources for each one.
+          </p>
 
-        <form class="bigsearch" action="/universities/" method="get" role="search" autocomplete="off">
-          <div class="bs-box">
-            <div class="bs-field">
-              <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
-              <input id="bs-q" name="q" type="search" placeholder="Search universities" aria-label="Search universities by name" enterkeyhint="search" />
-              <button class="btn" type="submit">Search</button>
+          <form class="bigsearch" action="/universities/" method="get" role="search" autocomplete="off">
+            <div class="bs-box">
+              <div class="bs-field">
+                <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
+                <input id="bs-q" name="q" type="search" placeholder="Search universities" aria-label="Search universities by name" enterkeyhint="search" />
+                <button class="btn" type="submit">Search</button>
+              </div>
             </div>
+          </form>
+          <p class="sx-try bs-try" aria-label="Browse by country">
+            {quick.map((c) => <a class="sx-q" href={`/study-in/${c.code}/`}>Study in {c.name}</a>)}
+          </p>
+        </div>
+
+        <div class="pick-wrap">
+          <svg class="guilloche" viewBox="0 0 800 420" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1">
+            <g>
+              {rings.map((r) => (
+                <ellipse cx="560" cy="300" rx={r.rx} ry={r.ry} transform={`rotate(${r.rot} 560 300)`} opacity={r.op} />
+              ))}
+            </g>
+          </svg>
+          <div class="hero-pick">
+            <p class="madlib">
+              I want to study in
+              <span class="slot">
+                <select id="s-country" aria-label="Country you want to study in">
+                  <option value="">any country</option>
+                  {countries.map((c) => <option value={c.code}>{c.name}</option>)}
+                </select>
+              </span>.
+            </p>
+
+            <div class="count">
+              <span class="count-n" id="count" aria-hidden="true">{all.length}</span>
+              <span class="count-txt" id="count-txt" role="status"><b>universities</b> across {countries.length} countries. Pick a country to narrow it down.</span>
+            </div>
+
+            <div class="row">
+              <a class="btn" id="go" href="/universities/">Show these universities</a>
+              <a class="btn-ghost" href="/study-in/">Read a country guide</a>
+            </div>
+
+            {latestRead && <p class="pick-note">Every fact has a source. Data last read {shortDate(latestRead)}.</p>}
           </div>
-        </form>
-        <p class="sx-try bs-try" aria-label="Browse by country">
-          {quick.map((c) => <a class="sx-q" href={`/study-in/${c.code}/`}>Study in {c.name}</a>)}
-        </p>
-
-        <p class="madlib">
-          I want to study in
-          <span class="slot">
-            <select id="s-country" aria-label="Country you want to study in">
-              <option value="">any country</option>
-              {countries.map((c) => <option value={c.code}>{c.name}</option>)}
-            </select>
-          </span>.
-        </p>
-
-        <div class="count">
-          <span class="count-n" id="count" aria-hidden="true">{all.length}</span>
-          <span class="count-txt" id="count-txt" role="status"><b>universities</b> across {countries.length} countries. Pick a country to narrow it down.</span>
         </div>
-
-        <div class="row">
-          <a class="btn" id="go" href="/universities/">Show these universities</a>
-          <a class="btn-ghost" href="/study-in/">Read a country guide</a>
-        </div>
-
-        <dl class="scope">
-          <div><dt>{all.length}</dt><dd>universities, each with a source for its facts</dd></div>
-          <div><dt>{countries.length}</dt><dd>countries, from Australia to the United States</dd></div>
-          {latestRead && <div><dt>{shortDate(latestRead)}</dt><dd>when the data was last read</dd></div>}
-        </dl>
       </div>
     </section>
 
@@ -210,7 +212,6 @@ const ld = [
     .home-v1 .step h3 a { color: inherit; text-decoration: none; }
     .home-v1 .step h3 a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
     .home-v1 .step-n { color: var(--accent); }
-    .home-v1 .scope dd { max-width: 22ch; }
     .home-v1 #h-tools { max-width: none; }
     .home-v1 .tools { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
     @media (min-width: 760px) { .home-v1 .tools { grid-template-columns: repeat(2, 1fr); } }
@@ -220,9 +221,5 @@ const ld = [
     .home-v1 .tool-stat { font-size: 0.9rem; line-height: 1.45; color: var(--muted); margin: 1rem 0 1.25rem; max-width: 44ch; }
     .home-v1 .tool-stat.on { color: var(--grow); font-weight: 700; }
     .home-v1 .tool .btn { margin-top: auto; }
-    @media (max-width: 600px) {
-      .home-v1 .scope { display: grid; gap: 1.1rem; }
-      .home-v1 .scope > div { border-right: 0; padding-right: 0; margin-right: 0; }
-    }
   </style>
 </Base>
