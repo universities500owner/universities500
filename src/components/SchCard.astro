@@ -24,6 +24,7 @@ const covers = (r.covers || []).slice(0, 4);
   {r.value ? <p class="rc-pay">{r.value.display}</p> : <p class="rc-pay none">Value: check the official page</p>}
   {about && <p class="rc-note">{about}</p>}
   {covers.length > 0 && <ul class="rc-chips" aria-label="What it covers">{covers.map((c) => <li>{c}</li>)}</ul>}
+  {r.india && <p class="rc-india"><span>The page says about India</span><q>{r.india}</q>{r.india.length > 150 && <Fragment> <a href={`/scholarships/${r.slug}/#india`}>Read in full</a></Fragment>}</p>}
   <dl class="rc-facts">
     <div><dt>Deadline</dt><dd>{r.deadline ? fmtIso(r.deadline) : (r.deadlinePartial ? `${r.deadlinePartial} (year not stated)` : 'Not stated')}</dd></div>
     <div><dt>Level</dt><dd>{levelsText(r.levels)}</dd></div>

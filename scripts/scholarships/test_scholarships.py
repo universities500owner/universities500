@@ -22,6 +22,8 @@ from fetcher import Fetcher  # noqa: E402
 
 PORT = {}
 HITS = []
+EXTRA = {}          # path -> (content type, body[, status]); a test adds pages here and clears them afterwards
+ROBOTS = {'status': None}   # when set, /robots.txt answers with this status code and no rules
 
 
 def page(title, body, extra=''):
@@ -61,12 +63,20 @@ class H(BaseHTTPRequestHandler):
 
     def do_GET(self):
         HITS.append(self.path)
-        pg = pages().get(self.path)
+        if self.path == '/robots.txt' and ROBOTS['status']:
+            self.send_response(ROBOTS['status'])
+            if ROBOTS['status'] == 503:
+                self.send_header('Retry-After', '120')
+            self.end_headers()
+            return
+        pg = EXTRA.get(self.path) or pages().get(self.path)
         if not pg:
             self.send_response(404)
             self.end_headers()
             return
-        self.send_response(200)
+        self.send_response(pg[2] if len(pg) > 2 else 200)
+        if len(pg) > 2 and pg[2] == 503:
+            self.send_header('Retry-After', '120')   # the reader gives up on the host at once instead of waiting and retrying
         self.send_header('Content-Type', pg[0] + '; charset=utf-8')
         self.end_headers()
         self.wfile.write(pg[1].encode())
@@ -242,6 +252,198 @@ class PipelineTests(unittest.TestCase):
             self.assertIn('Stopped by the sanity check', (d / 'rep' / 'scholarship_report.md').read_text())
             r2 = subprocess.run(cmd + ['--allow-drop'], capture_output=True, text=True)
             self.assertEqual(r2.returncode, 0, r2.stdout + r2.stderr)
+
+
+SEED_PATH = '/hidden/overseas-funding/'
+
+
+def seed_pages():
+    """A funding page that nothing on the site links to, a detail page that never says "international" itself,
+    and a home-students-only page that must stay out even when the seed page links to it."""
+    return {
+        SEED_PATH: ('text/html', page('Funding for overseas students', '''
+            <p>Funding for overseas students starting an undergraduate or master course at Test University.</p>
+            <table><tr><th>Award</th><th>Amount</th><th>Deadline</th></tr>
+            <tr><td>Zeta Overseas Bursary</td><td>£1,500</td><td>20 May 2027</td></tr></table>
+            <ul><li><a href="/hidden/awards/kappa-scholarship/">Kappa Scholarship</a></li>
+            <li><a href="/scholarships/home-students-bursary/">Home Students Bursary</a></li></ul>''' + '<p>More text so the page is long enough to read. </p>' * 8)),
+        '/hidden/awards/kappa-scholarship/': ('text/html', page('Kappa Scholarship', '''
+            <p>The Kappa Scholarship is worth £3,000 and is awarded for undergraduate study. Applications close on 1 June 2027.</p>
+            <p>Apply online before the closing date to be considered for the scholarship.</p>''' + '<p>Further notes for applicants. </p>' * 6)),
+    }
+
+
+class Coverage(unittest.TestCase):
+    """What the reader does to reach more universities: pages checked by hand, guessed paths, robots.txt answers."""
+
+    def setUp(self):
+        EXTRA.clear()
+        ROBOTS['status'] = None
+        del HITS[:]
+
+    def tearDown(self):
+        EXTRA.clear()
+        ROBOTS['status'] = None
+
+    def uni(self):
+        return {'slug': 'test-university', 'name': 'Test University', 'country': 'uk', 'web': f'http://127.0.0.1:{PORT["p"]}/'}
+
+    def fx(self, **kw):
+        return Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5, **kw)
+
+    def crawl(self, seeds=None, **kw):
+        import discover
+        return discover.crawl_university(self.uni(), self.fx(**kw), '2026-11-14', max_pages=40, seeds=seeds)
+
+    def seed_url(self):
+        return f'http://127.0.0.1:{PORT["p"]}{SEED_PATH}'
+
+    def test_seed_page_becomes_the_hub_and_its_links_inherit_international(self):
+        EXTRA.update(seed_pages())
+        r = self.crawl(seeds=[self.seed_url()])
+        names = sorted(x['name'] for x in r['records'])
+        self.assertIn('Zeta Overseas Bursary', names)
+        self.assertIn('Kappa Scholarship', names)           # never says "international", but it is linked from the overseas page
+        self.assertNotIn('Home Students Bursary', names)    # an explicit "home students only" still wins
+        self.assertEqual(r['hub']['url'], self.seed_url())
+        self.assertTrue(r['hub']['supplied'])
+        self.assertEqual(r['seeds'][self.seed_url()], 'ok')
+
+    def test_without_the_seed_the_hidden_page_is_never_found(self):
+        EXTRA.update(seed_pages())
+        r = self.crawl()
+        self.assertNotIn('Kappa Scholarship', [x['name'] for x in r['records']])
+        self.assertFalse(r['hub'].get('supplied'))
+
+    def test_seed_that_fails_is_reported_not_hidden(self):
+        r = self.crawl(seeds=[f'http://127.0.0.1:{PORT["p"]}/gone/'])
+        self.assertTrue(r['seeds'][f'http://127.0.0.1:{PORT["p"]}/gone/'].startswith('failed'), r['seeds'])
+        self.assertTrue(r['records'], 'the rest of the site is still read')
+
+    def test_seed_that_does_not_mention_scholarships_is_not_a_hub(self):
+        EXTRA['/hidden/about-us/'] = ('text/html', page('About us', '<p>We are a university with a long history of teaching and research.</p>' * 10))
+        u = f'http://127.0.0.1:{PORT["p"]}/hidden/about-us/'
+        r = self.crawl(seeds=[u])
+        self.assertEqual(r['seeds'][u], 'loads, but does not mention scholarships')
+        self.assertNotEqual(r['hub']['url'], u)
+
+    def test_a_seed_still_obeys_robots(self):
+        u = f'http://127.0.0.1:{PORT["p"]}/private/secret-scholarship/'
+        r = self.crawl(seeds=[u])
+        self.assertEqual(r['seeds'][u], 'robots-disallow')
+        self.assertFalse(any(h.startswith('/private/') for h in HITS))
+
+    def test_usual_paths_are_tried_when_the_site_gives_no_clue(self):
+        EXTRA['/'] = ('text/html', page('Test University', '<p>Welcome to Test University, a place to study.</p>' * 10))
+        EXTRA['/sitemap.xml'] = ('application/xml', '<?xml version="1.0"?><urlset></urlset>')
+        r = self.crawl()
+        self.assertEqual(r['reasons']['guessed-paths'], 1)
+        self.assertTrue(r['hub']['url'].endswith('/scholarships/'), r['hub'])
+        self.assertIn('/scholarships/', HITS)
+
+    def test_robots_403_is_not_a_ban_unless_strict(self):
+        ROBOTS['status'] = 403
+        r = self.crawl()
+        self.assertEqual(r['status'], 'ok')
+        self.assertTrue(r['records'])
+        r = self.crawl(strict_forbidden=True)
+        self.assertEqual((r['status'], r['robotsReason']), ('robots', 'forbidden'))
+
+    def test_robots_404_means_no_rules(self):
+        ROBOTS['status'] = 404
+        self.assertEqual(self.crawl()['status'], 'ok')
+
+    def test_robots_server_error_is_treated_as_closed(self):
+        ROBOTS['status'] = 503
+        r = self.crawl()
+        self.assertEqual((r['status'], r['robotsReason']), ('robots', 'unreachable'))
+        self.assertEqual(r['records'], [])
+
+    def test_explicit_disallow_is_reported_as_such(self):
+        EXTRA['/robots.txt'] = ('text/plain', 'User-agent: *\nDisallow: /\n')
+        r = self.crawl()
+        self.assertEqual((r['status'], r['robotsReason']), ('robots', 'disallow'))
+        self.assertFalse(any(h not in ('/robots.txt',) for h in HITS), 'nothing but robots.txt may be requested')
+
+    def test_explicit_disallow_also_stops_the_supplied_pages(self):
+        EXTRA['/robots.txt'] = ('text/plain', 'User-agent: *\nDisallow: /\n')
+        EXTRA.update(seed_pages())
+        r = self.crawl(seeds=[self.seed_url()])
+        self.assertEqual(r['records'], [])
+        self.assertEqual(r['seeds'][self.seed_url()], 'robots-disallow')
+        self.assertEqual(r['status'], 'robots')
+
+    def test_home_page_down_but_supplied_page_readable(self):
+        EXTRA['/'] = ('text/html', 'not found', 404)
+        EXTRA.update(seed_pages())
+        r = self.crawl(seeds=[self.seed_url()])
+        self.assertEqual(r['status'], 'ok')
+        self.assertTrue(r.get('partial'), 'what we read is partial, so it must not remove records we did not reach')
+        self.assertIn('Zeta Overseas Bursary', [x['name'] for x in r['records']])
+
+    def test_run_writes_supplied_hub_and_reports_the_seed(self):
+        EXTRA.update(seed_pages())
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            (d / 'unis.json').write_text(json.dumps([self.uni()]))
+            (d / 'src.json').write_text(json.dumps({}))
+            (d / 'seeds.json').write_text(json.dumps({'checked': '2026-11-15', 'seeds': {'test-university': {'name': 'Test University', 'urls': [self.seed_url()]}}}))
+            cmd = [sys.executable, str(HERE / 'run.py'), '--universities', str(d / 'unis.json'), '--sources', str(d / 'src.json'), '--seeds', str(d / 'seeds.json'),
+                   '--prev', str(d / 's.json'), '--out', str(d / 's.json'), '--report', str(d / 'rep'), '--delay', '0', '--workers', '2', '--today', '2026-11-14']
+            r = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            doc = json.loads((d / 's.json').read_text())
+            u = doc['universities']['test-university']
+            self.assertEqual((u['hubUrl'], u['hubSource']), (self.seed_url(), 'supplied'))
+            self.assertIn('Kappa Scholarship', [i['name'] for i in doc['items']])
+            rep = (d / 'rep' / 'scholarship_report.md').read_text()
+            self.assertIn('Pages checked by hand', rep)
+            self.assertIn(SEED_PATH, rep)
+            self.assertIn('robots_reason', (d / 'rep' / 'universities.csv').read_text().splitlines()[0])
+
+
+class India(unittest.TestCase):
+    """The page's own sentence, copied. Never a label, and never a guess from a different meaning of "Indian"."""
+
+    def test_sentences_that_name_india(self):
+        for s in ['Students from India, Nepal and Sri Lanka are eligible to apply for this scholarship.',
+                  'This award is open to Indian students who hold an offer for a full-time course.',
+                  'Applicants from India must also submit a verified English test score.']:
+            self.assertEqual(D.find_india(s), s)
+
+    def test_not_india(self):
+        for s in ['Funding for American Indian students living on reservations is available from the state.',
+                  'The Indian Ocean research scholarship is awarded to marine biology students.',
+                  'There is a long history of Indian Affairs policy in this department of the university.',
+                  'India is a large country and we like to talk about it on this page of the website.',
+                  'The Indian Act is studied in the law school and appears in the second year of the course.']:
+            self.assertIsNone(D.find_india(s), s)
+
+    def test_nothing_without_the_word(self):
+        self.assertIsNone(D.find_india('International students are eligible to apply.'))
+        self.assertIsNone(D.find_india(''))
+        self.assertIsNone(D.find_india(None))
+
+    def test_prefers_the_sentence_about_who_can_apply(self):
+        t = 'Our campus has a famous India Society and a cricket ground. Students from India are eligible to apply for this scholarship.'
+        self.assertEqual(D.find_india(t), 'Students from India are eligible to apply for this scholarship.')
+
+    def test_long_sentences_are_trimmed_around_the_word(self):
+        countries = ', '.join(f'Country{i}' for i in range(60))
+        t = f'Applicants who are citizens of any of the following countries are eligible to apply: {countries}, India, Nepal, {countries}.'
+        got = D.find_india(t)
+        self.assertIn('India', got)
+        self.assertLessEqual(len(got), 330)
+        self.assertTrue(got.startswith('Applicants who are citizens'))
+
+    def test_record_carries_it_and_the_hash_notices_a_change(self):
+        kw = dict(name='Example Excellence Scholarship', provider='P', provider_slug='p', provider_type='university', country='uk',
+                  url='https://example.edu/s/', today='2026-11-14', origin='page')
+        a = X.make_record(text='Students from India are eligible to apply for this scholarship. Apply online before 1 May 2027.', **kw)
+        self.assertEqual(a['india'], 'Students from India are eligible to apply for this scholarship.')
+        b = X.make_record(text='Apply online before 1 May 2027.', **kw)
+        self.assertNotIn('india', b)
+        self.assertNotEqual(a['hash'], b['hash'])
 
 
 class Details(unittest.TestCase):

@@ -132,9 +132,55 @@ def find_apply_mode(text, apply_url=None):
     return None
 
 
+# ---------- what the page says about India ----------
+# The sentence is copied as the page wrote it. It is never turned into "eligible" or "not eligible": a page can name India
+# to include it, to exclude it, or only to list it among many countries, and a program reading a sentence cannot tell which.
+INDIA_WORD = re.compile(r'\bIndia\b')
+INDIAN_PEOPLE = re.compile(r'\bIndian\s+(?:students?|citizens?|nationals?|applicants?|residents?|passports?|candidates?|undergraduates?|postgraduates?|graduates?|universit\w*|institutions?|institutes?|colleges?|boards?)\b', re.I)
+NOT_INDIA = re.compile(r'\b(?:American|Native|Alaska\s+Native|First\s+Nations?)\s+Indians?\b|\bIndian\s+(?:Ocean|reservations?|tribes?|tribal|Health|Territory|Affairs|Nations?)\b|\bEast\s+Indian\b|\bIndian\s+Act\b', re.I)
+INDIA_CUE = re.compile(r'\b(?:eligib\w*|appl(?:y|ies|icants?|ication)|available|open to|citizens?|nationals?|residents?|students?|countries|region|scholarship\w*|award\w*|bursar\w*|tuition|fees?|offers?|admission|programmes?|programs?|includ\w+|exclud\w+|except)\b', re.I)
+MAX_INDIA = 260
+
+
+def find_india(text):
+    """The sentence on the page that names India, copied as written (trimmed around the word if it is very long), else None."""
+    if not text or 'ndia' not in text:
+        return None
+    best = None
+    for sent in T.sentences(text):
+        if len(sent) < 25 or NOT_INDIA.search(sent):
+            continue
+        m = INDIAN_PEOPLE.search(sent)
+        if not m:
+            m = INDIA_WORD.search(sent)
+            if not m or not INDIA_CUE.search(sent):
+                continue
+        sent = T.clean(sent)
+        if len(sent) > MAX_INDIA:
+            at = max(sent.find('India'), 0)
+            lo = max(0, at - 90)
+            hi = min(len(sent), at + 130)
+            lo = sent.find(' ', lo) + 1 if lo > 0 else 0
+            hi = sent.rfind(' ', 0, hi) if hi < len(sent) else len(sent)
+            head = ''
+            if lo > 80:  # keep the start of the sentence, so a list of countries still has its lead-in
+                head = sent[:80].rsplit(' ', 1)[0] + ' … '
+            sent = head + ('…' if lo > 0 and not head else '') + sent[lo:hi].strip() + ('…' if hi < len(sent) else '')
+        # prefer a sentence that talks about who can apply
+        score = 2 if re.search(r'\b(?:eligib\w*|appl\w*|open to|available)\b', sent, re.I) else 1
+        if best is None or score > best[0]:
+            best = (score, sent)
+            if score == 2:
+                break
+    return best[1] if best else None
+
+
 def extra(text, lines=None, apply_url=None):
     """All of the above as record fields. Empty ones are left out."""
     out = {}
+    ind = find_india(text)
+    if ind:
+        out['india'] = ind
     aw = find_awards(text)
     if aw:
         out['awards'] = aw

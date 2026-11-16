@@ -34,6 +34,11 @@ const desc = s.description || `${s.name} at ${s.provider}. Value, deadline and e
   {s.description && (<section><h2>About</h2><p>{s.description}</p></section>)}
   {s.covers && s.covers.length > 0 && (<section><h2>What it covers</h2><ul class="rc-chips">{s.covers.map((c) => <li>{c}</li>)}</ul><p class="small">As the official page describes it. Check the page for the exact amounts and limits.</p></section>)}
   {s.applyMode && (<section><h2>How to apply</h2><p>{APPLY_MODE_LABEL[s.applyMode]}.</p></section>)}
+  {s.india && (<section>
+    <h2 id="india">What the page says about India</h2>
+    <blockquote class="india-quote">{s.india}</blockquote>
+    <p class="small">Copied from the <a href={s.url} rel="noopener">official page</a> as it was written. We do not turn it into a yes or no, because a page can name India to include it, to exclude it, or only to list it among many countries. Read the page, or ask the university, before you rely on it.</p>
+  </section>)}
   <section>
     <h2 id="eligibility">Eligibility</h2>
     {s.eligibility && s.eligibility.length ? (<ul>{s.eligibility.map((e) => <li>{e}</li>)}</ul>) : (<p>{CHECK} for who can apply.</p>)}
@@ -41,7 +46,7 @@ const desc = s.description || `${s.name} at ${s.provider}. Value, deadline and e
 
   <section>
     <h2>Where this comes from</h2>
-    <ul>
+    <ul class="src-list">
       <li>Official page: <a href={s.url} rel="noopener">{s.url}</a></li>
       <li>Last read on {fmtIso(s.lastVerified)}. First seen {fmtIso(s.firstSeen)}.</li>
       {s.value && s.value.context && <li class="quote">Value, as the page says: “{s.value.context}”</li>}
