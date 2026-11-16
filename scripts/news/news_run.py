@@ -174,11 +174,14 @@ def report(args, sources, infos, merged, removed, today, wrote, stopped):
     for i in infos:
         for r in i['rejected']:
             L.append(f"- {i['id']}: {r}")
+    L += ['', '## Items on file (newest first)', '']
+    for it in sorted(merged, key=lambda x: (x['published'], x['title']), reverse=True)[:80]:
+        L.append(f"- {it['country']} | {it['published']} | {it['title'][:110]} | {it['url']}")
     text = '\n'.join(L) + '\n'
     (rep / 'news_report.md').write_text(text, encoding='utf-8')
     if os.environ.get('GITHUB_STEP_SUMMARY'):
         Path(os.environ['GITHUB_STEP_SUMMARY']).open('a').write(text)
-    print(text[:2500])
+    print(text)      # the whole report goes to the job log, so a run can be read without opening the artifact
 
 
 if __name__ == '__main__':

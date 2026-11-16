@@ -15,34 +15,49 @@ from bs4 import BeautifulSoup
 
 import textutil as T  # scripts/scholarships/textutil.py (path is set by the caller)
 
-# words that make an item about students
+# words that say an item is about people who study (broad words such as "education" or "academic" are left out on purpose:
+# a department of education publishes much that has nothing to do with international students)
 STUDENT = re.compile(
-    r"\b(?:international students?|overseas students?|foreign students?|students?|student visas?|study visas?|study permits?|study|studying|studies|"
-    r"education(?:al)?|universit(?:y|ies)|colleges?|graduates?|post-study|PGWP|OPT|CPT|SEVP|SEVIS|F-1|M-1|J-1|ESOS|CRICOS|scholarships?|tuition|"
-    r"enrol(?:l)?ment|enrol(?:l)?ed|higher education|learners?|academic)\b", re.I)
+    r"\b(?:students?|study|studying|studies|universit(?:y|ies)|colleges?|graduates?|post-study|scholarships?|tuition|higher education|"
+    r"enrol(?:l)?ment|enrol(?:l)?ed|PGWP|OPT|CPT|SEVP|SEVIS|F-1|M-1|J-1|ESOS|CRICOS)\b", re.I)
+# words that say the item is about people coming from abroad, or about visas and immigration
+INTL = re.compile(
+    r"\b(?:international|overseas|foreign|non-(?:EU|EEA|UK)|abroad|visas?|permits?|immigration|migrants?|sponsor(?:s|ship)?|work rights|"
+    r"post-study|graduate route|CAS|passport|nationals?)\b", re.I)
 # words that settle it: the item is about studying abroad
 STRONG = re.compile(
     r"\b(?:international students?|overseas students?|foreign students?|student visas?|study visas?|study permits?|student route|student permission|"
     r"student pass|post-study|graduate route|graduate visa|PGWP|OPT|STEM OPT|SEVP|SEVIS|F-1|ESOS|CRICOS|genuine student|subclass 500|subclass 485|temporary graduate)\b", re.I)
-# items that are about something else, unless a strong word is also there
+# items about something else, unless a strong word is also there
 BLOCK = re.compile(
-    r"\b(?:asylum|refugees?|deportations?|border (?:force|security)|smuggling|illegal migration|citizenship ceremony|sanctions?|extradition|terror\w*|"
-    r"passport office|vacanc(?:y|ies)|tenders?|procurement|seizure|arrest(?:ed|s)?)\b", re.I)
+    r"\b(?:asylum|refugees?|deportations?|border (?:force|security)|illegal migration|citizenship ceremony|sanctions?|extradition|"
+    r"passport office|vacanc(?:y|ies)|tenders?|procurement|seizure)\b", re.I)
+# items that are enforcement or crime news: never about guidance for students, even if a student is named (checked in the headline)
+HARD_BLOCK = re.compile(
+    r"\b(?:arrest(?:ed|s)?|detainers?|illegal aliens?|murder\w*|kill(?:ed|ing|s)|charged|convicted|sentenced|indicted|pleads? guilty|fugitives?|"
+    r"traffick\w*|smuggl\w*|terror\w*|deport\w*|removal operation)\b", re.I)
 STOP = re.compile(r"\b(?:the|and|of|to|in|for|is|are|on|with|that|a|an|from|will|be|new)\b", re.I)
 BOILERPLATE = re.compile(
     r"(?:The post .{0,200}? appeared first on .{0,100}?\.?$|Read more\.?|Continue reading\.?|\[\s*(?:…|\.\.\.)\s*\]|Share this page\.?|Last updated:? [^.]{0,40}\.?|"
     r"Published:? [^.]{0,40}\.?|Posted on:? [^.]{0,40}\.?|Skip to (?:main )?content\.?|Print this page\.?|Cookie[s]? (?:settings|policy)[^.]*\.?)", re.I)
 
 
-def relevant(title, summary='', mode='student'):
-    """Return (True, '') or (False, reason). mode 'all' is for sources that only publish student news (Study in the States)."""
+def relevant(title, summary='', mode='student', immigration=False):
+    """Return (True, '') or (False, reason).
+    mode 'all' is for sources that only publish student news (Study in the States).
+    immigration=True is for an immigration authority, where every item already concerns visas: a student word alone is then enough.
+    Otherwise an item needs a strong word (student visa, study permit, ...), or a student word together with a word about coming from abroad."""
     if mode == 'all':
         return True, ''
     both = f'{title} {summary}'
+    if HARD_BLOCK.search(title):
+        return False, 'about-something-else'
     strong = bool(STRONG.search(both))
     if BLOCK.search(title) and not strong:
         return False, 'about-something-else'
-    if strong or STUDENT.search(title) or len(STUDENT.findall(summary or '')) >= 2:
+    if strong:
+        return True, ''
+    if STUDENT.search(both) and (immigration or INTL.search(both)):
         return True, ''
     return False, 'not-about-students'
 
