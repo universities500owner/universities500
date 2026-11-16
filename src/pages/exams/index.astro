@@ -1,0 +1,139 @@
+---
+import Base from '../../layouts/Base.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
+import { SITE } from '../../lib/data.js';
+import { exams, GROUPS, COMPARE, bySlug, href, FINDER, finderResult, finderTable, CHECKLIST, CHECKED_LABEL } from '../../lib/exams.js';
+
+const path = '/exams/';
+const start = finderResult('ug', 'english');
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Study abroad exam guides',
+    itemListElement: exams.map((e, i) => ({ '@type': 'ListItem', position: i + 1, name: e.title, url: `${SITE}${href(e)}` })),
+  },
+];
+---
+<Base
+  title="Study abroad exams: IELTS, TOEFL, PTE, Duolingo, SAT, GRE and GMAT | Universities500"
+  description="Which exam do you need to study abroad? Compare IELTS, TOEFL, PTE and the Duolingo English Test, see where the SAT, GRE and GMAT fit, and open a short guide to each."
+  path={path}
+  jsonld={ld}
+  current="exams"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Exam guides</nav>
+
+  <section class="ghero">
+    <p class="g-eyebrow">Prepare · Exam guides</p>
+    <h1>Which exam do you need to study abroad?</h1>
+    <p class="lede">From English proficiency tests to undergraduate and graduate admissions exams: what each one measures, who may need it, and where to prepare.</p>
+    <p class="g-cover"><strong>Not every student needs every exam.</strong> Check each programme's requirements, and any separate visa-language rules, before you book a test.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-all">
+    <h2 id="h-all">Seven exams, two purposes</h2>
+    <p class="sec-lede">Start by deciding whether you need to show your English, your academic readiness, or both.</p>
+    {Object.entries(GROUPS).map(([key, g]) => (
+      <div class="xgroup">
+        <h3 class="sec-sub">{g.label}</h3>
+        <p class="small">{g.blurb}</p>
+        <ul class="xgrid">
+          {exams.filter((e) => e.group === key).map((e) => (
+            <li>
+              <a class="xcard" href={href(e)}>
+                <span class="xtag">{e.level}</span>
+                <h3>{e.name}</h3>
+                <p>{e.lead}</p>
+                <span class="xgo">Open the guide</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section class="sec" aria-labelledby="h-find">
+    <h2 id="h-find">Which test should you look at first?</h2>
+    <p class="sec-lede">Two questions. This is a starting point, not a ruling on what you are eligible for.</p>
+    <div class="g-card xfind-card" id="x-find" data-finder={JSON.stringify(finderTable())}>
+      <div class="grid2">
+        <div class="f">
+          <label for="x-level">What level are you applying for?</label>
+          <select id="x-level">{FINDER.levels.map(([v, l]) => <option value={v}>{l}</option>)}</select>
+        </div>
+        <div class="f">
+          <label for="x-need">What do you need to show?</label>
+          <select id="x-need">{FINDER.needs.map(([v, l]) => <option value={v} selected={v === 'english'}>{l}</option>)}</select>
+        </div>
+      </div>
+      <div class="xresult" id="x-result" aria-live="polite">
+        <p><strong>Where to start: </strong>{start.text}</p>
+        <p>Read the guide: {start.slugs.map((s, i) => <Fragment>{i > 0 && ', '}<a href={href(bySlug[s])}>{bySlug[s].name}</a></Fragment>)}</p>
+      </div>
+    </div>
+    <p class="src">Some universities are test-optional, some waive an English test for certain applicants, and a visa office may set its own rules. Check each one.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-cmp">
+    <h2 id="h-cmp">IELTS, TOEFL, PTE and Duolingo side by side</h2>
+    <p class="sec-lede">The broad differences between the four English tests. Open a guide for the full picture of each.</p>
+    <div class="tbl-wrap">
+      <table class="tbl xtbl">
+        <thead>
+          <tr>
+            <th><span class="sr-only">Feature</span></th>
+            {COMPARE.cols.map((s) => <th scope="col"><a href={href(bySlug[s])}>{bySlug[s].name}</a></th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {COMPARE.rows.map(([label, cells]) => (
+            <tr><th scope="row">{label}</th>{cells.map((c) => <td>{c}</td>)}</tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="src">A guide, not a promise of acceptance. A university may accept a test for admission while a visa office requires a different one. Details checked {CHECKED_LABEL}; formats and timings change, so confirm with the test provider.</p>
+
+    <h3 class="sec-sub">What should shape your choice?</h3>
+    <div class="dgrid">
+      <div class="dcard"><h3>University acceptance</h3><p>Check the exact test names and minimum scores your shortlisted programmes accept.</p></div>
+      <div class="dcard"><h3>Visa requirements</h3><p>Check whether your destination's visa route has separate rules about test type, delivery mode or approved providers.</p></div>
+      <div class="dcard"><h3>Your test-day strengths</h3><p>Think about whether you prefer a live speaking interview, computer-based tasks, or an online test from home.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-chk">
+    <h2 id="h-chk">Before you book</h2>
+    <p class="sec-lede">Go through this list before you pay for a test or a preparation course.</p>
+    <div class="g-card" data-checklist>
+      <div class="xprog"><span>Your progress</span><span data-prog-text>0 of {CHECKLIST.length} checked</span></div>
+      <div class="xbar" aria-hidden="true"><span data-prog-bar></span></div>
+      <ul class="xcheck">
+        {CHECKLIST.map((c) => <li><label><input type="checkbox" /><span>{c}</span></label></li>)}
+      </ul>
+    </div>
+    <p class="note">A test score is one part of an application. Academic history, subject prerequisites, English requirements and other programme rules matter too.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-off">
+    <h2 id="h-off">Go straight to the test makers</h2>
+    <p class="sec-lede">Dates, fees, policies, practice materials and score reporting are on the official sites.</p>
+    <ul class="xgrid xlinks">
+      {exams.map((e) => (
+        <li class="dcard">
+          <h3>{e.name}</h3>
+          <p><a href={e.official.url}>{e.official.label}</a></p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <p class="g-info">This page is general guidance. Test formats, fees, score scales, result times, retake rules and who accepts what can change. Always confirm with the test provider, your university and the visa authority. Universities500 does not guarantee admission or a visa.</p>
+
+  <script>import '../../scripts/exam-finder.js';</script>
+  <script>import '../../scripts/checklist.js';</script>
+  <RelatedArticles list={forTopics(TOOL_TOPICS['exams'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />
+</Base>

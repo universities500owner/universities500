@@ -3,6 +3,7 @@ import { guides, runsText } from '../lib/guides.js';
 import { all } from '../lib/data.js';
 import { items as scholarships } from '../lib/scholarships.js';
 import { articles, blockText as artText } from '../lib/articles.js';
+import { exams, href as examHref } from '../lib/exams.js';
 
 const blockText = (b) =>
   b.t === 'p' ? runsText(b.runs)
@@ -25,6 +26,10 @@ export function GET() {
         for (const b of s.blocks.filter((x) => x.t === 'qa')) out.push({ t: b.q, u: `/study-in/${g.slug}/#s-faq`, d: `${g.name}, frequently asked questions`, k: clean(b.a.map(blockText).join(' ')).slice(0, 400) });
       }
     }
+  }
+  for (const e of exams) {
+    const text = clean([e.what, e.who, e.scoring, ...e.faq.map(([q, a]) => `${q} ${a}`)].join(' '));
+    out.push({ t: e.title, u: examHref(e), d: `Exam guide: ${e.name}`, k: text.slice(0, 900) });
   }
   for (const a of articles) {
     const text = clean([...a.quick, ...a.intro].map(artText).join(' '));

@@ -1,0 +1,156 @@
+---
+import Base from '../layouts/Base.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
+import { hiddenFromSearch } from '../lib/noindex.js';
+import { SITE } from '../lib/data.js';
+import { UPDATED, topics, cards, LENDER_TYPES, lenders, typeLabel, official, checklist } from '../lib/loanGuide.js';
+
+const path = '/education-loan-guide/';
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Education loans for overseas study: what to know before you borrow',
+    about: 'Education loans for Indian students studying abroad',
+    mainEntityOfPage: `${SITE}${path}`,
+    dateModified: '2026-11-15',
+    publisher: { '@type': 'Organization', name: 'Universities500' },
+  },
+];
+---
+<Base
+  title="Education loans for overseas study: a guide for Indian students | Universities500"
+  description="Understand RBI education-loan guidance, collateral, moratorium and costs, compare banks and NBFCs, and check you are ready before you accept a loan."
+  path={path}
+  noindex={hiddenFromSearch(path)}
+  jsonld={ld}
+  current="education-loan-guide"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Education loan guide</nav>
+
+  <section class="ghero">
+    <p class="g-eyebrow">Visa and money · India</p>
+    <h1>Education loans for overseas study</h1>
+    <p class="lede">An education loan can make an overseas degree possible. Before you borrow, understand the rules, compare lenders and know what repayment could look like.</p>
+    <div class="xnote"><p><strong>Before you rely on a loan:</strong> a lender's advertised offer is not a sanction. Eligibility, rates, collateral and university lists depend on the lender's current policy and your profile.</p></div>
+    <p class="hero-actions">
+      <a class="btn" href="#g-topics">Explore the guide</a>
+      <a class="btn ghost" href="#lenders">Find lenders</a>
+      <a class="btn ghost" href="/loan/">Loan calculator</a>
+    </p>
+    <p class="small">Updated {UPDATED}</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-start">
+    <h2 id="h-start">What do you need to know before applying?</h2>
+    <p class="sec-lede">Open one short topic at a time. You do not have to read everything in one sitting.</p>
+    <ul class="xgrid">
+      {cards.map(([, tag, title, text, to, go]) => (
+        <li>
+          <a class="xcard" href={to}>
+            <span class="xtag">{tag}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+            <span class="xgo">{go}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <div class="g-tools">
+    <div>
+      <h2>Understand the details, one question at a time</h2>
+      <p>Each topic is collapsed. Open the ones you need.</p>
+    </div>
+    <div class="g-btns">
+      <button class="pill" type="button" id="g-open">Expand all topics</button>
+      <button class="pill" type="button" id="g-close">Collapse all topics</button>
+    </div>
+  </div>
+
+  <section aria-label="Education loan topics" id="g-topics">
+    {topics.map((t) => (
+      <details class="topic" id={`s-${t.id}`}>
+        <summary>
+          <span class="num" aria-hidden="true">{t.n}</span>
+          <span class="topic-head">
+            <span class="topic-title">{t.title}</span>
+            <span class="topic-desc">{t.desc}</span>
+          </span>
+        </summary>
+        <div class="topic-body gbody">
+          {t.blocks.map((b) => (
+            b.t === 'p' ? <p>{b.lead && <strong>{b.lead} </strong>}{b.text}</p>
+            : b.t === 'ul' ? <ul>{b.items.map((i) => <li>{i.lead && <strong>{i.lead} </strong>}{i.text}</li>)}</ul>
+            : b.t === 'tip' ? <div class="xtip"><p><strong>Student tip:</strong> {b.text}</p></div>
+            : b.t === 'warn' ? <div class="xnote"><p><strong>Watch out:</strong> {b.text}</p></div>
+            : b.t === 'link' ? <p><a href={b.href}>{b.text}</a></p>
+            : null
+          ))}
+        </div>
+      </details>
+    ))}
+  </section>
+
+  <section class="sec" id="lenders" aria-labelledby="h-len">
+    <h2 id="h-len">Where can you explore an education loan?</h2>
+    <p class="sec-lede">A starting list of banks, NBFCs and international providers. Check product availability and overseas-study eligibility directly with each lender.</p>
+    <div class="filterbar">
+      <input id="lender-q" type="search" placeholder="Search lender name" aria-label="Search lenders by name" />
+    </div>
+    <div class="g-btns" role="group" aria-label="Filter by provider type">
+      {LENDER_TYPES.map(([v, l]) => <button class="pill" type="button" data-type={v} aria-pressed={v === 'all' ? 'true' : 'false'}>{l}</button>)}
+    </div>
+    <p class="tally" id="lender-tally" role="status">{lenders.length} providers</p>
+    <ul class="lgrid">
+      {lenders.map((l) => (
+        <li class="lender dcard" data-type={l.type}>
+          <div class="dcard-top"><h3>{l.name}</h3><span class="ltype">{typeLabel(l.type)}</span></div>
+          <p>{l.note}</p>
+          <p class="lgo"><a href={l.url} aria-label={`${l.name}: official website`}>Official website</a></p>
+        </li>
+      ))}
+    </ul>
+    <p class="note" id="lender-empty" hidden>No lenders match your search. Try another name or type.</p>
+    <p class="src">This is a starting list, not a full one, and not a ranking. Some banks offer education loans only through selected branches, partners or institution-specific arrangements. Check the legal lending entity, product, rate, fees, collateral and eligibility with the provider. A listing is not an endorsement.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="h-gov">
+    <h2 id="h-gov">Government portals and primary guidance</h2>
+    <p class="sec-lede">Use official sources to confirm scheme rules and current application routes.</p>
+    <ul class="xgrid xlinks">
+      {official.map(([title, text, url, go]) => (
+        <li class="dcard"><h3>{title}</h3><p>{text}</p><p><a href={url}>{go}</a></p></li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="sec" id="checklist" aria-labelledby="h-chk">
+    <h2 id="h-chk">Your education-loan readiness checklist</h2>
+    <p class="sec-lede">Tick each item as you confirm it with the lender. Your ticks last while this page is open.</p>
+    <div class="g-card" data-checklist>
+      <div class="xprog"><span>Your progress</span><span data-prog-text>0 of {checklist.length} checked</span></div>
+      <div class="xbar" aria-hidden="true"><span data-prog-bar></span></div>
+      <ul class="xcheck">
+        {checklist.map((c) => <li><label><input type="checkbox" /><span>{c}</span></label></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec xcta" aria-labelledby="h-cta">
+    <div>
+      <h2 id="h-cta">Know the cost before you commit.</h2>
+      <p>See the monthly instalment, the interest during study and the total you would repay.</p>
+    </div>
+    <a class="btn" href="/loan/">Open the loan calculator</a>
+  </section>
+
+  <p class="g-info">General information, not financial, legal or tax advice, a loan offer, or a recommendation of any lender. Product names, rates, limits, schemes, eligibility and application routes change. Confirm every detail with the lender, and rely on the current Key Facts Statement, sanction letter and loan agreement. Check scheme descriptions against the latest official publications.</p>
+
+  <script>import '../scripts/topics.js';</script>
+  <script>import '../scripts/lenders.js';</script>
+  <script>import '../scripts/checklist.js';</script>
+  <RelatedArticles list={forTopics(TOOL_TOPICS['loan'], 3)} heading="Read before you borrow" more={['/articles/', 'All articles']} />
+</Base>

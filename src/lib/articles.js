@@ -57,6 +57,7 @@ export const TOOL_TOPICS = {
   'working-while-you-study': ['student-life', 'after-study', 'careers'],
   'application-prep': ['admissions'],
   'english-test': ['admissions'],
+  exams: ['admissions'],
   'before-you-fly': ['student-life', 'visas'],
   scholarships: ['scholarships-and-funding', 'cost-and-budgeting'],
   internships: ['careers', 'after-study'],
