@@ -4,6 +4,7 @@ import { all } from '../lib/data.js';
 import { items as scholarships } from '../lib/scholarships.js';
 import { articles, blockText as artText } from '../lib/articles.js';
 import { exams, href as examHref } from '../lib/exams.js';
+import { PUBLISH as NEWS_ON } from '../lib/news.js';
 
 const blockText = (b) =>
   b.t === 'p' ? runsText(b.runs)
@@ -17,6 +18,7 @@ const clean = (s) => s.replace(/\s+/g, ' ').trim();
 export function GET() {
   const out = [];
   for (const g of NAV) for (const [u, t, , d] of g.items) out.push({ t, u, d, k: '' });
+  if (NEWS_ON) out.push({ t: 'Industry news', u: '/industry-news/', d: 'Official updates for international students from government and immigration bodies, by destination.', k: '' });
   for (const g of guides) {
     out.push({ t: `Study in ${g.name}`, u: `/study-in/${g.slug}/`, d: g.title, k: '' });
     for (const s of g.sections) {

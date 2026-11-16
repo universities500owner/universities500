@@ -1,0 +1,14 @@
+---
+import { countryName, fmtIso, host } from '../lib/news.js';
+const { item, showCountry = true, clamp = false } = Astro.props;
+---
+<article class={`news-item${clamp ? ' clamp' : ''}`}>
+  <p class="news-meta">
+    {showCountry && <span class="news-country">{countryName(item.country)}</span>}
+    <span class="news-body">{item.body}</span>
+    {item.published && <time datetime={item.published}>{fmtIso(item.published)}</time>}
+  </p>
+  <h3><a href={item.url} rel="noopener">{item.title}</a></h3>
+  {item.summary && <p class="news-note">{item.summary}</p>}
+  <a class="news-src" href={item.url} rel="noopener">Read the official notice on {host(item.url)}</a>
+</article>

@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import NewsItem from '../components/NewsItem.astro';
+import { countries } from '../lib/data.js';
+import { PUBLISH, forCountry, sourcesFor, lastChecked, fmtIso, host, keepDays } from '../lib/news.js';
+
+const path = '/industry-news/';
+const PER = 8;
+const live = PUBLISH;
+const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), srcs: sourcesFor(c.code), checked: lastChecked(c.code) }));
+---
+<Base
+  title="Industry news for international students | Universities500"
+  description="Official updates from government and immigration bodies and study agencies in 14 study destinations: visas, fees, rules and intakes. Each one links to the official notice."
+  path={path}
+  noindex={!live}
+  current="industry-news"
+  news={false}
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Industry news</nav>
+  <div class="q-head">
+    <h1>Industry news</h1>
+    <p>What government and immigration bodies and official study agencies have announced for international students, by destination. Each headline opens the official notice.</p>
+  </div>
+
+  {!live && (
+    <div class="note draft">
+      <p><strong>Industry news is being checked.</strong> Updates will appear here once the daily reading of official sources has been reviewed.</p>
+    </div>
+  )}
+
+  {live && (
+    <Fragment>
+      <nav class="news-jump" aria-label="Jump to a destination">
+        <ul class="chips">
+          {sections.map((c) => (
+            <li><a href={`#n-${c.code}`}>{c.name}{c.rows.length > 0 ? ` (${c.rows.length})` : ''}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <p class="small">Headlines and dates are the official body's own. The short notes are the first sentences of the official summary, shortened, never rewritten. We keep items for {keepDays} days. English-language official pages only. This is not legal or immigration advice: read the official notice before you act.</p>
+
+      {sections.map((c) => (
+        <section class="sec news-sec" id={`n-${c.code}`} aria-labelledby={`h-${c.code}`}>
+          <h2 id={`h-${c.code}`}>{c.name}</h2>
+          {c.rows.length > 0 ? (
+            <ul class="news-list">
+              {c.rows.slice(0, PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
+            </ul>
+          ) : (
+            <p class="empty">No recent official update in English found{c.srcs.length > 0 ? ' on these websites' : ''}. Check the official pages below.</p>
+          )}
+          {c.rows.length > PER && <p class="small">Showing the newest {PER} of {c.rows.length}. The older ones are on the official websites below.</p>}
+          {c.srcs.length > 0 && (
+            <p class="small news-srcs">
+              Read for this destination:{' '}
+              {c.srcs.map((s, k) => (
+                <Fragment>{k > 0 ? '; ' : ''}<a href={s.url} rel="noopener">{s.body}</a>{s.status === 'failed' || s.status === 'blocked' ? ' (not reachable at the last check)' : ''}</Fragment>
+              ))}
+              {c.checked ? `. Last checked ${fmtIso(c.checked)}.` : '.'}
+            </p>
+          )}
+        </section>
+      ))}
+    </Fragment>
+  )}
+</Base>

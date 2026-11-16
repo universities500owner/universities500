@@ -8,8 +8,10 @@ import { SITE } from '../lib/data.js';
 import { NAV } from '../lib/nav.js';
 import { englishGuides, otherGuides, guides } from '../lib/guides.js';
 import { topics as articleTopics, articles as allArticles } from '../lib/articles.js';
+import IndustryNewsStrip from '../components/IndustryNewsStrip.astro';
+import { PUBLISH as NEWS_ON } from '../lib/news.js';
 
-const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true } = Astro.props;
+const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = true } = Astro.props;
 const url = new URL(path, SITE).href;
 const ld = jsonld ? JSON.stringify(jsonld).replace(/</g, '\\u003c') : null;
 const inGroup = (g) => g.items.some((i) => i[2] === current);
@@ -67,6 +69,11 @@ const onGuide = current === 'guide';
                 </div>
               </li>
             ))}
+            {NEWS_ON && (
+              <li class="nav-group">
+                <a class="nav-link" href="/industry-news/" aria-current={current === 'industry-news' ? 'page' : undefined}>Industry news</a>
+              </li>
+            )}
             <li class="nav-group">
               <button class="nav-btn" type="button" aria-expanded="false" aria-controls="nav-guides" data-here={onGuide ? '' : undefined}>
                 Guides
@@ -113,6 +120,7 @@ const onGuide = current === 'guide';
         </div>
       </div>
     )}
+    {news && <IndustryNewsStrip />}
     <footer class="site-foot">
       <div class="wrap">
         <div class="foot-top">
@@ -156,6 +164,7 @@ const onGuide = current === 'guide';
           </p>
           <div class="foot-base">
             <ul>
+              {NEWS_ON && <li><a href="/industry-news/">Industry news</a></li>}
               <li><a href="/method/">How we choose universities</a></li>
               <li><a href="/privacy/">Privacy</a></li>
               <li><a href="/terms/">Terms</a></li>

@@ -1,0 +1,89 @@
+name: Industry news (read official sources)
+
+# Reads the news pages and feeds of government and immigration bodies and official study agencies for the 14 countries,
+# keeps the items about international students, and writes src/data/industry_news.json.
+# The headline, the short note and the date are the official text. No AI is used anywhere.
+#
+# Daily. A manual run from the Actions tab can be a trial:
+#   probe = true   reads and reports only. Nothing is written or committed. Open the run summary and the news-run artifact.
+#   commit = true  (manual runs only) commits the data when the run is on main. Runs from another branch never commit.
+#
+# Settings: CONTACT_EMAIL under Settings > Secrets and variables > Actions (a variable or a secret both work).
+on:
+  schedule:
+    - cron: "17 0 * * *"   # 00:17 UTC = 05:47 India time
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these countries, comma-separated (usa, uk, canada, australia, new-zealand, ireland, germany, france, netherlands, sweden, norway, singapore, malaysia, uae). Blank = all."
+        required: false
+        default: ""
+      probe:
+        description: "Trial: read and report only, write nothing"
+        type: boolean
+        default: true
+      commit:
+        description: "Commit the data to main (only when this run is on main and probe is off)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: news
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install beautifulsoup4 lxml
+      - name: Self-test (stub website, no internet)
+        run: python3 scripts/news/test_news.py
+      - name: Read the official sources
+        id: run
+        continue-on-error: true
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+          ONLY: ${{ inputs.only }}
+          PROBE: ${{ inputs.probe }}
+        run: |
+          ARGS="--report out --max-minutes 45"
+          if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "$PROBE" = "true" ]; then ARGS="$ARGS --probe"; fi
+          if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The reader's User-Agent has no contact address."; fi
+          python3 scripts/news/news_run.py $ARGS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: news-run
+          path: out/
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Commit the data
+        if: >-
+          steps.run.outcome == 'success' && github.ref == 'refs/heads/main' &&
+          (github.event_name == 'schedule' || (inputs.commit && !inputs.probe && inputs.only == ''))
+        run: |
+          git config user.name "universities500-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/industry_news.json
+          if git diff --cached --quiet; then
+            echo "No change to commit."
+          else
+            git commit -m "Industry news: refresh $(date -u +%F)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Fail the job if the reader stopped itself
+        if: steps.run.outcome == 'failure'
+        run: |
+          echo "No source answered, or the reader stopped (see the run summary and the news-run artifact). The data file was left as it was."
+          exit 1
