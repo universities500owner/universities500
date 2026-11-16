@@ -12,6 +12,12 @@ from fetcher import reg_domain
 URL_STRONG = re.compile(r'schol|bursar|fellowship|studentship|waiver', re.I)
 URL_WEAK = re.compile(r'award|grant|funding|financial-?aid|fees-?and-?funding|tuition-?discount|stipend', re.I)
 URL_INTL = re.compile(r'international|overseas|global|non-?eu|abroad|worldwide|out-of-state', re.I)
+SEED_SCORE = 100        # pages checked by hand are read first
+SEED_HUB = 1000         # ...and always win the "hub page" choice over a page we only guessed
+LISTING_LINKS = 60      # links followed from a listing page (was 25)
+SITEMAP_PICKS = 80      # best sitemap candidates queued (was 40)
+GUESS_PATHS = ('/scholarships/', '/study/scholarships/', '/international/scholarships/', '/international-students/scholarships/',
+               '/admissions/scholarships/', '/fees-and-funding/', '/study/fees-and-scholarships/', '/scholarships')
 LOC = re.compile(r'<loc>\s*(?:<!\[CDATA\[)?\s*([^<\s]+?)\s*(?:\]\]>)?\s*</loc>', re.I)
 
 
@@ -61,8 +67,12 @@ def read_sitemaps(fx, scheme, host, same, limit=5):
     return urls
 
 
-def crawl_university(uni, fx, today, max_pages=30):
-    out = {'slug': uni['slug'], 'status': 'ok', 'records': [], 'hub': None, 'pages': 0, 'reasons': Counter(), 'note': ''}
+def crawl_university(uni, fx, today, max_pages=60, seeds=None):
+    """Read one university. `seeds` are scholarship pages checked by hand: they are read first, they may sit on another
+    domain, and they replace the hub page we would otherwise guess."""
+    seeds = [X.canon(u) for u in (seeds or []) if u]
+    out = {'slug': uni['slug'], 'status': 'ok', 'records': [], 'hub': None, 'pages': 0, 'reasons': Counter(), 'note': '',
+           'seeds': {}, 'robotsReason': ''}
     base = uni.get('web')
     if not base:
         out['status'] = 'no-website'
@@ -70,81 +80,127 @@ def crawl_university(uni, fx, today, max_pages=30):
     p0 = urllib.parse.urlsplit(base)
     scheme, host = (p0.scheme or 'https'), p0.netloc
     regs = {reg_domain(host)}
+    for u in seeds:
+        regs.add(reg_domain(urllib.parse.urlsplit(u).netloc))
     same = lambda u: reg_domain(urllib.parse.urlsplit(u).netloc) in regs
 
     home = fx.get(base)
-    if home.robots_blocked:
-        out['status'], out['note'] = 'robots', 'robots.txt does not allow us'
-        return out
-    if not home.ok:
-        out['status'], out['note'] = 'unreachable', home.error or 'no response'
-        return out
-    fp = urllib.parse.urlsplit(home.final_url)
-    regs.add(reg_domain(fp.netloc))
-    scheme, host = fp.scheme, fp.netloc
+    home_ok = home.ok and not home.robots_blocked
+    if not home_ok:
+        if home.robots_blocked:
+            out['status'] = 'robots'
+            out['robotsReason'] = home.robots_reason
+            out['note'] = {'disallow': 'robots.txt disallows the home page',
+                           'forbidden': 'robots.txt answered 401/403 and strict mode is on',
+                           'unreachable': 'robots.txt could not be read (server error or no answer)'}.get(home.robots_reason, 'robots.txt does not allow us')
+        else:
+            out['status'], out['note'] = 'unreachable', home.error or 'no response'
+        if not seeds:
+            return out
+        out['homeFailed'] = out['status']
+        out['status'], out['note'] = 'ok', out['note'] + '; read the supplied pages only'
+    else:
+        fp = urllib.parse.urlsplit(home.final_url)
+        regs.add(reg_domain(fp.netloc))
+        scheme, host = fp.scheme, fp.netloc
 
     heap, queued, visited = [], set(), set()
     seq = 0
+    seed_set = set(seeds)
 
-    def push(url, score, depth):
+    def push(url, score, depth, intl=False):
         nonlocal seq
         c = X.canon(url)
         if c in queued or score <= 0 or not same(c):
             return
         queued.add(c)
         seq += 1
-        heapq.heappush(heap, (-score, seq, c, depth))
+        heapq.heappush(heap, (-score, seq, c, depth, intl))
 
-    # 1. sitemap candidates (best 40)
-    try:
-        sm = read_sitemaps(fx, scheme, host, same)
-    except Exception as e:  # a bad sitemap must never stop the run
-        sm = []
-        out['note'] = f'sitemap error: {e}'
-    scored = sorted(((url_score(u), -len(u), u) for u in sm), reverse=True)
-    for sc, _, u in [x for x in scored if x[0] > 0][:40]:
-        push(u, sc, 1)
+    # 0. pages checked by hand
+    for u in seeds:
+        push(u, SEED_SCORE, 1, True)  # a page the owner supplied as the international scholarships page
 
-    # 2. links on the home page
-    hp = X.Page(home.final_url, home.text, uni['country'], uni['name'])
-    for href, text in hp.all_links:
-        sc = url_score(href, text)
-        if sc == 0 and re.search(r'international|study-?abroad|fees|funding|financial', urllib.parse.urlsplit(href).path, re.I):
-            sc = 1
-        push(href, sc, 1)
-    visited.add(X.canon(home.final_url))
+    if home_ok:
+        # 1. sitemap candidates
+        try:
+            sm = read_sitemaps(fx, scheme, host, same)
+        except Exception as e:  # a bad sitemap must never stop the run
+            sm = []
+            out['note'] = f'sitemap error: {e}'
+        scored = sorted(((url_score(u), -len(u), u) for u in sm), reverse=True)
+        for sc, _, u in [x for x in scored if x[0] > 0][:SITEMAP_PICKS]:
+            push(u, sc, 1)
+
+        # 2. links on the home page
+        hp = X.Page(home.final_url, home.text, uni['country'], uni['name'])
+        for href, text in hp.all_links:
+            sc = url_score(href, text)
+            if sc == 0 and re.search(r'international|study-?abroad|fees|funding|financial', urllib.parse.urlsplit(href).path, re.I):
+                sc = 1
+            push(href, sc, 1)
+        visited.add(X.canon(home.final_url))
+
+        # 3. nothing promising so far: try the usual places a university keeps its scholarships (a few requests, 404s are cheap)
+        if not seeds and not any(-h[0] >= 3 for h in heap):
+            for path in GUESS_PATHS:
+                push(f'{scheme}://{host}{path}', 2, 1)
+            out['reasons']['guessed-paths'] += 1
 
     hub_best = (0, None, None)  # (score, url, title)
+    hub_seed = False
     seen_ids = {}
     while heap and out['pages'] < max_pages:
-        negsc, _, url, depth = heapq.heappop(heap)
+        negsc, _, url, depth, intl_ctx = heapq.heappop(heap)
         if url in visited:
             continue
         visited.add(url)
+        is_seed = url in seed_set
         res = fx.get(url)
         out['pages'] += 1
         if res.robots_blocked:
             out['reasons']['robots-blocked-page'] += 1
+            if is_seed:
+                out['seeds'][url] = f'robots-{res.robots_reason}'
             continue
         if not res.ok:
             out['reasons']['fetch-failed'] += 1
-            if fx.host_dead(urllib.parse.urlsplit(url).netloc):
+            if is_seed:
+                out['seeds'][url] = f'failed: {res.error}'
+            if fx.host_dead(urllib.parse.urlsplit(url).netloc) and urllib.parse.urlsplit(url).netloc == host:
                 break
             continue
         if 'html' not in (res.ctype or '').lower() and res.ctype:
             out['reasons']['not-html'] += 1
+            if is_seed:
+                out['seeds'][url] = 'not a web page'
             continue
         try:
             page = X.Page(res.final_url, res.text, uni['country'], uni['name'])
         except Exception as e:
             out['reasons']['parse-error'] += 1
+            if is_seed:
+                out['seeds'][url] = 'could not parse'
             continue
         visited.add(X.canon(res.final_url))
         if len(page.text) < 200:
             out['reasons']['js-only-or-empty'] += 1
+            if is_seed:
+                # the page loads but builds its list with scripts: we cannot read it, but the link is still worth showing
+                out['seeds'][url] = 'loads, but the list is built by scripts'
+                hub_best = max(hub_best, (SEED_HUB, X.canon(res.final_url), page.name or uni['name']), key=lambda t: t[0])
+                hub_seed = True
             continue
         is_listing, links = X.looks_like_listing(page, same)
-        recs = X.table_records(page, uni, today)
+        about = bool(re.search(r'\bschol|bursar|fellowship|funding|financial aid', page.text[:4000], re.I))
+        if is_seed:
+            out['seeds'][url] = 'ok' if about else 'loads, but does not mention scholarships'
+            if about:
+                hub_best = max(hub_best, (SEED_HUB + len(links), X.canon(res.final_url), page.name), key=lambda t: t[0])
+                hub_seed = True
+        # does this page speak to international students? Its scholarships inherit that.
+        here_intl = bool(intl_ctx or URL_INTL.search(url) or re.search(r'international|overseas', page.name, re.I))
+        recs = X.table_records(page, uni, today, intl_hint=here_intl)
         if recs:
             for r in recs:
                 seen_ids.setdefault(r['id'], r)
@@ -152,11 +208,8 @@ def crawl_university(uni, fx, today, max_pages=30):
             sc = len(links) + (3 if URL_INTL.search(url) else 0) + (2 if URL_STRONG.search(url) else 0)
             if sc > hub_best[0]:
                 hub_best = (sc, X.canon(res.final_url), page.name)
-            if depth < 3:
-                for h, t in links[:25]:
-                    push(h, max(url_score(h, t), 1), depth + 1)
         elif not recs:
-            rec, reason = X.detail_record(page, uni, today)
+            rec, reason = X.detail_record(page, uni, today, intl_hint=intl_ctx)
             if rec:
                 seen_ids.setdefault(rec['id'], rec)
             else:
@@ -166,6 +219,9 @@ def crawl_university(uni, fx, today, max_pages=30):
                     sc = 1 + (3 if URL_INTL.search(url) else 0)
                     if sc > hub_best[0]:
                         hub_best = (sc, X.canon(res.final_url), page.name)
+        if (is_listing or is_seed) and depth < 3:
+            for h, t in links[:LISTING_LINKS]:
+                push(h, max(url_score(h, t), 1), depth + 1, here_intl)
 
     # one record per scholarship name inside a university: keep the one with the most fields
     by_name = {}
@@ -176,7 +232,12 @@ def crawl_university(uni, fx, today, max_pages=30):
             by_name[k] = (fill, r)
     out['records'] = [v[1] for v in by_name.values()]
     if hub_best[1]:
-        out['hub'] = {'url': hub_best[1], 'title': hub_best[2]}
+        out['hub'] = {'url': hub_best[1], 'title': hub_best[2], 'supplied': hub_seed}
     if not out['records'] and not out['hub']:
         out['status'] = 'no-scholarship-pages'
+    if out.get('homeFailed'):
+        # only the supplied pages could be read: what we saw is partial, so it must not count against records we did not reach
+        out['partial'] = True
+        if not out['records'] and not out['hub']:
+            out['status'] = out['homeFailed']
     return out

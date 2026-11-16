@@ -37,6 +37,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--universities', default=str(ROOT / 'src/data/universities.json'))
     ap.add_argument('--sources', default=str(ROOT / 'data/scholarship_sources.json'))
+    ap.add_argument('--seeds', default=str(ROOT / 'data/scholarship_seeds.json'), help='scholarship pages checked by hand, by university slug')
     ap.add_argument('--prev', default=str(ROOT / 'src/data/scholarships.json'))
     ap.add_argument('--out', default=str(ROOT / 'src/data/scholarships.json'))
     ap.add_argument('--report', default=str(ROOT / 'out'))
@@ -44,13 +45,15 @@ def main():
     ap.add_argument('--only', default='')
     ap.add_argument('--workers', type=int, default=12)
     ap.add_argument('--delay', type=float, default=3.0)
-    ap.add_argument('--max-pages', type=int, default=30)
+    ap.add_argument('--max-pages', type=int, default=60)
     ap.add_argument('--max-minutes', type=float, default=150)
     ap.add_argument('--if-older-than-hours', type=float, default=0)
     ap.add_argument('--contact', default=os.environ.get('CONTACT_EMAIL', ''))
     ap.add_argument('--today', default='')
     ap.add_argument('--allow-drop', action='store_true')
     ap.add_argument('--skip-official', action='store_true')
+    ap.add_argument('--strict-robots', action='store_true',
+                    help='treat a 401/403 answer for robots.txt as "everything disallowed" (RFC 9309 lets a crawler go ahead)')
     args = ap.parse_args()
 
     now = datetime.now(timezone.utc)
@@ -82,10 +85,13 @@ def main():
     if args.limit:
         unis = unis[:args.limit]
     sources = load(args.sources, {})
+    seed_doc = load(args.seeds, {})
+    seeds = {k: v.get('urls', []) for k, v in (seed_doc.get('seeds') or {}).items()}
+    seeds_checked = seed_doc.get('checked')
 
     ua = f"Universities500Bot/1.0 (+https://universities500.com/bot/{'; ' + args.contact if args.contact else ''})"
     deadline = time.monotonic() + args.max_minutes * 60
-    fx = Fetcher(ua, delay=args.delay, deadline=deadline)
+    fx = Fetcher(ua, delay=args.delay, deadline=deadline, strict_forbidden=args.strict_robots)
     t0 = time.monotonic()
     print('User-Agent:', ua)
 
@@ -101,7 +107,7 @@ def main():
     results = {}
     def work(u):
         try:
-            return u['slug'], discover.crawl_university(u, fx, today, args.max_pages)
+            return u['slug'], discover.crawl_university(u, fx, today, args.max_pages, seeds=seeds.get(u['slug']))
         except Exception as e:  # one bad site must not stop the run
             return u['slug'], {'slug': u['slug'], 'status': 'error', 'records': [], 'hub': None, 'pages': 0, 'reasons': Counter(), 'note': f'{type(e).__name__}: {e}'}
 
@@ -123,7 +129,7 @@ def main():
     # ---- merge with the previous run ----
     prev_items = {i['id']: i for i in prev.get('items', [])}
     uni_by_slug = {u['slug']: u for u in unis}
-    readable = {s for s, r in results.items() if r['status'] in ('ok', 'no-scholarship-pages') and s not in skipped_by_deadline}
+    readable = {s for s, r in results.items() if r['status'] in ('ok', 'no-scholarship-pages') and not r.get('partial') and s not in skipped_by_deadline}
     fresh = {}
     miss_log = []  # sentences that look like a deadline or value the reader did not take (printed for the run log only)
     for rec in off_records + [x for r in results.values() for x in r['records']]:
@@ -204,6 +210,15 @@ def main():
             'hubUrl': (r['hub'] or {}).get('url') if r['status'] in ('ok',) else old.get('hubUrl'),
             'hubTitle': (r['hub'] or {}).get('title') if r['status'] in ('ok',) else old.get('hubTitle'),
         }
+        if r.get('robotsReason'):
+            entry['robotsReason'] = r['robotsReason']
+        supplied = seeds.get(slug) or []
+        if supplied and not (r['hub'] and r['status'] == 'ok'):
+            # the reader could not open the page checked by hand, but that page is still the best link to give a student
+            entry['hubUrl'], entry['hubTitle'], entry['hubSource'] = supplied[0], None, 'supplied'
+            entry['checked'] = seeds_checked or entry['checked']
+        elif r['hub'] and r['status'] == 'ok':
+            entry['hubSource'] = 'supplied' if r['hub'].get('supplied') else 'read'
         unis_out[slug] = entry
     for slug, entry in unis_out.items():
         entry['count'] = sum(1 for i in merged.values() if i.get('providerSlug') == slug)
@@ -237,7 +252,7 @@ def main():
 
 
 FIELDS = ('value', 'deadline', 'deadlinePartial', 'opens', 'rolling', 'description', 'eligibility', 'applyUrl',
-          'awards', 'duration', 'covers', 'applyMode')
+          'awards', 'duration', 'covers', 'applyMode', 'india')
 
 
 def print_diagnostics(items, miss_log, sample=18):
@@ -274,13 +289,31 @@ def write_report(args, fx, results, off_report, directories, third, merged, prev
         L.append(f'- Removed from the old data by the name and page rules: {args.cleaned}')
     st = Counter(r['status'] for r in results.values())
     L.append('- Universities by outcome: ' + ', '.join(f'{k} {v}' for k, v in st.most_common()))
-    L.append(f'- Robots.txt blocked {fx.stats["robots_blocked"]} requests\n')
+    L.append(f'- Robots.txt blocked {fx.stats["robots_blocked"]} requests')
+    if fx.stats['robots_forbidden']:
+        L.append(f'- {fx.stats["robots_forbidden"]} sites answered robots.txt with 401/403; ' + ('strict mode: treated as closed' if getattr(args, 'strict_robots', False) else 'treated as "no rules" as RFC 9309 allows') + '\n')
+    else:
+        L.append('')
+    rb = Counter(r.get('robotsReason') for r in results.values() if r['status'] == 'robots')
+    if rb:
+        L.append('## Universities skipped because of robots.txt, by reason\n')
+        names = {'disallow': 'a rule in robots.txt says no', 'forbidden': 'robots.txt answered 401/403 (strict mode)', 'unreachable': 'robots.txt could not be read (server error or no answer)'}
+        for k, v in rb.most_common():
+            L.append(f'- {names.get(k, k or "unknown")}: {v}')
+        L.append('')
     by_c = Counter(i['country'] for i in merged.values())
     L.append('## Records by country\n')
     L.append('| Country | Records | With deadline | With value | With eligibility |\n|---|---|---|---|---|')
     for c, n in sorted(by_c.items()):
         its = [i for i in merged.values() if i['country'] == c]
         L.append(f'| {c} | {n} | {sum(bool(i.get("deadline")) for i in its)} | {sum(bool(i.get("value")) for i in its)} | {sum(bool(i.get("eligibility")) for i in its)} |')
+    seeded = [(slug, u, st) for slug, r in sorted(results.items()) for u, st in (r.get('seeds') or {}).items()]
+    if seeded:
+        L.append('\n## Pages checked by hand: what the reader found\n')
+        bad = sum(1 for _s, _u, st in seeded if st != 'ok')
+        L.append(f'{len(seeded) - bad} of {len(seeded)} opened and mention scholarships.\n')
+        for slug, u, st in seeded:
+            L.append(f'- {"OK " if st == "ok" else "LOOK"} {slug}: {st} ({u})')
     L.append('\n## Official programmes\n')
     for pid, url, status in off_report:
         L.append(f'- {pid}: {status} ({url})')
@@ -302,9 +335,9 @@ def write_report(args, fx, results, off_report, directories, third, merged, prev
     for k, v in reasons.most_common():
         L.append(f'- {k}: {v}')
     (out / 'scholarship_report.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
-    rows = ['slug,status,pages,records,hub,note']
+    rows = ['slug,status,robots_reason,pages,records,hub,note']
     for s, r in sorted(results.items()):
-        rows.append(','.join([s, r['status'], str(r['pages']), str(len(r['records'])), (r['hub'] or {}).get('url', ''), '"' + (r.get('note') or '').replace('"', "'") + '"']))
+        rows.append(','.join([s, r['status'], r.get('robotsReason') or '', str(r['pages']), str(len(r['records'])), (r['hub'] or {}).get('url', ''), '"' + (r.get('note') or '').replace('"', "'") + '"']))
     (out / 'universities.csv').write_text('\n'.join(rows) + '\n', encoding='utf-8')
     sample = random.Random(1).sample(list(merged.values()), min(40, len(merged))) if merged else []
     (out / 'sample_records.json').write_text(json.dumps(sample, ensure_ascii=False, indent=1), encoding='utf-8')

@@ -219,13 +219,13 @@ def find_apply_url(page):
 
 def _hash(rec):
     keys = ('name', 'value', 'deadline', 'deadlineText', 'opens', 'rolling', 'eligibility', 'description', 'applyUrl', 'levels',
-            'awards', 'duration', 'covers', 'applyMode')
+            'awards', 'duration', 'covers', 'applyMode', 'india')
     return hashlib.sha1(json.dumps({k: rec.get(k) for k in keys}, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:12]
 
 
 def make_record(*, name, provider, provider_slug, provider_type, country, url, text, today, origin,
                 apply_url=None, description=None, eligibility=None, levels=None, intl=None, row_dates=None, row_value=None,
-                lines=None):
+                lines=None, detail_text=None):
     dates = T.find_dates(text)
     if row_dates:
         dates['deadlines'] = row_dates.get('deadlines', []) + dates['deadlines']
@@ -258,7 +258,7 @@ def make_record(*, name, provider, provider_slug, provider_type, country, url, t
         'origin': origin,
         'intl': intl,
     }
-    rec.update(Det.extra(text, lines, apply_url))
+    rec.update(Det.extra(text if detail_text is None else detail_text, lines, apply_url))
     miss = Det.missed(text, not (dl or dates['partial'] or dates['rolling']), not value)
     if miss:
         rec['_miss'] = miss  # for the run log only; run.py removes it before saving
@@ -267,7 +267,7 @@ def make_record(*, name, provider, provider_slug, provider_type, country, url, t
     return rec
 
 
-def detail_record(page, uni, today, same_domain=None):
+def detail_record(page, uni, today, same_domain=None, intl_hint=False):
     """One scholarship from one page, or (None, reason)."""
     name = page.name
     if not name or len(name) < 6 or len(name) > 140:
@@ -287,8 +287,8 @@ def detail_record(page, uni, today, same_domain=None):
         return None, 'phd-only' if phd else 'no-level'
     intl = T.detect_international(text)
     path = urllib.parse.urlsplit(page.url).path.lower()
-    if intl == 'unclear' and re.search(r'international|overseas|global|non-?eu|abroad|worldwide', path):
-        intl = 'yes'
+    if intl == 'unclear' and (intl_hint or re.search(r'international|overseas|global|non-?eu|abroad|worldwide', path)):
+        intl = 'yes'  # the page sits under an international section, or was linked from one. A page that says "home students only" still counts as no
     if intl == 'no':
         return None, 'domestic-only'
     if intl != 'yes':
@@ -309,11 +309,13 @@ HEAD_DL = re.compile(r'deadline|closing|closes|close|due|apply by|application da
 HEAD_EL = re.compile(r'eligib|criteria|who|requirement', re.I)
 
 
-def table_records(page, uni, today):
+def table_records(page, uni, today, intl_hint=False):
     """Scholarships listed as rows of a table on one page."""
     out = []
     page_levels, page_phd = T.detect_levels(page.text)
     page_intl = T.detect_international(page.text)
+    if page_intl == 'unclear' and intl_hint:
+        page_intl = 'yes'
     for table in page.main.find_all('table'):
         rows = table.find_all('tr')
         if len(rows) < 2:
@@ -365,7 +367,7 @@ def table_records(page, uni, today):
             rec = make_record(
                 name=name, provider=uni['name'], provider_slug=uni['slug'], provider_type='university', country=uni['country'],
                 url=link, text='', today=today, origin='table', eligibility=elig, levels=levels, intl=intl,
-                row_dates=row_dates, row_value=val)
+                row_dates=row_dates, row_value=val, detail_text=row_text)
             if not (rec['value'] or rec['deadline'] or rec['deadlinePartial'] or rec['eligibility']):
                 continue
             rec['sourcePage'] = canon(page.url)

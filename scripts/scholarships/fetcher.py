@@ -20,7 +20,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 
 class Result:
-    __slots__ = ('url', 'final_url', 'status', 'ctype', 'body', 'error', 'robots_blocked', 'truncated')
+    __slots__ = ('url', 'final_url', 'status', 'ctype', 'body', 'error', 'robots_blocked', 'robots_reason', 'truncated')
 
     def __init__(self, url):
         self.url = url
@@ -30,6 +30,7 @@ class Result:
         self.body = b''
         self.error = None
         self.robots_blocked = False
+        self.robots_reason = ''  # 'disallow' (a rule says no), 'forbidden' (robots.txt answered 401/403, strict mode) or 'unreachable'
         self.truncated = False
 
     @property
@@ -62,7 +63,11 @@ def reg_domain(host):
 
 
 class Fetcher:
-    def __init__(self, user_agent, delay=3.0, timeout=25, max_bytes=2_500_000, deadline=None, allow_http_local=False):
+    def __init__(self, user_agent, delay=3.0, timeout=25, max_bytes=2_500_000, deadline=None, allow_http_local=False,
+                 strict_forbidden=False):
+        # strict_forbidden: treat a 401/403 answer for robots.txt as "everything disallowed". RFC 9309 says a 4xx answer means the
+        # file is unavailable and a crawler may fetch anything, so the default follows that. A 5xx or no answer is still a full stop.
+        self.strict_forbidden = strict_forbidden
         self.ua = user_agent
         self.delay = delay
         self.timeout = timeout
@@ -80,6 +85,7 @@ class Fetcher:
         self.errors = []  # (url, reason)
         self.gone = set()  # URLs that answered 404 or 410
         self.robots_text = {}  # host -> robots.txt body, for the report
+        self.robots_status = {}  # host -> HTTP status of robots.txt (0 = no answer), for the report
         self.slock = threading.Lock()
 
     # ---------- robots ----------
@@ -90,17 +96,21 @@ class Fetcher:
                 return self._robots[key]
         rp = urllib.robotparser.RobotFileParser()
         status, body, _ct, _loc = self._raw(f'{scheme}://{host}/robots.txt')
+        self.robots_status[host] = status
         verdict = 'rules'
         if status == 200:
             txt = body.decode('utf-8', errors='replace')
             rp.parse(txt.splitlines())
             self.robots_text[host] = txt[:4000]
         elif status in (401, 403):
-            verdict = 'deny'  # RFC 9309: forbidden means the crawler should assume complete disallow
+            # RFC 9309 2.3.1.3: any 4xx means "unavailable", and the crawler may access any resource.
+            verdict = 'deny' if self.strict_forbidden else 'allow'
+            with self.slock:
+                self.stats['robots_forbidden'] += 1
         elif 400 <= status < 500:
             verdict = 'allow'  # no robots.txt
         else:
-            verdict = 'deny'  # unreachable or erroring: do not crawl this run
+            verdict = 'deny'  # RFC 9309 2.3.1.4: unreachable (5xx or no answer) means assume complete disallow
         entry = (rp, verdict)
         with self._robots_lock:
             self._robots[key] = entry
@@ -114,6 +124,14 @@ class Fetcher:
         if verdict == 'allow':
             return True
         return rp.can_fetch(BOT_TOKEN, url)
+
+    def robots_reason(self, url):
+        """Why a URL is off limits: 'disallow' (a rule in robots.txt), 'forbidden' (401/403 in strict mode) or 'unreachable'."""
+        p = urllib.parse.urlsplit(url)
+        _rp, verdict = self._robots_for(p.scheme, p.netloc)
+        if verdict != 'deny':
+            return 'disallow'
+        return 'forbidden' if self.robots_status.get(p.netloc) in (401, 403) else 'unreachable'
 
     def crawl_delay(self, url):
         p = urllib.parse.urlsplit(url)
@@ -212,6 +230,7 @@ class Fetcher:
                 return res
             if not self.allowed(cur):
                 res.robots_blocked = True
+                res.robots_reason = self.robots_reason(cur)
                 res.error = 'blocked by robots.txt'
                 with self.slock:
                     self.stats['robots_blocked'] += 1

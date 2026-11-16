@@ -1,0 +1,288 @@
+{
+ "_readme": "Scholarship pages that were checked by hand. The reader visits these first for the university, and they replace the page it would otherwise guess for the university's scholarships link. A page on another domain is allowed when it is listed here (the university's own scholarships body, for example). Add a university: slug -> urls. Source: the university list Raja supplied, links checked 15 Nov 2026. Three universities in that list (Australian Catholic, Bond, Charles Darwin) are not on this site yet.",
+ "checked": "2026-11-15",
+ "seeds": {
+  "adelaide-university": {
+   "name": "Adelaide University",
+   "urls": [
+    "https://adelaide.edu.au/study/scholarships/"
+   ]
+  },
+  "australian-national-university": {
+   "name": "Australian National University",
+   "urls": [
+    "https://www.anu.edu.au/study/scholarships"
+   ]
+  },
+  "curtin-university": {
+   "name": "Curtin University",
+   "urls": [
+    "https://www.curtin.edu.au/study/scholarships/international-scholarships/"
+   ]
+  },
+  "deakin-university": {
+   "name": "Deakin University",
+   "urls": [
+    "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships"
+   ]
+  },
+  "flinders-university": {
+   "name": "Flinders University",
+   "urls": [
+    "https://www.flinders.edu.au/international/apply/scholarships"
+   ]
+  },
+  "griffith-university": {
+   "name": "Griffith University",
+   "urls": [
+    "https://www.griffith.edu.au/international/scholarships-finance"
+   ]
+  },
+  "imperial-college-london": {
+   "name": "Imperial College London",
+   "urls": [
+    "https://www.imperial.ac.uk/study/fees-and-funding/scholarships-search/"
+   ]
+  },
+  "khalifa-university-of-science-and-technology": {
+   "name": "Khalifa University of Science and Technology",
+   "urls": [
+    "https://www.ku.ac.ae/scholarships"
+   ]
+  },
+  "la-trobe-university": {
+   "name": "La Trobe University",
+   "urls": [
+    "https://www.latrobe.edu.au/international/applying/scholarships"
+   ]
+  },
+  "macquarie-university": {
+   "name": "Macquarie University",
+   "urls": [
+    "https://www.mq.edu.au/study/admissions-and-entry/scholarships"
+   ]
+  },
+  "mcgill-university": {
+   "name": "McGill University",
+   "urls": [
+    "https://www.mcgill.ca/studentaid/scholarships-aid"
+   ]
+  },
+  "monash-university": {
+   "name": "Monash University",
+   "urls": [
+    "https://www.monash.edu/study/fees-scholarships/scholarships"
+   ]
+  },
+  "murdoch-university": {
+   "name": "Murdoch University",
+   "urls": [
+    "https://www.murdoch.edu.au/study/international-students/studying-at-murdoch/fees-and-scholarships/scholarships"
+   ]
+  },
+  "nanyang-technological-university-singapore": {
+   "name": "Nanyang Technological University",
+   "urls": [
+    "https://www.ntu.edu.sg/admissions/undergraduate/scholarships"
+   ]
+  },
+  "national-university-of-singapore": {
+   "name": "National University of Singapore",
+   "urls": [
+    "https://www.nus.edu.sg/oam/scholarships"
+   ]
+  },
+  "princeton-university": {
+   "name": "Princeton University",
+   "urls": [
+    "https://admission.princeton.edu/apply/international-students"
+   ]
+  },
+  "queensland-university-of-technology": {
+   "name": "Queensland University of Technology",
+   "urls": [
+    "https://www.qut.edu.au/study/fees-and-scholarships/scholarships"
+   ]
+  },
+  "rmit-university": {
+   "name": "RMIT University",
+   "urls": [
+    "https://www.rmit.edu.au/students/careers-opportunities/scholarships"
+   ]
+  },
+  "stanford-university": {
+   "name": "Stanford University",
+   "urls": [
+    "https://admission.stanford.edu/apply/international/index.html"
+   ]
+  },
+  "swinburne-university-of-technology": {
+   "name": "Swinburne University of Technology",
+   "urls": [
+    "https://www.swinburne.edu.au/courses/scholarships/"
+   ]
+  },
+  "technical-university-of-munich": {
+   "name": "Technical University of Munich",
+   "urls": [
+    "https://www.tum.de/en/studies/fees-and-financial-aid/scholarships"
+   ]
+  },
+  "the-university-of-auckland": {
+   "name": "University of Auckland",
+   "urls": [
+    "https://www.auckland.ac.nz/en/study/scholarships-and-awards.html"
+   ]
+  },
+  "the-university-of-manchester": {
+   "name": "University of Manchester",
+   "urls": [
+    "https://www.manchester.ac.uk/study/international/finance-and-scholarships/"
+   ]
+  },
+  "the-university-of-melbourne": {
+   "name": "University of Melbourne",
+   "urls": [
+    "https://scholarships.unimelb.edu.au/"
+   ]
+  },
+  "the-university-of-new-south-wales": {
+   "name": "University of New South Wales",
+   "urls": [
+    "https://www.unsw.edu.au/study/how-to-apply/international/fees-scholarships"
+   ]
+  },
+  "the-university-of-newcastle": {
+   "name": "University of Newcastle",
+   "urls": [
+    "https://www.newcastle.edu.au/scholarships"
+   ]
+  },
+  "the-university-of-queensland": {
+   "name": "University of Queensland",
+   "urls": [
+    "https://scholarships.uq.edu.au/"
+   ]
+  },
+  "the-university-of-sydney": {
+   "name": "University of Sydney",
+   "urls": [
+    "https://www.sydney.edu.au/scholarships/international.html"
+   ]
+  },
+  "the-university-of-western-australia": {
+   "name": "University of Western Australia",
+   "urls": [
+    "https://www.uwa.edu.au/study/scholarships"
+   ]
+  },
+  "trinity-college-dublin-the-university-of-dublin": {
+   "name": "Trinity College, Dublin",
+   "urls": [
+    "https://www.tcd.ie/study/international/scholarships/"
+   ]
+  },
+  "ucl": {
+   "name": "UCL (University College London)",
+   "urls": [
+    "https://www.ucl.ac.uk/scholarships/"
+   ]
+  },
+  "university-college-dublin": {
+   "name": "University College Dublin",
+   "urls": [
+    "https://www.ucd.ie/global/scholarships/"
+   ]
+  },
+  "university-of-alberta": {
+   "name": "University of Alberta",
+   "urls": [
+    "https://www.ualberta.ca/en/admissions/tuition-and-scholarships/index.html"
+   ]
+  },
+  "university-of-british-columbia": {
+   "name": "University of British Columbia",
+   "urls": [
+    "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/"
+   ]
+  },
+  "university-of-california-berkeley": {
+   "name": "University of California, Berkeley",
+   "urls": [
+    "https://financialaid.berkeley.edu/types-of-aid-at-berkeley/scholarships/regents-and-chancellors-scholarship/international-student-scholarships/"
+   ]
+  },
+  "university-of-cambridge": {
+   "name": "University of Cambridge",
+   "urls": [
+    "https://www.cambridgetrust.org/scholarships"
+   ]
+  },
+  "university-of-canberra": {
+   "name": "University of Canberra",
+   "urls": [
+    "https://www.canberra.edu.au/scholarships/"
+   ]
+  },
+  "university-of-edinburgh": {
+   "name": "University of Edinburgh",
+   "urls": [
+    "https://registryservices.ed.ac.uk/student-funding/undergraduate/international"
+   ]
+  },
+  "university-of-groningen": {
+   "name": "University of Groningen",
+   "urls": [
+    "https://www.rug.nl/education/scholarships/"
+   ]
+  },
+  "university-of-otago": {
+   "name": "University of Otago",
+   "urls": [
+    "https://www.otago.ac.nz/study/scholarships"
+   ]
+  },
+  "university-of-oxford": {
+   "name": "University of Oxford",
+   "urls": [
+    "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/oxford-funding"
+   ]
+  },
+  "university-of-technology-sydney": {
+   "name": "University of Technology Sydney",
+   "urls": [
+    "https://www.uts.edu.au/for-students/admissions-entry/scholarships"
+   ]
+  },
+  "university-of-toronto": {
+   "name": "University of Toronto",
+   "urls": [
+    "https://future.utoronto.ca/finances/scholarships/"
+   ]
+  },
+  "university-of-waterloo": {
+   "name": "University of Waterloo",
+   "urls": [
+    "https://uwaterloo.ca/future-students/financing/scholarships"
+   ]
+  },
+  "university-of-wollongong": {
+   "name": "University of Wollongong",
+   "urls": [
+    "https://www.uow.edu.au/study/scholarships/"
+   ]
+  },
+  "uppsala-university": {
+   "name": "Uppsala University",
+   "urls": [
+    "https://www.uu.se/en/study/fees-scholarships/scholarships"
+   ]
+  },
+  "western-sydney-university": {
+   "name": "Western Sydney University",
+   "urls": [
+    "https://www.westernsydney.edu.au/international/applying/fees-and-costs/scholarships"
+   ]
+  }
+ }
+}

@@ -10,12 +10,28 @@ After a run, the workflow commits `src/data/scholarships.json` to `main`, and Cl
 
 ## Rules the reader keeps
 
-- Obeys robots.txt (including Crawl-delay). A host that blocks it is skipped.
-- At least 3 seconds between requests to the same host. At most 30 pages per university.
+- Obeys robots.txt (including Crawl-delay). A host that blocks it is skipped. An explicit `Disallow` is always honoured, for the home page and for any page we were given.
+- At least 3 seconds between requests to the same host. At most 60 pages per university (`--max-pages`).
 - Identifies itself as `Universities500Bot` and links to `/bot/`. Set the repo variable `CONTACT_EMAIL` to put a contact address in the User-Agent.
 - Keeps only scholarships that name Bachelor's or Master's study, are open to international students, and show at least one of value, deadline or eligibility.
 - Never guesses. A field it cannot read is left empty and the site shows "Check the official page".
 - Status (open, closed, yet to open) comes only from dates on the page.
+
+## Reaching more universities
+
+Three things decide how many universities give us anything. All three keep the rules above.
+
+**Pages checked by hand (`data/scholarship_seeds.json`).** A university can have one or more scholarship page addresses, taken from its own site. The reader reads these first, they may sit on another domain (a university's trust, for example), and they win the choice of "scholarships page" shown on the university's page over anything the reader guesses. A seed is never used to skip robots.txt. If the home page cannot be read but a seed can, the seed is read on its own and the result counts as partial, so it cannot remove records we did not reach. The run report has a section, "Pages checked by hand: what the reader found", that says for each address whether it was read, loads but needs scripts, does not mention scholarships, failed, or is blocked by robots.txt. To add one, add the university's slug under `seeds` with a `urls` list and update `checked`.
+
+**Usual places.** When a site gives no clear link to scholarships (no sitemap hit, no link on the home page), the reader asks for a few usual addresses such as `/scholarships/` and `/study/scholarships/`. A 404 costs one request.
+
+**International context.** A scholarship linked from an international students page, or from a page whose address or title says international or overseas, counts as open to international students when it does not say otherwise. A page that says "home students only" still counts as no.
+
+**robots.txt answers.** Following RFC 9309: a 4xx answer for robots.txt (including 401 and 403) means there are no rules for us, so the site can be read. A 5xx answer or no answer means we must not read it. An explicit `Disallow` always stops us. `--strict-robots` treats 401/403 as a full stop too. The report and `universities.csv` give the reason for every university skipped by robots.txt (`disallow`, `forbidden` or `unreachable`), so the share that really forbids us can be seen.
+
+## What the page says about India
+
+`india` holds one sentence from the page, copied as written (trimmed around the word when it is very long), when the sentence names India or Indian students, citizens or institutions. It is never turned into "eligible" or "not eligible": a page can name India to include it, to exclude it, or only to list it among many countries, and a program cannot tell which. The site shows it as "The page says about India", with a link to the official page. "American Indian", "Indian Ocean" and similar are ignored, and a sentence that only contains the word India needs an eligibility word beside it.
 
 ## Safety nets
 
