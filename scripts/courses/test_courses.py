@@ -1,0 +1,513 @@
+#!/usr/bin/env python3
+"""Offline tests: a stub university website on localhost, no internet, no AI.
+Run: python3 scripts/courses/test_courses.py"""
+import json
+import os
+import subprocess
+import sys
+import tempfile
+import threading
+import unittest
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from pathlib import Path
+
+HERE = Path(__file__).parent
+sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent / 'scholarships'))
+import checks as Q  # noqa: E402
+import courses as C  # noqa: E402
+import crawl  # noqa: E402
+import extract as X  # noqa: E402
+import facts as F  # noqa: E402
+import levels as L  # noqa: E402
+import textutil as T  # noqa: E402
+from fetcher import Fetcher  # noqa: E402
+
+PORT = {}
+HITS = []
+EXTRA = {}          # path -> (content type, body[, status]); a test adds pages here and clears them afterwards
+
+
+def page(title, body, head=''):
+    return (f'<!doctype html><html lang="en"><head><title>{title} | Test University</title>{head}</head><body><header><nav><a href="/">Home</a></nav></header>'
+            f'<main><h1>{title}</h1>{body}</main><footer>footer text</footer></body></html>')
+
+
+def course(title, body, head=''):
+    return ('text/html', page(title, body + '<p>Filler sentence so that the page is long enough to be read as a page of content.</p>' * 3, head))
+
+
+def pages():
+    p = PORT['p']
+    base = f'http://127.0.0.1:{p}'
+    list1 = ''.join(f'<li><a href="{u}">{t}</a></li>' for u, t in [
+        ('/courses/bsc-computer-science/', 'Computer Science BSc (Hons)'),
+        ('/courses/msc-data-science/', 'MSc Data Science'),
+        ('/courses/bsc-business-online/', 'BSc Business Management (Online)'),
+        ('/courses/msc-finance-distance/', 'MSc Finance'),
+        ('/courses/phd-physics/', 'PhD Physics'),
+        ('/courses/graduate-certificate-business/', 'Graduate Certificate in Business'),
+        ('/courses/foundation-engineering/', 'International Foundation Year in Engineering'),
+        ('/courses/ba-history-domestic/', 'Bachelor of Arts in History'),
+        ('/courses/mba-part-time/', 'Master of Business Administration'),
+        ('/courses/beng-civil/', 'Bachelor of Engineering (Civil)'),
+        ('/courses/ma-media/', 'Master of Arts in Media'),
+        ('/courses/bs-physics/', 'Bachelor of Science in Physics'),
+        ('/courses/beng-mechanical/', 'Mechanical Engineering BEng'),
+        ('/private/mba/', 'Master of Business Administration (private)')])
+    return {
+        '/robots.txt': ('text/plain', f'User-agent: *\nDisallow: /private/\nSitemap: {base}/sitemap.xml\n'),
+        '/sitemap.xml': ('application/xml', '<?xml version="1.0"?><urlset>' + ''.join(f'<url><loc>{base}{u}</loc></url>' for u in [
+            '/courses/bsc-computer-science/', '/courses/msc-ai/', '/news/new-building/', '/de/studium/bachelor-informatik/', '/private/mba/', '/about/']) + '</urlset>'),
+        '/': ('text/html', page('Test University', '<p>Welcome to Test University, a place to study.</p>' * 10).replace(
+            '<nav><a href="/">Home</a></nav>', '<nav><a href="/">Home</a><a href="/courses/">Courses</a><a href="/international/">International students</a></nav>')),
+        '/international/': ('text/html', page('International students', '<p>International students can apply online from October. Entry requirements for international students include IELTS 6.5 and a student visa.</p>' * 3)),
+        '/courses/': ('text/html', page('Courses', f'<p>Find your course at Test University.</p><ul>{list1}</ul><a href="/courses/?page=2">Next page</a>' + '<p>Long enough text. </p>' * 12)),
+        '/courses/?page=2': ('text/html', page('Courses, page 2', '<ul><li><a href="/courses/msc-ai/">MSc Artificial Intelligence</a></li></ul>' + '<p>Long enough text. </p>' * 12)),
+        '/courses/msc-ai/': course('MSc Artificial Intelligence', '<p>Study mode: Full-time. Duration: 12 months. International fee: £26,000 per year. Starts in September.</p>'),
+        '/courses/bachelor-degrees/': ('text/html', page('Bachelor degrees', ''.join(f'<p><a href="/courses/x{i}/">Bachelor of Science in Subject {i}</a></p>' for i in range(10)) + '<p>Long enough text. </p>' * 12)),
+        '/courses/bsc-computer-science/': course('Computer Science BSc (Hons)', '''
+            <p>Study mode: Full-time on campus.</p><p>Duration: 3 years full-time.</p>
+            <p>International students: tuition fee £21,500 per year. UK students: £9,250 per year.</p>
+            <p>Start dates: September 2027 and January 2028.</p><p>English language: IELTS 6.5 overall with no band below 6.0.</p>'''),
+        '/courses/msc-data-science/': course('MSc Data Science', '<p>Full-time, 1 year. International fee: £24,000 per year. You may start in September.</p>'),
+        '/courses/bsc-business-online/': course('BSc Business Management (Online)', '<p>Full-time study. International fee: £15,000 per year.</p>'),
+        '/courses/msc-finance-distance/': course('MSc Finance', '<p>This course is delivered fully online. International fee: £18,000 per year.</p>'),
+        '/courses/phd-physics/': course('PhD Physics', '<p>Full-time on campus. International fee: £20,000 per year.</p>'),
+        '/courses/graduate-certificate-business/': course('Graduate Certificate in Business', '<p>Full-time on campus. International fee: £9,000 per year.</p>'),
+        '/courses/foundation-engineering/': course('International Foundation Year in Engineering', '<p>Full-time on campus. International fee: £14,000 per year. Leads to a Bachelor of Engineering.</p>'),
+        '/courses/ba-history-domestic/': course('Bachelor of Arts in History', '<p>Full-time on campus. This course is available to domestic students only.</p>'),
+        '/courses/mba-part-time/': course('Master of Business Administration', '<p>Available part-time only. International fee: £30,000 per year.</p>'),
+        '/courses/beng-civil/': course('Bachelor of Engineering (Civil)', '<p>Study mode: On-campus. CRICOS course code: 012345A. Duration: 4 years full-time.</p>'),
+        '/courses/ma-media/': course('Master of Arts in Media', '<p>International fee: £17,000 per year. Learn how stories are made.</p>'),
+        '/courses/bs-physics/': course('Bachelor of Science in Physics', '<p>This is a full-time course taught on campus. You will study mechanics and waves.</p>'),
+        '/courses/beng-mechanical/': course('Mechanical Engineering BEng', '<p>International students pay £22,000 per year in tuition.</p>', '''<script type="application/ld+json">
+            {"@context":"https://schema.org","@type":"Course","name":"Mechanical Engineering BEng","timeRequired":"P4Y",
+             "hasCourseInstance":{"@type":"CourseInstance","courseMode":"onsite","startDate":"2027-09-01"}}</script>'''),
+        '/private/mba/': course('Master of Business Administration', '<p>Full-time on campus. International fee: £30,000 per year.</p>'),
+    }
+
+
+class H(BaseHTTPRequestHandler):
+    def log_message(self, *a):
+        pass
+
+    def do_GET(self):
+        HITS.append(self.path)
+        pg = EXTRA.get(self.path) or pages().get(self.path)
+        if not pg:
+            self.send_response(404)
+            self.end_headers()
+            return
+        self.send_response(pg[2] if len(pg) > 2 else 200)
+        self.send_header('Content-Type', pg[0] + '; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(pg[1].encode())
+
+
+def setUpModule():
+    os.environ.pop('GITHUB_STEP_SUMMARY', None)
+    srv = HTTPServer(('127.0.0.1', 0), H)
+    PORT['p'] = srv.server_address[1]
+    PORT['srv'] = srv
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+
+
+def tearDownModule():
+    PORT['srv'].shutdown()
+
+
+def uni(country='uk'):
+    return {'slug': 'test-university', 'name': 'Test University', 'country': country, 'web': f'http://127.0.0.1:{PORT["p"]}/'}
+
+
+class Levels(unittest.TestCase):
+    def test_in_scope(self):
+        for title, level in [('Bachelor of Science in Nursing', 'Bachelor'), ('BSc (Hons) Computer Science', 'Bachelor'), ('Computer Science BA', 'Bachelor'),
+                             ('BACHELOR OF ARTS', 'Bachelor'), ('LLB Law', 'Bachelor'), ('Master of Science in Online Marketing', 'Master'),
+                             ('MSc Data Science', 'Master'), ('MA in History', 'Master'), ('MS in Computer Science', 'Master'), ('MBA', 'Master'),
+                             ('Master of Business Administration (MBA)', 'Master'), ('MEng Mechanical Engineering (Hons)', 'Master')]:
+            self.assertEqual(L.classify_title(title)[0], level, title)
+
+    def test_out_of_scope(self):
+        for title, reason in [('PhD in Physics', 'research-degree'), ('Doctor of Philosophy', 'research-degree'), ('MPhil Economics', 'research-degree'),
+                              ('Master of Philosophy', 'research-degree'), ('Graduate Certificate in Business', 'diploma-or-certificate'),
+                              ('Postgraduate Diploma in Law', 'diploma-or-certificate'), ('Executive MBA', 'diploma-or-certificate'),
+                              ('Pathway to Master of Business', 'foundation-or-pathway'), ('International Foundation Year', 'foundation-or-pathway'),
+                              ('Associate of Arts', 'foundation-or-pathway'), ('Master of Data Science (Online)', 'online-or-distance'),
+                              ('Online Master of Science in Nursing', 'online-or-distance'), ('Bachelor of Business - Distance Education', 'online-or-distance'),
+                              ('Master of Science (Part-time only)', 'part-time-only')]:
+            level, _d, _f, out = L.classify_title(title)
+            self.assertIsNone(level, title)
+            self.assertEqual(out, reason, title)
+
+    def test_words_that_look_like_degrees(self):
+        # "ma" and "bs" inside ordinary words, and subjects without a degree, are not degrees
+        for title in ['Computer Science', 'Foundations of Biology', 'Mastering Excel', 'Management and Marketing']:
+            self.assertIsNone(L.classify_title(title)[0], title)
+        self.assertEqual(L.classify_title('Master of Science (Full-time/Part-time)')[0], 'Master')
+        self.assertEqual(L.classify_title('MEng Civil Engineering')[2], {'integrated': True})
+        self.assertEqual(L.classify_title('Bachelor of Arts/Master of Teaching')[2], {'combined': True})
+
+    def test_online_urls(self):
+        self.assertEqual(L.classify_url('https://u.edu/online/courses/mba/'), 'online-or-distance')
+        self.assertEqual(L.classify_url('https://u.edu/courses/msc-finance-online/'), 'online-or-distance')
+        self.assertEqual(L.classify_url('https://u.edu/courses/pathway-business/'), 'foundation-or-pathway')
+        self.assertEqual(L.classify_url('https://u.edu/courses/foundations-of-biology/'), '')
+        self.assertEqual(L.classify_url('https://u.edu/pathways/business/'), 'foundation-or-pathway')
+        self.assertEqual(L.classify_url('https://u.edu/courses/computer-science/'), '')
+
+    def test_study_mode(self):
+        self.assertEqual(L.study_mode(['Study mode: Full-time on campus.'])[0], 'yes')
+        self.assertEqual(L.study_mode(['This course is delivered fully online.'])[0], 'no')
+        self.assertEqual(L.study_mode(['Available part-time only.'])[0], 'no')
+        self.assertEqual(L.study_mode(['Learn about waves.'])[0], 'unclear')
+        self.assertEqual(L.study_mode(['You can work full-time during the holidays.'])[0], 'unclear')       # a visa rule, not the course
+        self.assertEqual(L.study_mode(['Live on campus in our university halls.'])[0], 'unclear')            # housing, not the course
+        self.assertEqual(L.study_mode(['Join our in-person open day.'])[0], 'unclear')
+        self.assertEqual(L.study_mode(['Mode of study: Full-time.'])[0], 'yes')
+        self.assertEqual(L.study_mode(['Full-time on campus.', 'Also 100% online.'])[0], 'unclear')   # the page says both: a person must look
+        self.assertEqual(L.study_mode(['It is not available full-time.'])[0], 'unclear')
+        self.assertEqual(L.study_mode([], markup_mode='online')[0], 'no')
+        self.assertEqual(L.study_mode([], markup_mode='onsite')[0], 'yes')
+        self.assertEqual(L.study_mode(['Full-time.'], url='https://u.edu/online/x/')[0], 'unclear')
+
+    def test_international(self):
+        self.assertEqual(L.international(['International students: tuition fee £21,500 per year.'])[:2], ('yes', 'fee'))
+        self.assertEqual(L.international(['Learn waves.'], '012345A')[:2], ('yes', 'cricos'))
+        self.assertEqual(L.international(['International students can apply online.'])[:2], ('yes', 'page'))
+        self.assertEqual(L.international(['This course is only available for international students.'])[:2], ('yes', 'page'))
+        self.assertEqual(L.international(['International students. £34,400.'])[:2], ('yes', 'fee'))
+        self.assertEqual(L.international(['This course is available to domestic students only.', 'International fee £1,000 a year.'])[0], 'no')
+        self.assertEqual(L.international(['Learn waves.'])[0], 'unclear')
+
+
+class Facts(unittest.TestCase):
+    def sents(self, text):
+        return C.sentences_with_labels(T.clean(text))
+
+    def test_fee(self):
+        f = F.find_fee(self.sents('International students: tuition fee £21,500 per year. UK students: £9,250 per year.'), 'uk')
+        self.assertEqual(f['display'], 'GBP 21,500 a year')
+        self.assertIn('21,500', f['context'])
+        self.assertIsNone(F.find_fee(self.sents('Tuition fee £9,250 per year for UK students.'), 'uk'))
+        self.assertIsNone(F.find_fee(self.sents('International students pay £350 per credit.'), 'uk'))
+        self.assertIsNone(F.find_fee(self.sents('International students need £1,334 a month for living costs and a student visa.'), 'uk'))
+        # a table row: label in one cell, amount in the next
+        f = F.find_fee(self.sents('International students. £18,400 per year.'), 'uk')
+        self.assertEqual(f['display'], 'GBP 18,400 a year')
+        f = F.find_fee(self.sents('Domestic fee A$9,000 a year, international fee A$38,000 a year.'), 'australia')
+        self.assertEqual(f['display'], 'AUD 38,000 a year')
+
+    def test_fee_as_real_pages_write_it(self):
+        # a table: "Tuition fees" heading, then one row per fee status, label and amount in separate cells
+        table = 'Tuition fees (2026/27). UK students. £9,535. International students. £34,400. Additional costs. There are no additional costs.'
+        self.assertEqual(F.find_fee(self.sents(table), 'uk')['display'], 'GBP 34,400')
+        self.assertEqual(F.find_fee(self.sents('Tuition fees. UK: £9,535. Overseas: £43,500.'), 'uk')['display'], 'GBP 43,500')
+        # a price for the whole course is not a yearly fee
+        self.assertIsNone(F.find_fee(self.sents('International tuition, whole course. A$173,188.'), 'australia'))
+        f = F.find_fee(self.sents('International tuition, whole course: A$173,188, about A$57,729 a year.'), 'australia')
+        self.assertEqual(f['display'], 'AUD 57,729 a year')
+        self.assertIsNone(F.find_fee(self.sents('International fee: A$800 per credit point.'), 'australia'))
+        # a number with no fee talk on the page is not a fee
+        self.assertIsNone(F.find_fee(self.sents('International students. 12,000 students from 140 countries.'), 'uk'))
+
+    def test_duration(self):
+        self.assertEqual(F.find_duration(self.sents('Duration: 3 years full-time.'), 'Bachelor')['years'], 3)
+        self.assertEqual(F.find_duration(self.sents('Duration: 18 months.'), 'Master')['years'], 1.5)
+        self.assertEqual(F.find_duration(self.sents('Length of study: two years.'), 'Master')['display'], '2 years')
+        self.assertIsNone(F.find_duration(self.sents('Graduate visa: stay for 2 years after you finish.'), 'Master'))
+        self.assertIsNone(F.find_duration(self.sents('Duration: 10 years.'), 'Bachelor'))
+        self.assertEqual(F.find_duration(self.sents('Full-time: 3 years. Part-time: 6 years.'), 'Bachelor')['years'], 3)
+        self.assertEqual(F.find_duration(self.sents('Full Time (3 Years)'), 'Bachelor')['years'], 3)
+        self.assertEqual(F.find_duration(self.sents('Duration 36 months'), 'Bachelor')['years'], 3)
+
+    def test_intakes(self):
+        self.assertEqual(F.find_intakes(self.sents('Start dates: September 2027 and January 2028.'))['months'], ['Sep', 'Jan'])
+        self.assertIsNone(F.find_intakes(self.sents('Applications close on 30 June for the September start.')))
+        self.assertIsNone(F.find_intakes(self.sents('You may start when you are ready.')))     # the verb "may" is not the month
+        self.assertEqual(F.find_intakes(self.sents('Intakes: February, July.'))['months'], ['Feb', 'Jul'])
+
+    def test_ielts(self):
+        self.assertEqual(F.find_ielts(self.sents('IELTS 6.5 overall with no band below 6.0.'))['overall'], 6.5)
+        self.assertEqual(F.find_ielts(self.sents('IELTS (Academic): overall 7.0, no less than 6.5 in any band.'))['overall'], 7.0)
+        self.assertEqual(F.find_ielts(self.sents('IELTS 6.5.'))['overall'], 6.5)
+        r = F.find_ielts(self.sents('IELTS 6.0 in writing and 6.5 in speaking.'))
+        self.assertIsNone(r['overall'])           # ambiguous: keep the sentence, no number
+        self.assertIn('IELTS', r['context'])
+        self.assertIsNone(F.find_ielts(self.sents('Learn about waves.')))
+
+    def test_field(self):
+        self.assertEqual(F.find_field('Computer Science BSc (Hons)'), 'Computer science and IT')
+        self.assertEqual(F.find_field('Master of Science in Data Science'), 'Data science and AI')
+        self.assertEqual(F.find_field('Bachelor of Nursing'), 'Medicine and health')
+        self.assertIsNone(F.find_field('Bachelor of Science'))
+
+
+class Reader(unittest.TestCase):
+    def read(self, path, **kw):
+        fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+        res = fx.get(f'http://127.0.0.1:{PORT["p"]}{path}')
+        pg = X.Page(X.canon(res.final_url), res.text, 'uk', 'Test University')
+        return C.read_course(pg, res.text, uni(), '2026-11-16', kw.get('uni_intl'), kw.get('strict', False))
+
+    def test_eligible_course(self):
+        r, why = self.read('/courses/bsc-computer-science/')
+        self.assertEqual(why, '')
+        self.assertEqual((r['level'], r['degree'], r['field']), ('Bachelor', 'BSc (Hons)', 'Computer science and IT'))
+        self.assertEqual(r['fee']['display'], 'GBP 21,500 a year')
+        self.assertEqual(r['duration']['years'], 3)
+        self.assertEqual(r['intakes']['months'], ['Sep', 'Jan'])
+        self.assertEqual(r['ielts']['overall'], 6.5)
+        self.assertEqual(r['international']['how'], 'fee')
+        self.assertIn('Full-time on campus', r['studyMode']['evidence'])
+        self.assertEqual(r['firstSeen'], '2026-11-16')
+        self.assertEqual(Q.problem(r), '')
+
+    def test_master_with_missing_facts_stays_empty(self):
+        r, why = self.read('/courses/msc-data-science/')
+        self.assertEqual(why, '')
+        self.assertEqual(r['level'], 'Master')
+        self.assertEqual(r['fee']['display'], 'GBP 24,000 a year')
+        self.assertEqual(r['duration']['display'], '1 year')
+        self.assertEqual(r['intakes']['months'], ['Sep'])
+        self.assertIsNone(r['ielts'])
+        self.assertIsNone(r['cricos'])
+
+    def test_what_is_left_out(self):
+        for path, reason in [('/courses/bsc-business-online/', 'online-or-distance'), ('/courses/msc-finance-distance/', 'online-or-part-time'),
+                             ('/courses/phd-physics/', 'research-degree'), ('/courses/graduate-certificate-business/', 'diploma-or-certificate'),
+                             ('/courses/foundation-engineering/', 'foundation-or-pathway'), ('/courses/ba-history-domestic/', 'domestic-only'),
+                             ('/courses/mba-part-time/', 'online-or-part-time'), ('/courses/ma-media/', 'study-mode-unclear'),
+                             ('/courses/bachelor-degrees/', 'listing-page'), ('/courses/', 'not-a-course-page')]:
+            r, why = self.read(path)
+            self.assertIsNone(r, path)
+            self.assertEqual(why, reason, path)
+
+    def test_cricos_and_markup(self):
+        r, why = self.read('/courses/beng-civil/')
+        self.assertEqual(why, '')
+        self.assertEqual((r['cricos'], r['international']['how']), ('012345A', 'cricos'))
+        r, why = self.read('/courses/beng-mechanical/')
+        self.assertEqual(why, '')
+        self.assertEqual(r['duration']['years'], 4)
+        self.assertEqual(r['intakes']['months'], ['Sep'])
+        self.assertIn('onsite', r['studyMode']['evidence'])
+
+    def test_university_wide_international_evidence(self):
+        ev = {'url': 'http://x/international/', 'evidence': 'International students can apply online from October.'}
+        r, why = self.read('/courses/bs-physics/')
+        self.assertEqual(why, 'international-unclear')
+        r, why = self.read('/courses/bs-physics/', uni_intl=ev)
+        self.assertEqual(why, '')
+        self.assertEqual(r['international']['how'], 'university')
+        r, why = self.read('/courses/bs-physics/', uni_intl=ev, strict=True)
+        self.assertEqual(why, 'international-unclear')
+        # a page that says "domestic only" is never rescued by the university-wide statement
+        r, why = self.read('/courses/ba-history-domestic/', uni_intl=ev)
+        self.assertEqual(why, 'domestic-only')
+
+
+class Crawl(unittest.TestCase):
+    def run_crawl(self, **kw):
+        del HITS[:]
+        fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+        return crawl.crawl_university(uni(), fx, '2026-11-16', max_pages=kw.pop('max_pages', 60), **kw)
+
+    def test_crawl_finds_the_right_courses(self):
+        r = self.run_crawl()
+        names = sorted(rec['name'] for rec in r['records'].values())
+        self.assertEqual(names, ['Bachelor of Engineering (Civil)', 'Bachelor of Science in Physics', 'Computer Science BSc (Hons)', 'MSc Artificial Intelligence',
+                                 'MSc Data Science', 'Mechanical Engineering BEng'])
+        self.assertTrue(r['intlOpen']['url'].endswith('/international/'))
+        phys = next(x for x in r['records'].values() if x['name'].endswith('Physics'))
+        self.assertEqual(phys['international']['how'], 'university')
+        self.assertFalse(any(h.startswith('/private/') for h in HITS), 'must not request disallowed paths')
+        self.assertFalse(any(h.startswith('/de/') or h.startswith('/news/') for h in HITS), 'must not fetch other-language or news pages')
+        self.assertIn('/courses/?page=2', HITS)        # pages of a list are followed
+        for reason in ('skipped-by-address:online-or-distance', 'skipped-by-address:research-degree', 'skipped-by-address:foundation-or-pathway',
+                       'diploma-or-certificate', 'domestic-only', 'online-or-part-time', 'study-mode-unclear', 'robots-blocked-page'):
+            self.assertIn(reason, r['reasons'], reason)
+        self.assertTrue(r['samples']['domestic-only'][0].endswith('/courses/ba-history-domestic/'))
+
+    def test_strict_international(self):
+        r = self.run_crawl(strict_international=True)
+        self.assertNotIn('Bachelor of Science in Physics', [x['name'] for x in r['records'].values()])
+        self.assertIn('international-unclear', r['reasons'])
+
+    def test_page_budget(self):
+        r = self.run_crawl(max_pages=5)
+        self.assertEqual(r['pages'], 5)
+        self.assertEqual(len(HITS) - sum(1 for h in HITS if h in ('/robots.txt', '/sitemap.xml', '/')), 5)
+
+    def test_known_pages_are_refreshed_first(self):
+        first = self.run_crawl()
+        prev = {'courses': list(first['records'].values()), 'seen': first['seen'], 'intlOpen': first['intlOpen']}
+        # everything read 20 days ago: due again; pages never read are fetched with what is left
+        for rec in prev['courses']:
+            rec['lastVerified'] = '2026-10-27'
+        prev['seen'] = {u: ['2026-10-27', e[1]] for u, e in prev['seen'].items()}
+        r = self.run_crawl(prev=prev, max_pages=10)
+        self.assertGreaterEqual(r['knownRead'], 6)
+        self.assertLessEqual(r['knownRead'], 6)          # 60% of 10
+        # pages read three days ago are not due: not asked again
+        prev['seen'] = {u: ['2026-11-13', e[1]] for u, e in first['seen'].items()}
+        r = self.run_crawl(prev=prev, max_pages=60)
+        asked = {u for u in r['results']}
+        self.assertFalse(any(u.endswith('/courses/msc-data-science/') for u in asked))
+
+    def test_robots_blocked_and_unreachable(self):
+        fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+        u = dict(uni(), web=f'http://127.0.0.1:{PORT["p"]}/private/home/')
+        r = crawl.crawl_university(u, fx, '2026-11-16', max_pages=5)
+        self.assertEqual((r['status'], r['robotsReason']), ('robots', 'disallow'))
+        u = dict(uni(), web='http://127.0.0.1:1/')
+        r = crawl.crawl_university(u, fx, '2026-11-16', max_pages=5)
+        self.assertEqual(r['status'], 'unreachable')
+
+
+class Runner(unittest.TestCase):
+    def run_main(self, tmp, today, *extra):
+        env = {k: v for k, v in os.environ.items() if k != 'GITHUB_STEP_SUMMARY'}
+        unis = Path(tmp) / 'universities.json'
+        if not unis.exists():
+            unis.write_text(json.dumps([
+                uni(),
+                dict(uni(), slug='blocked-university', name='Blocked University', web=f'http://127.0.0.1:{PORT["p"]}/private/home/'),
+                dict(uni(), slug='down-university', name='Down University', web='http://127.0.0.1:1/')]))
+        cmd = [sys.executable, str(HERE / 'run.py'), '--universities', str(unis), '--out-dir', str(Path(tmp) / 'courses'), '--report', str(Path(tmp) / 'out'),
+               '--delay', '0', '--workers', '3', '--max-pages', '60', '--today', today, '--refresh-days', '0', '--held-days', '0', *extra]
+        return subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=120)
+
+    def doc(self, tmp, slug='test-university'):
+        return json.loads((Path(tmp) / 'courses' / f'{slug}.json').read_text())
+
+    def test_runs_merge_and_drop(self):
+        EXTRA.clear()
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self.run_main(tmp, '2026-11-16')
+            self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+            d = self.doc(tmp)
+            self.assertEqual(d['counts']['eligible'], 6)
+            self.assertEqual(d['status'], 'ok')
+            self.assertIn('domestic-only', d['counts']['held'])
+            ds = next(c for c in d['courses'] if c['name'] == 'MSc Data Science')
+            self.assertEqual((ds['firstSeen'], ds['lastVerified'], ds['lastChanged']), ('2026-11-16',) * 3)
+            self.assertEqual(self.doc(tmp, 'blocked-university')['status'], 'robots')
+            self.assertEqual(self.doc(tmp, 'down-university')['status'], 'unreachable')
+            csv_text = (Path(tmp) / 'out' / 'universities.csv').read_text()
+            self.assertIn('test-university,uk,ok', csv_text)
+            self.assertIn('robots', csv_text)
+            self.assertIn('Eligible courses now: **6**', (Path(tmp) / 'out' / 'course_report.md').read_text())
+
+            # run 2: one page changed, one page gone
+            EXTRA['/courses/msc-data-science/'] = course('MSc Data Science', '<p>Full-time, 1 year. International fee: £25,500 per year.</p>')
+            EXTRA['/courses/msc-ai/'] = ('text/html', '', 404)
+            p = self.run_main(tmp, '2026-12-01', '--only', 'test-university,blocked-university')
+            self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+            d = self.doc(tmp)
+            ds = next(c for c in d['courses'] if c['name'] == 'MSc Data Science')
+            self.assertEqual((ds['firstSeen'], ds['lastVerified'], ds['lastChanged']), ('2026-11-16', '2026-12-01', '2026-12-01'))
+            self.assertEqual(ds['fee']['display'], 'GBP 25,500 a year')
+            cs = next(c for c in d['courses'] if c['name'].startswith('Computer Science'))
+            self.assertEqual((cs['lastVerified'], cs['lastChanged']), ('2026-12-01', '2026-11-16'))     # read again, nothing changed
+            ai = next(c for c in d['courses'] if c['name'] == 'MSc Artificial Intelligence')
+            self.assertEqual(ai['misses'], 1)                  # kept for now, a page can be down for a day
+            # the website that could not be read keeps its old state
+            self.assertEqual(self.doc(tmp, 'blocked-university')['courses'], [])
+            self.run_main(tmp, '2026-12-15', '--only', 'test-university,blocked-university')
+            p = self.run_main(tmp, '2027-01-01', '--only', 'test-university,blocked-university')
+            names = [c['name'] for c in self.doc(tmp)['courses']]
+            self.assertNotIn('MSc Artificial Intelligence', names)      # gone for three runs in a row
+            self.assertEqual(len(names), 5)
+        EXTRA.clear()
+
+    def test_shard_and_only(self):
+        EXTRA.clear()
+        with tempfile.TemporaryDirectory() as tmp:
+            p = self.run_main(tmp, '2026-11-16', '--shard', '1/3')
+            self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+            files = sorted(x.name for x in (Path(tmp) / 'courses').glob('*.json'))
+            self.assertEqual(files, ['blocked-university.json'])      # slugs sorted: blocked, down, test; shard 1 of 3 = the first
+            p = self.run_main(tmp, '2026-11-16', '--only', 'test-university')
+            self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+            self.assertTrue((Path(tmp) / 'courses' / 'test-university.json').exists())
+
+    def test_site_trouble_counts_no_misses(self):
+        EXTRA.clear()
+        with tempfile.TemporaryDirectory() as tmp:
+            os.makedirs(Path(tmp) / 'courses')
+            fake = {'slug': 'test-university', 'courses': [
+                dict(name=f'Fake {i} BSc', degree='BSc', level='Bachelor', url=f'http://127.0.0.1:{PORT["p"]}/gone/{i}/', university='test-university', lastVerified='2026-10-01',
+                     studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee'}, hash='x', firstSeen='2026-10-01', lastChanged='2026-10-01', misses=2)
+                for i in range(120)], 'seen': {}}
+            (Path(tmp) / 'courses' / 'test-university.json').write_text(json.dumps(fake))
+            # every known page answers 404 at once: the website probably changed its addresses, so no course is marked as missing
+            p = self.run_main(tmp, '2026-11-16', '--only', 'test-university', '--max-pages', '300')
+            self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+            d = self.doc(tmp)
+            self.assertEqual(d['counts']['eligible'], 126)
+            self.assertTrue(all(c.get('misses', 0) == 2 for c in d['courses'] if c['name'].startswith('Fake')))
+
+    def test_safety_gate(self):
+        EXTRA.clear()
+        for i in range(120):
+            EXTRA[f'/fake/{i}/'] = ('text/html', page('About the department', '<p>We are a friendly department with many staff and students.</p>' * 8))
+        with tempfile.TemporaryDirectory() as tmp:
+            os.makedirs(Path(tmp) / 'courses')
+            fake = {'slug': 'test-university', 'courses': [
+                dict(name=f'Fake {i} BSc', degree='BSc', level='Bachelor', url=f'http://127.0.0.1:{PORT["p"]}/fake/{i}/', university='test-university', lastVerified='2026-10-01',
+                     studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee'}, hash='x', firstSeen='2026-10-01', lastChanged='2026-10-01', misses=2)
+                for i in range(120)], 'seen': {}}
+            path = Path(tmp) / 'courses' / 'test-university.json'
+            path.write_text(json.dumps(fake))
+            before = path.read_text()
+            # the pages load, but none of them is a course any more, for the third run in a row: 120 courses would vanish at once
+            p = self.run_main(tmp, '2026-11-16', '--only', 'test-university', '--max-pages', '300')
+            self.assertEqual(p.returncode, 3, p.stdout + p.stderr)
+            self.assertEqual(path.read_text(), before, 'nothing may be written when the gate stops the run')
+            self.assertIn('Stopped', (Path(tmp) / 'out' / 'course_report.md').read_text())
+            p = self.run_main(tmp, '2026-11-16', '--only', 'test-university', '--max-pages', '300', '--allow-drop')
+            self.assertEqual(p.returncode, 0, p.stdout + p.stderr)
+            self.assertEqual(self.doc(tmp)['counts']['eligible'], 6)
+        EXTRA.clear()
+
+
+class Merge(unittest.TestCase):
+    def rec(self, url, name='MSc Data Science'):
+        return dict(id='x', university='u', name=name, degree='MSc', level='Master', url=url, studyMode={'verdict': 'full-time on campus'},
+                    international={'how': 'fee'}, firstSeen='2026-10-01', lastVerified='2026-10-01', lastChanged='2026-10-01', hash='h1')
+
+    def test_redirected_address_keeps_one_record(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('course_run', HERE / 'run.py')   # 'run' alone would be the scholarship runner
+        run = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(run)
+        u = {'slug': 'u', 'name': 'U', 'country': 'uk'}
+        prev = {'courses': [self.rec('https://u.edu/old/')], 'seen': {}}
+        new = dict(self.rec('https://u.edu/new/'), firstSeen='2026-11-16', lastVerified='2026-11-16', lastChanged='2026-11-16')
+        out = {'status': 'ok', 'note': '', 'pages': 1, 'results': {'https://u.edu/old/': 'ok'}, 'records': {'https://u.edu/old/': new}, 'seen': {},
+               'reasons': {}, 'samples': {}, 'knownRead': 1, 'knownFailed': 0}
+        doc, st = run.merge(u, prev, out, '2026-11-16', '2026-11-16T00:00:00Z')
+        self.assertEqual([c['url'] for c in doc['courses']], ['https://u.edu/new/'])
+        self.assertEqual(doc['courses'][0]['firstSeen'], '2026-10-01')      # the history of the course is kept
+
+
+class Quality(unittest.TestCase):
+    def good(self):
+        return dict(name='MSc Data Science', degree='MSc', level='Master', url='https://u.edu/c/', lastVerified='2026-11-16',
+                    studyMode={'verdict': 'full-time on campus'}, international={'how': 'fee'}, duration={'years': 1}, fee={'display': 'GBP 24,000 a year'})
+
+    def test_problem(self):
+        self.assertEqual(Q.problem(self.good()), '')
+        for change, why in [({'url': ''}, 'no-source-url'), ({'level': 'PhD'}, 'bad-level'), ({'name': 'Courses'}, 'bad-name'),
+                            ({'studyMode': {'verdict': 'unclear'}}, 'not-full-time-on-campus'), ({'international': {}}, 'no-international-evidence'),
+                            ({'duration': {'years': 9}}, 'duration-out-of-range'), ({'fee': {'display': 'GBP'}}, 'fee-without-number'),
+                            ({'name': 'PhD Data Science', 'degree': ''}, 'research-degree')]:
+            r = self.good()
+            r.update(change)
+            self.assertEqual(Q.problem(r), why, change)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=1)
