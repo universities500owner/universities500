@@ -9,6 +9,7 @@ export const UNCHECKED = [
   '/internships/',
   '/budget/',
   '/loan/',
+  '/education-loan-guide/',
   '/visa-readiness/',
   '/working-while-you-study/',
   '/search/',

@@ -17,6 +17,7 @@ export const NAV = [
     label: 'Prepare',
     items: [
       ['/application-prep/', 'Application prep', 'application-prep', 'Documents checklist, recommendation letters, statement of purpose and CV.'],
+      ['/exams/', 'Exam guides', 'exams', 'IELTS, TOEFL, PTE, Duolingo, SAT, GRE and GMAT: which you may need and how each works.'],
       ['/english-test/', 'English test', 'english-test', 'IELTS, TOEFL or PTE: which to sit and how to prepare.'],
     ],
   },
@@ -27,6 +28,7 @@ export const NAV = [
       ['/visa-readiness/', 'Visa readiness', 'visa-readiness', 'What a student visa asks for in each destination, and what you have.'],
       ['/budget/', 'Budget planner', 'budget', 'Tuition, living costs and one-time costs against your funds.'],
       ['/loan/', 'Education loan', 'loan', 'What borrowing costs over the life of a loan.'],
+      ['/education-loan-guide/', 'Education loan guide', 'education-loan-guide', 'RBI rules, collateral, moratorium, a lender list and a readiness checklist for Indian students.'],
       ['/scholarships/', 'Scholarships', 'scholarships', 'Search by destination, level and status. Official links to apply.'],
     ],
   },

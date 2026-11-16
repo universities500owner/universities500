@@ -1,0 +1,169 @@
+---
+import Base from '../../layouts/Base.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
+import { SITE } from '../../lib/data.js';
+import { exams, GROUPS, STEPS, SHARED, href, CHECKED_LABEL } from '../../lib/exams.js';
+
+export function getStaticPaths() {
+  return exams.map((e) => ({ params: { slug: e.slug }, props: { e } }));
+}
+const { e } = Astro.props;
+const others = exams.filter((x) => x.slug !== e.slug);
+const group = GROUPS[e.group].label;
+
+const topics = [
+  { id: 'who', title: `Who should consider ${e.name}?`, desc: 'Who it suits, and what to check first.' },
+  { id: 'pattern', title: 'What happens during the test?', desc: 'Sections, timing and what each one assesses.' },
+  { id: 'scoring', title: `How is ${e.name} scored?`, desc: 'The score scale, and how results are reported.' },
+  { id: 'book', title: 'How do you book the test?', desc: 'Five steps, in order.' },
+  { id: 'prepare', title: 'How should you prepare?', desc: 'What to practise, skill by skill.' },
+  { id: 'faq', title: 'Frequently asked questions', desc: 'Quick answers to common questions.' },
+  { id: 'official', title: 'Official resources', desc: 'Where to book and practise.' },
+];
+
+const ld = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: e.title,
+    about: e.name,
+    mainEntityOfPage: `${SITE}${href(e)}`,
+    dateModified: '2026-11-16',
+    publisher: { '@type': 'Organization', name: 'Universities500' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: e.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  },
+];
+---
+<Base
+  title={`${e.title} | Universities500`}
+  description={e.lead.length > 160 ? e.lead.slice(0, 157).replace(/\s+\S*$/, '') + '…' : e.lead}
+  path={href(e)}
+  jsonld={ld}
+  current="exams"
+>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/exams/">Exam guides</a><span aria-hidden="true">/</span>{e.name}
+  </nav>
+
+  <section class="ghero">
+    <p class="g-eyebrow">Exam guide · {group}</p>
+    <h1>{e.title}</h1>
+    <p class="lede">{e.lead}</p>
+    <div class="gstats" role="list" aria-label={`${e.name} at a glance`}>
+      {e.stats.map((s) => <div class="gstat" role="listitem"><b>{s.v}</b><span>{s.l}</span></div>)}
+    </div>
+  </section>
+
+  <div class="g-intro">
+    <section class="g-card g-overview" aria-labelledby="g-ov">
+      <h2 id="g-ov">What is {e.name}?</h2>
+      <p>{e.what}</p>
+      <div class="xnote"><p><strong>Important:</strong> {SHARED.important}</p></div>
+    </section>
+    <nav class="g-card g-toc" aria-label="Explore this guide">
+      <h2>Explore this guide</h2>
+      <ol>
+        {topics.map((t) => <li><a href={`#s-${t.id}`}>{t.title}</a></li>)}
+      </ol>
+    </nav>
+  </div>
+
+  <div class="g-tools">
+    <div>
+      <h2>Explore the topics</h2>
+      <p>Each topic is collapsed. Open the ones you need.</p>
+    </div>
+    <div class="g-btns">
+      <button class="pill" type="button" id="g-open">Expand all topics</button>
+      <button class="pill" type="button" id="g-close">Collapse all topics</button>
+    </div>
+  </div>
+
+  <section aria-label={`${e.name} topics`} id="g-topics">
+    {topics.map((t, i) => (
+      <details class="topic" id={`s-${t.id}`}>
+        <summary>
+          <span class="num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <span class="topic-head">
+            <span class="topic-title">{t.title}</span>
+            <span class="topic-desc">{t.desc}</span>
+          </span>
+        </summary>
+        <div class="topic-body gbody">
+          {t.id === 'who' && (
+            <div class="dgrid">
+              <div class="dcard"><h3>Who should consider it?</h3><p>{e.who}</p></div>
+              <div class="dcard"><h3>Before you decide</h3><p>{SHARED.before}</p></div>
+            </div>
+          )}
+          {t.id === 'pattern' && (
+            <Fragment>
+              <p>The table summarises the sections, approximate timing and the skills assessed.</p>
+              <div class="tbl-wrap">
+                <table class="tbl xtbl xpattern">
+                  <thead><tr><th scope="col">Section</th><th scope="col">Questions and time</th><th scope="col">What it assesses</th></tr></thead>
+                  <tbody>
+                    {e.pattern.map(([a, b, c]) => <tr><th scope="row">{a}</th><td>{b}</td><td>{c}</td></tr>)}
+                  </tbody>
+                </table>
+              </div>
+            </Fragment>
+          )}
+          {t.id === 'scoring' && (
+            <Fragment>
+              <p>{e.scoring}</p>
+              <div class="xtip"><p><strong>Student tip:</strong> {SHARED.scoreTip}</p></div>
+            </Fragment>
+          )}
+          {t.id === 'book' && (
+            <Fragment>
+              <ol class="xsteps">
+                {STEPS.map(([a, b]) => <li><span><strong>{a}</strong> {b}</span></li>)}
+              </ol>
+              <div class="xnote"><p>{SHARED.fees}</p></div>
+            </Fragment>
+          )}
+          {t.id === 'prepare' && (
+            <Fragment>
+              <p>Build your study plan around the skills and task types in this exam, and use official practice materials to learn the current test experience.</p>
+              <div class="dgrid">
+                {e.prep.map(([a, b]) => <div class="dcard"><h3>{a}</h3><p>{b}</p></div>)}
+              </div>
+              <div class="xtip"><p><strong>Start with a diagnostic.</strong> {SHARED.prepTip}</p></div>
+            </Fragment>
+          )}
+          {t.id === 'faq' && e.faq.map(([q, a]) => (
+            <details>
+              <summary>{q}</summary>
+              <div><p>{a}</p></div>
+            </details>
+          ))}
+          {t.id === 'official' && (
+            <Fragment>
+              <p>{SHARED.resources}</p>
+              <p><a class="btn" href={e.official.url}>{e.official.label}</a></p>
+            </Fragment>
+          )}
+        </div>
+      </details>
+    ))}
+  </section>
+
+  <p class="g-info">General guidance, not advice for your own case. Test formats, fees, score scales, result times, retake rules and acceptance can change, so confirm with the test provider, your university and the visa authority. Details checked {CHECKED_LABEL}.</p>
+
+  <section class="gsec" aria-labelledby="h-more">
+    <h2 id="h-more">Other exam guides</h2>
+    <ul class="pills">
+      {others.map((o) => <li><a href={href(o)}>{o.name}</a></li>)}
+      <li><a href="/exams/">Compare them all</a></li>
+    </ul>
+  </section>
+
+  <script>import '../../scripts/topics.js';</script>
+  <RelatedArticles list={forTopics(TOOL_TOPICS['exams'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />
+</Base>

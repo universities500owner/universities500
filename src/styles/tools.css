@@ -381,3 +381,69 @@ h1 + .sch-sub + .st-wrap { align-items: flex-start; text-align: left; flex-direc
 #sch-bar #sch-u { flex: 2 1 14rem; }
 #sch-bar .sch-clear { min-height: 2.9rem; padding: .5rem 1rem; }
 #sch-bar .sch-clear[hidden] { display: none; }
+
+/* ---------- exam guides and the education loan guide ---------- */
+.xnote, .xtip { margin: 1.1rem 0; max-width: 68ch; padding: .9rem 1.1rem; background: var(--surface); border: 1px solid var(--line); border-left-width: 5px; border-radius: 12px; }
+.xnote { border-left-color: var(--warm-2); }
+.xtip { border-left-color: var(--green-4); }
+.xnote p, .xtip p { margin: 0; max-width: none; }
+.ghero .xnote { margin-top: 1.25rem; }
+.hero-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin: 1.25rem 0 .75rem; }
+
+.xgroup { margin: 1.5rem 0 0; }
+.xgroup .sec-sub { margin-top: 0; }
+.xgrid { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.xgrid > li { margin: 0; }
+.xcard { display: flex; flex-direction: column; gap: .4rem; height: 100%; padding: 1.15rem 1.25rem; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; color: var(--ink); text-decoration: none; }
+.xcard:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.xcard h3 { margin: 0; font-size: 1.25rem; letter-spacing: -.01em; }
+.xcard p { margin: 0; color: var(--muted); font-size: .95rem; }
+.xtag { font: 700 .85rem/1.3 var(--body); color: var(--grow); }
+.xgo { margin-top: auto; padding-top: .6rem; font-weight: 700; color: var(--accent); }
+.xcard:hover .xgo { text-decoration: underline; text-underline-offset: 3px; }
+.xlinks .dcard h3 { font-size: 1.05rem; }
+.xlinks .dcard p:last-child { margin-bottom: 0; }
+
+.xfind-card .f label { font-weight: 700; }
+.xresult { margin-top: 1.1rem; padding: 1rem 1.2rem; background: var(--grow-bg); color: var(--grow-on); border-radius: 12px; }
+.xresult p { margin: 0 0 .4rem; max-width: none; }
+.xresult p:last-child { margin-bottom: 0; }
+.xresult a { color: inherit; font-weight: 700; text-underline-offset: 3px; }
+
+.xtbl tbody th { text-align: left; font-weight: 600; vertical-align: top; padding: .65rem .75rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.xtbl thead th a { color: inherit; text-underline-offset: 3px; }
+.xtbl { min-width: 44rem; }
+.topic-body .xtbl { min-width: 32rem; }
+.topic-body .xtbl td:first-child { white-space: normal; font-weight: 400; }
+.topic-body .xtbl tbody th { white-space: normal; min-width: 8rem; }
+.topic-body .xpattern { min-width: 40rem; }
+.topic-body .xpattern th:nth-child(2), .topic-body .xpattern td:nth-child(2) { min-width: 10rem; }
+.topic-body .xpattern th:nth-child(3), .topic-body .xpattern td:nth-child(3) { min-width: 16rem; }
+
+.xsteps { list-style: none; counter-reset: xs; padding: 0; margin: .5rem 0 0; display: grid; gap: .6rem; max-width: 68ch; }
+.xsteps li { counter-increment: xs; display: flex; gap: .9rem; align-items: flex-start; margin: 0; padding: .8rem 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.xsteps li::before { content: counter(xs); flex: none; width: 1.9rem; height: 1.9rem; display: grid; place-items: center; border-radius: 8px; background: var(--grow-bg); color: var(--grow-on); font: 800 .9rem/1 var(--display); }
+
+.xprog { display: flex; justify-content: space-between; gap: 1rem; font-weight: 700; font-size: .95rem; margin-bottom: .5rem; }
+.xbar { height: .5rem; border-radius: 99px; background: var(--hover); overflow: hidden; }
+.xbar span { display: block; height: 100%; width: 0; background: var(--green-4); transition: width .2s; }
+.xcheck { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .55rem 1.25rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
+.xcheck li { margin: 0; }
+.xcheck label { display: flex; gap: .7rem; align-items: flex-start; height: 100%; padding: .7rem .9rem; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; cursor: pointer; }
+.xcheck label:hover { border-color: var(--accent); }
+.xcheck input { flex: none; width: 1.15rem; height: 1.15rem; margin-top: .3rem; accent-color: var(--green-4); }
+
+.lgrid { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: .85rem; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); }
+.lender { margin: 0; background: var(--paper); }
+.lender[hidden] { display: none; }
+.lender .dcard-top { align-items: flex-start; }
+.lender h3 { font-size: 1.05rem; }
+.ltype { flex: none; font-size: .78rem; font-weight: 600; color: var(--ink); background: var(--hover); border-radius: 999px; padding: .15rem .6rem; white-space: nowrap; }
+.lgo { margin: .6rem 0 0 !important; font-weight: 600; }
+.lgrid + .note { margin: 1rem 0; }
+
+.xcta { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; flex-wrap: wrap; padding: 1.6rem 1.75rem; background: var(--deep); color: #fff; border-radius: 18px; }
+.xcta h2 { margin: 0 0 .3rem; color: #fff; font-size: clamp(1.4rem, 3vw, 1.9rem); }
+.xcta p { margin: 0; color: #d6e8f5; max-width: 52ch; }
+html[data-theme="dark"] .xcta { background: var(--hover); }
+.xgroup .xgrid { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
