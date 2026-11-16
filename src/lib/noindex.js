@@ -1,18 +1,13 @@
-// Pages kept out of search results and the sitemap.
-// DRAFT: wording or legal text still to be finished.
-export const DRAFT = ['/privacy/', '/terms/', '/method/', '/rankings/', '/404/'];
-// UNCHECKED: pages built on sample or indicative figures. Remove a path from this list once its facts are checked and sourced.
+// Pages kept out of search results and the sitemap. Everything else is indexed, and the site footer says it is a work in progress.
+// DRAFT: stubs whose own text says "Draft" (legal and method pages), and the 404 page.
+export const DRAFT = ['/privacy/', '/terms/', '/method/', '/404/'];
+// UNCHECKED: pages whose figures are labelled placeholders, and the on-site search page (it has no content of its own).
+// Remove a path from this list once its facts are real and sourced.
 export const UNCHECKED = [
   '/courses/',
   '/course-fitment/',
-  '/scholarships/',
-  '/internships/',
   '/budget/',
-  '/loan/',
-  '/education-loan-guide/',
-  '/visa-readiness/',
-  '/working-while-you-study/',
   '/search/',
 ];
-// A path is hidden if it is listed, or sits under a listed path (for example /scholarships/some-award/).
+// A path is hidden if it is listed, or sits under a listed path.
 export const hiddenFromSearch = (path) => [...DRAFT, ...UNCHECKED].some((p) => path === p || (p !== '/' && path.startsWith(p)));

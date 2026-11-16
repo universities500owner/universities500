@@ -1,4 +1,4 @@
 {
  "publish": true,
- "note": "Set to true to show internship listings. Leave false until a sample of the listings has been checked against the employers' own pages. /internships/ stays out of search results while it is listed in src/lib/noindex.js."
+ "note": "Set to true to show internship listings. Leave false until a sample of the listings has been checked against the employers' own pages. /internships/ is kept out of search results only while it is listed in src/lib/noindex.js."
 }

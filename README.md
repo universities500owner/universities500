@@ -17,7 +17,7 @@ Static site built with Astro. Every page is plain HTML, so search engines and AI
 - Every fact has a source link and the date it was read. Overview text is Wikipedia (CC BY-SA 4.0) and
   facts are Wikidata (CC0).
 - University pages without enough content (overview, website, founding year, campus) get `noindex` and
-  stay out of the sitemap. Draft pages (method, privacy, terms, rankings) are also `noindex`.
+  stay out of the sitemap. Draft pages (method, privacy, terms, 404) and pages built on placeholder figures (courses, course-fitment, budget, search) are also `noindex`; see `src/lib/noindex.js`. Every other page is indexed, and the footer says the site is a work in progress.
 - The current list of 263 is a placeholder. It will be rebuilt from open sources before launch.
 
 ## Not in this phase

@@ -40,7 +40,7 @@ Three things decide how many universities give us anything. All three keep the r
 
 ## Publishing
 
-`src/data/scholarship_publish.json` has `"publish": false` until the first run's `sample_records.json` has been checked against the official pages. Set it to `true` to show listings and per-scholarship pages. `/scholarships/` stays `noindex` until it is removed from the UNCHECKED list in `src/lib/noindex.js`.
+`src/data/scholarship_publish.json` has `"publish": false` until the first run's `sample_records.json` has been checked against the official pages. Set it to `true` to show listings and per-scholarship pages. `/scholarships/` and the per-scholarship pages are indexed. Add `/scholarships/` to the UNCHECKED list in `src/lib/noindex.js` to hide them from search again.
 
 ## Adding a government programme
 
