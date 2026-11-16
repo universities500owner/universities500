@@ -1,0 +1,181 @@
+name: Courses (read official pages)
+
+# Reads course pages from every university website on the list and writes data/courses/<university>.json.
+# Only Bachelor's and Master's courses that are full-time on campus and open to international students are kept.
+# No AI is used anywhere: the reader works from page structure and patterns only.
+#
+# Manual only. Nothing here changes the website: the data is for review first.
+# A first trial: shards = 1, limit = 12, commit = false. Then read the report in the run summary.
+#
+# The universities are split across `shards` jobs that run side by side, because the reader waits 3 seconds
+# between requests to one website and the whole list takes hours in one job.
+# Settings: CONTACT_EMAIL under Settings > Secrets and variables > Actions (a variable or a secret both work).
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these university slugs, comma-separated (blank = all)"
+        required: false
+        default: ""
+      limit:
+        description: "Only the first N universities of the list (0 = all). Handy for a small trial."
+        required: false
+        default: "0"
+      shards:
+        description: "How many jobs share the list (1 to 8)"
+        required: false
+        default: "4"
+      max_pages:
+        description: "Pages read per university in one run"
+        required: false
+        default: "150"
+      commit:
+        description: "Commit data/courses to main when everything succeeded"
+        type: boolean
+        default: false
+
+concurrency:
+  group: courses
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - id: m
+        env:
+          SHARDS: ${{ inputs.shards }}
+        run: |
+          N="$SHARDS"
+          case "$N" in ''|*[!0-9]*) N=4;; esac
+          if [ "$N" -lt 1 ]; then N=1; fi
+          if [ "$N" -gt 8 ]; then N=8; fi
+          LIST=$(seq -s, 1 "$N")
+          echo "matrix={\"shard\":[${LIST}]}" >> "$GITHUB_OUTPUT"
+          echo "total=$N" >> "$GITHUB_OUTPUT"
+
+  read:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install beautifulsoup4 lxml
+      - name: Self-test (stub website, no internet)
+        run: python3 scripts/courses/test_courses.py
+      - name: Read course pages
+        id: run
+        continue-on-error: true
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+          SHARDS: ${{ inputs.shards }}
+          ONLY: ${{ inputs.only }}
+          LIMIT: ${{ inputs.limit }}
+          MAX_PAGES: ${{ inputs.max_pages }}
+        run: |
+          N="$SHARDS"
+          case "$N" in ''|*[!0-9]*) N=4;; esac
+          if [ "$N" -lt 1 ]; then N=1; fi
+          if [ "$N" -gt 8 ]; then N=8; fi
+          case "$MAX_PAGES" in ''|*[!0-9]*) MAX_PAGES=150;; esac
+          ARGS="--report out --max-minutes 330 --shard ${{ matrix.shard }}/$N --max-pages $MAX_PAGES"
+          if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
+          case "$LIMIT" in ''|*[!0-9]*) LIMIT=0;; esac
+          if [ "$LIMIT" != "0" ]; then ARGS="$ARGS --limit $LIMIT"; fi
+          if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The crawler's User-Agent has no contact address."; fi
+          python3 scripts/courses/run.py $ARGS
+      - name: Collect the files this job wrote
+        if: always()
+        run: |
+          mkdir -p shard-data
+          if [ -s out/written.txt ]; then xargs -a out/written.txt -I{} cp {} shard-data/; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: courses-data-${{ matrix.shard }}
+          path: shard-data/
+          retention-days: 14
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: courses-report-${{ matrix.shard }}
+          path: out/
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Fail the job if the reader stopped itself
+        if: steps.run.outcome == 'failure'
+        run: |
+          echo "The reader stopped (see the run summary and the courses-report artifact). Nothing from this job is committed."
+          exit 1
+
+  collect:
+    needs: read
+    if: always() && needs.read.result != 'cancelled'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: courses-data-*
+          path: shards-data
+          merge-multiple: true
+        continue-on-error: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: courses-report-*
+          path: shards-report
+        continue-on-error: true
+      - name: Put the shards together
+        run: |
+          mkdir -p combined data/courses
+          if [ -d shards-data ]; then cp shards-data/*.json data/courses/ 2>/dev/null || true; fi
+          { echo "# Course reader, all jobs"; echo; for f in shards-report/*/course_report.md; do [ -f "$f" ] && { echo "---"; cat "$f"; echo; }; done; } > combined/course_report.md
+          first=1
+          for f in shards-report/*/universities.csv; do
+            [ -f "$f" ] || continue
+            if [ "$first" = 1 ]; then cat "$f" > combined/universities.csv; first=0; else tail -n +2 "$f" >> combined/universities.csv; fi
+          done
+          python3 - <<'PY'
+          import glob, json
+          out = {}
+          for f in glob.glob('shards-report/*/course_samples.json'):
+              out.update(json.load(open(f)))
+          json.dump(out, open('combined/course_samples.json', 'w'), indent=1)
+          PY
+          cat combined/course_report.md >> "$GITHUB_STEP_SUMMARY"
+          echo "Courses on file: $(cat data/courses/*.json 2>/dev/null | grep -c '"level"')" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: courses-all
+          path: combined/
+          retention-days: 30
+      - name: Commit the data
+        if: needs.read.result == 'success' && inputs.commit
+        run: |
+          git config user.name "universities500-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/courses
+          if git diff --cached --quiet; then
+            echo "No change to commit."
+          else
+            git commit -m "Courses: refresh $(date -u +%F)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
