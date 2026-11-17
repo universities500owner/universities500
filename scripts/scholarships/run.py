@@ -305,6 +305,11 @@ def main():
     Path(args.out).write_text(json.dumps(doc, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
     write_report(args, fx, results, off_report, directories, third, merged, prev_items, today, now, t0)
     print_diagnostics(items, miss_log)
+    fresh_new = [r for rid, r in merged.items() if rid not in prev_items]
+    if fresh_new:
+        print(f'\nNew this run ({len(fresh_new)}):')
+        for r in sorted(fresh_new, key=lambda r: (r.get('provider') or '', r.get('name') or '')):
+            print(f"  + {r.get('provider')} | {r.get('name')} | {','.join(r.get('levels') or [])} | intl={r.get('intl')} | {r.get('url')}")
     print(f'wrote {len(items)} scholarships ({added} new, {changed} changed, {dropped} removed) to {args.out}')
     return 0
 
