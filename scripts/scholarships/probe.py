@@ -125,6 +125,31 @@ def probe_urls(a):
             print(f'    {t!r} -> {h[:120]}')
         text = re.sub(r'\s+', ' ', TAGS.sub(' ', re.sub(r'<(script|style)\b.*?</\1>', ' ', html, flags=re.S | re.I)))
         print('  visible text starts:', text[:1500])
+        try:  # why does the reader see little or no text on a page a browser shows in full?
+            import extract as X
+            def body_len(sp):
+                return len(sp.body.get_text(' ', strip=True)) if sp.body else -1
+            full = X.soup_of(html)
+            print(f"  reader: body text {body_len(full)} chars as parsed; page.text {len(X.Page(res.final_url, html, 'x', 'x').text)} chars after cleaning")
+            for tag in X.DROP_TAGS:
+                sp = X.soup_of(html)
+                n = len(sp(tag))
+                for t in sp(tag):
+                    t.decompose()
+                if n:
+                    print(f"    dropping <{tag}> ({n}): body text {body_len(sp)}")
+            sp = X.soup_of(html)
+            for el in sp.find_all(attrs={'role': True}):
+                if el.get('role') in X.DROP_ROLES and not X._gone(el):
+                    el.decompose()
+            print(f"    dropping role=navigation/banner/search/...: body text {body_len(sp)}")
+            kinds = {}
+            for el in X.soup_of(html).find_all(['form', 'nav', 'header', 'footer', 'aside']):
+                kinds[el.name] = max(kinds.get(el.name, 0), len(el.get_text(' ', strip=True)))
+            print('    largest text inside each chrome tag:', kinds)
+            print('    first tags under <body>:', [(c.name, (c.get('id') or '') + '.' + '.'.join(c.get('class') or [])) for c in (full.body.find_all(True, recursive=False)[:8] if full.body else [])])
+        except Exception as e:
+            print('  reader check failed:', repr(e)[:200])
         for key in ('Award value', 'Closing date', 'Level of study', 'Visit website', 'Eligibility', 'Showing', 'class="card', 'rel="next"'):
             i = html.find(key)
             if i >= 0:

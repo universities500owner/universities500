@@ -55,9 +55,25 @@ def _gone(el):
     return el.attrs is None or getattr(el, 'decomposed', False)
 
 
+# Page chrome that can also be a wrapper around the whole page: many older sites put <form runat="server"> around the body,
+# and a markup slip can leave a <nav> or <header> open so that the rest of the page ends up inside it.
+WRAPPER_TAGS = ('form', 'nav', 'header', 'footer', 'aside')
+
+
+def _holds_the_page(el):
+    if el.find(['main', 'article']) or el.find(attrs={'role': 'main'}):
+        return True
+    # a form that holds the page's own heading and a lot of text is the page, not a search box
+    return el.name == 'form' and bool(el.find('h1')) and len(el.get_text(' ', strip=True)) > 1500
+
+
 def main_node(soup):
     for t in soup(DROP_TAGS):
-        if not _gone(t):
+        if _gone(t):
+            continue
+        if t.name in WRAPPER_TAGS and _holds_the_page(t):
+            t.unwrap()    # keep what is inside; the real menus and search boxes inside it are dropped below or by their own tags
+        else:
             t.decompose()
     for el in soup.find_all(attrs={'role': True}):
         if not _gone(el) and el.get('role') in DROP_ROLES:

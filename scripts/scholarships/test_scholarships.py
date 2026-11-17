@@ -185,6 +185,26 @@ class SharedReaderTests(unittest.TestCase):
         node = X.main_node(X.soup_of(html))
         self.assertEqual(node.name, 'main')
 
+    def test_a_form_around_the_whole_page_does_not_empty_it(self):
+        # older sites wrap <form runat="server"> around the body; throwing the form away threw the page away
+        body = '<p>Open to international students on a taught master\'s. Worth 10,000 pounds. </p>' * 12
+        html = f'<html><body><form id="aspnetForm"><nav>Menu</nav><main><h1>Global Excellence Scholarship</h1>{body}</main></form></body></html>'
+        text = X.Page('https://e.ac.uk/a', html, 'uk', 'E').text
+        self.assertIn('international students', text)
+        self.assertNotIn('Menu', text)
+        # no <main>: the form holds the page's own heading and plenty of text
+        html = f'<html><body><form><h1>Global Excellence Scholarship</h1><div id="content">{body * 2}</div></form></body></html>'
+        self.assertIn('international students', X.Page('https://e.ac.uk/b', html, 'uk', 'E').text)
+
+    def test_a_small_search_form_is_still_dropped(self):
+        html = ('<html><body><form action="/search"><label>Search the site</label><input name="q"></form>'
+                '<main><h1>Scholarship</h1>' + 'A real sentence about the scholarship. ' * 12 + '</main></body></html>')
+        self.assertNotIn('Search the site', X.Page('https://e.ac.uk/c', html, 'uk', 'E').text)
+
+    def test_an_unclosed_nav_does_not_swallow_the_page(self):
+        html = '<html><body><nav><a href="/">Home</a><main>' + 'A real sentence about the scholarship. ' * 12 + '</main></body></html>'
+        self.assertIn('real sentence', X.Page('https://e.ac.uk/d', html, 'uk', 'E').text)
+
     def test_addresses_with_spaces_and_accents_are_made_safe(self):
         from fetcher import clean_url
         self.assertEqual(clean_url('https://x.de/a b/\u00dc'), 'https://x.de/a%20b/%C3%9C')
