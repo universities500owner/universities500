@@ -37,7 +37,7 @@ OUT_PATH = [
     ('foundation-or-pathway', re.compile(r"/(?:foundation|pathway|pathways|pre-masters?|diploma|certificate|short-courses?|executive-education)(?:/|-|$)", re.I)),
     ('research-degree', re.compile(r"/(?:phd|doctoral|doctorate|research-degrees?|mphil)(?:/|-|$)", re.I)),
     # the domestic version of a course page (Adelaide: /study/degrees/2027/<course>/dom/); the site is for international students
-    ('domestic-only', re.compile(r"/(?:dom|domestic|home-students?|local-students?)(?:/|$)", re.I)),
+    ('domestic-only', re.compile(r"/(?:dom|domestic|home-students?|local-students?|local-student-applications)(?:/|$)", re.I)),
 ]
 
 
@@ -253,7 +253,11 @@ SUBPAGE_LEAF = re.compile(
     r"^(?:faqs?|frequently-asked-questions|how-to-apply|apply(?:ing)?(?:-now|-online)?|applications?|admissions?|admission-requirements|"
     r"entry-requirements|requirements|requirements-deadlines|deadlines|curriculum|academics|careers?|career-outcomes|contact(?:-us)?|"
     r"fees?|fees-and-funding|tuition|funding|scholarships?|news|events?|people|faculty|staff|alumni|financial-aid|costs?|visit|open-days?|"
-    r"stay-touch|ask-admissions[\w-]*|after-your-admission[\w-]*|how-do-i-apply|international-applicants?)(?:\.html?|\.php|\.aspx)?$", re.I)
+    r"stay-touch|ask-admissions[\w-]*|after-your-admission[\w-]*|how-do-i-apply|international-applicants?|"
+    r"further-study|inherent-requirements)(?:\.html?|\.php|\.aspx)?$", re.I)
+# an event, webinar, blog or news page anywhere in the address (sydney.edu.au/business/study/mba/mba-events/mba-webinar-26-aug-2026.html), or a university's course-rules pages
+EVENT_SEGMENT = re.compile(r"^(?:[\w]+-)*(?:events?|webinars?|blogs?|stories|news|newsroom)$", re.I)
+COURSE_RULES_SEGMENT = re.compile(r"^course-rules\b", re.I)
 # a single course unit inside a degree: .../courses/indg-5011/
 UNIT_URL = re.compile(r"/(?:courses?|units?|subjects?|modules?)/[a-z]{2,6}[-_ ]?\d{3,5}[a-z]?/?$", re.I)
 # a branch campus in another country, as the first part of the address: /dubai/study/..., /malaysia/study/...
@@ -267,6 +271,7 @@ NOT_PROGRAMME_NAME = re.compile(
     r"\bafter your admission\b|^ask admissions\b|^programs? and courses$|^study$|^(?:undergraduate|postgraduate|graduate) study\b|^beginner|\bmasterful\b|\bmaster class\b|\bmasters? project \d\b|"
     r"^[A-Z]{3,5}\s?\d{4}\b|"
     r"\b(?:language|inherent|entry|admission) requirements\b|\brequirements (?:and|&) (?:exemptions|procedures?)\b|\bcurriculum (?:&|and) courses\b|\benrol(?:l)?ment in\b|"
+    r"\bwebinars?\b|^what is\b|\breasons to study\b|^further study\b|^study with us\b|"
     r"\bpresentation event\b|\boffice$|^international students\b|\bapplication$|^accelerated (?:bachelor|master)\S* (?:stream|pathway|option)$", re.I)
 GENERIC_NAME = re.compile(
     r"^(?:overview )?(?:the )?(?:undergraduate |postgraduate |graduate )?(?:bachelor|master)(?:['’]?s)?(?: (?:degree|degrees|programmes?|programs?|education|studies|overview|open days?))*$", re.I)
@@ -277,6 +282,10 @@ def not_programme_url(url, country=''):
     sp = re.sub(r'^https?://[^/]+', '', url).split('?')[0].split('#')[0]
     segs = [x for x in sp.split('/') if x]
     if segs and SUBPAGE_LEAF.match(segs[-1]):
+        return 'programme-subpage'
+    if any(EVENT_SEGMENT.match(x) for x in segs):
+        return 'event-or-news-page'
+    if any(COURSE_RULES_SEGMENT.match(x) for x in segs):
         return 'programme-subpage'
     if UNIT_URL.search(sp):
         return 'course-unit-page'

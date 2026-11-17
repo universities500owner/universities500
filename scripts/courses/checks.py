@@ -17,10 +17,10 @@ def problem(rec):
         return 'bad-name'
     if L.not_programme_name(name):
         return 'not-a-programme-name'
-    if L.not_programme_url(rec['url']) in ('programme-subpage', 'course-unit-page'):
+    if L.not_programme_url(rec['url']) in ('programme-subpage', 'course-unit-page', 'event-or-news-page'):
         return L.not_programme_url(rec['url'])
-    if L.classify_url(rec['url']) == 'domestic-only':
-        return 'domestic-only'
+    if L.classify_url(rec['url']) in ('domestic-only', 'research-degree'):
+        return L.classify_url(rec['url'])
     if rec.get('level') not in ('Bachelor', 'Master'):
         return 'bad-level'
     level, _deg, _fl, out = L.classify_title(f"{rec.get('degree') or ''} {name}")

@@ -23,7 +23,8 @@ ELIG_HEAD = re.compile(
 APPLY_TEXT = re.compile(r'^(?:apply(?: now| online| here| today| for this scholarship)?|how to apply|application (?:form|portal|process)|start (?:your )?application|apply for (?:the |this )?(?:scholarship|award|bursary))\b', re.I)
 SCH_HINT = re.compile(r'schol|bursar|fellow|studentship|waiver|award|grant|funding|financial-aid|tuition-discount|stipend', re.I)
 JUNK_PATH = re.compile(r'/(?:news|blog|events?|stories|story|press|articles?|alumni|staff|jobs|careers|people|tag|category|feed|login|search|cart|shop|gallery|video|podcast)(?:/|$)|\.(?:pdf|docx?|xlsx?|pptx?|zip|jpe?g|png|gif|mp4)$|/page/\d+|[?&](?:page|p|sort|filter)=', re.I)
-TRACKING = re.compile(r'^(?:utm_|fbclid|gclid|mc_|_ga|ref$|source$)', re.I)
+# also the "add to my list" actions some sites put in a link (uow.edu.au course pages: ?addCourse=410203 and ?removeCourse=410203 show the same course)
+TRACKING = re.compile(r'^(?:utm_|fbclid|gclid|mc_|_ga|ref$|source$|addcourse$|removecourse$)', re.I)
 
 
 def canon(url):

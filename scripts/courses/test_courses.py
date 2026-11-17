@@ -1011,6 +1011,43 @@ class DetailTests(unittest.TestCase):
         self.assertEqual(sum(1 for ln in text.splitlines() if ln.startswith('"https://')), 2)
 
 
+class AddressRuleTests(unittest.TestCase):
+    """Pages found by vetting a real run of the Australian universities: events, blogs, domestic pages, rules pages, research degrees, compare links."""
+    def test_event_blog_and_rules_pages_are_not_programmes(self):
+        for u in ['https://www.sydney.edu.au/business/study/mba/mba-events/mba-webinar-26-aug-2026.html',
+                  'https://www.unisq.edu.au/study/why-unisq/unisq-stories/blogs/what-is-a-masters-degree-and-5-reasons-to-study-one',
+                  'https://students.flinders.edu.au/my-course/course-rules-2020/undergrad/bnursing/bngp',
+                  'https://www.rmit.edu.au/study-with-us/levels-of-study/undergraduate-study/bachelor-degrees/bachelor-of-music-industry-bp047/further-study',
+                  'https://www.rmit.edu.au/study-with-us/applying-to-rmit/local-student-applications/entry-requirements/inherent-requirements/master-of-social-work']:
+            self.assertTrue(L.not_programme_url(u) or L.classify_url(u), u)
+
+    def test_domestic_and_research_paths(self):
+        self.assertEqual(L.classify_url('https://www.rmit.edu.au/study-with-us/applying-to-rmit/local-student-applications/entry-requirements/x'), 'domestic-only')
+        self.assertEqual(L.classify_url('https://www.rmit.edu.au/study-with-us/levels-of-study/research-programs/phd/x'), 'research-degree')
+
+    def test_real_course_pages_still_pass(self):
+        for u in ['https://www.unsw.edu.au/study/postgraduate/master-of-engineering-science-robotics',
+                  'https://www.uts.edu.au/courses/master-of-physiotherapy',
+                  'https://www.rmit.edu.au/study-with-us/levels-of-study/postgraduate-study/masters-by-coursework/master-of-landscape-architecture-mc172',
+                  'https://www.curtin.edu.au/study/offering/course-ug-bachelor-of-laws--b-laws/',
+                  'https://www.swinburne.edu.au/course/undergraduate/bachelor-of-animation/handbook/',   # Swinburne's course pages are its handbook pages
+                  'https://www.westernsydney.edu.au/future/study/courses/postgraduate/master-of-chinese-medicine',
+                  'https://www.ecu.edu.au/degrees/courses/master-of-management-information-systems']:
+            self.assertEqual(L.not_programme_url(u), '', u)
+            self.assertEqual(L.classify_url(u), '', u)
+
+    def test_names_that_are_events_blogs_or_sections(self):
+        for n in ['MBA Webinar 26 August 2026', 'What is a Masters degree and 5 reasons to study one', 'Further study after the Bachelor of Music Industry', 'Study with us']:
+            self.assertEqual(L.not_programme_name(n), 'not-a-programme-name', n)
+        self.assertEqual(L.not_programme_name('Master of Business Administration'), '')
+
+    def test_compare_links_do_not_make_new_addresses(self):
+        base = 'https://www.uow.edu.au/study/courses/bachelor-of-arts/'
+        for q in ('?addCourse=410100', '?removeCourse=410100', '?addCourse=361537&utm_source=x'):
+            self.assertEqual(X.canon(base + q), base)
+        self.assertEqual(X.canon('https://www.curtin.edu.au/study/offering/x/?segment=int'), 'https://www.curtin.edu.au/study/offering/x/?segment=int')   # a real choice of page stays
+
+
 class FakeFetch:
     def __init__(self, html):
         self.html, self.got = html, []
