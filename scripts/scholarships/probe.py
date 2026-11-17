@@ -125,6 +125,12 @@ def probe_urls(a):
             print(f'    {t!r} -> {h[:120]}')
         text = re.sub(r'\s+', ' ', TAGS.sub(' ', re.sub(r'<(script|style)\b.*?</\1>', ' ', html, flags=re.S | re.I)))
         print('  visible text starts:', text[:1500])
+        if getattr(a, 'text', False):
+            import extract as X
+            kept = X.Page(res.final_url, html, 'x', 'x').text
+            print(f'  READER TEXT ({len(kept)} chars, about {len(kept) // 4} tokens):')
+            print(kept[:14000])
+            print('  ... END READER TEXT' if len(kept) <= 14000 else f'  ... TRUNCATED, {len(kept) - 14000} more chars')
         try:  # why does the reader see little or no text on a page a browser shows in full?
             import extract as X
             def body_len(sp):
@@ -169,6 +175,7 @@ def main():
     ap.add_argument('--only', default='')
     ap.add_argument('--country', default='')
     ap.add_argument('--url', action='append', default=[], help='probe these addresses on their own (robots.txt answer, page, links); repeatable')
+    ap.add_argument('--text', action='store_true', help='with --url: print the text the reader keeps from each page (what a model would be given)')
     ap.add_argument('--delay', type=float, default=3.0)
     ap.add_argument('--contact', default=os.environ.get('CONTACT_EMAIL', ''))
     a = ap.parse_args()
