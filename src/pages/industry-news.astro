@@ -1,18 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
-import NewsItem from '../components/NewsItem.astro';
-import { countries } from '../lib/data.js';
-import { PUBLISH, forCountry, pressFor, sourcesFor, lastChecked, fmtIso } from '../lib/news.js';
+import NewsFeedItem from '../components/NewsFeedItem.astro';
+import { PUBLISH, feed, destinations, COLOR, sourcesFor, lastChecked, lastCheckedAny, fmtIso } from '../lib/news.js';
 
 const path = '/industry-news/';
-const PER = 8;
 const NOTE = { blocked: 'its website does not allow automatic reading, so open it to see its news', unreadable: 'no headlines could be read automatically, so open it to see its news', failed: 'could not be reached at the last check' };
 const live = PUBLISH;
-const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), press: pressFor(c.code), srcs: sourcesFor(c.code), checked: lastChecked(c.code) }));
+const where = destinations.map((c) => ({ ...c, srcs: sourcesFor(c.code), checked: lastChecked(c.code) })).filter((c) => c.srcs.length > 0);
 ---
 <Base
   title="Industry news for international students | Universities500"
-  description="Official updates from government and immigration bodies and study agencies in 14 study destinations: visas, fees, rules and intakes. Each one links to the official notice."
+  description="The latest visa, fee and rule changes for international students in 14 study destinations, newest first: official notices from governments and study agencies, and reports from the trade press."
   path={path}
   noindex={!live}
   current="industry-news"
@@ -21,7 +19,7 @@ const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), press: 
   <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Industry news</nav>
   <div class="q-head">
     <h1>Industry news</h1>
-    <p>What government and immigration bodies and official study agencies have announced for international students, by destination. Each headline opens the official notice.</p>
+    <p>Visa, fee and rule changes for international students across 14 study destinations, newest first. Official notices and trade-press reports are mixed together and every item is labelled.</p>
   </div>
 
   {!live && (
@@ -32,63 +30,49 @@ const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), press: 
 
   {live && (
     <Fragment>
-      <nav class="news-jump" aria-label="Jump to a destination">
-        <ul class="chips">
-          {sections.map((c) => (
-            <li><a href={`#n-${c.code}`}>{c.name}{c.rows.length + c.press.length > 0 ? ` (${c.rows.length + c.press.length})` : ''}</a></li>
+      <div class="feed-filters" id="feed-filters" hidden>
+        <div class="segs" role="group" aria-label="Destination">
+          <button type="button" class="seg" data-all aria-pressed="true">All destinations</button>
+          {destinations.map((c) => (
+            <button type="button" class="seg" data-c={c.code} data-name={c.name} data-n={c.n} aria-pressed="false">
+              <i class="dot" style={`--c:${COLOR[c.code] || 'var(--muted)'}`} aria-hidden="true"></i>{c.name}<span class="seg-n">{c.n}</span>
+            </button>
           ))}
-        </ul>
-      </nav>
-      <p class="small">Official items: headlines and dates are the official body's own. The short notes are the first sentences of the official summary, shortened, never rewritten. We keep the last 12 months. English-language pages only. Sector bodies and trade publications (for example UKCISA, CBIE, ICEF Monitor, The PIE News) are listed below the official items as headline, date and link only: they are not official sources, so check any change on the official website. This is not legal or immigration advice: read the official notice before you act.</p>
+        </div>
+        <div class="segs" role="group" aria-label="Source type">
+          <button type="button" class="seg" data-k="all" aria-pressed="true">All sources</button>
+          <button type="button" class="seg" data-k="official" aria-pressed="false">Official only</button>
+        </div>
+        <p class="feed-count" id="feed-count" role="status"></p>
+      </div>
 
-      {sections.map((c) => (
-        <section class="sec news-sec" id={`n-${c.code}`} aria-labelledby={`h-${c.code}`}>
-          <h2 id={`h-${c.code}`}>{c.name}</h2>
-          {c.rows.length > 0 ? (
-            <Fragment>
-              <ul class="news-list">
-                {c.rows.slice(0, PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
-              </ul>
-              {c.rows.length > PER && (
-                <details class="news-more">
-                  <summary>Show {c.rows.length - PER} older official {c.rows.length - PER === 1 ? 'update' : 'updates'}</summary>
-                  <ul class="news-list">
-                    {c.rows.slice(PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
-                  </ul>
-                </details>
-              )}
-            </Fragment>
-          ) : (
-            <p class="empty">No official update in English found for the last 12 months{c.srcs.length > 0 ? ' on these websites' : ''}. Check the official pages below.</p>
-          )}
-          {c.press.length > 0 && (
-            <div class="news-press">
-              <h3>From the sector and trade press</h3>
-              <p class="small">Headlines from sector bodies and trade publications about {c.name}. Not official: confirm on the official websites.</p>
-              <ul class="news-list">
-                {c.press.slice(0, PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
-              </ul>
-              {c.press.length > PER && (
-                <details class="news-more">
-                  <summary>Show {c.press.length - PER} older sector and trade {c.press.length - PER === 1 ? 'headline' : 'headlines'}</summary>
-                  <ul class="news-list">
-                    {c.press.slice(PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
-                  </ul>
-                </details>
-              )}
-            </div>
-          )}
-          {c.srcs.length > 0 && (
-            <p class="small news-srcs">
-              Read for this destination:{' '}
+      <ul class="feed" id="feed">
+        {feed.map((e) => <NewsFeedItem item={e} />)}
+      </ul>
+      <p class="feed-empty" id="feed-empty" hidden></p>
+      <p class="feed-more"><button type="button" class="btn-ghost" id="feed-more" hidden>Show more</button></p>
+
+      <p class="small feed-fine">
+        <strong>Official:</strong> the headline and date are the official body's own, and the short note is the first sentences of its summary, shortened, never rewritten.
+        <strong>Trade press:</strong> sector bodies and trade publications (UKCISA, CBIE, NAFSA, ICEF Monitor, The PIE News and others); headline, date and link only. They are not official sources, so check any change on the official website.
+        We keep the last 12 months of English-language pages{lastCheckedAny ? `, checked every day, last on ${fmtIso(lastCheckedAny)}` : ''}. This is not legal or immigration advice: read the official notice before you act.
+      </p>
+
+      <details class="feed-where" id="where">
+        <summary>Where we look, and what we could not read</summary>
+        <ul>
+          {where.map((c) => (
+            <li>
+              <strong>{c.name}.</strong>{' '}
               {c.srcs.map((s, k) => (
                 <Fragment>{k > 0 ? '; ' : ''}<a href={s.url} rel="noopener">{s.body}</a>{NOTE[s.status] ? ` (${NOTE[s.status]})` : ''}</Fragment>
               ))}
               {c.checked ? `. Last checked ${fmtIso(c.checked)}.` : '.'}
-            </p>
-          )}
-        </section>
-      ))}
+            </li>
+          ))}
+        </ul>
+      </details>
+      <script>import '../scripts/news-feed.js';</script>
     </Fragment>
   )}
 </Base>

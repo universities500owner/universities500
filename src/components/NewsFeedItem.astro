@@ -1,0 +1,20 @@
+---
+import { countryName, fmtIso, host, isPress, sourceName, COLOR } from '../lib/news.js';
+const { item } = Astro.props;
+const press = isPress(item);
+---
+<li class="feed-item" data-c={item.countries.join(' ')} data-k={press ? 'press' : 'official'}>
+  <p class="feed-meta">
+    {item.published && <time datetime={item.published}>{fmtIso(item.published)}</time>}
+    {item.countries.map((c) => <span class="feed-country"><i class="dot" style={`--c:${COLOR[c] || 'var(--muted)'}`} aria-hidden="true"></i>{countryName(c)}</span>)}
+    <span class={`feed-kind ${press ? 'press' : 'official'}`}>{press ? 'Trade press' : 'Official'}</span>
+    <span class="feed-src">{sourceName(item.body)}</span>
+  </p>
+  <h2><a href={item.url} rel="noopener">{item.title}</a></h2>
+  {!press && item.summary && <p class="feed-note">{item.summary}</p>}
+  <p class="feed-link">
+    {press
+      ? <Fragment>Not an official source: confirm on the official website. <a href={item.url} rel="noopener">Read it on {host(item.url)}</a></Fragment>
+      : <a href={item.url} rel="noopener">Read the official notice on {host(item.url)}</a>}
+  </p>
+</li>

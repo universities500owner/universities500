@@ -18,7 +18,7 @@ const clean = (s) => s.replace(/\s+/g, ' ').trim();
 export function GET() {
   const out = [];
   for (const g of NAV) for (const [u, t, , d] of g.items) out.push({ t, u, d, k: '' });
-  if (NEWS_ON) out.push({ t: 'Industry news', u: '/industry-news/', d: 'Official updates for international students from government and immigration bodies, by destination.', k: '' });
+  if (NEWS_ON) out.push({ t: 'Industry news', u: '/industry-news/', d: 'Latest visa, fee and rule changes for international students from government bodies, study agencies and the trade press, newest first.', k: '' });
   for (const g of guides) {
     out.push({ t: `Study in ${g.name}`, u: `/study-in/${g.slug}/`, d: g.title, k: '' });
     for (const s of g.sections) {
