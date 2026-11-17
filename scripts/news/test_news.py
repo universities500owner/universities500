@@ -70,7 +70,8 @@ class H(BaseHTTPRequestHandler):
         pass
 
     def do_GET(self):
-        pg = EXTRA.get(self.path) or pages().get(self.path)
+        path = self.path.split('?')[0]
+        pg = EXTRA.get(path) or pages().get(path)
         if not pg:
             self.send_response(404)
             self.end_headers()
@@ -263,9 +264,9 @@ class Store(unittest.TestCase):
         return {'country': c, 'sourceId': 's', 'body': 'B', 'kind': 'government', 'detail': '', 'title': title or f'Item {n}', 'url': f'https://x.gov/{n}', 'published': pub, 'summary': summary}
 
     def test_merge_keeps_ages_out_and_orders(self):
-        prev = [dict(self.it(1), id='a', firstSeen='2026-10-01', lastSeen='2026-11-10'), dict(self.it(2, pub='2026-06-01'), id='b', firstSeen='2026-06-02', lastSeen='2026-06-02')]
+        prev = [dict(self.it(1), id='a', firstSeen='2026-10-01', lastSeen='2026-11-10'), dict(self.it(2, pub='2025-06-01'), id='b', firstSeen='2026-06-02', lastSeen='2026-06-02')]
         out = RUN.merge(prev, [self.it(3, pub='2026-11-12')], TODAY)
-        self.assertEqual([i['url'] for i in out], ['https://x.gov/3', 'https://x.gov/1'])      # newest first, the 5-month-old item is gone
+        self.assertEqual([i['url'] for i in out], ['https://x.gov/3', 'https://x.gov/1'])      # newest first, the 17-month-old item is gone
         self.assertEqual(next(i for i in out if i['url'].endswith('/1'))['firstSeen'], '2026-10-01')   # missing from today's feed: kept
         self.assertEqual(next(i for i in out if i['url'].endswith('/3'))['firstSeen'], TODAY)
 
@@ -285,6 +286,54 @@ class Store(unittest.TestCase):
         out, gone = RUN.recheck(items, fx(), TODAY)
         self.assertEqual((len(out), gone), (1, 1))
         self.assertEqual(out[0]['lastSeen'], TODAY)
+
+
+def wp_json(posts):
+    return ('application/json', json.dumps([{'date': d, 'link': l, 'title': {'rendered': t}, 'excerpt': {'rendered': '<p>Trade press text that must never be kept.</p>'}} for t, l, d in posts]))
+
+
+class TwelveMonths(unittest.TestCase):
+    def test_parsers(self):
+        gu = NF.parse_govuk(json.dumps({'results': [{'title': 'Student sponsor guidance', 'description': 'How to sponsor a student.', 'public_timestamp': '2026-11-06T10:00:00Z', 'link': '/guidance/student-sponsor', 'format': 'guidance'}, {'title': 'No link'}]}))
+        self.assertEqual([(i['url'], i['published'], i['detail']) for i in gu], [('https://www.gov.uk/guidance/student-sponsor', '2026-11-06', 'guidance')])
+        wp = NF.parse_wp(json.dumps([{'date': '2026-11-05T08:00:00', 'link': 'https://x.org/a', 'title': {'rendered': 'Canada&#8217;s new cap &amp; visa rules'}, 'excerpt': {'rendered': '<p>x</p>'}}]))
+        self.assertEqual((wp[0]['title'], wp[0]['published']), ('Canada\u2019s new cap & visa rules', '2026-11-05'))
+        self.assertIn('after=2025-11-16T00%3A00%3A00', NF.wp_url('https://x.org/', 'visa', 1, '2025-11-16'))
+        self.assertIn('filter_public_timestamp=from%3A2025-11-16', NF.govuk_url('home-office', 'student', '2025-11-16'))
+        self.assertIn('conditions%5Bpublication_date%5D%5Bgte%5D=2025-11-16', NF.federal_register_url('SEVP', since='2025-11-16'))
+
+    def test_trade_press_headline_date_link_only(self):
+        b = f'http://127.0.0.1:{PORT["p"]}'
+        EXTRA['/wp-json/wp/v2/posts'] = wp_json([
+            ('Canada cuts study permit cap again', f'{b}/p/1', '2026-11-05T08:00:00'),
+            ('UK and Australia tighten student visa rules', f'{b}/p/2', '2026-10-20T08:00:00'),
+            ('Top source markets for the fall intake', f'{b}/p/3', '2026-10-01T08:00:00'),
+            ('A new campus opens in Canada', f'{b}/p/4', '2026-09-01T08:00:00'),
+            ('Visa changes for students worldwide', f'{b}/p/5', '2026-08-01T08:00:00'),
+            ('Canada cap decision from 2024', f'{b}/p/6', '2025-02-01T08:00:00')])
+        try:
+            press = {'id': 'press', 'country': '*', 'tag': True, 'body': 'Trade Press', 'kind': 'media', 'filter': 'policy', 'domains': ['127.0.0.1'],
+                     'wp': {'base': b, 'queries': ['visa'], 'pages': 2}}
+            items, info = NR.read_source(press, fx(), TODAY, 365, {})
+            got = sorted((i['country'], i['title']) for i in items)
+            self.assertEqual(got, [('australia', 'UK and Australia tighten student visa rules'), ('canada', 'Canada cuts study permit cap again'), ('uk', 'UK and Australia tighten student visa rules')])
+            self.assertTrue(all(i['summary'] == '' and i['kind'] == 'media' for i in items))      # the publisher's text is never kept
+            d = info['drops']
+            self.assertEqual((d['not-about-policy'], d['no-country'], d['too-old']), (2, 1, 1))
+            self.assertIn('after=2025-11-16', info['tried'][0]['url'])                       # first run: the whole 12 months
+            _, info2 = NR.read_source(press, fx(), TODAY, 365, {'u': {'sourceId': 'press'}})
+            self.assertIn('after=2026-10-26', info2['tried'][0]['url'])                      # later runs: the last 21 days
+        finally:
+            EXTRA.clear()
+
+    def test_merge_one_article_under_two_countries_and_caps_kept_apart(self):
+        a = {'country': 'uk', 'sourceId': 'p', 'body': 'P', 'kind': 'media', 'detail': '', 'title': 'T', 'url': 'https://p/1', 'published': '2026-11-01', 'summary': ''}
+        b = dict(a, country='australia')
+        off = [{'country': 'uk', 'sourceId': 's', 'body': 'B', 'kind': 'government', 'detail': '', 'title': f'O{n}', 'url': f'https://g/{n}', 'published': '2026-10-%02d' % (1 + n % 28), 'summary': 'x'} for n in range(70)]
+        out = RUN.merge([], [a, b] + off, TODAY)
+        self.assertEqual(len([i for i in out if i['kind'] == 'media']), 2)
+        self.assertEqual(len([i for i in out if i['country'] == 'uk' and i['kind'] == 'government']), 60)
+        self.assertEqual(len({i['id'] for i in out}), len(out))
 
 
 class Runner(unittest.TestCase):
@@ -350,7 +399,7 @@ class SourceList(unittest.TestCase):
         for s in cfg['sources']:
             by.setdefault(s['country'], []).append(s)
             self.assertTrue(s['id'] and s['body'] and s['domains'], s.get('id'))
-            self.assertIn(s['kind'], ('government', 'agency'), s['id'])
+            self.assertIn(s['kind'], ('government', 'agency') if s['country'] != '*' else ('media',), s['id'])
             self.assertTrue(s.get('feeds') or s.get('fr') or s.get('list') or s.get('home'), s['id'])
             lst = s.get('list') or []
             for u in (s.get('feeds') or []) + ([lst] if isinstance(lst, str) else lst) + [s.get('home') or '']:
@@ -358,7 +407,9 @@ class SourceList(unittest.TestCase):
                     self.assertTrue(u.startswith('https://'), (s['id'], u))
                     if 'federalregister.gov' not in u:
                         self.assertTrue(R.allowed(u, s['domains']), (s['id'], u))      # the address is on the body's own website
-        self.assertEqual(set(by), set(RUN.COUNTRIES))
+        self.assertEqual(set(by) - {'*'}, set(RUN.COUNTRIES))
+        for s in by.get('*', []):
+            self.assertTrue(s.get('tag') and s['kind'] == 'media' and s['filter'] == 'policy', s['id'])      # trade press: country from the headline, policy headlines only
         self.assertEqual(len({s['id'] for s in cfg['sources']}), len(cfg['sources']))
 
 

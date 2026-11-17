@@ -26,15 +26,16 @@ from fetcher import Fetcher  # noqa: E402
 import news_read as NR  # noqa: E402
 import news_rules as R  # noqa: E402
 
-KEEP_DAYS = 120          # an item older than this is dropped
-PER_COUNTRY = 30         # at most this many items kept per country
+KEEP_DAYS = 365          # an item older than this is dropped (12 months)
+PER_COUNTRY = 60         # at most this many official items kept per country
+PER_COUNTRY_PRESS = 40   # and this many trade-press headlines, kept apart so they never crowd out official items
 RECHECK = 6              # stored items re-opened each run to see that their official page still exists
 COUNTRIES = ['usa', 'uk', 'canada', 'australia', 'new-zealand', 'ireland', 'germany', 'france', 'netherlands', 'sweden', 'norway', 'singapore', 'malaysia', 'uae']
 
 
-def item_id(url):
+def item_id(country, url):
     import hashlib
-    return hashlib.sha1(url.encode()).hexdigest()[:12]
+    return hashlib.sha1(f'{country}|{url}'.encode()).hexdigest()[:12]
 
 
 def load(p, default):
@@ -57,23 +58,26 @@ def dump(doc):
     return '\n'.join(parts) + '\n'
 
 
-def merge(prev_items, fresh, today, keep_days=KEEP_DAYS, per_country=PER_COUNTRY):
+def merge(prev_items, fresh, today, keep_days=KEEP_DAYS, per_country=PER_COUNTRY, per_press=PER_COUNTRY_PRESS):
     """Previous items stay until they age out; fresh items are added or updated. An item missing from today's feed is not removed:
-    official notices stay on the official site. (A page that no longer exists is removed by recheck().)"""
-    by_url = {i['url']: dict(i) for i in prev_items}
+    official notices stay on the official site. (A page that no longer exists is removed by recheck().)
+    One article can be listed under more than one country, so the key is country + address."""
+    by_key = {(i['country'], i['url']): dict(i) for i in prev_items}
     for it in fresh:
-        old = by_url.get(it['url'])
-        rec = dict(it, id=item_id(it['url']), firstSeen=old['firstSeen'] if old else today, lastSeen=today)
+        key = (it['country'], it['url'])
+        old = by_key.get(key)
+        rec = dict(it, id=item_id(it['country'], it['url']), firstSeen=old['firstSeen'] if old else today, lastSeen=today)
         if old and (old.get('title') != it['title'] or old.get('summary') != it['summary']):
             rec['updated'] = today
         elif old and old.get('updated'):
             rec['updated'] = old['updated']
-        by_url[it['url']] = rec
-    kept = [i for i in by_url.values() if (R.age_days(i.get('published'), today) or 0) <= keep_days]
+        by_key[key] = rec
+    kept = [i for i in by_key.values() if (R.age_days(i.get('published'), today) or 0) <= keep_days]
     out = []
     for c in COUNTRIES:
-        rows = sorted((i for i in kept if i['country'] == c), key=lambda i: (i['published'], i['title']), reverse=True)
-        out.extend(rows[:per_country])
+        for press, cap in ((False, per_country), (True, per_press)):
+            rows = sorted((i for i in kept if i['country'] == c and (i.get('kind') == 'media') == press), key=lambda i: (i['published'], i['title']), reverse=True)
+            out.extend(rows[:cap])
     return out
 
 
@@ -122,7 +126,7 @@ def main(argv=None):
     keep_days = int(cfg.get('keepDays', KEEP_DAYS))
     only = {x.strip() for x in args.only.split(',') if x.strip()}
     if only:
-        sources = [s for s in sources if s['country'] in only]
+        sources = [s for s in sources if s['country'] in only or s['country'] == '*']      # trade-press sources cover many countries
     ua = 'Universities500Bot/1.0 (+https://universities500.com/bot/' + (f'; {args.contact}' if args.contact else '') + ')'
     print('User-Agent:', ua)
     fx = Fetcher(ua, delay=args.delay, deadline=time.monotonic() + args.max_minutes * 60)
@@ -132,7 +136,7 @@ def main(argv=None):
     fresh, infos = [], []
     for src in sources:
         items, info = NR.read_source(src, fx, today, keep_days, known)
-        fresh.extend(items)
+        fresh.extend(i for i in items if not only or i['country'] in only)
         infos.append(info)
         print(f"[{src['country']}] {src['id']}: {info['kept']} kept of {info['found']} found ({info['via'] or info['error']})", flush=True)
 

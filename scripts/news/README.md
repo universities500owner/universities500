@@ -9,7 +9,9 @@ A daily reader of official news for international students, for the 14 destinati
 - **Language**: English official pages only. Items in another language are dropped, never translated.
 - **Relevance**: sources marked `filter: "student"` keep an item only if it has a strong word (student visa, study permit, graduate route, SEVP, ...), or a student word together with an international or visa word. A source marked `context: "immigration"` is an immigration authority, so a student word alone is enough. Enforcement and crime headlines (arrests, detainers, convictions) and items about asylum or borders are dropped even when a student is named. Sources marked `filter: "all"` (study agencies that only publish for students) keep everything. Word lists are in `news_rules.py`.
 - **Dates**: an item with no readable date is skipped. A numeric date such as 03/04/2026 is never guessed.
-- **Age and size**: an item stays 120 days, at most 30 per country. Six stored items are re-opened each run; one whose official page is gone (404 or 410) is removed.
+- **Age and size**: an item stays 12 months (365 days), at most 60 official and 40 trade-press items per country. Six stored items are re-opened each run; one whose official page is gone (404 or 410) is removed.
+- **12 months**: the first run for a source (nothing stored yet) reads back a year through the body's archives: Federal Register date filter, GOV.UK search, a site's WordPress API, long feeds. Later runs only read the last 21 days. A source that gives no archive still fills up day by day.
+- **Trade press**: ICEF Monitor and The PIE News (`kind: "media"`, `country: "*"`, `tag: true`, `filter: "policy"`). They are not official. Only the headline, the date and the link are stored, never the publisher's text. The country comes from the headline (an item can sit under up to three), and only headlines with a policy word (visa, cap, permit, fee, rule...) are kept. They show under the official items of each country, labelled as trade press, and never in the strip above the footer.
 - **Safety**: if no source answers in a run, the data file is left exactly as it was and the run fails loudly.
 
 ## How a source is read
@@ -18,9 +20,10 @@ Every endpoint that gives items is used, and the items are merged by address:
 
 1. `feeds[]`: RSS, Atom or RDF addresses.
 2. `fr[]`: Federal Register search terms (US only, official JSON API).
-3. `home`: opened and searched for a `<link rel="alternate">` feed.
-4. `list` (one address or several): pages of dated headlines, read from their HTML. A block with one link and a readable date counts.
-5. Only when nothing came from the above: the news pages the home page links to (link text or address says news, press, media, latest, notices), on the body's own domains.
+3. `govuk{orgs, q}`: the GOV.UK search API for an organisation and search words (UK only). `wp{base, queries, pages}`: a site's WordPress API, searched by word, paged.
+4. `home`: opened and searched for a `<link rel="alternate">` feed.
+5. `list` (one address or several): pages of dated headlines, read from their HTML. A block with one link and a readable date counts.
+6. Only when nothing came from the above: the news pages the home page links to (link text or address says news, press, media, latest, notices), on the body's own domains.
 
 A page that loads but gives no items is described in the report (visible text, links, `<time>` tags, dates, scripts) so it is clear whether the headlines are loaded by script. When the feed has no summary, up to four official article pages per source are opened to read the page's own description.
 

@@ -73,10 +73,60 @@ def looks_like_feed(body):
 FR_API = 'https://www.federalregister.gov/api/v1/documents.json'
 
 
-def federal_register_url(term, per_page=25):
+def federal_register_url(term, per_page=100, since=None):
     q = [('per_page', per_page), ('order', 'newest'), ('conditions[term]', term)]
+    if since:
+        q.append(('conditions[publication_date][gte]', since))
     q += [('fields[]', f) for f in ('title', 'abstract', 'html_url', 'publication_date', 'type', 'agency_names')]
     return FR_API + '?' + urllib.parse.urlencode(q)
+
+
+GOVUK_API = 'https://www.gov.uk/api/search.json'
+
+
+def govuk_url(org, q, since, count=100):
+    """GOV.UK's own search API: one organisation, one query, newest first, from a date."""
+    p = [('filter_organisations', org), ('order', '-public_timestamp'), ('count', count), ('filter_public_timestamp', f'from:{since}')]
+    if q:
+        p.append(('q', q))
+    p += [('fields', f) for f in ('title', 'description', 'public_timestamp', 'link', 'format')]
+    return GOVUK_API + '?' + urllib.parse.urlencode(p)
+
+
+def parse_govuk(body):
+    try:
+        data = json.loads(body)
+    except ValueError:
+        return []
+    out = []
+    for r in data.get('results', []) if isinstance(data, dict) else []:
+        link = r.get('link') or ''
+        if r.get('title') and link:
+            out.append({'title': T.clean(r['title']), 'url': urllib.parse.urljoin('https://www.gov.uk', link),
+                        'published': R.parse_date(r.get('public_timestamp')), 'summary': r.get('description') or '',
+                        'detail': (r.get('format') or '').replace('_', ' ')})
+    return out
+
+
+def wp_url(base, q, page, since, per_page=100):
+    """The WordPress REST API that many news sites switch on: posts that match a word, newest first, from a date."""
+    p = [('search', q), ('per_page', per_page), ('page', page), ('orderby', 'date'), ('order', 'desc'), ('after', f'{since}T00:00:00')]
+    p += [('_fields', 'date,link,title,excerpt')]
+    return base.rstrip('/') + '/wp-json/wp/v2/posts?' + urllib.parse.urlencode(p)
+
+
+def parse_wp(body):
+    try:
+        data = json.loads(body)
+    except ValueError:
+        return []
+    out = []
+    for r in data if isinstance(data, list) else []:
+        title = T.clean(BeautifulSoup((r.get('title') or {}).get('rendered', ''), 'html.parser').get_text(' '))
+        if title and r.get('link'):
+            out.append({'title': title, 'url': r['link'], 'published': R.parse_date(r.get('date')),
+                        'summary': (r.get('excerpt') or {}).get('rendered', ''), 'detail': ''})
+    return out
 
 
 def parse_federal_register(body):
