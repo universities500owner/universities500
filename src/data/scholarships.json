@@ -7580,48 +7580,6 @@
   },
   {
    "applyMode": "application",
-   "applyUrl": null,
-   "awards": {
-    "n": 1,
-    "upTo": false
-   },
-   "country": "australia",
-   "covers": [
-    "Tuition"
-   ],
-   "deadline": null,
-   "deadlinePartial": "1 November",
-   "deadlineText": "1 November",
-   "description": "Our University is committed to making the Macquarie MD accessible to students through a generous scholarship program. Find out about the fees and costs involved",
-   "duration": "2 years",
-   "eligibility": [],
-   "firstSeen": "2026-11-17",
-   "hash": "cdaa67213e79",
-   "id": "3eaf269335b1",
-   "intl": "yes",
-   "lastChanged": "2026-11-17",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Bachelor",
-    "Master"
-   ],
-   "misses": 0,
-   "name": "Our education costs and scholarship program",
-   "opens": null,
-   "origin": "page",
-   "provider": "Macquarie University",
-   "providerSlug": "macquarie-university",
-   "providerType": "university",
-   "rolling": false,
-   "slug": "our-education-costs-and-scholarship-program-macquarie-university",
-   "url": "https://www.mq.edu.au/faculty-of-medicine-health-and-human-sciences/macquarie-md/fees-and-scholarships",
-   "value": {
-    "context": "To help students from diverse backgrounds undertake the Macquarie MD, the University offers a generous annual scholarship program worth up to $300,000 to domestic students.",
-    "display": "Up to AUD 300,000"
-   }
-  },
-  {
-   "applyMode": "application",
    "applyUrl": "https://www.mq.edu.au/study/admissions-and-entry/scholarships/international/partner-institution-scholarship/",
    "country": "australia",
    "deadline": null,
@@ -35024,37 +34982,6 @@
   {
    "applyMode": "application",
    "applyUrl": null,
-   "country": "new-zealand",
-   "deadline": null,
-   "deadlinePartial": "1 September",
-   "deadlineText": "1 September",
-   "description": "Preparation is key when applying for scholarships. From eligibility to application dates, find out how to apply for a University of Canterbury Scholarship.",
-   "eligibility": [],
-   "firstSeen": "2026-11-16",
-   "hash": "6dc6e75a7fc3",
-   "id": "2ca4cc9912bc",
-   "intl": "yes",
-   "lastChanged": "2026-11-16",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Bachelor",
-    "Master"
-   ],
-   "misses": 0,
-   "name": "How to apply for a UC Scholarship",
-   "opens": null,
-   "origin": "page",
-   "provider": "University of Canterbury",
-   "providerSlug": "university-of-canterbury",
-   "providerType": "university",
-   "rolling": false,
-   "slug": "how-to-apply-for-a-uc-scholarship-university-of-canterbury",
-   "url": "https://www.canterbury.ac.nz/study/getting-started/scholarships/apply-for-scholarship",
-   "value": null
-  },
-  {
-   "applyMode": "application",
-   "applyUrl": null,
    "awards": {
     "n": 10,
     "upTo": true
@@ -45223,54 +45150,6 @@
    "applyMode": "application",
    "applyUrl": null,
    "awards": {
-    "n": 5,
-    "upTo": false
-   },
-   "country": "uk",
-   "deadline": "2027-01-08",
-   "deadlinePartial": null,
-   "deadlineText": "Deadline: 8 January 2027.",
-   "description": "The Faculty of Science are delighted to be offering our Faculty of Science Masters Scholarship for UK Fee-Paying Students – January intake. We invite eligible applicants who hold an offer of admission for January 2027 entry to one of the Faculty of Science’s on-campus Masters programmes to apply. The scholarship value…",
-   "eligibility": [
-    "Be a new student holding an offer of admission for a Postgraduate Taught Masters degree in the Faculty of Science for January 2027 entry.",
-    "Be eligible for tuition fees at the Home or RUK fee rate.",
-    "Applicants must meet all of the above eligibility criteria to be considered for a Faculty of Science Masters Scholarship for UK Fee-paying Students - January intake.",
-    "Awardees must register in an on-campus Faculty of Science Masters degree for January 2027 entry and continue to meet all of the above eligibility criteria. The scholarships cannot be deferred or transferred to any other entry points.",
-    "The scholarship will be awarded towards the payment of a student’s tuition fee.",
-    "Successful candidates will be selected on their academic performance (current and/or previously gained), any relevant extra-curricular or professional experience alongside their scholarship application form.",
-    "The awards are available for on campus study only, online Master’s degrees are not eligible.",
-    "Scholarships will be awarded on a rolling basis. Awards may be allocated early in the application cycle.",
-    "The deadline for consideration is 8 January 2027.",
-    "Students are only eligible to hold one scholarship per academic year from the University of Strathclyde."
-   ],
-   "firstSeen": "2026-11-17",
-   "hash": "fe2cdeeaf497",
-   "id": "78f5e55f3dcf",
-   "intl": "yes",
-   "lastChanged": "2026-11-17",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Master"
-   ],
-   "misses": 0,
-   "name": "Faculty of Science Masters Scholarship for UK Fee-Paying Students",
-   "opens": "2026-06-29",
-   "origin": "page",
-   "provider": "University of Strathclyde",
-   "providerSlug": "university-of-strathclyde",
-   "providerType": "university",
-   "rolling": true,
-   "slug": "faculty-of-science-masters-scholarship-for-uk-fee-paying-stu-university-of-strathclyd",
-   "url": "https://www.strath.ac.uk/studywithus/scholarships/facultyofsciencemastersscholarshipsforukfee-payingstudentsjanuaryintake/",
-   "value": {
-    "context": "Value: £1500.",
-    "display": "GBP 1,500"
-   }
-  },
-  {
-   "applyMode": "application",
-   "applyUrl": null,
-   "awards": {
     "n": 15,
     "upTo": true
    },
@@ -45716,88 +45595,6 @@
    "value": {
     "context": "Value: Varies by course fee - £7,000 - £9,000.",
     "display": "GBP 7,000; GBP 9,000"
-   }
-  },
-  {
-   "applyMode": "automatic",
-   "applyUrl": null,
-   "country": "uk",
-   "covers": [
-    "Tuition"
-   ],
-   "deadline": "2026-11-30",
-   "deadlinePartial": null,
-   "deadlineText": "Deadline: 30 November 2026.",
-   "description": "Strathclyde Business School is delighted to offer Masters Scholarships to support full-time students joining one of our MSc programmes in January 2027. To be eligible for consideration, candidates must be deemed Home/rUK for course fee status and hold an offer on a full-time SBS MSc programme for the January 2027…",
-   "eligibility": [
-    "Candidates must be self-funded (i.e. not in receipt of any funding from any other scholarships, employer sponsorship, etc) and already hold an offer of a place on one of our January 2027 MSc programmes and also be deemed Home/rUK with regards to Course Fee Status.",
-    "Scholarships will be awarded on a rolling basis from June 2026 onwards and the final deadline for consideration of awards will be 30th November 2026.",
-    "Students are only eligible for one scholarship per academic year from the University of Strathclyde.",
-    "Scholarship recipients will be expected to engage with student ambassador activities during their course of study, such as supporting student recruitment activities and events."
-   ],
-   "firstSeen": "2026-11-17",
-   "hash": "45b9a6dcc63e",
-   "id": "c612a66e38ca",
-   "intl": "yes",
-   "lastChanged": "2026-11-17",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Master"
-   ],
-   "misses": 0,
-   "name": "Strathclyde Business School Masters Scholarships for Scottish/UK Students",
-   "opens": "2026-06-09",
-   "origin": "page",
-   "provider": "University of Strathclyde",
-   "providerSlug": "university-of-strathclyde",
-   "providerType": "university",
-   "rolling": true,
-   "slug": "strathclyde-business-school-masters-scholarships-for-scottis-university-of-strathclyd-2",
-   "url": "https://www.strath.ac.uk/studywithus/scholarships/strathclydebusinessschoolmastersforscottishukstudentsjanuary2027/",
-   "value": {
-    "context": "Value: Varies by Course fee - £7525 or £8025.",
-    "display": "GBP 7,525; GBP 8,025"
-   }
-  },
-  {
-   "applyMode": "automatic",
-   "applyUrl": null,
-   "country": "uk",
-   "covers": [
-    "Tuition"
-   ],
-   "deadline": "2027-07-31",
-   "deadlinePartial": null,
-   "deadlineText": "Deadline: 31 July 2027.",
-   "description": "Strathclyde Business School is delighted to offer Masters Scholarships to support full-time students joining one of our MSc programmes in September 2027. To be eligible for consideration, candidates must be deemed Home/rUK for course fee status and hold an offer on a full-time SBS MSc programme for the September 2027…",
-   "eligibility": [
-    "Candidates must be self-funded (i.e. not in receipt of any funding from any other scholarships, employer sponsorship, etc) and already hold an offer of a place on one of our September 2027 MSc programmes and also be deemed Home/rUK with regards to Course Fee Status.",
-    "Scholarships will be awarded on a rolling basis from November 2026 onwards and the final deadline for consideration of awards will be 31st July 2027.",
-    "Students are only eligible for one scholarship per academic year from the University of Strathclyde.",
-    "Scholarship recipients will be expected to engage with student ambassador activities during their course of study, such as supporting student recruitment activities and events."
-   ],
-   "firstSeen": "2026-11-17",
-   "hash": "ae9502cd2b0e",
-   "id": "baa5ada116a5",
-   "intl": "yes",
-   "lastChanged": "2026-11-17",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Master"
-   ],
-   "misses": 0,
-   "name": "Strathclyde Business School Masters Scholarships for Scottish/UK Students September 2027",
-   "opens": "2026-10-29",
-   "origin": "page",
-   "provider": "University of Strathclyde",
-   "providerSlug": "university-of-strathclyde",
-   "providerType": "university",
-   "rolling": true,
-   "slug": "strathclyde-business-school-masters-scholarships-for-scottis-university-of-strathclyd",
-   "url": "https://www.strath.ac.uk/studywithus/scholarships/strathclydebusinessschoolmastersforscottishukstudents/",
-   "value": {
-    "context": "Value: Varies by Course fee - £7575 or £7975.",
-    "display": "GBP 7,575; GBP 7,975"
    }
   },
   {
@@ -46521,53 +46318,6 @@
    "applyMode": "application",
    "applyUrl": null,
    "country": "uk",
-   "covers": [
-    "Tuition"
-   ],
-   "deadline": "2026-05-15",
-   "deadlinePartial": null,
-   "deadlineText": "Application deadline: Friday 15 May 2026, 2pm BST.",
-   "description": "We are delighted to be partnering with the Aziz Foundation to offer postgraduate scholarships to support British Muslims studying at York.",
-   "eligibility": [
-    "Be eligible for home fee status ( check your fee status ).",
-    "Be active within a Muslim community and demonstrate intimate knowledge of issues affecting British Muslim communities.",
-    "Demonstrate long-term commitment to community/societal development within Britain.",
-    "Show how the course will increase their effectiveness in one of the following areas relating to British Muslims:",
-    "Effective advocacy and enhance public perception – facilitating better representation and contribution of Muslims to civil society to combat Islamophobia and positively transform perceptions of British Muslims. Community service and social development – raising the aspirations and standards within B",
-    "Effective advocacy and enhance public perception – facilitating better representation and contribution of Muslims to civil society to combat Islamophobia and positively transform perceptions of British Muslims.",
-    "Community service and social development – raising the aspirations and standards within British Muslim communities, demonstrating long-term commitment to community/societal development within Britain.",
-    "excellent understanding of their chosen industry and how to progress within it, with relevant, prior experience and/or achievements in the field",
-    "knowledge of how the course will enable them to generate social impact.",
-    "A list of the secondary school(s) you attended, which acts as an important social indicator"
-   ],
-   "firstSeen": "2026-11-17",
-   "hash": "d0e73192b298",
-   "id": "52c909f8e1b7",
-   "intl": "yes",
-   "lastChanged": "2026-11-17",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Master"
-   ],
-   "misses": 0,
-   "name": "Aziz Foundation Scholarship",
-   "opens": null,
-   "origin": "page",
-   "provider": "University of York",
-   "providerSlug": "university-of-york",
-   "providerType": "university",
-   "rolling": false,
-   "slug": "aziz-foundation-scholarship-university-of-york",
-   "url": "https://www.york.ac.uk/study/postgraduate-taught/funding/uk/aziz-foundation-scholarships/",
-   "value": {
-    "context": "Funding: 100% tuition-fee coverage at the UK (home) rate.",
-    "display": "100% tuition"
-   }
-  },
-  {
-   "applyMode": "application",
-   "applyUrl": null,
-   "country": "uk",
    "deadline": "2025-03-15",
    "deadlinePartial": null,
    "deadlineText": "Application deadline: Saturday 15 March 2025, 4.59am GMT.",
@@ -47156,45 +46906,6 @@
   {
    "applyMode": "application",
    "applyUrl": null,
-   "country": "uk",
-   "covers": [
-    "Living costs"
-   ],
-   "deadline": "2026-10-30",
-   "deadlinePartial": null,
-   "deadlineText": "Application deadline: Friday 30 October 2026, 12am GMT.",
-   "description": "Two awards, to be paid as a living cost stipend, for two postgraduate taught students or postgraduate researchers with a disability each academic year.",
-   "eligibility": [
-    "have a disability, and",
-    "be currently fully-registered on a degree-awarding postgraduate programme, for a duration of at least one full year."
-   ],
-   "firstSeen": "2026-11-17",
-   "hash": "47ad6a826279",
-   "id": "dfce527f36c1",
-   "intl": "yes",
-   "lastChanged": "2026-11-17",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Master"
-   ],
-   "misses": 0,
-   "name": "Joan Samuels Scholarship",
-   "opens": null,
-   "origin": "page",
-   "provider": "University of York",
-   "providerSlug": "university-of-york",
-   "providerType": "university",
-   "rolling": false,
-   "slug": "joan-samuels-scholarship-university-of-york",
-   "url": "https://www.york.ac.uk/study/postgraduate-taught/funding/uk/joan-samuels-scholarship/",
-   "value": {
-    "context": "Funding: £1,000.",
-    "display": "GBP 1,000"
-   }
-  },
-  {
-   "applyMode": "application",
-   "applyUrl": null,
    "awards": {
     "n": 20,
     "upTo": false
@@ -47389,49 +47100,6 @@
   {
    "applyMode": "application",
    "applyUrl": null,
-   "awards": {
-    "n": 2,
-    "upTo": false
-   },
-   "country": "uk",
-   "deadline": "2026-02-19",
-   "deadlinePartial": null,
-   "deadlineText": "Application deadline: Thursday 19 February 2026, 11.59pm GMT.",
-   "description": "We’ve partnered with Santander Universities to offer two £5,000 scholarships to support our students during the 2025/26 academic year. This scholarship is designed to help with education-related costs – from tuition fees and course materials to accommodation and career",
-   "eligibility": [
-    "Open to our current full-time students who are enrolled in any year of study during the 2025/26 academic year in undergraduate or postgraduate study",
-    "Aged 18+, UK resident, and qualify as a Home Fee Status student",
-    "Preference will be given to students who have participated in the following University of York Access & Outreach Programmes : Next Step York, Black Access or Realising Opportunities .",
-    "No requirement to be a Santander customer"
-   ],
-   "firstSeen": "2026-11-17",
-   "hash": "7b40d8de5075",
-   "id": "14fe43ffce27",
-   "intl": "yes",
-   "lastChanged": "2026-11-17",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Bachelor",
-    "Master"
-   ],
-   "misses": 0,
-   "name": "Santander Scholarship Programme",
-   "opens": null,
-   "origin": "page",
-   "provider": "University of York",
-   "providerSlug": "university-of-york",
-   "providerType": "university",
-   "rolling": false,
-   "slug": "santander-scholarship-programme-university-of-york",
-   "url": "https://www.york.ac.uk/study/undergraduate/fees-funding/uk/scholarships/santander-scholarship/",
-   "value": {
-    "context": "We’ve partnered with Santander Universities to offer two £5,000 scholarships to support our students during the 2025/26 academic year.",
-    "display": "GBP 5,000"
-   }
-  },
-  {
-   "applyMode": "application",
-   "applyUrl": null,
    "country": "uk",
    "covers": [
     "Tuition",
@@ -47513,50 +47181,6 @@
    "slug": "scholarship-awards-for-students-in-education-university-of-york",
    "url": "https://www.york.ac.uk/education/postgraduate/scholarships/",
    "value": null
-  },
-  {
-   "applyUrl": null,
-   "country": "uk",
-   "covers": [
-    "Tuition",
-    "Living costs"
-   ],
-   "deadline": "2024-03-15",
-   "deadlinePartial": null,
-   "deadlineText": "The deadline for stage 2 applications is 15 March 2024.",
-   "description": "The Snowdon Trust Masters Scholarship helps identify and accelerate exceptional disabled students through higher education, creating the influencers of the future.",
-   "eligibility": [
-    "UK home fee status or have completed your undergraduate degree in the UK",
-    "a diagnosed disability or eligible health condition.",
-    "Your Masters degree must start between July 2024, but before June 2025.",
-    "Any subject area can be considered for funding.",
-    "Both full-time and part-time Masters degrees are eligible.",
-    "Online/distance learning Masters degrees are also eligible."
-   ],
-   "firstSeen": "2026-11-17",
-   "hash": "faeaa2842443",
-   "id": "12158149c86c",
-   "intl": "yes",
-   "lastChanged": "2026-11-17",
-   "lastVerified": "2026-11-17",
-   "levels": [
-    "Bachelor",
-    "Master"
-   ],
-   "misses": 0,
-   "name": "Snowdon Masters Scholarship",
-   "opens": null,
-   "origin": "page",
-   "provider": "University of York",
-   "providerSlug": "university-of-york",
-   "providerType": "university",
-   "rolling": false,
-   "slug": "snowdon-masters-scholarship-university-of-york",
-   "url": "https://www.york.ac.uk/study/postgraduate-taught/funding/uk/snowdon-masters-scholarship/",
-   "value": {
-    "context": "Funding: Up to £30,000 (up to £15,000 towards tuition fees and up to £15,000 towards living costs grant).",
-    "display": "Up to GBP 30,000; Up to GBP 15,000"
-   }
   },
   {
    "applyMode": "application",
@@ -49363,7 +48987,7 @@
   "carriedOver": 230,
   "changed": 1,
   "dropped": 2,
-  "items": 1337,
+  "items": 1328,
   "requests": 10386,
   "universitiesRead": 219,
   "universitiesTried": 260
@@ -49994,7 +49618,7 @@
   },
   "macquarie-university": {
    "checked": "2026-11-17",
-   "count": 16,
+   "count": 15,
    "hubSource": "supplied",
    "hubTitle": "Scholarships for international students at Macquarie",
    "hubUrl": "https://www.mq.edu.au/study/admissions-and-entry/scholarships/international",
@@ -50856,7 +50480,7 @@
   },
   "university-of-canterbury": {
    "checked": "2026-11-17",
-   "count": 8,
+   "count": 7,
    "hubSource": "read",
    "hubTitle": "Scholarships",
    "hubUrl": "https://www.canterbury.ac.nz/study/getting-started/scholarships",
@@ -51192,7 +50816,7 @@
   },
   "university-of-strathclyde": {
    "checked": "2026-11-17",
-   "count": 22,
+   "count": 19,
    "hubSource": "supplied",
    "hubTitle": "Postgraduate taught Scholarships",
    "hubUrl": "https://www.strath.ac.uk/studywithus/postgraduatetaught/postgraduatescholarships/",
@@ -51301,7 +50925,7 @@
   },
   "university-of-york": {
    "checked": "2026-11-17",
-   "count": 33,
+   "count": 29,
    "hubSource": "supplied",
    "hubTitle": "Postgraduate taught funding for international (including EU) students",
    "hubUrl": "https://www.york.ac.uk/study/postgraduate-taught/funding/international/",

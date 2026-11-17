@@ -38,7 +38,10 @@ REASONS = [
         r'\b(?:ph\.?d|doctoral|doctorate|post-?doctoral|postdoc\w*|studentships?|staff|faculty fellowship|visiting fellowship|'
         r'research (?:scholarships?|students?|degree|training|fellowships?)|higher degree by research|hdr)\b', re.I)),
     ('for-people-already-enrolled', re.compile(r'\b(?:student leadership|completion|in-course|continuing students?)\b', re.I)),
-    ('home-students-only', re.compile(r'\b(?:home|domestic|access)\b', re.I)),
+    ('home-students-only', re.compile(
+        r'\b(?:home|domestic|access|care[- ]leavers?|estranged)\b|\b(?:uk|scottish|english|welsh)(?:/(?:uk|eu))?\s+(?:fee[- ]paying\s+)?students?\b|\buk[- ]fee[- ]paying\b|'
+        r'\bfor\s+(?:uk|scottish)\b', re.I)),
+    ('page-sentence', re.compile(r'^(?:your|our|why|how|get|find|discover)\b', re.I)),
     ('page-heading', re.compile(
         r'\b(?:opportunities|finder|directory|financial aid|beyond)\b|tuition fees?\b|'
         r'\bfees,? (?:and|&) scholarships?\b|\bscholarships?,? (?:and|&) (?:funding|bursaries|fees|awards|financial)\b', re.I)),
@@ -48,7 +51,9 @@ REASONS = [
     ('prize-not-scholarship', re.compile(r'\b(?:prizes?|medals?|competitions?|3mt|essay)\b', re.I)),
 ]
 # URL parts that mean the page is for students already enrolled, or going abroad from here.
-PATH = re.compile(r'/(?:domestic|dom|outgoing|outbound|study-overseas|study-abroad|go-abroad|exchange[\w-]*|prizes?|studentships?)(?:/|\.|$)', re.I)
+# Also pages written for home students: "/funding/uk/…", "/uk-eu/…", "/funding-for-uk-students/…". Checked on the path only, never the host (york.ac.uk).
+PATH = re.compile(r'/(?:domestic|dom|outgoing|outbound|study-overseas|study-abroad|go-abroad|exchange[\w-]*|prizes?|studentships?|'
+                  r'uk|uk-eu|uk-and-eu|uk-students|home-students?|home-fees?|scottish-students|(?:funding-)?for-uk-students)(?:/|\.|$)', re.I)
 
 _EXCLUDE = None
 
