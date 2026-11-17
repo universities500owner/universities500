@@ -6,6 +6,7 @@ name: Industry news (read official sources)
 #
 # Daily. A manual run from the Actions tab can be a trial:
 #   probe = true   reads and reports only. Nothing is written or committed. Open the run summary and the news-run artifact.
+#   backfill = true  reads every source back 12 months (otherwise a source that already has items reads only the last 21 days).
 #   commit = true  (manual runs only) commits the data when the run is on main. Runs from another branch never commit.
 #
 # Settings: CONTACT_EMAIL under Settings > Secrets and variables > Actions (a variable or a secret both work).
@@ -24,6 +25,10 @@ on:
         default: true
       commit:
         description: "Commit the data to main (only when this run is on main and probe is off)"
+        type: boolean
+        default: false
+      backfill:
+        description: "Read every source back 12 months, even ones that already have items (the first real run, or after adding sources)"
         type: boolean
         default: false
 
@@ -54,10 +59,12 @@ jobs:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
           ONLY: ${{ inputs.only }}
           PROBE: ${{ inputs.probe }}
+          BACKFILL: ${{ inputs.backfill }}
         run: |
           ARGS="--report out --max-minutes 45"
           if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "$PROBE" = "true" ]; then ARGS="$ARGS --probe"; fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "$BACKFILL" = "true" ]; then ARGS="$ARGS --backfill"; fi
           if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The reader's User-Agent has no contact address."; fi
           python3 scripts/news/news_run.py $ARGS
       - uses: actions/upload-artifact@v4

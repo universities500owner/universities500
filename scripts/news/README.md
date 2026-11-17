@@ -10,7 +10,7 @@ A daily reader of official news for international students, for the 14 destinati
 - **Relevance**: sources marked `filter: "student"` keep an item only if it has a strong word (student visa, study permit, graduate route, SEVP, ...), or a student word together with an international or visa word. A source marked `context: "immigration"` is an immigration authority, so a student word alone is enough. Enforcement and crime headlines (arrests, detainers, convictions) and items about asylum or borders are dropped even when a student is named. Sources marked `filter: "all"` (study agencies that only publish for students) keep everything. Word lists are in `news_rules.py`.
 - **Dates**: an item with no readable date is skipped. A numeric date such as 03/04/2026 is never guessed.
 - **Age and size**: an item stays 12 months (365 days), at most 60 official and 40 trade-press items per country. Six stored items are re-opened each run; one whose official page is gone (404 or 410) is removed.
-- **12 months**: the first run for a source (nothing stored yet) reads back a year through the body's archives: Federal Register date filter, GOV.UK search, a site's WordPress API, long feeds. Later runs only read the last 21 days. A source that gives no archive still fills up day by day.
+- **12 months**: the first run for a source (nothing stored yet) reads back a year through the body's archives: Federal Register date filter, GOV.UK search, a site's WordPress API, long feeds. Later runs only read the last 21 days. A source that gives no archive still fills up day by day. To read every source back 12 months again (the first real run, or after adding sources), tick *backfill* in the workflow.
 - **Trade press**: ICEF Monitor and The PIE News (`kind: "media"`, `country: "*"`, `tag: true`, `filter: "policy"`). They are not official. Only the headline, the date and the link are stored, never the publisher's text. The country comes from the headline (an item can sit under up to three), and only headlines with a policy word (visa, cap, permit, fee, rule...) are kept. They show under the official items of each country, labelled as trade press, and never in the strip above the footer.
 - **Safety**: if no source answers in a run, the data file is left exactly as it was and the run fails loudly.
 
@@ -43,7 +43,7 @@ A source with no items gets one of these statuses: `blocked` (robots.txt, or the
 ## Running it
 
 - **Trial (writes nothing)**: Actions > *Industry news (read official sources)* > Run workflow, leave *probe* ticked. The whole report is also printed in the job log. Or download the `news-run` artifact: `news_report.md` (per-source table, addresses tried, examples the relevance rule rejected) and `news_probe.json`.
-- **Real run**: untick *probe*, tick *commit*, run it from `main`. A run from any other branch never commits.
+- **Real run**: untick *probe*, tick *commit* (and tick *backfill* the first time), run it from `main`. A run from any other branch never commits.
 - **One country**: type its code in *only* (for example `uk`).
 - **Locally**: `python3 scripts/news/test_news.py`, then `python3 scripts/news/news_run.py --probe --only uk`.
 
