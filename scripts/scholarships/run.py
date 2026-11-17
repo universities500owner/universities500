@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import discover  # noqa: E402
+import feeds  # noqa: E402
 import quality as Q  # noqa: E402
 import official  # noqa: E402
 import studyaustralia as SA  # noqa: E402
@@ -110,7 +111,13 @@ def main():
     results = {}
     def work(u):
         try:
-            return u['slug'], discover.crawl_university(u, fx, today, args.max_pages, seeds=seeds.get(u['slug']))
+            # a finder whose list is built by scripts can have a plain data feed behind it (feeds.py): its scholarship pages join the seeds
+            extra, feed_rep = feeds.pages_for(u, fx, today)
+            r = discover.crawl_university(u, fx, today, max(args.max_pages, len(extra) + 25) if extra else args.max_pages,
+                                          seeds=seeds.get(u['slug']), extra=extra)
+            if feed_rep:
+                r['feed'] = feed_rep
+            return u['slug'], r
         except Exception as e:  # one bad site must not stop the run
             return u['slug'], {'slug': u['slug'], 'status': 'error', 'records': [], 'hub': None, 'pages': 0, 'reasons': Counter(), 'note': f'{type(e).__name__}: {e}'}
 
@@ -155,6 +162,8 @@ def main():
         for slug, r in sorted(results.items()):
             print(f"\n## {slug}: {r['status']} {r.get('note', '')} | pages {r['pages']}, records {len(r['records'])}, hub {(r['hub'] or {}).get('url')}")
             print('   not kept: ' + ', '.join(f'{k} {v}' for k, v in r['reasons'].most_common(8)))
+            if r.get('feed'):
+                print('   feed: ' + json.dumps(r['feed'], ensure_ascii=False))
             for u, st in (r.get('seeds') or {}).items():
                 print(f'   supplied page: {st}  {u}')
             for line in r.get('trace', [])[:30]:

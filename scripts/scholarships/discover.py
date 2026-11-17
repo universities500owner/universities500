@@ -67,10 +67,12 @@ def read_sitemaps(fx, scheme, host, same, limit=5):
     return urls
 
 
-def crawl_university(uni, fx, today, max_pages=60, seeds=None):
+def crawl_university(uni, fx, today, max_pages=60, seeds=None, extra=None):
     """Read one university. `seeds` are scholarship pages checked by hand: they are read first, they may sit on another
-    domain, and they replace the hub page we would otherwise guess."""
+    domain, and they replace the hub page we would otherwise guess. `extra` are scholarship pages named by the university's own
+    finder feed (feeds.py): they are read as international scholarship pages but are never taken for the hub page."""
     seeds = [X.canon(u) for u in (seeds or []) if u]
+    extra = [X.canon(u) for u in (extra or []) if u]
     out = {'slug': uni['slug'], 'status': 'ok', 'records': [], 'hub': None, 'pages': 0, 'reasons': Counter(), 'note': '',
            'seeds': {}, 'robotsReason': ''}
     base = uni.get('web')
@@ -120,6 +122,8 @@ def crawl_university(uni, fx, today, max_pages=60, seeds=None):
     # 0. pages checked by hand
     for u in seeds:
         push(u, SEED_SCORE, 1, True)  # a page the owner supplied as the international scholarships page
+    for u in extra:
+        push(u, SEED_SCORE - 1, 2, True)  # listed by the finder as open to overseas students
 
     if home_ok:
         # 1. sitemap candidates

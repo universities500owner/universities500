@@ -1,5 +1,5 @@
 {
- "_readme": "Scholarship pages that were checked by hand. The reader visits these first for the university, and they replace the page it would otherwise guess for the university's scholarships link. A page on another domain is allowed when it is listed here (the university's own scholarships body, for example). Add a university: slug -> urls. Source: the university list Raja supplied, links checked 15 Nov 2026; the 27 Australian universities were replaced on 17 Nov 2026 with the international-student scholarship pages Raja supplied (the site only wants international scholarships). Three universities in that list (Australian Catholic, Bond, Charles Darwin) are not on this site yet. On 17 Nov 2026, international-student scholarship pages for 11 UK universities were added from a search of each university's own website; the reader run, not a person, checked that they load.",
+ "_readme": "Scholarship pages that were checked by hand. The reader visits these first for the university, and they replace the page it would otherwise guess for the university's scholarships link. A page on another domain is allowed when it is listed here (the university's own scholarships body, for example). Add a university: slug -> urls. Source: the university list Raja supplied, links checked 15 Nov 2026; the 27 Australian universities were replaced on 17 Nov 2026 with the international-student scholarship pages Raja supplied (the site only wants international scholarships). Three universities in that list (Australian Catholic, Bond, Charles Darwin) are not on this site yet. On 17 Nov 2026, international-student scholarship pages for 11 UK universities were added from a search of each university's own website; the reader run, not a person, checked that they load. Edinburgh's own search, filtered to nationality India (taught postgraduate and undergraduate), was added on 17 Nov 2026: its results are plain pages.",
  "checked": "2026-11-17",
  "seeds": {
   "adelaide-university": {
@@ -228,7 +228,11 @@
   "university-of-edinburgh": {
    "name": "University of Edinburgh",
    "urls": [
-    "https://registryservices.ed.ac.uk/student-funding/undergraduate/international"
+    "https://registryservices.ed.ac.uk/student-funding/undergraduate/international",
+    "https://registryservices.ed.ac.uk/student-funding/search-scholarships?field_loc_study_level_target_id=517&term_node_tid_depth=730&term_node_tid_depth_1=All",
+    "https://registryservices.ed.ac.uk/student-funding/search-scholarships?field_loc_study_level_target_id=517&term_node_tid_depth=730&term_node_tid_depth_1=All&page=1",
+    "https://registryservices.ed.ac.uk/student-funding/search-scholarships?field_loc_study_level_target_id=518&term_node_tid_depth=730&term_node_tid_depth_1=All",
+    "https://registryservices.ed.ac.uk/student-funding/search-scholarships?field_loc_study_level_target_id=518&term_node_tid_depth=730&term_node_tid_depth_1=All&page=1"
    ]
   },
   "university-of-groningen": {
