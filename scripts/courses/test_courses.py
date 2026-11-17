@@ -17,6 +17,7 @@ sys.path.insert(0, str(HERE.parent / 'scholarships'))
 import build_site_data as B  # noqa: E402
 import checks as Q  # noqa: E402
 import courses as C  # noqa: E402
+import cricos as K  # noqa: E402
 import crawl  # noqa: E402
 import extract as X  # noqa: E402
 import facts as F  # noqa: E402
@@ -298,7 +299,7 @@ class Reader(unittest.TestCase):
         fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
         res = fx.get(f'http://127.0.0.1:{PORT["p"]}{path}')
         pg = X.Page(X.canon(res.final_url), res.text, 'uk', 'Test University')
-        return C.read_course(pg, res.text, uni(), '2026-11-16', kw.get('uni_intl'), kw.get('strict', False))
+        return C.read_course(pg, res.text, uni(), '2026-11-16', kw.get('uni_intl'), kw.get('strict', False), kw.get('register'))
 
     def test_eligible_course(self):
         r, why = self.read('/courses/bsc-computer-science/')
@@ -421,6 +422,133 @@ class Reader(unittest.TestCase):
             self.assertEqual(r['name'], 'Bachelor of Commerce')
         finally:
             EXTRA.clear()
+
+
+def reg_course(code, name, level='Bachelor', weeks=156, tuition=105700, **kw):
+    c = {'code': code, 'name': name, 'level': level, 'weeks': weeks, 'tuition': tuition, 'nonTuition': 2172, 'field': 'Science', 'places': [['Perth', 'WA']]}
+    c.update(kw)
+    return c
+
+
+def register(*courses):
+    return K.Register({'slug': 'test-university', 'courses': list(courses)})
+
+
+class Register(unittest.TestCase):
+    """The government register of courses for international students (CRICOS): what it adds, and what it must never do."""
+
+    def test_register_files_from_the_four_csvs(self):
+        head = 'CRICOS Provider Code,Institution Name,CRICOS Course Code,Course Name,VET National Code,Dual Qualification,Field of Education 1 Broad Field,Course Level,Duration (Weeks),Tuition Fee,Non Tuition Fee,Expired\n'
+        rows = [
+            '00001A,Test University,111111A,Bachelor of Science,,No,01 - Natural and Physical Sciences,Bachelor Degree,156,"$105,700.00",$150.00,No',
+            '00001A,Test University,222222B,Master of Data Science,,No,02 - Information Technology,Masters Degree (Coursework),104,$0.00,,No',
+            '00001A,Test University,333333C,Doctor of Philosophy,,No,01 - Natural and Physical Sciences,Doctoral Degree,156,"$40,000.00",,No',
+            '00001A,Test University,444444D,Doctor of Medicine,,No,06 - Health,Masters Degree (Extended),208,"$300,000.00",,No',
+            '00001A,Test University,555555E,Master of Law,,No,09 - Society and Culture,Masters Degree (Coursework),52,"$40,000.00",,Yes',
+            '00001A,Test University,666666F,Bachelor of Arts and Diploma of Languages,,No,09 - Society and Culture,Bachelor Degree,156,"$90,000.00",,No',
+            '00001A,Test University,777777G,Bachelor of Arts / Master of Teaching,,No,07 - Education,Masters Degree (Coursework),260,"$150,000.00",,No',
+            '00002B,Another University,888888H,Bachelor of Science,,No,01 - Natural and Physical Sciences,Bachelor Degree,156,"$100,000.00",,No']
+        locs = ('CRICOS Provider Code,Institution Name,CRICOS Course Code,Location Name,Location City,Location State\n'
+                '00001A,Test University,111111A,Main campus,PERTH,WA\n00001A,Test University,111111A,City campus,PERTH,WA\n00001A,Test University,111111A,North campus,Joondalup,WA\n')
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / 'CRICOS_Courses.csv').write_text('\ufeff' + head + '\n'.join(rows) + '\n', encoding='utf-8')
+            (Path(d) / 'CRICOS_Course_Locations.csv').write_text('\ufeff' + locs, encoding='utf-8')
+            docs, stats = K.build(d, {'test-university': ['00001A']})
+        got = {c['code']: c for c in docs['test-university']['courses']}
+        self.assertEqual(sorted(got), ['111111A', '222222B', '777777G'])        # doctorate, "Doctor of ...", expired and a bundled diploma are left out
+        self.assertEqual(dict(stats['left_out']), {'level': 1, 'doctor-titled': 1, 'expired': 1, 'diploma-or-certificate-in-name': 1})
+        a = got['111111A']
+        self.assertEqual((a['level'], a['weeks'], a['tuition'], a['nonTuition'], a['field']), ('Bachelor', 156, 105700, 150, 'Natural and Physical Sciences'))
+        self.assertEqual(a['places'], [['Perth', 'WA'], ['Joondalup', 'WA']])      # one entry per place, capitals tidied
+        self.assertIsNone(got['222222B']['tuition'])                                # $0 means "not published", never a free course
+        self.assertTrue(got['777777G'].get('combined'))
+        self.assertTrue(K.dump(docs['test-university']).count('\n{"code"') == 3)
+        json.loads(K.dump(docs['test-university']))
+
+    def test_unique_name_match(self):
+        r = register(reg_course('000111A', 'Bachelor of Science in Physics'), reg_course('000222B', 'Master of Data Science', 'Master', 104),
+                     reg_course('000333C', 'Master of Teaching'), reg_course('000444D', 'Master of Teaching', 'Master', 78))
+        self.assertEqual(r.unique('Bachelor of Science in Physics'), '000111A')
+        self.assertEqual(r.unique('bachelor  of science in PHYSICS'), '000111A')           # case and spacing do not matter
+        self.assertEqual(r.unique('Data Science', 'Bachelor of Data Science'), '')        # another degree in the same subject is another course
+        self.assertEqual(r.unique('Data Science', 'Master of Data Science'), '000222B')   # the heading leaves the degree out
+        self.assertEqual(r.unique('Master of Teaching'), '')                              # two registered courses: cannot tell which
+        self.assertEqual(r.unique('Bachelor of Science'), '')
+        self.assertEqual(r.get('000111a')['name'], 'Bachelor of Science in Physics')
+
+    def test_years_from_weeks(self):
+        self.assertEqual(K.years_from_weeks(156, 'Bachelor')['display'], '3 years')
+        self.assertEqual(K.years_from_weeks(78, 'Master')['display'], '1.5 years')
+        self.assertEqual(K.years_from_weeks(52, 'Master')['display'], '1 year')
+        self.assertIsNone(K.years_from_weeks(416, 'Bachelor'))                            # eight years: not a normal Bachelor's, left for the page
+        self.assertIsNone(K.years_from_weeks(None, 'Master'))
+        self.assertTrue(K.years_from_weeks(104, 'Master')['context'].startswith('Government register'))
+
+    def read(self, path, reg):
+        fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+        res = fx.get(f'http://127.0.0.1:{PORT["p"]}{path}')
+        pg = X.Page(X.canon(res.final_url), res.text, 'australia', 'Test University')
+        return C.read_course(pg, res.text, uni('australia'), '2026-11-17', None, False, reg)
+
+    def test_a_registered_name_makes_a_course_open_to_international_students(self):
+        # this page never says international students can apply, so without the register it is held back
+        r, why = self.read('/courses/bs-physics/', None)
+        self.assertEqual(why, 'international-unclear')
+        r, why = self.read('/courses/bs-physics/', register(reg_course('000111A', 'Bachelor of Science in Physics')))
+        self.assertEqual(why, '')
+        self.assertEqual((r['cricos'], r['cricosMatch'], r['international']['how']), ('000111A', 'name', 'cricos'))
+        self.assertIn('does not show the code', r['international']['evidence'])
+        self.assertEqual(Q.problem(r), '')
+
+    def test_two_registered_courses_with_one_name_are_not_guessed(self):
+        reg = register(reg_course('000111A', 'Bachelor of Science in Physics'), reg_course('000222B', 'Bachelor of Science in Physics', weeks=208))
+        r, why = self.read('/courses/bs-physics/', reg)
+        self.assertEqual((r, why), (None, 'international-unclear'))
+
+    def test_a_code_on_the_page_comes_first(self):
+        r, why = self.read('/courses/beng-civil/', register(reg_course('999999Z', 'Bachelor of Engineering (Civil)')))
+        self.assertEqual(why, '')
+        self.assertEqual((r['cricos'], r['cricosMatch']), ('012345A', None))
+
+    def test_register_never_replaces_what_the_page_says_about_international_students(self):
+        # the page shows an international fee: that sentence stays the evidence, the register only adds the code
+        r, why = self.read('/courses/msc-data-science/', register(reg_course('000222B', 'MSc Data Science', 'Master', 52)))
+        self.assertEqual(why, '')
+        self.assertEqual((r['international']['how'], r['cricos'], r['cricosMatch']), ('fee', '000222B', 'name'))
+        # a page that says "domestic only" is never rescued by a name match
+        r, why = self.read('/courses/ba-history-domestic/', register(reg_course('000333C', 'Bachelor of Arts in History')))
+        self.assertEqual(why, 'domestic-only')
+
+    def test_site_record_adds_the_register_entry_and_never_the_fee(self):
+        base = SiteData.rec(None, 'Bachelor of Science in Physics', 'https://u.edu/p/', degree='Bachelor of Science', level='Bachelor', duration=None, fee=None)
+        reg = register(reg_course('000111A', 'Bachelor of Science in Physics'))
+        it = B.site_record(base, 'test-university', reg)
+        self.assertEqual((it['cricos'], it['cricosMatch']), ('000111A', 'name'))
+        self.assertEqual((it['reg']['weeks'], it['reg']['tuition'], it['reg']['currency']), (156, 105700, 'AUD'))
+        self.assertIsNone(it['fee'])                                                  # the older whole-course figure is not the fee
+        self.assertEqual(it['duration']['display'], '3 years')                        # length is filled only because the page gave none
+        self.assertTrue(it['duration']['context'].startswith('Government register'))
+        # a length the page gave is kept
+        page_len = {'display': '4 years', 'years': 4, 'context': 'Duration: 4 years.'}
+        it = B.site_record(dict(base, duration=page_len), 'test-university', reg)
+        self.assertEqual(it['duration'], page_len)
+        # a different level is not the same course, unless the name shows a combined degree
+        it = B.site_record(dict(base, level='Master', degree='MSc'), 'test-university', reg)
+        self.assertNotIn('reg', it)
+        # no register, no entry
+        self.assertNotIn('reg', B.site_record(base, 'test-university', None))
+
+    def test_site_build_reads_register_files_and_credits_them(self):
+        with tempfile.TemporaryDirectory() as d, tempfile.TemporaryDirectory() as k:
+            rec = SiteData.rec(None, 'Bachelor of Science in Physics', 'https://u.edu/p/', degree='Bachelor of Science', level='Bachelor', duration=None, fee=None)
+            (Path(d) / 'u.json').write_text(json.dumps({'slug': 'u', 'status': 'ok', 'generatedAt': '2026-11-17T10:00:00Z', 'courses': [rec]}))
+            (Path(k) / 'u.json').write_text(K.dump({'slug': 'u', 'providers': ['00001A'], 'courses': [reg_course('000111A', 'Bachelor of Science in Physics')]}))
+            (Path(k) / 'providers.json').write_text(json.dumps({'source': {'name': 'CRICOS', 'by': 'Department of Education', 'licence': 'CC BY 2.5 AU', 'url': 'https://data.gov.au/data/dataset/cricos', 'downloaded': '2026-11-17'}}))
+            doc, stats = B.build(d, k)
+            self.assertEqual(doc['items'][0]['reg']['code'], '000111A')
+            self.assertEqual(doc['register']['licence'], 'CC BY 2.5 AU')
+            doc, stats = B.build(d, Path(d) / 'nowhere')                              # a university without register files still builds
+            self.assertNotIn('reg', doc['items'][0])
 
 
 class Crawl(unittest.TestCase):

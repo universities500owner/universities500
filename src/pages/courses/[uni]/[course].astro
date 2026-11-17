@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import {
-  PUBLISH, items, itemsFor, uniOf, path, levelText, lengthText, feeText, feePeriodNote, ieltsText, ieltsScore, startsText, INTL_HOW, CHECK, countryName, fmtIso,
+  PUBLISH, items, itemsFor, uniOf, path, levelText, lengthText, feeText, feePeriodNote, ieltsText, ieltsScore, startsText, INTL_HOW, CHECK, countryName, fmtIso, REGISTER, regTuitionText, regPlaces,
 } from '../../../lib/courses.js';
 
 export function getStaticPaths() {
@@ -39,11 +39,29 @@ const months = (c.intakes && c.intakes.months) || [];
 
   <p><a class="btn" href={c.url} rel="noopener">Open the official course page</a></p>
 
+  {c.reg && (
+    <section aria-labelledby="h-reg">
+      <h2 id="h-reg">On the government register</h2>
+      <dl class="sch-facts">
+        <div><dt>Registered length</dt><dd>{c.reg.weeks ? `${c.reg.weeks} weeks` : 'Not published'}</dd></div>
+        <div><dt>Registered tuition (older figure)</dt><dd>{regTuitionText(c)}</dd></div>
+        {regPlaces(c).length > 0 && <div><dt>Campuses</dt><dd>{regPlaces(c).join('; ')}</dd></div>}
+      </dl>
+      <p class="small">The registered tuition is the whole-course tuition recorded on the Australian Government register. It can be older than the fee the university charges now, so check the university's own fee page before you plan a budget. It is not the fee we show for this course.</p>
+      {REGISTER && (
+        <p class="small">Source: {REGISTER.name}, {REGISTER.by}, licensed {REGISTER.licence}. <a href={REGISTER.url} rel="noopener">Open the dataset</a>. Register file downloaded {fmtIso(REGISTER.downloaded)}.</p>
+      )}
+    </section>
+  )}
+
   <section aria-labelledby="h-why">
     <h2 id="h-why">Why this course is listed</h2>
     <ul class="src-list">
       <li>Full-time, on campus. {c.studyMode && <span class="cq">As the page says: “{c.studyMode}”</span>}</li>
-      <li>Open to international students. {INTL_HOW[c.intl.how] || ''} {c.intl.evidence && <span class="cq">As the page says: “{c.intl.evidence}”</span>}</li>
+      <li>Open to international students. {c.cricosMatch === 'name' && c.intl.how === 'cricos'
+        ? `The course name matches one course on the government register of courses for international students (CRICOS ${c.cricos}). The page itself does not show the code.`
+        : (INTL_HOW[c.intl.how] || '')} {!(c.cricosMatch === 'name' && c.intl.how === 'cricos') && c.intl.evidence && <span class="cq">As the page says: “{c.intl.evidence}”</span>}</li>
+      {c.cricosMatch === 'name' && c.intl.how !== 'cricos' && <li>The course name also matches one course on the government register of courses for international students (CRICOS {c.cricos}).</li>}
       {c.field && <li>The field is our own label, chosen from words in the course name. It is not the university's.</li>}
       {c.flags && c.flags.includes('integrated') && <li>An integrated Master's: a four-year course that starts at undergraduate level.</li>}
       {c.flags && c.flags.includes('combined') && <li>The name mentions both a Bachelor's and a Master's. Open the official page to see how the course is structured.</li>}
@@ -55,7 +73,9 @@ const months = (c.intakes && c.intakes.months) || [];
     <ul class="src-list">
       <li>Official page: <a href={c.url} rel="noopener">{c.url}</a></li>
       <li>Last read on {fmtIso(c.lastVerified)}. First seen {fmtIso(c.firstSeen)}.</li>
-      {c.duration && c.duration.context && <li class="quote">Length, as the page says: “{c.duration.context}”</li>}
+      {c.reg && <li>Registered length, campuses and tuition: the government register (CRICOS), file downloaded {REGISTER ? fmtIso(REGISTER.downloaded) : ''}.</li>}
+      {c.duration && c.duration.context && c.duration.context.startsWith('Government register') && <li class="quote">Length, from the government register: “{c.duration.context}”</li>}
+      {c.duration && c.duration.context && !c.duration.context.startsWith('Government register') && <li class="quote">Length, as the page says: “{c.duration.context}”</li>}
       {c.fee && c.fee.context && <li class="quote">Fee, as the page says: “{c.fee.context}”</li>}
       {c.ielts && c.ielts.context && <li class="quote">{ieltsScore(c) != null ? 'English score' : 'English test, mentioned without one clear score'}, as the page says: “{c.ielts.context}”</li>}
       {months.length > 0 && c.intakes.context && <li class="quote">Start, as the page says: “{c.intakes.context}”</li>}

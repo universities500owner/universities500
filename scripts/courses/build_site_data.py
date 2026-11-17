@@ -20,10 +20,11 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / 'scholarships'))
 sys.path.insert(0, str(HERE))   # this folder first: scholarships has a run.py too
 import checks as Q  # noqa: E402
+import cricos as K  # noqa: E402
 import run as R  # noqa: E402
 import textutil as T  # noqa: E402
 
-KEEP = ('name', 'degree', 'level', 'field', 'url', 'duration', 'fee', 'ielts', 'intakes', 'cricos', 'flags', 'firstSeen', 'lastVerified', 'lastChanged')
+KEEP = ('name', 'degree', 'level', 'field', 'url', 'duration', 'fee', 'ielts', 'intakes', 'cricos', 'cricosMatch', 'flags', 'firstSeen', 'lastVerified', 'lastChanged')
 
 
 def page_slug(rec):
@@ -32,18 +33,32 @@ def page_slug(rec):
     return f"{T.slugify(rec['name'], 60) or 'course'}-{code}" if code else (T.slugify(rec['name'], 60) or 'course')
 
 
-def site_record(rec, uni_slug):
+def site_record(rec, uni_slug, register=None):
+    """`register` (cricos.Register) adds the government register's entry for the course: official length, campuses, field and the
+    whole-course tuition (shown as an older figure, never as the fee). A course without a code gets one only when its name matches
+    exactly one registered course at that university."""
     out = {'slug': page_slug(rec), 'uni': uni_slug}
     for k in KEEP:
         out[k] = rec.get(k)
+    if register:
+        code = out['cricos'] or register.unique(out['name'], out['degree'] or '')
+        reg = register.get(code)
+        # the register calls a combined Bachelor/Master a Master's course; the page level (what the student starts as) is kept
+        if reg and (reg['level'] == out['level'] or 'combined' in (out.get('flags') or [])):
+            if not out['cricos']:
+                out['cricos'], out['cricosMatch'] = code, 'name'
+            out['reg'] = K.site_block(reg)
+            if not out['duration']:
+                out['duration'] = K.years_from_weeks(reg.get('weeks'), out['level'])
     out['studyMode'] = (rec.get('studyMode') or {}).get('evidence') or ''
     intl = rec.get('international') or {}
     out['intl'] = {'how': intl.get('how'), 'evidence': intl.get('evidence') or ''}
     return out
 
 
-def build(src_dir):
-    """Return (document, stats). `src_dir` holds one file per university."""
+def build(src_dir, cricos_dir=None):
+    """Return (document, stats). `src_dir` holds one file per university; `cricos_dir` the government register files (default data/cricos)."""
+    cricos_dir = cricos_dir or K.DEFAULT_DIR
     items, unis, stats = [], {}, {'files': 0, 'read': 0, 'kept': 0, 'checks': {}, 'duplicates': 0, 'slug-clash': 0}
     for f in sorted(Path(src_dir).glob('*.json')):
         try:
@@ -53,6 +68,7 @@ def build(src_dir):
             continue
         stats['files'] += 1
         slug = doc.get('slug') or f.stem
+        register = K.Register.load(slug, cricos_dir)
         good = {}
         for rec in doc.get('courses') or []:
             stats['read'] += 1
@@ -66,7 +82,7 @@ def build(src_dir):
             stats['duplicates'] += 1
         used = set()
         for rec in sorted(good.values(), key=lambda c: (c['level'], c['name'].lower(), c['url'])):
-            item = site_record(rec, slug)
+            item = site_record(rec, slug, register)
             if item['slug'] in used:         # two records cannot share a page address
                 stats['slug-clash'] += 1
                 continue
@@ -77,7 +93,8 @@ def build(src_dir):
     stats['kept'] = len(items)
     items.sort(key=lambda i: (i['uni'], i['level'], i['name'].lower(), i['url']))
     dates = [i['lastVerified'] for i in items if i.get('lastVerified')]
-    return {'generatedAt': max(dates) if dates else None, 'total': len(items), 'universities': dict(sorted(unis.items())), 'items': items}, stats
+    return {'generatedAt': max(dates) if dates else None, 'total': len(items), 'universities': dict(sorted(unis.items())),
+            'register': K.source_credit(cricos_dir), 'items': items}, stats
 
 
 def dump(doc):
