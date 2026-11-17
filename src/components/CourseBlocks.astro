@@ -1,0 +1,10 @@
+---
+// The university's own words for one part of the course page, as copied by the reader. Several blocks of one kind keep their own headings.
+const { list } = Astro.props;
+---
+{list.map((b) => (
+  <Fragment>
+    {list.length > 1 && b.heading && <h3>{b.heading}</h3>}
+    {b.paras.map((x) => (x.list ? <ul>{x.list.map((l) => <li>{l}</li>)}</ul> : <p>{x.p}</p>))}
+  </Fragment>
+))}

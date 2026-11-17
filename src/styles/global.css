@@ -145,6 +145,17 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .sources-list { padding-left: 1.2rem; }
 .sources-list li { margin: .5rem 0; max-width: 60ch; }
 
+/* course page */
+.jump { display: flex; gap: .4rem .9rem; flex-wrap: wrap; margin: 0 0 1.25rem; padding: .6rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: .95rem; }
+.facts .line { display: block; }
+.copied p, .copied ul { max-width: 68ch; }
+.copied ul { padding-left: 1.2rem; }
+.copied li { margin: .25rem 0; }
+.copied h3 { margin: 1.25rem 0 .4rem; font-size: 1.05rem; }
+.source-line { max-width: 68ch; margin-top: 2rem; }
+details.how { max-width: 68ch; margin: .5rem 0 1.5rem; }
+details.how summary { cursor: pointer; color: var(--muted); font-size: .92rem; }
+
 @media (max-width: 40rem) {
   .facts th { width: 8rem; }
   }

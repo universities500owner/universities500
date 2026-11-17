@@ -86,6 +86,9 @@ def prepare(a, fx=None):
             if len(' '.join(s['text'] for s in secs)) < 400:
                 failed[slug] += 1                       # nothing readable (a script-built page)
                 continue
+            if getattr(a, 'preview', False):
+                heads = ' | '.join(f"{x['heading'][:38] or '(none)'} [{len(x['text'])}]" for x in secs[:40])
+                print(f"PAGE {url}\n  {len(secs)} sections, {sum(len(x['text']) for x in secs)} chars: {heads}")
             h = D.page_hash(secs)
             if prev.get(url, {}).get('hash') == h and not a.force:
                 skipped[slug] += 1
@@ -195,6 +198,17 @@ def write_report(rep, total):
     (OUT / 'report.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     (OUT / 'samples.json').write_text(json.dumps(rep['samples'], ensure_ascii=False, indent=1), encoding='utf-8')
     print('\n'.join(lines))
+    for smp in rep['samples'][:8]:
+        f = smp['detail']['facts']
+        print(f"\nSAMPLE {smp['url']}")
+        print('  duration:', (f.get('duration') or {}).get('text'), '| mode:', (f.get('studyMode') or {}).get('text'), '| campus:', (f.get('campus') or {}).get('text'))
+        print('  starts:', [x['text'] for x in f.get('starts') or []], '| ielts:', (f.get('ielts') or {}).get('overall'), '| other tests:', [(x['test'], x['score']) for x in f.get('otherEnglish') or []])
+        print('  fees:', [(x['audience'], x['amount'], x['currency'], x['period']) for x in f.get('fees') or []])
+        print('  deadlines:', [(x['label'], x['date']) for x in f.get('deadlines') or []][:4])
+        print('  modules:', len(f.get('coreModules') or []), 'core,', len(f.get('optionalModules') or []), 'optional | employers:', (f.get('employers') or [])[:6])
+        print('  sections:', {k: sum(len(b['text']) for b in v) for k, v in smp['detail']['sections'].items()})
+        if smp['rejected']:
+            print('  thrown away:', smp['rejected'][:6])
     summary = os.environ.get('GITHUB_STEP_SUMMARY')
     if summary:
         with open(summary, 'a', encoding='utf-8') as fh:
@@ -209,6 +223,7 @@ def main():
     ap.add_argument('--per-uni', type=int, default=2, help='courses read per university (0 = all)')
     ap.add_argument('--limit-unis', type=int, default=0)
     ap.add_argument('--model', default=D.MODEL)
+    ap.add_argument('--preview', action='store_true', help='print each page\'s headings and sizes (no API key needed with prepare)')
     ap.add_argument('--force', action='store_true', help='read a page again even if its text has not changed')
     ap.add_argument('--delay', type=float, default=3.0)
     ap.add_argument('--max-minutes', type=float, default=120)
