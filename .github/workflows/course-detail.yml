@@ -1,0 +1,102 @@
+name: Course detail (Claude Haiku 5.5, batch)
+
+# Reads what each course page says (overview, fees, entry requirements, modules, careers, dates) so the course pages on the site can show it.
+# A model labels the page's sections and quotes short facts; code copies the section text and checks every quote against the page.
+# Anything the page does not show is thrown away. Pages are fetched politely (robots.txt, 3 seconds between requests to one website).
+#
+# Manual only.
+#   mode = preview: fetch the pages and print how each was cut into sections. No API key, no cost. Use it first.
+#   mode = run:     send the pages to the Batch API (half price, answers within hours), check them, write src/data/course-detail/.
+# Needs the repository secret ANTHROPIC_API_KEY (Anthropic Console). Settings: CONTACT_EMAIL as for the course reader.
+# A pilot: mode = run, per_uni = 2, limit_unis = 15, commit = false. The run log prints samples and the cost.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "preview (no cost) or run (sends to Claude)"
+        type: choice
+        options: [preview, run]
+        default: preview
+      only:
+        description: "Only these university slugs, comma-separated (blank = all)"
+        required: false
+        default: ""
+      per_uni:
+        description: "Course pages read per university (0 = all)"
+        required: false
+        default: "2"
+      limit_unis:
+        description: "Only the first N universities (0 = all)"
+        required: false
+        default: "15"
+      force:
+        description: "Read pages again even if their text has not changed"
+        type: boolean
+        default: false
+      commit:
+        description: "Commit src/data/course-detail to the branch the run started from"
+        type: boolean
+        default: false
+
+concurrency:
+  group: course-detail
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  detail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install beautifulsoup4 lxml anthropic
+      - name: Self-test (no internet, no API)
+        run: python3 scripts/courses/test_courses.py
+      - name: Read the pages and (in run mode) the answers
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+          MODE: ${{ inputs.mode }}
+          ONLY: ${{ inputs.only }}
+          PER_UNI: ${{ inputs.per_uni }}
+          LIMIT_UNIS: ${{ inputs.limit_unis }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          case "$PER_UNI" in ''|*[!0-9]*) PER_UNI=2;; esac
+          case "$LIMIT_UNIS" in ''|*[!0-9]*) LIMIT_UNIS=0;; esac
+          ARGS="--per-uni $PER_UNI --limit-unis $LIMIT_UNIS --max-minutes 120 --wait-minutes 200"
+          if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
+          if [ "$FORCE" = "true" ]; then ARGS="$ARGS --force"; fi
+          if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The reader's User-Agent has no contact address."; fi
+          if [ "$MODE" = "preview" ]; then
+            python3 scripts/courses/detail_run.py prepare --preview $ARGS
+          else
+            if [ -z "$ANTHROPIC_API_KEY" ]; then echo "::error::The repository secret ANTHROPIC_API_KEY is not set."; exit 1; fi
+            python3 scripts/courses/detail_run.py run --preview $ARGS
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: course-detail-out
+          path: out/detail/
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Commit the detail data
+        if: inputs.mode == 'run' && inputs.commit
+        run: |
+          git config user.name "universities500-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/course-detail
+          if git diff --cached --quiet; then
+            echo "No change to commit."
+          else
+            git commit -m "Course detail: refresh $(date -u +%F)"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi

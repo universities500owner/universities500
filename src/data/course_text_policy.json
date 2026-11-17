@@ -1,0 +1,6 @@
+{
+ "mode": "full",
+ "excerptWords": 70,
+ "optOut": [],
+ "note": "How much of a university's own course-page text the site shows. full: the copied sections as stored. excerpt: the first excerptWords words of each section with a link to the rest. optOut: universities (slugs) whose text is never shown, only the short checked facts. Change this one file to respond to a takedown request or a change of approach; the next build applies it everywhere."
+}

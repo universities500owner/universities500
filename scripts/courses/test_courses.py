@@ -17,6 +17,8 @@ sys.path.insert(0, str(HERE.parent / 'scholarships'))
 import build_site_data as B  # noqa: E402
 import checks as Q  # noqa: E402
 import courses as C  # noqa: E402
+import detail as D  # noqa: E402
+import detail_run as DR  # noqa: E402
 import cricos as K  # noqa: E402
 import crawl  # noqa: E402
 import extract as X  # noqa: E402
@@ -879,6 +881,213 @@ class SiteData(unittest.TestCase):
         self.assertEqual(sum(1 for ln in text.splitlines() if ln.startswith('{"slug"')), 2)
         empty = B.dump({'generatedAt': None, 'total': 0, 'universities': {}, 'items': []})
         self.assertEqual(json.loads(empty)['items'], [])
+
+
+# A made-up page shaped like a UK university course page (test only, never published).
+DETAIL_HTML = """<html><head><title>MSc Finance</title></head><body>
+<nav><a href="/">Home</a><a href="/study">Study</a></nav>
+<main>
+<h1>MSc Finance</h1>
+<p>Learn how financial markets work and how firms decide where to invest. This course suits graduates who want a career in banking.</p>
+<h2>Key information</h2>
+<ul><li>Duration: 1 year full-time</li><li>Start date: September 2027</li><li>Location: Egham campus</li></ul>
+<h2>Entry requirements</h2>
+<p>A 2:1 degree or equivalent in a quantitative subject.</p>
+<h3>English language requirements</h3>
+<p>IELTS 6.5 overall with no less than 6.0 in each subscore. TOEFL iBT 92 is also accepted.</p>
+<h2>Fees</h2>
+<table><tr><td>UK students</td><td>&pound;14,500</td></tr><tr><td>International students</td><td>&pound;28,100</td></tr></table>
+<h2>Course content</h2>
+<h3>Core modules</h3><ul><li>Corporate Finance</li><li>Asset Pricing</li></ul>
+<h3>Optional modules</h3><ul><li>Financial Econometrics</li></ul>
+<h2>Careers</h2>
+<p>Our graduates work at Barclays and Deloitte, or continue to a PhD.</p>
+<h2>Contact us</h2><p>Phone 01784 000000</p>
+</main>
+<footer>Cookie policy</footer></body></html>"""
+
+GOOD_ANSWER = {
+    'sections': [{'id': 0, 'type': 'overview'}, {'id': 1, 'type': 'key_facts'}, {'id': 2, 'type': 'entry_requirements'}, {'id': 3, 'type': 'english_requirements'},
+                 {'id': 4, 'type': 'fees'}, {'id': 6, 'type': 'modules'}, {'id': 7, 'type': 'modules'}, {'id': 8, 'type': 'careers'}, {'id': 9, 'type': 'other'}],
+    'duration': {'text': '1 year full-time', 'quote': 'Duration: 1 year full-time'},
+    'study_mode': {'text': 'full-time', 'quote': 'Duration: 1 year full-time'},
+    'campus': {'text': 'Egham campus', 'quote': 'Location: Egham campus'},
+    'starts': [{'text': 'September 2027', 'quote': 'Start date: September 2027'}],
+    'fees': [{'audience': 'international', 'amount': 28100, 'currency': 'GBP', 'period': 'year', 'year_label': None, 'quote': 'International students £28,100'},
+             {'audience': 'home', 'amount': 14500, 'currency': 'GBP', 'period': 'year', 'year_label': None, 'quote': 'UK students £14,500'}],
+    'ielts': {'overall': 6.5, 'min_band': 6.0, 'quote': 'IELTS 6.5 overall with no less than 6.0 in each subscore'},
+    'other_english_tests': [{'test': 'TOEFL iBT', 'score_text': '92', 'quote': 'TOEFL iBT 92 is also accepted'}],
+    'academic_entry': {'text': 'A 2:1 degree or equivalent in a quantitative subject', 'quote': 'A 2:1 degree or equivalent in a quantitative subject'},
+    'core_modules': ['Corporate Finance', 'Asset Pricing'], 'optional_modules': ['Financial Econometrics'],
+    'employers': ['Barclays', 'Deloitte'],
+}
+
+
+class DetailTests(unittest.TestCase):
+    def secs(self):
+        return D.sections_of(DETAIL_HTML, 'https://u.edu/msc-finance')
+
+    def test_page_is_cut_at_headings_and_chrome_is_dropped(self):
+        secs = self.secs()
+        heads = [s['heading'] for s in secs]
+        self.assertIn('Entry requirements', heads)
+        self.assertIn('Core modules', heads)
+        text = D.page_text(secs)
+        self.assertNotIn('Cookie policy', text)
+        self.assertIn('IELTS 6.5 overall', text)
+
+    def test_good_answer_is_kept_and_text_is_copied_from_the_page(self):
+        secs = self.secs()
+        detail, rejected = D.verify(GOOD_ANSWER, secs)
+        f = detail['facts']
+        self.assertEqual(rejected, [])
+        self.assertEqual(f['duration']['text'], '1 year full-time')
+        self.assertEqual(f['ielts']['overall'], 6.5)
+        self.assertEqual([x['audience'] for x in f['fees']], ['international', 'home'])
+        self.assertEqual(f['coreModules'], ['Corporate Finance', 'Asset Pricing'])
+        self.assertEqual(f['employers'], ['Barclays', 'Deloitte'])
+        sec = detail['sections']
+        self.assertEqual([b['heading'] for b in sec['modules']], ['Core modules', 'Optional modules'])   # several blocks of one type, in page order
+        self.assertIn('Corporate Finance', sec['modules'][0]['text'])
+        self.assertEqual(sec['entry_requirements'][0]['text'], secs[2]['text'])   # copied by code, character for character
+        self.assertNotIn('other', sec)
+
+    def test_a_fact_that_is_not_on_the_page_is_thrown_away(self):
+        bad = dict(GOOD_ANSWER)
+        bad['ielts'] = {'overall': 7.0, 'min_band': 6.5, 'quote': 'IELTS 7.0 overall'}                      # the page says 6.5
+        bad['starts'] = [{'text': 'January 2027', 'quote': 'Start date: January 2027'}]                       # not on the page
+        bad['core_modules'] = ['Corporate Finance', 'Quantum Cooking']                                       # second one invented
+        bad['employers'] = ['Goldman Sachs']
+        detail, rejected = D.verify(bad, self.secs())
+        f = detail['facts']
+        self.assertIsNone(f['ielts'])
+        self.assertEqual(f['starts'], [])
+        self.assertEqual(f['coreModules'], ['Corporate Finance'])
+        self.assertEqual(f['employers'], [])
+        self.assertEqual(len(rejected), 4)
+
+    def test_fee_must_match_its_quote_and_international_needs_the_word(self):
+        ans = {'sections': [], 'fees': [
+            {'audience': 'international', 'amount': 2810, 'currency': 'GBP', 'period': 'year', 'quote': 'International students £28,100'},   # 2810 is not 28,100
+            {'audience': 'international', 'amount': 14500, 'currency': 'GBP', 'period': 'year', 'quote': 'UK students £14,500'},          # quote does not say international
+            {'audience': 'international', 'amount': 100, 'currency': 'GBP', 'period': 'year', 'quote': 'International students £28,100'}]}  # 100 is not a number in the quote
+        detail, rejected = D.verify(ans, self.secs())
+        fees = detail['facts']['fees']
+        self.assertEqual([(x['audience'], x['amount']) for x in fees], [('other', 14500)])               # kept, but never shown as the international fee
+        self.assertEqual(sorted(w for _, w in rejected), ['amount-not-in-quote', 'amount-not-in-quote', 'international-not-in-quote'])
+
+    def test_reworded_text_falls_back_to_the_short_quote(self):
+        ans = {'sections': [], 'duration': {'text': '12 months', 'quote': 'Duration: 1 year full-time'}}
+        detail, _ = D.verify(ans, self.secs())
+        self.assertEqual(detail['facts']['duration']['text'], 'Duration: 1 year full-time')             # not "12 months": that is not on the page
+
+    def test_bad_section_ids_and_types_are_ignored(self):
+        ans = {'sections': [{'id': 99, 'type': 'fees'}, {'id': 2, 'type': 'astrology'}, {'id': 'x', 'type': 'fees'}]}
+        detail, _ = D.verify(ans, self.secs())
+        self.assertEqual(detail['sections'], {})
+        self.assertFalse(D.has_content(detail))
+
+    def test_request_is_a_batch_request_with_a_forced_tool(self):
+        r = D.request_of('c1', self.secs(), 'https://u.edu/x')
+        self.assertEqual(r['custom_id'], 'c1')
+        self.assertEqual(r['params']['model'], 'claude-haiku-5-5')
+        self.assertEqual(r['params']['tool_choice'], {'type': 'tool', 'name': 'record_course_detail'})
+        self.assertIn('[S0]', r['params']['messages'][0]['content'])
+        self.assertLess(len(r['params']['messages'][0]['content']), D.MAX_PROMPT_CHARS + 500)
+
+    def test_parse_tool_input_reads_dicts_and_objects(self):
+        self.assertEqual(D.parse_tool_input([{'type': 'text', 'text': 'hi'}, {'type': 'tool_use', 'name': 'record_course_detail', 'input': {'a': 1}}]), {'a': 1})
+
+        class Blk:
+            type, name, input = 'tool_use', 'record_course_detail', {'b': 2}
+        self.assertEqual(D.parse_tool_input([Blk()]), {'b': 2})
+        self.assertIsNone(D.parse_tool_input([]))
+
+    def test_dump_is_valid_json_one_page_per_line(self):
+        detail, _ = D.verify(GOOD_ANSWER, self.secs())
+        text = D.dump({'slug': 'u', 'pages': {'https://u.edu/b': detail, 'https://u.edu/a': detail}})
+        doc = json.loads(text)
+        self.assertEqual(list(doc['pages']), ['https://u.edu/a', 'https://u.edu/b'])
+        self.assertEqual(sum(1 for ln in text.splitlines() if ln.startswith('"https://')), 2)
+
+
+class FakeFetch:
+    def __init__(self, html):
+        self.html, self.got = html, []
+
+    def get(self, url):
+        self.got.append(url)
+
+        class R:
+            ok, final_url = True, url
+            text = self.html
+        return R()
+
+
+class FakeBatches:
+    def __init__(self, answers):
+        self.answers, self.created = answers, []
+
+    def create(self, requests):
+        self.created.append(requests)
+        return type('B', (), {'id': 'batch_1'})()
+
+    def retrieve(self, i):
+        return type('B', (), {'processing_status': 'ended'})()
+
+    def results(self, i):
+        for req in self.created[0]:
+            cid = req['custom_id']
+            ans = self.answers.get(cid)
+            if ans is None:
+                yield type('E', (), {'custom_id': cid, 'result': type('R', (), {'type': 'errored'})()})()
+                continue
+            msg = type('M', (), {'content': [{'type': 'tool_use', 'name': 'record_course_detail', 'input': ans}],
+                                 'usage': type('U', (), {'input_tokens': 6000, 'output_tokens': 1500})()})()
+            yield type('E', (), {'custom_id': cid, 'result': type('R', (), {'type': 'succeeded', 'message': msg})()})()
+
+
+class DetailRunTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        DR.OUT, DR.DETAIL_DIR = self.tmp / 'out', self.tmp / 'detail'
+        self.items = self.tmp / 'courses.json'
+        self.items.write_text(json.dumps({'items': [
+            {'uni': 'u1', 'url': 'https://u.edu/a', 'slug': 'a'}, {'uni': 'u1', 'url': 'https://u.edu/b', 'slug': 'b'},
+            {'uni': 'u1', 'url': 'https://u.edu/c', 'slug': 'c'}, {'uni': 'u2', 'url': 'https://v.edu/a', 'slug': 'a'}]}))
+        self.args = type('A', (), dict(courses_file=str(self.items), only='', per_uni=2, limit_unis=0, force=False, model=D.MODEL, delay=0, max_minutes=1, contact=''))()
+
+    def test_prepare_picks_a_spread_and_skips_unchanged_pages(self):
+        fx = FakeFetch(DETAIL_HTML)
+        reqs, pages = DR.prepare(self.args, fx)
+        self.assertEqual(len(reqs), 3)                                         # u1: 2 of 3, u2: 1
+        self.assertEqual(len(fx.got), 3)
+        # a second run with the stored hashes: nothing changed, nothing sent
+        first = next(iter(pages.values()))
+        (DR.DETAIL_DIR).mkdir(parents=True)
+        (DR.DETAIL_DIR / 'u1.json').write_text(D.dump({'slug': 'u1', 'pages': {first['url']: {'hash': first['hash']}}}))
+        reqs2, _ = DR.prepare(self.args, FakeFetch(DETAIL_HTML))
+        self.assertEqual(len(reqs2), 2 if first['uni'] == 'u1' else 3)
+
+    def test_page_with_nothing_readable_is_not_sent(self):
+        reqs, _ = DR.prepare(self.args, FakeFetch('<html><body><div id="app"></div><script>boot()</script></body></html>'))
+        self.assertEqual(reqs, [])
+
+    def test_collect_checks_answers_and_writes_one_file_per_university(self):
+        reqs, pages = DR.prepare(self.args, FakeFetch(DETAIL_HTML))
+        bad = dict(GOOD_ANSWER, employers=['Goldman Sachs'])
+        ids = list(pages)
+        client = type('C', (), {'messages': type('M', (), {'batches': FakeBatches({ids[0]: GOOD_ANSWER, ids[1]: bad})})()})()
+        DR.submit(client, reqs)
+        rep = DR.collect(client, ['batch_1'], pages, '2026-11-17')
+        self.assertEqual((rep['ok'], rep['failed']), (2, 1))                   # the third had no answer
+        self.assertEqual(rep['rejected']['employers: name-not-on-page'], 1)
+        self.assertEqual((rep['in'], rep['out']), (12000, 3000))
+        self.assertGreater(rep['cost_usd'], 0)
+        written = json.loads((DR.DETAIL_DIR / 'u1.json').read_text())
+        d = next(iter(written['pages'].values()))
+        self.assertEqual((d['readOn'], d['model']), ('2026-11-17', D.MODEL))
+        self.assertTrue(d['hash'])
 
 
 if __name__ == '__main__':

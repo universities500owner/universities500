@@ -94,3 +94,14 @@ The reader shares `fetcher.py`, `extract.py` and `textutil.py` with `scripts/sch
 The run summary and the `courses-all` artifact hold `course_report.md`, `universities.csv`, `course_samples.json` (first 3 courses per university) and `held_samples.json` (example addresses for every reason a page was held back, for example `study-mode-unclear`). Look at `held_samples.json` first when a reason count is large: it shows whether a rule is too strict.
 
 `status` in the CSV: `ok`; `unreachable` (the note says why: the robots.txt answer such as `HTTP 502` or a network error, or `HTTP 403` for the home page); `robots` (robots.txt forbids us); `error` (the reader stopped on this university; the note names the error). A page the reader could not handle is counted as `page-error:<name>` and listed in the report; it never stops the rest of the university. The same cleaning is used by the scholarship reader (`scripts/scholarships/fetcher.py`: robots.txt that moves to another address is followed, odd characters in links are encoded).
+
+## Course detail (Claude Haiku 5.5, Batch API)
+
+`detail.py` and `detail_run.py` read what each course page says: overview, key facts, fees, entry and English requirements, modules, teaching, careers, accreditation, deadlines. Workflow: `course-detail.yml` (manual).
+
+- The page is cut into sections at its headings by the same reader as everywhere else (robots.txt, 3 seconds between requests, identified User-Agent). The model never browses.
+- The model only labels sections and returns short facts, each with a quote copied from the page. It never writes the text that is shown.
+- Code copies each labelled section's text verbatim and checks every quote, number and name against the page text. A fee must be one of the numbers in its quote, an "international" fee needs the word in the quote, IELTS must be 4 to 9 and in the quote, module and employer names must appear on the page. What fails is thrown away and counted in the run report.
+- Results: `src/data/course-detail/<university>.json`, one entry per course page address, with the page hash. A page is read again only when its text changed.
+- `src/data/course_text_policy.json` decides how much of the university's own text the site shows (`full`, `excerpt`, or `optOut` per university). Change it and rebuild to respond to a takedown request.
+- `mode = preview` prints how each page was cut (no API key, no cost). `mode = run` needs the repository secret `ANTHROPIC_API_KEY`. Batch rate for Haiku 5.5 is half the normal price; the run report prints tokens and cost.

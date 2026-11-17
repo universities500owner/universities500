@@ -79,7 +79,7 @@ jobs:
           URLS: ${{ inputs.urls }}
         run: |
           ARGS=""
-          if [ -n "$URLS" ]; then for u in $(echo "$URLS" | tr ',' ' '); do ARGS="$ARGS --url $u"; done; fi
+          if [ -n "$URLS" ]; then for u in $(echo "$URLS" | tr ',' ' '); do ARGS="$ARGS --url $u"; done; ARGS="$ARGS --text"; fi
           if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
           if [ -n "$COUNTRY" ]; then ARGS="$ARGS --country $COUNTRY"; fi
           python3 scripts/scholarships/probe.py $ARGS | tee probe.txt

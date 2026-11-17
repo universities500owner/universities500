@@ -1,8 +1,11 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import {
-  PUBLISH, items, itemsFor, uniOf, path, levelText, lengthText, feeText, feePeriodNote, ieltsText, ieltsScore, startsText, INTL_HOW, CHECK, countryName, fmtIso, REGISTER, regTuitionText, regPlaces,
+  PUBLISH, items, itemsFor, uniOf, path, levelText, lengthText, feeText, feePeriodNote, ieltsText, startsText, INTL_HOW, countryName, fmtIso, REGISTER, regTuitionText, regPlaces,
 } from '../../../lib/courses.js';
+import { detailOf, blocks, textMode, feeLine, intlFee, englishLine } from '../../../lib/course-detail.js';
+import { blurb } from '../../../lib/data.js';
+import CourseBlocks from '../../../components/CourseBlocks.astro';
 
 export function getStaticPaths() {
   return items.map((c) => ({ params: { uni: c.uni, course: c.slug }, props: { c } }));
@@ -13,10 +16,66 @@ const here = path(c);
 const others = itemsFor(c.uni).filter((x) => x.slug !== c.slug).slice(0, 6);
 const nOthers = itemsFor(c.uni).length - 1;
 const place = countryName(c.country);
-const desc = `${c.name} at ${c.uniName}, ${place}. ${levelText(c)} course, full-time on campus, open to international students. Length, fee and English score where the official page states them.`;
+const d = detailOf(c);
+const f = (d && d.facts) || {};
+const host = c.url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
 const months = (c.intakes && c.intakes.months) || [];
+const NONE = 'Not stated';
+
+// ---- the short facts: what the page states, checked; our reader's value when the page was not read in full ----
+const length = f.duration ? f.duration.text : c.duration ? c.duration.display : null;
+const fee = intlFee(d);
+const feeShown = fee ? feeLine(fee) : c.fee ? feeText(c) : null;
+const feeNote = fee ? (fee.period === 'unknown' ? 'The page does not say what period this covers.' : '') : feePeriodNote(c);
+const english = englishLine(d) || (ieltsText(c, '') || null);
+const starts = f.starts && f.starts.length ? f.starts.map((s) => s.text).join('; ') : months.length ? startsText(c) : null;
+const campus = f.campus ? f.campus.text : regPlaces(c).length ? regPlaces(c).join('; ') : null;
+const deadlines = f.deadlines || [];
+const accred = f.accreditations || [];
+
+// ---- the university's own words, copied from its page (how much is set in src/data/course_text_policy.json) ----
+const overview = blocks(d, ['overview'], c.uni);
+const entry = blocks(d, ['entry_requirements', 'english_requirements'], c.uni);
+const fees = blocks(d, ['fees'], c.uni);
+const study = blocks(d, ['modules'], c.uni);
+const teaching = blocks(d, ['teaching_assessment'], c.uni);
+const careers = blocks(d, ['careers'], c.uni);
+const accredText = blocks(d, ['accreditation'], c.uni);
+const apply = blocks(d, ['how_to_apply', 'deadlines'], c.uni);
+const funding = blocks(d, ['scholarships'], c.uni);
+const hasText = textMode(c.uni) !== 'none';
+const core = f.coreModules || [];
+const optional = f.optionalModules || [];
+const employers = f.employers || [];
+
+const nav = [
+  overview.length && ['overview', 'Overview'],
+  (entry.length || english || f.academicEntry) && ['entry', 'Entry requirements'],
+  (fees.length || feeShown) && ['fees', 'Fees'],
+  (study.length || core.length || optional.length) && ['study', 'What you will study'],
+  teaching.length && ['teaching', 'Teaching and assessment'],
+  (careers.length || employers.length) && ['careers', 'Careers'],
+  (accredText.length || accred.length) && ['accred', 'Accreditation'],
+  apply.length && ['apply', 'How to apply'],
+  funding.length && ['funding', 'Scholarships'],
+].filter(Boolean);
+
+const lead = overview.length ? (overview[0].paras.find((p) => p.p) || {}).p : '';
+const facts = [length && `${length}`, feeShown && `international fee ${feeShown}`, english && english.split('. ')[0]].filter(Boolean).join(', ');
+const desc = `${c.name} at ${c.uniName}, ${place}. ${levelText(c)} course, full-time on campus, open to international students.${facts ? ` ${facts[0].toUpperCase()}${facts.slice(1)}.` : ''}`;
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: c.name,
+  description: lead ? blurb(lead, 300) : undefined,
+  url: `https://universities500.com${here}`,
+  provider: { '@type': 'CollegeOrUniversity', name: c.uniName, url: u && u.web ? u.web : undefined },
+};
+const showModuleLists = !study.length && (core.length > 0 || optional.length > 0);
+const showEmployerList = !careers.length && employers.length > 0;
+const registerNote = c.reg && REGISTER;
 ---
-<Base title={`${c.name}, ${c.uniName} | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="courses">
+<Base title={`${c.name}, ${c.uniName} | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="courses" jsonld={ld}>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a><span aria-hidden="true">/</span><a href="/courses/">Course search</a><span aria-hidden="true">/</span><a href={`/universities/${c.uni}/`}>{c.uniName}</a>
   </nav>
@@ -28,18 +87,112 @@ const months = (c.intakes && c.intakes.months) || [];
     {c.field && <li>{c.field}</li>}
     {c.cricos && <li>CRICOS {c.cricos}</li>}
   </ul>
+  <p><a class="btn" href={c.url} target="_blank" rel="noopener">Open the official course page</a></p>
 
-  <dl class="sch-facts big">
-    <div><dt>Length</dt><dd>{lengthText(c)}</dd></div>
-    <div><dt>International fee</dt><dd>{feeText(c)}</dd></div>
-    <div><dt>English</dt><dd>{ieltsText(c)}</dd></div>
-    <div><dt>Starts</dt><dd>{startsText(c)}</dd></div>
-  </dl>
-  {c.fee && <p class="small">The fee is what the page showed. {feePeriodNote(c)} Fees change each year and can differ by intake or campus, so treat this as a guide, not a quote.</p>}
+  {nav.length > 1 && (
+    <nav class="jump" aria-label="On this page">
+      {nav.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}
+    </nav>
+  )}
 
-  <p><a class="btn" href={c.url} rel="noopener">Open the official course page</a></p>
+  <section aria-labelledby="facts">
+    <h2 id="facts">Key facts</h2>
+    <table class="facts">
+      <tbody>
+        <tr><th scope="row">Length</th><td>{length || <span class="muted">{NONE}</span>}</td></tr>
+        <tr><th scope="row">Starts</th><td>{starts || <span class="muted">{NONE}</span>}</td></tr>
+        <tr><th scope="row">International fee</th><td>{feeShown || <span class="muted">{NONE}</span>}{feeNote && feeShown && <span class="source">{feeNote}</span>}</td></tr>
+        <tr><th scope="row">English</th><td>{english || <span class="muted">{NONE}</span>}</td></tr>
+        {campus && <tr><th scope="row">Campus</th><td>{campus}</td></tr>}
+        {deadlines.length > 0 && <tr><th scope="row">Deadlines</th><td>{deadlines.map((x) => <span class="line">{x.label}: {x.date}</span>)}</td></tr>}
+        {accred.length > 0 && <tr><th scope="row">Accredited by</th><td>{accred.join('; ')}</td></tr>}
+      </tbody>
+    </table>
+  </section>
 
-  {c.reg && (
+  {overview.length > 0 && (
+    <section aria-labelledby="overview" class="copied">
+      <h2 id="overview">Overview</h2>
+      <CourseBlocks list={overview} />
+      {overview.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">Read the full description on {host}</a></p>}
+    </section>
+  )}
+
+  {nav.some(([id]) => id === 'entry') && (
+    <section aria-labelledby="entry" class="copied">
+      <h2 id="entry">Entry requirements</h2>
+      {entry.length === 0 && f.academicEntry && <p>{f.academicEntry.text}</p>}
+      <CourseBlocks list={entry} />
+      {entry.length === 0 && english && <p><strong>English:</strong> {english}</p>}
+      {entry.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">Read the full requirements on {host}</a></p>}
+    </section>
+  )}
+
+  {nav.some(([id]) => id === 'fees') && (
+    <section aria-labelledby="fees" class="copied">
+      <h2 id="fees">Fees</h2>
+      {fees.length === 0 && feeShown && <p>International students: {feeShown}.</p>}
+      <CourseBlocks list={fees} />
+      <p class="small">Fees change each year and can differ by intake or campus. The university's page has the figure that applies to you.</p>
+    </section>
+  )}
+
+  {nav.some(([id]) => id === 'study') && (
+    <section aria-labelledby="study" class="copied">
+      <h2 id="study">What you will study</h2>
+      <CourseBlocks list={study} />
+      {showModuleLists && core.length > 0 && <Fragment><h3>Core modules</h3><ul>{core.map((m) => <li>{m}</li>)}</ul></Fragment>}
+      {showModuleLists && optional.length > 0 && <Fragment><h3>Optional modules</h3><ul>{optional.map((m) => <li>{m}</li>)}</ul></Fragment>}
+      {study.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">See all modules on {host}</a></p>}
+    </section>
+  )}
+
+  {teaching.length > 0 && (
+    <section aria-labelledby="teaching" class="copied">
+      <h2 id="teaching">Teaching and assessment</h2>
+      <CourseBlocks list={teaching} />
+    </section>
+  )}
+
+  {nav.some(([id]) => id === 'careers') && (
+    <section aria-labelledby="careers" class="copied">
+      <h2 id="careers">Careers</h2>
+      <CourseBlocks list={careers} />
+      {showEmployerList && <Fragment><p>Employers named on the course page:</p><ul>{employers.map((e) => <li>{e}</li>)}</ul></Fragment>}
+    </section>
+  )}
+
+  {nav.some(([id]) => id === 'accred') && (
+    <section aria-labelledby="accred" class="copied">
+      <h2 id="accred">Accreditation</h2>
+      {accredText.length === 0 && accred.length > 0 && <ul>{accred.map((a) => <li>{a}</li>)}</ul>}
+      <CourseBlocks list={accredText} />
+    </section>
+  )}
+
+  {nav.some(([id]) => id === 'apply') && (
+    <section aria-labelledby="apply" class="copied">
+      <h2 id="apply">How to apply</h2>
+      <CourseBlocks list={apply} />
+    </section>
+  )}
+
+  {funding.length > 0 && (
+    <section aria-labelledby="funding" class="copied">
+      <h2 id="funding">Scholarships</h2>
+      <CourseBlocks list={funding} />
+      <p class="small"><a href={`/universities/${c.uni}/`}>More about {c.uniName}</a> · <a href="/scholarships/">Search all scholarships</a></p>
+    </section>
+  )}
+
+  {!d && (
+    <section aria-labelledby="more-info">
+      <h2 id="more-info">More about this course</h2>
+      <p>The entry requirements, modules and career outcomes are on <a href={c.url} target="_blank" rel="noopener">the university's course page</a>.</p>
+    </section>
+  )}
+
+  {registerNote && (
     <section aria-labelledby="h-reg">
       <h2 id="h-reg">On the government register</h2>
       <dl class="sch-facts">
@@ -47,44 +200,29 @@ const months = (c.intakes && c.intakes.months) || [];
         <div><dt>Registered tuition (older figure)</dt><dd>{regTuitionText(c)}</dd></div>
         {regPlaces(c).length > 0 && <div><dt>Campuses</dt><dd>{regPlaces(c).join('; ')}</dd></div>}
       </dl>
-      <p class="small">The registered tuition is the whole-course tuition recorded on the Australian Government register. It can be older than the fee the university charges now, so check the university's own fee page before you plan a budget. It is not the fee we show for this course.</p>
-      {REGISTER && (
-        <p class="small">Source: {REGISTER.name}, {REGISTER.by}, licensed {REGISTER.licence}. <a href={REGISTER.url} rel="noopener">Open the dataset</a>. Register file downloaded {fmtIso(REGISTER.downloaded)}.</p>
-      )}
+      <p class="small">The registered tuition is the whole-course tuition recorded on the Australian Government register. It can be older than the fee the university charges now, so use the university's fee page when you plan a budget.</p>
+      <p class="small">Source: {REGISTER.name}, {REGISTER.by}, licensed {REGISTER.licence}. <a href={REGISTER.url} target="_blank" rel="noopener">Open the dataset</a>. Register file downloaded {fmtIso(REGISTER.downloaded)}.</p>
     </section>
   )}
 
-  <section aria-labelledby="h-why">
-    <h2 id="h-why">Why this course is listed</h2>
+  <p class="source-line small">
+    {d && hasText ? 'Course details above are from' : 'Course details are from'} <a href={c.url} target="_blank" rel="noopener">{host}</a>, read on {fmtIso((d && d.readOn) || c.lastVerified)}. Details change, so confirm them on the official page before you apply.
+  </p>
+
+  <details class="how">
+    <summary>How we checked this course</summary>
     <ul class="src-list">
-      <li>Full-time, on campus. {c.studyMode && <span class="cq">As the page says: “{c.studyMode}”</span>}</li>
+      <li>Full-time, on campus. {c.studyMode && <span class="cq">The page says: “{c.studyMode}”</span>}</li>
       <li>Open to international students. {c.cricosMatch === 'name' && c.intl.how === 'cricos'
         ? `The course name matches one course on the government register of courses for international students (CRICOS ${c.cricos}). The page itself does not show the code.`
-        : (INTL_HOW[c.intl.how] || '')} {!(c.cricosMatch === 'name' && c.intl.how === 'cricos') && c.intl.evidence && <span class="cq">As the page says: “{c.intl.evidence}”</span>}</li>
+        : (INTL_HOW[c.intl.how] || '')} {!(c.cricosMatch === 'name' && c.intl.how === 'cricos') && c.intl.evidence && <span class="cq">The page says: “{c.intl.evidence}”</span>}</li>
       {c.cricosMatch === 'name' && c.intl.how !== 'cricos' && <li>The course name also matches one course on the government register of courses for international students (CRICOS {c.cricos}).</li>}
-      {c.field && <li>The field is our own label, chosen from words in the course name. It is not the university's.</li>}
+      {c.field && <li>The field label is ours, chosen from words in the course name. It is not the university's.</li>}
       {c.flags && c.flags.includes('integrated') && <li>An integrated Master's: a four-year course that starts at undergraduate level.</li>}
-      {c.flags && c.flags.includes('combined') && <li>The name mentions both a Bachelor's and a Master's. Open the official page to see how the course is structured.</li>}
+      {c.flags && c.flags.includes('combined') && <li>The name mentions both a Bachelor's and a Master's. The official page shows how the course is structured.</li>}
+      <li>Read by a program from the course page. {d ? 'Every figure and name above was checked against the text of the page; anything the page did not show was left out.' : 'A fact the page did not state clearly is left out rather than guessed.'}</li>
     </ul>
-  </section>
-
-  <section aria-labelledby="h-src">
-    <h2 id="h-src">Where each fact comes from</h2>
-    <ul class="src-list">
-      <li>Official page: <a href={c.url} rel="noopener">{c.url}</a></li>
-      <li>Last read on {fmtIso(c.lastVerified)}. First seen {fmtIso(c.firstSeen)}.</li>
-      {c.reg && <li>Registered length, campuses and tuition: the government register (CRICOS), file downloaded {REGISTER ? fmtIso(REGISTER.downloaded) : ''}.</li>}
-      {c.duration && c.duration.context && c.duration.context.startsWith('Government register') && <li class="quote">Length, from the government register: “{c.duration.context}”</li>}
-      {c.duration && c.duration.context && !c.duration.context.startsWith('Government register') && <li class="quote">Length, as the page says: “{c.duration.context}”</li>}
-      {c.fee && c.fee.context && <li class="quote">Fee, as the page says: “{c.fee.context}”</li>}
-      {c.ielts && c.ielts.context && <li class="quote">{ieltsScore(c) != null ? 'English score' : 'English test, mentioned without one clear score'}, as the page says: “{c.ielts.context}”</li>}
-      {months.length > 0 && c.intakes.context && <li class="quote">Start, as the page says: “{c.intakes.context}”</li>}
-    </ul>
-    {(!c.duration || !c.fee || ieltsScore(c) == null || !months.length) && (
-      <p class="small">{[!c.duration && 'length', !c.fee && 'international fee', ieltsScore(c) == null && 'English score', !months.length && 'start dates'].filter(Boolean).join(', ')}: {CHECK.toLowerCase()}. The program could not read {([!c.duration, !c.fee, ieltsScore(c) == null, !months.length].filter(Boolean).length > 1) ? 'these' : 'this'} with confidence, so it does not guess.</p>
-    )}
-    <p class="small">Read by a program, not by a person. Course details change, so check the official page before you apply.</p>
-  </section>
+  </details>
 
   {others.length > 0 && (
     <section aria-labelledby="h-more">

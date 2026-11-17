@@ -77,6 +77,10 @@ def duplicates(courses_by_url):
     return drop
 
 
+# What this run added and dropped, printed at the end of the run so a person can vet it from the log.
+NEW_LOG, DROPPED_LOG = [], []
+
+
 def merge(uni, prev, out, today, now_iso):
     """Combine the previous file with what this run read. Returns (doc, stats)."""
     stats = {'new': 0, 'changed': 0, 'dropped': 0, 'kept': 0}
@@ -108,6 +112,7 @@ def merge(uni, prev, out, today, now_iso):
         c['misses'] = c.get('misses', 0) + 1
         if c['misses'] >= MISS_LIMIT:
             stats['dropped'] += 1
+            DROPPED_LOG.append((uni['slug'], c['name'], c['url'], f'page result: {r}'))
             continue
         keep[url] = c
     for asked, rec in out['records'].items():
@@ -122,10 +127,13 @@ def merge(uni, prev, out, today, now_iso):
                 stats['changed'] += 1
         else:
             stats['new'] += 1
+            NEW_LOG.append((uni['slug'], rec))
         keep[rec['url']] = rec
     for url in duplicates(keep):      # the same programme under several addresses (one per intake year, say): keep one
-        keep.pop(url, None)
+        gone = keep.pop(url, None)
         stats['dropped'] += 1
+        if gone:
+            DROPPED_LOG.append((uni['slug'], gone['name'], url, 'same programme under another address'))
     stats['kept'] = len(keep) - stats['new']
     doc['courses'] = sorted(keep.values(), key=lambda c: (c['level'], c['name'].lower(), c['url']))
     seen = dict(prev.get('seen', {}))
@@ -239,6 +247,31 @@ def main():
     return 0
 
 
+def print_vetting_lists(unis, docs, stats_by, per_uni=4, max_dropped=60):
+    """Counts per university, then a spread of the new courses and the dropped ones, so the run log shows what changed without opening files."""
+    print('\nPER UNIVERSITY (eligible, new, dropped, top held reasons)')
+    for u in unis:
+        d = docs.get(u['slug'])
+        if d:
+            st = stats_by[u['slug']]
+            top = '; '.join(f'{k}={v}' for k, v in list(d['counts']['held'].items())[:3])
+            print(f"  {u['slug']}: {len(d['courses'])} eligible, {st['new']} new, {st['dropped']} dropped | {top}")
+    print('\nNEW COURSES, a spread per university (name | level | how international | study mode evidence | url)')
+    by = {}
+    for slug, rec in NEW_LOG:
+        by.setdefault(slug, []).append(rec)
+    for slug, recs in sorted(by.items()):
+        step = max(1, len(recs) // per_uni)
+        for rec in recs[::step][:per_uni]:
+            sm = rec.get('studyMode') or {}
+            ev = (sm.get('evidence') if isinstance(sm, dict) else sm) or ''
+            print(f"  {slug} | {rec['name']} | {rec['level']} | {rec['international']['how']} | {str(ev)[:90]} | {rec['url']}")
+    print(f'\nDROPPED (first {max_dropped} of {len(DROPPED_LOG)}): university | name | reason | url')
+    for slug, name, url, why in DROPPED_LOG[:max_dropped]:
+        print(f'  {slug} | {name} | {why} | {url}')
+    print()
+
+
 def report(args, unis, docs, stats_by, prevs, fx, today, gate_failed, before, after, secs):
     rep = Path(args.report)
     rep.mkdir(parents=True, exist_ok=True)
@@ -266,6 +299,7 @@ def report(args, unis, docs, stats_by, prevs, fx, today, gate_failed, before, af
             top = '; '.join(f'{k}={v}' for k, v in list(d['counts']['held'].items())[:4])
             w.writerow([u['slug'], u['country'], d['status'], d.get('robotsReason', ''), d['pagesRead'], len(d['courses']), st['new'], st['changed'], st['dropped'],
                         top, (d.get('intlOpen') or {}).get('url', ''), d['note']])
+    print_vetting_lists(unis, docs, stats_by)
     held_samples = {s: d.get('heldSamples') for s, d in docs.items() if d.get('heldSamples')}
     (rep / 'held_samples.json').write_text(json.dumps(held_samples, indent=1, ensure_ascii=False), encoding='utf-8')   # example addresses for each held-back reason
     samples = {s: d['courses'][:3] for s, d in docs.items() if d['courses']}
