@@ -5,6 +5,7 @@ import '../styles/home-v1.css';
 import { all, countries, latestRead, SITE } from '../lib/data.js';
 import { PUBLISH as SCH_ON, items as schItems } from '../lib/scholarships.js';
 import { PUBLISH as INT_ON, items as intItems } from '../lib/internships.js';
+import { PUBLISH as CRS_ON, items as crsItems, total as crsTotal } from '../lib/courses.js';
 
 const listed = all.filter((u) => u.listed).length;
 const shortDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
@@ -17,16 +18,34 @@ const rings = Array.from({ length: 26 }, (_, i) => ({
   op: (0.5 - i * 0.012).toFixed(3),
 }));
 
-const counts = { _all: { n: all.length, name: '' } };
-for (const c of countries) counts[c.code] = { n: c.count, name: c.name };
+// Courses: shown only when the real course list is switched on (src/data/course_publish.json) and there are courses to show.
+const crsLive = CRS_ON && crsTotal > 0;
+const crsBy = {};
+for (const i of crsItems) crsBy[i.country] = (crsBy[i.country] || 0) + 1;
+const crsUnis = new Set(crsItems.map((i) => i.uni)).size;
+const fieldN = {};
+for (const i of crsItems) if (i.field) fieldN[i.field] = (fieldN[i.field] || 0) + 1;
+const topFields = Object.entries(fieldN).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([f]) => f);
+
+const counts = { _all: { n: all.length, name: '', crs: crsTotal } };
+for (const c of countries) counts[c.code] = { n: c.count, name: c.name, crs: crsBy[c.code] || 0 };
 
 // The first four countries by number of universities become the quick links under the search box.
 const quick = [...countries].sort((a, b) => b.count - a.count).slice(0, 4);
 
 // Scholarships and internships: show a count only when listings are published and there is something to count.
 const nPlaces = (list) => new Set(list.map((i) => i.country)).size;
-const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const plural = (n, one, many) => `${n.toLocaleString('en-GB')} ${n === 1 ? one : many}`;
 const tools = [
+  {
+    name: 'Courses',
+    text: 'Bachelor’s and Master’s courses that are full-time on campus and open to international students. Each one shows its length, fee and English score where the page gives them, and links to the official page.',
+    href: '/courses/',
+    cta: 'Search courses',
+    live: crsLive,
+    stat: `${plural(crsTotal, 'course', 'courses')} at ${plural(crsUnis, 'university', 'universities')} in ${plural(nPlaces(crsItems), 'destination', 'destinations')}`,
+    wait: 'Course listings are being checked. A sample search is ready to try.',
+  },
   {
     name: 'Scholarships',
     text: 'Open to international students on Bachelor’s and Master’s courses. Each one shows its value, deadline and official page, and whether it is open or closed.',
@@ -82,19 +101,32 @@ const ld = [
         <div class="hero-main">
           <h1>Where could I actually go?</h1>
           <p class="hero-sub">
-            Pick a country and see the universities there, with the facts and the sources for each one.
+            {crsLive
+              ? `Search ${crsTotal.toLocaleString('en-GB')} courses at ${crsUnis} universities, or pick a country and see its universities.`
+              : 'Pick a country and see the universities there, with the facts and the sources for each one.'}
           </p>
 
-          <form class="bigsearch" action="/universities/" method="get" role="search" autocomplete="off">
+          <form class="bigsearch" id="bs-form" action={crsLive ? '/courses/' : '/universities/'} method="get" role="search" autocomplete="off">
+            {crsLive && (
+              <div class="bs-mode" id="bs-mode" role="group" aria-label="Search in" hidden>
+                <button type="button" class="bs-tab" data-mode="courses" aria-pressed="true">Courses</button>
+                <button type="button" class="bs-tab" data-mode="universities" aria-pressed="false">Universities</button>
+              </div>
+            )}
             <div class="bs-box">
               <div class="bs-field">
                 <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
-                <input id="bs-q" name="q" type="search" placeholder="Search universities" aria-label="Search universities by name" enterkeyhint="search" />
+                <input id="bs-q" name="q" type="search" placeholder={crsLive ? 'Course or subject' : 'Search universities'} aria-label={crsLive ? 'Search courses by name, subject or university name' : 'Search universities by name'} enterkeyhint="search" />
                 <button class="btn" type="submit">Search</button>
               </div>
             </div>
           </form>
-          <p class="sx-try bs-try" aria-label="Browse by country">
+          {crsLive && (
+            <p class="sx-try bs-try" id="bs-try-courses" aria-label="Browse courses by field">
+              {topFields.map((f) => <a class="sx-q" href={`/courses/?f=${encodeURIComponent(f)}`}>{f}</a>)}
+            </p>
+          )}
+          <p class="sx-try bs-try" id="bs-try-universities" aria-label="Browse by country" hidden={crsLive}>
             {quick.map((c) => <a class="sx-q" href={`/study-in/${c.code}/`}>Study in {c.name}</a>)}
           </p>
         </div>
@@ -124,7 +156,8 @@ const ld = [
             </div>
 
             <div class="row">
-              <a class="btn" id="go" href="/universities/">Show these universities</a>
+              {crsLive && <a class="btn" id="go-courses" href="/courses/">Search courses</a>}
+              <a class={crsLive ? 'btn-ghost' : 'btn'} id="go" href="/universities/">Show these universities</a>
               <a class="btn-ghost" href="/study-in/">Read a country guide</a>
             </div>
 
@@ -136,7 +169,7 @@ const ld = [
 
     <section class="band" aria-labelledby="h-tools">
       <div class="wrap">
-        <h2 id="h-tools">Fund your course. Find work experience.</h2>
+        <h2 id="h-tools">Find a course. Fund it. Find work experience.</h2>
         <ul class="tools">
           {tools.map((t) => (
             <li class="tool">
@@ -190,6 +223,7 @@ const ld = [
     (function () {
       var data = JSON.parse(document.getElementById('country-counts').textContent);
       var sel = document.getElementById('s-country'), n = document.getElementById('count'), txt = document.getElementById('count-txt'), go = document.getElementById('go');
+      var goCourses = document.getElementById('go-courses');
       var total = Object.keys(data).length - 1;
       function run() {
         var v = sel.value, d = data[v || '_all'];
@@ -199,10 +233,33 @@ const ld = [
         txt.textContent = '';
         txt.appendChild(b);
         txt.appendChild(document.createTextNode(v ? ' in ' + d.name + '. Open one to see its facts and sources.' : ' across ' + total + ' countries. Pick a country to narrow it down.'));
+        if (goCourses) {
+          goCourses.textContent = d.crs ? 'Search ' + d.crs.toLocaleString('en-GB') + ' course' + (d.crs === 1 ? '' : 's') : 'Search courses';
+          goCourses.setAttribute('href', v && d.crs ? '/courses/?c=' + encodeURIComponent(v) : '/courses/');
+        }
         go.setAttribute('href', v ? '/universities/?c=' + encodeURIComponent(v) : '/universities/');
       }
       sel.addEventListener('change', run);
       run();
+
+      // Search box: courses or universities. Without scripts it searches courses (or universities while courses are not published).
+      var mode = document.getElementById('bs-mode');
+      if (mode) {
+        var form = document.getElementById('bs-form'), q = document.getElementById('bs-q');
+        var tc = document.getElementById('bs-try-courses'), tu = document.getElementById('bs-try-universities');
+        var tabs = Array.prototype.slice.call(mode.querySelectorAll('.bs-tab'));
+        var set = function (m) {
+          var c = m === 'courses';
+          tabs.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === m)); });
+          form.setAttribute('action', c ? '/courses/' : '/universities/');
+          q.setAttribute('placeholder', c ? 'Course or subject' : 'Search universities');
+          q.setAttribute('aria-label', c ? 'Search courses by name, subject or university name' : 'Search universities by name');
+          tc.hidden = !c;
+          tu.hidden = c;
+        };
+        tabs.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-mode')); q.focus(); }); });
+        mode.hidden = false;
+      }
     })();
   </script>
 
@@ -213,8 +270,11 @@ const ld = [
     .home-v1 .step h3 a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
     .home-v1 .step-n { color: var(--accent); }
     .home-v1 #h-tools { max-width: none; }
-    .home-v1 .tools { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
-    @media (min-width: 760px) { .home-v1 .tools { grid-template-columns: repeat(2, 1fr); } }
+    .home-v1 .tools { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+    .home-v1 .bs-mode { display: inline-flex; gap: 0.2rem; padding: 0.2rem; margin: 0 0 0.6rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+    .home-v1 .bs-tab { border: 0; background: transparent; border-radius: 999px; padding: 0.35rem 1rem; font-weight: 600; font-size: 0.95rem; color: var(--muted); }
+    .home-v1 .bs-tab:hover { color: var(--ink); }
+    .home-v1 .bs-tab[aria-pressed="true"] { background: var(--accent); color: var(--accent-on); }
     .home-v1 .tool { display: flex; flex-direction: column; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--green-4); border-radius: 18px; padding: clamp(1.25rem, 3vw, 1.75rem); }
     .home-v1 .tool h3 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); margin-bottom: 0.6rem; }
     .home-v1 .tool-txt { color: var(--muted); font-size: 0.95rem; line-height: 1.55; max-width: 44ch; }
