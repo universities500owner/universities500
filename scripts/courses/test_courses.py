@@ -160,6 +160,12 @@ class Levels(unittest.TestCase):
         self.assertEqual(L.classify_url('https://u.edu/pathways/business/'), 'foundation-or-pathway')
         self.assertEqual(L.classify_url('https://u.edu/courses/computer-science/'), '')
 
+    def test_domestic_version_of_a_course_page(self):
+        self.assertEqual(L.classify_url('https://adelaide.edu.au/study/degrees/2027/master-of-nursing/dom/'), 'domestic-only')
+        self.assertEqual(L.classify_url('https://u.edu/study/domestic/bachelor-of-arts/'), 'domestic-only')
+        self.assertEqual(L.classify_url('https://adelaide.edu.au/study/degrees/2027/master-of-nursing/int/'), '')
+        self.assertEqual(L.classify_url('https://u.edu/courses/domestic-policy-bachelor/'), '')   # a word inside a name is not a section
+
     def test_study_mode(self):
         self.assertEqual(L.study_mode(['Study mode: Full-time on campus.'])[0], 'yes')
         self.assertEqual(L.study_mode(['This course is delivered fully online.'])[0], 'no')
