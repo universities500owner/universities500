@@ -2,13 +2,13 @@
 import Base from '../layouts/Base.astro';
 import NewsItem from '../components/NewsItem.astro';
 import { countries } from '../lib/data.js';
-import { PUBLISH, forCountry, sourcesFor, lastChecked, fmtIso, host, keepDays } from '../lib/news.js';
+import { PUBLISH, forCountry, pressFor, sourcesFor, lastChecked, fmtIso } from '../lib/news.js';
 
 const path = '/industry-news/';
 const PER = 8;
 const NOTE = { blocked: 'its website does not allow automatic reading, so open it to see its news', unreadable: 'no headlines could be read automatically, so open it to see its news', failed: 'could not be reached at the last check' };
 const live = PUBLISH;
-const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), srcs: sourcesFor(c.code), checked: lastChecked(c.code) }));
+const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), press: pressFor(c.code), srcs: sourcesFor(c.code), checked: lastChecked(c.code) }));
 ---
 <Base
   title="Industry news for international students | Universities500"
@@ -35,23 +35,49 @@ const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), srcs: s
       <nav class="news-jump" aria-label="Jump to a destination">
         <ul class="chips">
           {sections.map((c) => (
-            <li><a href={`#n-${c.code}`}>{c.name}{c.rows.length > 0 ? ` (${c.rows.length})` : ''}</a></li>
+            <li><a href={`#n-${c.code}`}>{c.name}{c.rows.length + c.press.length > 0 ? ` (${c.rows.length + c.press.length})` : ''}</a></li>
           ))}
         </ul>
       </nav>
-      <p class="small">Headlines and dates are the official body's own. The short notes are the first sentences of the official summary, shortened, never rewritten. We keep items for {keepDays} days. English-language official pages only. This is not legal or immigration advice: read the official notice before you act.</p>
+      <p class="small">Official items: headlines and dates are the official body's own. The short notes are the first sentences of the official summary, shortened, never rewritten. We keep the last 12 months. English-language pages only. Trade press (ICEF Monitor, The PIE News) is listed below the official items as headline, date and link only: it is not an official source, so check any change on the official website. This is not legal or immigration advice: read the official notice before you act.</p>
 
       {sections.map((c) => (
         <section class="sec news-sec" id={`n-${c.code}`} aria-labelledby={`h-${c.code}`}>
           <h2 id={`h-${c.code}`}>{c.name}</h2>
           {c.rows.length > 0 ? (
-            <ul class="news-list">
-              {c.rows.slice(0, PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
-            </ul>
+            <Fragment>
+              <ul class="news-list">
+                {c.rows.slice(0, PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
+              </ul>
+              {c.rows.length > PER && (
+                <details class="news-more">
+                  <summary>Show {c.rows.length - PER} older official {c.rows.length - PER === 1 ? 'update' : 'updates'}</summary>
+                  <ul class="news-list">
+                    {c.rows.slice(PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
+                  </ul>
+                </details>
+              )}
+            </Fragment>
           ) : (
-            <p class="empty">No recent official update in English found{c.srcs.length > 0 ? ' on these websites' : ''}. Check the official pages below.</p>
+            <p class="empty">No official update in English found for the last 12 months{c.srcs.length > 0 ? ' on these websites' : ''}. Check the official pages below.</p>
           )}
-          {c.rows.length > PER && <p class="small">Showing the newest {PER} of {c.rows.length}. The older ones are on the official websites below.</p>}
+          {c.press.length > 0 && (
+            <div class="news-press">
+              <h3>In the trade press</h3>
+              <p class="small">Headlines from ICEF Monitor and The PIE News about {c.name}. Not official: confirm on the official websites.</p>
+              <ul class="news-list">
+                {c.press.slice(0, PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
+              </ul>
+              {c.press.length > PER && (
+                <details class="news-more">
+                  <summary>Show {c.press.length - PER} older trade-press {c.press.length - PER === 1 ? 'headline' : 'headlines'}</summary>
+                  <ul class="news-list">
+                    {c.press.slice(PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
+                  </ul>
+                </details>
+              )}
+            </div>
+          )}
           {c.srcs.length > 0 && (
             <p class="small news-srcs">
               Read for this destination:{' '}

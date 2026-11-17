@@ -8,21 +8,24 @@ import { fmtIso } from './when.js';
 
 export const PUBLISH = gate.publish === true;
 export const generatedAt = data.generatedAt || '';
-export const keepDays = data.keepDays || 120;
+export const keepDays = data.keepDays || 365;
 export { countryName, fmtIso };
 
 const byNewest = (a, b) => (b.published || '').localeCompare(a.published || '') || (b.firstSeen || '').localeCompare(a.firstSeen || '') || a.title.localeCompare(b.title);
 export const items = PUBLISH ? [...(data.items || [])].sort(byNewest) : [];
 
-// The newest n items across all countries, for the strip above the footer.
-export const latest = (n = 4) => items.slice(0, n);
-export const forCountry = (code) => items.filter((i) => i.country === code);
-export const counts = Object.fromEntries(countries.map((c) => [c.code, forCountry(c.code).length]));
+// Trade press (ICEF Monitor, The PIE News) is kept apart: headline, date and link only, never shown as an official source.
+export const isPress = (i) => i.kind === 'media';
+// The newest n official items across all countries, for the strip above the footer. Trade press never goes in the strip.
+export const latest = (n = 4) => items.filter((i) => !isPress(i)).slice(0, n);
+export const forCountry = (code) => items.filter((i) => i.country === code && !isPress(i));
+export const pressFor = (code) => items.filter((i) => i.country === code && isPress(i));
+export const counts = Object.fromEntries(countries.map((c) => [c.code, forCountry(c.code).length + pressFor(c.code).length]));
 
-// The bodies we read for a country, with the date of the last check. Failed ones are kept in the list and marked, never hidden.
+// The official bodies we read for a country, with the date of the last check. Failed ones are kept in the list and marked, never hidden.
 export function sourcesFor(code) {
   return Object.entries(data.sources || {})
-    .filter(([, s]) => s.country === code)
+    .filter(([, s]) => s.country === code && s.kind !== 'media')
     .map(([id, s]) => ({ id, body: s.body, kind: s.kind, url: s.url, status: s.status, checked: s.checked }))
     .sort((a, b) => (a.kind === b.kind ? a.body.localeCompare(b.body) : a.kind === 'government' ? -1 : 1));
 }

@@ -480,3 +480,9 @@ html[data-theme="dark"] .xcta { background: var(--hover); }
 .news-jump { margin: 1rem 0 .5rem; }
 .news-jump .chips a { text-decoration: none; }
 .news-sec { scroll-margin-top: 1rem; }
+.news-press { margin-top: 1.5rem; }
+.news-press h3 { font-size: 1.05rem; margin: 0 0 .15rem; }
+.news-item.press { background: transparent; border-style: dashed; padding: .75rem 1rem; }
+.news-item.press .news-src { margin-top: 0; font-weight: 400; color: var(--muted); }
+.news-more { margin: .25rem 0 0; }
+.news-more > summary { cursor: pointer; font-weight: 600; padding: .35rem 0; }

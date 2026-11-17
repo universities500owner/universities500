@@ -36,6 +36,37 @@ BLOCK = re.compile(
 HARD_BLOCK = re.compile(
     r"\b(?:arrest(?:ed|s)?|detainers?|illegal aliens?|murder\w*|kill(?:ed|ing|s)|charged|convicted|sentenced|indicted|pleads? guilty|fugitives?|"
     r"traffick\w*|smuggl\w*|terror\w*|deport\w*|removal operation)\b", re.I)
+# trade press (ICEF Monitor, The PIE News): the country comes from the headline, case-sensitive so "US" and "us" differ
+COUNTRY_WORDS = {
+    'usa': r"\b(?:US|USA|U\.S\.|United States|American?s?)\b",
+    'uk': r"\b(?:UK|U\.K\.|United Kingdom|Britain|British|England|Scotland|Wales|Scottish|Welsh)\b",
+    'canada': r"\b(?:Canada|Canadian|Ontario|Quebec|British Columbia|IRCC)\b",
+    'australia': r"\b(?:Australia|Australian|Australia's|Queensland|NSW)\b",
+    'new-zealand': r"\b(?:New Zealand|NZ|Kiwi)\b",
+    'ireland': r"\b(?:Ireland|Irish)\b",
+    'germany': r"\b(?:Germany|German|Germany's)\b",
+    'france': r"\b(?:France|French)\b",
+    'netherlands': r"\b(?:Netherlands|Dutch|Holland)\b",
+    'sweden': r"\b(?:Sweden|Swedish)\b",
+    'norway': r"\b(?:Norway|Norwegian)\b",
+    'singapore': r"\bSingapore(?:an)?\b",
+    'malaysia': r"\bMalaysia(?:n)?\b",
+    'uae': r"\b(?:UAE|United Arab Emirates|Emirates|Emirati|Dubai|Abu Dhabi)\b",
+}
+_COUNTRY_RE = {c: re.compile(p) for c, p in COUNTRY_WORDS.items()}
+# a rule, a visa, a cap, a fee, a policy: what a trade-press headline must be about to be listed
+POLICY = re.compile(
+    r"\b(?:visas?|permits?|caps?|capped|quotas?|rules?|polic(?:y|ies)|regulations?|regulatory|reforms?|fees?|levy|levies|work (?:rights|hours|permits?)|post-study|"
+    r"immigration|migration|bill|laws?|legislation|bans?|banned|crack(?:s|ing)? down|crackdown|tighten\w*|thresholds?|proof of funds|financial requirements?|"
+    r"requirements?|restrictions?|limits?|limiting|sponsor\w*|licen[cs]\w*|compliance|genuine student|net migration|settlement|graduate route|OPT|PGWP|"
+    r"English[- ]language|IELTS|dependants?|dependents?|ceiling|pause\w*|suspend\w*|overhaul)\b", re.I)
+
+
+def countries_in(text):
+    """Countries named in a headline, in the order of our list, at most three."""
+    return [c for c in COUNTRY_WORDS if _COUNTRY_RE[c].search(text or '')][:3]
+
+
 STOP = re.compile(r"\b(?:the|and|of|to|in|for|is|are|on|with|that|a|an|from|will|be|new)\b", re.I)
 BOILERPLATE = re.compile(
     r"(?:The post .{0,200}? appeared first on .{0,100}?\.?$|Read more\.?|Continue reading\.?|\[\s*(?:…|\.\.\.)\s*\]|Share this page\.?|Last updated:? [^.]{0,40}\.?|"
@@ -49,6 +80,8 @@ def relevant(title, summary='', mode='student', immigration=False):
     Otherwise an item needs a strong word (student visa, study permit, ...), or a student word together with a word about coming from abroad."""
     if mode == 'all':
         return True, ''
+    if mode == 'policy':       # trade press: the headline must be about a rule, a visa, a cap, a fee or a policy
+        return (True, '') if POLICY.search(title) else (False, 'not-about-policy')
     both = f'{title} {summary}'
     if HARD_BLOCK.search(title):
         return False, 'about-something-else'

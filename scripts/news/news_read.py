@@ -1,6 +1,7 @@
 """Read one official source and return the items that pass every rule, plus a plain account of what happened (for the run report)."""
 import urllib.parse
 from collections import Counter
+from datetime import datetime, timedelta
 
 import extract as X  # scripts/scholarships/extract.py (path is set by the caller)
 import textutil as T
@@ -23,14 +24,15 @@ def _fetch(fx, url, info, accept=None):
     return res if res.ok else None
 
 
-MAX_FETCHES = 12             # per source per run, before the article pages
+MAX_FETCHES = 12             # per source per run, before the article pages (a source may set maxFetches)
+RECENT_DAYS = 21             # after the first run a source only needs its recent items: older ones are already stored
 
 
 def _as_list(v):
     return [v] if isinstance(v, str) else list(v or [])
 
 
-def _candidates(src, fx, info):
+def _candidates(src, fx, info, since):
     """Items from every endpoint that gives any, in this order, de-duplicated by address:
     explicit feeds, the Federal Register, feeds the home page advertises, the listed news pages, and (only when nothing came yet)
     the news pages the home page links to."""
@@ -47,7 +49,7 @@ def _candidates(src, fx, info):
         return bool(new)
 
     def fetch(u, **kw):
-        if len(info['tried']) >= MAX_FETCHES:
+        if len(info['tried']) >= int(src.get('maxFetches', MAX_FETCHES)):
             return None
         return _fetch(fx, u, info, **kw)
 
@@ -71,12 +73,28 @@ def _candidates(src, fx, info):
         if res and NF.looks_like_feed(res.body):
             take(NF.parse_feed(res.body, res.final_url), f'feed {u}')
     for term in _as_list(src.get('fr')):
-        res = fetch(NF.federal_register_url(term), accept='application/json')
+        res = fetch(NF.federal_register_url(term, since=since), accept='application/json')
         if res:
             its = NF.parse_federal_register(res.body)
             if its:
                 info.setdefault('frTerms', []).append(term)
                 take(its, 'federal-register')
+    gu = src.get('govuk') or {}
+    for q in _as_list(gu.get('q')) or ['']:
+        for org in _as_list(gu.get('orgs')):
+            res = fetch(NF.govuk_url(org, q, since), accept='application/json')
+            if res:
+                take(NF.parse_govuk(res.body), 'govuk-search')
+    wp = src.get('wp') or {}
+    for q in _as_list(wp.get('queries')):
+        for page in range(1, int(wp.get('pages', 2)) + 1):
+            res = fetch(NF.wp_url(wp['base'], q, page, since), accept='application/json')
+            if not res:
+                break
+            its = NF.parse_wp(res.body)
+            take(its, f"wordpress-api {wp['base']}")
+            if len(its) < 100:
+                break
     home = fetch(src['home']) if src.get('home') else None
     if home:
         feeds_on(home, 'found on the home page')
@@ -115,8 +133,10 @@ def read_source(src, fx, today, keep_days=120, known=None):
     known = known or {}
     info = {'id': src['id'], 'country': src['country'], 'body': src['body'], 'via': '', 'tried': [], 'robotsBlocked': 0,
             'found': 0, 'drops': Counter(), 'kept': 0, 'samples': [], 'rejected': [], 'error': '', 'profiles': []}
+    have = any(i.get('sourceId') == src['id'] for i in known.values())
+    since = (datetime.fromisoformat(today) - timedelta(days=RECENT_DAYS if have else keep_days)).date().isoformat()
     try:
-        cands = _candidates(src, fx, info)
+        cands = _candidates(src, fx, info, since)
     except Exception as e:  # one broken source must never stop the others
         info['error'] = f'{type(e).__name__}: {e}'
         return [], info
@@ -144,10 +164,11 @@ def read_source(src, fx, today, keep_days=120, known=None):
             info['drops']['date-in-the-future'] += 1
             continue
         old = known.get(url)
-        summary = R.excerpt(c.get('summary', ''), title)
-        if not summary and old and old.get('summary'):
+        media = src.get('kind') == 'media'
+        summary = '' if media else R.excerpt(c.get('summary', ''), title)     # trade-press text is never kept: headline, date and link only
+        if not summary and not media and old and old.get('summary'):
             summary = old['summary']
-        if not summary and fetched < MAX_ARTICLE_FETCHES and src.get('filter') != 'skip-article':
+        if not summary and not media and fetched < MAX_ARTICLE_FETCHES and src.get('filter') != 'skip-article':
             fetched += 1
             s, _ = _article_summary(fx, url, info)
             summary = R.excerpt(s, title)
@@ -160,8 +181,16 @@ def read_source(src, fx, today, keep_days=120, known=None):
             if len(info['rejected']) < 4:
                 info['rejected'].append(f'{title[:90]} [{why}]')
             continue
-        out.append({'country': src['country'], 'sourceId': src['id'], 'body': src['body'], 'kind': src.get('kind', 'government'),
-                    'detail': c.get('detail', ''), 'title': title, 'url': url, 'published': pub, 'summary': summary})
+        if src.get('tag'):        # trade press covers many countries: the country is the one named in the headline
+            where = R.countries_in(title)
+            if not where:
+                info['drops']['no-country'] += 1
+                continue
+        else:
+            where = [src['country']]
+        for cc in where:
+            out.append({'country': cc, 'sourceId': src['id'], 'body': src['body'], 'kind': src.get('kind', 'government'),
+                        'detail': c.get('detail', ''), 'title': title, 'url': url, 'published': pub, 'summary': summary})
     info['kept'] = len(out)
     info['samples'] = [f"{i['published']} {i['title'][:90]}" for i in out[:3]]
     return out, info
