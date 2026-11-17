@@ -133,3 +133,54 @@ def parse_listing(html, base):
         seen.add(url)
         items.append({'title': title, 'url': url, 'published': pub, 'summary': teaser})
     return items
+
+
+# ---- finding a site's news pages from its home page, and describing a page we could not read ----
+NEWS_TEXT = re.compile(r"\b(?:news|press|media(?:[- ]?(?:centre|center|releases?|room))?|latest|announcements?|updates?|newsroom|notices?|bulletins?)\b", re.I)
+NEWS_PATH = re.compile(r"/(?:news|press|media|latest|newsroom|announcements?|notices?|updates?|press-releases?|media-releases?)(?:[-_/.]|$)", re.I)
+NOT_A_PAGE = re.compile(r"\.(?:pdf|docx?|xlsx?|zip|jpe?g|png|gif|svg|mp4)$", re.I)
+
+
+def discover_sections(html, base, domains, limit=3):
+    """Links on a home page that lead to the body's news or press pages: link text or address says news, press, media, latest, notices.
+    Only addresses on the body's own domains. Shallow list pages come before single articles."""
+    soup = X.soup_of(html)
+    found = {}
+    for a in soup.find_all('a', href=True):
+        href = a['href'].strip()
+        if not href or href.startswith(('#', 'mailto:', 'tel:', 'javascript:')):
+            continue
+        url = urllib.parse.urljoin(base, href).split('#')[0]
+        if url.rstrip('/') == base.rstrip('/') or not R.allowed(url, domains):
+            continue
+        path = urllib.parse.urlparse(url).path
+        if NOT_A_PAGE.search(path):
+            continue
+        segs = [x for x in path.split('/') if x]
+        if segs and len(segs[-1]) > 45:
+            continue      # a long slug is an article, not a list
+        text = T.clean(a.get_text(' '))
+        score = (2 if NEWS_TEXT.search(text) and len(text) <= 40 else 0) + (2 if NEWS_PATH.search(path) else 0)
+        if score:
+            old = found.get(url)
+            if not old or score > old[0]:
+                found[url] = (score, len(segs))
+    ranked = sorted(found.items(), key=lambda kv: (-kv[1][0], kv[1][1], kv[0]))
+    return [u for u, _ in ranked[:limit]]
+
+
+def profile(html, base):
+    """A few plain facts about a page that gave no items, so the report can say why (script-loaded, no dates, a menu only, ...)."""
+    soup = X.soup_of(html)
+    title = T.clean(soup.title.get_text(' ')) if soup.title else ''
+    text = T.clean(soup.get_text(' '))
+    anchors = soup.find_all('a', href=True)
+    long_links = []
+    for a in anchors:
+        t = T.clean(a.get_text(' '))
+        if len(t) >= 30:
+            long_links.append(f"{t[:60]} -> {urllib.parse.urljoin(base, a['href'])[:100]}")
+        if len(long_links) >= 6:
+            break
+    return {'title': title[:90], 'chars': len(text), 'links': len(anchors), 'timeTags': len(soup.find_all('time')),
+            'dates': len(T.parse_full_dates(text)), 'scripts': len(soup.find_all('script')), 'sample': long_links}

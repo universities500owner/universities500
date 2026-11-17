@@ -210,6 +210,34 @@ class ReadSource(unittest.TestCase):
         self.assertTrue(info['via'].startswith('list page'))
         self.assertEqual(next(i for i in items if 'Student pass' in i['title'])['summary'][:20], 'New arrivals on a st')
 
+    def test_news_section_found_from_the_home_page(self):
+        b = f'http://127.0.0.1:{PORT["p"]}'
+        EXTRA['/site'] = ('text/html', f'<html><body><nav><a href="{b}/about">About us</a> <a href="{b}/list">Latest news</a> <a href="https://example.org/news">Other news</a></nav></body></html>')
+        try:
+            self.assertEqual(NF.discover_sections(fx().get(f'{b}/site').text, f'{b}/site', ['127.0.0.1']), [f'{b}/list'])
+            items, info = NR.read_source(src(feeds=[], home=f'{b}/site'), fx(), TODAY)      # no feed, no list address: the home page leads to it
+            self.assertEqual(len(items), 2)
+            self.assertEqual(info['sections'], [f'{b}/list'])
+        finally:
+            EXTRA.clear()
+
+    def test_page_with_no_items_is_described(self):
+        b = f'http://127.0.0.1:{PORT["p"]}'
+        EXTRA['/spa'] = ('text/html', '<html><head><title>News</title><script src="a.js"></script></head><body><div id="app"></div></body></html>')
+        try:
+            items, info = NR.read_source(src(feeds=[], list=f'{b}/spa'), fx(), TODAY)
+            self.assertEqual(items, [])
+            pr = info['profiles'][0]
+            self.assertEqual((pr['title'], pr['scripts'], pr['links']), ('News', 1, 0))
+        finally:
+            EXTRA.clear()
+
+    def test_feed_and_list_are_merged(self):
+        b = f'http://127.0.0.1:{PORT["p"]}'
+        items, info = NR.read_source(src(list=f'{b}/list'), fx(), TODAY)
+        self.assertEqual(len(items), 4)      # 2 from the feed + 2 from the list page
+        self.assertTrue(info['via'].startswith('feed') and 'list page' in info['via'])
+
     def test_robots_and_failures_are_reported_not_hidden(self):
         b = f'http://127.0.0.1:{PORT["p"]}'
         items, info = NR.read_source(src(feeds=[f'{b}/private/feed.xml']), fx(), TODAY)
@@ -295,6 +323,19 @@ class Runner(unittest.TestCase):
             self.assertEqual(self.run_main(tmp, [src(feeds=[f'{b}/missing.xml'])]), 3)
             self.assertEqual((Path(tmp) / 'news.json').read_text(), before)
 
+    def test_why_a_source_was_empty(self):
+        b = f'http://127.0.0.1:{PORT["p"]}'
+        EXTRA['/forbidden'] = ('text/plain', 'no', 403)
+        EXTRA['/blank'] = ('text/html', '<html><body><p>Nothing here</p></body></html>')
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                self.assertEqual(self.run_main(tmp, [src(), src(id='a', feeds=[], list=f'{b}/forbidden'), src(id='b', feeds=[], list=f'{b}/blank'), src(id='c', feeds=[f'{b}/missing.xml']),
+                                                      src(id='d', feeds=[f'{b}/private/feed.xml'])]), 0)
+                st = json.loads((Path(tmp) / 'news.json').read_text())['sources']
+                self.assertEqual([st[k]['status'] for k in 'abcd'], ['blocked', 'unreadable', 'failed', 'blocked'])
+        finally:
+            EXTRA.clear()
+
     def test_only_one_country(self):
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(self.run_main(tmp, [src(), src(id='other', country='canada')], '--only', 'canada'), 0)
@@ -311,7 +352,8 @@ class SourceList(unittest.TestCase):
             self.assertTrue(s['id'] and s['body'] and s['domains'], s.get('id'))
             self.assertIn(s['kind'], ('government', 'agency'), s['id'])
             self.assertTrue(s.get('feeds') or s.get('fr') or s.get('list') or s.get('home'), s['id'])
-            for u in (s.get('feeds') or []) + [s.get('list') or '', s.get('home') or '']:
+            lst = s.get('list') or []
+            for u in (s.get('feeds') or []) + ([lst] if isinstance(lst, str) else lst) + [s.get('home') or '']:
                 if u:
                     self.assertTrue(u.startswith('https://'), (s['id'], u))
                     if 'federalregister.gov' not in u:
