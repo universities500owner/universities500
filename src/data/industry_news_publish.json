@@ -1,4 +1,4 @@
 {
- "publish": false,
- "note": "Set to true to show Industry news: the menu item, the strip above the footer and /industry-news/. Leave false until the first daily runs have been read and the items checked against the official pages. While false the page is still built, kept out of search results and left out of the sitemap."
+ "publish": true,
+ "note": "Set to true to show Industry news: the menu item, the strip above the footer and /industry-news/. Set to false to hide all of it again. While false the page is still built, kept out of search results and left out of the sitemap."
 }
