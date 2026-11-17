@@ -8,6 +8,10 @@ name: Scholarships (read official pages)
 # 46 hours old, so in practice it runs every two days (and never twice in a row if one day is missed).
 # A manual run from the Actions tab always goes ahead.
 #
+# probe = true (manual only): a diagnosis, not a read. For the universities in `only` (or one `country`, for example australia) it prints, in the
+# run log, why each one gives no scholarships: what robots.txt answered, whether its scholarship pages load, whether the list looks built by
+# scripts, and what its sitemap offers. Nothing is written or committed. A run from any branch other than main never commits.
+#
 # Settings: add CONTACT_EMAIL under Settings > Secrets and variables > Actions (a variable or a secret both work).
 # It goes in the crawler's User-Agent so a website owner can reach you.
 on:
@@ -24,9 +28,17 @@ on:
         required: false
         default: "0"
       commit:
-        description: "Commit the result to main"
+        description: "Commit the result to main (only when the run is on main)"
         type: boolean
         default: true
+      probe:
+        description: "Diagnose only: print why the universities in `only` or `country` give nothing. Writes nothing."
+        type: boolean
+        default: false
+      country:
+        description: "With probe: every university of this country code, for example australia"
+        required: false
+        default: ""
 
 concurrency:
   group: scholarships
@@ -41,8 +53,6 @@ jobs:
     timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -50,8 +60,21 @@ jobs:
         run: pip install beautifulsoup4 lxml
       - name: Self-test (stub website, no internet)
         run: python3 scripts/scholarships/test_scholarships.py
+      - name: Probe (print why universities give nothing)
+        if: inputs.probe
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+          ONLY: ${{ inputs.only }}
+          COUNTRY: ${{ inputs.country }}
+        run: |
+          ARGS=""
+          if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
+          if [ -n "$COUNTRY" ]; then ARGS="$ARGS --country $COUNTRY"; fi
+          python3 scripts/scholarships/probe.py $ARGS | tee probe.txt
+          { echo '```'; sed -n '/==== SUMMARY ====/,$p' probe.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - name: Read scholarship pages
         id: run
+        if: "!inputs.probe"
         continue-on-error: true
         env:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
@@ -63,14 +86,14 @@ jobs:
           if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The crawler's User-Agent has no contact address."; fi
           python3 scripts/scholarships/run.py $ARGS
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && !inputs.probe
         with:
           name: scholarship-run
           path: out/
           retention-days: 14
           if-no-files-found: ignore
       - name: Commit the new data
-        if: steps.run.outcome == 'success' && steps.run.outputs.skip != 'true' && (github.event_name == 'schedule' || inputs.commit)
+        if: steps.run.outcome == 'success' && steps.run.outputs.skip != 'true' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || inputs.commit)
         run: |
           git config user.name "universities500-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
