@@ -219,6 +219,10 @@ def discover_sections(html, base, domains, limit=3):
     return [u for u, _ in ranked[:limit]]
 
 
+DATE_HINT = re.compile(r"\b\d{1,2}[ /.-](?:\d{1,2}|[A-Z][a-z]{2,8})[ /.-]\d{4}\b|\b[A-Z][a-z]{2,8}\.? \d{1,2},? \d{4}\b")
+API_HINT = re.compile(r"""["'](https?://[^"'\s<>]+|/[^"'\s<>]+)["']""")
+
+
 def profile(html, base):
     """A few plain facts about a page that gave no items, so the report can say why (script-loaded, no dates, a menu only, ...)."""
     soup = X.soup_of(html)
@@ -232,5 +236,14 @@ def profile(html, base):
             long_links.append(f"{t[:60]} -> {urllib.parse.urljoin(base, a['href'])[:100]}")
         if len(long_links) >= 6:
             break
+    # where a date sits in the visible text, and any data addresses named in the page's scripts: enough to see why no headline was read
+    ctx = [T.clean(text[max(0, m.start() - 90):m.end() + 90]) for m in list(DATE_HINT.finditer(text))[:2]]
+    ends = []
+    for e in API_HINT.findall(html or ''):
+        if re.search(r'api|\.json|ajax|feed|search|graphql|odata|_vti|services?/', e, re.I) and not re.search(r'\.(?:js|css|png|jpe?g|svg|gif|woff2?|ico)(?:\?|$)', e, re.I) and e not in ends:
+            ends.append(e[:140])
+        if len(ends) >= 5:
+            break
     return {'title': title[:90], 'chars': len(text), 'links': len(anchors), 'timeTags': len(soup.find_all('time')),
-            'dates': len(T.parse_full_dates(text)), 'scripts': len(soup.find_all('script')), 'sample': long_links}
+            'dates': len(T.parse_full_dates(text)), 'scripts': len(soup.find_all('script')), 'sample': long_links,
+            'dateContext': ctx, 'endpoints': ends}

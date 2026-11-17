@@ -39,7 +39,7 @@ const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), press: 
           ))}
         </ul>
       </nav>
-      <p class="small">Official items: headlines and dates are the official body's own. The short notes are the first sentences of the official summary, shortened, never rewritten. We keep the last 12 months. English-language pages only. Trade press (ICEF Monitor, The PIE News) is listed below the official items as headline, date and link only: it is not an official source, so check any change on the official website. This is not legal or immigration advice: read the official notice before you act.</p>
+      <p class="small">Official items: headlines and dates are the official body's own. The short notes are the first sentences of the official summary, shortened, never rewritten. We keep the last 12 months. English-language pages only. Sector bodies and trade publications (for example UKCISA, CBIE, ICEF Monitor, The PIE News) are listed below the official items as headline, date and link only: they are not official sources, so check any change on the official website. This is not legal or immigration advice: read the official notice before you act.</p>
 
       {sections.map((c) => (
         <section class="sec news-sec" id={`n-${c.code}`} aria-labelledby={`h-${c.code}`}>
@@ -63,14 +63,14 @@ const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), press: 
           )}
           {c.press.length > 0 && (
             <div class="news-press">
-              <h3>In the trade press</h3>
-              <p class="small">Headlines from ICEF Monitor and The PIE News about {c.name}. Not official: confirm on the official websites.</p>
+              <h3>From the sector and trade press</h3>
+              <p class="small">Headlines from sector bodies and trade publications about {c.name}. Not official: confirm on the official websites.</p>
               <ul class="news-list">
                 {c.press.slice(0, PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
               </ul>
               {c.press.length > PER && (
                 <details class="news-more">
-                  <summary>Show {c.press.length - PER} older trade-press {c.press.length - PER === 1 ? 'headline' : 'headlines'}</summary>
+                  <summary>Show {c.press.length - PER} older sector and trade {c.press.length - PER === 1 ? 'headline' : 'headlines'}</summary>
                   <ul class="news-list">
                     {c.press.slice(PER).map((i) => <li><NewsItem item={i} showCountry={false} /></li>)}
                   </ul>

@@ -126,6 +126,11 @@ class Rules(unittest.TestCase):
         self.assertEqual(R.relevant('ICE issues immigration detainer against illegal alien', 'The man, an F-1 student, was charged.'), (False, 'about-something-else'))
         self.assertEqual(R.relevant('Man arrested after student visa fraud', 'An international student was named.')[0], False)
 
+    def test_statement_of_changes_counts_for_an_immigration_authority_only(self):
+        title = 'Statement of changes to the Immigration Rules: HC 1333'
+        self.assertEqual(R.relevant(title, '', 'student', True), (True, ''))
+        self.assertEqual(R.relevant(title, '', 'student', False)[0], False)
+
     def test_english(self):
         self.assertTrue(R.english('International students can now apply for the new graduate visa online from next week.'))
         self.assertFalse(R.english('Les étudiants internationaux peuvent demander un visa pour la France en ligne dès maintenant'))
@@ -399,7 +404,9 @@ class SourceList(unittest.TestCase):
         for s in cfg['sources']:
             by.setdefault(s['country'], []).append(s)
             self.assertTrue(s['id'] and s['body'] and s['domains'], s.get('id'))
-            self.assertIn(s['kind'], ('government', 'agency') if s['country'] != '*' else ('media',), s['id'])
+            self.assertIn(s['kind'], ('government', 'agency', 'media') if s['country'] != '*' else ('media',), s['id'])
+            if s['kind'] == 'media':
+                self.assertEqual(s['filter'], 'policy', s['id'])      # sector bodies and trade press: policy headlines only
             self.assertTrue(s.get('feeds') or s.get('fr') or s.get('list') or s.get('home'), s['id'])
             lst = s.get('list') or []
             for u in (s.get('feeds') or []) + ([lst] if isinstance(lst, str) else lst) + [s.get('home') or '']:
