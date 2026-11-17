@@ -115,6 +115,27 @@ def probe_urls(a):
         print(f"--- {url}\n  {'HTTP %s, %d bytes' % (res.status, len(res.body)) if res.ok else 'FAILED: ' + (res.error or '')}")
         if not res.ok:
             continue
+        ctype = (res.ctype or '').lower()
+        if 'html' not in ctype and ctype:
+            # a data file (JSON, CSV, zip), not a page
+            print(f'  content-type {ctype!r}, {len(res.body)} bytes, final address {res.final_url}')
+            if res.body[:2] == b'PK':
+                import io, zipfile
+                z = zipfile.ZipFile(io.BytesIO(res.body))
+                for n in z.namelist():
+                    print(f'  zip member {n} ({z.getinfo(n).file_size} bytes)')
+                    print('    first lines:', z.read(n)[:1500].decode('utf-8', 'replace').replace('\r', '')[:1500])
+            elif 'json' in ctype:
+                try:
+                    doc = json.loads(res.text)
+                    for r in (doc.get('result') or {}).get('resources', []):
+                        print('  resource:', r.get('name'), '|', r.get('format'), '|', r.get('last_modified'), '|', r.get('url'))
+                except ValueError:
+                    pass
+                print('  starts:', res.text[:800])
+            else:
+                print('  starts:', res.text[:2500].replace('\r', ''))
+            continue
         html = res.text
         sig = page_signals(html, res.final_url)
         print(f"  text {sig['text_len']} chars, scripts {sig['scripts']}, vendors {sig['vendors']}, blobs {sig['blobs']}")
