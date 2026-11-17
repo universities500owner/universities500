@@ -23,6 +23,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent / 'scholarships'))  # fetcher, extract, textutil are shared with the scholarship reader
 import checks as Q  # noqa: E402
 import crawl  # noqa: E402
+import cricos  # noqa: E402
 from fetcher import Fetcher  # noqa: E402
 
 ROOT = HERE.resolve().parents[1]
@@ -198,7 +199,8 @@ def main():
         try:
             return u['slug'], prev, crawl.crawl_university(u, fx, today, args.max_pages, prev=prev, seeds=seeds.get(u['slug']),
                                                            refresh_days=args.refresh_days, held_days=args.held_days,
-                                                           strict_international=args.strict_international)
+                                                           strict_international=args.strict_international,
+                                                           register=cricos.Register.load(u['slug']))
         except Exception as e:  # one bad site must not stop the run
             return u['slug'], prev, {'slug': u['slug'], 'status': 'error', 'note': f'{type(e).__name__}: {e}', 'pages': 0, 'results': {}, 'records': {},
                                       'seen': {}, 'reasons': Counter(), 'samples': {}, 'knownRead': 0, 'knownFailed': 0}

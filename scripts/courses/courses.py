@@ -141,10 +141,13 @@ def course_id(uni_slug, name, url):
     return f"{uni_slug}:{T.slugify(name, 60)}:{hashlib.sha1(url.encode()).hexdigest()[:6]}"
 
 
-def read_course(page, html, uni, today, uni_intl=None, strict_international=False):
+def read_course(page, html, uni, today, uni_intl=None, strict_international=False, register=None):
     """Return (record, reason). `record` is None when the page is not an eligible course; `reason` says why.
 
     `uni_intl` is {'url', 'evidence'} when the university's own admissions pages show it takes international students.
+    `register` (cricos.Register) is the government list of this university's courses for international students (Australia only).
+    A page whose programme name matches exactly one registered course is open to international students even when the page does not
+    say so; the code is saved with how="cricos" and `cricosMatch: "name"`, so it is clear the page itself did not quote it.
     """
     level, degree, flags, out = identify(page)
     if not level:
@@ -176,6 +179,15 @@ def read_course(page, html, uni, today, uni_intl=None, strict_international=Fals
     intl, how, intl_ev = L.international(sents, cricos)
     if intl == 'no':
         return None, 'domestic-only'
+    matched = ''
+    if register and not cricos:
+        matched = register.unique(name, degree)
+        if matched:
+            cricos = matched
+            if intl == 'unclear':
+                intl, how = 'yes', 'cricos'
+                intl_ev = (f'CRICOS course code {matched}. The programme name matches one course on the government register of courses for '
+                           f'international students; the page itself does not show the code.')
     if intl == 'unclear' and uni_intl and not strict_international:
         intl, how, intl_ev = 'yes', 'university', f"The university's admissions page says it takes international students: {uni_intl['evidence']}"
     if mode != 'yes':
@@ -207,6 +219,7 @@ def read_course(page, html, uni, today, uni_intl=None, strict_international=Fals
         'intakes': ints,
         'ielts': ielts,
         'cricos': cricos or None,
+        'cricosMatch': 'name' if matched else None,
         'flags': sorted(flags) or None,
         'firstSeen': today,
         'lastVerified': today,

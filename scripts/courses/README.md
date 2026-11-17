@@ -70,6 +70,18 @@ By hand: `python3 scripts/courses/run.py --only aston-university --max-pages 40 
 - **Universities that need a look**: `robots` (robots.txt does not allow us, shown with the reason), `unreachable`.
 - **Readable, but no eligible course found**: usually course lists built with scripts (`js-only-or-empty`), or an address layout the finder missed. Hand-checked list pages can be added to `data/course_seeds.json` (same shape as `data/scholarship_seeds.json`: `{"seeds": {"<slug>": {"urls": ["https://..."]}}}`); they are read first and may sit on another domain.
 
+## The Australian government register (CRICOS)
+
+`data/cricos/<university>.json` holds each Australian university's registered Bachelor's and Master's courses (code, length in weeks, whole-course tuition, field, campuses) from the Commonwealth Register of Institutions and Courses for Overseas Students, Australian Government Department of Education, licensed Creative Commons Attribution 2.5 Australia (https://data.gov.au/data/dataset/cricos). The credit is shown on every course page that uses it.
+
+It never creates a course and has no web address, start months or English scores, so a course is still listed only when the university's own page was read. It does three things:
+
+1. **Open to international students.** A page whose programme name matches exactly one registered course at that university is accepted as open to international students (`international.how: "cricos"`, `cricosMatch: "name"`) when the page itself does not say so. Two registered courses with one name are not guessed. A code quoted on the page always comes first, and a page that says "domestic only" is never rescued. Study mode is **not** taken from the register: the page must still say full-time on campus.
+2. **Official length, campuses and field** are added to a course the reader found (`reg` in `src/data/courses.json`). The length fills the course's length only when the page gave none, and only when it is a normal Bachelor's or Master's length.
+3. **Registered tuition** is shown on the course page only, labelled "older figure": it is the whole-course amount, and it can be behind what the university charges now (Flinders' Bachelor of Accounting is AU$105,700 over 156 weeks in the register, about AU$35,200 a year, against AU$40,900 a year in Flinders' 2027 schedule; Edith Cowan's register fees match its pages). It is never the fee, never on a card and never in the fee filter. A fee of zero or blank is "not published".
+
+To refresh: download the four files (`CRICOS_Institutions.csv`, `CRICOS_Courses.csv`, `CRICOS_Locations.csv`, `CRICOS_Course_Locations.csv`) from the dataset page, put them in one folder, then `python3 scripts/courses/cricos.py build --csv-dir <folder>` and update `downloaded` (and `snapshot`, the date the dataset page shows) in `data/cricos/providers.json`. `providers.json` lists the CRICOS provider code of each university; branch colleges, pathway colleges and training arms are left out on purpose. The register is out of date within weeks (the live site, https://cricos.education.gov.au, has the latest), so refresh it every few months.
+
 ## Tests
 
 `python3 scripts/courses/test_courses.py` runs a stub university site on localhost (no internet). It covers eligible courses and every kind of page that must be left out (online, distance, part-time only, PhD, diploma, certificate, foundation, pathway, domestic only, robots-blocked), real-world fee wording (tables, whole-course totals, per-credit prices), the page budget, refresh order, merging between runs, the drop rule, the site-trouble rule and the safety gate.

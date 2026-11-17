@@ -39,6 +39,15 @@ export const INTL_HOW = {
   page: 'The page says international students can apply.',
   university: "The university's own admissions page says it takes international students.",
 };
+
+// ---------- the government register entry (Australia) ----------
+// data/cricos/ holds the register's Bachelor's and Master's courses. The tuition there is for the whole course and can be older than what the
+// university charges now, so it is shown on the course page only, labelled as an older figure. It is never the fee, never on a card, never filtered.
+export const REGISTER = data.register || null;
+export const regTuitionText = (i) => (i.reg && i.reg.tuition
+  ? `AU$${i.reg.tuition.toLocaleString('en-GB')} in total${i.reg.weeks ? ` over ${i.reg.weeks} weeks` : ''}`
+  : 'Not published');
+export const regPlaces = (i) => (i.reg && i.reg.places ? i.reg.places.map(([city, state]) => (state ? `${city}, ${state}` : city)) : []);
 export const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 // ---------- lists for the filters, built from what is actually there ----------

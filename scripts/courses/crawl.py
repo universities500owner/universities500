@@ -108,7 +108,7 @@ def due(entry, today, refresh_days, held_days):
     return age >= (refresh_days if reason == 'ok' else held_days)
 
 
-def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refresh_days=14, held_days=45, strict_international=False):
+def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refresh_days=14, held_days=45, strict_international=False, register=None):
     """Read one university. `prev` is its file from the last run (courses, seen, intlOpen). `seeds` are course list pages
     checked by hand: they are read first and may sit on another domain."""
     prev = prev or {}
@@ -308,7 +308,7 @@ def crawl_university(uni, fx, today, max_pages=150, prev=None, seeds=None, refre
                 consider(href, text, depth + 1)
             return False
 
-        rec, reason = C.read_course(page, res.text, uni, today, out['intlOpen'], strict_international)
+        rec, reason = C.read_course(page, res.text, uni, today, out['intlOpen'], strict_international, register)
         # links: from list pages and from pages that are not themselves a course, follow what looks like a course
         # (a course page's own links are mostly menus and "related courses", which are read at lower priority)
         n_links = C.count_course_links(page)

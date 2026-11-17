@@ -1,0 +1,97 @@
+{
+ "source": {
+  "name": "Commonwealth Register of Institutions and Courses for Overseas Students (CRICOS)",
+  "by": "Australian Government Department of Education",
+  "licence": "Creative Commons Attribution 2.5 Australia",
+  "url": "https://data.gov.au/data/dataset/cricos",
+  "downloaded": "2026-11-17",
+  "snapshot": null
+ },
+ "note": "One CRICOS provider code per university on the site, checked by hand against the register's Institutions file (website and name). Branch colleges, pathway colleges and training arms of a university (UQ College, RMIT Training, Trinity College, University Senior College) are not listed here on purpose.",
+ "providers": {
+  "adelaide-university": [
+   "04249J"
+  ],
+  "australian-national-university": [
+   "00120C"
+  ],
+  "central-queensland-university-australia": [
+   "00219C"
+  ],
+  "curtin-university": [
+   "00301J"
+  ],
+  "deakin-university": [
+   "00113B"
+  ],
+  "edith-cowan-university": [
+   "00279B"
+  ],
+  "flinders-university": [
+   "00114A"
+  ],
+  "griffith-university": [
+   "00233E"
+  ],
+  "james-cook-university": [
+   "00117J"
+  ],
+  "la-trobe-university": [
+   "00115M"
+  ],
+  "macquarie-university": [
+   "00002J"
+  ],
+  "monash-university": [
+   "00008C"
+  ],
+  "murdoch-university": [
+   "00125J"
+  ],
+  "queensland-university-of-technology": [
+   "00213J"
+  ],
+  "rmit-university": [
+   "00122A"
+  ],
+  "swinburne-university-of-technology": [
+   "00111D"
+  ],
+  "the-university-of-melbourne": [
+   "00116K"
+  ],
+  "the-university-of-new-south-wales": [
+   "00098G"
+  ],
+  "the-university-of-newcastle": [
+   "00109J"
+  ],
+  "the-university-of-queensland": [
+   "00025B"
+  ],
+  "the-university-of-sydney": [
+   "00026A"
+  ],
+  "the-university-of-western-australia": [
+   "00126G"
+  ],
+  "university-of-canberra": [
+   "00212K"
+  ],
+  "university-of-southern-queensland": [
+   "00244B"
+  ],
+  "university-of-tasmania": [
+   "00586B"
+  ],
+  "university-of-technology-sydney": [
+   "00099F"
+  ],
+  "university-of-wollongong": [
+   "00102E"
+  ],
+  "western-sydney-university": [
+   "00917K"
+  ]
+ }
+}
