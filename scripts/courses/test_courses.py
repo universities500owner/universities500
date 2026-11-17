@@ -14,6 +14,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent / 'scholarships'))
+import build_site_data as B  # noqa: E402
 import checks as Q  # noqa: E402
 import courses as C  # noqa: E402
 import crawl  # noqa: E402
@@ -203,7 +204,12 @@ class Admissions(unittest.TestCase):
     def test_not_programme_names_and_addresses(self):
         for n in ('General FAQ', 'Applying to MSBTAI', 'Accountancy Curriculum', "Bachelor's programmes", 'Bachelor education', 'Aboriginal Studies Master Class'):
             self.assertTrue(L.not_programme_name(n), n)
-        for n in ('Bachelor of Education', 'Master of Strategy and Security', 'Biology, MS', 'MSc Data Science'):
+        for n in ("Bachelor's language requirements and exemptions (2026/27)", 'Curriculum & Courses', 'Bachelor of Accounting application',
+                  'International students Enrolment in a Higher Semester', 'Desautels Faculty of Management Undergraduate Office',
+                  'Beyond AI: Creating Value with AI Amplifiers Presentation Event', "Accelerated master's stream"):
+            self.assertTrue(L.not_programme_name(n), n)
+        for n in ('Bachelor of Education', 'Master of Strategy and Security', 'Biology, MS', 'MSc Data Science', 'Master of Computer Applications',
+                  'MSc Requirements Engineering', 'Bachelor of International Studies', 'BSc Technology and Innovation with Study Abroad'):
             self.assertFalse(L.not_programme_name(n), n)
         self.assertEqual(L.not_programme_url('https://u.edu/x/ms/admissions/requirements-deadlines'), 'programme-subpage')
         self.assertEqual(L.not_programme_url('https://u.edu/study/courses/arch-6006/'), 'course-unit-page')
@@ -686,6 +692,59 @@ class Quality(unittest.TestCase):
         r['fee'] = {'display': 'GBP 33,900 a year', 'context': 'International: £33,900 (Total).'}
         self.assertEqual(Q.problem(r), '')
         self.assertIsNone(r['fee'])        # a record saved with a total price as its fee loses the fee, not the course
+
+
+class SiteData(unittest.TestCase):
+    """The file the website reads: only checked records, with the sentence each fact came from, one stable page address per course."""
+
+    def rec(self, name, url, **kw):
+        r = dict(id=f'u:{T.slugify(name, 60)}:abc123', university='u', name=name, degree='MSc', level='Master', field=None, url=url, lastVerified='2026-11-16',
+                 firstSeen='2026-11-01', lastChanged='2026-11-16', studyMode={'verdict': 'full-time on campus', 'evidence': 'Full-time, on campus.'},
+                 international={'how': 'fee', 'evidence': 'International students: GBP 24,000 a year.'}, duration={'display': '1 year', 'years': 1, 'context': 'Duration: 1 year.'},
+                 fee={'display': 'GBP 24,000 a year', 'context': 'International students: GBP 24,000 a year.'}, ielts=None, intakes=None, cricos=None, flags=None, hash='x')
+        r.update(kw)
+        return r
+
+    def build(self, courses):
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / 'u.json').write_text(json.dumps({'slug': 'u', 'status': 'ok', 'generatedAt': '2026-11-16T10:00:00Z', 'courses': courses, 'seen': {'x': 1}}))
+            return B.build(d)
+
+    def test_kept_and_dropped(self):
+        doc, stats = self.build([self.rec('MSc Data Science', 'https://u.edu/ds/'), self.rec('General FAQ', 'https://u.edu/faq-page/'),
+                                 self.rec('MSc Law', 'https://u.edu/law/', studyMode={'verdict': 'unclear', 'evidence': ''})])
+        self.assertEqual([i['name'] for i in doc['items']], ['MSc Data Science'])
+        self.assertEqual(stats['read'], 3)
+        self.assertEqual(stats['checks'], {'not-a-programme-name': 1, 'not-full-time-on-campus': 1})
+        it = doc['items'][0]
+        self.assertEqual(it['slug'], 'msc-data-science-abc123')
+        self.assertEqual(it['uni'], 'u')
+        self.assertEqual(it['studyMode'], 'Full-time, on campus.')          # the sentence, not the verdict
+        self.assertEqual(it['fee']['context'], 'International students: GBP 24,000 a year.')
+        self.assertNotIn('hash', it)
+        self.assertNotIn('seen', doc)
+        self.assertEqual((doc['total'], doc['generatedAt'], doc['universities']['u']['n']), (1, '2026-11-16', 1))
+
+    def test_same_programme_under_two_addresses_is_kept_once(self):
+        doc, stats = self.build([self.rec('MSc Data Science', 'https://u.edu/ds/2026'), self.rec('MSc Data Science', 'https://u.edu/ds/2027', fee=None)])
+        self.assertEqual(len(doc['items']), 1)
+        self.assertEqual(stats['duplicates'], 1)
+        self.assertIsNotNone(doc['items'][0]['fee'])                         # the record with more facts stays
+
+    def test_page_addresses_never_clash(self):
+        # the same name and the same address code at two levels: only one can have the page address
+        a = self.rec('Mathematics', 'https://u.edu/a/', degree='MSc', level='Master')
+        b = self.rec('Mathematics', 'https://u.edu/b/', degree='BSc', level='Bachelor', duration={'display': '3 years', 'years': 3, 'context': 'Three years.'})
+        doc, stats = self.build([a, b])
+        self.assertEqual((len(doc['items']), stats['slug-clash']), (1, 1))
+
+    def test_dump_is_valid_json_one_course_per_line(self):
+        doc, _ = self.build([self.rec('MSc Data Science', 'https://u.edu/ds/'), self.rec('MSc Physics', 'https://u.edu/ph/')])
+        text = B.dump(doc)
+        self.assertEqual(json.loads(text)['total'], 2)
+        self.assertEqual(sum(1 for ln in text.splitlines() if ln.startswith('{"slug"')), 2)
+        empty = B.dump({'generatedAt': None, 'total': 0, 'universities': {}, 'items': []})
+        self.assertEqual(json.loads(empty)['items'], [])
 
 
 if __name__ == '__main__':

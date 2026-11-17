@@ -1,0 +1,78 @@
+---
+import Base from '../../../layouts/Base.astro';
+import {
+  PUBLISH, items, itemsFor, uniOf, path, levelText, lengthText, feeText, feePeriodNote, ieltsText, ieltsScore, startsText, INTL_HOW, CHECK, countryName, fmtIso,
+} from '../../../lib/courses.js';
+
+export function getStaticPaths() {
+  return items.map((c) => ({ params: { uni: c.uni, course: c.slug }, props: { c } }));
+}
+const { c } = Astro.props;
+const u = uniOf(c.uni);
+const here = path(c);
+const others = itemsFor(c.uni).filter((x) => x.slug !== c.slug).slice(0, 6);
+const nOthers = itemsFor(c.uni).length - 1;
+const place = countryName(c.country);
+const desc = `${c.name} at ${c.uniName}, ${place}. ${levelText(c)} course, full-time on campus, open to international students. Length, fee and English score where the official page states them.`;
+const months = (c.intakes && c.intakes.months) || [];
+---
+<Base title={`${c.name}, ${c.uniName} | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="courses">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/courses/">Course search</a><span aria-hidden="true">/</span><a href={`/universities/${c.uni}/`}>{c.uniName}</a>
+  </nav>
+  <h1>{c.name}</h1>
+  <p class="sch-sub lead"><a href={`/universities/${c.uni}/`}>{c.uniName}</a> · {place}</p>
+  <ul class="chips">
+    <li>{levelText(c)}</li>
+    <li>Full-time on campus</li>
+    {c.field && <li>{c.field}</li>}
+    {c.cricos && <li>CRICOS {c.cricos}</li>}
+  </ul>
+
+  <dl class="sch-facts big">
+    <div><dt>Length</dt><dd>{lengthText(c)}</dd></div>
+    <div><dt>International fee</dt><dd>{feeText(c)}</dd></div>
+    <div><dt>English</dt><dd>{ieltsText(c)}</dd></div>
+    <div><dt>Starts</dt><dd>{startsText(c)}</dd></div>
+  </dl>
+  {c.fee && <p class="small">The fee is what the page showed. {feePeriodNote(c)} Fees change each year and can differ by intake or campus, so treat this as a guide, not a quote.</p>}
+
+  <p><a class="btn" href={c.url} rel="noopener">Open the official course page</a></p>
+
+  <section aria-labelledby="h-why">
+    <h2 id="h-why">Why this course is listed</h2>
+    <ul class="src-list">
+      <li>Full-time, on campus. {c.studyMode && <span class="cq">As the page says: “{c.studyMode}”</span>}</li>
+      <li>Open to international students. {INTL_HOW[c.intl.how] || ''} {c.intl.evidence && <span class="cq">As the page says: “{c.intl.evidence}”</span>}</li>
+      {c.field && <li>The field is our own label, chosen from words in the course name. It is not the university's.</li>}
+      {c.flags && c.flags.includes('integrated') && <li>An integrated Master's: a four-year course that starts at undergraduate level.</li>}
+      {c.flags && c.flags.includes('combined') && <li>The name mentions both a Bachelor's and a Master's. Open the official page to see how the course is structured.</li>}
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-src">
+    <h2 id="h-src">Where each fact comes from</h2>
+    <ul class="src-list">
+      <li>Official page: <a href={c.url} rel="noopener">{c.url}</a></li>
+      <li>Last read on {fmtIso(c.lastVerified)}. First seen {fmtIso(c.firstSeen)}.</li>
+      {c.duration && c.duration.context && <li class="quote">Length, as the page says: “{c.duration.context}”</li>}
+      {c.fee && c.fee.context && <li class="quote">Fee, as the page says: “{c.fee.context}”</li>}
+      {c.ielts && c.ielts.context && <li class="quote">{ieltsScore(c) != null ? 'English score' : 'English test, mentioned without one clear score'}, as the page says: “{c.ielts.context}”</li>}
+      {months.length > 0 && c.intakes.context && <li class="quote">Start, as the page says: “{c.intakes.context}”</li>}
+    </ul>
+    {(!c.duration || !c.fee || ieltsScore(c) == null || !months.length) && (
+      <p class="small">{[!c.duration && 'length', !c.fee && 'international fee', ieltsScore(c) == null && 'English score', !months.length && 'start dates'].filter(Boolean).join(', ')}: {CHECK.toLowerCase()}. The program could not read {([!c.duration, !c.fee, ieltsScore(c) == null, !months.length].filter(Boolean).length > 1) ? 'these' : 'this'} with confidence, so it does not guess.</p>
+    )}
+    <p class="small">Read by a program, not by a person. Course details change, so check the official page before you apply.</p>
+  </section>
+
+  {others.length > 0 && (
+    <section aria-labelledby="h-more">
+      <h2 id="h-more">More at {c.uniName}</h2>
+      <ul class="uni-courses">
+        {others.map((x) => <li><a href={path(x)}>{x.name}</a> <span class="muted">{levelText(x)}</span></li>)}
+      </ul>
+      {nOthers > others.length && <p><a href={`/universities/${c.uni}/#courses`}>All {nOthers + 1} courses at {c.uniName}</a></p>}
+    </section>
+  )}
+</Base>

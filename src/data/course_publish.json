@@ -1,0 +1,4 @@
+{
+ "publish": false,
+ "note": "Set to true to show the real course search, one page per course and each university's course list. Leave false until a run's records have been checked against their official pages. While false, /courses/ keeps the placeholder search and stays out of search engines."
+}

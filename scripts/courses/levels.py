@@ -263,7 +263,9 @@ NOT_PROGRAMME_NAME = re.compile(
     r"\brequirements?(?: (?:&|and) deadlines)?$|\bcurriculum$|^academics$|^contact\b|\bcontact (?:the|us)\b|\bopen days?\b|\bscholarships?$|^scholarships?\b|\bloans?$|"
     r"^funding\b|\bgraduate calendar\b|^regulations? for\b|\bassessment procedure\b|^average salary$|^careers?\b|\bcareer experience\b|^levels and degrees$|\bflexible degree options\b|"
     r"\bafter your admission\b|^ask admissions\b|^programs? and courses$|^study$|^(?:undergraduate|postgraduate|graduate) study\b|^beginner|\bmasterful\b|\bmaster class\b|\bmasters? project \d\b|"
-    r"^[A-Z]{3,5}\s?\d{4}\b", re.I)
+    r"^[A-Z]{3,5}\s?\d{4}\b|"
+    r"\b(?:language|inherent|entry|admission) requirements\b|\brequirements (?:and|&) (?:exemptions|procedures?)\b|\bcurriculum (?:&|and) courses\b|\benrol(?:l)?ment in\b|"
+    r"\bpresentation event\b|\boffice$|^international students\b|\bapplication$|^accelerated (?:bachelor|master)\S* (?:stream|pathway|option)$", re.I)
 GENERIC_NAME = re.compile(
     r"^(?:overview )?(?:the )?(?:undergraduate |postgraduate |graduate )?(?:bachelor|master)(?:['’]?s)?(?: (?:degree|degrees|programmes?|programs?|education|studies|overview|open days?))*$", re.I)
 

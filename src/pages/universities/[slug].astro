@@ -4,6 +4,7 @@ import RelatedArticles from '../../components/RelatedArticles.astro';
 import { forDestination } from '../../lib/articles.js';
 import { all, blurb, related, fmtDate, SITE } from '../../lib/data.js';
 import { itemsFor, hubFor, statusOf, STATUS_LABEL, fmtIso, scholarshipsLink, PUBLISH } from '../../lib/scholarships.js';
+import { itemsFor as coursesFor, path as coursePath, lengthText, feeText } from '../../lib/courses.js';
 
 export function getStaticPaths() {
   return all.map((u) => ({ params: { slug: u.slug }, props: { u } }));
@@ -12,6 +13,9 @@ const { u } = Astro.props;
 const peers = related(u);
 const schol = itemsFor(u.slug).slice(0, 6);
 const sLink = scholarshipsLink(u);
+const courses = coursesFor(u.slug);
+const bachelors = courses.filter((c) => c.level === 'Bachelor');
+const masters = courses.filter((c) => c.level === 'Master');
 
 const title = `${u.name}: facts, campuses and official links | Universities500`;
 const description = u.overview
@@ -118,6 +122,22 @@ const ld = {
       {sLink && sLink.kind === 'page' && <p><a href={sLink.url} rel="noopener">{u.name}'s own scholarships page</a>{sLink.checked && <span class="muted"> (checked {fmtIso(sLink.checked)})</span>}</p>}
       {sLink && sLink.kind === 'search' && <p>{schol.length === 0 && <Fragment>We have not read scholarships from this university's website. </Fragment>}<a href={sLink.url} rel="noopener">Search {u.name}'s website for scholarships</a></p>}
       <p class="small">{schol.length > 0 && 'Read by a program from the university\'s website. '}Check the official page before you apply. <a href="/scholarships/">Search all scholarships</a></p>
+    </section>
+  )}
+
+  {courses.length > 0 && (
+    <section aria-labelledby="courses">
+      <h2 id="courses">Courses read from the university's website</h2>
+      <p>{courses.length} Bachelor's and Master's course{courses.length === 1 ? '' : 's'} that are full-time on campus and open to international students. This is what our reader could confirm from the course pages, not every course the university offers.</p>
+      {[["Bachelor's", bachelors], ["Master's", masters]].map(([label, list]) => list.length > 0 && (
+        <details open={courses.length <= 12}>
+          <summary>{label} <span class="muted">({list.length})</span></summary>
+          <ul class="uni-courses">
+            {list.map((c) => <li><a href={coursePath(c)}>{c.name}</a> <span class="muted">{lengthText(c)}{c.fee ? `, fee ${feeText(c)}` : ''}</span></li>)}
+          </ul>
+        </details>
+      ))}
+      <p class="small">Each course page shows the sentence every fact was copied from. Check the official page before you apply. <a href="/courses/">Search all courses</a></p>
     </section>
   )}
 
