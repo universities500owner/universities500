@@ -1,0 +1,4 @@
+{
+ "publish": true,
+ "note": "Set to true to show the MBA Explorer at /mba/ and one page per programme. Set to false to hide the pages and keep them out of search engines. Every record carries the school's own page and the date it was read; a fact the page did not state shows 'Not stated'."
+}

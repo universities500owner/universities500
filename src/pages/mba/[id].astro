@@ -1,0 +1,95 @@
+---
+import Base from '../../layouts/Base.astro';
+import { PUBLISH, items, path, uniKnown, KIND, KIND_NOTE, TRACKS, tracksOf, expChip, countryName, fmtIso, NOT_STATED } from '../../lib/mba.js';
+
+export function getStaticPaths() {
+  return items.map((m) => ({ params: { id: m.id }, props: { m } }));
+}
+const { m } = Astro.props;
+const here = path(m);
+const host = m.url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
+const place = [m.city, countryName(m.country)].filter(Boolean).join(', ');
+const others = items.filter((x) => x.id !== m.id && x.school === m.school);
+const chip = expChip(m);
+const trackNames = tracksOf(m).map((id) => TRACKS.find((t) => t.id === id).label);
+const hostOf = (u) => u.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
+
+// One row per fact: what the page states, the sentence it came from, and where.
+const rows = [
+  ['Length', m.length],
+  ['Tuition', m.fee],
+  ['Work experience', m.exp],
+  ['Degree', m.degree],
+  ['Test', m.test],
+  ['English', m.english],
+  ['Starts', m.start],
+  ['Deadlines', m.deadlines],
+];
+const desc = `${m.name}, ${m.school}, ${m.uniName}. ${KIND[m.kind]}${m.length ? `, ${m.length.t.toLowerCase()}` : ''}${m.fee ? `, tuition ${m.fee.t}` : ''}. Facts copied from the school's own page.`;
+---
+<Base title={`${m.name}, ${m.school} | MBA Explorer | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="mba">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/mba/">MBA Explorer</a><span aria-hidden="true">/</span>{m.school}
+  </nav>
+  <h1>{m.name}</h1>
+  <p class="sch-sub lead">
+    {m.school} · {uniKnown(m) ? <a href={`/universities/${m.uni}/`}>{m.uniName}</a> : m.uniName} · {place}
+  </p>
+  <ul class="chips">
+    <li>{KIND[m.kind]}</li>
+    {chip && <li>{chip}</li>}
+    <li>{trackNames.join(' and ')}</li>
+  </ul>
+  {KIND_NOTE[m.kind] && <p class="small">{KIND_NOTE[m.kind]}</p>}
+  <p><a class="btn" href={m.url} target="_blank" rel="noopener">Open the school's page</a></p>
+
+  <section aria-labelledby="facts">
+    <h2 id="facts">Key facts</h2>
+    <table class="facts">
+      <tbody>
+        {rows.map(([label, f]) => (
+          <tr>
+            <th scope="row">{label}</th>
+            <td>
+              {f ? <Fragment>{f.t}{f.note && <span class="mba-src">{f.note}</span>}{f.q && <span class="mba-src">The page says: “{f.q}”{f.u && f.u !== m.url && <Fragment> · <a href={f.u} target="_blank" rel="noopener">{hostOf(f.u)}</a></Fragment>}</span>}</Fragment>
+                : label === 'Tuition' && m.feeUrl
+                  ? <Fragment><span class="muted">{NOT_STATED}</span><span class="mba-src">The school's fees page: <a href={m.feeUrl} target="_blank" rel="noopener">{hostOf(m.feeUrl)}</a></span></Fragment>
+                  : <span class="muted">{NOT_STATED}</span>}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="small">Fees and requirements change each year and can differ by intake. The school's page has the figure that applies to you.</p>
+  </section>
+
+  <section aria-labelledby="careers">
+    <h2 id="careers">Careers and placement</h2>
+    {m.employment && m.employment.u
+      ? <p>The school publishes its own employment figures: <a href={m.employment.u} target="_blank" rel="noopener">{m.employment.t || 'Employment report'}</a> ({hostOf(m.employment.u)}). We link to it instead of re-publishing the numbers, because they change each year and are measured in the school's own way.</p>
+      : <p>We have not yet linked this programme's employment report. Look for it on <a href={m.url} target="_blank" rel="noopener">the school's page</a>.</p>}
+  </section>
+
+  <p class="source-line small">
+    These facts are from <a href={m.url} target="_blank" rel="noopener">{host}</a>{rows.some(([, f]) => f && f.u && f.u !== m.url) ? ' and other pages of the same school, each linked beside the fact,' : ''} read on {fmtIso(m.readOn)}. Details change, so confirm them on the school's page before you apply.
+  </p>
+
+  <details class="how">
+    <summary>How we checked this programme</summary>
+    <ul class="src-list">
+      <li>{m.how === 'hand' ? "Read by hand from the school's own pages." : "Read by a program from the school's own pages."} Every fact shows the sentence it was copied from where the page gave one. Fees listed in a table on the page are marked as such.</li>
+      <li>A fact the page did not state says "{NOT_STATED}". Nothing is estimated or taken from third-party sites.</li>
+      <li>The tab comes from the minimum work experience the page states{m.exp && m.exp.min != null ? ` (${m.exp.min} year${m.exp.min === 1 ? '' : 's'})` : m.kind === 'mba' ? ': this page states none, so the programme is listed under 3 to 5 years' : ''}. {m.kind === 'mim' ? "A master's in management is for recent graduates and is not an MBA." : ''}</li>
+      <li>We show no ranking and did not use one to order this page.</li>
+    </ul>
+  </details>
+
+  {others.length > 0 && (
+    <section aria-labelledby="h-more">
+      <h2 id="h-more">More at {m.school}</h2>
+      <ul class="uni-courses">
+        {others.map((x) => <li><a href={path(x)}>{x.name}</a></li>)}
+      </ul>
+    </section>
+  )}
+</Base>

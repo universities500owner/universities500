@@ -546,3 +546,21 @@ html[data-theme="dark"] .xcta { background: var(--hover); }
   .crs-fd > summary { display: flex; }
   .crs-fd[open] > summary { margin-bottom: .6rem; }
 }
+
+/* MBA Explorer: three tracks by work experience */
+.mba-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin: 1.25rem 0 .6rem; }
+.mba-tab { display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: .75rem; text-align: left; padding: .75rem 1rem; min-height: 3.4rem; background: var(--paper); border: 1.5px solid var(--line); border-radius: 14px; color: var(--ink); font: inherit; cursor: pointer; }
+.mba-tab:hover { border-color: var(--accent); }
+.mba-tab[aria-selected="true"] { border-color: var(--accent); background: var(--surface); box-shadow: inset 0 -3px 0 var(--accent); }
+.mba-tab-text { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
+.mba-tab-name { font-weight: 600; line-height: 1.25; }
+.mba-tab-n { flex: none; min-width: 1.9rem; text-align: center; padding: .1rem .5rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: .9rem; }
+.mba-tab[aria-selected="true"] .mba-tab-n { background: var(--paper); border-color: var(--accent); }
+.mba-tab-sub { font-size: .85rem; color: var(--muted); }
+.mba-blurb { margin: 0 0 .25rem; color: var(--muted); max-width: 62ch; }
+.crs.mba .crs-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 620px) {
+  .mba-tabs { grid-template-columns: minmax(0, 1fr); }
+}
+.mba-src { display: block; margin-top: .2rem; font-size: .85rem; color: var(--muted); font-weight: 400; }
+.mba-src a { color: inherit; }

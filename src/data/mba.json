@@ -1,0 +1,648 @@
+{
+ "generatedAt": "2026-11-18",
+ "items": [
+  {
+   "id": "warwick-msc-management",
+   "kind": "mim",
+   "uni": "the-university-of-warwick",
+   "uniName": "University of Warwick",
+   "school": "Warwick Business School",
+   "country": "uk",
+   "city": "Coventry",
+   "name": "Warwick MSc Management",
+   "url": "https://warwick.ac.uk/study/postgraduate/courses/msc-management",
+   "length": {
+    "t": "1 year, full-time",
+    "q": "1 year full-time.",
+    "months": 12
+   },
+   "fee": null,
+   "feeUrl": "https://warwick.ac.uk/services/finance/studentfinance/fees/postgraduatefees/",
+   "exp": {
+    "t": "Work experience not required",
+    "q": "three or more years of post-graduation professional business experience",
+    "u": "https://warwick.ac.uk/study/postgraduate/courses/msc-management",
+    "min": 0,
+    "max": null,
+    "note": "The page says people with three or more years of experience are usually better suited to the Full-Time MBA."
+   },
+   "degree": {
+    "t": "2:1 UK degree or overseas equivalent",
+    "q": "2.1 degree at undergraduate level from a UK university, or overseas equivalent."
+   },
+   "test": {
+    "t": "No GMAT or GRE listed",
+    "q": "There are no additional entry requirements for this course."
+   },
+   "english": {
+    "t": "IELTS 7.0 overall",
+    "q": "IELTS overall score of 7.0",
+    "ielts": 7.0
+   },
+   "start": {
+    "t": "27 September 2027",
+    "months": [
+     "Sep"
+    ]
+   },
+   "deadlines": {
+    "t": "On-time deadline 2 August 2027. Later applications are accepted if places remain."
+   },
+   "employment": {
+    "t": "Employment report for the MSc courses",
+    "u": "https://online.flippingbook.com/view/763598704/"
+   },
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "ivey-msc-management",
+   "kind": "mim",
+   "uni": "western-university",
+   "uniName": "University of Western Ontario",
+   "school": "Ivey Business School",
+   "country": "canada",
+   "city": "London, Ontario",
+   "name": "Ivey MSc in Management",
+   "url": "https://www.ivey.uwo.ca/msc/admission/cost/",
+   "length": {
+    "t": "16 months",
+    "q": "entire 16-month program",
+    "months": 16
+   },
+   "fee": {
+    "t": "CAD 93,765 for the whole programme",
+    "amount": 93765,
+    "cur": "CAD",
+    "per": "programme",
+    "note": "From the tuition table on the page, row “MSc in Management: IB International Students”. Fee for the January 2027 and September 2028 intakes. The page says the amount covers the entire 16-month programme, and lists a separate row for domestic students."
+   },
+   "exp": null,
+   "degree": null,
+   "test": null,
+   "english": null,
+   "start": {
+    "t": "January 2027 and September 2028 intakes",
+    "months": [
+     "Jan",
+     "Sep"
+    ]
+   },
+   "deadlines": null,
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "rotman-master-of-management",
+   "kind": "mim",
+   "uni": "university-of-toronto",
+   "uniName": "University of Toronto",
+   "school": "Rotman School of Management",
+   "country": "canada",
+   "city": "Toronto",
+   "name": "Rotman Master of Management",
+   "url": "https://www.rotman.utoronto.ca/programs/master-of-management/admissions/",
+   "length": null,
+   "fee": null,
+   "exp": {
+    "t": "Up to 2.5 years after your degree",
+    "q": "a maximum of 2.5 years of work experience post-grad",
+    "min": 0,
+    "max": 2.5,
+    "note": "The page describes the programme as designed for recent graduates."
+   },
+   "degree": null,
+   "test": null,
+   "english": null,
+   "start": null,
+   "deadlines": {
+    "t": "Round 1: 16 September 2026. Round 2: 11 November 2026. Round 3: 17 February 2027. International students are advised to apply by Round 2.",
+    "q": "International students should apply no later than Round 2"
+   },
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "oxford-mba",
+   "kind": "mba",
+   "uni": "university-of-oxford",
+   "uniName": "University of Oxford",
+   "school": "Saïd Business School",
+   "country": "uk",
+   "city": "Oxford",
+   "name": "Oxford MBA",
+   "url": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba",
+   "length": {
+    "t": "1 year, full-time",
+    "months": 12
+   },
+   "fee": {
+    "t": "£94,120 for 2027-28",
+    "q": "The course fee for the 2027-28 programme will be £94,120.",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba/faqs",
+    "amount": 94120,
+    "cur": "GBP",
+    "per": "programme",
+    "note": "The page gives one course fee and does not list a separate overseas fee."
+   },
+   "exp": {
+    "t": "At least 2 years, full-time",
+    "q": "at least two years of full-time work experience",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba/application-requirements",
+    "min": 2,
+    "max": null
+   },
+   "degree": {
+    "t": "A recognised undergraduate degree",
+    "q": "All applicants are required to have completed a recognised undergraduate degree.",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba/application-requirements"
+   },
+   "test": {
+    "t": "GMAT or GRE",
+    "q": "GMAT or GRE score report",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba/how-apply"
+   },
+   "english": {
+    "t": "IELTS, TOEFL iBT, C1 Advanced or C2 Proficiency accepted",
+    "q": "We accept either the IELTS, internet-based TOEFL test",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba/faqs"
+   },
+   "start": {
+    "t": "September 2027",
+    "months": [
+     "Sep"
+    ]
+   },
+   "deadlines": null,
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "cambridge-mba",
+   "kind": "mba",
+   "uni": "university-of-cambridge",
+   "uniName": "University of Cambridge",
+   "school": "Cambridge Judge Business School",
+   "country": "uk",
+   "city": "Cambridge",
+   "name": "The Cambridge MBA",
+   "url": "https://www.jbs.cam.ac.uk/masters-degrees/mba/faqs/",
+   "length": {
+    "t": "12 months",
+    "q": "In 12 months, you'll cover what most US schools teach over 2 years.",
+    "months": 12
+   },
+   "fee": {
+    "t": "£86,250 (September 2027 entry)",
+    "q": "The fees for entry in September 2027 are £86,250.",
+    "u": "https://www.jbs.cam.ac.uk/masters-degrees/mba/fees-funding/",
+    "amount": 86250,
+    "cur": "GBP",
+    "per": "programme",
+    "note": "One fee is given for all students. Students who studied at the University of Cambridge are offered a £10,000 alumni discount."
+   },
+   "feeUrl": "https://www.jbs.cam.ac.uk/masters-degrees/mba/fees-funding/",
+   "exp": {
+    "t": "At least 2 years, full-time",
+    "q": "a minimum of 2 years' work experience",
+    "min": 2,
+    "max": null,
+    "note": "The page says part-time work does not usually count."
+   },
+   "degree": {
+    "t": "Good 2:1 or equivalent. Lower scores may be considered with a good GMAT or GRE.",
+    "q": "a 2:1 Honours degree on the UK grading scale or international equivalent"
+   },
+   "test": {
+    "t": "GMAT, GRE or Executive Assessment",
+    "q": "a valid GMAT, GRE or EA score"
+   },
+   "english": {
+    "t": "Proof of English proficiency. IELTS Academic accepted; the minimum scores are in the English language policy.",
+    "q": "proof of English proficiency"
+   },
+   "start": {
+    "t": "September",
+    "q": "we have one intake each year in September",
+    "months": [
+     "Sep"
+    ],
+    "note": "One intake a year."
+   },
+   "deadlines": null,
+   "employment": {
+    "t": "Employment report",
+    "u": "https://www.jbs.cam.ac.uk/masters-degrees/mba/careers/employment-report/"
+   },
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "rotman-full-time-mba",
+   "kind": "mba",
+   "uni": "university-of-toronto",
+   "uniName": "University of Toronto",
+   "school": "Rotman School of Management",
+   "country": "canada",
+   "city": "Toronto",
+   "name": "Rotman Full-Time MBA",
+   "url": "https://www.rotman.utoronto.ca/programs/mba-programs/full-time-mba/admissions/",
+   "length": {
+    "t": "20 months",
+    "q": "16 months of academic study + 4 months of paid internship",
+    "u": "https://sgs.utoronto.ca/programs/master-of-business-administration-full-time-mba",
+    "months": 20,
+    "note": "16 months of study plus a 4-month paid internship."
+   },
+   "fee": {
+    "t": "CAD 144,770 academic fee (estimated)",
+    "u": "https://www.rotman.utoronto.ca/programs/mba-programs/full-time-mba/tuition-scholarships/",
+    "amount": 144770,
+    "cur": "CAD",
+    "per": "unknown",
+    "note": "From the tuition table on the page. The page calls it an estimated academic fee, does not name the year and says university incidental and ancillary fees are extra."
+   },
+   "feeUrl": "https://www.rotman.utoronto.ca/programs/mba-programs/full-time-mba/tuition-scholarships/",
+   "exp": {
+    "t": "At least 2 years, full-time",
+    "q": "A minimum of two years of full-time work experience is required",
+    "min": 2,
+    "max": null,
+    "note": "The page excepts some combined degrees."
+   },
+   "degree": {
+    "t": "Four-year degree with a final-year GPA of at least 3.0 (mid-B)",
+    "q": "a minimum GPA of 3.0 (at least mid-B average) in the final year"
+   },
+   "test": {
+    "t": "GMAT, GRE or CFA Level II pass",
+    "q": "One of the following: GMAT, GRE, CFA Level II Pass.",
+    "u": "https://sgs.utoronto.ca/programs/master-of-business-administration-full-time-mba"
+   },
+   "english": {
+    "t": "IELTS or TOEFL, if required",
+    "q": "IELTS/TOEFL (if required).",
+    "u": "https://sgs.utoronto.ca/programs/master-of-business-administration-full-time-mba"
+   },
+   "start": {
+    "t": "August",
+    "q": "starting in August",
+    "u": "https://sgs.utoronto.ca/programs/master-of-business-administration-full-time-mba",
+    "months": [
+     "Aug"
+    ]
+   },
+   "deadlines": null,
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "ivey-mba",
+   "kind": "mba",
+   "uni": "western-university",
+   "uniName": "University of Western Ontario",
+   "school": "Ivey Business School",
+   "country": "canada",
+   "city": "London, Ontario",
+   "name": "Ivey MBA",
+   "url": "https://www.ivey.uwo.ca/mba/academics/ivey-mba-vs-ivey-amba/",
+   "length": {
+    "t": "1 year",
+    "q": "the entire duration of the one-year program",
+    "u": "https://www.ivey.uwo.ca/mba/get-started/faqs/",
+    "months": 12
+   },
+   "fee": {
+    "t": "CAD 136,310 (2027)",
+    "u": "https://www.ivey.uwo.ca/mba/finance/",
+    "amount": 136310,
+    "cur": "CAD",
+    "per": "programme",
+    "note": "From the tuition table on the page, which also lists CAD 139,720 for 2028. All amounts are in Canadian dollars and estimated. Fees and insurance are extra. Some international students at Western pay domestic tuition; the page points to the Western Registrar."
+   },
+   "feeUrl": "https://www.ivey.uwo.ca/mba/finance/",
+   "exp": {
+    "t": "2 to 10 years, full-time",
+    "q": "2 to 10 years of full-time work experience.",
+    "min": 2,
+    "max": 10
+   },
+   "degree": {
+    "t": "Undergraduate degree in any discipline",
+    "q": "Completed undergraduate degree in any discipline."
+   },
+   "test": {
+    "t": "GMAT or GRE",
+    "q": "Ivey accepts both the GMAT, GMAT Focus Edition and the GRE.",
+    "u": "https://www.ivey.uwo.ca/mba/get-started/faqs/",
+    "note": "A GMAT waiver is available to some applicants with specific professional designations or prior university education."
+   },
+   "english": {
+    "t": "A test is not required for some applicants. Others must show strong English; scores are on the international applicants page.",
+    "q": "are not required to submit a test as part of their application",
+    "u": "https://www.ivey.uwo.ca/mba/get-started/faqs/"
+   },
+   "start": {
+    "t": "January, from 2027",
+    "q": "The Ivey MBA is shifting to a January start beginning in 2027!",
+    "months": [
+     "Jan"
+    ]
+   },
+   "deadlines": null,
+   "employment": {
+    "t": "Employment report",
+    "u": "https://www.ivey.uwo.ca/mba/employment-report/"
+   },
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "mbs-full-time-mba",
+   "kind": "mba",
+   "uni": "the-university-of-melbourne",
+   "uniName": "University of Melbourne",
+   "school": "Melbourne Business School",
+   "country": "australia",
+   "city": "Melbourne",
+   "name": "Melbourne Business School Full-time MBA",
+   "url": "https://mbs.edu/degree-programs/full-time-mba",
+   "length": {
+    "t": "Up to 2 years",
+    "q": "Up to 2 years",
+    "u": "https://mbs.edu/MBA",
+    "months": 24,
+    "note": "The school’s programme list says “Up to 2 years” and its comparison table says “2 years”."
+   },
+   "fee": {
+    "t": "AUD 120,384 (2026)",
+    "q": "International: AUD $120,384",
+    "amount": 120384,
+    "cur": "AUD",
+    "per": "programme",
+    "note": "The page lists the 2026 academic year and says fees are paid per module in advance."
+   },
+   "exp": {
+    "t": "At least 2 years",
+    "q": "At least two (2) years of documented professional work experience",
+    "min": 2,
+    "max": null,
+    "typical": "2 to 5 years",
+    "note": "The school describes the programme as for two to five years of professional experience."
+   },
+   "degree": {
+    "t": "An undergraduate degree",
+    "q": "An undergraduate degree, AND"
+   },
+   "test": {
+    "t": "GMAT, GMAT Focus or GRE",
+    "q": "A GMAT/GMAT Focus Edition or GRE score",
+    "u": "https://mbs.edu/degree-programs/full-time-mba"
+   },
+   "english": {
+    "t": "IELTS 7.0 overall, 6.5 in each part",
+    "q": "IELTS overall score of 7.0, with writing 6.5; speaking 6.5; reading 6.5; listening 6.5",
+    "u": "https://mbs.edu/degree-programs/faqs-degree-programs/faqs-full-time-mba",
+    "ielts": 7.0
+   },
+   "start": {
+    "t": "September",
+    "u": "https://mbs.edu/MBA",
+    "months": [
+     "Sep"
+    ]
+   },
+   "deadlines": null,
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "ucd-smurfit-full-time-mba",
+   "kind": "mba",
+   "uni": "university-college-dublin",
+   "uniName": "University College Dublin",
+   "school": "UCD Michael Smurfit Graduate Business School",
+   "country": "ireland",
+   "city": "Dublin",
+   "name": "UCD Smurfit Full-Time MBA",
+   "url": "https://www.smurfitschool.ie/programmes/thesmurfitmba/fulltimemba/admissionsfees/",
+   "length": {
+    "t": "1 year, full-time",
+    "q": "1-year full-time MBA, starting August 2027",
+    "u": "https://www.smurfitschool.ie/rugbyirelandmbascholarship/",
+    "months": 12
+   },
+   "fee": null,
+   "feeUrl": "https://www.smurfitschool.ie/programmes/thesmurfitmba/fulltimemba/admissionsfees/",
+   "exp": {
+    "t": "At least 3 years (5 ideal)",
+    "q": "A minimum of three years of professional experience will be considered",
+    "u": "https://www.smurfitschool.ie/programmes/thesmurfitmba/modularexecutivemba/admissionsfees/",
+    "min": 3,
+    "max": null,
+    "typical": "5 years is ideal",
+    "note": "The page excludes summer placements, internships, short-term, part-time and temporary work."
+   },
+   "degree": {
+    "t": "A university degree",
+    "q": "University Degree: A university degree"
+   },
+   "test": null,
+   "english": {
+    "t": "A high level of competence in English",
+    "q": "demonstrate a high level of competence in English language"
+   },
+   "start": {
+    "t": "August 2027",
+    "q": "1-year full-time MBA, starting August 2027",
+    "u": "https://www.smurfitschool.ie/rugbyirelandmbascholarship/",
+    "months": [
+     "Aug"
+    ]
+   },
+   "deadlines": null,
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "chicago-booth-full-time-mba",
+   "kind": "mba",
+   "uni": "university-of-chicago",
+   "uniName": "University of Chicago",
+   "school": "Chicago Booth School of Business",
+   "country": "usa",
+   "city": "Chicago",
+   "name": "Chicago Booth Full-Time MBA",
+   "url": "https://www.chicagobooth.edu/mba/full-time/admissions/cost?sc_lang=en",
+   "length": null,
+   "fee": {
+    "t": "US$89,976 (2026-27)",
+    "q": "This cost applies to the 2026–27 academic year only",
+    "amount": 89976,
+    "cur": "USD",
+    "per": "year",
+    "note": "This is the tuition for the MBA Class of 2028. The page says it is charged in six quarterly instalments. It does not say whether international students pay the same."
+   },
+   "feeUrl": "https://www.chicagobooth.edu/mba/full-time/admissions/cost?sc_lang=en",
+   "exp": null,
+   "degree": {
+    "t": "An undergraduate degree, or its equivalent from another country",
+    "q": "an undergraduate degree from an accredited US college or university or its equivalent"
+   },
+   "test": {
+    "t": "GMAT or GRE",
+    "q": "Our MBA requirements do not require a minimum GMAT or GRE score.",
+    "u": "https://chicagobooth.edu/mba/full-time/admissions/requirements",
+    "note": "No minimum score is required, and test superscores are not accepted."
+   },
+   "english": {
+    "t": "May be required: TOEFL, IELTS or PTE",
+    "q": "Candidates may also be required to submit an English language proficiency test score.",
+    "u": "https://chicagobooth.edu/mba/full-time/admissions/requirements"
+   },
+   "start": null,
+   "deadlines": {
+    "t": "Round 1: 15 September 2026. Round 2: 7 January 2027. Round 3: 1 April 2027.",
+    "q": "Round One Deadline: September 15, 2026",
+    "u": "https://chicagobooth.edu/mba/full-time/admissions/requirements"
+   },
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "oxford-executive-mba",
+   "kind": "emba",
+   "uni": "university-of-oxford",
+   "uniName": "University of Oxford",
+   "school": "Saïd Business School",
+   "country": "uk",
+   "city": "Oxford",
+   "name": "Oxford Executive MBA",
+   "url": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-executive-mba",
+   "length": null,
+   "fee": {
+    "t": "£132,420 (Jan 2027), £140,360 (Sep 2027)",
+    "q": "The Executive MBA fee is £132,420 for the January 2027 intake",
+    "amount": 132420,
+    "cur": "GBP",
+    "per": "programme",
+    "note": "Two intakes, two fees. The amount shown on the card is the earlier intake."
+   },
+   "exp": {
+    "t": "10+ years, ideally 5 managerial",
+    "q": "a minimum of ten years of professional experience",
+    "min": null,
+    "max": null,
+    "note": "The how-to-apply page says “at least five years’ managerial experience”. Check both pages."
+   },
+   "degree": {
+    "t": "Undergraduate degree, ideally 2:1 or above, or an equivalent professional qualification",
+    "q": "an undergraduate degree (ideally 2:1 or above) or equivalent professional qualification"
+   },
+   "test": {
+    "t": "GMAT or Executive Assessment. Some experienced candidates are exempt.",
+    "q": "candidates are required to complete the GMAT",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-executive-mba/how-apply"
+   },
+   "english": null,
+   "start": {
+    "t": "17 January 2027 and 12 September 2027",
+    "months": [
+     "Jan",
+     "Sep"
+    ]
+   },
+   "deadlines": null,
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "cambridge-executive-mba",
+   "kind": "emba",
+   "uni": "university-of-cambridge",
+   "uniName": "University of Cambridge",
+   "school": "Cambridge Judge Business School",
+   "country": "uk",
+   "city": "Cambridge",
+   "name": "Cambridge Executive MBA",
+   "url": "https://www.jbs.cam.ac.uk/masters-degrees/executive-mba/fees-funding/",
+   "length": null,
+   "fee": {
+    "t": "£110,400 for September 2027",
+    "q": "Tuition fees for the Cambridge Executive MBA commencing in September 2027 are £110,400.",
+    "amount": 110400,
+    "cur": "GBP",
+    "per": "programme",
+    "note": "The Global Executive MBA starting January 2028 is listed at £125,100. Fees cover tuition, college membership and some accommodation and meals."
+   },
+   "exp": null,
+   "degree": {
+    "t": "Good second-class honours degree or equivalent",
+    "q": "We require a good second-class honours degree on the UK grading scale",
+    "u": "https://www.jbs.cam.ac.uk/masters-degrees/executive-mba/apply/"
+   },
+   "test": null,
+   "english": null,
+   "start": {
+    "t": "September 2027",
+    "months": [
+     "Sep"
+    ]
+   },
+   "deadlines": null,
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  },
+  {
+   "id": "mbs-executive-mba",
+   "kind": "emba",
+   "uni": "the-university-of-melbourne",
+   "uniName": "University of Melbourne",
+   "school": "Melbourne Business School",
+   "country": "australia",
+   "city": "Melbourne",
+   "name": "Melbourne Business School Executive MBA",
+   "url": "https://mbs.edu/MBA",
+   "length": {
+    "t": "18 months",
+    "q": "18 months",
+    "u": "https://mbs.edu/MBA",
+    "months": 18
+   },
+   "fee": null,
+   "exp": {
+    "t": "At least 5 years of management experience",
+    "q": "five or more years of management experience",
+    "min": 5,
+    "max": null
+   },
+   "degree": {
+    "t": "An undergraduate degree",
+    "q": "An undergraduate degree",
+    "u": "https://mbs.edu/-/media/PDF/Brochures/Degree-Programs/Executive-MBA-Brochure---Melbourne-Business-School.ashx"
+   },
+   "test": null,
+   "english": null,
+   "start": {
+    "t": "March",
+    "u": "https://mbs.edu/MBA",
+    "months": [
+     "Mar"
+    ]
+   },
+   "deadlines": null,
+   "employment": null,
+   "readOn": "2026-11-18",
+   "how": "hand"
+  }
+ ]
+}

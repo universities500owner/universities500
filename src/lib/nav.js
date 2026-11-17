@@ -8,6 +8,7 @@ export const NAV = [
     label: 'Explore',
     items: [
       ['/courses/', 'Course search', 'courses', COURSES_LINE],
+      ['/mba/', 'MBA Explorer', 'mba', 'MBA, master\'s in management and Executive MBA programmes, sorted by the work experience you have.'],
       ['/study-in/', 'Destinations', 'study-in', 'Pick a country and read its guide.'],
       ['/universities/', 'Find my university', 'universities', 'Every university in the list, with sources.'],
       ['/course-fitment/', 'Course fitment', 'course-fitment', 'Four questions, then sample courses scored against your answers.'],
