@@ -4,7 +4,8 @@ name: Courses (read official pages)
 # Only Bachelor's and Master's courses that are full-time on campus and open to international students are kept.
 # No AI is used anywhere: the reader works from page structure and patterns only.
 #
-# Manual only. Nothing here changes the website: the data is for review first.
+# Manual only. With commit ticked, data/courses/ and src/data/courses.json are committed. The website still shows the old placeholder
+# course search until src/data/course_publish.json says publish: true, so the data can be reviewed first.
 # A first trial: shards = 1, limit = 12, commit = false. Then read the report in the run summary.
 #
 # The universities are split across `shards` jobs that run side by side, because the reader waits 3 seconds
@@ -30,7 +31,7 @@ on:
         required: false
         default: "150"
       commit:
-        description: "Commit data/courses to main when everything succeeded"
+        description: "Commit data/courses and src/data/courses.json to main when everything succeeded"
         type: boolean
         default: false
 
@@ -142,6 +143,11 @@ jobs:
           pattern: courses-report-*
           path: shards-report
         continue-on-error: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install beautifulsoup4 lxml
       - name: Put the shards together
         run: |
           mkdir -p combined data/courses
@@ -172,7 +178,8 @@ jobs:
         run: |
           git config user.name "universities500-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/courses
+          python3 scripts/courses/build_site_data.py | tee -a "$GITHUB_STEP_SUMMARY"
+          git add data/courses src/data/courses.json
           if git diff --cached --quiet; then
             echo "No change to commit."
           else

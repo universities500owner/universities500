@@ -1,0 +1,160 @@
+---
+import Base from '../../layouts/Base.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import CourseRow from '../../components/CourseRow.astro';
+import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
+import { hiddenFromSearch } from '../../lib/noindex.js';
+import tools from '../../data/tools.json';
+import { PUBLISH, items, total, generatedAt, fmtIso, filterLists, universitiesWithCourses, CHECK } from '../../lib/courses.js';
+
+const path = '/courses/';
+const live = PUBLISH && total > 0;
+const rows = items;
+const lists = filterLists();
+const unis = universitiesWithCourses();
+const updated = generatedAt ? fmtIso(generatedAt) : '';
+// The placeholder search stays until the real list is switched on.
+const data = JSON.stringify({ FIELDS: tools.FIELDS, COURSES: tools.COURSES }).replace(/</g, '\\u003c');
+---
+<Base
+  title={live ? "Course search for international students | Universities500" : "Course search: filter and compare courses | Universities500"}
+  description={live
+    ? "Search Bachelor's and Master's courses that are full-time on campus and open to international students. Each course links to its official page and shows when it was last read."
+    : "Filter the course catalogue by field, destination, level, tuition and English requirement, then put up to three courses side by side."}
+  path={path}
+  noindex={live ? false : hiddenFromSearch(path)}
+  current="courses"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Course search</nav>
+
+  {live ? (
+    <>
+    <div class="q-head">
+      <h1>Course search</h1>
+      <p>Bachelor's and Master's courses that are full-time on campus and open to international students, read from each university's own course page. Compare up to three. No scoring here: <a href="/course-fitment/">course fitment</a> does that.</p>
+    </div>
+
+    <section class="sec" aria-labelledby="h-find">
+      <h2 id="h-find" class="sr-only">Search</h2>
+      <div class="filterbar" id="crs-bar" role="search" aria-label="Course filters">
+        <input id="crs-q" type="search" placeholder="Course, subject or university" aria-label="Search courses by name, subject or university" />
+        <details class="crs-fd" id="crs-fd" open>
+          <summary id="crs-fd-sum">Filters</summary>
+          <div class="crs-fd-body">
+          <select id="crs-c" aria-label="Destination">
+            <option value="">All destinations</option>
+            {lists.countries.map((c) => <option value={c.code}>{c.name}</option>)}
+          </select>
+          <select id="crs-u" aria-label="University"><option value="">All universities</option></select>
+          <select id="crs-l" aria-label="Level">
+            <option value="">Any level</option>
+            <option value="bachelor">Bachelor's</option>
+            <option value="master">Master's</option>
+          </select>
+          <select id="crs-f" aria-label="Field of study">
+            <option value="">All fields</option>
+            {lists.fields.map((f) => <option value={f}>{f}</option>)}
+          </select>
+          <select id="crs-e" aria-label="English score I can meet">
+            <option value="">Any English score</option>
+            <option value="6">IELTS 6.0 or below</option>
+            <option value="6.5">IELTS 6.5 or below</option>
+            <option value="7">IELTS 7.0 or below</option>
+          </select>
+          {lists.months.length > 0 && (
+            <select id="crs-m" aria-label="Start month">
+              <option value="">Any start month</option>
+              {lists.months.map((m) => <option value={m}>Starts {m}</option>)}
+            </select>
+          )}
+          <select id="crs-o" aria-label="Sort by">
+            <option value="name">Course A to Z</option>
+            <option value="uni">University A to Z</option>
+            <option value="short">Shortest first</option>
+            <option value="country">Destination</option>
+          </select>
+          <label class="int-new"><input type="checkbox" id="crs-fee" /> Fee shown</label>
+          <label class="int-new"><input type="checkbox" id="crs-ie" /> English score shown</label>
+          <label class="int-new"><input type="checkbox" id="crs-sv" /> Saved only</label>
+          </div>
+        </details>
+        <button type="button" class="btn-ghost sch-clear" id="crs-clear" hidden>Clear filters</button>
+      </div>
+      <p class="tally" id="crs-tally" role="status">{rows.length} courses</p>
+      <ol class="crs-list" id="crs-list">
+        {rows.map((c) => <CourseRow c={c} />)}
+      </ol>
+      <p class="more"><button type="button" class="btn-ghost" id="crs-more" hidden>Show more</button></p>
+      <p class="small">Last read {updated}. Everything here is copied from the course's official page and can change. Fees are what the page showed, often for one intake or one year. Check the official page before you apply.</p>
+    </section>
+
+    <section class="sec" id="compare" aria-labelledby="h-cmp" hidden>
+      <h2 id="h-cmp">Compare</h2>
+      <p class="sec-lede" id="crs-cmp-say"></p>
+      <div id="crs-cmp"></div>
+    </section>
+
+    <section class="sec uni-links" aria-labelledby="h-unis">
+      <h2 id="h-unis">Courses by university</h2>
+      <p class="sec-lede">{unis.length} universities have courses listed so far. Each university page lists all of its courses.</p>
+      <ul class="uni-list">
+        {unis.map(({ u, count }) => <li><a href={`/universities/${u.slug}/#courses`}>{u.name}</a> <span class="muted">{count}</span></li>)}
+      </ul>
+    </section>
+
+    <section class="sec" aria-labelledby="h-how">
+      <h2 id="h-how">How this list is made</h2>
+      <ul>
+        <li>A program reads course pages on each university's own website. It follows each site's robots.txt and reads slowly.</li>
+        <li>A course is kept only if its page shows a Bachelor's or Master's, full-time study on campus, and that it is open to international students. Online, part-time, foundation, diploma and research degrees are left out.</li>
+        <li>Each course page shows the sentence every fact was copied from. A fact the page did not state says "{CHECK}". Nothing is estimated.</li>
+        <li>The field is our own label, chosen from words in the course name. It is not the university's.</li>
+        <li>Not every course of every university is here yet. Some websites cannot be read by a program.</li>
+      </ul>
+      <p><a href="/bot/">About our reader</a></p>
+    </section>
+
+    <script>if (document.getElementById('crs-list')) import('../../scripts/course-search.js');</script>
+    </>
+  ) : (
+    <>
+    <div class="q-head">
+      <h1>Course search</h1>
+      <p>Filter the catalogue yourself, then put up to three courses side by side. No scoring here. That is what <a href="/course-fitment/">course fitment</a> is for.</p>
+    </div>
+
+    <div class="searchlay">
+      <aside class="tcard">
+        <h2 class="sec-sub" style="margin-top:0">Filters</h2>
+        <div class="f"><label for="cs-field">Field of study</label><select id="cs-field"></select></div>
+        <div class="f" style="margin-top:.85rem"><label for="cs-country">Destination</label><select id="cs-country"></select></div>
+        <div class="f" style="margin-top:.85rem"><label for="cs-level">Degree level</label><select id="cs-level"></select></div>
+        <div class="f" style="margin-top:.85rem">
+          <label for="cs-fee">Tuition a year, at most <b id="cs-fee-out">40,000</b></label>
+          <input id="cs-fee" type="range" min="0" max="40000" step="1000" value="40000" />
+        </div>
+        <div class="f" style="margin-top:.85rem"><label for="cs-ielts">English I can meet</label><select id="cs-ielts"></select></div>
+        <label class="check" style="margin-top:.85rem"><input type="checkbox" id="cs-sch" /><span>Only courses with scholarships</span></label>
+        <button class="mini" id="cs-reset" type="button" style="margin-top:.85rem">Clear filters</button>
+      </aside>
+
+      <div>
+        <p class="tally" id="cs-tally" role="status" style="margin-bottom:.75rem"></p>
+        <div id="cs-list"></div>
+      </div>
+    </div>
+
+    <section class="sec" aria-labelledby="h-tray">
+      <h2 id="h-tray">Compare</h2>
+      <p class="sec-lede" id="cs-tray-say"></p>
+      <div id="cs-tray"></div>
+    </section>
+
+    <p class="note draft">Courses, fees and deadlines on this page are placeholders for layout. Real listings would come from each university's own catalogue. Shortlists are saved in this browser only.</p>
+
+    <script type="application/json" id="tool-data" set:html={data} />
+    <script>if (document.getElementById('cs-list')) import('../../scripts/courses.js');</script>
+    </>
+  )}
+  <RelatedArticles list={forTopics(TOOL_TOPICS['courses'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />
+</Base>

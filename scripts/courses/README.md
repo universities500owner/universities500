@@ -11,7 +11,9 @@ A page is also left out when it is *about* a programme but is not the programme:
 
 No AI is used. Every value is copied from a sentence on the page and the sentence is kept next to it (`evidence`, `context`), so anyone can check it. If a value cannot be read with confidence it stays `null`, and the site would say "Check the official page".
 
-**Nothing here changes the website.** The files are not under `src/`, nothing imports them, and no page shows them yet. They are data for review first.
+**Nothing here shows on the website until you switch it on.** `build_site_data.py` turns `data/courses/` into `src/data/courses.json` (checked records only, with the sentence each fact came from). The site reads that file only when `src/data/course_publish.json` says `"publish": true`. While it says `false`, `/courses/` keeps the placeholder search and stays out of search engines.
+
+To look at real data on the site: run Courses with `commit` ticked, read the course pages it wrote, then set `publish` to `true` in a pull request. That one change turns on the course search, one page per course (`/courses/<university>/<course>/`), the course list on each university page, and the sitemap entries.
 
 ## What a record holds
 

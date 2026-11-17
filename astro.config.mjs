@@ -12,13 +12,22 @@ for (const u of unis) if (!u.listed) hidden.add(`/universities/${u.slug}/`);
 const newsGate = JSON.parse(fs.readFileSync(new URL('./src/data/industry_news_publish.json', import.meta.url), 'utf-8'));
 if (newsGate.publish !== true) hidden.add('/industry-news/');
 
+// Course pages join the sitemap only when src/data/course_publish.json says publish: true and there are courses to show.
+const courseGate = JSON.parse(fs.readFileSync(new URL('./src/data/course_publish.json', import.meta.url), 'utf-8'));
+const courseData = JSON.parse(fs.readFileSync(new URL('./src/data/courses.json', import.meta.url), 'utf-8'));
+const coursesLive = courseGate.publish === true && courseData.total > 0;
+
 export default defineConfig({
   site: 'https://universities500.com',
   trailingSlash: 'always',
   build: { format: 'directory' },
   integrations: [
     sitemap({
-      filter: (page) => { const p = new URL(page).pathname; return !hidden.has(p) && !hiddenFromSearch(p); },
+      filter: (page) => {
+        const p = new URL(page).pathname;
+        if (coursesLive && p.startsWith('/courses/')) return !hidden.has(p);
+        return !hidden.has(p) && !hiddenFromSearch(p);
+      },
     }),
     externalLinks(),
   ],

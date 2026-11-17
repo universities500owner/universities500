@@ -1,10 +1,13 @@
 // One list of pages, used by the header, the footer and the site search.
+import courseGate from '../data/course_publish.json';
+const COURSES_LINE = courseGate.publish === true ? 'Search courses by destination, level, field and English score, and compare up to three.' : 'Filter the sample courses and put up to three side by side.';
+
 export const NAV = [
   {
     id: 'explore',
     label: 'Explore',
     items: [
-      ['/courses/', 'Course search', 'courses', 'Filter the sample courses and put up to three side by side.'],
+      ['/courses/', 'Course search', 'courses', COURSES_LINE],
       ['/study-in/', 'Destinations', 'study-in', 'Pick a country and read its guide.'],
       ['/universities/', 'Find my university', 'universities', 'Every university in the list, with sources.'],
       ['/course-fitment/', 'Course fitment', 'course-fitment', 'Four questions, then sample courses scored against your answers.'],
