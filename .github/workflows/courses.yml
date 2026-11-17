@@ -4,7 +4,7 @@ name: Courses (read official pages)
 # Only Bachelor's and Master's courses that are full-time on campus and open to international students are kept.
 # No AI is used anywhere: the reader works from page structure and patterns only.
 #
-# Manual only. With commit ticked, data/courses/ and src/data/courses.json are committed. The website still shows the old placeholder
+# Manual only. A run started from a branch tests that branch's code and never commits. With commit ticked on main, data/courses/ and src/data/courses.json are committed. The website still shows the old placeholder
 # course search until src/data/course_publish.json says publish: true, so the data can be reviewed first.
 # A first trial: shards = 1, limit = 12, commit = false. Then read the report in the run summary.
 #
@@ -70,7 +70,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -131,7 +131,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref }}
       - uses: actions/download-artifact@v4
         with:
           pattern: courses-data-*
@@ -174,7 +174,7 @@ jobs:
           path: combined/
           retention-days: 30
       - name: Commit the data
-        if: needs.read.result == 'success' && inputs.commit
+        if: needs.read.result == 'success' && inputs.commit && github.ref == 'refs/heads/main'
         run: |
           git config user.name "universities500-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
