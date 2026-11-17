@@ -94,7 +94,10 @@ def url_problem(*urls):
 def problem(rec, today=None):
     if rec.get('origin') == 'official':
         return None
-    return name_problem(rec.get('name'), today) or url_problem(rec.get('url'), rec.get('sourcePage'))
+    why = name_problem(rec.get('name'), today)
+    if why == 'generic-heading' and rec.get('origin') == 'studyaustralia':
+        why = None   # a title on Study Australia's list is a name, not a page heading
+    return why or url_problem(rec.get('url'), rec.get('sourcePage'))
 
 
 def clean_file(path, today=None, write=True):

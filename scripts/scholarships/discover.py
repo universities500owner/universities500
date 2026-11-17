@@ -150,6 +150,11 @@ def crawl_university(uni, fx, today, max_pages=60, seeds=None):
     hub_best = (0, None, None)  # (score, url, title)
     hub_seed = False
     seen_ids = {}
+    out['trace'] = []   # the first pages visited and what became of each (printed only with run.py --diagnose)
+
+    def trace(url, what):
+        if len(out['trace']) < 30:
+            out['trace'].append(f'{url}  ->  {what}')
     while heap and out['pages'] < max_pages:
         negsc, _, url, depth, intl_ctx = heapq.heappop(heap)
         if url in visited:
@@ -159,11 +164,13 @@ def crawl_university(uni, fx, today, max_pages=60, seeds=None):
         res = fx.get(url)
         out['pages'] += 1
         if res.robots_blocked:
+            trace(url, 'blocked by robots.txt')
             out['reasons']['robots-blocked-page'] += 1
             if is_seed:
                 out['seeds'][url] = f'robots-{res.robots_reason}'
             continue
         if not res.ok:
+            trace(url, f'not opened: {res.error or res.status}')
             out['reasons']['fetch-failed'] += 1
             if is_seed:
                 out['seeds'][url] = f'failed: {res.error}'
@@ -184,6 +191,7 @@ def crawl_university(uni, fx, today, max_pages=60, seeds=None):
             continue
         visited.add(X.canon(res.final_url))
         if len(page.text) < 200:
+            trace(url, f'almost no text ({len(page.text)} characters): built by scripts or a bot check')
             out['reasons']['js-only-or-empty'] += 1
             if is_seed:
                 # the page loads but builds its list with scripts: we cannot read it, but the link is still worth showing
@@ -204,6 +212,7 @@ def crawl_university(uni, fx, today, max_pages=60, seeds=None):
         if recs:
             for r in recs:
                 seen_ids.setdefault(r['id'], r)
+        trace(url, ('table of %d' % len(recs)) if recs else ('listing page, %d links' % len(links)) if is_listing else 'page')
         if is_listing:
             sc = len(links) + (3 if URL_INTL.search(url) else 0) + (2 if URL_STRONG.search(url) else 0)
             if sc > hub_best[0]:
@@ -212,7 +221,9 @@ def crawl_university(uni, fx, today, max_pages=60, seeds=None):
             rec, reason = X.detail_record(page, uni, today, intl_hint=intl_ctx)
             if rec:
                 seen_ids.setdefault(rec['id'], rec)
+                trace(url, f"record: {rec['name']}")
             else:
+                trace(url, f"kept out: {reason} ({page.name[:60]!r})")
                 out['reasons'][reason] += 1
                 # a page that is about scholarships but is not a detail page can still be the best "hub"
                 if reason in ('no-details', 'international-not-stated') and re.search(r'\bscholarships?\b', page.name, re.I):

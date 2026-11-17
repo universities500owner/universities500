@@ -12,6 +12,8 @@ name: Scholarships (read official pages)
 # run log, why each one gives no scholarships: what robots.txt answered, whether its scholarship pages load, whether the list looks built by
 # scripts, and what its sitemap offers. Nothing is written or committed. A run from any branch other than main never commits.
 #
+# diagnose = true (manual only): a normal read that also prints, per university, the first pages it opened and why they were not kept.
+#
 # Settings: add CONTACT_EMAIL under Settings > Secrets and variables > Actions (a variable or a secret both work).
 # It goes in the crawler's User-Agent so a website owner can reach you.
 on:
@@ -31,6 +33,10 @@ on:
         description: "Commit the result to main (only when the run is on main)"
         type: boolean
         default: true
+      diagnose:
+        description: "Real read, plus a log of what was opened and why pages were not kept, per university"
+        type: boolean
+        default: false
       probe:
         description: "Diagnose only: print why the universities in `only` or `country` give nothing. Writes nothing."
         type: boolean
@@ -88,6 +94,7 @@ jobs:
           ARGS="--report out --max-minutes 170"
           if [ "${{ github.event_name }}" = "schedule" ]; then ARGS="$ARGS --if-older-than-hours 46"; fi
           if [ -n "${{ inputs.only }}" ]; then ARGS="$ARGS --only ${{ inputs.only }}"; fi
+          if [ "${{ inputs.diagnose }}" = "true" ]; then ARGS="$ARGS --diagnose"; fi
           if [ "${{ inputs.limit }}" != "" ] && [ "${{ inputs.limit }}" != "0" ]; then ARGS="$ARGS --limit ${{ inputs.limit }}"; fi
           if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The crawler's User-Agent has no contact address."; fi
           python3 scripts/scholarships/run.py $ARGS
