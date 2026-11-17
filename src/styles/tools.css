@@ -464,9 +464,7 @@ html[data-theme="dark"] .xcta { background: var(--hover); }
 .news-strip-head h2 { margin: 0; }
 .news-all { font-weight: 700; }
 .news-lede { color: var(--muted); max-width: 62ch; margin: .35rem 0 1.1rem; }
-.news-grid, .news-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
-.news-grid { grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); }
-.news-list { grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); margin: 1rem 0; }
+.news-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); }
 .news-item { height: 100%; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .45rem; }
 .news-item h3 { font-size: 1.05rem; line-height: 1.3; margin: 0; }
 .news-item h3 a { color: var(--ink); text-decoration: none; }
@@ -476,13 +474,39 @@ html[data-theme="dark"] .xcta { background: var(--hover); }
 .news-note { margin: 0; font-size: .95rem; color: var(--ink); }
 .news-item.clamp .news-note { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .news-src { margin-top: auto; font-size: .88rem; font-weight: 600; overflow-wrap: anywhere; }
-.news-fine, .news-srcs { font-size: .85rem; color: var(--muted); max-width: 70ch; }
-.news-jump { margin: 1rem 0 .5rem; }
-.news-jump .chips a { text-decoration: none; }
-.news-sec { scroll-margin-top: 1rem; }
-.news-press { margin-top: 1.5rem; }
-.news-press h3 { font-size: 1.05rem; margin: 0 0 .15rem; }
-.news-item.press { background: transparent; border-style: dashed; padding: .75rem 1rem; }
-.news-item.press .news-src { margin-top: 0; font-weight: 400; color: var(--muted); }
-.news-more { margin: .25rem 0 0; }
-.news-more > summary { cursor: pointer; font-weight: 600; padding: .35rem 0; }
+.news-fine { font-size: .85rem; color: var(--muted); max-width: 70ch; }
+
+/* the /industry-news/ feed: one flowing list, newest first, no boxes or rules between items */
+.feed-filters { display: grid; gap: .7rem; margin: .5rem 0 1.75rem; }
+.feed-filters .seg { font-size: .92rem; padding: .3rem .8rem; display: inline-flex; align-items: center; gap: .42rem; }
+.seg-n { font-size: .8rem; color: var(--muted); }
+.seg[aria-pressed="true"] .seg-n { color: inherit; opacity: .85; }
+.seg[data-n="0"]:not([aria-pressed="true"]) { color: var(--muted); }
+.feed-count { margin: 0; font-size: .9rem; color: var(--muted); min-height: 1.4em; }
+.dot { display: inline-block; flex: none; width: .65rem; height: .65rem; border-radius: 50%; background: var(--c, var(--muted)); }
+.feed { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem; max-width: 50rem; }
+.feed-meta { margin: 0 0 .3rem; display: flex; flex-wrap: wrap; align-items: center; gap: .15rem 1rem; font-size: .88rem; color: var(--muted); }
+.feed-meta time { font-weight: 700; color: var(--ink); }
+.feed-country { display: inline-flex; align-items: center; gap: .4rem; font-weight: 700; color: var(--ink); }
+.feed-kind { font-weight: 700; }
+.feed-kind.official { color: var(--grow); }
+.feed-item h2 { font-size: 1.22rem; line-height: 1.3; margin: 0 0 .35rem; }
+.feed-item h2 a { color: var(--ink); text-decoration: none; }
+.feed-item h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+.feed-note { margin: 0 0 .4rem; max-width: 64ch; }
+.feed-link { margin: 0; font-size: .9rem; color: var(--muted); overflow-wrap: anywhere; }
+.feed-link a { font-weight: 600; }
+.feed-empty { max-width: 50rem; margin: 1rem 0; }
+.feed-more { margin: 2rem 0 0; }
+.feed-fine { max-width: 50rem; margin-top: 2.5rem; color: var(--muted); }
+.feed-where { max-width: 50rem; margin: 1.25rem 0 0; font-size: .92rem; }
+.feed-where summary { cursor: pointer; font-weight: 600; padding: .35rem 0; }
+.feed-where ul { margin: .5rem 0 0; padding-left: 1.1rem; display: grid; gap: .5rem; }
+@media (max-width: 40rem) {
+  .feed { gap: 1.7rem; }
+  .feed-item h2 { font-size: 1.12rem; }
+  /* one swipeable row of destinations keeps the news close to the top of a phone screen */
+  .feed-filters .segs { flex-wrap: nowrap; overflow-x: auto; margin: 0 -1.25rem; padding: .15rem 1.25rem .35rem; scroll-snap-type: x proximity; scroll-padding-left: 1.25rem; scrollbar-width: none; }
+  .feed-filters .segs::-webkit-scrollbar { display: none; }
+  .feed-filters .seg { flex: none; scroll-snap-align: start; }
+}
