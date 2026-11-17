@@ -62,7 +62,7 @@ def _candidates(src, fx, info, since):
         return got
 
     def list_page(res, u):
-        its = NF.parse_listing(res.text, res.final_url)
+        its = NF.parse_dated_links(res.text, res.final_url, src['urlDate']) if src.get('urlDate') else NF.parse_listing(res.text, res.final_url)
         if its:
             return take(its, f'list page {u}')
         info['profiles'].append({'url': u, **NF.profile(res.text, res.final_url)})

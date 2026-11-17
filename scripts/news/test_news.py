@@ -131,6 +131,11 @@ class Rules(unittest.TestCase):
         self.assertEqual(R.relevant(title, '', 'student', True), (True, ''))
         self.assertEqual(R.relevant(title, '', 'student', False)[0], False)
 
+    def test_policy_words_cover_permission_court_and_budget(self):
+        for h in ['Budget 2026: targeted two-year Graduate permission announced', 'Federal Court Rules in Favor of Coalition Challenging Rule', 'NAFSA joins lawsuit over internship changes']:
+            self.assertEqual(R.relevant(h, '', 'policy'), (True, ''), h)
+        self.assertEqual(R.relevant('International students contributed $39.9 billion to the US economy', '', 'policy')[0], False)
+
     def test_english(self):
         self.assertTrue(R.english('International students can now apply for the new graduate visa online from next week.'))
         self.assertFalse(R.english('Les étudiants internationaux peuvent demander un visa pour la France en ligne dès maintenant'))
@@ -295,6 +300,13 @@ class Store(unittest.TestCase):
 
 def wp_json(posts):
     return ('application/json', json.dumps([{'date': d, 'link': l, 'title': {'rendered': t}, 'excerpt': {'rendered': '<p>Trade press text that must never be kept.</p>'}} for t, l, d in posts]))
+
+
+class DatedLinks(unittest.TestCase):
+    def test_date_taken_from_the_address(self):
+        html = '<a href="/post.php?story=20261114092909696">Foreign universities struggle to attract Indian students</a><a href="/about">About this newspaper and who runs it</a><a href="/post.php?story=20261113104312394">Short</a>'
+        its = NF.parse_dated_links(html, 'https://example.org/list', r'story=(\d{8})')
+        self.assertEqual([(i['published'], i['title']) for i in its], [('2026-11-14', 'Foreign universities struggle to attract Indian students')])
 
 
 class TwelveMonths(unittest.TestCase):

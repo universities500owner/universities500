@@ -59,7 +59,7 @@ POLICY = re.compile(
     r"\b(?:visas?|permits?|caps?|capped|quotas?|rules?|polic(?:y|ies)|regulations?|regulatory|reforms?|fees?|levy|levies|work (?:rights|hours|permits?)|post-study|"
     r"immigration|migration|bill|laws?|legislation|bans?|banned|crack(?:s|ing)? down|crackdown|tighten\w*|thresholds?|proof of funds|financial requirements?|"
     r"requirements?|restrictions?|limits?|limiting|sponsor\w*|licen[cs]\w*|compliance|genuine student|net migration|settlement|graduate route|OPT|PGWP|"
-    r"English[- ]language|IELTS|dependants?|dependents?|ceiling|pause\w*|suspend\w*|overhaul)\b", re.I)
+    r"English[- ]language|IELTS|dependants?|dependents?|ceiling|pause\w*|suspend\w*|overhaul|permissions?|changes?|lawsuits?|courts?|rulings?|budgets?|levy)\b", re.I)
 
 
 def countries_in(text):

@@ -185,6 +185,29 @@ def parse_listing(html, base):
     return items
 
 
+def parse_dated_links(html, base, pattern):
+    """For a list whose headlines carry no date but whose addresses do (University World News: ...story=20261114092909696).
+    `pattern` has one group of eight digits, YYYYMMDD. A link whose address has no such date is skipped."""
+    rx = re.compile(pattern)
+    soup = X.soup_of(html)
+    items, seen = [], set()
+    for a in soup.find_all('a', href=True):
+        title = T.clean(a.get_text(' '))
+        if not 25 <= len(title) <= 240:
+            continue
+        url = urllib.parse.urljoin(base, a['href'].strip())
+        m = rx.search(url)
+        if not m or url in seen:
+            continue
+        d = m.group(1)
+        pub = R.parse_date(f'{d[:4]}-{d[4:6]}-{d[6:8]}')
+        if not pub:
+            continue
+        seen.add(url)
+        items.append({'title': title, 'url': url, 'published': pub, 'summary': ''})
+    return items
+
+
 # ---- finding a site's news pages from its home page, and describing a page we could not read ----
 NEWS_TEXT = re.compile(r"\b(?:news|press|media(?:[- ]?(?:centre|center|releases?|room))?|latest|announcements?|updates?|newsroom|notices?|bulletins?)\b", re.I)
 NEWS_PATH = re.compile(r"/(?:news|press|media|latest|newsroom|announcements?|notices?|updates?|press-releases?|media-releases?)(?:[-_/.]|$)", re.I)
@@ -238,12 +261,15 @@ def profile(html, base):
             break
     # where a date sits in the visible text, and any data addresses named in the page's scripts: enough to see why no headline was read
     ctx = [T.clean(text[max(0, m.start() - 90):m.end() + 90]) for m in list(DATE_HINT.finditer(text))[:2]]
+    raw = html or ''
+    hm = DATE_HINT.search(raw)
+    date_html = re.sub(r'\s+', ' ', raw[max(0, hm.start() - 260):hm.end() + 120]) if hm else ''
     ends = []
     for e in API_HINT.findall(html or ''):
         if re.search(r'api|\.json|ajax|feed|search|graphql|odata|_vti|services?/', e, re.I) and not re.search(r'\.(?:js|css|png|jpe?g|svg|gif|woff2?|ico)(?:\?|$)', e, re.I) and e not in ends:
-            ends.append(e[:140])
+            ends.append(e[:420])
         if len(ends) >= 5:
             break
     return {'title': title[:90], 'chars': len(text), 'links': len(anchors), 'timeTags': len(soup.find_all('time')),
             'dates': len(T.parse_full_dates(text)), 'scripts': len(soup.find_all('script')), 'sample': long_links,
-            'dateContext': ctx, 'endpoints': ends}
+            'dateContext': ctx, 'dateHtml': date_html, 'endpoints': ends}
