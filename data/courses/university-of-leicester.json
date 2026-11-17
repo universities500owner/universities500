@@ -1,0 +1,21 @@
+{
+"slug": "university-of-leicester",
+"name": "University of Leicester",
+"country": "uk",
+"web": "https://le.ac.uk",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "unreachable",
+"note": "HTTP 403",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

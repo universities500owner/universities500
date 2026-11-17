@@ -1,0 +1,21 @@
+{
+"slug": "ucsi-university",
+"name": "UCSI University",
+"country": "malaysia",
+"web": "http://www.ucsiuniversity.edu.my/index.aspx",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "unreachable",
+"note": "HTTP 404",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

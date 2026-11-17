@@ -1,0 +1,23 @@
+{
+"slug": "taylor-s-university",
+"name": "Taylor's University",
+"country": "malaysia",
+"web": "http://www.taylors.edu.my/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 13, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www.taylors.edu.my/international/", "https://www.taylors.edu.my/international-students/", "https://www.taylors.edu.my/study/international/", "https://www.taylors.edu.my/admissions/international/", "https://www.taylors.edu.my/international-admissions/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+
+}
+}

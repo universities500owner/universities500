@@ -1,0 +1,23 @@
+{
+"slug": "washington-state-university",
+"name": "Washington State University",
+"country": "usa",
+"web": "https://wsu.edu",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 6,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 5, "skipped-by-address:programme-subpage": 1, "not-a-course-page": 1}},
+"heldSamples": {"skipped-by-address:programme-subpage": ["https://wsu.edu/academics/"], "gone": ["https://wsu.edu/international/", "https://wsu.edu/international-students/", "https://wsu.edu/study/international/", "https://wsu.edu/admissions/international/", "https://wsu.edu/international-admissions/"], "not-a-course-page": ["https://wsu.edu/academics/colleges/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://wsu.edu/academics/colleges/": ["2026-11-17", "listing-page"]
+}
+}

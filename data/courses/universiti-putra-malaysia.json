@@ -1,0 +1,31 @@
+{
+"slug": "universiti-putra-malaysia",
+"name": "University of Putra Malaysia",
+"country": "malaysia",
+"web": "http://www.upm.edu.my/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 10,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"js-only-or-empty": 5, "not-a-course-page": 2, "international-unclear": 1, "gone": 1, "foundation-or-pathway": 1}},
+"heldSamples": {"js-only-or-empty": ["https://upm.edu.my/international/", "https://upm.edu.my/international-students/", "https://upm.edu.my/study/international/", "https://upm.edu.my/admissions/international/", "https://upm.edu.my/international-admissions/"], "international-unclear": ["https://upm.edu.my/admission/programmes/undergraduate-75800"], "not-a-course-page": ["https://upm.edu.my/admission/programmes/postgraduate-76276", "https://upm.edu.my/academics-4328"], "gone": ["https://eng.upm.edu.my/akademik/siswazah/master_secara_kerja_kursus-2294?L=en"], "foundation-or-pathway": ["https://upm.edu.my/admission/programmes/foundation_studies-76278"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://upm.edu.my/academics-4328": ["2026-11-17", "listing-page"],
+"https://upm.edu.my/admission/programmes/foundation_studies-76278": ["2026-11-17", "foundation-or-pathway"],
+"https://upm.edu.my/admission/programmes/postgraduate-76276": ["2026-11-17", "listing-page"],
+"https://upm.edu.my/admission/programmes/undergraduate-75800": ["2026-11-17", "international-unclear"],
+"https://upm.edu.my/admissions/international/": ["2026-11-17", "js-only-or-empty"],
+"https://upm.edu.my/international-admissions/": ["2026-11-17", "js-only-or-empty"],
+"https://upm.edu.my/international-students/": ["2026-11-17", "js-only-or-empty"],
+"https://upm.edu.my/international/": ["2026-11-17", "js-only-or-empty"],
+"https://upm.edu.my/study/international/": ["2026-11-17", "js-only-or-empty"]
+}
+}

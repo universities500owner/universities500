@@ -1,0 +1,24 @@
+{
+"slug": "universite-de-strasbourg",
+"name": "University of Strasbourg",
+"country": "france",
+"web": "https://www.unistra.fr/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 7,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 5, "not-a-course-page": 1, "study-mode-unclear": 1}},
+"heldSamples": {"gone": ["https://www.unistra.fr/international/", "https://www.unistra.fr/international-students/", "https://www.unistra.fr/study/international/", "https://www.unistra.fr/admissions/international/", "https://www.unistra.fr/international-admissions/"], "not-a-course-page": ["https://www.unistra.fr/en/node/214/study-or-work-abroad"], "study-mode-unclear": ["https://www.unistra.fr/en/node/5983/study-health-and-medicine"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.unistra.fr/en/node/214/study-or-work-abroad": ["2026-11-17", "listing-page"],
+"https://www.unistra.fr/en/node/5983/study-health-and-medicine": ["2026-11-17", "study-mode-unclear"]
+}
+}

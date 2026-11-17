@@ -1,0 +1,31 @@
+{
+"slug": "national-university-of-singapore",
+"name": "National University of Singapore",
+"country": "singapore",
+"web": "https://nus.edu.sg",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 9,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"js-only-or-empty": 7, "not-a-course-page": 2}},
+"heldSamples": {"js-only-or-empty": ["https://nus.edu.sg/international/", "https://nus.edu.sg/international-students/", "https://nus.edu.sg/study/international/", "https://nus.edu.sg/admissions/international/", "https://nus.edu.sg/international-admissions/"], "not-a-course-page": ["https://www.nus.edu.sg/academicaffairs/programmes/", "https://www.nus.edu.sg/academicaffairs/programmes-for-progression-promotion/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://nus.edu.sg/admissions/international/": ["2026-11-17", "js-only-or-empty"],
+"https://nus.edu.sg/international-admissions/": ["2026-11-17", "js-only-or-empty"],
+"https://nus.edu.sg/international-students/": ["2026-11-17", "js-only-or-empty"],
+"https://nus.edu.sg/international/": ["2026-11-17", "js-only-or-empty"],
+"https://nus.edu.sg/study/international/": ["2026-11-17", "js-only-or-empty"],
+"https://www.nus.edu.sg/academicaffairs/programmes-for-progression-promotion/": ["2026-11-17", "listing-page"],
+"https://www.nus.edu.sg/academicaffairs/programmes/": ["2026-11-17", "listing-page"],
+"https://www.nus.edu.sg/registrar/administrative-policies-procedures/graduate/graduate-fees": ["2026-11-17", "js-only-or-empty"],
+"https://www.nus.edu.sg/registrar/administrative-policies-procedures/undergraduate/undergraduate-fees": ["2026-11-17", "js-only-or-empty"]
+}
+}

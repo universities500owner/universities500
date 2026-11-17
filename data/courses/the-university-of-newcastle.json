@@ -1,0 +1,21 @@
+{
+"slug": "the-university-of-newcastle",
+"name": "University of Newcastle",
+"country": "australia",
+"web": "http://www.newcastle.edu.au/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "unreachable",
+"note": "HTTP 403",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

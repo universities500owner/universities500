@@ -1,0 +1,29 @@
+{
+"slug": "concordia-university",
+"name": "Concordia University",
+"country": "canada",
+"web": "https://www.concordia.ca/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 8,
+"intlOpen": {"url": "https://www.concordia.ca/admissions/international.html", "evidence": "The International Student Office is the first stop for all. newly admitted.", "verified": "2026-11-17"},
+"partial": false,
+"counts": {"eligible": 1, "held": {"skipped-by-address:programme-subpage": 78, "skipped-by-address:foundation-or-pathway": 60, "skipped-by-address:research-degree": 41, "skipped-by-address:online-or-distance": 12, "study-mode-unclear": 2, "fetch-failed": 1}},
+"heldSamples": {"skipped-by-address:foundation-or-pathway": ["https://www.concordia.ca/academics/undergraduate/calendar/current/section-31-faculty-of-arts-and-science/section-31-010-department-of-applied-human-sciences/certificate-in-community-and-organizational-leadership.html", "https://www.concordia.ca/academics/undergraduate/calendar/current/section-31-faculty-of-arts-and-science/section-31-010-department-of-applied-human-sciences/certificate-in-family-life-education.html", "https://www.concordia.ca/academics/undergraduate/calendar/current/section-31-faculty-of-arts-and-science/section-31-060-department-of-classics-modern-languages-and-linguistics/certificate-in-modern-arabic-language-and-culture.html", "https://www.concordia.ca/academics/undergraduate/calendar/current/section-31-faculty-of-arts-and-science/section-31-060-department-of-classics-modern-languages-and-linguistics/certificate-in-modern-chinese-language-and-culture.html", "https://www.concordia.ca/academics/undergraduate/calendar/current/section-31-faculty-of-arts-and-science/section-31-080-department-of-economics/certificate-and-minor-in-business-studies.html"], "skipped-by-address:programme-subpage": ["https://www.concordia.ca/academics/graduate/calendar/current/admissions.html", "https://www.concordia.ca/academics/experiential-learning/opportunities/city-school/work-with-us/events.html", "https://www.concordia.ca/academics/experiential-learning/students/funding.html", "https://www.concordia.ca/academics/co-op/students/fees.html", "https://www.concordia.ca/academics/co-op/events.html"], "skipped-by-address:online-or-distance": ["https://www.concordia.ca/academics/co-op/events/awards/external-2022.html", "https://www.concordia.ca/academics/co-op/events/awards/external-2023.html", "https://www.concordia.ca/academics/co-op/events/awards/external-2024.html", "https://www.concordia.ca/academics/co-op/events/awards/external-2025.html", "https://www.concordia.ca/academics/co-op/events/awards/external-2026.html"], "skipped-by-address:research-degree": ["https://www.concordia.ca/artsci/education/programs/graduate/phd-application-process.html", "https://www.concordia.ca/artsci/cissc/phd-humanities/program/apply.html", "https://www.concordia.ca/artsci/cissc/phd-humanities/program/admisison-requirements.html", "https://www.concordia.ca/artsci/cissc/phd-humanities/program/find-advisors.html", "https://www.concordia.ca/artsci/cissc/phd-humanities/program/faq.html"], "study-mode-unclear": ["https://www.concordia.ca/jmsb/mba/program/co-op.html", "https://www.concordia.ca/jmsb/programs/co-op/mba.html"], "fetch-failed": ["https://www.concordia.ca/jmsb/mba-cfa/program/co-op.html"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+{"id": "concordia-university:structure-schedule:2709fd", "university": "concordia-university", "name": "Structure & schedule", "degree": "MBA", "level": "Master", "field": null, "url": "https://www.concordia.ca/jmsb/mba/program/structure.html", "studyMode": {"verdict": "full-time on campus", "evidence": "Flexible scheduling. Our MBA students, whether full-time or part-time, can create a schedule that fits their needs."}, "international": {"how": "university", "evidence": "The university's admissions page says it takes international students: The International Student Office is the first stop for all. newly admitted."}, "fee": null, "duration": {"display": "24 months", "years": 2.0, "context": "Program schedule. Full-time students take 3 to 4 courses per term and typically complete the program in 20 to 24 months."}, "intakes": null, "ielts": null, "cricos": null, "flags": null, "firstSeen": "2026-11-17", "lastVerified": "2026-11-17", "lastChanged": "2026-11-17", "hash": "d9e555ac842c"}
+],
+"seen": {
+"https://www.concordia.ca/admissions/international.html": ["2026-11-17", "hub"],
+"https://www.concordia.ca/admissions/undergraduate/international.html": ["2026-11-17", "hub"],
+"https://www.concordia.ca/international/students-from-abroad.html": ["2026-11-17", "hub"],
+"https://www.concordia.ca/jmsb/mba/program/co-op.html": ["2026-11-17", "study-mode-unclear"],
+"https://www.concordia.ca/jmsb/mba/program/structure.html": ["2026-11-17", "ok"],
+"https://www.concordia.ca/jmsb/programs/co-op/mba.html": ["2026-11-17", "study-mode-unclear"],
+"https://www.concordia.ca/students/international.html": ["2026-11-17", "hub"]
+}
+}

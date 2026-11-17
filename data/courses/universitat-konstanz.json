@@ -1,0 +1,21 @@
+{
+"slug": "universitat-konstanz",
+"name": "University of Konstanz",
+"country": "germany",
+"web": "https://www.uni-konstanz.de/",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "robots",
+"note": "robots.txt disallows the home page",
+"robotsReason": "disallow",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

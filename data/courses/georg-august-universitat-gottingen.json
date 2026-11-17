@@ -1,0 +1,25 @@
+{
+"slug": "georg-august-universitat-gottingen",
+"name": "Georg-August-Universität Göttingen",
+"country": "germany",
+"web": "https://www.uni-goettingen.de/",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 14,
+"intlOpen": {"url": "https://www.uni-goettingen.de/en/574687.html", "evidence": "Welcome activities for new international students.", "verified": "2026-11-17"},
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 11, "guessed-paths": 1, "study-mode-unclear": 1}},
+"heldSamples": {"gone": ["https://www.uni-goettingen.de/study/international/", "https://www.uni-goettingen.de/admissions/international/", "https://www.uni-goettingen.de/international-admissions/", "https://www.uni-goettingen.de/courses/", "https://www.uni-goettingen.de/programmes/"], "study-mode-unclear": ["https://www.uni-goettingen.de/en/627445.html"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.uni-goettingen.de/en/627445.html": ["2026-11-17", "study-mode-unclear"],
+"https://www.uni-goettingen.de/international-students/": ["2026-11-17", "hub"],
+"https://www.uni-goettingen.de/international/": ["2026-11-17", "hub"]
+}
+}

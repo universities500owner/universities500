@@ -1,0 +1,21 @@
+{
+"slug": "khalifa-university-of-science-and-technology",
+"name": "Khalifa University of Science and Technology",
+"country": "uae",
+"web": "http://ku.ac.ae/",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "unreachable",
+"note": "robots.txt could not be read (network error: timed out)",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

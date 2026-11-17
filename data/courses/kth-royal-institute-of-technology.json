@@ -1,0 +1,23 @@
+{
+"slug": "kth-royal-institute-of-technology",
+"name": "Royal Institute of Technology",
+"country": "sweden",
+"web": "https://www.kth.se",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 13, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www.kth.se/international/", "https://www.kth.se/international-students/", "https://www.kth.se/study/international/", "https://www.kth.se/admissions/international/", "https://www.kth.se/international-admissions/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+
+}
+}

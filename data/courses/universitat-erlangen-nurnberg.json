@@ -1,0 +1,35 @@
+{
+"slug": "universitat-erlangen-nurnberg",
+"name": "Universität Erlangen-Nürnberg",
+"country": "germany",
+"web": "https://www.fau.eu/",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"not-a-course-page": 8, "guessed-paths": 1}},
+"heldSamples": {"not-a-course-page": ["https://www.fau.eu/courses/", "https://www.fau.eu/programmes/", "https://www.fau.eu/programs/", "https://www.fau.eu/study/", "https://www.fau.eu/degrees/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.fau.eu/admissions/international/": ["2026-11-17", "hub"],
+"https://www.fau.eu/courses/": ["2026-11-17", "listing-page"],
+"https://www.fau.eu/degrees/": ["2026-11-17", "listing-page"],
+"https://www.fau.eu/international-admissions/": ["2026-11-17", "hub"],
+"https://www.fau.eu/international-students/": ["2026-11-17", "hub"],
+"https://www.fau.eu/international/": ["2026-11-17", "hub"],
+"https://www.fau.eu/postgraduate/": ["2026-11-17", "listing-page"],
+"https://www.fau.eu/programmes/": ["2026-11-17", "listing-page"],
+"https://www.fau.eu/programs/": ["2026-11-17", "listing-page"],
+"https://www.fau.eu/study/": ["2026-11-17", "listing-page"],
+"https://www.fau.eu/study/courses/": ["2026-11-17", "listing-page"],
+"https://www.fau.eu/study/international/": ["2026-11-17", "hub"],
+"https://www.fau.eu/undergraduate/": ["2026-11-17", "listing-page"]
+}
+}

@@ -1,0 +1,30 @@
+{
+"slug": "freie-universitat-berlin",
+"name": "Freie Universität Berlin",
+"country": "germany",
+"web": "https://www.fu-berlin.de/",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 11,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"js-only-or-empty": 4, "not-html": 3, "not-a-course-page": 1, "study-mode-unclear": 1}},
+"heldSamples": {"not-a-course-page": ["https://www.fu-berlin.de/beratung/_inhalte/intro-ma.html"], "study-mode-unclear": ["https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/"], "js-only-or-empty": ["https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/Bildergalerie/", "https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/low-res-2024-05-14-Start-MS-Wissenschaft-Freiheit-9264.jpg?html=1&locale=de", "https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/low-res-2024-05-14-Start-MS-Wissenschaft-Freiheit-9144.jpg?html=1&locale=de&pageref=142758019", "https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/low-res-2024-05-14-Start-MS-Wissenschaft-Freiheit-9272.jpg?html=1&locale=de&pageref=142758019"], "not-html": ["https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/Bildergalerie/8991.jpg?width=1000", "https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/Bildergalerie/9040.jpg?width=1000", "https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/Bildergalerie/9131.jpg?width=1000"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.fu-berlin.de/beratung/_inhalte/intro-ma.html": ["2026-11-17", "listing-page"],
+"https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/": ["2026-11-17", "study-mode-unclear"],
+"https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/Bildergalerie/": ["2026-11-17", "js-only-or-empty"],
+"https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/low-res-2024-05-14-Start-MS-Wissenschaft-Freiheit-9144.jpg?html=1&locale=de&pageref=142758019": ["2026-11-17", "js-only-or-empty"],
+"https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/low-res-2024-05-14-Start-MS-Wissenschaft-Freiheit-9264.jpg?html=1&locale=de": ["2026-11-17", "js-only-or-empty"],
+"https://www.fu-berlin.de/campusleben/campus/2024/240515-ms-wissenschaft/low-res-2024-05-14-Start-MS-Wissenschaft-Freiheit-9272.jpg?html=1&locale=de&pageref=142758019": ["2026-11-17", "js-only-or-empty"],
+"https://www.fu-berlin.de/international/": ["2026-11-17", "hub"],
+"https://www.fu-berlin.de/international/network/partnership-networks/unaeuropa/": ["2026-11-17", "hub"]
+}
+}

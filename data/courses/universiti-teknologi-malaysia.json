@@ -1,0 +1,24 @@
+{
+"slug": "universiti-teknologi-malaysia",
+"name": "Universiti Teknologi Malaysia (UTM)",
+"country": "malaysia",
+"web": "http://www.utm.my",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 7,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 5, "not-a-course-page": 2}},
+"heldSamples": {"gone": ["https://www.utm.my/international/", "https://www.utm.my/international-students/", "https://www.utm.my/study/international/", "https://www.utm.my/admissions/international/", "https://www.utm.my/international-admissions/"], "not-a-course-page": ["https://www.utm.my/fest-honours-alumni-achievements-at-fest-alumni-homecoming-2026/", "https://www.utm.my/study-on-enhancement-of-signal-parameters-estimation-for-rf-power-sensors-in-the-presence-of-1f-noise/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.utm.my/fest-honours-alumni-achievements-at-fest-alumni-homecoming-2026/": ["2026-11-17", "listing-page"],
+"https://www.utm.my/study-on-enhancement-of-signal-parameters-estimation-for-rf-power-sensors-in-the-presence-of-1f-noise/": ["2026-11-17", "listing-page"]
+}
+}

@@ -1,0 +1,35 @@
+{
+"slug": "humboldt-universitat-zu-berlin",
+"name": "Humboldt-Universität zu Berlin",
+"country": "germany",
+"web": "https://www.hu-berlin.de/",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"not-a-course-page": 8, "guessed-paths": 1}},
+"heldSamples": {"not-a-course-page": ["https://www.hu-berlin.de/courses/", "https://www.hu-berlin.de/programmes/", "https://www.hu-berlin.de/programs/", "https://www.hu-berlin.de/study/", "https://www.hu-berlin.de/degrees/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.hu-berlin.de/admissions/international/": ["2026-11-17", "hub"],
+"https://www.hu-berlin.de/courses/": ["2026-11-17", "listing-page"],
+"https://www.hu-berlin.de/degrees/": ["2026-11-17", "listing-page"],
+"https://www.hu-berlin.de/international-admissions/": ["2026-11-17", "hub"],
+"https://www.hu-berlin.de/international-students/": ["2026-11-17", "hub"],
+"https://www.hu-berlin.de/international/": ["2026-11-17", "hub"],
+"https://www.hu-berlin.de/postgraduate/": ["2026-11-17", "listing-page"],
+"https://www.hu-berlin.de/programmes/": ["2026-11-17", "listing-page"],
+"https://www.hu-berlin.de/programs/": ["2026-11-17", "listing-page"],
+"https://www.hu-berlin.de/study/": ["2026-11-17", "listing-page"],
+"https://www.hu-berlin.de/study/courses/": ["2026-11-17", "listing-page"],
+"https://www.hu-berlin.de/study/international/": ["2026-11-17", "hub"],
+"https://www.hu-berlin.de/undergraduate/": ["2026-11-17", "listing-page"]
+}
+}

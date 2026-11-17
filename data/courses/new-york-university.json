@@ -1,0 +1,21 @@
+{
+"slug": "new-york-university",
+"name": "New York University",
+"country": "usa",
+"web": "https://nyu.edu",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "unreachable",
+"note": "robots.txt could not be read (network error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011))",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

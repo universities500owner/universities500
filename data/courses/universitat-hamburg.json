@@ -1,0 +1,33 @@
+{
+"slug": "universitat-hamburg",
+"name": "University of Hamburg",
+"country": "germany",
+"web": "https://www.uni-hamburg.de/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 19,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 8, "not-a-course-page": 2, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www.uni-hamburg.de/courses/", "https://www.uni-hamburg.de/programmes/", "https://www.uni-hamburg.de/programs/", "https://www.uni-hamburg.de/study/", "https://www.uni-hamburg.de/degrees/"], "not-a-course-page": ["https://www.uni-hamburg.de/internationales/studieren-im-ausland/programme/zentralaustausch.html", "https://www.uni-hamburg.de/internationales/studieren-im-ausland/programme/erasmus.html"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.uni-hamburg.de/campuscenter/bewerbung/international.html?etcc_cmp=internationale-flyout-de&etcc_med=flyout-de&et_cmp_seg3=&et_cmp_seg5=&mtm_campaign=internationale-flyout-de&mtm_medium=flyout-de&mtm_content=": ["2026-11-17", "hub"],
+"https://www.uni-hamburg.de/internationales.html": ["2026-11-17", "hub"],
+"https://www.uni-hamburg.de/internationales/hochschulpartnerschaften.html": ["2026-11-17", "hub"],
+"https://www.uni-hamburg.de/internationales/kontakt.html": ["2026-11-17", "hub"],
+"https://www.uni-hamburg.de/internationales/mitarbeitende.html": ["2026-11-17", "hub"],
+"https://www.uni-hamburg.de/internationales/nachwuchs-wissenschaft.html": ["2026-11-17", "hub"],
+"https://www.uni-hamburg.de/internationales/profil.html": ["2026-11-17", "hub"],
+"https://www.uni-hamburg.de/internationales/profil/audit.html": ["2026-11-17", "hub"],
+"https://www.uni-hamburg.de/internationales/studieren-im-ausland/programme/erasmus.html": ["2026-11-17", "listing-page"],
+"https://www.uni-hamburg.de/internationales/studieren-im-ausland/programme/zentralaustausch.html": ["2026-11-17", "listing-page"],
+"https://www.uni-hamburg.de/internationales/studierende.html": ["2026-11-17", "hub"]
+}
+}

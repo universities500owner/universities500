@@ -1,0 +1,24 @@
+{
+"slug": "university-of-kansas",
+"name": "University of Kansas",
+"country": "usa",
+"web": "https://www.ku.edu",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 7,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 5, "not-a-course-page": 2, "skipped-by-address:programme-subpage": 1}},
+"heldSamples": {"skipped-by-address:programme-subpage": ["https://www.ku.edu/academics"], "gone": ["https://www.ku.edu/international/", "https://www.ku.edu/international-students/", "https://www.ku.edu/study/international/", "https://www.ku.edu/admissions/international/", "https://www.ku.edu/international-admissions/"], "not-a-course-page": ["https://ku.edu/graduate-request-info", "https://ku.edu/undergraduate-request-info"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://ku.edu/graduate-request-info": ["2026-11-17", "listing-page"],
+"https://ku.edu/undergraduate-request-info": ["2026-11-17", "listing-page"]
+}
+}

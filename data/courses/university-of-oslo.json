@@ -1,0 +1,31 @@
+{
+"slug": "university-of-oslo",
+"name": "University of Oslo",
+"country": "norway",
+"web": "https://www.uio.no",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 14,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"study-mode-unclear": 6, "gone": 5, "skipped-by-address:programme-subpage": 4, "international-unclear": 1, "not-a-course-page": 1, "diploma-or-certificate": 1}},
+"heldSamples": {"gone": ["https://www.uio.no/international/", "https://www.uio.no/international-students/", "https://www.uio.no/study/international/", "https://www.uio.no/admissions/international/", "https://www.uio.no/international-admissions/"], "study-mode-unclear": ["https://www.mn.uio.no/its/om/aktuelt/aktuelle-saker/ny-studieprogram.html", "https://www.uio.no/english/studies/programmes/technology-systems/", "https://www.uio.no/studier/program/eng-program/technology-systems/", "https://www.uio.no/english/studies/programmes/technology-systems/why-choose/", "https://www.uio.no/english/studies/programmes/technology-systems/learning-outcomes/"], "skipped-by-address:programme-subpage": ["https://www.uio.no/english/studies/programmes/technology-systems/admission/", "https://www.uio.no/english/studies/programmes/technology-systems/career/", "https://www.uio.no/english/studies/programmes/new-programmes/system-transformation/contact", "https://www.uio.no/english/studies/programmes/technology-systems/career"], "international-unclear": ["https://www.uio.no/english/studies/programmes/technology-systems/structure/"], "not-a-course-page": ["https://www.uio.no/english/studies/courses/"], "diploma-or-certificate": ["https://www.uio.no/english/studies/certificates/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.mn.uio.no/its/om/aktuelt/aktuelle-saker/ny-studieprogram.html": ["2026-11-17", "study-mode-unclear"],
+"https://www.uio.no/english/studies/certificates/": ["2026-11-17", "diploma-or-certificate"],
+"https://www.uio.no/english/studies/courses/": ["2026-11-17", "listing-page"],
+"https://www.uio.no/english/studies/programmes/technology-systems/": ["2026-11-17", "study-mode-unclear"],
+"https://www.uio.no/english/studies/programmes/technology-systems/abroad": ["2026-11-17", "study-mode-unclear"],
+"https://www.uio.no/english/studies/programmes/technology-systems/learning-outcomes/": ["2026-11-17", "study-mode-unclear"],
+"https://www.uio.no/english/studies/programmes/technology-systems/structure/": ["2026-11-17", "listing-page"],
+"https://www.uio.no/english/studies/programmes/technology-systems/why-choose/": ["2026-11-17", "study-mode-unclear"],
+"https://www.uio.no/studier/program/eng-program/technology-systems/": ["2026-11-17", "study-mode-unclear"]
+}
+}

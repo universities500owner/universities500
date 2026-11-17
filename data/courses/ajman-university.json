@@ -1,0 +1,23 @@
+{
+"slug": "ajman-university",
+"name": "Ajman University",
+"country": "uae",
+"web": "http://www.ajman.ac.ae/",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 1,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"skipped-by-address:programme-subpage": 4, "fetch-failed": 1}},
+"heldSamples": {"skipped-by-address:programme-subpage": ["https://www.ajman.ac.ae/en/academics", "https://www.ajman.ac.ae/en/admission-and-registration/undergraduate/admission-requirements", "https://www.ajman.ac.ae/ar/academics", "https://www.ajman.ac.ae/ar/admission-and-registration/undergraduate/admission-requirements"], "fetch-failed": ["https://www.ajman.ac.ae/en/academics/international-academic-affairs"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+
+}
+}

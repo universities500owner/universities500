@@ -1,0 +1,32 @@
+{
+"slug": "leibniz-universitat-hannover",
+"name": "Leibniz University Hannover",
+"country": "germany",
+"web": "https://www.uni-hannover.de/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 18,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 8, "study-mode-unclear": 3, "not-a-course-page": 2, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www.uni-hannover.de/courses/", "https://www.uni-hannover.de/programmes/", "https://www.uni-hannover.de/programs/", "https://www.uni-hannover.de/study/", "https://www.uni-hannover.de/degrees/"], "not-a-course-page": ["https://www.maschinenbau.uni-hannover.de/en/study/range-of-courses-offered-by-the-faculty/double-degree-programmes/double-degree-programme-sustainable-engineering", "https://www.maschinenbau.uni-hannover.de/en/study/degree-programmes/double-degree-programmes/double-degree-programme-sustainable-engineering-lut/programme-content"], "study-mode-unclear": ["https://www.maschinenbau.uni-hannover.de/en/study/during-studies/module-catalogues-tutorials-and-laboratories", "https://www.maschinenbau.uni-hannover.de/en/study/degree-programmes/double-degree-programmes/double-degree-programme-sustainable-engineering-lut/application-procedure", "https://www.wiwi.uni-hannover.de/studium/studienangebot-der-fakultaet/msc-wirtschaftsingenieurwesen"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.maschinenbau.uni-hannover.de/en/study/degree-programmes/double-degree-programmes/double-degree-programme-sustainable-engineering-lut/application-procedure": ["2026-11-17", "study-mode-unclear"],
+"https://www.maschinenbau.uni-hannover.de/en/study/degree-programmes/double-degree-programmes/double-degree-programme-sustainable-engineering-lut/programme-content": ["2026-11-17", "listing-page"],
+"https://www.maschinenbau.uni-hannover.de/en/study/during-studies/module-catalogues-tutorials-and-laboratories": ["2026-11-17", "study-mode-unclear"],
+"https://www.maschinenbau.uni-hannover.de/en/study/range-of-courses-offered-by-the-faculty/double-degree-programmes/double-degree-programme-sustainable-engineering": ["2026-11-17", "listing-page"],
+"https://www.uni-hannover.de/forschung/internationale-forschende": ["2026-11-17", "hub"],
+"https://www.uni-hannover.de/universitaet/aktuelles/veranstaltungen/internationale-tagungen": ["2026-11-17", "hub"],
+"https://www.uni-hannover.de/universitaet/aktuelles/veranstaltungen/internationale-tagungen/detail/conference/humboldt-meets-leibniz-2027-emerging-topics-in-energy-resilience-and-transformation-research": ["2026-11-17", "hub"],
+"https://www.uni-hannover.de/universitaet/internationales": ["2026-11-17", "hub"],
+"https://www.uni-hannover.de/universitaet/internationales/eulist": ["2026-11-17", "hub"],
+"https://www.wiwi.uni-hannover.de/studium/studienangebot-der-fakultaet/msc-wirtschaftsingenieurwesen": ["2026-11-17", "study-mode-unclear"]
+}
+}

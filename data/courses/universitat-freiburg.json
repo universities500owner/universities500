@@ -1,0 +1,37 @@
+{
+"slug": "universitat-freiburg",
+"name": "University of Freiburg",
+"country": "germany",
+"web": "https://uni-freiburg.de/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 15,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"study-mode-unclear": 6, "not-a-course-page": 4, "robots-blocked-page": 3}},
+"heldSamples": {"study-mode-unclear": ["https://uni-freiburg.de/master-labs-gehen-in-die-naechste-runde-bewerbung-fuer-eine-foerderung-bis-zum-31-12-21-moeglich/", "https://uni-freiburg.de/veranstaltungskalender/2026-06-18-forschung-am-institut-vorstellung-von-ba-ma-dissertationsarbeiten/", "https://uni-freiburg.de/sattelmuehle-foerderpreise-fuer-freiburger-forscherin-und-master-absolvent/", "https://uni-freiburg.de/drei-juristische-fakultaeten-fordern-von-politik-zuegige-einfuehrung-des-integrierten-bachelors/", "https://uni-freiburg.de/moter-modern-technologies-in-enzyme-research-beteiligte-ziehen-eine-erfolgreiche-bilanz-des-master-labs/"], "robots-blocked-page": ["https://www.lehrentwicklung.uni-freiburg.de/LE/masterlabs/masterlab22ausschreibung", "https://www.lehrentwicklung.uni-freiburg.de/LE/masterlabs", "https://www.lehrentwicklung.uni-freiburg.de/LE/masterlabs/masterlabs"], "not-a-course-page": ["https://uni-freiburg.de/foerderpreis-fuer-bachelorarbeit-ueber-den-eichenkernkaefer/", "https://uni-freiburg.de/internationaler-masterstudiengang-european-forestry-erhaelt-erneute-foerderung/", "https://uni-freiburg.de/erste-24-absolventinnen-des-bachelorstudiengangs-hebammenwissenschaft-feiern-ihren-abschluss/", "https://uni-freiburg.de/che-masterranking-2024-universitaet-freiburg-mit-spitzenplatzierungen-in-der-informatik-mathematik-und-physik/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://uni-freiburg.de/admissions/international/": ["2026-11-17", "hub"],
+"https://uni-freiburg.de/che-masterranking-2024-universitaet-freiburg-mit-spitzenplatzierungen-in-der-informatik-mathematik-und-physik/": ["2026-11-17", "listing-page"],
+"https://uni-freiburg.de/drei-juristische-fakultaeten-fordern-von-politik-zuegige-einfuehrung-des-integrierten-bachelors/": ["2026-11-17", "study-mode-unclear"],
+"https://uni-freiburg.de/erste-24-absolventinnen-des-bachelorstudiengangs-hebammenwissenschaft-feiern-ihren-abschluss/": ["2026-11-17", "listing-page"],
+"https://uni-freiburg.de/foerderpreis-fuer-bachelorarbeit-ueber-den-eichenkernkaefer/": ["2026-11-17", "listing-page"],
+"https://uni-freiburg.de/forschung-und-lehre-hand-in-hand-master-labs-gehen-2020-in-die-nchste-runde-bewerbung-ab-sofort-bis-ende-januar-2020-mglich/": ["2026-11-17", "study-mode-unclear"],
+"https://uni-freiburg.de/international-admissions/": ["2026-11-17", "hub"],
+"https://uni-freiburg.de/international-students/": ["2026-11-17", "hub"],
+"https://uni-freiburg.de/international/": ["2026-11-17", "hub"],
+"https://uni-freiburg.de/internationaler-masterstudiengang-european-forestry-erhaelt-erneute-foerderung/": ["2026-11-17", "listing-page"],
+"https://uni-freiburg.de/master-labs-gehen-in-die-naechste-runde-bewerbung-fuer-eine-foerderung-bis-zum-31-12-21-moeglich/": ["2026-11-17", "study-mode-unclear"],
+"https://uni-freiburg.de/moter-modern-technologies-in-enzyme-research-beteiligte-ziehen-eine-erfolgreiche-bilanz-des-master-labs/": ["2026-11-17", "study-mode-unclear"],
+"https://uni-freiburg.de/sattelmuehle-foerderpreise-fuer-freiburger-forscherin-und-master-absolvent/": ["2026-11-17", "study-mode-unclear"],
+"https://uni-freiburg.de/study/international/": ["2026-11-17", "hub"],
+"https://uni-freiburg.de/veranstaltungskalender/2026-06-18-forschung-am-institut-vorstellung-von-ba-ma-dissertationsarbeiten/": ["2026-11-17", "study-mode-unclear"]
+}
+}

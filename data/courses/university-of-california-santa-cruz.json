@@ -1,0 +1,21 @@
+{
+"slug": "university-of-california-santa-cruz",
+"name": "University of California, Santa Cruz",
+"country": "usa",
+"web": "https://ucsc.edu",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "unreachable",
+"note": "HTTP 403",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

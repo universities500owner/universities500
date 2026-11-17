@@ -1,0 +1,24 @@
+{
+"slug": "george-washington-university",
+"name": "George Washington University",
+"country": "usa",
+"web": "https://www.gwu.edu",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 7,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 5, "js-only-or-empty": 2, "skipped-by-address:programme-subpage": 1}},
+"heldSamples": {"skipped-by-address:programme-subpage": ["https://www.gwu.edu/academics"], "gone": ["https://www.gwu.edu/international/", "https://www.gwu.edu/international-students/", "https://www.gwu.edu/study/international/", "https://www.gwu.edu/admissions/international/", "https://www.gwu.edu/international-admissions/"], "js-only-or-empty": ["https://www.gwu.edu/graduate-admissions", "https://www.gwu.edu/undergraduate-admissions"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.gwu.edu/graduate-admissions": ["2026-11-17", "js-only-or-empty"],
+"https://www.gwu.edu/undergraduate-admissions": ["2026-11-17", "js-only-or-empty"]
+}
+}

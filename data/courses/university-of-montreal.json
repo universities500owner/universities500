@@ -1,0 +1,25 @@
+{
+"slug": "university-of-montreal",
+"name": "Université de Montréal",
+"country": "canada",
+"web": "https://www.umontreal.ca/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 8,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 5, "not-a-course-page": 3}},
+"heldSamples": {"gone": ["https://www.umontreal.ca/international/", "https://www.umontreal.ca/international-students/", "https://www.umontreal.ca/study/international/", "https://www.umontreal.ca/admissions/international/", "https://www.umontreal.ca/international-admissions/"], "not-a-course-page": ["http://admission.umontreal.ca/programmes-detudes/", "https://admission.umontreal.ca/programmes-de-1er-cycle/", "https://admission.umontreal.ca/programmes-de-cycles-superieurs/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"http://admission.umontreal.ca/programmes-detudes/": ["2026-11-17", "listing-page"],
+"https://admission.umontreal.ca/programmes-de-1er-cycle/": ["2026-11-17", "listing-page"],
+"https://admission.umontreal.ca/programmes-de-cycles-superieurs/": ["2026-11-17", "listing-page"]
+}
+}

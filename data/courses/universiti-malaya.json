@@ -1,0 +1,23 @@
+{
+"slug": "universiti-malaya",
+"name": "Universiti Malaya",
+"country": "malaysia",
+"web": "https://www.um.edu.my/",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 13, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www.um.edu.my/international/", "https://www.um.edu.my/international-students/", "https://www.um.edu.my/study/international/", "https://www.um.edu.my/admissions/international/", "https://www.um.edu.my/international-admissions/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+
+}
+}

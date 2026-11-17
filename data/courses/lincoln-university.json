@@ -1,0 +1,21 @@
+{
+"slug": "lincoln-university",
+"name": "Lincoln University",
+"country": "new-zealand",
+"web": "https://www.lincoln.ac.nz/",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "unreachable",
+"note": "HTTP 403",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

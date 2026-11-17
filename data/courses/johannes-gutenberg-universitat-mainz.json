@@ -1,0 +1,23 @@
+{
+"slug": "johannes-gutenberg-universitat-mainz",
+"name": "Johannes Gutenberg University Mainz",
+"country": "germany",
+"web": "https://www.uni-mainz.de/",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 13, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www.uni-mainz.de/international/", "https://www.uni-mainz.de/international-students/", "https://www.uni-mainz.de/study/international/", "https://www.uni-mainz.de/admissions/international/", "https://www.uni-mainz.de/international-admissions/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+
+}
+}

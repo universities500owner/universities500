@@ -1,0 +1,23 @@
+{
+"slug": "sunway-university",
+"name": "Sunway University",
+"country": "malaysia",
+"web": "http://www.sunway.edu.my/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 13, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://sunway.edu.my:443/international/", "https://sunway.edu.my:443/international-students/", "https://sunway.edu.my:443/study/international/", "https://sunway.edu.my:443/admissions/international/", "https://sunway.edu.my:443/international-admissions/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+
+}
+}

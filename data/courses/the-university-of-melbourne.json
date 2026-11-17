@@ -1,0 +1,21 @@
+{
+"slug": "the-university-of-melbourne",
+"name": "University of Melbourne",
+"country": "australia",
+"web": "https://www.unimelb.edu.au/",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "unreachable",
+"note": "HTTP 403",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

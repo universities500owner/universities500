@@ -1,0 +1,21 @@
+{
+"slug": "city-st-georges-university-of-london",
+"name": "City St George’s, University of London",
+"country": "uk",
+"web": "https://citystgeorges.ac.uk",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "unreachable",
+"note": "HTTP 403",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

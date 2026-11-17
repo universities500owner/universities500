@@ -1,0 +1,28 @@
+{
+"slug": "institut-national-des-sciences-appliquees-de-lyon",
+"name": "Institut National des Sciences Appliquées de Lyon",
+"country": "france",
+"web": "https://www.insa-lyon.fr",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 6,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"study-mode-unclear": 1, "not-a-course-page": 1}},
+"heldSamples": {"study-mode-unclear": ["https://www.insa-lyon.fr/formations-insa-lyon/masters-internationaux"], "not-a-course-page": ["https://www.insa-lyon.fr/masteres-specialises"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.insa-lyon.fr/etudiant-international-formations-diplomantes": ["2026-11-17", "hub"],
+"https://www.insa-lyon.fr/etudiant-international-programmes-courts": ["2026-11-17", "hub"],
+"https://www.insa-lyon.fr/formations-insa-lyon/etudiant-international-programmes-dechange-et-double-diplome/double-diplome": ["2026-11-17", "hub"],
+"https://www.insa-lyon.fr/formations-insa-lyon/etudiant-international-programmes-dechange-et-double-diplome/echange": ["2026-11-17", "hub"],
+"https://www.insa-lyon.fr/formations-insa-lyon/masters-internationaux": ["2026-11-17", "listing-page"],
+"https://www.insa-lyon.fr/masteres-specialises": ["2026-11-17", "listing-page"]
+}
+}

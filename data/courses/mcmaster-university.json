@@ -1,0 +1,26 @@
+{
+"slug": "mcmaster-university",
+"name": "McMaster University",
+"country": "canada",
+"web": "https://www.mcmaster.ca/",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 4,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"js-only-or-empty": 3}},
+"heldSamples": {"js-only-or-empty": ["https://news.mcmaster.ca/ten-mcmaster-students-named-2026-mccall-macbain-international-fellows/", "https://research.mcmaster.ca/about-research-mcmaster/rob-baker-vice-president-research", "https://news.mcmaster.ca/libraries-power-entrepreneurial-success-at-mcmaster/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://future.mcmaster.ca/info-hub/international/": ["2026-11-17", "hub"],
+"https://news.mcmaster.ca/libraries-power-entrepreneurial-success-at-mcmaster/": ["2026-11-17", "js-only-or-empty"],
+"https://news.mcmaster.ca/ten-mcmaster-students-named-2026-mccall-macbain-international-fellows/": ["2026-11-17", "js-only-or-empty"],
+"https://research.mcmaster.ca/about-research-mcmaster/rob-baker-vice-president-research": ["2026-11-17", "js-only-or-empty"]
+}
+}

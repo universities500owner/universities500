@@ -1,0 +1,30 @@
+{
+"slug": "uppsala-university",
+"name": "Uppsala University",
+"country": "sweden",
+"web": "https://www.uu.se",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 14,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 6, "js-only-or-empty": 2, "not-a-course-page": 2, "guessed-paths": 1, "diploma-or-certificate": 1, "not-a-programme-name": 1, "study-mode-unclear": 1}},
+"heldSamples": {"gone": ["https://www.uu.se/courses/", "https://www.uu.se/programmes/", "https://www.uu.se/programs/", "https://www.uu.se/undergraduate/", "https://www.uu.se/postgraduate/"], "js-only-or-empty": ["https://www.uu.se/study/", "https://www.uu.se/en/students/degrees/share-information-about-your-degree"], "not-a-course-page": ["https://www.uu.se/degrees/", "https://www.uu.se/en/students/degrees/transfer-of-credits"], "diploma-or-certificate": ["https://www.uu.se/en/students/degrees/apply-for-a-degree"], "not-a-programme-name": ["https://www.uu.se/en/students/degrees/levels-and-degrees"], "study-mode-unclear": ["https://www.uu.se/en/students/degrees/main-fields-of-study"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.uu.se/degrees/": ["2026-11-17", "listing-page"],
+"https://www.uu.se/en/students/degrees/apply-for-a-degree": ["2026-11-17", "diploma-or-certificate"],
+"https://www.uu.se/en/students/degrees/levels-and-degrees": ["2026-11-17", "not-a-programme-name"],
+"https://www.uu.se/en/students/degrees/main-fields-of-study": ["2026-11-17", "study-mode-unclear"],
+"https://www.uu.se/en/students/degrees/share-information-about-your-degree": ["2026-11-17", "js-only-or-empty"],
+"https://www.uu.se/en/students/degrees/transfer-of-credits": ["2026-11-17", "listing-page"],
+"https://www.uu.se/nyheter/2026/2026-06-22-tre-perspektiv-fran-international-advisory-board": ["2026-11-17", "hub"],
+"https://www.uu.se/study/": ["2026-11-17", "js-only-or-empty"]
+}
+}

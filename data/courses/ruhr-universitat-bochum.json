@@ -1,0 +1,25 @@
+{
+"slug": "ruhr-universitat-bochum",
+"name": "Ruhr University Bochum",
+"country": "germany",
+"web": "https://www.ruhr-uni-bochum.de/de",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 10, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www.ruhr-uni-bochum.de/study/international/", "https://www.ruhr-uni-bochum.de/admissions/international/", "https://www.ruhr-uni-bochum.de/courses/", "https://www.ruhr-uni-bochum.de/programmes/", "https://www.ruhr-uni-bochum.de/programs/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.ruhr-uni-bochum.de/international-admissions/": ["2026-11-17", "hub"],
+"https://www.ruhr-uni-bochum.de/international-students/": ["2026-11-17", "hub"],
+"https://www.ruhr-uni-bochum.de/international/": ["2026-11-17", "hub"]
+}
+}

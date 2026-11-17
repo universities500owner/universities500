@@ -1,0 +1,23 @@
+{
+"slug": "norwegian-university-of-science-and-technology",
+"name": "Norwegian University of Science and Technology",
+"country": "norway",
+"web": "https://ntnu.no",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 13, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www.ntnu.no/international/", "https://www.ntnu.no/international-students/", "https://www.ntnu.no/study/international/", "https://www.ntnu.no/admissions/international/", "https://www.ntnu.no/international-admissions/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+
+}
+}

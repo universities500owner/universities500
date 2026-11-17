@@ -1,0 +1,23 @@
+{
+"slug": "universite-paris-1-pantheon-sorbonne",
+"name": "University of Paris 1 Pantheon-Sorbonne",
+"country": "france",
+"web": "https://www.pantheonsorbonne.fr",
+"generatedAt": "2026-11-17T09:23:29Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 9,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 7, "guessed-paths": 1, "fetch-failed": 1}},
+"heldSamples": {"fetch-failed": ["https://www.pantheonsorbonne.fr/courses/"], "gone": ["https://www.pantheonsorbonne.fr/programmes/", "https://www.pantheonsorbonne.fr/programs/", "https://www.pantheonsorbonne.fr/study/", "https://www.pantheonsorbonne.fr/degrees/", "https://www.pantheonsorbonne.fr/undergraduate/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.pantheonsorbonne.fr/actualite/inauguration-du-premier-campus-international-partage-de-paris-1-pantheon-sorbonne-fes": ["2026-11-17", "hub"]
+}
+}

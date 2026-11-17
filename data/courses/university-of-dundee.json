@@ -1,0 +1,21 @@
+{
+"slug": "university-of-dundee",
+"name": "University of Dundee",
+"country": "uk",
+"web": "http://www.dundee.ac.uk/",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "unreachable",
+"note": "HTTP 403",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

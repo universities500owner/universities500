@@ -1,0 +1,23 @@
+{
+"slug": "technische-universitat-dresden",
+"name": "Technische Universität Dresden",
+"country": "germany",
+"web": "https://tu-dresden.de/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 11, "guessed-paths": 1, "fetch-failed": 1}},
+"heldSamples": {"gone": ["https://tu-dresden.de/international-students/", "https://tu-dresden.de/study/international/", "https://tu-dresden.de/admissions/international/", "https://tu-dresden.de/international-admissions/", "https://tu-dresden.de/courses/"], "fetch-failed": ["https://tu-dresden.de/programs/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://tu-dresden.de/international/": ["2026-11-17", "hub"]
+}
+}

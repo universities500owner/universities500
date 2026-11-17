@@ -1,0 +1,24 @@
+{
+"slug": "universiti-kebangsaan-malaysia",
+"name": "Universiti Kebangsaan Malaysia (UKM)",
+"country": "malaysia",
+"web": "https://www.ukm.my/portalukm/",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 7,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 5, "international-unclear": 1, "not-a-course-page": 1}},
+"heldSamples": {"gone": ["https://www.ukm.my/international/", "https://www.ukm.my/international-students/", "https://www.ukm.my/study/international/", "https://www.ukm.my/admissions/international/", "https://www.ukm.my/international-admissions/"], "international-unclear": ["https://www.ukm.my/portal/undergraduate-programmes/"], "not-a-course-page": ["https://www.ukm.my/portal/postgraduate-programme/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.ukm.my/portal/postgraduate-programme/": ["2026-11-17", "listing-page"],
+"https://www.ukm.my/portal/undergraduate-programmes/": ["2026-11-17", "international-unclear"]
+}
+}

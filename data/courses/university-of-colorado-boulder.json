@@ -1,0 +1,24 @@
+{
+"slug": "university-of-colorado-boulder",
+"name": "University of Colorado Boulder",
+"country": "usa",
+"web": "https://www.colorado.edu/",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 150,
+"intlOpen": {"url": "https://www.colorado.edu/admissions/process/international", "evidence": "Transfer Application. Who Are International Undergraduate Applicants?", "verified": "2026-11-17"},
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 148, "skipped-by-address:foundation-or-pathway": 45, "skipped-by-address:programme-subpage": 2, "skipped-by-address:online-or-distance": 1}},
+"heldSamples": {"skipped-by-address:programme-subpage": ["https://www.colorado.edu/homepage/academics", "https://www.colorado.edu/academics"], "skipped-by-address:foundation-or-pathway": ["https://www.colorado.edu/homepage/academics/certificate-business-leadership", "https://www.colorado.edu/homepage/academics/certificate-entrepreneurial-studies", "https://www.colorado.edu/homepage/academics/certificate-global-business", "https://www.colorado.edu/homepage/academics/certificate-engineering-leadership", "https://www.colorado.edu/homepage/academics/certificate-engineering-ethics-society"], "skipped-by-address:online-or-distance": ["https://www.colorado.edu/homepage/academics/programs/online"], "gone": ["https://www.colorado.edu/homepage/academics/ba-music", "https://www.colorado.edu/homepage/academics/ba-dance", "https://www.colorado.edu/homepage/academics/ba-french", "https://www.colorado.edu/homepage/academics/ba-theatre", "https://www.colorado.edu/homepage/academics/ba-spanish"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://www.colorado.edu/admissions/process/international": ["2026-11-17", "hub"],
+"https://www.colorado.edu/admissions/process/international/admitted": ["2026-11-17", "hub"]
+}
+}

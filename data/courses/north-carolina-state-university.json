@@ -1,0 +1,21 @@
+{
+"slug": "north-carolina-state-university",
+"name": "North Carolina State University",
+"country": "usa",
+"web": "https://ncsu.edu",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "unreachable",
+"note": "robots.txt could not be read (HTTP 202)",
+"robotsReason": "",
+"pagesRead": 0,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {}},
+"heldSamples": {},
+"courses": [
+
+],
+"seen": {
+
+}
+}

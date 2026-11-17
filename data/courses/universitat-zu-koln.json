@@ -1,0 +1,36 @@
+{
+"slug": "universitat-zu-koln",
+"name": "Universität zu Köln",
+"country": "germany",
+"web": "https://uni-koeln.de",
+"generatedAt": "2026-11-17T09:23:31Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 15,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"not-a-course-page": 3, "study-mode-unclear": 2, "gone": 1}},
+"heldSamples": {"study-mode-unclear": ["https://uni-koeln.de/studium-lehre/international/studium-in-koeln/eingeschriebene-internationale-studierende/master-studierende", "https://uni-koeln.de/studium-lehre/international/studium-in-koeln/internationale-bewerbungen/master-studieninteressierte"], "not-a-course-page": ["https://studienorientierung.uni-koeln.de/studienangebot/index_ger.html", "https://uni-koeln.de/forschung/international/uoc-global/global-faculty/former-members-of-the-global-faculty/prof-xionan-ma", "https://uni-koeln.de/studium-lehre/international/studium-in-koeln/cologne-summer-schools/cologne-summer-schools-reports-and-experiences/2023-css-on-migration/program-highlights-migration-2023"], "gone": ["https://verwaltung.uni-koeln.de/abteilung21/content/studienangebot/faecheruebersicht_master/index_ger.html"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+"https://studienorientierung.uni-koeln.de/studienangebot/index_ger.html": ["2026-11-17", "not-a-course-page"],
+"https://uni-koeln.de/forschung/international": ["2026-11-17", "hub"],
+"https://uni-koeln.de/forschung/international/at-risk-scholar-support": ["2026-11-17", "hub"],
+"https://uni-koeln.de/forschung/international/koelnalumni-weltweit": ["2026-11-17", "hub"],
+"https://uni-koeln.de/forschung/international/uoc-global": ["2026-11-17", "hub"],
+"https://uni-koeln.de/forschung/international/uoc-global/global-faculty/former-members-of-the-global-faculty/prof-xionan-ma": ["2026-11-17", "listing-page"],
+"https://uni-koeln.de/studium-lehre/international": ["2026-11-17", "hub"],
+"https://uni-koeln.de/studium-lehre/international/auslandsaufenthalte": ["2026-11-17", "hub"],
+"https://uni-koeln.de/studium-lehre/international/studium-in-koeln": ["2026-11-17", "hub"],
+"https://uni-koeln.de/studium-lehre/international/studium-in-koeln/cologne-summer-schools/cologne-summer-schools-reports-and-experiences/2023-css-on-migration/program-highlights-migration-2023": ["2026-11-17", "listing-page"],
+"https://uni-koeln.de/studium-lehre/international/studium-in-koeln/eingeschriebene-internationale-studierende/master-studierende": ["2026-11-17", "study-mode-unclear"],
+"https://uni-koeln.de/studium-lehre/international/studium-in-koeln/internationale-bewerbungen/master-studieninteressierte": ["2026-11-17", "study-mode-unclear"],
+"https://uni-koeln.de/studium-lehre/international/studium-in-koeln/lehrbereich-deutsch-als-fremdsprache": ["2026-11-17", "hub"],
+"https://uni-koeln.de/universitaet/ueberblick/international": ["2026-11-17", "hub"]
+}
+}

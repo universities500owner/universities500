@@ -1,0 +1,23 @@
+{
+"slug": "university-of-bergen",
+"name": "University of Bergen",
+"country": "norway",
+"web": "https://uib.no",
+"generatedAt": "2026-11-17T09:23:30Z",
+"status": "ok",
+"note": "",
+"robotsReason": "",
+"pagesRead": 13,
+"intlOpen": null,
+"partial": false,
+"counts": {"eligible": 0, "held": {"gone": 13, "guessed-paths": 1}},
+"heldSamples": {"gone": ["https://www4.uib.no/international/", "https://www4.uib.no/international-students/", "https://www4.uib.no/study/international/", "https://www4.uib.no/admissions/international/", "https://www4.uib.no/international-admissions/"]},
+"cleaned": 0,
+"pageErrors": [],
+"courses": [
+
+],
+"seen": {
+
+}
+}
