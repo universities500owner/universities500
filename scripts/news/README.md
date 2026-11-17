@@ -43,7 +43,7 @@ A source with no items gets one of these statuses: `blocked` (robots.txt, or the
 ## Running it
 
 - **Trial (writes nothing)**: Actions > *Industry news (read official sources)* > Run workflow, leave *probe* ticked. The whole report is also printed in the job log. Or download the `news-run` artifact: `news_report.md` (per-source table, addresses tried, examples the relevance rule rejected) and `news_probe.json`.
-- **Real run**: untick *probe*, tick *commit* (and tick *backfill* the first time), run it from `main`. A run from any other branch never commits.
+- **Real run**: run it from `main` with the defaults (probe off, commit on); tick *backfill* the first time or after adding sources. Tick *probe* only for a trial that saves nothing. A run from any other branch never commits.
 - **One country**: type its code in *only* (for example `uk`).
 - **Locally**: `python3 scripts/news/test_news.py`, then `python3 scripts/news/news_run.py --probe --only uk`.
 
