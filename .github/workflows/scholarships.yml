@@ -39,6 +39,10 @@ on:
         description: "With probe: every university of this country code, for example australia"
         required: false
         default: ""
+      urls:
+        description: "With probe: look at these addresses on their own (comma-separated), for example an official listing site"
+        required: false
+        default: ""
 
 concurrency:
   group: scholarships
@@ -66,12 +70,14 @@ jobs:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
           ONLY: ${{ inputs.only }}
           COUNTRY: ${{ inputs.country }}
+          URLS: ${{ inputs.urls }}
         run: |
           ARGS=""
+          if [ -n "$URLS" ]; then for u in $(echo "$URLS" | tr ',' ' '); do ARGS="$ARGS --url $u"; done; fi
           if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
           if [ -n "$COUNTRY" ]; then ARGS="$ARGS --country $COUNTRY"; fi
           python3 scripts/scholarships/probe.py $ARGS | tee probe.txt
-          { echo '```'; sed -n '/==== SUMMARY ====/,$p' probe.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          { echo '```'; sed -n '/==== SUMMARY ====/,$p' probe.txt | head -60; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - name: Read scholarship pages
         id: run
         if: "!inputs.probe"

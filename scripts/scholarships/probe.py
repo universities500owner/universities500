@@ -10,6 +10,7 @@ It then prints one verdict per university. Nothing here goes around a block: a u
 
     python3 scripts/scholarships/probe.py --only monash-university,rmit-university
     python3 scripts/scholarships/probe.py --country australia
+    python3 scripts/scholarships/probe.py --url https://search.studyaustralia.gov.au/scholarships --url https://example.edu/scholarships/
 """
 import argparse
 import json
@@ -97,13 +98,52 @@ def verdict(robots, pages, sm_hits):
     return f'FEW LINKS: {n} scholarship-like links; the list may sit on other pages. Sitemap lists {sm_hits}.'
 
 
+def probe_urls(a):
+    """Look at addresses that are not a university's own: an official listing site, say. Same polite fetcher, same report."""
+    ua = f"Universities500Bot/1.0 (+https://universities500.com/bot/{'; ' + a.contact if a.contact else ''})"
+    fx = Fetcher(ua, delay=a.delay, deadline=time.monotonic() + 1500)
+    print('User-Agent:', ua)
+    seen = set()
+    for url in a.url:
+        host = urllib.parse.urlsplit(url).netloc
+        if host not in seen:
+            seen.add(host)
+            rb = raw_robots(host, ua)
+            print(f"\n=== robots.txt of {host}: HTTP {rb['status']} {rb.get('error', '')} server={rb['server']!r}")
+            print('  ', re.sub(r'\s+', ' ', rb['body'])[:700])
+        res = fx.get(url)
+        print(f"--- {url}\n  {'HTTP %s, %d bytes' % (res.status, len(res.body)) if res.ok else 'FAILED: ' + (res.error or '')}")
+        if not res.ok:
+            continue
+        html = res.text
+        sig = page_signals(html, res.final_url)
+        print(f"  text {sig['text_len']} chars, scripts {sig['scripts']}, vendors {sig['vendors']}, blobs {sig['blobs']}")
+        same = [(urllib.parse.urljoin(res.final_url, h), re.sub(r'\s+', ' ', TAGS.sub(' ', t)).strip()[:70]) for h, t in LINK.findall(html)]
+        same = [(h, t) for h, t in same if urllib.parse.urlsplit(h).netloc == host and t]
+        print(f'  {len(same)} links on the same site; first 12:')
+        for h, t in list(dict.fromkeys(same))[:12]:
+            print(f'    {t!r} -> {h[:120]}')
+        text = re.sub(r'\s+', ' ', TAGS.sub(' ', re.sub(r'<(script|style)\b.*?</\1>', ' ', html, flags=re.S | re.I)))
+        print('  visible text starts:', text[:1500])
+        for key in ('Award value', 'Closing date', 'Level of study', 'Visit website', 'Eligibility', 'Showing', 'class="card', 'rel="next"'):
+            i = html.find(key)
+            if i >= 0:
+                print(f'  html around {key!r}: ' + re.sub(r'\s+', ' ', html[max(0, i - 160):i + 260]))
+        m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', html, re.I)
+        print('  canonical:', m.group(1) if m else None, '| meta robots:', re.findall(r'<meta[^>]+name=["\']robots["\'][^>]*>', html, re.I)[:1])
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--only', default='')
     ap.add_argument('--country', default='')
+    ap.add_argument('--url', action='append', default=[], help='probe these addresses on their own (robots.txt answer, page, links); repeatable')
     ap.add_argument('--delay', type=float, default=3.0)
     ap.add_argument('--contact', default=os.environ.get('CONTACT_EMAIL', ''))
     a = ap.parse_args()
+    if a.url:
+        return probe_urls(a)
     unis = json.loads((ROOT / 'src/data/universities.json').read_text(encoding='utf-8'))
     seeds = (json.loads((ROOT / 'data/scholarship_seeds.json').read_text(encoding='utf-8')).get('seeds') or {})
     prev = json.loads((ROOT / 'src/data/scholarships.json').read_text(encoding='utf-8')).get('universities', {})
