@@ -54,11 +54,14 @@ ALIASES = {
 
 LABEL = re.compile(r'^(Award value|Level of study|Closing date)\s*[-–:]\s*(.+)$', re.I)
 OPEN_ENDED = re.compile(r'^(?:ongoing|open|rolling|all year|year[- ]round|no closing date|continuous(?:ly)?|always open)\b', re.I)
+# Study Australia writes some dates as 01/07/2027. It is an Australian government site: day first. (On other sites such a date is left alone, as it is ambiguous.)
+DMY = re.compile(r'\b(\d{1,2})/(\d{1,2})/(\d{4})\b')
+MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 NO_VALUE = re.compile(r'^(?:varies|various|not (?:stated|specified|applicable)|n/?a|tbc|tba|-)\.?$', re.I)
 
 
 def norm(s):
-    s = htmllib.unescape(s or '').lower().replace('&', ' and ')
+    s = re.sub(r'\([^)]*\)', ' ', htmllib.unescape(s or '')).lower().replace('&', ' and ')   # "Queensland University of Technology (QUT)"
     s = re.sub(r"[^a-z0-9 ]+", ' ', s.replace("'", '').replace('’', ''))
     s = re.sub(r'\b(?:the|of)\b', ' ', s)
     return ' '.join(s.split())
@@ -200,6 +203,7 @@ def make(card, detail, slug, uni, today):
     desc = trim(' '.join(detail.get('description') or []))
     elig = [trim(e, 220) for e in (detail.get('eligibility') or [])]
     closing = (card.get('closing') or '').strip()
+    closing = DMY.sub(lambda m: f"{int(m.group(1))} {MON[int(m.group(2)) - 1]} {m.group(3)}" if 1 <= int(m.group(1)) <= 31 and 1 <= int(m.group(2)) <= 12 else m.group(0), closing)
     value = (card.get('value') or '').strip()
     bits = []
     if value and not NO_VALUE.match(value):
@@ -312,6 +316,7 @@ def read(fx, unis, today, prev_items=None, log=print):
         else:
             rep['reasons'][why] = rep['reasons'].get(why, 0) + 1
     rep['records'] = len(records)
+    rep['fill'] = {f: sum(1 for r in records if r.get(f)) for f in ('value', 'deadline', 'rolling', 'description', 'eligibility', 'applyUrl')}
     if rep['status'] == 'not-run':
         rep['status'] = 'ok'
     return records, rep
@@ -326,6 +331,8 @@ def print_report(rep, unis, log=print):
     log(f"\nStudy Australia: {rep['status']}. {rep['listed']} of {rep['total']} listed ({rep['pages']} pages), "
         f"{rep['matched']} are from the universities on this site, {rep['records']} kept "
         f"({rep['detailsRead']} detail pages read, {rep['reused']} reused, {rep['noVisitLink']} without a university link)")
+    if rep.get('fill'):
+        log('  of the records kept: ' + ', '.join(f'{k} {v}' for k, v in rep['fill'].items()))
     if rep['reasons']:
         log('  not kept: ' + ', '.join(f'{k} {v}' for k, v in sorted(rep['reasons'].items(), key=lambda kv: -kv[1])))
     if rep['levels']:

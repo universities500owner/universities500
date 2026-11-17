@@ -541,6 +541,26 @@ class Details(unittest.TestCase):
         self.assertEqual(recs, [])
 
 
+
+class PageName(unittest.TestCase):
+    def test_a_generic_first_heading_gives_way_to_the_real_name(self):
+        html = ('<html><head><title>2026 International Masters Scholarship | Test University</title></head><body><main>'
+                '<h1>Scholarships</h1><p>Worth AUD $5,000 for international students.</p></main></body></html>')
+        self.assertEqual(X.Page('https://x.test/scholarships/details/a', html, 'australia', 'Test University').name, '2026 International Masters Scholarship')
+        html = '<html><head><title>Scholarship details</title></head><body><main><h1>Scholarship details</h1><h2>Vice-Chancellor International Scholarship</h2></main></body></html>'
+        self.assertEqual(X.Page('https://x.test/s?id=1', html, 'australia', 'Test University').name, 'Vice-Chancellor International Scholarship')
+        html = '<html><head><title>Global Excellence Scholarship | Test University</title></head><body><main><h1>Global Excellence Scholarship</h1></main></body></html>'
+        self.assertEqual(X.Page('https://x.test/s/1', html, 'australia', 'Test University').name, 'Global Excellence Scholarship')
+
+    def test_names_like_scholarship_details_are_headings(self):
+        self.assertEqual(Q.name_problem('Scholarship details'), 'generic-heading')
+        self.assertEqual(Q.name_problem('Scholarship information'), 'generic-heading')
+        self.assertIsNone(Q.name_problem('Information Technology Scholarship'))
+        self.assertIsNone(Q.name_problem('2027 International Masters Scholarship', '2026-11-17'))   # one award of that year
+        self.assertEqual(Q.name_problem('Scholarships 2027', '2026-11-17'), 'generic-heading')       # plural: a page of them
+        self.assertEqual(Q.name_problem('Scholarship details 2027', '2026-11-17'), 'generic-heading')
+
+
 # ---------------------------------------------------------------- Study Australia
 def sa_card(name, prov, slug, value=None, level='Undergraduate / VET', closing=None):
     ps = ''.join(f'<p class="text-sm mb-2 flex align-items-center">{k} - {v}</p>' for k, v in (('Award value', value), ('Level of study', level), ('Closing date', closing)) if v)
@@ -633,6 +653,17 @@ class StudyAustralia(unittest.TestCase):
         self.assertEqual(SA.match_provider('UNSW Sydney', None, idx), 'the-university-of-new-south-wales')
         self.assertEqual(SA.match_provider('', '/provider/monash-university/abc', idx), 'monash-university')
         self.assertIsNone(SA.match_provider('Royal Greenhill Institute of Technology (RGIT) Australia', None, idx))
+        # the site writes some names with the acronym in brackets
+        idx2 = SA.provider_index(AU_UNIS + [{'slug': 'australian-national-university', 'name': 'Australian National University', 'country': 'australia'},
+                                            {'slug': 'queensland-university-of-technology', 'name': 'Queensland University of Technology', 'country': 'australia'}])
+        self.assertEqual(SA.match_provider('The Australian National University (ANU)', None, idx2), 'australian-national-university')
+        self.assertEqual(SA.match_provider('Queensland University of Technology (QUT)', None, idx2), 'queensland-university-of-technology')
+
+    def test_day_first_dates_on_this_site_only(self):
+        card = dict(name='Monash Early Scholarship', url=SA.BASE + '/scholarship/x/1', provider='Monash University', value='AUD $2,000 annually', level='Postgraduate', closing='01/07/2027')
+        rec, why = SA.make(card, {'description': ['For international students.'], 'eligibility': [], 'visit': None}, 'monash-university', AU_UNIS[0], '2026-11-17')
+        self.assertEqual((why, rec['deadline']), ('ok', '2027-07-01'))
+        self.assertEqual(T.find_dates('Closing date - 01/07/2027.')['deadlines'], [])   # elsewhere it stays unread: it could be 7 January
 
     def test_levels(self):
         self.assertEqual(SA.levels_from('Undergraduate / VET'), (['Bachelor'], False))

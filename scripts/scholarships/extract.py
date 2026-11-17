@@ -95,6 +95,10 @@ def flat_text(lines):
     return ' '.join(parts)
 
 
+def _generic(name):
+    return not (name or '').strip() or Q.is_generic(name)
+
+
 class Page:
     """What we learned from one HTML page."""
 
@@ -134,7 +138,17 @@ class Page:
 
     @property
     def name(self):
-        return T.clean_title(self.h1 or self.og_title or self.title_tag, self.site_name)
+        """The scholarship's name. The first heading is not always it: some sites put the section name ("Scholarships",
+        "Scholarship details") in the h1 and the scholarship's own name in the page title or a second heading."""
+        first = T.clean_title(self.h1 or self.og_title or self.title_tag, self.site_name)
+        if not _generic(first):
+            return first
+        heads = [T.clean(h.get_text(' ')) for h in self.main.find_all(['h2', 'h3'])[:4]]
+        for c in (self.og_title, self.title_tag, *heads):
+            n = T.clean_title(c, self.site_name) if c else ''
+            if n and T.NAME_WORDS.search(n) and not _generic(n) and len(n) <= 140:
+                return n
+        return first
 
     def scholarship_links(self, same_domain):
         out = []

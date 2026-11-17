@@ -26,11 +26,11 @@ bachelor bachelors bachelor's bachelor’s scholarship scholarships scholar burs
 funding fund funds fees fee tuition costs cost and or for to of the a an in on at with study studying abroad applying apply
 find finance financial aid support eligibility policy general external prestigious available other incoming new first year
 years entrance admission program programs programme programmes opportunities information overseas global english our your
-how what about all prior current future specific
+how what about all prior current future specific details detail overview page information info summary search results list listing view home
 '''.split())
 
 REASONS = [
-    ('value-or-date-not-name', re.compile(r'^(?:up to\s+)?[£$€¥]|[£$€]\s?\d{1,3}(?:,\d{3})|^\d')),
+    ('value-or-date-not-name', re.compile(r'^(?:up to\s+)?[£$€¥]|[£$€]\s?\d{1,3}(?:,\d{3})|^(?!20\d\d\s+[A-Za-z])\d')),   # "2027 Global Scholarship" is a name
     ('news-or-notice', re.compile(
         r'\b(?:launch(?:es|ed)?|announc\w+|celebrat\w+|call for|appel|to host|to fund|provide stipends|frequently asked|faqs?|'
         r'terms and conditions|friends,? food|workshop|webinar|symposium|conference|festival|welcome)\b', re.I)),
@@ -61,6 +61,22 @@ def _exclusions():
     return _EXCLUDE
 
 
+PAGE_WORDS = set('details detail overview page information info summary search results list listing view home'.split())
+ONE_AWARD = re.compile(r'\b(?:scholarship|bursary|award|grant|fellowship|waiver|studentship)\b', re.I)   # singular: one award, not a page of them
+
+
+def is_generic(name):
+    """True for a heading made only of page-describing words ("International scholarships", "Scholarship details").
+    A year plus a singular noun ("2026 International Masters Scholarship") is one named award of that year, not a heading."""
+    n = (name or '').strip()
+    toks = re.findall(r"[a-zà-ÿ'’]+", n.lower())
+    if not toks or not all(t in GENERIC for t in toks):
+        return False
+    if re.search(r'\b20\d\d\b', n) and ONE_AWARD.search(n) and not any(t in PAGE_WORDS for t in toks):
+        return False
+    return True
+
+
 def name_problem(name, today=None):
     """Why this text is not a scholarship name, or None."""
     n = (name or '').strip()
@@ -69,8 +85,7 @@ def name_problem(name, today=None):
     for code, rx in REASONS:
         if rx.search(n):
             return code
-    toks = re.findall(r"[a-zà-ÿ'’]+", n.lower())
-    if toks and all(t in GENERIC for t in toks):
+    if is_generic(n):
         return 'generic-heading'
     year = int((today or date.today().isoformat())[:4])
     years = [int(y) for y in re.findall(r'\b(20\d\d)\b', n)]
