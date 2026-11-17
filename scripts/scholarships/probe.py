@@ -140,7 +140,7 @@ def probe_urls(a):
                     print(f"    dropping <{tag}> ({n}): body text {body_len(sp)}")
             sp = X.soup_of(html)
             for el in sp.find_all(attrs={'role': True}):
-                if el.get('role') in X.DROP_ROLES and not X._gone(el):
+                if not X._gone(el) and el.get('role') in X.DROP_ROLES:
                     el.decompose()
             print(f"    dropping role=navigation/banner/search/...: body text {body_len(sp)}")
             kinds = {}
