@@ -126,6 +126,22 @@ class QualityTests(unittest.TestCase):
         self.assertIsNotNone(Q.url_problem('https://x.edu/scholarships/dom/some-bursary/'))
         self.assertIsNone(Q.url_problem('https://x.edu/international/students-from-abroad/scholarships/study-in-canada'))
 
+    def test_pages_for_home_students_are_left_out(self):
+        for u in ['https://www.york.ac.uk/study/postgraduate-taught/funding/uk/aziz-foundation-scholarships/',
+                  'https://registryservices.ed.ac.uk/student-funding/undergraduate/uk-eu/access-awards/robertson-trust-scholarship',
+                  'https://registryservices.ed.ac.uk/scholarships-and-student-funding/prospective-postgraduates/funding-for-uk-students/carnegie-morgan',
+                  'https://www.york.ac.uk/study/undergraduate/fees-funding/uk/scholarships/santander-scholarship/']:
+            self.assertEqual(Q.url_problem(u), 'page-for-enrolled-or-outbound', u)
+        self.assertIsNone(Q.url_problem('https://www.york.ac.uk/study/postgraduate-taught/funding/international/chevening-scholarship/'))   # the host ends in .uk
+        self.assertIsNone(Q.url_problem('https://www.leeds.ac.uk/international-scholarships-funding/doc/masters-scholarships'))
+
+    def test_home_only_and_page_sentence_names(self):
+        for n in ['Faculty of Science Masters Scholarship for UK Fee-Paying Students', 'Strathclyde Business School Masters Scholarships for Scottish/UK Students',
+                  'Care Leaver Bursary & Estranged Student Bursary 2027', 'Our education costs and scholarship program', 'Your scholarship goes further in Nottingham']:
+            self.assertIsNotNone(self.bad(n), n)
+        for n in ['Chevening Scholarship', 'Faculty of Engineering International Scholarship for Masters Study', 'Sport scholarships', 'Commonwealth Shared Scholarship Scheme', 'Accommodation Award International']:
+            self.assertIsNone(self.bad(n), n)
+
     def test_review_list_wins(self):
         self.assertEqual(Q.url_problem('https://www.purdue.edu/niso/scholarship/additional/international.html'), 'excluded-by-review')
 
