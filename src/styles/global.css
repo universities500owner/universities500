@@ -76,7 +76,7 @@ a:hover { text-decoration-thickness: 2px; }
 .brand .logo-dark { display: none; }
 html[data-theme="dark"] .brand .logo-light { display: none; }
 html[data-theme="dark"] .brand .logo-dark { display: block; }
-.head-right { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.head-right { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
 .theme { width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--ink); display: inline-grid; place-items: center; cursor: pointer; }
 .theme:hover { border-color: var(--ink); }
 .theme svg { width: 1.15rem; height: 1.15rem; }
