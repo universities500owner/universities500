@@ -128,13 +128,13 @@ def _article_summary(fx, url, info):
     return s, None
 
 
-def read_source(src, fx, today, keep_days=120, known=None):
+def read_source(src, fx, today, keep_days=120, known=None, backfill=False):
     """Returns (items, info). `known` maps url -> a stored item, so pages we already summarised are not fetched again."""
     known = known or {}
     info = {'id': src['id'], 'country': src['country'], 'body': src['body'], 'via': '', 'tried': [], 'robotsBlocked': 0,
             'found': 0, 'drops': Counter(), 'kept': 0, 'samples': [], 'rejected': [], 'error': '', 'profiles': []}
     have = any(i.get('sourceId') == src['id'] for i in known.values())
-    since = (datetime.fromisoformat(today) - timedelta(days=RECENT_DAYS if have else keep_days)).date().isoformat()
+    since = (datetime.fromisoformat(today) - timedelta(days=RECENT_DAYS if (have and not backfill) else keep_days)).date().isoformat()
     try:
         cands = _candidates(src, fx, info, since)
     except Exception as e:  # one broken source must never stop the others

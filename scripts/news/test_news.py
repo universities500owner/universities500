@@ -302,6 +302,22 @@ def wp_json(posts):
     return ('application/json', json.dumps([{'date': d, 'link': l, 'title': {'rendered': t}, 'excerpt': {'rendered': '<p>Trade press text that must never be kept.</p>'}} for t, l, d in posts]))
 
 
+class Backfill(unittest.TestCase):
+    def test_since_is_21_days_for_a_known_source_unless_backfill(self):
+        seen = []
+        orig = NR._candidates
+        NR._candidates = lambda src, fx, info, since: seen.append(since) or []
+        try:
+            known = {'x': {'sourceId': 's1'}}
+            src = {'id': 's1', 'country': 'uk', 'body': 'b', 'domains': ['example.org']}
+            NR.read_source(src, None, '2026-11-17', 365, known)
+            NR.read_source(src, None, '2026-11-17', 365, known, backfill=True)
+            NR.read_source(src, None, '2026-11-17', 365, {})
+        finally:
+            NR._candidates = orig
+        self.assertEqual(seen, ['2026-10-27', '2025-11-17', '2025-11-17'])
+
+
 class DatedLinks(unittest.TestCase):
     def test_date_taken_from_the_address(self):
         html = '<a href="/post.php?story=20261114092909696">Foreign universities struggle to attract Indian students</a><a href="/about">About this newspaper and who runs it</a><a href="/post.php?story=20261113104312394">Short</a>'

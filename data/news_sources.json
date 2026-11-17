@@ -285,7 +285,10 @@
     "education.gov.au"
    ],
    "home": "https://www.internationaleducation.gov.au/",
-   "list": "https://www.internationaleducation.gov.au/news/latest-news/",
+   "list": [
+    "https://internationaleducation.gov.au/_layouts/SP.WebControls.ContentControls/AjaxContentPage.aspx?qid=Corporate.SharePoint.AEI.Query.LatestNewsLvl1Landing&rid=Corporate.SharePoint.AEI.Render.NewsAndMedia",
+    "https://www.internationaleducation.gov.au/news/latest-news/"
+   ],
    "filter": "student",
    "context": "international"
   },

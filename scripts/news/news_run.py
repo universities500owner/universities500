@@ -113,6 +113,7 @@ def main(argv=None):
     ap.add_argument('--report', default=str(ROOT / 'out'))
     ap.add_argument('--only', default='', help='country codes, comma-separated (blank = all)')
     ap.add_argument('--probe', action='store_true', help='read and report; do not write the data file')
+    ap.add_argument('--backfill', action='store_true', help='read every source back the full keep window, even ones that already have stored items')
     ap.add_argument('--today', default='')
     ap.add_argument('--delay', type=float, default=3.0)
     ap.add_argument('--max-minutes', type=float, default=40)
@@ -135,7 +136,7 @@ def main(argv=None):
     known = {i['url']: i for i in prev.get('items', [])}
     fresh, infos = [], []
     for src in sources:
-        items, info = NR.read_source(src, fx, today, keep_days, known)
+        items, info = NR.read_source(src, fx, today, keep_days, known, backfill=args.backfill)
         fresh.extend(i for i in items if not only or i['country'] in only)
         infos.append(info)
         print(f"[{src['country']}] {src['id']}: {info['kept']} kept of {info['found']} found ({info['via'] or info['error']})", flush=True)
