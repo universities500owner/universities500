@@ -12,14 +12,19 @@ A daily reader of official news for international students, for the 14 destinati
 - **Age and size**: an item stays 120 days, at most 30 per country. Six stored items are re-opened each run; one whose official page is gone (404 or 410) is removed.
 - **Safety**: if no source answers in a run, the data file is left exactly as it was and the run fails loudly.
 
-## How a source is read (first one that gives items wins)
+## How a source is read
+
+Every endpoint that gives items is used, and the items are merged by address:
 
 1. `feeds[]`: RSS, Atom or RDF addresses.
 2. `fr[]`: Federal Register search terms (US only, official JSON API).
-3. `home`: the page is opened and searched for a `<link rel="alternate">` feed.
-4. `list`: a page of dated headlines, read from its HTML. Blocks with one link and a readable date count.
+3. `home`: opened and searched for a `<link rel="alternate">` feed.
+4. `list` (one address or several): pages of dated headlines, read from their HTML. A block with one link and a readable date counts.
+5. Only when nothing came from the above: the news pages the home page links to (link text or address says news, press, media, latest, notices), on the body's own domains.
 
-When the feed has no summary, up to four official article pages per source are opened to read the page's own description.
+A page that loads but gives no items is described in the report (visible text, links, `<time>` tags, dates, scripts) so it is clear whether the headlines are loaded by script. When the feed has no summary, up to four official article pages per source are opened to read the page's own description.
+
+A source with no items gets one of these statuses: `blocked` (robots.txt, or the site answers 401/403/429: we never work around it), `unreadable` (the page loads but no headlines can be read), `failed` (not reached or not found). The page lists the body with a short note so a reader knows to open its site.
 
 ## Files
 

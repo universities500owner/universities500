@@ -137,7 +137,10 @@
     "https://api.io.canada.ca/io-server/gc/news/en/v2?dept=departmentofcitizenshipandimmigration&sort=publishedDate&orderBy=desc&pick=50&format=atom&atomtitle=Immigration,%20Refugees%20and%20Citizenship%20Canada"
    ],
    "home": "https://www.canada.ca/en/immigration-refugees-citizenship/news.html",
-   "list": "https://www.canada.ca/en/immigration-refugees-citizenship/news.html",
+   "list": [
+    "https://www.canada.ca/en/immigration-refugees-citizenship/news.html",
+    "https://www.canada.ca/en/immigration-refugees-citizenship/news/notices.html"
+   ],
    "filter": "student",
    "context": "immigration"
   },
@@ -152,7 +155,6 @@
     "canada.ca"
    ],
    "home": "https://www.educanada.ca/",
-   "list": "https://www.educanada.ca/news-nouvelles/index.aspx?lang=eng",
    "filter": "all"
   },
   {
@@ -200,9 +202,22 @@
     "studyaustralia.gov.au",
     "education.gov.au"
    ],
-   "home": "https://www.studyaustralia.gov.au/en/news",
-   "list": "https://www.studyaustralia.gov.au/en/news",
+   "home": "https://www.studyaustralia.gov.au/en",
    "filter": "all"
+  },
+  {
+   "id": "au-international-education",
+   "country": "australia",
+   "body": "Department of Education, International Education",
+   "kind": "government",
+   "domains": [
+    "internationaleducation.gov.au",
+    "education.gov.au"
+   ],
+   "home": "https://www.internationaleducation.gov.au/",
+   "list": "https://www.internationaleducation.gov.au/news/latest-news/",
+   "filter": "student",
+   "context": "international"
   },
   {
    "id": "nz-inz",
@@ -213,7 +228,10 @@
     "immigration.govt.nz"
    ],
    "home": "https://www.immigration.govt.nz/about-us/news-centre/",
-   "list": "https://www.immigration.govt.nz/about-us/news-centre/",
+   "list": [
+    "https://www.immigration.govt.nz/about-us/news-centre/",
+    "https://www.immigration.govt.nz/about-us/media-centre/news-notifications/"
+   ],
    "filter": "student",
    "context": "immigration"
   },
@@ -228,6 +246,17 @@
    "home": "https://www.enz.govt.nz/news-and-research/ed-news/",
    "list": "https://www.enz.govt.nz/news-and-research/ed-news/",
    "filter": "all"
+  },
+  {
+   "id": "nz-beehive",
+   "country": "new-zealand",
+   "body": "New Zealand Government (Beehive releases)",
+   "kind": "government",
+   "domains": [
+    "beehive.govt.nz"
+   ],
+   "home": "https://www.beehive.govt.nz/",
+   "filter": "student"
   },
   {
    "id": "ie-isd",
@@ -267,6 +296,18 @@
    "filter": "all"
   },
   {
+   "id": "ie-qqi",
+   "country": "ireland",
+   "body": "Quality and Qualifications Ireland (QQI)",
+   "kind": "agency",
+   "domains": [
+    "qqi.ie"
+   ],
+   "home": "https://www.qqi.ie/",
+   "filter": "student",
+   "context": "international"
+  },
+  {
    "id": "de-daad",
    "country": "germany",
    "body": "DAAD (German Academic Exchange Service)",
@@ -301,7 +342,6 @@
     "diplo.de"
    ],
    "home": "https://www.auswaertiges-amt.de/en/newsroom",
-   "list": "https://www.auswaertiges-amt.de/en/newsroom",
    "filter": "student"
   },
   {
@@ -313,8 +353,19 @@
     "make-it-in-germany.com"
    ],
    "home": "https://www.make-it-in-germany.com/en/",
-   "list": "https://www.make-it-in-germany.com/en/news",
    "filter": "student"
+  },
+  {
+   "id": "de-bamf",
+   "country": "germany",
+   "body": "Federal Office for Migration and Refugees (BAMF)",
+   "kind": "government",
+   "domains": [
+    "bamf.de"
+   ],
+   "home": "https://www.bamf.de/EN/",
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "fr-campus-france",
@@ -325,7 +376,6 @@
     "campusfrance.org"
    ],
    "home": "https://www.campusfrance.org/en",
-   "list": "https://www.campusfrance.org/en/news",
    "filter": "all"
   },
   {
@@ -374,8 +424,7 @@
    "domains": [
     "nuffic.nl"
    ],
-   "home": "https://www.nuffic.nl/en/news",
-   "list": "https://www.nuffic.nl/en/news",
+   "home": "https://www.nuffic.nl/en",
    "filter": "student"
   },
   {
@@ -388,7 +437,6 @@
     "rijksoverheid.nl"
    ],
    "home": "https://www.government.nl/latest/news",
-   "list": "https://www.government.nl/latest/news",
    "filter": "student"
   },
   {
@@ -400,8 +448,7 @@
     "studyinnl.org",
     "nuffic.nl"
    ],
-   "home": "https://www.studyinnl.org/news",
-   "list": "https://www.studyinnl.org/news",
+   "home": "https://www.studyinnl.org/",
    "filter": "all"
   },
   {
@@ -413,7 +460,6 @@
     "migrationsverket.se"
    ],
    "home": "https://www.migrationsverket.se/en/",
-   "list": "https://www.migrationsverket.se/en/about-the-swedish-migration-agency/news.html",
    "filter": "student",
    "context": "immigration"
   },
@@ -427,7 +473,6 @@
     "si.se"
    ],
    "home": "https://studyinsweden.se/",
-   "list": "https://studyinsweden.se/news/",
    "filter": "all"
   },
   {
@@ -439,7 +484,6 @@
     "universityadmissions.se"
    ],
    "home": "https://www.universityadmissions.se/en/",
-   "list": "https://www.universityadmissions.se/en/news/",
    "filter": "all"
   },
   {
@@ -451,7 +495,6 @@
     "udi.no"
    ],
    "home": "https://www.udi.no/en/",
-   "list": "https://www.udi.no/en/latest-news/",
    "filter": "student",
    "context": "immigration"
   },
@@ -465,7 +508,6 @@
     "hkdir.no"
    ],
    "home": "https://www.studyinnorway.no/",
-   "list": "https://www.studyinnorway.no/news",
    "filter": "all"
   },
   {
@@ -488,10 +530,10 @@
    "domains": [
     "ica.gov.sg"
    ],
-   "home": "https://www.ica.gov.sg/news-and-publications/media-releases",
-   "list": "https://www.ica.gov.sg/news-and-publications/media-releases",
+   "home": "https://www.ica.gov.sg/",
    "filter": "student",
-   "context": "immigration"
+   "context": "immigration",
+   "list": "https://www.ica.gov.sg/news-and-publications/newsroom"
   },
   {
    "id": "sg-moe",
@@ -501,7 +543,7 @@
    "domains": [
     "moe.gov.sg"
    ],
-   "home": "https://www.moe.gov.sg/news/press-releases",
+   "home": "https://www.moe.gov.sg/",
    "list": "https://www.moe.gov.sg/news/press-releases",
    "filter": "student"
   },
@@ -527,7 +569,6 @@
     "mohe.gov.my"
    ],
    "home": "https://www.mohe.gov.my/en/",
-   "list": "https://www.mohe.gov.my/en/broadcast/press-release",
    "filter": "student"
   },
   {

@@ -6,6 +6,7 @@ import { PUBLISH, forCountry, sourcesFor, lastChecked, fmtIso, host, keepDays } 
 
 const path = '/industry-news/';
 const PER = 8;
+const NOTE = { blocked: 'its website does not allow automatic reading, so open it to see its news', unreadable: 'no headlines could be read automatically, so open it to see its news', failed: 'could not be reached at the last check' };
 const live = PUBLISH;
 const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), srcs: sourcesFor(c.code), checked: lastChecked(c.code) }));
 ---
@@ -55,7 +56,7 @@ const sections = countries.map((c) => ({ ...c, rows: forCountry(c.code), srcs: s
             <p class="small news-srcs">
               Read for this destination:{' '}
               {c.srcs.map((s, k) => (
-                <Fragment>{k > 0 ? '; ' : ''}<a href={s.url} rel="noopener">{s.body}</a>{s.status === 'failed' || s.status === 'blocked' ? ' (not reachable at the last check)' : ''}</Fragment>
+                <Fragment>{k > 0 ? '; ' : ''}<a href={s.url} rel="noopener">{s.body}</a>{NOTE[s.status] ? ` (${NOTE[s.status]})` : ''}</Fragment>
               ))}
               {c.checked ? `. Last checked ${fmtIso(c.checked)}.` : '.'}
             </p>

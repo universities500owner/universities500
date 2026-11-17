@@ -90,6 +90,18 @@ def recheck(items, fx, today, n=RECHECK):
     return [i for i in items if i['url'] not in gone], len(gone)
 
 
+def why_empty(info):
+    """For a source that gave no items: blocked (robots.txt, or the site refuses us), unreadable (the page loads but shows no headlines we can read), or failed."""
+    tried = info['tried']
+    if info['robotsBlocked'] and not any(t['status'] == 200 for t in tried):
+        return 'blocked'
+    if tried and all(t['status'] in (401, 403, 429) for t in tried if not t.get('error', '').startswith('blocked')):
+        return 'blocked'
+    if any(t['status'] == 200 for t in tried):
+        return 'unreadable'
+    return 'failed'
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument('--sources', default=str(ROOT / 'data' / 'news_sources.json'))
@@ -127,7 +139,7 @@ def main(argv=None):
     ok_sources = [i for i in infos if i['found'] > 0]
     status = dict(prev.get('sources', {}))
     for src, info in zip(sources, infos):
-        st = 'ok' if info['kept'] else ('no-recent-item' if info['found'] else ('blocked' if info['robotsBlocked'] and not info['found'] else 'failed'))
+        st = 'ok' if info['kept'] else ('no-recent-item' if info['found'] else why_empty(info))
         status[src['id']] = {'country': src['country'], 'body': src['body'], 'kind': src.get('kind', 'government'), 'url': src.get('home') or src.get('list') or (src.get('feeds') or [''])[0],
                              'status': st, 'checked': today, 'found': info['found'], 'kept': info['kept'], 'via': info['via'].split(' ')[0] if info['via'] else ''}
     # drop status rows of sources that left the list
@@ -170,6 +182,16 @@ def report(args, sources, infos, merged, removed, today, wrote, stopped):
     for i in infos:
         if not i['kept']:
             L.append(f"- **{i['id']}**: " + '; '.join(f"{t['url']} -> {t.get('error') or t['status']}" for t in i['tried'][:6]))
+    L += ['', '## What the pages looked like when no items could be read', '(chars = visible text; many scripts and few chars usually means the headlines are loaded by script; dates = date-like strings on the page)', '']
+    for i in infos:
+        if i['found'] or not (i.get('profiles') or i.get('sections')):
+            continue
+        if i.get('sections'):
+            L.append(f"- **{i['id']}** news pages found on the home page and tried: " + ', '.join(i['sections']))
+        for pr in i.get('profiles', [])[:3]:
+            L.append(f"- **{i['id']}** {pr['url']}: \"{pr['title']}\" | chars {pr['chars']}, links {pr['links']}, time-tags {pr['timeTags']}, dates {pr['dates']}, scripts {pr['scripts']}")
+            for sm in pr['sample'][:4]:
+                L.append(f"    - {sm}")
     L += ['', '## Examples the relevance rule rejected (check these are really not about students)', '']
     for i in infos:
         for r in i['rejected']:

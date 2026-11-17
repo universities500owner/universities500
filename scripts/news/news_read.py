@@ -23,51 +23,77 @@ def _fetch(fx, url, info, accept=None):
     return res if res.ok else None
 
 
+MAX_FETCHES = 12             # per source per run, before the article pages
+
+
+def _as_list(v):
+    return [v] if isinstance(v, str) else list(v or [])
+
+
 def _candidates(src, fx, info):
-    """Items from the best endpoint that gives any: explicit feeds, then feeds the home page advertises, then the Federal Register, then the HTML list."""
-    for u in src.get('feeds', []):
-        res = _fetch(fx, u, info, accept='application/rss+xml,application/atom+xml,application/xml,text/xml,*/*;q=0.5')
+    """Items from every endpoint that gives any, in this order, de-duplicated by address:
+    explicit feeds, the Federal Register, feeds the home page advertises, the listed news pages, and (only when nothing came yet)
+    the news pages the home page links to."""
+    acc, seen = [], set()
+    FEED_ACCEPT = 'application/rss+xml,application/atom+xml,application/xml,text/xml,*/*;q=0.5'
+
+    def take(its, via):
+        new = [i for i in its if i['url'] not in seen]
+        for i in new:
+            seen.add(i['url'])
+        if new:
+            acc.extend(new)
+            info['via'] = f"{info['via']}; {via}" if info['via'] else via
+        return bool(new)
+
+    def fetch(u, **kw):
+        if len(info['tried']) >= MAX_FETCHES:
+            return None
+        return _fetch(fx, u, info, **kw)
+
+    def feeds_on(res, label):
+        got = False
+        for u in NF.discover_feeds(res.text, res.final_url)[:3]:
+            r = fetch(u, accept=FEED_ACCEPT)
+            if r and NF.looks_like_feed(r.body):
+                got = take(NF.parse_feed(r.body, r.final_url), f'feed ({label}) {u}') or got
+        return got
+
+    def list_page(res, u):
+        its = NF.parse_listing(res.text, res.final_url)
+        if its:
+            return take(its, f'list page {u}')
+        info['profiles'].append({'url': u, **NF.profile(res.text, res.final_url)})
+        return False
+
+    for u in _as_list(src.get('feeds')):
+        res = fetch(u, accept=FEED_ACCEPT)
         if res and NF.looks_like_feed(res.body):
-            its = NF.parse_feed(res.body, res.final_url)
-            if its:
-                info['via'] = f'feed {u}'
-                return its
-    for term in src.get('fr', []):
-        u = NF.federal_register_url(term)
-        res = _fetch(fx, u, info, accept='application/json')
+            take(NF.parse_feed(res.body, res.final_url), f'feed {u}')
+    for term in _as_list(src.get('fr')):
+        res = fetch(NF.federal_register_url(term), accept='application/json')
         if res:
             its = NF.parse_federal_register(res.body)
             if its:
                 info.setdefault('frTerms', []).append(term)
-                info['via'] = 'federal-register'
-                info.setdefault('acc', []).extend(its)
-    if info.get('acc'):
-        seen, out = set(), []
-        for i in info.pop('acc'):
-            if i['url'] not in seen:
-                seen.add(i['url'])
-                out.append(i)
-        return out
-    page_url = src.get('list') or src.get('home')
-    home = None
-    if src.get('home'):
-        home = _fetch(fx, src['home'], info)
-        if home:
-            for u in NF.discover_feeds(home.text, home.final_url)[:3]:
-                res = _fetch(fx, u, info, accept='application/rss+xml,application/atom+xml,application/xml,text/xml,*/*;q=0.5')
-                if res and NF.looks_like_feed(res.body):
-                    its = NF.parse_feed(res.body, res.final_url)
-                    if its:
-                        info['via'] = f'feed (found on the home page) {u}'
-                        return its
-    if page_url:
-        res = home if (home and page_url == src.get('home')) else _fetch(fx, page_url, info)
+                take(its, 'federal-register')
+    home = fetch(src['home']) if src.get('home') else None
+    if home:
+        feeds_on(home, 'found on the home page')
+    for u in _as_list(src.get('list')):
+        res = home if (home and u == src.get('home')) else fetch(u)
         if res:
-            its = NF.parse_listing(res.text, res.final_url)
-            if its:
-                info['via'] = f'list page {page_url}'
-                return its
-    return []
+            if not list_page(res, u):
+                feeds_on(res, 'found on the news page')
+    if not acc and home:
+        for u in NF.discover_sections(home.text, home.final_url, src['domains']):
+            info.setdefault('sections', []).append(u)
+            res = fetch(u)
+            if res and not list_page(res, u):
+                feeds_on(res, 'found on a news page')
+            if acc:
+                break
+    return acc
 
 
 def _article_summary(fx, url, info):
@@ -88,7 +114,7 @@ def read_source(src, fx, today, keep_days=120, known=None):
     """Returns (items, info). `known` maps url -> a stored item, so pages we already summarised are not fetched again."""
     known = known or {}
     info = {'id': src['id'], 'country': src['country'], 'body': src['body'], 'via': '', 'tried': [], 'robotsBlocked': 0,
-            'found': 0, 'drops': Counter(), 'kept': 0, 'samples': [], 'rejected': [], 'error': ''}
+            'found': 0, 'drops': Counter(), 'kept': 0, 'samples': [], 'rejected': [], 'error': '', 'profiles': []}
     try:
         cands = _candidates(src, fx, info)
     except Exception as e:  # one broken source must never stop the others
@@ -128,7 +154,7 @@ def read_source(src, fx, today, keep_days=120, known=None):
         if not R.english(f'{title}. {summary}'):
             info['drops']['not-english'] += 1
             continue
-        ok, why = R.relevant(title, summary, src.get('filter', 'student'), src.get('context') == 'immigration')
+        ok, why = R.relevant(title, summary, src.get('filter', 'student'), src.get('context') in ('immigration', 'international'))
         if not ok:
             info['drops'][why] += 1
             if len(info['rejected']) < 4:
