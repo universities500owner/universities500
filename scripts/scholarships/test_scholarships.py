@@ -17,6 +17,7 @@ sys.path.insert(0, str(HERE))
 import details as D  # noqa: E402
 import official as O  # noqa: E402
 import extract as X  # noqa: E402
+import feeds as FD  # noqa: E402
 import quality as Q  # noqa: E402
 import studyaustralia as SA  # noqa: E402
 import textutil as T  # noqa: E402
@@ -770,6 +771,65 @@ class StudyAustralia(unittest.TestCase):
                 doc = json.loads((d / 's.json').read_text())
                 kept = sorted(i['name'] for i in doc['items'] if i['origin'] == 'studyaustralia')
                 self.assertEqual(kept, ['Global Postgraduate Scholarship'] if n == 2 else ['Global Postgraduate Scholarship', 'Monash International Merit Scholarship'])
+
+
+class Feeds(unittest.TestCase):
+    """A finder built with scripts, with an open data feed behind it (UCL)."""
+    ENTRIES = [
+        dict(scholCode='A', scholarship='Global Undergraduate Scholarship', ug='Y', pgt='N', pgr='N', uk_status='N', os_status='Y', prospective='Y',
+             scholURL='https://www.ucl.ac.uk/scholarships/global-undergraduate-scholarship\r \r '),
+        dict(scholCode='B', scholarship='Masters Scholarship', ug='N', pgt='Y', pgr='Y', uk_status='N', os_status='Y', prospective='Y',
+             scholURL='https://www.ucl.ac.uk/bartlett/study/masters'),
+        dict(scholCode='C', scholarship='PhD Scholarship', ug='N', pgt='N', pgr='Y', uk_status='N', os_status='Y', prospective='Y',
+             scholURL='https://www.ucl.ac.uk/scholarships/phd'),
+        dict(scholCode='D', scholarship='UK Bursary', ug='Y', pgt='N', pgr='N', uk_status='Y', os_status='N', prospective='Y',
+             scholURL='https://www.ucl.ac.uk/scholarships/uk-bursary'),
+        dict(scholCode='E', scholarship='Chevening', ug='N', pgt='Y', pgr='N', uk_status='N', os_status='Y', prospective='Y',
+             scholURL='https://www.ucl.ac.uk/scholarships/fee-partnerships'),
+        dict(scholCode='F', scholarship='Current student award', ug='Y', pgt='N', pgr='N', uk_status='N', os_status='Y', prospective='N',
+             scholURL='https://www.ucl.ac.uk/scholarships/current'),
+        dict(scholCode='G', scholarship='Elsewhere', ug='Y', pgt='N', pgr='N', uk_status='N', os_status='Y', prospective='Y',
+             scholURL='https://example.org/not-ucl'),
+        dict(scholCode='H', scholarship='Same page again', ug='Y', pgt='N', pgr='N', uk_status='N', os_status='Y', prospective='Y',
+             scholURL='https://www.ucl.ac.uk/scholarships/global-undergraduate-scholarship'),
+    ]
+
+    def test_only_overseas_bachelor_or_taught_master_pages(self):
+        urls, counts = FD.ucl_pages(self.ENTRIES)
+        self.assertEqual(urls, ['https://www.ucl.ac.uk/scholarships/global-undergraduate-scholarship', 'https://www.ucl.ac.uk/bartlett/study/masters'])
+        self.assertEqual((counts['entries'], counts['shared'], counts['kept']), (8, 1, 2))
+
+    def test_script_line_and_changed_shapes(self):
+        text = 'var schol_json_current = ' + json.dumps(self.ENTRIES) + ';\nvar other = [1];'
+        self.assertEqual(len(FD.parse_ucl(text)), 8)
+        self.assertEqual(FD.parse_ucl('<html>nothing here</html>'), [])
+        self.assertEqual(FD.parse_ucl('var x = {"a": 1};'), [])
+        self.assertEqual(FD.parse_ucl('var x = [ not json'), [])
+
+    def test_feed_over_the_fetcher(self):
+        EXTRA.clear()
+        ROBOTS['status'] = None
+        saved = FD.UCL_FEED
+        FD.UCL_FEED = f'http://127.0.0.1:{PORT["p"]}/digital-presence-services/scholarships/www/scholarships.json.php'
+        try:
+            path = '/digital-presence-services/scholarships/www/scholarships.json.php'
+            EXTRA[path + '?year=2027'] = ('text/javascript', 'var schol_json_current = ' + json.dumps(self.ENTRIES) + ';')
+            fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+            urls, rep = FD.ucl(fx, '2026-11-17')
+            self.assertTrue(rep['ok'])
+            self.assertEqual((len(urls), rep['year']), (2, 2027))
+            # a broken feed gives nothing and never raises
+            EXTRA[path + '?year=2027'] = ('text/html', '<html>Cloudflare</html>')
+            EXTRA[path + '?year=2026'] = ('text/html', '<html>Cloudflare</html>')
+            urls, rep = FD.ucl(fx, '2026-11-17')
+            self.assertEqual(urls, [])
+            self.assertFalse(rep['ok'])
+        finally:
+            FD.UCL_FEED = saved
+            EXTRA.clear()
+
+    def test_other_universities_have_no_feed(self):
+        self.assertEqual(FD.pages_for({'slug': 'monash-university'}, None, '2026-11-17'), ([], None))
 
 
 if __name__ == '__main__':
