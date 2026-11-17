@@ -1,5 +1,5 @@
 {
- "_readme": "Scholarship pages that were checked by hand. The reader visits these first for the university, and they replace the page it would otherwise guess for the university's scholarships link. A page on another domain is allowed when it is listed here (the university's own scholarships body, for example). Add a university: slug -> urls. Source: the university list Raja supplied, links checked 15 Nov 2026; the 27 Australian universities were replaced on 17 Nov 2026 with the international-student scholarship pages Raja supplied (the site only wants international scholarships). Three universities in that list (Australian Catholic, Bond, Charles Darwin) are not on this site yet.",
+ "_readme": "Scholarship pages that were checked by hand. The reader visits these first for the university, and they replace the page it would otherwise guess for the university's scholarships link. A page on another domain is allowed when it is listed here (the university's own scholarships body, for example). Add a university: slug -> urls. Source: the university list Raja supplied, links checked 15 Nov 2026; the 27 Australian universities were replaced on 17 Nov 2026 with the international-student scholarship pages Raja supplied (the site only wants international scholarships). Three universities in that list (Australian Catholic, Bond, Charles Darwin) are not on this site yet. On 17 Nov 2026, international-student scholarship pages for 11 UK universities were added from a search of each university's own website; the reader run, not a person, checked that they load.",
  "checked": "2026-11-17",
  "seeds": {
   "adelaide-university": {
@@ -313,6 +313,77 @@
    "name": "University of Tasmania",
    "urls": [
     "https://www.utas.edu.au/study/scholarships-fees-and-costs/international-scholarships"
+   ]
+  },
+  "king-s-college-london": {
+   "name": "King's College London",
+   "urls": [
+    "https://www.kcl.ac.uk/business/postgraduate/postgraduate-scholarships"
+   ]
+  },
+  "london-school-of-economics-and-political-science": {
+   "name": "London School of Economics and Political Science",
+   "urls": [
+    "https://www.lse.ac.uk/study-at-lse/graduate/fees-and-funding"
+   ]
+  },
+  "university-of-york": {
+   "name": "University of York",
+   "urls": [
+    "https://www.york.ac.uk/study/postgraduate-taught/funding/international/",
+    "https://www.york.ac.uk/study/undergraduate/fees-funding/international/scholarships/"
+   ]
+  },
+  "university-of-strathclyde": {
+   "name": "University of Strathclyde",
+   "urls": [
+    "https://www.strath.ac.uk/studywithus/postgraduatetaught/postgraduatescholarships/",
+    "https://www.strath.ac.uk/studywithus/undergraduate/undergraduatescholarships/"
+   ]
+  },
+  "oxford-brookes-university": {
+   "name": "Oxford Brookes University",
+   "urls": [
+    "https://www.brookes.ac.uk/study/international-students/fees-and-funding/scholarships-and-financial-support"
+   ]
+  },
+  "birkbeck-college-university-of-london": {
+   "name": "Birkbeck, University of London",
+   "urls": [
+    "https://www.bbk.ac.uk/student-services/financial-support/international"
+   ]
+  },
+  "brunel-university-of-london": {
+   "name": "Brunel University of London",
+   "urls": [
+    "https://www.brunel.ac.uk/scholarships/home"
+   ]
+  },
+  "university-of-sussex": {
+   "name": "University of Sussex",
+   "urls": [
+    "https://www.sussex.ac.uk/study/fees-funding/masters-scholarships/browse",
+    "https://www.sussex.ac.uk/study/fees-funding/undergraduate-scholarships/browse"
+   ]
+  },
+  "the-university-of-warwick": {
+   "name": "University of Warwick",
+   "urls": [
+    "https://warwick.ac.uk/study/scholarships-and-bursaries/scholarships/"
+   ]
+  },
+  "university-of-aberdeen": {
+   "name": "University of Aberdeen",
+   "urls": [
+    "https://www.abdn.ac.uk/study/international/",
+    "https://www.abdn.ac.uk/study/funding/644",
+    "https://www.abdn.ac.uk/study/funding/645"
+   ]
+  },
+  "university-of-kent": {
+   "name": "University of Kent",
+   "urls": [
+    "https://www.kent.ac.uk/international/international-scholarships"
    ]
   }
  }
