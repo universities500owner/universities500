@@ -5,16 +5,28 @@ import CourseRow from '../../components/CourseRow.astro';
 import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import { hiddenFromSearch } from '../../lib/noindex.js';
 import tools from '../../data/tools.json';
-import { PUBLISH, items, total, generatedAt, fmtIso, filterLists, universitiesWithCourses, CHECK } from '../../lib/courses.js';
+import Icons from '../../components/Icons.astro';
+import { PUBLISH, items, total, generatedAt, fmtIso, filterLists, universitiesWithCourses, CHECK, levelText, lengthText, feeText, ieltsText, ieltsScore, startsText } from '../../lib/courses.js';
 
 const path = '/courses/';
 const live = PUBLISH && total > 0;
-const rows = items;
+// The page carries the first rows as HTML (so it paints at once and works without scripts) and every course as compact data.
+// The script builds the rows a visitor actually sees from that data, so the page does not hold thousands of cards.
+const PAGE = 30;
+const col = new Intl.Collator('en');
+const rows = [...items].sort((a, b) => col.compare(a.name.toLowerCase(), b.name.toLowerCase()) || col.compare(a.uniName, b.uniName));
 const lists = filterLists();
 const unis = universitiesWithCourses();
 const updated = generatedAt ? fmtIso(generatedAt) : '';
 // The placeholder search stays until the real list is switched on.
 const data = JSON.stringify({ FIELDS: tools.FIELDS, COURSES: tools.COURSES }).replace(/</g, '\\u003c');
+// One array per course: uni, slug, name, degree, level label, level key, field, length, years, fee, English, English score, starts, start months.
+// Each fact is the sentence the page gave; an empty string means the page did not say.
+const crsData = JSON.stringify({
+  U: Object.fromEntries(rows.map((c) => [c.uni, [c.uniName, c.country]])),
+  K: Object.fromEntries(lists.countries.map((c) => [c.code, c.name])),
+  C: rows.map((c) => [c.uni, c.slug, c.name, c.degree || '', levelText(c), c.level.toLowerCase(), c.field || '', lengthText(c, ''), c.duration ? c.duration.years : 0, feeText(c, ''), ieltsText(c, ''), ieltsScore(c) ?? '', startsText(c, ''), ((c.intakes && c.intakes.months) || []).join(' ')]),
+}).replace(/</g, '\\u003c');
 ---
 <Base
   title={live ? "Course search for international students | Universities500" : "Course search: filter and compare courses | Universities500"}
@@ -80,10 +92,16 @@ const data = JSON.stringify({ FIELDS: tools.FIELDS, COURSES: tools.COURSES }).re
         </details>
         <button type="button" class="btn-ghost sch-clear" id="crs-clear" hidden>Clear filters</button>
       </div>
-      <p class="tally" id="crs-tally" role="status">{rows.length} courses</p>
+      <p class="tally" id="crs-tally" role="status">{rows.length.toLocaleString('en-GB')} courses{rows.length > PAGE ? `, showing ${PAGE}` : ''}</p>
       <ol class="crs-list" id="crs-list">
-        {rows.map((c) => <CourseRow c={c} />)}
+        {rows.slice(0, PAGE).map((c) => <CourseRow c={c} />)}
       </ol>
+      <script is:inline>
+        // A link with filters in it (from the home page, say) should not flash the unfiltered list first.
+        if (location.search) { var l = document.getElementById('crs-list'); l.hidden = true; setTimeout(function () { l.hidden = false; }, 4000); }
+      </script>
+      <template id="crs-bookmark"><Icons name="bookmark" /></template>
+      <script type="application/json" id="crs-data" set:html={crsData} />
       <p class="more"><button type="button" class="btn-ghost" id="crs-more" hidden>Show more</button></p>
       <p class="small">Last read {updated}. Everything here is copied from the course's official page and can change. Fees are what the page showed, often for one intake or one year. Check the official page before you apply.</p>
     </section>
