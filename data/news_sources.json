@@ -769,11 +769,22 @@
      "immigration",
      "cap",
      "policy",
-     "permit"
+     "permit",
+     "Sweden",
+     "Norway",
+     "Singapore",
+     "UAE",
+     "Dubai",
+     "Malaysia",
+     "Germany",
+     "New Zealand",
+     "France",
+     "Netherlands",
+     "Ireland"
     ],
-    "pages": 3
+    "pages": 2
    },
-   "maxFetches": 24
+   "maxFetches": 60
   },
   {
    "id": "press-pie",
@@ -796,11 +807,22 @@
      "immigration",
      "cap",
      "policy",
-     "permit"
+     "permit",
+     "Sweden",
+     "Norway",
+     "Singapore",
+     "UAE",
+     "Dubai",
+     "Malaysia",
+     "Germany",
+     "New Zealand",
+     "France",
+     "Netherlands",
+     "Ireland"
     ],
-    "pages": 3
+    "pages": 2
    },
-   "maxFetches": 24
+   "maxFetches": 60
   },
   {
    "id": "press-uwn",
