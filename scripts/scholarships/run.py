@@ -19,6 +19,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import discover  # noqa: E402
 import quality as Q  # noqa: E402
 import official  # noqa: E402
+import studyaustralia as SA  # noqa: E402
 import textutil as T  # noqa: E402
 from fetcher import Fetcher  # noqa: E402
 
@@ -52,6 +53,8 @@ def main():
     ap.add_argument('--today', default='')
     ap.add_argument('--allow-drop', action='store_true')
     ap.add_argument('--skip-official', action='store_true')
+    ap.add_argument('--diagnose', action='store_true', help='print, for every university, what the reader opened and why pages were not kept')
+    ap.add_argument('--skip-studyaustralia', action='store_true', help="do not read Study Australia's scholarship list (Australian universities)")
     ap.add_argument('--strict-robots', action='store_true',
                     help='treat a 401/403 answer for robots.txt as "everything disallowed" (RFC 9309 lets a crawler go ahead)')
     args = ap.parse_args()
@@ -111,8 +114,23 @@ def main():
         except Exception as e:  # one bad site must not stop the run
             return u['slug'], {'slug': u['slug'], 'status': 'error', 'records': [], 'hub': None, 'pages': 0, 'reasons': Counter(), 'note': f'{type(e).__name__}: {e}'}
 
+    # Study Australia (Australian Government) lists scholarships by university, in plain pages. It fills in the Australian
+    # universities whose own sites turn the reader away or build their lists with scripts. Its own host, so it runs beside the others.
+    au_unis = [u for u in unis if u['country'] == 'australia']
+    sa_job = None
+
+    def work_sa():
+        try:
+            return SA.read(fx, au_unis, today, {i['id']: i for i in prev.get('items', [])})
+        except Exception as e:  # never stop the run for this
+            rep = {'complete': False, 'status': f'error: {type(e).__name__}: {e}', 'listed': 0, 'total': None, 'pages': 0, 'matched': 0,
+                   'records': 0, 'reused': 0, 'detailsRead': 0, 'reasons': {}, 'unmatched': {}, 'levels': {}, 'perUniversity': {}, 'noVisitLink': 0}
+            return [], rep
+
     skipped_by_deadline = []
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
+    with ThreadPoolExecutor(max_workers=args.workers + 1) as ex:
+        if au_unis and not args.skip_studyaustralia:
+            sa_job = ex.submit(work_sa)
         futs = {ex.submit(work, u): u for u in unis}
         done = 0
         for f in as_completed(futs):
@@ -121,6 +139,26 @@ def main():
             done += 1
             if done % 10 == 0 or done == len(unis):
                 print(f'[{done}/{len(unis)}] {int(time.monotonic() - t0)}s requests={fx.stats["requests"]} records so far={sum(len(x["records"]) for x in results.values())}', flush=True)
+    sa_records, sa_rep = ([], None)
+    if sa_job is not None:
+        sa_records, sa_rep = sa_job.result()
+        # a scholarship the university's own page gave us wins over the same one on Study Australia
+        own = {(r['providerSlug'], SA.norm(r['name'])) for x in results.values() for r in x['records']}
+        before = len(sa_records)
+        sa_records = [r for r in sa_records if (r['providerSlug'], SA.norm(r['name'])) not in own]
+        sa_rep['sameAsOwnPage'] = before - len(sa_records)
+        SA.print_report(sa_rep, au_unis)
+        print(f"  {sa_rep['sameAsOwnPage']} already found on the university's own page; kept that one")
+    args.sa_rep = sa_rep
+    if args.diagnose:
+        print('\n==== PER UNIVERSITY ====')
+        for slug, r in sorted(results.items()):
+            print(f"\n## {slug}: {r['status']} {r.get('note', '')} | pages {r['pages']}, records {len(r['records'])}, hub {(r['hub'] or {}).get('url')}")
+            print('   not kept: ' + ', '.join(f'{k} {v}' for k, v in r['reasons'].most_common(8)))
+            for u, st in (r.get('seeds') or {}).items():
+                print(f'   supplied page: {st}  {u}')
+            for line in r.get('trace', [])[:30]:
+                print('   ' + line[:230])
     for u in unis:
         r = results.get(u['slug'])
         if r and r['status'] == 'unreachable' and r['note'] in ('no response',) and time.monotonic() > deadline:
@@ -132,7 +170,7 @@ def main():
     readable = {s for s, r in results.items() if r['status'] in ('ok', 'no-scholarship-pages') and not r.get('partial') and s not in skipped_by_deadline}
     fresh = {}
     miss_log = []  # sentences that look like a deadline or value the reader did not take (printed for the run log only)
-    for rec in off_records + [x for r in results.values() for x in r['records']]:
+    for rec in off_records + sa_records + [x for r in results.values() for x in r['records']]:
         miss = rec.pop('_miss', None)
         if miss:
             miss_log.append((rec['provider'], rec['name'], rec['url'], miss))
@@ -164,6 +202,16 @@ def main():
         slug = old.get('providerSlug')
         if old.get('origin') == 'official':
             # official programme not read this time (site down or page changed): keep, but do not refresh the date
+            merged[rid] = old
+            carried += 1
+            continue
+        if old.get('origin') == SA.ORIGIN:
+            # Study Australia entry: only counts as gone if the whole list was read this time and it was not there
+            if sa_rep and sa_rep.get('complete'):
+                old['misses'] = old.get('misses', 0) + 1
+            if old.get('misses', 0) >= MISS_LIMIT:
+                dropped += 1
+                continue
             merged[rid] = old
             carried += 1
             continue
@@ -238,6 +286,7 @@ def main():
             'universitiesRead': len(readable), 'universitiesTried': len(unis),
             'requests': fx.stats['requests'],
         },
+        'studyAustralia': ({k: sa_rep.get(k) for k in ('status', 'listed', 'total', 'matched', 'records', 'complete')} | {'checked': today}) if sa_rep else prev.get('studyAustralia'),
         'items': items,
         'universities': unis_out,
         'directories': directories or prev.get('directories', []),
@@ -300,6 +349,15 @@ def write_report(args, fx, results, off_report, directories, third, merged, prev
         names = {'disallow': 'a rule in robots.txt says no', 'forbidden': 'robots.txt answered 401/403 (strict mode)', 'unreachable': 'robots.txt could not be read (server error or no answer)'}
         for k, v in rb.most_common():
             L.append(f'- {names.get(k, k or "unknown")}: {v}')
+        L.append('')
+    sa = getattr(args, 'sa_rep', None)
+    if sa:
+        L.append('## Study Australia (Australian Government list)\n')
+        L.append(f"- Status: {sa['status']}; whole list read: {sa['complete']}")
+        L.append(f"- {sa['listed']} of {sa['total']} scholarships listed, {sa['matched']} from universities on this site, {sa['records']} kept, "
+                 f"{sa.get('sameAsOwnPage', 0)} already found on the university's own page")
+        if sa['reasons']:
+            L.append('- Not kept: ' + ', '.join(f'{k} {v}' for k, v in sorted(sa['reasons'].items(), key=lambda kv: -kv[1])))
         L.append('')
     by_c = Counter(i['country'] for i in merged.values())
     L.append('## Records by country\n')

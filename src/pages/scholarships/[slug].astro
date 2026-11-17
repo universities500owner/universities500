@@ -29,7 +29,7 @@ const desc = s.description || `${s.name} at ${s.provider}. Value, deadline and e
     {s.awards && <div><dt>Awards</dt><dd>{awardsText(s.awards)}</dd></div>}
   </dl>
 
-  <p><a class="btn" href={apply} rel="noopener">{s.applyUrl ? 'Apply on the official site' : 'Open the official page'}</a></p>
+  <p><a class="btn" href={apply} rel="noopener">{s.applyUrl ? 'Apply on the official site' : (s.via ? `Open the ${s.via} page` : 'Open the official page')}</a></p>
 
   {s.description && (<section><h2>About</h2><p>{s.description}</p></section>)}
   {s.covers && s.covers.length > 0 && (<section><h2>What it covers</h2><ul class="rc-chips">{s.covers.map((c) => <li>{c}</li>)}</ul><p class="small">As the official page describes it. Check the page for the exact amounts and limits.</p></section>)}
@@ -47,7 +47,10 @@ const desc = s.description || `${s.name} at ${s.provider}. Value, deadline and e
   <section>
     <h2>Where this comes from</h2>
     <ul class="src-list">
-      <li>Official page: <a href={s.url} rel="noopener">{s.url}</a></li>
+      {s.via ? (<Fragment>
+        <li>Read from {s.via}, the Australian Government's study site for international students: <a href={s.url} rel="noopener">{s.url}</a></li>
+        {s.applyUrl && <li>The university's own page: <a href={s.applyUrl} rel="noopener">{s.applyUrl}</a></li>}
+      </Fragment>) : (<li>Official page: <a href={s.url} rel="noopener">{s.url}</a></li>)}
       <li>Last read on {fmtIso(s.lastVerified)}. First seen {fmtIso(s.firstSeen)}.</li>
       {s.value && s.value.context && <li class="quote">Value, as the page says: “{s.value.context}”</li>}
       {s.deadlineText && <li class="quote">Dates, as the page says: “{s.deadlineText}”</li>}

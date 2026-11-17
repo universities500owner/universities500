@@ -129,6 +129,11 @@ def probe_urls(a):
             i = html.find(key)
             if i >= 0:
                 print(f'  html around {key!r}: ' + re.sub(r'\s+', ' ', html[max(0, i - 160):i + 260]))
+        bare = re.sub(r'\s+', ' ', re.sub(r'<svg\b.*?</svg>|<!--.*?-->', '', html, flags=re.S))
+        for key, size in (('scholarship-list-card', 3500), ('Scholarship Information', 6000)):
+            i = bare.find(key)
+            if i >= 0:
+                print(f'  MARKUP from {key!r} ({size} chars, svg and comments removed): ' + bare[i:i + size])
         m = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)', html, re.I)
         print('  canonical:', m.group(1) if m else None, '| meta robots:', re.findall(r'<meta[^>]+name=["\']robots["\'][^>]*>', html, re.I)[:1])
     return 0

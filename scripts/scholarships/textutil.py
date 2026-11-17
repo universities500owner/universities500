@@ -226,7 +226,7 @@ def _amount_text(m, country):
         return None
     shown = f"{int(val):,}" if val == int(val) else f"{val:,.2f}"
     per = (m.group('per') or '').strip().lower()
-    per = re.sub(r'^(per|a|each|/)\s*', '', per)
+    per = re.sub(r'^(?:per\s+|each\s+|a\s+|/\s*)', '', per)  # not r'^a': it ate the 'a' of 'annually'
     txt = f"{cur} {shown}" if cur.isalpha() else f"{cur}{shown}"
     if per in PERIOD:
         txt += f" {PERIOD[per]}"

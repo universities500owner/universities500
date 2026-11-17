@@ -3,6 +3,7 @@
 Run: python3 scripts/scholarships/test_scholarships.py"""
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -17,6 +18,7 @@ import details as D  # noqa: E402
 import official as O  # noqa: E402
 import extract as X  # noqa: E402
 import quality as Q  # noqa: E402
+import studyaustralia as SA  # noqa: E402
 import textutil as T  # noqa: E402
 from fetcher import Fetcher  # noqa: E402
 
@@ -157,6 +159,9 @@ class TextTests(unittest.TestCase):
         ds = [{'iso': '2026-01-10', 'ctx': 'a'}, {'iso': '2027-02-01', 'ctx': 'b'}]
         self.assertEqual(T.choose_deadline(ds, '2026-11-14')['iso'], '2027-02-01')
         self.assertEqual(T.choose_deadline(ds, '2027-06-01')['iso'], '2027-02-01')
+
+    def test_a_value_per_year_written_as_annually(self):
+        self.assertEqual(T.find_value('Award value - AUD $1,000 annually', 'australia')['display'], 'AUD 1,000 a year')   # the 'a' of 'annually' was once cut off
 
     def test_value(self):
         v = T.find_value('The scholarship is worth up to £10,000 per year. Application fee of $100.', 'uk')
@@ -534,6 +539,237 @@ class Details(unittest.TestCase):
         src['programmes'][0]['expect'] = 'something else'
         recs, report = O.read_programmes(src, Fx(), '2026-11-14')
         self.assertEqual(recs, [])
+
+
+
+class PageName(unittest.TestCase):
+    def test_a_generic_first_heading_gives_way_to_the_real_name(self):
+        html = ('<html><head><title>2026 International Masters Scholarship | Test University</title></head><body><main>'
+                '<h1>Scholarships</h1><p>Worth AUD $5,000 for international students.</p></main></body></html>')
+        self.assertEqual(X.Page('https://x.test/scholarships/details/a', html, 'australia', 'Test University').name, '2026 International Masters Scholarship')
+        html = '<html><head><title>Scholarship details</title></head><body><main><h1>Scholarship details</h1><h2>Vice-Chancellor International Scholarship</h2></main></body></html>'
+        self.assertEqual(X.Page('https://x.test/s?id=1', html, 'australia', 'Test University').name, 'Vice-Chancellor International Scholarship')
+        html = '<html><head><title>Global Excellence Scholarship | Test University</title></head><body><main><h1>Global Excellence Scholarship</h1></main></body></html>'
+        self.assertEqual(X.Page('https://x.test/s/1', html, 'australia', 'Test University').name, 'Global Excellence Scholarship')
+
+    def test_names_like_scholarship_details_are_headings(self):
+        self.assertEqual(Q.name_problem('Scholarship details'), 'generic-heading')
+        self.assertEqual(Q.name_problem('Scholarship information'), 'generic-heading')
+        self.assertIsNone(Q.name_problem('Information Technology Scholarship'))
+        self.assertIsNone(Q.name_problem('2027 International Masters Scholarship', '2026-11-17'))   # one award of that year
+        self.assertEqual(Q.name_problem('Scholarships 2027', '2026-11-17'), 'generic-heading')       # plural: a page of them
+        self.assertEqual(Q.name_problem('Scholarship details 2027', '2026-11-17'), 'generic-heading')
+
+
+# ---------------------------------------------------------------- Study Australia
+def sa_card(name, prov, slug, value=None, level='Undergraduate / VET', closing=None):
+    ps = ''.join(f'<p class="text-sm mb-2 flex align-items-center">{k} - {v}</p>' for k, v in (('Award value', value), ('Level of study', level), ('Closing date', closing)) if v)
+    return (f'<div class="scholarship-list-card"><div class="block md:flex"><div class="me-4"><div class="mb-3"><a tabindex="-1" href="/provider/{slug}/abc123"><img src="x.jpg" alt="{prov}"></a></div></div>'
+            f'<div><h3 class="font-au-sans-regular text-xl"><strong><a href="/scholarship/{name.lower().replace(" ", "-")}/h{abs(hash(name)) % 999}" class="border-none">{name}</a></strong></h3>'
+            f'<strong><a href="/provider/{slug}/abc123" class="border-none inline-block my-1" aria-label="Scholarship provider {prov}">{prov}</a></strong>{ps}'
+            f'<ul><li><a role="link" href="/scholarship/{name.lower().replace(" ", "-")}/h{abs(hash(name)) % 999}"> Learn More </a></li></ul></div></div><hr></div>')
+
+
+def sa_listing(cards, total):
+    return f'<html><head><title>Search Scholarships - Study Australia</title></head><body><main><div data-testid="paginated-list-scholarships"><div><h2> Showing {total} scholarships</h2>{"".join(cards)}</div></div></main></body></html>'
+
+
+SA_CARDS = [
+    sa_card('Monash International Merit Scholarship', 'Monash University', 'monash-university', 'AUD $10,000 annually', 'Undergraduate / VET', '1 Mar 2027'),
+    sa_card('RGIT Scholarship for Continuing Students', 'Royal Greenhill Institute of Technology (RGIT) Australia', 'rgit', None, 'Undergraduate / VET'),
+    sa_card('AIRC Centennial Prize', 'The University of Melbourne', 'the-university-of-melbourne', 'AUD $1,000 annually', 'Postgraduate, Undergraduate / VET', '6 Dec 2026'),
+    sa_card('Global Postgraduate Scholarship', 'UNSW Sydney', 'unsw-sydney', '50% tuition fee reduction', 'Postgraduate', 'Ongoing'),
+    sa_card('Research Excellence Scholarship', 'Monash University', 'monash-university', 'AUD $30,000 annually', 'Higher degree by research', '1 Jun 2027'),
+    sa_card('Local Heroes Scholarship', 'Monash University', 'monash-university', 'AUD $2,000', 'Undergraduate / VET', '1 Jun 2027'),
+]
+SA_DETAIL_MONASH = (
+    '<html><body><header><a href="/">Home</a></header><main><h1>Monash International Merit Scholarship</h1>'
+    '<a href="https://www.monash.edu/study/fees-scholarships/scholarships/merit" target="_blank"> Visit website </a>'
+    '<h2> Scholarship Information </h2><p class="mb-2"><strong>Level of study:</strong> Undergraduate / VET</p>'
+    '<p class="mb-2">Rewards high-achieving international students starting a bachelor degree. Applications are open to students from every country.</p>'
+    '<div class="w-100 my-4"><div><button type="button" data-bs-toggle="collapse"> Eligibility Requirements </button></div>'
+    '<div class="collapse"><ul><li>Hold an offer for a full-time on-campus course</li><li>Be an international student paying overseas fees</li></ul></div></div>'
+    '</main><footer>footer</footer></body></html>')
+SA_DETAIL_LOCAL = (
+    '<html><body><main><h2> Scholarship Information </h2><p><strong>Level of study:</strong> Undergraduate / VET</p>'
+    '<p>This scholarship is for domestic students only.</p></main></body></html>')
+SA_DETAIL_UNSW = (
+    '<html><body><main><a href="https://www.unsw.edu.au/study/scholarships/global-postgraduate"> Visit website </a><h2> Scholarship Information </h2>'
+    '<p><strong>Level of study:</strong> Postgraduate</p><p>For international students starting a master degree.</p>'
+    '<div class="w-100"><button> Eligibility Requirements </button></div><div><p>Hold an offer of admission.</p></div></main></body></html>')
+
+
+def sa_pages(total=6, split=3):
+    def slug_of(c):
+        return re.search(r'href="(/scholarship/[^"]+)" class="border-none"', c).group(1)
+    out = {
+        '/scholarships': ('text/html', sa_listing(SA_CARDS[:split], total)),
+        '/scholarships?page=2': ('text/html', sa_listing(SA_CARDS[split:], total)),
+    }
+    for c in SA_CARDS:
+        path = slug_of(c)
+        out[path] = ('text/html', SA_DETAIL_MONASH if 'monash-international' in path else SA_DETAIL_UNSW if 'global-postgraduate' in path
+                     else SA_DETAIL_LOCAL if 'local-heroes' in path else '<html><body><main><h2>Scholarship Information</h2><p>Text.</p></main></body></html>')
+        out[path] = out[path] if isinstance(out[path], tuple) else ('text/html', out[path])
+    return out
+
+
+AU_UNIS = [
+    {'slug': 'monash-university', 'name': 'Monash University', 'country': 'australia', 'web': 'https://www.monash.edu/'},
+    {'slug': 'the-university-of-melbourne', 'name': 'University of Melbourne', 'country': 'australia', 'web': 'https://www.unimelb.edu.au/'},
+    {'slug': 'the-university-of-new-south-wales', 'name': 'University of New South Wales', 'country': 'australia', 'web': 'https://www.unsw.edu.au/'},
+]
+
+
+class StudyAustralia(unittest.TestCase):
+    def setUp(self):
+        EXTRA.clear()
+        ROBOTS['status'] = None
+        del HITS[:]
+        self.saved = (SA.BASE, SA.LIST_URL)
+        SA.BASE = f'http://127.0.0.1:{PORT["p"]}'
+        SA.LIST_URL = SA.BASE + '/scholarships'
+
+    def tearDown(self):
+        SA.BASE, SA.LIST_URL = self.saved
+        EXTRA.clear()
+
+    def fx(self):
+        return Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+
+    def test_listing_cards(self):
+        total, cards = SA.parse_listing(sa_pages()['/scholarships'][1], SA.BASE)
+        self.assertEqual(total, 6)
+        self.assertEqual(len(cards), 3)
+        c = cards[0]
+        self.assertEqual((c['name'], c['provider'], c['value'], c['level'], c['closing']),
+                         ('Monash International Merit Scholarship', 'Monash University', 'AUD $10,000 annually', 'Undergraduate / VET', '1 Mar 2027'))
+        self.assertTrue(c['url'].startswith(SA.BASE + '/scholarship/'))
+        self.assertIsNone(cards[1]['value'])
+
+    def test_provider_names(self):
+        idx = SA.provider_index(AU_UNIS)
+        self.assertEqual(SA.match_provider('The University of Melbourne', None, idx), 'the-university-of-melbourne')
+        self.assertEqual(SA.match_provider('UNSW Sydney', None, idx), 'the-university-of-new-south-wales')
+        self.assertEqual(SA.match_provider('', '/provider/monash-university/abc', idx), 'monash-university')
+        self.assertIsNone(SA.match_provider('Royal Greenhill Institute of Technology (RGIT) Australia', None, idx))
+        # the site writes some names with the acronym in brackets
+        idx2 = SA.provider_index(AU_UNIS + [{'slug': 'australian-national-university', 'name': 'Australian National University', 'country': 'australia'},
+                                            {'slug': 'queensland-university-of-technology', 'name': 'Queensland University of Technology', 'country': 'australia'}])
+        self.assertEqual(SA.match_provider('The Australian National University (ANU)', None, idx2), 'australian-national-university')
+        self.assertEqual(SA.match_provider('Queensland University of Technology (QUT)', None, idx2), 'queensland-university-of-technology')
+
+    def test_day_first_dates_on_this_site_only(self):
+        card = dict(name='Monash Early Scholarship', url=SA.BASE + '/scholarship/x/1', provider='Monash University', value='AUD $2,000 annually', level='Postgraduate', closing='01/07/2027')
+        rec, why = SA.make(card, {'description': ['For international students.'], 'eligibility': [], 'visit': None}, 'monash-university', AU_UNIS[0], '2026-11-17')
+        self.assertEqual((why, rec['deadline']), ('ok', '2027-07-01'))
+        self.assertEqual(T.find_dates('Closing date - 01/07/2027.')['deadlines'], [])   # elsewhere it stays unread: it could be 7 January
+
+    def test_levels(self):
+        self.assertEqual(SA.levels_from('Undergraduate / VET'), (['Bachelor'], False))
+        self.assertEqual(SA.levels_from('Postgraduate, Undergraduate / VET'), (['Bachelor', 'Master'], False))
+        self.assertEqual(SA.levels_from('Higher degree by research'), ([], True))
+        self.assertEqual(SA.levels_from('Secondary schooling'), ([], False))
+        self.assertEqual(SA.levels_from('VET'), ([], False))
+
+    def test_detail_page(self):
+        d = SA.parse_detail(SA_DETAIL_MONASH, SA.BASE)
+        self.assertEqual(d['visit'], 'https://www.monash.edu/study/fees-scholarships/scholarships/merit')
+        self.assertEqual(len(d['description']), 1)
+        self.assertTrue(d['description'][0].startswith('Rewards high-achieving'))
+        self.assertEqual(d['eligibility'], ['Hold an offer for a full-time on-campus course', 'Be an international student paying overseas fees'])
+        d2 = SA.parse_detail(SA_DETAIL_UNSW, SA.BASE)        # answers outside the button's box
+        self.assertEqual(d2['eligibility'], ['Hold an offer of admission.'])
+
+    def test_read_keeps_only_international_university_scholarships(self):
+        EXTRA.update(sa_pages())
+        recs, rep = SA.read(self.fx(), AU_UNIS, '2026-11-17')
+        names = sorted(r['name'] for r in recs)
+        self.assertEqual(names, ['Global Postgraduate Scholarship', 'Monash International Merit Scholarship'])
+        self.assertTrue(rep['complete'])
+        self.assertEqual((rep['listed'], rep['total'], rep['pages']), (6, 6, 2))
+        m = next(r for r in recs if r['name'].startswith('Monash'))
+        self.assertEqual(m['value']['display'], 'AUD 10,000 a year')
+        self.assertEqual(m['deadline'], '2027-03-01')
+        self.assertEqual(m['levels'], ['Bachelor'])
+        self.assertEqual((m['origin'], m['via'], m['intl'], m['providerSlug']), ('studyaustralia', 'Study Australia', 'yes', 'monash-university'))
+        self.assertEqual(m['applyUrl'], 'https://www.monash.edu/study/fees-scholarships/scholarships/merit')
+        self.assertTrue(m['url'].startswith(SA.BASE + '/scholarship/'))
+        self.assertEqual(len(m['eligibility']), 2)
+        g = next(r for r in recs if r['name'].startswith('Global'))
+        self.assertEqual(g['providerSlug'], 'the-university-of-new-south-wales')
+        self.assertTrue(g['rolling'])                       # "Ongoing" closing date
+        self.assertEqual(g['levels'], ['Master'])
+        self.assertEqual(rep['reasons'], {'no-scholarship-word': 1, 'phd-only': 1, 'domestic-only': 1})
+        self.assertEqual(rep['perUniversity'], {'monash-university': 1, 'the-university-of-new-south-wales': 1})
+        self.assertIn('Royal Greenhill Institute of Technology (RGIT) Australia', rep['unmatched'])
+
+    def test_a_record_is_made_again_without_a_second_visit(self):
+        EXTRA.update(sa_pages())
+        recs, _ = SA.read(self.fx(), AU_UNIS, '2026-11-17')
+        for r in recs:
+            r['lastVerified'] = '2026-11-17'
+        del HITS[:]
+        again, rep = SA.read(self.fx(), AU_UNIS, '2026-11-18', {r['id']: r for r in recs})
+        self.assertEqual(rep['reused'], 2)
+        self.assertEqual(rep['detailsRead'], 1)             # only the domestic-only one has no earlier record to reuse
+        self.assertEqual(sorted(r['name'] for r in again), sorted(r['name'] for r in recs))
+        m = next(r for r in again if r['name'].startswith('Monash'))
+        self.assertEqual(m['applyUrl'], 'https://www.monash.edu/study/fees-scholarships/scholarships/merit')
+        self.assertEqual(len(m['eligibility']), 2)
+        # when the card changes, the page is read again
+        EXTRA.update({k: (v[0], v[1].replace('AUD $10,000 annually', 'AUD $12,000 annually')) for k, v in sa_pages().items() if k.startswith('/scholarships')})
+        changed, rep2 = SA.read(self.fx(), AU_UNIS, '2026-11-19', {r['id']: r for r in recs})
+        self.assertEqual(next(r for r in changed if r['name'].startswith('Monash'))['value']['display'], 'AUD 12,000 a year')
+
+    def test_page_layout_changed_returns_nothing(self):
+        EXTRA['/scholarships'] = ('text/html', '<html><body><main><p>Showing 6 scholarships</p><div class="new-card">x</div></main></body></html>')
+        recs, rep = SA.read(self.fx(), AU_UNIS, '2026-11-17')
+        self.assertEqual((recs, rep['status'], rep['complete']), ([], 'layout-changed', False))
+
+    def test_robots_txt_is_obeyed(self):
+        EXTRA['/robots.txt'] = ('text/plain', 'User-agent: *\nDisallow: /scholarships\n')
+        EXTRA.update(sa_pages())
+        recs, rep = SA.read(self.fx(), AU_UNIS, '2026-11-17')
+        self.assertEqual((recs, rep['status']), ([], 'robots'))
+        self.assertFalse(any(h.startswith('/scholarship') for h in HITS))
+
+    def test_run_adds_them_and_only_drops_them_after_a_complete_read(self):
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            (d / 'unis.json').write_text(json.dumps([dict(u, web=f'http://127.0.0.1:{PORT["p"]}/nothing/') for u in AU_UNIS]))
+            (d / 'src.json').write_text(json.dumps({'programmes': [], 'directories': [], 'thirdParty': []}))
+            cmd = [sys.executable, str(HERE / 'run.py'), '--universities', str(d / 'unis.json'), '--sources', str(d / 'src.json'),
+                   '--prev', str(d / 's.json'), '--out', str(d / 's.json'), '--report', str(d / 'rep'), '--delay', '0', '--workers', '2',
+                   '--today', '2026-11-17', '--skip-official', '--max-pages', '3']
+            env = dict(os.environ, STUDYAUSTRALIA_BASE=f'http://127.0.0.1:{PORT["p"]}')
+            EXTRA.update(sa_pages())
+            r = subprocess.run(cmd, capture_output=True, text=True, env=env)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            doc = json.loads((d / 's.json').read_text())
+            sa = [i for i in doc['items'] if i['origin'] == 'studyaustralia']
+            self.assertEqual(len(sa), 2, r.stdout)
+            self.assertEqual(doc['universities']['monash-university']['count'], 1)
+            self.assertEqual(doc['studyAustralia']['records'], 2)
+            self.assertIn('Study Australia', (d / 'rep' / 'scholarship_report.md').read_text())
+            # the list could not be read: nothing is removed
+            EXTRA.clear()
+            EXTRA['/scholarships'] = ('text/html', '<html><body>error</body></html>')
+            for _ in range(4):
+                r = subprocess.run(cmd, capture_output=True, text=True, env=env)
+                self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            doc = json.loads((d / 's.json').read_text())
+            self.assertEqual(len([i for i in doc['items'] if i['origin'] == 'studyaustralia']), 2)
+            # the whole list is read and one scholarship is gone: it goes after three runs
+            EXTRA.update(sa_pages(total=5))
+            EXTRA['/scholarships'] = ('text/html', sa_listing(SA_CARDS[1:4], 5))
+            EXTRA['/scholarships?page=2'] = ('text/html', sa_listing(SA_CARDS[4:], 5))
+            for n in range(3):
+                r = subprocess.run(cmd, capture_output=True, text=True, env=env)
+                self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+                doc = json.loads((d / 's.json').read_text())
+                kept = sorted(i['name'] for i in doc['items'] if i['origin'] == 'studyaustralia')
+                self.assertEqual(kept, ['Global Postgraduate Scholarship'] if n == 2 else ['Global Postgraduate Scholarship', 'Monash International Merit Scholarship'])
 
 
 if __name__ == '__main__':

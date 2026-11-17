@@ -1,6 +1,6 @@
 {
- "_readme": "Scholarship pages that were checked by hand. The reader visits these first for the university, and they replace the page it would otherwise guess for the university's scholarships link. A page on another domain is allowed when it is listed here (the university's own scholarships body, for example). Add a university: slug -> urls. Source: the university list Raja supplied, links checked 15 Nov 2026. Three universities in that list (Australian Catholic, Bond, Charles Darwin) are not on this site yet.",
- "checked": "2026-11-15",
+ "_readme": "Scholarship pages that were checked by hand. The reader visits these first for the university, and they replace the page it would otherwise guess for the university's scholarships link. A page on another domain is allowed when it is listed here (the university's own scholarships body, for example). Add a university: slug -> urls. Source: the university list Raja supplied, links checked 15 Nov 2026; the 27 Australian universities were replaced on 17 Nov 2026 with the international-student scholarship pages Raja supplied (the site only wants international scholarships). Three universities in that list (Australian Catholic, Bond, Charles Darwin) are not on this site yet.",
+ "checked": "2026-11-17",
  "seeds": {
   "adelaide-university": {
    "name": "Adelaide University",
@@ -11,7 +11,8 @@
   "australian-national-university": {
    "name": "Australian National University",
    "urls": [
-    "https://www.anu.edu.au/study/scholarships"
+    "https://study.anu.edu.au/scholarships",
+    "https://study.anu.edu.au/scholarships/find-scholarship"
    ]
   },
   "curtin-university": {
@@ -23,7 +24,7 @@
   "deakin-university": {
    "name": "Deakin University",
    "urls": [
-    "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships"
+    "https://www.deakin.edu.au/international-students/international-student-scholarships"
    ]
   },
   "flinders-university": {
@@ -59,7 +60,7 @@
   "macquarie-university": {
    "name": "Macquarie University",
    "urls": [
-    "https://www.mq.edu.au/study/admissions-and-entry/scholarships"
+    "https://www.mq.edu.au/study/admissions-and-entry/scholarships/international"
    ]
   },
   "mcgill-university": {
@@ -101,13 +102,13 @@
   "queensland-university-of-technology": {
    "name": "Queensland University of Technology",
    "urls": [
-    "https://www.qut.edu.au/study/fees-and-scholarships/scholarships"
+    "https://www.qut.edu.au/study/international/scholarship-opportunities"
    ]
   },
   "rmit-university": {
    "name": "RMIT University",
    "urls": [
-    "https://www.rmit.edu.au/students/careers-opportunities/scholarships"
+    "https://www.rmit.edu.au/scholarships/international-scholarships"
    ]
   },
   "stanford-university": {
@@ -119,7 +120,7 @@
   "swinburne-university-of-technology": {
    "name": "Swinburne University of Technology",
    "urls": [
-    "https://www.swinburne.edu.au/courses/scholarships/"
+    "https://www.swinburne.edu.au/courses/scholarships/international-scholarships/"
    ]
   },
   "technical-university-of-munich": {
@@ -149,19 +150,19 @@
   "the-university-of-new-south-wales": {
    "name": "University of New South Wales",
    "urls": [
-    "https://www.unsw.edu.au/study/how-to-apply/international/fees-scholarships"
+    "https://www.unsw.edu.au/study/your-future/international-scholarships"
    ]
   },
   "the-university-of-newcastle": {
    "name": "University of Newcastle",
    "urls": [
-    "https://www.newcastle.edu.au/scholarships"
+    "https://www.newcastle.edu.au/scholarships/international-scholarships"
    ]
   },
   "the-university-of-queensland": {
    "name": "University of Queensland",
    "urls": [
-    "https://scholarships.uq.edu.au/"
+    "https://scholarships.uq.edu.au/resources-for-international-students"
    ]
   },
   "the-university-of-sydney": {
@@ -173,7 +174,7 @@
   "the-university-of-western-australia": {
    "name": "University of Western Australia",
    "urls": [
-    "https://www.uwa.edu.au/study/scholarships"
+    "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships"
    ]
   },
   "trinity-college-dublin-the-university-of-dublin": {
@@ -251,7 +252,7 @@
   "university-of-technology-sydney": {
    "name": "University of Technology Sydney",
    "urls": [
-    "https://www.uts.edu.au/for-students/admissions-entry/scholarships"
+    "https://www.uts.edu.au/for-students/admissions-entry/scholarships/international"
    ]
   },
   "university-of-toronto": {
@@ -269,7 +270,7 @@
   "university-of-wollongong": {
    "name": "University of Wollongong",
    "urls": [
-    "https://www.uow.edu.au/study/scholarships/"
+    "https://www.uow.edu.au/study/scholarships/international/"
    ]
   },
   "uppsala-university": {
@@ -282,6 +283,36 @@
    "name": "Western Sydney University",
    "urls": [
     "https://www.westernsydney.edu.au/international/applying/fees-and-costs/scholarships"
+   ]
+  },
+  "central-queensland-university-australia": {
+   "name": "Central Queensland University",
+   "urls": [
+    "https://www.cqu.edu.au/study/international/fees-scholarships"
+   ]
+  },
+  "edith-cowan-university": {
+   "name": "Edith Cowan University",
+   "urls": [
+    "https://www.ecu.edu.au/scholarships/details/search?sort=metasortenddate&collection=ecu%7Esp-scholarships&form=simple-facet&num_ranks=200&f.Residency%7Cres=International"
+   ]
+  },
+  "james-cook-university": {
+   "name": "James Cook University",
+   "urls": [
+    "https://www.jcu.edu.au/international-students/scholarships-and-financial-aid"
+   ]
+  },
+  "university-of-southern-queensland": {
+   "name": "University of Southern Queensland",
+   "urls": [
+    "https://www.unisq.edu.au/scholarships"
+   ]
+  },
+  "university-of-tasmania": {
+   "name": "University of Tasmania",
+   "urls": [
+    "https://www.utas.edu.au/study/scholarships-fees-and-costs/international-scholarships"
    ]
   }
  }
