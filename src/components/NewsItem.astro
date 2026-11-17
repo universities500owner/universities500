@@ -11,7 +11,7 @@ const press = isPress(item);
       {item.published && <time datetime={item.published}>{fmtIso(item.published)}</time>}
     </p>
     <h3><a href={item.url} rel="noopener">{item.title}</a></h3>
-    <p class="news-src">Trade press, not an official source. Opens {host(item.url)}</p>
+    <p class="news-src">Not an official source. Opens {host(item.url)}</p>
   </article>
 ) : (
   <article class={`news-item${clamp ? ' clamp' : ''}`}>

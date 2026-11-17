@@ -126,6 +126,16 @@ class Rules(unittest.TestCase):
         self.assertEqual(R.relevant('ICE issues immigration detainer against illegal alien', 'The man, an F-1 student, was charged.'), (False, 'about-something-else'))
         self.assertEqual(R.relevant('Man arrested after student visa fraud', 'An international student was named.')[0], False)
 
+    def test_statement_of_changes_counts_for_an_immigration_authority_only(self):
+        title = 'Statement of changes to the Immigration Rules: HC 1333'
+        self.assertEqual(R.relevant(title, '', 'student', True), (True, ''))
+        self.assertEqual(R.relevant(title, '', 'student', False)[0], False)
+
+    def test_policy_words_cover_permission_court_and_budget(self):
+        for h in ['Budget 2026: targeted two-year Graduate permission announced', 'Federal Court Rules in Favor of Coalition Challenging Rule', 'NAFSA joins lawsuit over internship changes']:
+            self.assertEqual(R.relevant(h, '', 'policy'), (True, ''), h)
+        self.assertEqual(R.relevant('International students contributed $39.9 billion to the US economy', '', 'policy')[0], False)
+
     def test_english(self):
         self.assertTrue(R.english('International students can now apply for the new graduate visa online from next week.'))
         self.assertFalse(R.english('Les étudiants internationaux peuvent demander un visa pour la France en ligne dès maintenant'))
@@ -292,6 +302,13 @@ def wp_json(posts):
     return ('application/json', json.dumps([{'date': d, 'link': l, 'title': {'rendered': t}, 'excerpt': {'rendered': '<p>Trade press text that must never be kept.</p>'}} for t, l, d in posts]))
 
 
+class DatedLinks(unittest.TestCase):
+    def test_date_taken_from_the_address(self):
+        html = '<a href="/post.php?story=20261114092909696">Foreign universities struggle to attract Indian students</a><a href="/about">About this newspaper and who runs it</a><a href="/post.php?story=20261113104312394">Short</a>'
+        its = NF.parse_dated_links(html, 'https://example.org/list', r'story=(\d{8})')
+        self.assertEqual([(i['published'], i['title']) for i in its], [('2026-11-14', 'Foreign universities struggle to attract Indian students')])
+
+
 class TwelveMonths(unittest.TestCase):
     def test_parsers(self):
         gu = NF.parse_govuk(json.dumps({'results': [{'title': 'Student sponsor guidance', 'description': 'How to sponsor a student.', 'public_timestamp': '2026-11-06T10:00:00Z', 'link': '/guidance/student-sponsor', 'format': 'guidance'}, {'title': 'No link'}]}))
@@ -399,7 +416,9 @@ class SourceList(unittest.TestCase):
         for s in cfg['sources']:
             by.setdefault(s['country'], []).append(s)
             self.assertTrue(s['id'] and s['body'] and s['domains'], s.get('id'))
-            self.assertIn(s['kind'], ('government', 'agency') if s['country'] != '*' else ('media',), s['id'])
+            self.assertIn(s['kind'], ('government', 'agency', 'media') if s['country'] != '*' else ('media',), s['id'])
+            if s['kind'] == 'media':
+                self.assertEqual(s['filter'], 'policy', s['id'])      # sector bodies and trade press: policy headlines only
             self.assertTrue(s.get('feeds') or s.get('fr') or s.get('list') or s.get('home'), s['id'])
             lst = s.get('list') or []
             for u in (s.get('feeds') or []) + ([lst] if isinstance(lst, str) else lst) + [s.get('home') or '']:

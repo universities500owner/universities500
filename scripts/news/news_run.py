@@ -196,6 +196,12 @@ def report(args, sources, infos, merged, removed, today, wrote, stopped):
             L.append(f"- **{i['id']}** {pr['url']}: \"{pr['title']}\" | chars {pr['chars']}, links {pr['links']}, time-tags {pr['timeTags']}, dates {pr['dates']}, scripts {pr['scripts']}")
             for sm in pr['sample'][:4]:
                 L.append(f"    - {sm}")
+            if pr.get('dateHtml'):
+                L.append(f"    - html around the first date: {pr['dateHtml']}")
+            for dc in pr.get('dateContext', [])[:2]:
+                L.append(f"    - date in text: ...{dc}...")
+            if pr.get('endpoints'):
+                L.append("    - data addresses in the page: " + ' | '.join(pr['endpoints']))
     L += ['', '## Examples the relevance rule rejected (check these are really not about students)', '']
     for i in infos:
         for r in i['rejected']:

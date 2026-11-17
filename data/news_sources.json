@@ -1,5 +1,5 @@
 {
- "_note": "Bodies the daily industry-news run reads. Official sources (kind government or agency): feeds[] (RSS/Atom addresses), fr[] (Federal Register search terms), govuk{orgs,q} (GOV.UK search API), wp{base,queries,pages} (a site's WordPress API), home (looked at for a feed link and for its news pages), list (a page of dated headlines). domains[] = the body's own websites; a link anywhere else is dropped. filter: \"student\" keeps items about students; \"all\" keeps every item (bodies that only cover students); \"policy\" is for trade press. context: \"immigration\" or \"international\" marks a body whose every item already concerns visas or international students, so a student word alone is enough. Trade press (kind media, country \"*\", tag true) is not an official source: only the headline, the date and the link are kept, never the publisher's text; the country comes from the headline. On the first run a source is read back 12 months; afterwards only the last 21 days. Edit this file to add or retire a source.",
+ "_note": "Bodies the daily industry-news run reads. Official sources (kind government or agency): feeds[] (RSS/Atom addresses), fr[] (Federal Register search terms), govuk{orgs,q} (GOV.UK search API), wp{base,queries,pages} (a site's WordPress API), urlDate (a pattern with one group of eight digits YYYYMMDD, for lists whose headlines have no date but whose addresses do), home (looked at for a feed link and for its news pages), list (a page of dated headlines). domains[] = the body's own websites; a link anywhere else is dropped. filter: \"student\" keeps items about students; \"all\" keeps every item (bodies that only cover students); \"policy\" is for trade press. context: \"immigration\" or \"international\" marks a body whose every item already concerns visas or international students, so a student word alone is enough. Trade press (kind media, country \"*\", tag true) is not an official source: only the headline, the date and the link are kept, never the publisher's text; the country comes from the headline. On the first run a source is read back 12 months; afterwards only the last 21 days. Edit this file to add or retire a source.",
  "keepDays": 365,
  "sources": [
   {
@@ -55,9 +55,24 @@
     "uscis.gov"
    ],
    "home": "https://www.uscis.gov/newsroom/all-news",
-   "list": "https://www.uscis.gov/newsroom/all-news",
+   "list": [
+    "https://www.uscis.gov/newsroom",
+    "https://www.uscis.gov/newsroom/all-news"
+   ],
    "filter": "student",
    "context": "immigration"
+  },
+  {
+   "id": "us-nafsa",
+   "country": "usa",
+   "body": "NAFSA: Association of International Educators",
+   "kind": "media",
+   "domains": [
+    "nafsa.org"
+   ],
+   "home": "https://www.nafsa.org/regulatory-information",
+   "list": "https://www.nafsa.org/regulatory-information",
+   "filter": "policy"
   },
   {
    "id": "uk-ukvi",
@@ -99,7 +114,8 @@
      "home-office"
     ],
     "q": [
-     "student"
+     "student",
+     "statement of changes"
     ]
    }
   },
@@ -137,6 +153,33 @@
    "filter": "all"
   },
   {
+   "id": "uk-homeoffice-blog",
+   "country": "uk",
+   "body": "Home Office Media blog",
+   "domains": [
+    "blog.gov.uk"
+   ],
+   "home": "https://homeofficemedia.blog.gov.uk/",
+   "feeds": [
+    "https://homeofficemedia.blog.gov.uk/feed/"
+   ],
+   "filter": "student",
+   "context": "immigration",
+   "kind": "government"
+  },
+  {
+   "id": "uk-ukcisa",
+   "country": "uk",
+   "body": "UKCISA (UK Council for International Student Affairs)",
+   "kind": "media",
+   "domains": [
+    "ukcisa.org.uk"
+   ],
+   "home": "https://www.ukcisa.org.uk/news/",
+   "list": "https://www.ukcisa.org.uk/news/",
+   "filter": "policy"
+  },
+  {
    "id": "ca-ircc",
    "country": "canada",
    "body": "Immigration, Refugees and Citizenship Canada",
@@ -170,6 +213,18 @@
    "filter": "all"
   },
   {
+   "id": "ca-cbie",
+   "country": "canada",
+   "body": "CBIE (Canadian Bureau for International Education)",
+   "kind": "media",
+   "domains": [
+    "cbie.ca"
+   ],
+   "home": "https://cbie.ca/news/",
+   "list": "https://cbie.ca/news/",
+   "filter": "policy"
+  },
+  {
    "id": "au-home-affairs",
    "country": "australia",
    "body": "Department of Home Affairs",
@@ -178,7 +233,10 @@
     "homeaffairs.gov.au"
    ],
    "home": "https://immi.homeaffairs.gov.au/news-media/archive",
-   "list": "https://immi.homeaffairs.gov.au/news-media/archive",
+   "list": [
+    "https://immi.homeaffairs.gov.au/news-media",
+    "https://immi.homeaffairs.gov.au/news-media/archive"
+   ],
    "filter": "student",
    "context": "immigration"
   },
@@ -268,7 +326,11 @@
     "beehive.govt.nz"
    ],
    "home": "https://www.beehive.govt.nz/",
-   "filter": "student"
+   "filter": "student",
+   "list": [
+    "https://www.beehive.govt.nz/portfolio/immigration"
+   ],
+   "context": "immigration"
   },
   {
    "id": "ie-isd",
@@ -334,8 +396,8 @@
    "domains": [
     "daad.de"
    ],
-   "home": "https://www.daad.de/en/the-daad/communication-publications/press/press-releases/",
-   "list": "https://www.daad.de/en/the-daad/communication-publications/press/press-releases/",
+   "home": "https://www.daad.de/en/the-daad/communication-publications/press/",
+   "list": "https://www.daad.de/en/the-daad/communication-publications/press/",
    "filter": "student"
   },
   {
@@ -423,6 +485,18 @@
    "filter": "student"
   },
   {
+   "id": "fr-campus-france-india",
+   "country": "france",
+   "body": "Campus France India",
+   "kind": "agency",
+   "domains": [
+    "campusfrance.org"
+   ],
+   "home": "https://www.inde.campusfrance.org/node/46",
+   "list": "https://www.inde.campusfrance.org/node/46",
+   "filter": "all"
+  },
+  {
    "id": "nl-ind",
    "country": "netherlands",
    "body": "Immigration and Naturalisation Service (IND)",
@@ -444,7 +518,10 @@
     "nuffic.nl"
    ],
    "home": "https://www.nuffic.nl/en",
-   "filter": "student"
+   "filter": "student",
+   "list": [
+    "https://www.nuffic.nl/en/news"
+   ]
   },
   {
    "id": "nl-government",
@@ -456,7 +533,8 @@
     "rijksoverheid.nl"
    ],
    "home": "https://www.government.nl/latest/news",
-   "filter": "student"
+   "filter": "student",
+   "context": "immigration"
   },
   {
    "id": "nl-study-in-holland",
@@ -480,7 +558,10 @@
    ],
    "home": "https://www.migrationsverket.se/en/",
    "filter": "student",
-   "context": "immigration"
+   "context": "immigration",
+   "list": [
+    "https://www.migrationsverket.se/en/news-archive.html"
+   ]
   },
   {
    "id": "se-study-in-sweden",
@@ -538,7 +619,10 @@
     "regjeringen.no"
    ],
    "home": "https://www.regjeringen.no/en/aktuelt/",
-   "list": "https://www.regjeringen.no/en/aktuelt/",
+   "list": [
+    "https://www.regjeringen.no/en/topics/immigration-and-integration/id918/",
+    "https://www.regjeringen.no/en/aktuelt/"
+   ],
    "filter": "student"
   },
   {
@@ -576,7 +660,10 @@
     "emgs.com.my"
    ],
    "home": "https://educationmalaysia.gov.my/",
-   "list": "https://educationmalaysia.gov.my/get-in-touch/media-release/",
+   "list": [
+    "https://educationmalaysia.gov.my/get-in-touch/news",
+    "https://educationmalaysia.gov.my/get-in-touch/media-release/"
+   ],
    "filter": "all"
   },
   {
@@ -613,7 +700,15 @@
    "home": "https://icp.gov.ae/en/",
    "list": "https://icp.gov.ae/en/page/1/",
    "filter": "student",
-   "context": "immigration"
+   "context": "immigration",
+   "wp": {
+    "base": "https://icp.gov.ae",
+    "queries": [
+     "student",
+     "visa"
+    ],
+    "pages": 2
+   }
   },
   {
    "id": "ae-moe",
@@ -637,6 +732,18 @@
    ],
    "home": "https://u.ae/en/information-and-services/education",
    "filter": "student"
+  },
+  {
+   "id": "ae-mediaoffice",
+   "country": "uae",
+   "body": "UAE Government Media Office",
+   "domains": [
+    "mediaoffice.ae"
+   ],
+   "home": "https://mediaoffice.ae/en",
+   "list": "https://mediaoffice.ae/en",
+   "filter": "student",
+   "kind": "government"
   },
   {
    "id": "press-icef",
@@ -691,6 +798,61 @@
     "pages": 3
    },
    "maxFetches": 24
+  },
+  {
+   "id": "press-uwn",
+   "country": "*",
+   "tag": true,
+   "body": "University World News (trade press)",
+   "kind": "media",
+   "filter": "policy",
+   "domains": [
+    "universityworldnews.com"
+   ],
+   "home": "https://www.universityworldnews.com/",
+   "list": [
+    "https://www.universityworldnews.com/topic-page.php?topic=News",
+    "https://www.universityworldnews.com/"
+   ],
+   "urlDate": "story=(\\d{8})"
+  },
+  {
+   "id": "press-ihe",
+   "country": "*",
+   "tag": true,
+   "body": "Inside Higher Ed (trade press)",
+   "kind": "media",
+   "filter": "policy",
+   "domains": [
+    "insidehighered.com"
+   ],
+   "home": "https://www.insidehighered.com/news/global",
+   "list": "https://www.insidehighered.com/news/global"
+  },
+  {
+   "id": "press-eaie",
+   "country": "*",
+   "tag": true,
+   "body": "EAIE (European Association for International Education)",
+   "kind": "media",
+   "filter": "policy",
+   "domains": [
+    "eaie.org"
+   ],
+   "home": "https://www.eaie.org/"
+  },
+  {
+   "id": "press-bc-insight",
+   "country": "*",
+   "tag": true,
+   "body": "British Council Insights (trade press)",
+   "kind": "media",
+   "filter": "policy",
+   "domains": [
+    "britishcouncil.org"
+   ],
+   "home": "https://opportunities-insight.britishcouncil.org/",
+   "list": "https://opportunities-insight.britishcouncil.org/"
   }
  ]
 }

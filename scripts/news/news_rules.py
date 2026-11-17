@@ -59,7 +59,7 @@ POLICY = re.compile(
     r"\b(?:visas?|permits?|caps?|capped|quotas?|rules?|polic(?:y|ies)|regulations?|regulatory|reforms?|fees?|levy|levies|work (?:rights|hours|permits?)|post-study|"
     r"immigration|migration|bill|laws?|legislation|bans?|banned|crack(?:s|ing)? down|crackdown|tighten\w*|thresholds?|proof of funds|financial requirements?|"
     r"requirements?|restrictions?|limits?|limiting|sponsor\w*|licen[cs]\w*|compliance|genuine student|net migration|settlement|graduate route|OPT|PGWP|"
-    r"English[- ]language|IELTS|dependants?|dependents?|ceiling|pause\w*|suspend\w*|overhaul)\b", re.I)
+    r"English[- ]language|IELTS|dependants?|dependents?|ceiling|pause\w*|suspend\w*|overhaul|permissions?|changes?|lawsuits?|courts?|rulings?|budgets?|levy)\b", re.I)
 
 
 def countries_in(text):
@@ -71,6 +71,10 @@ STOP = re.compile(r"\b(?:the|and|of|to|in|for|is|are|on|with|that|a|an|from|will
 BOILERPLATE = re.compile(
     r"(?:The post .{0,200}? appeared first on .{0,100}?\.?$|Read more\.?|Continue reading\.?|\[\s*(?:…|\.\.\.)\s*\]|Share this page\.?|Last updated:? [^.]{0,40}\.?|"
     r"Published:? [^.]{0,40}\.?|Posted on:? [^.]{0,40}\.?|Skip to (?:main )?content\.?|Print this page\.?|Cookie[s]? (?:settings|policy)[^.]*\.?)", re.I)
+
+
+# the UK's statements of changes: the official instrument that changes the rules for every route, the student route included
+RULES_CHANGE = re.compile(r"\bstatements? of changes?\b.*\bimmigration rules\b|\bchanges? to the immigration rules\b", re.I)
 
 
 def relevant(title, summary='', mode='student', immigration=False):
@@ -85,6 +89,8 @@ def relevant(title, summary='', mode='student', immigration=False):
     both = f'{title} {summary}'
     if HARD_BLOCK.search(title):
         return False, 'about-something-else'
+    if immigration and RULES_CHANGE.search(title):
+        return True, ''
     strong = bool(STRONG.search(both))
     if BLOCK.search(title) and not strong:
         return False, 'about-something-else'
