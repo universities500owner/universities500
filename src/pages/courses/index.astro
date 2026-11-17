@@ -6,7 +6,7 @@ import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import { hiddenFromSearch } from '../../lib/noindex.js';
 import tools from '../../data/tools.json';
 import Icons from '../../components/Icons.astro';
-import { PUBLISH, items, total, generatedAt, fmtIso, filterLists, universitiesWithCourses, CHECK, levelText, lengthText, feeText, ieltsText, ieltsScore, startsText } from '../../lib/courses.js';
+import { PUBLISH, items, total, generatedAt, fmtIso, filterLists, universitiesWithCourses, subjectList, subjectGroups, CHECK, levelText, lengthText, feeText, ieltsText, ieltsScore, startsText } from '../../lib/courses.js';
 
 const path = '/courses/';
 const live = PUBLISH && total > 0;
@@ -17,6 +17,17 @@ const col = new Intl.Collator('en');
 const rows = [...items].sort((a, b) => col.compare(a.name.toLowerCase(), b.name.toLowerCase()) || col.compare(a.uniName, b.uniName));
 const lists = filterLists();
 const unis = universitiesWithCourses();
+// Subjects (from src/data/subjects.json) that have courses. Each course carries the positions of its subjects in this list.
+const subs = subjectList();
+const subIdx = new Map(subs.map((x, i) => [x.id, i]));
+const POPULAR = ['nursing', 'computer-science', 'data-science', 'business', 'engineering', 'law', 'psychology', 'medicine', 'finance', 'public-health', 'architecture', 'education']
+  .map((id) => subs.find((x) => x.id === id)).filter(Boolean);
+const POP_LABEL = { nursing: 'Nursing', 'computer-science': 'Computer science', 'data-science': 'Data science', business: 'Business', engineering: 'Engineering', law: 'Law', psychology: 'Psychology', medicine: 'Medicine', finance: 'Finance', 'public-health': 'Public health', architecture: 'Architecture', education: 'Education' };
+// Destinations with the most courses first.
+const perCountry = new Map();
+for (const c of items) perCountry.set(c.country, (perCountry.get(c.country) || 0) + 1);
+const ctry = [...lists.countries].sort((a, b) => perCountry.get(b.code) - perCountry.get(a.code));
+const groups = subjectGroups().filter((g) => subs.some((x) => x.group === g.id));
 const updated = generatedAt ? fmtIso(generatedAt) : '';
 // The placeholder search stays until the real list is switched on.
 const data = JSON.stringify({ FIELDS: tools.FIELDS, COURSES: tools.COURSES }).replace(/</g, '\\u003c');
@@ -25,7 +36,8 @@ const data = JSON.stringify({ FIELDS: tools.FIELDS, COURSES: tools.COURSES }).re
 const crsData = JSON.stringify({
   U: Object.fromEntries(rows.map((c) => [c.uni, [c.uniName, c.country]])),
   K: Object.fromEntries(lists.countries.map((c) => [c.code, c.name])),
-  C: rows.map((c) => [c.uni, c.slug, c.name, c.degree || '', levelText(c), c.level.toLowerCase(), c.field || '', lengthText(c, ''), c.duration ? c.duration.years : 0, feeText(c, ''), ieltsText(c, ''), ieltsScore(c) ?? '', startsText(c, ''), ((c.intakes && c.intakes.months) || []).join(' ')]),
+  S: subs.map((x) => [x.id, x.name, x.group, x.also]),
+  C: rows.map((c) => [c.uni, c.slug, c.name, c.degree || '', levelText(c), c.level.toLowerCase(), c.field || '', lengthText(c, ''), c.duration ? c.duration.years : 0, feeText(c, ''), ieltsText(c, ''), ieltsScore(c) ?? '', startsText(c, ''), ((c.intakes && c.intakes.months) || []).join(' '), c.sj.map((id) => subIdx.get(id)).join(' ')]),
 }).replace(/</g, '\\u003c');
 ---
 <Base
@@ -46,25 +58,44 @@ const crsData = JSON.stringify({
       <p>Bachelor's and Master's courses that are full-time on campus and open to international students, read from each university's own course page. Compare up to three. No scoring here: <a href="/course-fitment/">course fitment</a> does that.</p>
     </div>
 
-    <section class="sec" aria-labelledby="h-find">
-      <h2 id="h-find" class="sr-only">Search</h2>
-      <div class="filterbar" id="crs-bar" role="search" aria-label="Course filters">
-        <input id="crs-q" type="search" placeholder="Course, subject or university" aria-label="Search courses by name, subject or university" />
+    <section class="sec subj" aria-labelledby="h-find">
+      <h2 id="h-find">What do you want to study?</h2>
+      <div class="subj-box" role="search" aria-label="Find courses by subject">
+        <div class="subj-row">
+          <label class="subj-lab" for="crs-q">Subject</label>
+          <div class="subj-main">
+            <input id="crs-q" type="search" list="crs-subjects" placeholder="Nursing, data science, law..." autocomplete="off" aria-describedby="crs-say" />
+            <datalist id="crs-subjects">{subs.map((x) => <option value={x.name} />)}</datalist>
+            <div class="segs subj-pop" role="group" aria-label="Popular subjects">
+              {POPULAR.map((x) => <button type="button" class="seg" data-subject={x.id} aria-pressed="false">{POP_LABEL[x.id] || x.name}</button>)}
+            </div>
+          </div>
+        </div>
+        <div class="subj-row">
+          <span class="subj-lab" id="crs-l-lab">Level</span>
+          <div class="segs" role="group" aria-labelledby="crs-l-lab" id="crs-l">
+            <button type="button" class="seg" data-level="" aria-pressed="true">Any level</button>
+            <button type="button" class="seg" data-level="bachelor" aria-pressed="false">Bachelor's <span class="seg-n"></span></button>
+            <button type="button" class="seg" data-level="master" aria-pressed="false">Master's <span class="seg-n"></span></button>
+          </div>
+        </div>
+        <div class="subj-row">
+          <span class="subj-lab" id="crs-c-lab">Countries</span>
+          <div class="segs subj-countries" role="group" aria-labelledby="crs-c-lab" id="crs-c">
+            <button type="button" class="seg" data-country="" aria-pressed="true">All countries</button>
+            {ctry.map((x) => <button type="button" class="seg" data-country={x.code} aria-pressed="false">{x.name} <span class="seg-n"></span></button>)}
+          </div>
+        </div>
+        <p class="subj-say"><span id="crs-say" role="status"></span> <a href="/courses/subject/">Browse all subjects</a></p>
+      </div>
+
+      <div class="filterbar" id="crs-bar" aria-label="More course filters">
         <details class="crs-fd" id="crs-fd" open>
-          <summary id="crs-fd-sum">Filters</summary>
+          <summary id="crs-fd-sum">More filters</summary>
           <div class="crs-fd-body">
-          <select id="crs-c" aria-label="Destination">
-            <option value="">All destinations</option>
-            {lists.countries.map((c) => <option value={c.code}>{c.name}</option>)}
-          </select>
           <select id="crs-u" aria-label="University"><option value="">All universities</option></select>
-          <select id="crs-l" aria-label="Level">
-            <option value="">Any level</option>
-            <option value="bachelor">Bachelor's</option>
-            <option value="master">Master's</option>
-          </select>
-          <select id="crs-f" aria-label="Field of study">
-            <option value="">All fields</option>
+          <select id="crs-f" aria-label="Broad area of study">
+            <option value="">All broad areas</option>
             {lists.fields.map((f) => <option value={f}>{f}</option>)}
           </select>
           <select id="crs-e" aria-label="English score I can meet">
@@ -93,6 +124,11 @@ const crsData = JSON.stringify({
         <button type="button" class="btn-ghost sch-clear" id="crs-clear" hidden>Clear filters</button>
       </div>
       <p class="tally" id="crs-tally" role="status">{rows.length.toLocaleString('en-GB')} courses{rows.length > PAGE ? `, showing ${PAGE}` : ''}</p>
+      <details class="unis-by-box" id="crs-unis-by" hidden>
+        <summary id="crs-unis-sum">Universities that have these courses</summary>
+        <ul class="segs unis-by" id="crs-unis-list"></ul>
+        <p class="small">Listed by number of matching courses, then A to Z. This is a count, not a ranking. Pick one to see only its courses.</p>
+      </details>
       <ol class="crs-list" id="crs-list">
         {rows.slice(0, PAGE).map((c) => <CourseRow c={c} />)}
       </ol>

@@ -1,0 +1,87 @@
+---
+// One page per subject that has enough courses: every course in it, by destination, with counts that open the filtered search.
+// The courses are read from each university's own page; a course is placed in a subject by the words in its title (src/data/subjects.json).
+import Base from '../../../layouts/Base.astro';
+import { PUBLISH, items, subjectList, subjectGroups, SUBJECT_PAGE_MIN, path, levelText, lengthText, feeText, countryName, generatedAt, fmtIso } from '../../../lib/courses.js';
+
+export function getStaticPaths() {
+  return subjectList().filter((s) => s.count >= SUBJECT_PAGE_MIN).map((s) => ({ params: { id: s.id }, props: { s } }));
+}
+const { s } = Astro.props;
+const here = `/courses/subject/${s.id}/`;
+const col = new Intl.Collator('en');
+const rows = items.filter((i) => i.sj.includes(s.id)).sort((a, b) => col.compare(a.uniName, b.uniName) || col.compare(a.name, b.name));
+const unis = new Set(rows.map((r) => r.uni));
+const byCountry = new Map();
+for (const r of rows) {
+  const x = byCountry.get(r.country) || { code: r.country, name: countryName(r.country), bachelor: 0, master: 0, rows: [] };
+  x[r.level.toLowerCase()] += 1;
+  x.rows.push(r);
+  byCountry.set(r.country, x);
+}
+const countries = [...byCountry.values()].sort((a, b) => b.rows.length - a.rows.length || col.compare(a.name, b.name));
+const nB = rows.filter((r) => r.level === 'Bachelor').length;
+const nM = rows.length - nB;
+const group = subjectGroups().find((g) => g.id === s.group);
+const related = subjectList().filter((x) => x.group === s.group && x.id !== s.id && x.count >= SUBJECT_PAGE_MIN);
+const link = (code, level) => `/courses/?s=${s.id}${level ? `&l=${level}` : ''}${code ? `&c=${code}` : ''}`;
+const plural = (n, one, many) => `${n.toLocaleString('en-GB')} ${n === 1 ? one : many}`;
+const updated = generatedAt ? fmtIso(generatedAt) : '';
+const desc = `${s.name}: ${plural(rows.length, 'course', 'courses')} at ${plural(unis.size, 'university', 'universities')} in ${plural(countries.length, 'country', 'countries')}, read from each university's own course page for international students.`;
+---
+<Base title={`${s.name} courses for international students | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="courses">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/courses/">Course search</a><span aria-hidden="true">/</span><a href="/courses/subject/">Subjects</a><span aria-hidden="true">/</span>{s.name}
+  </nav>
+  <div class="q-head">
+    <h1>{s.name} courses</h1>
+    <p>{plural(rows.length, 'course', 'courses')} at {plural(unis.size, 'university', 'universities')} in {plural(countries.length, 'country', 'countries')}: {nB.toLocaleString('en-GB')} at Bachelor's level and {nM.toLocaleString('en-GB')} at Master's level. Each is read from the university's own course page. Nothing here is ranked.</p>
+    <p><a class="btn" href={link('', '')}>Filter these courses</a></p>
+  </div>
+
+  <section class="sec" aria-labelledby="h-where">
+    <h2 id="h-where">Where you can study it</h2>
+    <p class="sec-lede">Pick a number to open those courses in the search, where you can add level, university, English score and start month.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th scope="col">Destination</th><th scope="col">Bachelor's</th><th scope="col">Master's</th></tr></thead>
+        <tbody>
+          {countries.map((c) => (
+            <tr>
+              <th scope="row"><a href={link(c.code, '')}>{c.name}</a></th>
+              <td>{c.bachelor ? <a href={link(c.code, 'bachelor')}>{c.bachelor}</a> : <span class="muted">0</span>}</td>
+              <td>{c.master ? <a href={link(c.code, 'master')}>{c.master}</a> : <span class="muted">0</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-courses">
+    <h2 id="h-courses">All {s.name} courses</h2>
+    {countries.map((c) => (
+      <>
+        <h3>{c.name} <span class="muted">{c.rows.length}</span></h3>
+        <ul class="subj-courses">
+          {c.rows.map((r) => (
+            <li>
+              <a href={path(r)}>{r.name}</a>
+              <span class="muted">{r.uniName} · {levelText(r)}{r.duration ? ` · ${lengthText(r)}` : ''}{r.fee ? ` · ${feeText(r)}` : ''}</span>
+            </li>
+          ))}
+        </ul>
+      </>
+    ))}
+    <p class="small">Last read {updated}. Everything here is copied from the course's official page and can change. Fees are what the page showed, often for one intake or one year. Check the official page before you apply. <a href="/disclaimer/#d-courses">How subjects are matched</a>.</p>
+  </section>
+
+  {related.length > 0 && (
+    <section class="sec" aria-labelledby="h-rel">
+      <h2 id="h-rel">More in {group ? group.name.toLowerCase() : 'this area'}</h2>
+      <ul class="uni-list">
+        {related.map((x) => <li><a href={`/courses/subject/${x.id}/`}>{x.name}</a> <span class="muted">{x.count}</span></li>)}
+      </ul>
+    </section>
+  )}
+</Base>

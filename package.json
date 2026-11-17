@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "prep": "python3 scripts/prep_data.py"
+    "prep": "python3 scripts/prep_data.py",
+    "test": "node --test tests/*.test.mjs"
   },
   "keywords": [],
   "author": "",

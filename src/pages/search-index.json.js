@@ -5,6 +5,7 @@ import { items as scholarships } from '../lib/scholarships.js';
 import { articles, blockText as artText } from '../lib/articles.js';
 import { exams, href as examHref } from '../lib/exams.js';
 import { PUBLISH as NEWS_ON } from '../lib/news.js';
+import { PUBLISH as COURSES_ON, subjectList, SUBJECT_PAGE_MIN } from '../lib/courses.js';
 
 const blockText = (b) =>
   b.t === 'p' ? runsText(b.runs)
@@ -38,6 +39,12 @@ export function GET() {
     out.push({ t: a.title, u: a.href, d: `Article: ${a.destName}, ${a.topicLabel.toLowerCase()}`, k: clean(`${text} ${a.sections.map((s) => s.title).join(' ')}`).slice(0, 900) });
   }
   for (const x of scholarships) out.push({ t: x.name, u: `/scholarships/${x.slug}/`, d: `${x.provider}, scholarship`, k: [x.value && x.value.display, x.description].filter(Boolean).join(' ').slice(0, 300) });
+  if (COURSES_ON) {
+    out.push({ t: 'Browse courses by subject', u: '/courses/subject/', d: 'Nursing, data science, law, engineering and more, by area', k: '' });
+    for (const x of subjectList()) {
+      out.push({ t: `${x.name} courses`, u: x.count >= SUBJECT_PAGE_MIN ? `/courses/subject/${x.id}/` : `/courses/?s=${x.id}`, d: `${x.count} courses, Bachelor's and Master's`, k: x.also.join(' ') });
+    }
+  }
   for (const u of all) out.push({ t: u.name, u: `/universities/${u.slug}/`, d: u.countryName, k: '' });
   return new Response(JSON.stringify(out), { headers: { 'Content-Type': 'application/json' } });
 }
