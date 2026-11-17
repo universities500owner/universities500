@@ -1,0 +1,137 @@
+---
+import Base from '../../layouts/Base.astro';
+import MbaRow from '../../components/MbaRow.astro';
+import Icons from '../../components/Icons.astro';
+import { PUBLISH, items, generatedAt, fmtIso, filterLists, TRACKS, tracksOf, trackCount, KIND, expChip, val, feeCard, NOT_STATED, countryName } from '../../lib/mba.js';
+
+const path = '/mba/';
+const live = PUBLISH && items.length > 0;
+const PAGE = 30;
+const col = new Intl.Collator('en');
+const rows = [...items].sort((a, b) => col.compare(a.name.toLowerCase(), b.name.toLowerCase()) || col.compare(a.school, b.school));
+const first = rows.filter((m) => tracksOf(m).includes('fresher'));
+const lists = filterLists();
+const updated = generatedAt ? fmtIso(generatedAt) : '';
+// One array per programme, so the page does not hold hundreds of cards. The script builds the rows a visitor sees from this.
+// id, name, kind, kind label, university, school, destination, length, months, tuition, experience, test, starts, start months, employment report, tracks, experience chip.
+const data = JSON.stringify({
+  K: Object.fromEntries(lists.countries.map((c) => [c.code, c.name])),
+  T: Object.fromEntries(TRACKS.map((t) => [t.id, t.blurb])),
+  M: rows.map((m) => [
+    m.id, m.name, m.kind, KIND[m.kind], m.uniName, m.school, m.country,
+    val(m.length, ''), m.length && m.length.months ? m.length.months : 0, m.fee ? m.fee.t : '', val(m.exp, ''), val(m.test, ''), val(m.start, ''),
+    ((m.start && m.start.months) || []).join(' '), m.employment && m.employment.u ? 1 : 0, tracksOf(m).join(' '), expChip(m) || '',
+  ]),
+}).replace(/</g, '\\u003c');
+---
+<Base
+  title={live ? "MBA Explorer: MBA, master's in management and Executive MBA | Universities500" : "MBA Explorer | Universities500"}
+  description={live
+    ? "Search MBA, master's in management and Executive MBA programmes by work experience, destination, tuition and start date. Every fact links to the school's own page."
+    : "The MBA Explorer is being built."}
+  path={path}
+  noindex={!live}
+  current="mba"
+>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>MBA Explorer</nav>
+
+  {live ? (
+    <>
+    <div class="q-head">
+      <h1>MBA Explorer</h1>
+      <p>Find an MBA, a master's in management or an Executive MBA that fits the work experience you have. Every fact is copied from the school's own page, with the sentence it came from. We show no rankings.</p>
+    </div>
+
+    <section class="sec" aria-labelledby="h-find">
+      <h2 id="h-find" class="sr-only">Search</h2>
+      <div class="mba-tabs" role="tablist" aria-label="Work experience">
+        {TRACKS.map((t, i) => (
+          <button type="button" role="tab" class="mba-tab" id={`mba-tab-${t.id}`} data-track={t.id} aria-selected={i === 0 ? 'true' : 'false'} aria-controls="mba-panel" tabindex={i === 0 ? 0 : -1}>
+            <span class="mba-tab-text"><span class="mba-tab-name">{t.label}</span><span class="mba-tab-sub">{t.years}</span></span>
+            <span class="mba-tab-n" data-count={t.id} aria-label="programmes">{trackCount(t.id)}</span>
+          </button>
+        ))}
+      </div>
+      <p class="mba-blurb" id="mba-blurb">{TRACKS[0].blurb}</p>
+
+      <div id="mba-panel" role="tabpanel" aria-labelledby="mba-tab-fresher">
+      <div class="filterbar" id="mba-bar" role="search" aria-label="Programme filters">
+        <input id="mba-q" type="search" placeholder="Programme, school or university" aria-label="Search programmes by name, school or university" />
+        <details class="crs-fd" id="mba-fd" open>
+          <summary id="mba-fd-sum">Filters</summary>
+          <div class="crs-fd-body">
+          <select id="mba-c" aria-label="Destination">
+            <option value="">All destinations</option>
+            {lists.countries.map((c) => <option value={c.code}>{c.name}</option>)}
+          </select>
+          <select id="mba-u" aria-label="University"><option value="">All universities</option></select>
+          <select id="mba-k" aria-label="Type of programme">
+            <option value="">Any type</option>
+            {lists.kinds.map((k) => <option value={k.id}>{k.label}</option>)}
+          </select>
+          {lists.months.length > 0 && (
+            <select id="mba-m" aria-label="Start month">
+              <option value="">Any start month</option>
+              {lists.months.map((m) => <option value={m}>Starts {m}</option>)}
+            </select>
+          )}
+          <select id="mba-l" aria-label="Length">
+            <option value="">Any length</option>
+            <option value="12">12 months or less</option>
+            <option value="18">18 months or less</option>
+            <option value="24">24 months or less</option>
+          </select>
+          <select id="mba-o" aria-label="Sort by">
+            <option value="name">Programme A to Z</option>
+            <option value="uni">University A to Z</option>
+            <option value="short">Shortest first</option>
+            <option value="country">Destination</option>
+          </select>
+          <label class="int-new"><input type="checkbox" id="mba-fee" /> Tuition shown</label>
+          <label class="int-new"><input type="checkbox" id="mba-emp" /> Employment report linked</label>
+          <label class="int-new"><input type="checkbox" id="mba-sv" /> Saved only</label>
+          </div>
+        </details>
+        <button type="button" class="btn-ghost sch-clear" id="mba-clear" hidden>Clear filters</button>
+      </div>
+      <p class="tally" id="mba-tally" role="status">{first.length} programmes</p>
+      <ol class="crs-list" id="mba-list">
+        {first.slice(0, PAGE).map((m) => <MbaRow m={m} />)}
+      </ol>
+      <template id="mba-bookmark"><Icons name="bookmark" /></template>
+      <script type="application/json" id="mba-data" set:html={data} />
+      <p class="more"><button type="button" class="btn-ghost" id="mba-more" hidden>Show more</button></p>
+      </div>
+      <p class="small">Last read {updated}. Tuition is shown in the currency and for the year the school's page gave, so two programmes may not be comparable. Check the school's page before you apply.</p>
+    </section>
+
+    <section class="sec" id="compare" aria-labelledby="h-cmp" hidden>
+      <h2 id="h-cmp">Compare</h2>
+      <p class="sec-lede" id="mba-cmp-say"></p>
+      <div id="mba-cmp"></div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-how">
+      <h2 id="h-how">How this list is made</h2>
+      <ul>
+        <li>Each programme's facts come from the school's own pages, and each fact shows the sentence it was copied from. A fact the page did not state says "{NOT_STATED}". Nothing is estimated.</li>
+        <li>The tracks follow the minimum work experience the school's page states. A master's in management or a deferred MBA is for recent graduates and is labelled so. An MBA that asks for two years is in the first two tracks, with its minimum on the card.</li>
+        <li>For careers we link to each school's own employment report instead of re-publishing its numbers.</li>
+        <li>No rankings are shown or used to order this list. Schools were picked for reading, not placed in an order.</li>
+        <li>This first set was read by hand from the school pages. A program that reads pages slowly, follows each site's robots.txt and uses no AI will take over, and every record will show the date it was last read.</li>
+        <li>Not every school or programme is here yet. More destinations are added in waves.</li>
+      </ul>
+      <p><a href="/bot/">About our reader</a></p>
+    </section>
+
+    <script>if (document.getElementById('mba-list')) import('../../scripts/mba-search.js');</script>
+    </>
+  ) : (
+    <>
+    <div class="q-head">
+      <h1>MBA Explorer</h1>
+      <p>This page is not open yet.</p>
+    </div>
+    </>
+  )}
+</Base>

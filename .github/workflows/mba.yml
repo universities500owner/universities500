@@ -1,0 +1,84 @@
+name: MBA (read official pages)
+
+# Reads the school pages listed in data/mba_sources.json for the MBA Explorer and writes data/mba/read/<programme>.json.
+# No AI and no API key anywhere: the reader works from page structure and fixed patterns only (scripts/mba/mbafacts.py).
+# It identifies itself as Universities500Bot, obeys robots.txt, waits 3 seconds between requests to one website, and never works
+# around a 403, a bot challenge or a robots.txt rule: that page is reported and skipped.
+#
+# Manual only. A run started from a branch tests that branch's code and never commits. With commit ticked on main, data/mba/ and
+# src/data/mba.json are committed. The website shows the MBA Explorer only while src/data/mba_publish.json says publish: true.
+# A first trial: only = oxford-mba, commit = false. Then read the report in the run summary: it lists, per fact, where the program and the
+# hand reading agree, differ, or where only the program found something.
+# Settings: CONTACT_EMAIL under Settings > Secrets and variables > Actions (a variable or a secret both work).
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these programme ids, comma-separated (blank = all in the register)"
+        required: false
+        default: ""
+      force:
+        description: "Read again even when the pages have not changed since the last read"
+        type: boolean
+        default: false
+      commit:
+        description: "Commit data/mba and src/data/mba.json to main when the run succeeded"
+        type: boolean
+        default: false
+
+concurrency:
+  group: mba
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install beautifulsoup4 lxml
+      - name: Self-test (stub website, no internet)
+        run: python3 scripts/mba/test_mba.py
+      - name: Read the school pages
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+          ONLY: ${{ inputs.only }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          ARGS="--max-minutes 50"
+          if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
+          if [ "$FORCE" = "true" ]; then ARGS="$ARGS --force"; fi
+          if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The reader's User-Agent has no contact address."; fi
+          python3 scripts/mba/read.py $ARGS
+      - name: Build the site data
+        run: python3 scripts/mba/build_site_data.py | tee -a "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mba-data
+          path: |
+            data/mba/
+            src/data/mba.json
+          retention-days: 30
+          if-no-files-found: ignore
+      - name: Commit the data
+        if: inputs.commit && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "universities500-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/mba src/data/mba.json
+          if git diff --cached --quiet; then
+            echo "No change to commit."
+          else
+            git commit -m "MBA: refresh $(date -u +%F)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
