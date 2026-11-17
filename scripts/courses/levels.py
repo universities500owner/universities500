@@ -36,6 +36,8 @@ OUT_PATH = [
     ('online-or-distance', re.compile(r"/(?:online|distance|distance-learning|e-?learning|off-campus|external)(?:/|-|$)|[-/]online(?:[-/]|$)", re.I)),
     ('foundation-or-pathway', re.compile(r"/(?:foundation|pathway|pathways|pre-masters?|diploma|certificate|short-courses?|executive-education)(?:/|-|$)", re.I)),
     ('research-degree', re.compile(r"/(?:phd|doctoral|doctorate|research-degrees?|mphil)(?:/|-|$)", re.I)),
+    # the domestic version of a course page (Adelaide: /study/degrees/2027/<course>/dom/); the site is for international students
+    ('domestic-only', re.compile(r"/(?:dom|domestic|home-students?|local-students?)(?:/|$)", re.I)),
 ]
 
 

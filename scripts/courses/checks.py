@@ -19,6 +19,8 @@ def problem(rec):
         return 'not-a-programme-name'
     if L.not_programme_url(rec['url']) in ('programme-subpage', 'course-unit-page'):
         return L.not_programme_url(rec['url'])
+    if L.classify_url(rec['url']) == 'domestic-only':
+        return 'domestic-only'
     if rec.get('level') not in ('Bachelor', 'Master'):
         return 'bad-level'
     level, _deg, _fl, out = L.classify_title(f"{rec.get('degree') or ''} {name}")
