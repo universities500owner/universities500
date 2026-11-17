@@ -2,15 +2,15 @@
 import Base from '../layouts/Base.astro';
 import '../styles/home-v1.tokens.css';
 import '../styles/home-v1.css';
-import { all, countries, latestRead, SITE } from '../lib/data.js';
+import { all, countries, SITE } from '../lib/data.js';
 import { PUBLISH as SCH_ON, items as schItems } from '../lib/scholarships.js';
 import { PUBLISH as INT_ON, items as intItems } from '../lib/internships.js';
 import { PUBLISH as CRS_ON, items as crsItems, total as crsTotal } from '../lib/courses.js';
+import { PUBLISH as MBA_ON, items as mbaItems } from '../lib/mba.js';
+import { exams } from '../lib/exams.js';
+import { SOP, LOR } from '../lib/prep.js';
 
-const listed = all.filter((u) => u.listed).length;
-const shortDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-
-// Decorative rings, drawn once at build time (same shape as the earlier home).
+// Decorative rings, drawn once at build time.
 const rings = Array.from({ length: 26 }, (_, i) => ({
   rx: 70 + i * 13,
   ry: 26 + i * 6.2,
@@ -18,59 +18,42 @@ const rings = Array.from({ length: 26 }, (_, i) => ({
   op: (0.5 - i * 0.012).toFixed(3),
 }));
 
-// Courses: shown only when the real course list is switched on (src/data/course_publish.json) and there are courses to show.
 const crsLive = CRS_ON && crsTotal > 0;
-const crsBy = {};
-for (const i of crsItems) crsBy[i.country] = (crsBy[i.country] || 0) + 1;
 const crsUnis = new Set(crsItems.map((i) => i.uni)).size;
-const fieldN = {};
-for (const i of crsItems) if (i.field) fieldN[i.field] = (fieldN[i.field] || 0) + 1;
-const topFields = Object.entries(fieldN).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([f]) => f);
+const n = (x) => x.toLocaleString('en-GB');
+const plural = (k, one, many) => `${n(k)} ${k === 1 ? one : many}`;
 
-const counts = { _all: { n: all.length, name: '', crs: crsTotal } };
-for (const c of countries) counts[c.code] = { n: c.count, name: c.name, crs: crsBy[c.code] || 0 };
-
-// The first four countries by number of universities become the quick links under the search box.
-const quick = [...countries].sort((a, b) => b.count - a.count).slice(0, 4);
-
-// Scholarships and internships: show a count only when listings are published and there is something to count.
-const nPlaces = (list) => new Set(list.map((i) => i.country)).size;
-const plural = (n, one, many) => `${n.toLocaleString('en-GB')} ${n === 1 ? one : many}`;
-const tools = [
-  {
-    name: 'Courses',
-    text: 'Bachelor’s and Master’s courses that are full-time on campus and open to international students. Each one shows its length, fee and English score where the page gives them, and links to the official page.',
-    href: '/courses/',
-    cta: 'Search courses',
-    live: crsLive,
-    stat: `${plural(crsTotal, 'course', 'courses')} at ${plural(crsUnis, 'university', 'universities')} in ${plural(nPlaces(crsItems), 'destination', 'destinations')}`,
-    wait: 'Course listings are being checked. A sample search is ready to try.',
-  },
-  {
-    name: 'Scholarships',
-    text: 'Open to international students on Bachelor’s and Master’s courses. Each one shows its value, deadline and official page, and whether it is open or closed.',
-    href: '/scholarships/',
-    cta: 'Search scholarships',
-    live: SCH_ON && schItems.length > 0,
-    stat: `${plural(schItems.length, 'scholarship', 'scholarships')} in ${plural(nPlaces(schItems), 'destination', 'destinations')}`,
-    wait: 'Listings are being checked. The official places to look in each destination are ready.',
-  },
-  {
-    name: 'Internships',
-    text: 'Internships, co-ops and placements in the countries you can study in. Every listing opens on the employer’s own page.',
-    href: '/internships/',
-    cta: 'Find an internship',
-    live: INT_ON && intItems.length > 0,
-    stat: `${plural(intItems.length, 'listing', 'listings')} in ${plural(nPlaces(intItems), 'destination', 'destinations')}`,
-    wait: 'Listings are being checked. Where to look in each destination is ready.',
-  },
+// What a student can do here, in the order a student meets it: find, get application-ready, fund it and get there.
+// A count is shown only where there is something real to count. English tests and exams are guides today, so they are named as guides.
+const groups = [
+  { id: 'find', title: 'Find where to study', tiles: [
+    { id: 'courses', name: 'Course search', text: "Bachelor's and Master's courses by subject, country and English score.", href: '/courses/', stat: crsLive ? `${n(crsTotal)} courses at ${n(crsUnis)} universities` : 'Sample search' },
+    { id: 'universities', name: 'University search', text: 'Universities by country, each with its official website and sources.', href: '/universities/', stat: `${n(all.length)} universities` },
+    { id: 'destinations', name: 'Destinations and guides', text: 'Costs, visas, work rights and student life, country by country.', href: '/study-in/', stat: `${n(countries.length)} destinations` },
+    { id: 'mba', name: 'MBA Explorer', text: "MBA, master's in management and Executive MBA, by the experience you have.", href: '/mba/', stat: MBA_ON && mbaItems.length ? `${plural(mbaItems.length, 'programme', 'programmes')} so far` : 'Coming soon' },
+  ] },
+  { id: 'prepare', title: 'Get application-ready', tiles: [
+    { id: 'english', name: 'English tests', text: 'IELTS, TOEFL or PTE: which to sit, and how to prepare.', href: '/english-test/', stat: 'Guide', chips: ['IELTS', 'TOEFL', 'PTE'] },
+    { id: 'exams', name: 'Study abroad exams', text: 'SAT, GRE, GMAT and more: which one your level and country need.', href: '/exams/', stat: plural(exams.length, 'exam guide', 'exam guides'), chips: ['SAT', 'GRE', 'GMAT'] },
+    { id: 'sop', wide: true, name: 'SOP and LOR writing tips', text: 'The two parts of an application nobody can write for you, and the two that decide most borderline cases.', href: '/application-prep/#h-letters', stat: 'Read the full steps',
+      tips: [['Statement of purpose', SOP.slice(0, 2)], ['Recommendation letters', LOR.slice(0, 2)]] },
+  ] },
+  { id: 'fund', title: 'Fund it and get there', tiles: [
+    { id: 'scholarships', name: 'Scholarships', text: 'Open to international students, with value, deadline and the official page.', href: '/scholarships/', stat: SCH_ON && schItems.length ? plural(schItems.length, 'scholarship', 'scholarships') : 'Where to look' },
+    { id: 'internships', name: 'Internships', text: 'Internships, co-ops and placements, each opening on the employer’s page.', href: '/internships/', stat: INT_ON && intItems.length ? plural(intItems.length, 'listing', 'listings') : 'Where to look' },
+    { id: 'loan', name: 'Education loan guidance', text: 'RBI rules, collateral, lenders, and what a loan costs over its life.', href: '/education-loan-guide/', stat: 'Guide and calculator' },
+    { id: 'visa', name: 'Visa guidance', text: 'What a student visa asks for in each destination, and what you have.', href: '/visa-readiness/', stat: 'Checklist by destination' },
+  ] },
 ];
 
-const steps = [
-  ['Find the fit', 'Score every course against what you’ve already studied, not just what you can afford.', '/course-fitment/'],
-  ['Build the file', 'Documents, test scores, letters. One checklist you reuse for every application.', '/application-prep/'],
-  ['Fund it', 'True cost, scholarships and loan repayments, before you commit to a country.', '/budget/'],
-  ['Land it', 'Visa readiness, what to pack, and who to find in your first week.', '/before-you-fly/'],
+// Suggestions under the search box. Each one opens a page that works today.
+const tries = [
+  ['Nursing courses', '/courses/?q=nursing'],
+  ["Master's in Canada", '/courses/?c=canada&l=master'],
+  ['Scholarships in Germany', '/scholarships/?c=germany'],
+  ["MBA with 3 to 5 years' experience", '/mba/?track=mid'],
+  ['IELTS or PTE?', '/english-test/'],
+  ['Loan without collateral', '/education-loan-guide/'],
 ];
 
 const ld = [
@@ -81,7 +64,7 @@ const ld = [
     url: SITE + '/',
     potentialAction: {
       '@type': 'SearchAction',
-      target: { '@type': 'EntryPoint', urlTemplate: SITE + '/universities/?q={search_term_string}' },
+      target: { '@type': 'EntryPoint', urlTemplate: SITE + '/search/?q={search_term_string}' },
       'query-input': 'required name=search_term_string',
     },
   },
@@ -89,198 +72,158 @@ const ld = [
 ];
 ---
 <Base
-  title="Universities500: where could I actually go?"
-  description={`Browse ${all.length} universities in ${countries.length} countries. Each profile shows the official website, campuses and founding year, with a source for every fact.`}
+  title="Universities500: courses, universities, scholarships and internships for students abroad"
+  description={`Search courses, universities, scholarships and internships, and get guidance on English tests, exams, education loans and visas. Every fact links to its source.`}
   path="/"
   jsonld={ld}
   wide={true}
   news={true}
 >
-  <div class="home-v1">
-    <section class="hero">
-      <div class="wrap hero-in">
-        <div class="hero-main">
-          <h1>Where could I actually go?</h1>
-          <p class="hero-sub">
-            {crsLive
-              ? `Search ${crsTotal.toLocaleString('en-GB')} courses at ${crsUnis} universities, or pick a country and see its universities.`
-              : 'Pick a country and see the universities there, with the facts and the sources for each one.'}
-          </p>
-
-          <form class="bigsearch" id="bs-form" action={crsLive ? '/courses/' : '/universities/'} method="get" role="search" autocomplete="off">
-            {crsLive && (
-              <div class="bs-mode" id="bs-mode" role="group" aria-label="Search in" hidden>
-                <button type="button" class="bs-tab" data-mode="courses" aria-pressed="true">Courses</button>
-                <button type="button" class="bs-tab" data-mode="universities" aria-pressed="false">Universities</button>
-              </div>
-            )}
-            <div class="bs-box">
-              <div class="bs-field">
-                <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
-                <input id="bs-q" name="q" type="search" placeholder={crsLive ? 'Course or subject' : 'Search universities'} aria-label={crsLive ? 'Search courses by name, subject or university name' : 'Search universities by name'} enterkeyhint="search" />
-                <button class="btn" type="submit">Search</button>
-              </div>
-            </div>
-          </form>
-          {crsLive && (
-            <p class="sx-try bs-try" id="bs-try-courses" aria-label="Browse courses by field">
-              {topFields.map((f) => <a class="sx-q" href={`/courses/?f=${encodeURIComponent(f)}`}>{f}</a>)}
-            </p>
-          )}
-          <p class="sx-try bs-try" id="bs-try-universities" aria-label="Browse by country" hidden={crsLive}>
-            {quick.map((c) => <a class="sx-q" href={`/study-in/${c.code}/`}>Study in {c.name}</a>)}
-          </p>
-        </div>
-
-        <div class="pick-wrap">
-          <svg class="guilloche" viewBox="0 0 800 420" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1">
-            <g>
-              {rings.map((r) => (
-                <ellipse cx="560" cy="300" rx={r.rx} ry={r.ry} transform={`rotate(${r.rot} 560 300)`} opacity={r.op} />
-              ))}
-            </g>
-          </svg>
-          <div class="hero-pick">
-            <p class="madlib">
-              I want to study in
-              <span class="slot">
-                <select id="s-country" aria-label="Country you want to study in">
-                  <option value="">any country</option>
-                  {countries.map((c) => <option value={c.code}>{c.name}</option>)}
-                </select>
-              </span>.
-            </p>
-
-            <div class="count">
-              <span class="count-n" id="count" aria-hidden="true">{all.length}</span>
-              <span class="count-txt" id="count-txt" role="status"><b>universities</b> across {countries.length} countries. Pick a country to narrow it down.</span>
-            </div>
-
-            <div class="row">
-              {crsLive && <a class="btn" id="go-courses" href="/courses/">Search courses</a>}
-              <a class={crsLive ? 'btn-ghost' : 'btn'} id="go" href="/universities/">Show these universities</a>
-              <a class="btn-ghost" href="/study-in/">Read a country guide</a>
-            </div>
-
-            {latestRead && <p class="pick-note">Every fact has a source. Data last read {shortDate(latestRead)}.</p>}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band" aria-labelledby="h-tools">
-      <div class="wrap">
-        <h2 id="h-tools">Find a course. Fund it. Find work experience.</h2>
-        <ul class="tools">
-          {tools.map((t) => (
-            <li class="tool">
-              <h3>{t.name}</h3>
-              <p class="tool-txt">{t.text}</p>
-              <p class={`tool-stat${t.live ? ' on' : ''}`}>{t.live ? t.stat : t.wait}</p>
-              <a class="btn" href={t.href}>{t.cta}</a>
-            </li>
+  <div class="home-v1 home-v2">
+    <section class="hero" aria-labelledby="h-hero">
+      <svg class="guilloche" viewBox="0 0 800 420" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1">
+        <g>
+          {rings.map((r) => (
+            <ellipse cx="560" cy="300" rx={r.rx} ry={r.ry} transform={`rotate(${r.rot} 560 300)`} opacity={r.op} />
           ))}
+        </g>
+      </svg>
+      <div class="wrap hero-in">
+        <h1 id="h-hero">Search everything about studying abroad.</h1>
+        <p class="hero-sub">Courses, universities, scholarships and internships, with the tests, loans and visas that come with them. Every fact links to its source.</p>
+
+        <form class="askbar" action="/search/" method="get" role="search" autocomplete="off">
+          <label class="sr-only" for="ask-q">Search Universities500</label>
+          <div class="ask-field">
+            <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
+            <input id="ask-q" name="q" type="search" placeholder="Ask in your own words, for example: nursing master’s in Canada" data-short="Nursing in Canada" enterkeyhint="search" />
+            <button class="btn" type="submit">Search</button>
+          </div>
+        </form>
+        <ul class="ask-try" aria-label="Try one of these">
+          {tries.map(([t, href]) => <li><a class="sx-q" href={href}>{t}</a></li>)}
         </ul>
       </div>
     </section>
 
-    <section class="band">
+    <section class="band tiles-band" aria-labelledby="h-tiles">
       <div class="wrap">
-        <div class="promo">
-          <div class="promo-txt">
-            <h2>Every fact shows where it came from.</h2>
-            <p>
-              Each university page names its sources, links to them and shows the date we last read the data.
-              Facts change, so check the university's own website before you apply.
-            </p>
-            <a class="btn-on-accent" href="/universities/">Browse universities</a>
+        <h2 id="h-tiles" class="sr-only">Everything on Universities500</h2>
+        {groups.map((g) => (
+          <div class={`tgroup grp-${g.id}`}>
+            <h3 class="tgroup-h">{g.title}</h3>
+            <ul class="tiles">
+              {g.tiles.map((t) => (
+                <li class={`tile${t.wide ? ' tile-wide' : ''}`}>
+                  <span class="tile-ico" aria-hidden="true">
+                  {t.id === 'courses' && <svg viewBox="0 0 24 24"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.5v13c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2v-13c-3.6 0-6.2.5-8 2z" /><path d="M12 6.5v13" /></svg>}
+                  {t.id === 'universities' && <svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5" /><path d="M5 10.5V18M9.5 10.5V18M14.5 10.5V18M19 10.5V18" /><path d="M3 20h18" /></svg>}
+                  {t.id === 'destinations' && <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M3.5 12h17M12 3.5c2.4 2.4 3.4 5.2 3.4 8.5s-1 6.1-3.4 8.5c-2.4-2.4-3.4-5.2-3.4-8.5s1-6.1 3.4-8.5z" /></svg>}
+                  {t.id === 'mba' && <svg viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2" /><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17" /></svg>}
+                  {t.id === 'english' && <svg viewBox="0 0 24 24"><path d="M4 5.5h16v10H12l-4.5 3.5v-3.5H4z" /><path d="m8.5 12.5 2-5 2 5M9.2 11h2.6" /></svg>}
+                  {t.id === 'exams' && <svg viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16" rx="2" /><path d="M9 4.5V3.5h6v1M8.5 12.5l2 2 4-4.5" /></svg>}
+                  {t.id === 'scholarships' && <svg viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="5" /><path d="m9 14 -1.5 6.5 4.5-2.5 4.5 2.5L15 14" /></svg>}
+                  {t.id === 'internships' && <svg viewBox="0 0 24 24"><rect x="4.5" y="3.5" width="15" height="17" rx="2" /><circle cx="12" cy="9.5" r="2.2" /><path d="M8.5 16c.5-2 1.8-3 3.5-3s3 1 3.5 3" /></svg>}
+                  {t.id === 'loan' && <svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="11" rx="2" /><circle cx="12" cy="12" r="2.6" /><path d="M6.5 9.5v.01M17.5 14.5v.01" /></svg>}
+                  {t.id === 'visa' && <svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2" /><circle cx="12" cy="10.5" r="3" /><path d="M9 16.5h6" /></svg>}
+                  {t.id === 'sop' && <svg viewBox="0 0 24 24"><path d="M6 3.5h8.5L19 8v12.5H6z" /><path d="M14 3.5V8h5M9 12.5h7M9 16h5" /></svg>}
+                  </span>
+                  <a class="tile-name" href={t.href}>{t.name}</a>
+                  <p class="tile-txt">{t.text}</p>
+                  {t.chips && <ul class="tile-chips">{t.chips.map((c) => <li>{c}</li>)}</ul>}
+                  {t.tips && (
+                    <div class="tile-tips">
+                      {t.tips.map(([h, list]) => (
+                        <div>
+                          <h4>{h}</h4>
+                          <ul>{list.map((x) => <li>{x}</li>)}</ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <p class="tile-stat">{t.stat}</p>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div class="promo-stat">
-            <b>{listed}</b>
-            <span>profiles with an overview, official website, founding year and campus</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="wrap">
-        <h2>Four steps from fit to landing.</h2>
-        <ol class="steps">
-          {steps.map(([t, d, href], i) => (
-            <li class="step">
-              <span class="step-n">{i + 1}</span>
-              <h3><a href={href}>{t}</a></h3>
-              <p>{d}</p>
-            </li>
-          ))}
-        </ol>
+        ))}
+        <p class="trust">Every fact links to its official source and shows the date we read it. Fees and rules change, so check the official page before you act. <a href="/disclaimer/">Disclaimer and data sources</a></p>
       </div>
     </section>
   </div>
 
-  <script id="country-counts" type="application/json" set:html={JSON.stringify(counts)} />
   <script is:inline>
     (function () {
-      var data = JSON.parse(document.getElementById('country-counts').textContent);
-      var sel = document.getElementById('s-country'), n = document.getElementById('count'), txt = document.getElementById('count-txt'), go = document.getElementById('go');
-      var goCourses = document.getElementById('go-courses');
-      var total = Object.keys(data).length - 1;
-      function run() {
-        var v = sel.value, d = data[v || '_all'];
-        n.textContent = d.n;
-        var b = document.createElement('b');
-        b.textContent = d.n === 1 ? 'university' : 'universities';
-        txt.textContent = '';
-        txt.appendChild(b);
-        txt.appendChild(document.createTextNode(v ? ' in ' + d.name + '. Open one to see its facts and sources.' : ' across ' + total + ' countries. Pick a country to narrow it down.'));
-        if (goCourses) {
-          goCourses.textContent = d.crs ? 'Search ' + d.crs.toLocaleString('en-GB') + ' course' + (d.crs === 1 ? '' : 's') : 'Search courses';
-          goCourses.setAttribute('href', v && d.crs ? '/courses/?c=' + encodeURIComponent(v) : '/courses/');
-        }
-        go.setAttribute('href', v ? '/universities/?c=' + encodeURIComponent(v) : '/universities/');
-      }
-      sel.addEventListener('change', run);
-      run();
-
-      // Search box: courses or universities. Without scripts it searches courses (or universities while courses are not published).
-      var mode = document.getElementById('bs-mode');
-      if (mode) {
-        var form = document.getElementById('bs-form'), q = document.getElementById('bs-q');
-        var tc = document.getElementById('bs-try-courses'), tu = document.getElementById('bs-try-universities');
-        var tabs = Array.prototype.slice.call(mode.querySelectorAll('.bs-tab'));
-        var set = function (m) {
-          var c = m === 'courses';
-          tabs.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mode') === m)); });
-          form.setAttribute('action', c ? '/courses/' : '/universities/');
-          q.setAttribute('placeholder', c ? 'Course or subject' : 'Search universities');
-          q.setAttribute('aria-label', c ? 'Search courses by name, subject or university name' : 'Search universities by name');
-          tc.hidden = !c;
-          tu.hidden = c;
-        };
-        tabs.forEach(function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-mode')); q.focus(); }); });
-        mode.hidden = false;
-      }
+      var q = document.getElementById('ask-q');
+      if (q && window.matchMedia('(max-width: 560px)').matches) q.setAttribute('placeholder', q.getAttribute('data-short'));
     })();
   </script>
 
   <style is:global>
-    .home-v1 a.btn, .home-v1 a.btn-ghost, .home-v1 a.btn-on-accent, .home-v1 a.sx-q { text-decoration: none; display: inline-flex; align-items: center; }
-    .home-v1 .sx-q:hover { border-color: var(--ink); }
-    .home-v1 .step h3 a { color: inherit; text-decoration: none; }
-    .home-v1 .step h3 a:hover { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-    .home-v1 .step-n { color: var(--accent); }
-    .home-v1 #h-tools { max-width: none; }
-    .home-v1 .tools { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
-    .home-v1 .bs-mode { display: inline-flex; gap: 0.2rem; padding: 0.2rem; margin: 0 0 0.6rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
-    .home-v1 .bs-tab { border: 0; background: transparent; border-radius: 999px; padding: 0.35rem 1rem; font-weight: 600; font-size: 0.95rem; color: var(--muted); }
-    .home-v1 .bs-tab:hover { color: var(--ink); }
-    .home-v1 .bs-tab[aria-pressed="true"] { background: var(--accent); color: var(--accent-on); }
-    .home-v1 .tool { display: flex; flex-direction: column; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--green-4); border-radius: 18px; padding: clamp(1.25rem, 3vw, 1.75rem); }
-    .home-v1 .tool h3 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); margin-bottom: 0.6rem; }
-    .home-v1 .tool-txt { color: var(--muted); font-size: 0.95rem; line-height: 1.55; max-width: 44ch; }
-    .home-v1 .tool-stat { font-size: 0.9rem; line-height: 1.45; color: var(--muted); margin: 1rem 0 1.25rem; max-width: 44ch; }
-    .home-v1 .tool-stat.on { color: var(--grow); font-weight: 700; }
-    .home-v1 .tool .btn { margin-top: auto; }
+    .home-v2 .wrap { max-width: var(--wrap); padding-inline: 1.25rem; }
+    .home-v2 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .home-v2 .hero { padding: clamp(2.25rem, 6vw, 4.5rem) 0 clamp(1.75rem, 4vw, 3rem); }
+    .home-v2 .guilloche { transform: translate(-42%, -66%); width: 66rem; }
+    @media (max-width: 959px) { .home-v2 .guilloche { display: block; width: 44rem; transform: translate(-50%, -60%); opacity: 0.7; } }
+    .home-v2 .hero-in { display: block; }
+    .home-v2 .hero h1 { font-size: clamp(2.4rem, 5.6vw, 4.1rem); max-width: 17ch; margin-bottom: clamp(1rem, 2.4vw, 1.4rem); }
+    .home-v2 .hero-sub { max-width: 54ch; margin-bottom: clamp(1.4rem, 3.2vw, 2.1rem); }
+    .home-v2 .askbar { max-width: 56rem; margin: 0 0 0.9rem; position: relative; z-index: 5; }
+    .home-v2 .ask-field { display: flex; align-items: center; gap: 0.75rem; background: var(--field); border: 2px solid var(--accent); border-radius: 999px; padding: 0.45rem 0.5rem 0.45rem 1.4rem; box-shadow: 0 18px 40px -26px var(--shadow); }
+    .home-v2 .ask-field:focus-within { border-color: var(--ink); }
+    .home-v2 .ask-field svg { flex: 0 0 auto; color: var(--muted); }
+    .home-v2 .ask-field input { flex: 1 1 0; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: clamp(1rem, 2.2vw, 1.2rem); padding: 0.8rem 0; }
+    .home-v2 .ask-field input::placeholder { color: var(--muted); opacity: 1; }
+    .home-v2 .ask-field .btn { padding: 0.8rem 1.8rem; font-size: 1.05rem; }
+    .home-v2 .ask-try { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; position: relative; z-index: 4; max-width: 56rem; }
+    .home-v2 .sx-q { display: inline-flex; align-items: center; text-decoration: none; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 0.32rem 0.85rem; font-size: 0.92rem; color: var(--ink); }
+    .home-v2 .sx-q:hover { border-color: var(--ink); }
+    .home-v2 .tiles-band { padding-top: clamp(1.75rem, 4vw, 2.5rem); }
+    .home-v2 .tgroup + .tgroup { margin-top: clamp(1.75rem, 4vw, 2.5rem); }
+    .home-v2 .tgroup-h { display: flex; align-items: center; gap: 0.65rem; font-size: clamp(1.25rem, 2.4vw, 1.6rem); margin-bottom: 0.9rem; }
+    .home-v2 .tgroup-h::before { content: ''; flex: 0 0 auto; width: 0.8rem; height: 0.8rem; border-radius: 3px; background: var(--g); }
+    .home-v2 .grp-find { --g: var(--accent); --g-on: #fff; }
+    .home-v2 .grp-prepare { --g: var(--green-3); --g-on: #fff; }
+    .home-v2 .grp-fund { --g: var(--warm-2); --g-on: var(--blue-1); }
+    html[data-theme="dark"] .home-v2 .grp-find { --g: var(--blue-6); --g-on: var(--blue-1); }
+    html[data-theme="dark"] .home-v2 .grp-prepare { --g: var(--green-5); --g-on: var(--blue-1); }
+    html[data-theme="dark"] .home-v2 .grp-fund { --g: var(--warm-1); }
+    .home-v2 .tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (min-width: 1000px) { .home-v2 .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.1rem; } }
+    @media (max-width: 560px) { .home-v2 .tiles { grid-template-columns: minmax(0, 1fr); gap: 0.65rem; } }
+    .home-v2 .tile { position: relative; display: flex; flex-direction: column; align-items: flex-start; background: var(--paper); border: 1px solid var(--line); border-top: 5px solid var(--g); border-radius: 16px; padding: 1.25rem 1.25rem 1.1rem; box-shadow: 0 14px 28px -24px var(--shadow); transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+    html[data-theme="dark"] .home-v2 .tile { background: var(--surface); }
+    .home-v2 .tile:hover { border-color: var(--g); box-shadow: 0 22px 36px -24px var(--shadow); transform: translateY(-2px); }
+    .home-v2 .tile:focus-within { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .home-v2 .tile-wide { grid-column: span 2; }
+    @media (max-width: 560px) { .home-v2 .tile-wide { grid-column: auto; } }
+    .home-v2 .tile-ico { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 14px; background: var(--g); color: var(--g-on); margin-bottom: 0.95rem; }
+    .home-v2 .tile-ico svg { width: 1.6rem; height: 1.6rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .home-v2 .tile-name { font-family: var(--display); font-weight: 700; font-size: 1.28rem; line-height: 1.1; letter-spacing: -0.015em; color: var(--ink); text-decoration: none; margin-bottom: 0.5rem; }
+    .home-v2 .tile-name::after { content: ''; position: absolute; inset: 0; border-radius: 16px; }
+    .home-v2 .tile-name:focus-visible { outline: none; }
+    .home-v2 .tile-txt { font-size: 0.95rem; line-height: 1.5; color: var(--muted); margin-bottom: 0.9rem; }
+    .home-v2 .tile-chips { list-style: none; margin: 0 0 0.9rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .home-v2 .tile-chips li { font-size: 0.82rem; font-weight: 600; border: 1px solid var(--line); border-radius: 999px; padding: 0.15rem 0.6rem; color: var(--ink); background: var(--surface); }
+    .home-v2 .tile-tips { display: grid; gap: 0.9rem 1.4rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 0.9rem; }
+    @media (max-width: 560px) { .home-v2 .tile-tips { grid-template-columns: minmax(0, 1fr); } }
+    .home-v2 .tile-tips h4 { font-family: var(--display); font-weight: 700; font-size: 0.98rem; margin: 0 0 0.3rem; letter-spacing: -0.01em; }
+    .home-v2 .tile-tips ul { margin: 0; padding-left: 1.05rem; font-size: 0.9rem; line-height: 1.45; color: var(--muted); }
+    .home-v2 .tile-tips li { margin: 0 0 0.3rem; }
+    .home-v2 .tile-stat { margin-top: auto; display: inline-block; font-size: 0.85rem; font-weight: 700; line-height: 1.3; color: var(--ink); background: color-mix(in srgb, var(--g) 16%, var(--paper)); border-radius: 999px; padding: 0.22rem 0.75rem; }
+    html[data-theme="dark"] .home-v2 .tile-stat { background: color-mix(in srgb, var(--g) 22%, var(--surface)); }
+    @media (max-width: 560px) {
+      .home-v2 .tile { display: grid; align-content: start; grid-template-columns: 3rem minmax(0, 1fr); column-gap: 0.95rem; padding: 0.95rem 1rem; border-top-width: 1px; border-left: 5px solid var(--g); }
+      .home-v2 .tile-ico { grid-row: 1 / span 6; margin: 0; align-self: start; }
+      .home-v2 .tile-chips { margin-bottom: 0.5rem; }
+      .home-v2 .tile-name { font-size: 1.15rem; margin-bottom: 0.3rem; }
+      .home-v2 .tile-txt { margin-bottom: 0.5rem; }
+      .home-v2 .tile-tips { grid-column: 1 / -1; margin-top: 0.4rem; }
+      .home-v2 .tile-stat { margin-top: 0; justify-self: start; }
+      .home-v2 .tile-wide .tile-stat { grid-column: 1 / -1; margin-top: 0.3rem; }
+    }
+    .home-v2 .trust { margin-top: 1.5rem; font-size: 0.9rem; color: var(--muted); max-width: 70ch; line-height: 1.55; }
+    .home-v2 .trust a { color: var(--accent); }
+    .home-v2 a.btn { text-decoration: none; }
   </style>
 </Base>

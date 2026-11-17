@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
 import { hiddenFromSearch } from '../lib/noindex.js';
+import { SOP, LOR } from '../lib/prep.js';
 const path = '/application-prep/';
 const docs = [
   'Passport, valid well past your course start',
@@ -49,21 +50,13 @@ const docs = [
       <div class="tcard">
         <h3>Recommendation letters</h3>
         <ol class="numlist">
-          <li>Pick two or three people who have seen your actual work, not the most senior names you can find.</li>
-          <li>Ask six to eight weeks before the deadline.</li>
-          <li>Send each a short brief: your goal, the course, the projects you worked on together, the deadline.</li>
-          <li>Remind them gently at the two-week mark.</li>
-          <li>Thank them, and tell them the outcome either way.</li>
+          {LOR.map((t) => <li>{t}</li>)}
         </ol>
       </div>
       <div class="tcard">
         <h3>Statement of purpose</h3>
         <ol class="numlist">
-          <li>Why this field, and why now.</li>
-          <li>Two or three experiences that prove the interest is real.</li>
-          <li>Why this university and this course specifically.</li>
-          <li>What you intend to do afterwards.</li>
-          <li>Get it read by someone honest, then cut it to the word limit.</li>
+          {SOP.map((t) => <li>{t}</li>)}
         </ol>
       </div>
     </div>
