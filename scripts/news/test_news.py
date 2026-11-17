@@ -140,6 +140,11 @@ class Rules(unittest.TestCase):
         self.assertTrue(R.english('International students can now apply for the new graduate visa online from next week.'))
         self.assertFalse(R.english('Les étudiants internationaux peuvent demander un visa pour la France en ligne dès maintenant'))
         self.assertFalse(R.english('Internationale Studierende können ab sofort ein Visum für Deutschland online beantragen und müssen'))
+        # headlines with no small words are English too; short foreign headlines are not
+        self.assertTrue(R.english('Australia caps student visa numbers amid migration concerns'))
+        self.assertTrue(R.english('Canada cuts study permit cap again for international students next year'))
+        self.assertFalse(R.english('Chili-Colombie : la tournée Campus France 2026 confirme l’attractivité des études en France'))
+        self.assertFalse(R.english('Neue Regeln für das Studentenvisum in Deutschland und was sich ändert'))
 
     def test_excerpt(self):
         t = R.excerpt('<p>Published: 3 Nov 2026.</p><p>The government has changed the Graduate route. From 1 January 2027 the route lasts 18 months. ' + 'More detail follows. ' * 30 + '</p>', 'x')

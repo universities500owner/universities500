@@ -101,6 +101,9 @@ def relevant(title, summary='', mode='student', immigration=False):
     return False, 'not-about-students'
 
 
+FOREIGN = re.compile(r"\b(?:der|die|das|und|ist|nicht|mit|für|auf|von|zu|den|dem|le|la|les|des|du|et|est|pour|dans|sur|une|el|los|las|del|por|para|con|una|que|não|uma|il|che|della|het|een|voor|och|att|som|på|av|og|ikke|til)\b", re.I)
+
+
 def english(text):
     """True when the text reads as English. Short strings are not judged."""
     letters = [c for c in text if c.isalpha()]
@@ -109,7 +112,15 @@ def english(text):
     if sum(1 for c in letters if c.isascii()) / len(letters) < 0.93:
         return False
     words = len(text.split())
-    return words < 8 or len(STOP.findall(text)) >= max(2, words // 25)
+    if words < 8:
+        return True
+    stops = len(STOP.findall(text))
+    if words <= 30:
+        # a headline: English ones often have no small words at all ("Australia caps student visa numbers amid migration concerns"),
+        # so reject only when it plainly carries another language's small words
+        foreign = len(FOREIGN.findall(text))
+        return foreign < 2 or stops > foreign
+    return stops >= max(2, words // 25)
 
 
 def _text(html):
