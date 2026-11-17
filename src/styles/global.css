@@ -71,7 +71,8 @@ a:hover { text-decoration-thickness: 2px; }
 /* header + footer */
 .site-head { border-bottom: 1px solid var(--line); }
 .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; flex-wrap: wrap; }
-.brand img { display: block; height: 30px; width: auto; }
+.brand img { display: block; height: 48px; width: auto; }
+@media (max-width: 620px) { .brand img { height: 36px; } }
 .brand .logo-dark { display: none; }
 html[data-theme="dark"] .brand .logo-light { display: none; }
 html[data-theme="dark"] .brand .logo-dark { display: block; }
