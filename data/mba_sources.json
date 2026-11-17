@@ -1,0 +1,302 @@
+{
+ "_note": "The source register for the MBA Explorer. A programme is listed only with pages we have seen on the school's own website. waves: which destinations are read in which round. candidates: schools proposed for reading, with no pages yet. Schools were chosen for reading, not ordered; no ranking is stored or shown.",
+ "waves": {
+  "1": [
+   "uk",
+   "usa",
+   "canada",
+   "australia",
+   "ireland"
+  ],
+  "2": [
+   "germany",
+   "france",
+   "netherlands",
+   "singapore"
+  ],
+  "3": [
+   "new-zealand",
+   "uae",
+   "malaysia",
+   "sweden",
+   "norway"
+  ]
+ },
+ "programmes": [
+  {
+   "id": "warwick-msc-management",
+   "pages": [
+    "https://warwick.ac.uk/study/postgraduate/courses/msc-management"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "ivey-msc-management",
+   "pages": [
+    "https://www.ivey.uwo.ca/msc/admission/cost/"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "rotman-master-of-management",
+   "pages": [
+    "https://www.rotman.utoronto.ca/programs/master-of-management/admissions/"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "oxford-mba",
+   "pages": [
+    "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba",
+    "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba/application-requirements",
+    "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba/how-apply",
+    "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-mba/faqs"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "cambridge-mba",
+   "pages": [
+    "https://www.jbs.cam.ac.uk/masters-degrees/mba/faqs/",
+    "https://www.jbs.cam.ac.uk/masters-degrees/mba/fees-funding/",
+    "https://www.jbs.cam.ac.uk/masters-degrees/mba/apply/"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "rotman-full-time-mba",
+   "pages": [
+    "https://www.rotman.utoronto.ca/programs/mba-programs/full-time-mba/admissions/",
+    "https://www.rotman.utoronto.ca/programs/mba-programs/full-time-mba/tuition-scholarships/",
+    "https://sgs.utoronto.ca/programs/master-of-business-administration-full-time-mba"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "ivey-mba",
+   "pages": [
+    "https://www.ivey.uwo.ca/mba/academics/ivey-mba-vs-ivey-amba/",
+    "https://www.ivey.uwo.ca/mba/finance/",
+    "https://www.ivey.uwo.ca/mba/get-started/faqs/",
+    "https://www.ivey.uwo.ca/mba/admissions/admissions-criteria/",
+    "https://www.ivey.uwo.ca/mba/employment-report/"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "mbs-full-time-mba",
+   "pages": [
+    "https://mbs.edu/degree-programs/full-time-mba",
+    "https://mbs.edu/degree-programs/faqs-degree-programs/faqs-full-time-mba"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "ucd-smurfit-full-time-mba",
+   "pages": [
+    "https://www.smurfitschool.ie/programmes/thesmurfitmba/fulltimemba/admissionsfees/"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "chicago-booth-full-time-mba",
+   "pages": [
+    "https://www.chicagobooth.edu/mba/full-time/admissions/cost?sc_lang=en",
+    "https://chicagobooth.edu/mba/full-time/admissions/requirements"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "oxford-executive-mba",
+   "pages": [
+    "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-executive-mba",
+    "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-executive-mba/how-apply"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "cambridge-executive-mba",
+   "pages": [
+    "https://www.jbs.cam.ac.uk/masters-degrees/executive-mba/fees-funding/",
+    "https://www.jbs.cam.ac.uk/masters-degrees/executive-mba/apply/"
+   ],
+   "wave": 1
+  },
+  {
+   "id": "mbs-executive-mba",
+   "pages": [],
+   "note": "The only page we have lists several programmes side by side, so a program cannot tell which facts belong to this one. Read by hand until the programme has its own page.",
+   "wave": 1
+  }
+ ],
+ "candidates": [
+  {
+   "wave": 1,
+   "country": "usa",
+   "school": "Harvard Business School",
+   "domain": "hbs.edu"
+  },
+  {
+   "wave": 1,
+   "country": "usa",
+   "school": "Stanford Graduate School of Business",
+   "domain": "gsb.stanford.edu"
+  },
+  {
+   "wave": 1,
+   "country": "usa",
+   "school": "Wharton (University of Pennsylvania)",
+   "domain": "wharton.upenn.edu"
+  },
+  {
+   "wave": 1,
+   "country": "usa",
+   "school": "MIT Sloan School of Management",
+   "domain": "mitsloan.mit.edu"
+  },
+  {
+   "wave": 1,
+   "country": "usa",
+   "school": "Kellogg School of Management (Northwestern)",
+   "domain": "kellogg.northwestern.edu"
+  },
+  {
+   "wave": 1,
+   "country": "usa",
+   "school": "Columbia Business School",
+   "domain": "business.columbia.edu"
+  },
+  {
+   "wave": 1,
+   "country": "usa",
+   "school": "Yale School of Management",
+   "domain": "som.yale.edu"
+  },
+  {
+   "wave": 1,
+   "country": "usa",
+   "school": "Duke Fuqua School of Business",
+   "domain": "fuqua.duke.edu"
+  },
+  {
+   "wave": 1,
+   "country": "uk",
+   "school": "London Business School",
+   "domain": "london.edu"
+  },
+  {
+   "wave": 1,
+   "country": "uk",
+   "school": "Imperial College Business School",
+   "domain": "imperial.ac.uk"
+  },
+  {
+   "wave": 1,
+   "country": "uk",
+   "school": "Warwick Business School (MBA)",
+   "domain": "wbs.ac.uk"
+  },
+  {
+   "wave": 1,
+   "country": "uk",
+   "school": "Cranfield School of Management",
+   "domain": "cranfield.ac.uk"
+  },
+  {
+   "wave": 1,
+   "country": "canada",
+   "school": "Schulich School of Business (York)",
+   "domain": "schulich.yorku.ca"
+  },
+  {
+   "wave": 1,
+   "country": "canada",
+   "school": "Sauder School of Business (UBC)",
+   "domain": "sauder.ubc.ca"
+  },
+  {
+   "wave": 1,
+   "country": "canada",
+   "school": "Desautels Faculty of Management (McGill)",
+   "domain": "mcgill.ca"
+  },
+  {
+   "wave": 1,
+   "country": "canada",
+   "school": "Smith School of Business (Queen's)",
+   "domain": "smith.queensu.ca"
+  },
+  {
+   "wave": 1,
+   "country": "australia",
+   "school": "AGSM at UNSW Business School",
+   "domain": "agsm.edu.au"
+  },
+  {
+   "wave": 1,
+   "country": "australia",
+   "school": "Monash Business School",
+   "domain": "monash.edu"
+  },
+  {
+   "wave": 1,
+   "country": "australia",
+   "school": "University of Sydney Business School",
+   "domain": "sydney.edu.au"
+  },
+  {
+   "wave": 1,
+   "country": "ireland",
+   "school": "Trinity Business School",
+   "domain": "tcd.ie"
+  },
+  {
+   "wave": 2,
+   "country": "france",
+   "school": "INSEAD",
+   "domain": "insead.edu"
+  },
+  {
+   "wave": 2,
+   "country": "france",
+   "school": "HEC Paris",
+   "domain": "hec.edu"
+  },
+  {
+   "wave": 2,
+   "country": "france",
+   "school": "ESSEC Business School",
+   "domain": "essec.edu"
+  },
+  {
+   "wave": 2,
+   "country": "germany",
+   "school": "Mannheim Business School",
+   "domain": "mannheim-business-school.com"
+  },
+  {
+   "wave": 2,
+   "country": "germany",
+   "school": "ESMT Berlin",
+   "domain": "esmt.berlin"
+  },
+  {
+   "wave": 2,
+   "country": "netherlands",
+   "school": "Rotterdam School of Management",
+   "domain": "rsm.nl"
+  },
+  {
+   "wave": 2,
+   "country": "singapore",
+   "school": "NUS Business School",
+   "domain": "nus.edu.sg"
+  },
+  {
+   "wave": 2,
+   "country": "singapore",
+   "school": "Nanyang Business School",
+   "domain": "ntu.edu.sg"
+  }
+ ]
+}

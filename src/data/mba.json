@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-18",
+ "generatedAt": "2026-11-17",
  "items": [
   {
    "id": "warwick-msc-management",
@@ -28,16 +28,19 @@
    },
    "degree": {
     "t": "2:1 UK degree or overseas equivalent",
-    "q": "2.1 degree at undergraduate level from a UK university, or overseas equivalent."
+    "q": "2.1 degree at undergraduate level from a UK university, or overseas equivalent.",
+    "u": "https://warwick.ac.uk/study/postgraduate/courses/msc-management"
    },
    "test": {
     "t": "No GMAT or GRE listed",
-    "q": "There are no additional entry requirements for this course."
+    "q": "There are no additional entry requirements for this course.",
+    "u": "https://warwick.ac.uk/study/postgraduate/courses/msc-management"
    },
    "english": {
     "t": "IELTS 7.0 overall",
     "q": "IELTS overall score of 7.0",
-    "ielts": 7.0
+    "ielts": 7.0,
+    "u": "https://warwick.ac.uk/study/postgraduate/courses/msc-management"
    },
    "start": {
     "t": "27 September 2027",
@@ -46,14 +49,49 @@
     ]
    },
    "deadlines": {
-    "t": "On-time deadline 2 August 2027. Later applications are accepted if places remain."
+    "t": "On-time deadline 2 August 2027. Later applications are accepted if places remain.",
+    "u": "https://warwick.ac.uk/study/postgraduate/courses/msc-management"
    },
    "employment": {
     "t": "Employment report for the MSc courses",
     "u": "https://online.flippingbook.com/view/763598704/"
    },
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "test": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "english": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "deadlines": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "employment": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "ivey-msc-management",
@@ -75,7 +113,8 @@
     "amount": 93765,
     "cur": "CAD",
     "per": "programme",
-    "note": "From the tuition table on the page, row “MSc in Management: IB International Students”. Fee for the January 2027 and September 2028 intakes. The page says the amount covers the entire 16-month programme, and lists a separate row for domestic students."
+    "note": "From the tuition table on the page, row “MSc in Management: IB International Students”. Fee for the January 2027 and September 2028 intakes. The page says the amount covers the entire 16-month programme, and lists a separate row for domestic students.",
+    "u": "https://www.ivey.uwo.ca/msc/admission/cost/"
    },
    "exp": null,
    "degree": null,
@@ -91,7 +130,21 @@
    "deadlines": null,
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "rotman-master-of-management",
@@ -110,7 +163,8 @@
     "q": "a maximum of 2.5 years of work experience post-grad",
     "min": 0,
     "max": 2.5,
-    "note": "The page describes the programme as designed for recent graduates."
+    "note": "The page describes the programme as designed for recent graduates.",
+    "u": "https://www.rotman.utoronto.ca/programs/master-of-management/admissions/"
    },
    "degree": null,
    "test": null,
@@ -118,11 +172,22 @@
    "start": null,
    "deadlines": {
     "t": "Round 1: 16 September 2026. Round 2: 11 November 2026. Round 3: 17 February 2027. International students are advised to apply by Round 2.",
-    "q": "International students should apply no later than Round 2"
+    "q": "International students should apply no later than Round 2",
+    "u": "https://www.rotman.utoronto.ca/programs/master-of-management/admissions/"
    },
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "deadlines": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "oxford-mba",
@@ -178,7 +243,37 @@
    "deadlines": null,
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "test": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "english": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "cambridge-mba",
@@ -210,19 +305,23 @@
     "q": "a minimum of 2 years' work experience",
     "min": 2,
     "max": null,
-    "note": "The page says part-time work does not usually count."
+    "note": "The page says part-time work does not usually count.",
+    "u": "https://www.jbs.cam.ac.uk/masters-degrees/mba/faqs/"
    },
    "degree": {
     "t": "Good 2:1 or equivalent. Lower scores may be considered with a good GMAT or GRE.",
-    "q": "a 2:1 Honours degree on the UK grading scale or international equivalent"
+    "q": "a 2:1 Honours degree on the UK grading scale or international equivalent",
+    "u": "https://www.jbs.cam.ac.uk/masters-degrees/mba/faqs/"
    },
    "test": {
     "t": "GMAT, GRE or Executive Assessment",
-    "q": "a valid GMAT, GRE or EA score"
+    "q": "a valid GMAT, GRE or EA score",
+    "u": "https://www.jbs.cam.ac.uk/masters-degrees/mba/faqs/"
    },
    "english": {
     "t": "Proof of English proficiency. IELTS Academic accepted; the minimum scores are in the English language policy.",
-    "q": "proof of English proficiency"
+    "q": "proof of English proficiency",
+    "u": "https://www.jbs.cam.ac.uk/masters-degrees/mba/faqs/"
    },
    "start": {
     "t": "September",
@@ -238,7 +337,41 @@
     "u": "https://www.jbs.cam.ac.uk/masters-degrees/mba/careers/employment-report/"
    },
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "test": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "english": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "employment": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "rotman-full-time-mba",
@@ -271,11 +404,13 @@
     "q": "A minimum of two years of full-time work experience is required",
     "min": 2,
     "max": null,
-    "note": "The page excepts some combined degrees."
+    "note": "The page excepts some combined degrees.",
+    "u": "https://www.rotman.utoronto.ca/programs/mba-programs/full-time-mba/admissions/"
    },
    "degree": {
     "t": "Four-year degree with a final-year GPA of at least 3.0 (mid-B)",
-    "q": "a minimum GPA of 3.0 (at least mid-B average) in the final year"
+    "q": "a minimum GPA of 3.0 (at least mid-B average) in the final year",
+    "u": "https://www.rotman.utoronto.ca/programs/mba-programs/full-time-mba/admissions/"
    },
    "test": {
     "t": "GMAT, GRE or CFA Level II pass",
@@ -298,7 +433,37 @@
    "deadlines": null,
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "test": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "english": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "ivey-mba",
@@ -329,11 +494,13 @@
     "t": "2 to 10 years, full-time",
     "q": "2 to 10 years of full-time work experience.",
     "min": 2,
-    "max": 10
+    "max": 10,
+    "u": "https://www.ivey.uwo.ca/mba/academics/ivey-mba-vs-ivey-amba/"
    },
    "degree": {
     "t": "Undergraduate degree in any discipline",
-    "q": "Completed undergraduate degree in any discipline."
+    "q": "Completed undergraduate degree in any discipline.",
+    "u": "https://www.ivey.uwo.ca/mba/academics/ivey-mba-vs-ivey-amba/"
    },
    "test": {
     "t": "GMAT or GRE",
@@ -359,7 +526,41 @@
     "u": "https://www.ivey.uwo.ca/mba/employment-report/"
    },
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "test": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "english": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "employment": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "mbs-full-time-mba",
@@ -384,7 +585,8 @@
     "amount": 120384,
     "cur": "AUD",
     "per": "programme",
-    "note": "The page lists the 2026 academic year and says fees are paid per module in advance."
+    "note": "The page lists the 2026 academic year and says fees are paid per module in advance.",
+    "u": "https://mbs.edu/degree-programs/full-time-mba"
    },
    "exp": {
     "t": "At least 2 years",
@@ -392,11 +594,13 @@
     "min": 2,
     "max": null,
     "typical": "2 to 5 years",
-    "note": "The school describes the programme as for two to five years of professional experience."
+    "note": "The school describes the programme as for two to five years of professional experience.",
+    "u": "https://mbs.edu/degree-programs/full-time-mba"
    },
    "degree": {
     "t": "An undergraduate degree",
-    "q": "An undergraduate degree, AND"
+    "q": "An undergraduate degree, AND",
+    "u": "https://mbs.edu/degree-programs/full-time-mba"
    },
    "test": {
     "t": "GMAT, GMAT Focus or GRE",
@@ -419,7 +623,37 @@
    "deadlines": null,
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "test": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "english": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "ucd-smurfit-full-time-mba",
@@ -450,12 +684,14 @@
    },
    "degree": {
     "t": "A university degree",
-    "q": "University Degree: A university degree"
+    "q": "University Degree: A university degree",
+    "u": "https://www.smurfitschool.ie/programmes/thesmurfitmba/fulltimemba/admissionsfees/"
    },
    "test": null,
    "english": {
     "t": "A high level of competence in English",
-    "q": "demonstrate a high level of competence in English language"
+    "q": "demonstrate a high level of competence in English language",
+    "u": "https://www.smurfitschool.ie/programmes/thesmurfitmba/fulltimemba/admissionsfees/"
    },
    "start": {
     "t": "August 2027",
@@ -468,7 +704,29 @@
    "deadlines": null,
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "english": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "chicago-booth-full-time-mba",
@@ -487,13 +745,15 @@
     "amount": 89976,
     "cur": "USD",
     "per": "year",
-    "note": "This is the tuition for the MBA Class of 2028. The page says it is charged in six quarterly instalments. It does not say whether international students pay the same."
+    "note": "This is the tuition for the MBA Class of 2028. The page says it is charged in six quarterly instalments. It does not say whether international students pay the same.",
+    "u": "https://www.chicagobooth.edu/mba/full-time/admissions/cost?sc_lang=en"
    },
    "feeUrl": "https://www.chicagobooth.edu/mba/full-time/admissions/cost?sc_lang=en",
    "exp": null,
    "degree": {
     "t": "An undergraduate degree, or its equivalent from another country",
-    "q": "an undergraduate degree from an accredited US college or university or its equivalent"
+    "q": "an undergraduate degree from an accredited US college or university or its equivalent",
+    "u": "https://www.chicagobooth.edu/mba/full-time/admissions/cost?sc_lang=en"
    },
    "test": {
     "t": "GMAT or GRE",
@@ -514,7 +774,29 @@
    },
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "test": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "english": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "deadlines": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "oxford-executive-mba",
@@ -533,18 +815,21 @@
     "amount": 132420,
     "cur": "GBP",
     "per": "programme",
-    "note": "Two intakes, two fees. The amount shown on the card is the earlier intake."
+    "note": "Two intakes, two fees. The amount shown on the card is the earlier intake.",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-executive-mba"
    },
    "exp": {
     "t": "10+ years, ideally 5 managerial",
     "q": "a minimum of ten years of professional experience",
     "min": null,
     "max": null,
-    "note": "The how-to-apply page says “at least five years’ managerial experience”. Check both pages."
+    "note": "The how-to-apply page says “at least five years’ managerial experience”. Check both pages.",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-executive-mba"
    },
    "degree": {
     "t": "Undergraduate degree, ideally 2:1 or above, or an equivalent professional qualification",
-    "q": "an undergraduate degree (ideally 2:1 or above) or equivalent professional qualification"
+    "q": "an undergraduate degree (ideally 2:1 or above) or equivalent professional qualification",
+    "u": "https://www.sbs.ox.ac.uk/programmes/mbas/oxford-executive-mba"
    },
    "test": {
     "t": "GMAT or Executive Assessment. Some experienced candidates are exempt.",
@@ -562,7 +847,29 @@
    "deadlines": null,
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "test": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "cambridge-executive-mba",
@@ -581,7 +888,8 @@
     "amount": 110400,
     "cur": "GBP",
     "per": "programme",
-    "note": "The Global Executive MBA starting January 2028 is listed at £125,100. Fees cover tuition, college membership and some accommodation and meals."
+    "note": "The Global Executive MBA starting January 2028 is listed at £125,100. Fees cover tuition, college membership and some accommodation and meals.",
+    "u": "https://www.jbs.cam.ac.uk/masters-degrees/executive-mba/fees-funding/"
    },
    "exp": null,
    "degree": {
@@ -600,7 +908,21 @@
    "deadlines": null,
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "fee": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   },
   {
    "id": "mbs-executive-mba",
@@ -623,7 +945,8 @@
     "t": "At least 5 years of management experience",
     "q": "five or more years of management experience",
     "min": 5,
-    "max": null
+    "max": null,
+    "u": "https://mbs.edu/MBA"
    },
    "degree": {
     "t": "An undergraduate degree",
@@ -642,7 +965,25 @@
    "deadlines": null,
    "employment": null,
    "readOn": "2026-11-18",
-   "how": "hand"
+   "how": "hand",
+   "provenance": {
+    "length": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "exp": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "degree": {
+     "by": "hand",
+     "on": "2026-11-18"
+    },
+    "start": {
+     "by": "hand",
+     "on": "2026-11-18"
+    }
+   }
   }
  ]
 }
