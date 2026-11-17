@@ -209,20 +209,13 @@ const registerNote = c.reg && REGISTER;
     {d && hasText ? 'Course details above are from' : 'Course details are from'} <a href={c.url} target="_blank" rel="noopener">{host}</a>, read on {fmtIso((d && d.readOn) || c.lastVerified)}. Details change, so confirm them on the official page before you apply.
   </p>
 
-  <details class="how">
-    <summary>How we checked this course</summary>
-    <ul class="src-list">
-      <li>Full-time, on campus. {c.studyMode && <span class="cq">The page says: “{c.studyMode}”</span>}</li>
-      <li>Open to international students. {c.cricosMatch === 'name' && c.intl.how === 'cricos'
-        ? `The course name matches one course on the government register of courses for international students (CRICOS ${c.cricos}). The page itself does not show the code.`
-        : (INTL_HOW[c.intl.how] || '')} {!(c.cricosMatch === 'name' && c.intl.how === 'cricos') && c.intl.evidence && <span class="cq">The page says: “{c.intl.evidence}”</span>}</li>
-      {c.cricosMatch === 'name' && c.intl.how !== 'cricos' && <li>The course name also matches one course on the government register of courses for international students (CRICOS {c.cricos}).</li>}
-      {c.field && <li>The field label is ours, chosen from words in the course name. It is not the university's.</li>}
+  {(c.cricosMatch === 'name' || (c.flags && (c.flags.includes('integrated') || c.flags.includes('combined')))) && (
+    <ul class="src-list small">
+      {c.cricosMatch === 'name' && <li>The course name matches one course on the government register of courses for international students (CRICOS {c.cricos}). The page itself does not show the code.</li>}
       {c.flags && c.flags.includes('integrated') && <li>An integrated Master's: a four-year course that starts at undergraduate level.</li>}
       {c.flags && c.flags.includes('combined') && <li>The name mentions both a Bachelor's and a Master's. The official page shows how the course is structured.</li>}
-      <li>Read by a program from the course page. {d ? 'Every figure and name above was checked against the text of the page; anything the page did not show was left out.' : 'A fact the page did not state clearly is left out rather than guessed.'}</li>
     </ul>
-  </details>
+  )}
 
   {others.length > 0 && (
     <section aria-labelledby="h-more">

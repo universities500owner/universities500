@@ -66,17 +66,7 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
     <p><a class="btn ghost" href="/working-while-you-study/">Working while you study</a></p>
   </section>
 
-  <section class="sec" aria-labelledby="h-how">
-    <h2 id="h-how">How this list is made</h2>
-    <ul>
-      <li>A program reads the public job feeds that employers publish through their careers pages, and two open job feeds, once a day. It follows each site's robots.txt and reads slowly.</li>
-      <li>A listing is kept only if its title names an internship, co-op, placement or working-student role, and its location is clearly in one of our destinations. Remote-only and unclear locations are left out.</li>
-      <li>We copy the title, company, city and link. The description and the application stay on the employer's page.</li>
-      <li>A listing disappears when the employer takes it down.</li>
-      {attributions.map((a) => <li>{a}</li>)}
-    </ul>
-    <p><a href="/bot/">About our reader</a></p>
-  </section>
+  {attributions.length > 0 && <p class="small source-line">{attributions.join(' ')}</p>}
 
   {PUBLISH && rows.length > 0 && <script>import '../../scripts/internships.js';</script>}
   <RelatedArticles list={forTopics(TOOL_TOPICS['internships'], 3)} heading="Related articles" more={['/articles/', 'All articles']} />

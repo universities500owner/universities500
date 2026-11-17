@@ -120,18 +120,6 @@ const crsData = JSON.stringify({
       </ul>
     </section>
 
-    <section class="sec" aria-labelledby="h-how">
-      <h2 id="h-how">How this list is made</h2>
-      <ul>
-        <li>A program reads course pages on each university's own website. It follows each site's robots.txt and reads slowly.</li>
-        <li>A course is kept only if its page shows a Bachelor's or Master's, full-time study on campus, and that it is open to international students. Online, part-time, foundation, diploma and research degrees are left out.</li>
-        <li>Each course page shows the sentence every fact was copied from. A fact the page did not state says "{CHECK}". Nothing is estimated.</li>
-        <li>The field is our own label, chosen from words in the course name. It is not the university's.</li>
-        <li>Not every course of every university is here yet. Some websites cannot be read by a program.</li>
-      </ul>
-      <p><a href="/bot/">About our reader</a></p>
-    </section>
-
     <script>if (document.getElementById('crs-list')) import('../../scripts/course-search.js');</script>
     </>
   ) : (

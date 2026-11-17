@@ -11,7 +11,7 @@ import { topics as articleTopics, articles as allArticles } from '../lib/article
 import IndustryNewsStrip from '../components/IndustryNewsStrip.astro';
 import { PUBLISH as NEWS_ON } from '../lib/news.js';
 
-const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = true } = Astro.props;
+const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false } = Astro.props;
 const url = new URL(path, SITE).href;
 const ld = jsonld ? JSON.stringify(jsonld).replace(/</g, '\\u003c') : null;
 const inGroup = (g) => g.items.some((i) => i[2] === current);
@@ -156,16 +156,9 @@ const onGuide = current === 'guide';
             Universities500 is a work in progress. We are still checking the facts on these pages against their official
             sources, so please confirm anything important on the official page before you act on it.
           </p>
-          <p>
-            University overviews are text from <a href="https://www.wikipedia.org/">Wikipedia</a>, licensed{' '}
-            <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Facts such as founding year,
-            campuses and student numbers come from <a href="https://www.wikidata.org/">Wikidata</a> (CC0), which can be
-            out of date. Each page links to its sources.
-          </p>
           <div class="foot-base">
             <ul>
-              {NEWS_ON && <li><a href="/industry-news/">Industry news</a></li>}
-              <li><a href="/method/">How we choose universities</a></li>
+              <li><a href="/disclaimer/">Disclaimer and data sources</a></li>
               <li><a href="/privacy/">Privacy</a></li>
               <li><a href="/terms/">Terms</a></li>
               <li>© 2026 Universities500</li>

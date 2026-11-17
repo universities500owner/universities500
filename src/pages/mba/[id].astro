@@ -25,11 +25,6 @@ const rows = [
   ['Starts', m.start],
   ['Deadlines', m.deadlines],
 ];
-// Who read each fact: by hand, or by a program (no AI). Older records without provenance were all read by hand.
-const LABEL = { length: 'length', fee: 'tuition', exp: 'work experience', degree: 'degree', test: 'test', english: 'English', start: 'start', deadlines: 'deadlines', employment: 'employment report' };
-const byProgram = Object.entries(m.provenance || {}).filter(([, v]) => v.by === 'program').map(([k]) => LABEL[k] || k);
-const byHand = Object.entries(m.provenance || {}).filter(([, v]) => v.by === 'hand').map(([k]) => LABEL[k] || k);
-const list = (a) => a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`;
 const desc = `${m.name}, ${m.school}, ${m.uniName}. ${KIND[m.kind]}${m.length ? `, ${m.length.t.toLowerCase()}` : ''}${m.fee ? `, tuition ${m.fee.t}` : ''}. Facts copied from the school's own page.`;
 ---
 <Base title={`${m.name}, ${m.school} | MBA Explorer | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="mba">
@@ -79,17 +74,7 @@ const desc = `${m.name}, ${m.school}, ${m.uniName}. ${KIND[m.kind]}${m.length ? 
     These facts are from <a href={m.url} target="_blank" rel="noopener">{host}</a>{rows.some(([, f]) => f && f.u && f.u !== m.url) ? ' and other pages of the same school, each linked beside the fact,' : ''} read on {fmtIso(m.readOn)}. Details change, so confirm them on the school's page before you apply.
   </p>
 
-  <details class="how">
-    <summary>How we checked this programme</summary>
-    <ul class="src-list">
-      <li>{m.how === 'both'
-        ? `Read from the school's own pages. A program read the ${list(byProgram)}; the ${list(byHand)} ${byHand.length === 1 ? 'was' : 'were'} read by hand.`
-        : m.how === 'program' ? "Read by a program from the school's own pages." : "Read by hand from the school's own pages."}{m.how === 'hand' ? '' : ' The program uses fixed patterns, not AI.'} Every fact shows the sentence it was copied from where the page gave one. Fees listed in a table on the page are marked as such.</li>
-      <li>A fact the page did not state says "{NOT_STATED}". Nothing is estimated or taken from third-party sites.</li>
-      <li>The tab comes from the minimum work experience the page states{m.exp && m.exp.min != null ? ` (${m.exp.min} year${m.exp.min === 1 ? '' : 's'})` : m.kind === 'mba' ? ': this page states none, so the programme is listed under 3 to 5 years' : ''}. {m.kind === 'mim' ? "A master's in management is for recent graduates and is not an MBA." : ''}</li>
-      <li>We show no ranking and did not use one to order this page.</li>
-    </ul>
-  </details>
+  <p class="small">{m.exp && m.exp.min != null ? `Listed under ${trackNames.join(' and ')} because the page states a minimum of ${m.exp.min} year${m.exp.min === 1 ? '' : 's'} of work experience.` : m.kind === 'mba' ? 'The page states no minimum work experience, so the programme is listed under 3 to 5 years.' : ''} {m.kind === 'mim' ? "A master's in management is for recent graduates and is not an MBA." : ''}</p>
 
   {others.length > 0 && (
     <section aria-labelledby="h-more">
