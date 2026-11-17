@@ -1,0 +1,26 @@
+---
+// Every subject, by area, with how many courses it has. Subjects with enough courses have their own page; the rest open the search.
+import Base from '../../../layouts/Base.astro';
+import { PUBLISH, items, subjectList, subjectGroups, SUBJECT_PAGE_MIN } from '../../../lib/courses.js';
+
+const here = '/courses/subject/';
+const subs = subjectList();
+const groups = subjectGroups().map((g) => ({ ...g, list: subs.filter((s) => s.group === g.id) })).filter((g) => g.list.length);
+const href = (s) => (s.count >= SUBJECT_PAGE_MIN ? `/courses/subject/${s.id}/` : `/courses/?s=${s.id}`);
+---
+<Base title="Browse courses by subject | Universities500" description={`${subs.length} subjects, from nursing and data science to law and architecture. Pick one to see its Bachelor's and Master's courses by destination.`} path={here} noindex={!PUBLISH} current="courses">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/courses/">Course search</a><span aria-hidden="true">/</span>Subjects</nav>
+  <div class="q-head">
+    <h1>Browse courses by subject</h1>
+    <p>{subs.length} subjects across {items.length.toLocaleString('en-GB')} courses. A course is placed in a subject by the words in its title, and it can sit in more than one. Nothing is ranked.</p>
+    <p><a class="btn" href="/courses/">Search all courses</a></p>
+  </div>
+  {groups.map((g) => (
+    <section class="sec" aria-labelledby={`g-${g.id}`}>
+      <h2 id={`g-${g.id}`}>{g.name}</h2>
+      <ul class="uni-list">
+        {g.list.map((s) => <li><a href={href(s)}>{s.name}</a> <span class="muted">{s.count}</span></li>)}
+      </ul>
+    </section>
+  ))}
+</Base>

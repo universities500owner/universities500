@@ -4,14 +4,22 @@ import data from '../data/courses.json';
 import gate from '../data/course_publish.json';
 import { all, countryName } from './data.js';
 import { fmtIso } from './when.js';
+import subjectDef from '../data/subjects.json';
+import { compile, subjectsOf } from './subjects.js';
 
 export const PUBLISH = gate.publish === true;
 export const CHECK = 'Check the official page';
 const uniBySlug = new Map(all.map((u) => [u.slug, u]));
 
-// Every course gets its university and destination. A course whose university is not in the list is left out rather than guessed.
+// The subject list (src/data/subjects.json), ready to match course names. No AI: a course gets a subject when its name contains the subject's words.
+export const SUBJECTS = compile(subjectDef);
+
+// Every course gets its university, destination and subjects. A course whose university is not in the list is left out rather than guessed.
 export const items = PUBLISH
-  ? data.items.filter((i) => uniBySlug.has(i.uni)).map((i) => ({ ...i, country: uniBySlug.get(i.uni).country, uniName: uniBySlug.get(i.uni).name }))
+  ? data.items.filter((i) => uniBySlug.has(i.uni)).map((i) => {
+    const u = uniBySlug.get(i.uni);
+    return { ...i, country: u.country, uniName: u.name, sj: subjectsOf(SUBJECTS, i, u.name) };
+  })
   : [];
 export const generatedAt = data.generatedAt;
 export const total = items.length;
@@ -63,3 +71,14 @@ export const universitiesWithCourses = () => {
   for (const i of items) n.set(i.uni, (n.get(i.uni) || 0) + 1);
   return [...n].map(([slug, count]) => ({ u: uniBySlug.get(slug), count })).sort((a, b) => a.u.name.localeCompare(b.u.name));
 };
+
+// Subjects that have at least one course, in the order of the subject file, each with how many courses it holds.
+export const subjectList = () => {
+  const n = new Map();
+  for (const i of items) for (const id of i.sj) n.set(id, (n.get(id) || 0) + 1);
+  return SUBJECTS.subjects.filter((s) => n.has(s.id)).map((s) => ({ id: s.id, name: s.name, group: s.group, also: s.also, count: n.get(s.id) }));
+};
+// Below this many courses a subject has no page of its own; the search still finds it.
+export const SUBJECT_PAGE_MIN = 8;
+export const subjectGroups = () => SUBJECTS.groups;
+export const coursesIn = (id) => items.filter((i) => i.sj.includes(id));
