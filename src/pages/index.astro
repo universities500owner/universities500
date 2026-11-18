@@ -220,6 +220,9 @@ const ld = [
     @media (max-width: 560px) {
       .home-v2 .tgroup { padding: 1.75rem 0 2rem; }
       .home-v2 .tgroup-h { font-size: 2.1rem; margin-bottom: 1.1rem; }
+      /* Each card is cut off from the next by a thick line in the band blue. */
+      .home-v2 .tiles { gap: 5px; margin-inline: -5px; border: 5px solid #00338D; background: #00338D; }
+      .home-v2 .tile, .home-v2 .tile:hover { border: 0; }
       .home-v2 .tile { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); column-gap: 0.85rem; align-items: center; align-content: start; padding: 1.15rem 1.1rem 0.95rem 1.25rem; }
       .home-v2 .tile::before { content: ''; position: absolute; left: 0; top: 1.15rem; width: 0.4rem; height: 2.6rem; background: #60EBD8; }
       .home-v2 .tile-ico { width: 2.6rem; height: 2.6rem; margin: 0; }
