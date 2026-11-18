@@ -194,8 +194,8 @@ const ld = [
     .home-v2 .tile:focus-within { outline: 3px solid #1E49E2; outline-offset: -4px; }
     .home-v2 .tile-wide { grid-column: 1 / -1; }
     @media (min-width: 1000px) { .home-v2 .tile-half { grid-column: span 2; } }
-    /* Circle icon in brand purple, as on KPMG's cards. */
-    .home-v2 .tile-ico { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border: 1.5px solid #7213EA; border-radius: 50%; color: #7213EA; margin-bottom: 1.15rem; }
+    /* Circle icon in theme blue. */
+    .home-v2 .tile-ico { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border: 1.5px solid #1E49E2; border-radius: 50%; color: #1E49E2; margin-bottom: 1.15rem; }
     .home-v2 .tile-ico svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
     /* A mint bar on the card edge marks the title. */
     .home-v2 .tile-title { margin: 0 0 0.8rem -1.6rem; padding-left: 1.2rem; border-left: 0.4rem solid #60EBD8; font-family: var(--display); font-weight: 700; font-size: clamp(1.45rem, 2.1vw, 1.75rem); line-height: 1.15; letter-spacing: -0.01em; }
@@ -216,11 +216,20 @@ const ld = [
     .home-v2 .tile-stat { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; max-width: none; margin: auto 0 0; padding-top: 0.85rem; border-top: 1px solid #D3D9EF; font-size: 1.05rem; font-weight: 700; line-height: 1.3; color: #1E49E2; }
     .home-v2 .tile-stat svg { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.15s; }
     .home-v2 .tile:hover .tile-stat svg { transform: translateX(4px); }
+    /* Phones: icon and title share one row, the mint bar runs along that row, and everything is tighter. */
     @media (max-width: 560px) {
-      .home-v2 .tile { padding: 1.4rem 1.25rem 1.15rem; }
-      .home-v2 .tile-title { margin-left: -1.25rem; padding-left: 0.85rem; }
-      .home-v2 .tile-ico { margin-bottom: 0.9rem; }
-      .home-v2 .tile-txt { margin-bottom: 1rem; }
+      .home-v2 .tgroup { padding: 1.75rem 0 2rem; }
+      .home-v2 .tgroup-h { font-size: 2.1rem; margin-bottom: 1.1rem; }
+      .home-v2 .tile { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); column-gap: 0.85rem; align-items: center; align-content: start; padding: 1.15rem 1.1rem 0.95rem 1.25rem; }
+      .home-v2 .tile::before { content: ''; position: absolute; left: 0; top: 1.15rem; width: 0.4rem; height: 2.6rem; background: #60EBD8; }
+      .home-v2 .tile-ico { width: 2.6rem; height: 2.6rem; margin: 0; }
+      .home-v2 .tile-ico svg { width: 1.2rem; height: 1.2rem; }
+      .home-v2 .tile-title { margin: 0; padding: 0; border-left: 0; font-size: 1.45rem; line-height: 1.12; }
+      .home-v2 .tile-txt, .home-v2 .tile-chips, .home-v2 .tile-tips, .home-v2 .tile-stat { grid-column: 1 / -1; }
+      .home-v2 .tile-txt { font-size: 1rem; line-height: 1.5; margin: 0.7rem 0 0.8rem; }
+      .home-v2 .tile-chips { margin: 0 0 0.8rem; }
+      .home-v2 .tile-tips { margin-bottom: 0.8rem; }
+      .home-v2 .tile-stat { margin-top: 0; padding-top: 0.7rem; font-size: 1rem; }
     }
     .home-v2 .trust { margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--muted); max-width: 70ch; line-height: 1.55; }
     .home-v2 .trust a { color: var(--accent); }
