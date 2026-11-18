@@ -8,7 +8,6 @@ import { PUBLISH as INT_ON, items as intItems } from '../lib/internships.js';
 import { PUBLISH as CRS_ON, items as crsItems, total as crsTotal } from '../lib/courses.js';
 import { PUBLISH as MBA_ON, items as mbaItems } from '../lib/mba.js';
 import { exams } from '../lib/exams.js';
-import { SOP, LOR } from '../lib/prep.js';
 
 // Decorative rings, drawn once at build time.
 const rings = Array.from({ length: 26 }, (_, i) => ({
@@ -32,10 +31,9 @@ const groups = [
     { id: 'mba', name: 'MBA Explorer', text: "MBA, master's in management and Executive MBA, by the experience you have.", href: '/mba/', stat: MBA_ON && mbaItems.length ? `${plural(mbaItems.length, 'programme', 'programmes')} so far` : 'Coming soon' },
   ] },
   { id: 'prepare', title: 'Get application-ready', tiles: [
-    { id: 'english', half: true, name: 'English tests', text: 'IELTS, TOEFL or PTE: which to sit, and how to prepare.', href: '/english-test/', stat: 'Guide', chips: ['IELTS', 'TOEFL', 'PTE'] },
-    { id: 'exams', half: true, name: 'Study abroad exams', text: 'SAT, GRE, GMAT and more: which one your level and country need.', href: '/exams/', stat: plural(exams.length, 'exam guide', 'exam guides'), chips: ['SAT', 'GRE', 'GMAT'] },
-    { id: 'sop', wide: true, name: 'SOP and LOR writing tips', text: 'The two parts of an application nobody can write for you, and the two that decide most borderline cases.', href: '/application-prep/#h-letters', stat: 'Read the full steps',
-      tips: [...SOP.slice(0, 2), ...LOR.slice(0, 2)] },
+    { id: 'english', name: 'English tests', text: 'IELTS, TOEFL or PTE: which to sit, and how to prepare.', href: '/english-test/', stat: 'Guide', chips: ['IELTS', 'TOEFL', 'PTE'] },
+    { id: 'exams', name: 'Study abroad exams', text: 'SAT, GRE, GMAT and more: which one your level and country need.', href: '/exams/', stat: plural(exams.length, 'exam guide', 'exam guides'), chips: ['SAT', 'GRE', 'GMAT'] },
+    { id: 'sop', wide: true, name: 'SOP and LOR writing tips', text: 'The two parts of an application nobody can write for you, and the two that decide most borderline cases.', href: '/application-prep/#h-letters' },
   ] },
   { id: 'fund', title: 'Fund it and get there', tiles: [
     { id: 'scholarships', name: 'Scholarships', text: 'Open to international students, with value, deadline and the official page.', href: '/scholarships/', stat: SCH_ON && schItems.length ? plural(schItems.length, 'scholarship', 'scholarships') : 'Where to look' },
@@ -113,7 +111,7 @@ const ld = [
             <h3 class="tgroup-h">{g.title}</h3>
             <ul class="tiles">
               {g.tiles.map((t) => (
-                <li class={`tile${t.wide ? ' tile-wide' : ''}${t.half ? ' tile-half' : ''}`}>
+                <li class={`tile${t.wide ? ' tile-wide' : ''}`}>
                   <span class="tile-ico" aria-hidden="true">
                   {t.id === 'courses' && <svg viewBox="0 0 24 24"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.5v13c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2v-13c-3.6 0-6.2.5-8 2z" /><path d="M12 6.5v13" /></svg>}
                   {t.id === 'universities' && <svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5" /><path d="M5 10.5V18M9.5 10.5V18M14.5 10.5V18M19 10.5V18" /><path d="M3 20h18" /></svg>}
@@ -130,8 +128,7 @@ const ld = [
                   <h4 class="tile-title"><a class="tile-name" href={t.href}>{t.name}</a></h4>
                   <p class="tile-txt">{t.text}</p>
                   {t.chips && <ul class="tile-chips">{t.chips.map((c) => <li>{c}</li>)}</ul>}
-                  {t.tips && <ul class="tile-tips">{t.tips.map((x) => <li>{x}</li>)}</ul>}
-                  <p class="tile-stat"><span>{t.stat}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" /></svg></p>
+                  {t.stat && <p class="tile-stat"><span>{t.stat}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" /></svg></p>}
                 </li>
               ))}
             </ul>
@@ -184,7 +181,8 @@ const ld = [
     .home-v2 .tile:hover { background-color: #F1F5FD; }
     .home-v2 .tile:focus-within { outline: 3px solid #1E49E2; outline-offset: -4px; }
     .home-v2 .tile-wide { grid-column: 1 / -1; }
-    @media (min-width: 1000px) { .home-v2 .tile-half { grid-column: span 2; } }
+    /* Application-ready has three cards: three equal columns on desktop, the SOP card on its own row below that. */
+    @media (min-width: 1000px) { .home-v2 .grp-prepare .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } .home-v2 .grp-prepare .tile-wide { grid-column: auto; } }
     /* Circle icon in theme blue. */
     .home-v2 .tile-ico { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border: 1.5px solid #1E49E2; border-radius: 50%; color: #1E49E2; margin-bottom: 1.15rem; }
     .home-v2 .tile-ico svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
@@ -197,9 +195,6 @@ const ld = [
     .home-v2 .tile-txt { font-size: 1.05rem; line-height: 1.6; color: #333; margin: 0 0 1.25rem; max-width: none; }
     .home-v2 .tile-chips { list-style: none; margin: 0 0 1.25rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .home-v2 .tile-chips li { font-size: 0.9rem; font-weight: 700; border: 1px solid #1E49E2; border-radius: 0; padding: 0.12rem 0.7rem; color: #1E49E2; background: transparent; }
-    .home-v2 .tile-tips { list-style: none; margin: 0 0 1.25rem; padding-left: 0; columns: 2; column-gap: 2.5rem; font-size: 1.02rem; line-height: 1.55; color: #333; }
-    @media (max-width: 700px) { .home-v2 .tile-tips { columns: 1; } }
-    .home-v2 .tile-tips li { margin: 0 0 0.7rem; break-inside: avoid; }
     /* Bottom of every card: a hairline, then the count and a chevron, like KPMG's "Explore". */
     .home-v2 .tile-stat { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; max-width: none; margin: auto 0 0; padding-top: 0.85rem; border-top: 1px solid #D3D9EF; font-size: 1.05rem; font-weight: 700; line-height: 1.3; color: #1E49E2; }
     .home-v2 .tile-stat svg { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.15s; }
@@ -220,11 +215,9 @@ const ld = [
       .home-v2 .tile:not(.tile-wide) .tile-chips { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
       .home-v2 .tile:not(.tile-wide) .tile-stat { grid-column: 1 / -1; align-self: end; margin: 0.4rem 0 0; padding-top: 0.45rem; font-size: 0.85rem; line-height: 1.25; }
       .home-v2 .tile:not(.tile-wide) .tile-stat svg { display: none; }
-      /* The SOP and LOR tips keep a full-width tile. */
       .home-v2 .tile-wide { padding: 1.15rem 1.1rem 0.95rem; }
       .home-v2 .tile-wide .tile-title { margin-left: -1.1rem; font-size: 1.45rem; }
       .home-v2 .tile-wide .tile-txt { font-size: 1rem; line-height: 1.5; margin: 0 0 0.9rem; }
-      .home-v2 .tile-wide .tile-tips { font-size: 1rem; }
       .home-v2 .tile-wide .tile-stat { font-size: 1rem; }
     }
     .home-v2 .trust { margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--muted); max-width: 70ch; line-height: 1.55; }
