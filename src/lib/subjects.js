@@ -22,6 +22,14 @@ const regex = (list) => {
   return parts.length ? new RegExp('\\b(?:' + parts.join('|') + ')') : null;
 };
 
+// What a visitor can type to name a subject: its full name, its first part ("nursing" for "Nursing and midwifery"), and the words in "also".
+export const aliasOf = (name, also) => [...new Set([norm(name), norm(name.split(/ and |, | \(/)[0]), ...(also || []).map(norm)])];
+
+// Subjects as the browser gets them: [id, name, also] with no matching words. Enough to name a subject, not to place a course in one.
+export const compileLite = (list) => ({
+  subjects: list.map(([id, name, also], index) => ({ id, name, index, alias: aliasOf(name, also) })),
+});
+
 // Turn the JSON definition into ready-to-use subjects. Order is kept.
 export function compile(def) {
   const subjects = def.subjects.map((s, index) => ({
@@ -34,8 +42,7 @@ export function compile(def) {
     any: regex(s.any),
     not: regex(s.not),
     key: norm(s.name),
-    // what a visitor can type to name it: the full name, its first part ("nursing" for "Nursing and midwifery"), and the words in "also"
-    alias: [...new Set([norm(s.name), norm(s.name.split(/ and |, | \(/)[0]), ...(s.also || []).map(norm)])],
+    alias: aliasOf(s.name, s.also),
   }));
   const byId = new Map(subjects.map((s) => [s.id, s]));
   return { subjects, byId, groups: def.groups };
