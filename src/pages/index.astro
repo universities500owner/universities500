@@ -171,24 +171,26 @@ const ld = [
     .home-v2 .ask-try { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; position: relative; z-index: 4; max-width: 56rem; }
     .home-v2 .sx-q { display: inline-flex; align-items: center; text-decoration: none; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 0.32rem 0.85rem; font-size: 0.92rem; color: var(--ink); }
     .home-v2 .sx-q:hover { border-color: var(--ink); }
-    /* One deep navy wall in three tones. Colour is kept for the accent of each group: arrow, rule, hover underline and the count. */
+    /* KPMG-style professional blues: dark blue band, panels stepping along a blue, cobalt and violet ramp. Accent is light blue. */
     .home-v2 .tiles-band { padding: 0; border-top: 0; }
-    .home-v2 .tgroup { --on: #fff; --soft: rgba(255, 255, 255, 0.84); --rule: rgba(255, 255, 255, 0.17); --tint: rgba(0, 12, 22, 0.2); --lift: rgba(255, 255, 255, 0.06);
+    .home-v2 .tgroup { --on: #fff; --soft: rgba(255, 255, 255, 0.88); --rule: rgba(255, 255, 255, 0.2); --acc: #ACEAFF; --bar: #00B8F5;
       color: var(--on); padding: clamp(2.25rem, 5vw, 3.5rem) 0 clamp(2.25rem, 5vw, 3.25rem);
-      background: repeating-radial-gradient(ellipse 70% 150% at 100% 120%, transparent 0 17px, rgba(255, 255, 255, 0.04) 17px 18px), linear-gradient(135deg, var(--band-a), var(--band-b)); }
-    .home-v2 .grp-find { --acc: #55BDFF; --band-a: #003455; --band-b: #00263F; }
-    .home-v2 .grp-prepare { --acc: #8FD68B; --band-a: #002B46; --band-b: #001B2E; }
-    .home-v2 .grp-fund { --acc: #FFB000; --band-a: #00203A; --band-b: #001522; }
+      background: repeating-radial-gradient(ellipse 70% 150% at 100% 120%, transparent 0 17px, rgba(255, 255, 255, 0.035) 17px 18px), #0C233C; }
+    .home-v2 .grp-find { --c1: #00338D; --c2: #0A3AA9; --c3: #1442C6; --c4: #1E49E2; }
+    .home-v2 .grp-prepare { --c1: #1E49E2; --c2: #2C3BC4; --c3: #3A2FA6; --c4: #3A2FA6; }
+    .home-v2 .grp-fund { --c1: #00338D; --c2: #002D7D; --c3: #00276C; --c4: #001F57; }
     .home-v2 .tgroup-h { font-size: clamp(2.1rem, 4.8vw, 3.2rem); line-height: 1.04; letter-spacing: -0.025em; font-weight: 600; color: var(--on); max-width: none; margin: 0 0 clamp(1.25rem, 3vw, 1.9rem); }
-    .home-v2 .tgroup-h::before { content: ''; display: block; width: 3rem; height: 0.3rem; border-radius: 2px; background: var(--acc); margin-bottom: 1rem; }
+    .home-v2 .tgroup-h::before { content: ''; display: block; width: 3rem; height: 0.3rem; border-radius: 2px; background: var(--bar); margin-bottom: 1rem; }
     .home-v2 .tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); grid-template-columns: repeat(2, minmax(0, 1fr)); }
     @media (min-width: 1000px) { .home-v2 .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
     @media (max-width: 560px) { .home-v2 .tiles { grid-template-columns: minmax(0, 1fr); } }
-    .home-v2 .tile, .home-v2 .tile:hover { border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); border-radius: 0; background-color: transparent; }
-    .home-v2 .tile { position: relative; display: flex; flex-direction: column; gap: 0; min-height: 0; padding: 1.9rem 1.6rem 1.6rem; color: var(--on); transition: background-color 0.15s; }
-    .home-v2 .tile:nth-child(even) { background-color: var(--tint); }
-    .home-v2 .tile:hover { background-color: var(--lift); }
-    .home-v2 .tile:nth-child(even):hover { background-color: rgba(0, 12, 22, 0.1); }
+    .home-v2 .tile, .home-v2 .tile:hover { border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); border-radius: 0; }
+    .home-v2 .tile { position: relative; display: flex; flex-direction: column; gap: 0; min-height: 0; padding: 1.9rem 1.6rem 1.6rem; color: var(--on); transition: background-image 0.15s; }
+    .home-v2 .tile:nth-child(1) { background-color: var(--c1); }
+    .home-v2 .tile:nth-child(2) { background-color: var(--c2); }
+    .home-v2 .tile:nth-child(3) { background-color: var(--c3); }
+    .home-v2 .tile:nth-child(4) { background-color: var(--c4); }
+    .home-v2 .tile:hover { background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)); }
     .home-v2 .tile:focus-within { outline: 3px solid var(--acc); outline-offset: -6px; }
     .home-v2 .tile-wide { grid-column: 1 / -1; }
     @media (min-width: 1000px) { .home-v2 .tile-half { grid-column: span 2; } }
