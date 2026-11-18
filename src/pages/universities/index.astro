@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import { all, countries } from '../../lib/data.js';
@@ -10,9 +11,7 @@ import { all, countries } from '../../lib/data.js';
   path="/universities/"
   current="universities"
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Universities</nav>
-  <h1>All universities</h1>
-  <p class="lede">Search by name or filter by country. Open a university to see its facts and sources.</p>
+  <PageHead slot="head" crumbs={[['Universities', null]]} title="All universities" lede="Search by name or filter by country. Open a university to see its facts and sources." />
 
   <div class="filterbar">
     <label class="skip" for="q">Search by name</label>

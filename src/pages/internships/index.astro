@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import InternList from '../../components/InternList.astro';
@@ -22,11 +23,7 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
   noindex={hiddenFromSearch(path)}
   current="internships"
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Internships</nav>
-  <div class="q-head">
-    <h1>Find an internship abroad</h1>
-    <p>Internships, co-ops and placements in the countries you can study in. Search by role, company or city, and narrow by destination or type. Every listing opens on the employer's own page.</p>
-  </div>
+  <PageHead slot="head" crumbs={[['Internships', null]]} title="Find an internship abroad" lede="Internships, co-ops and placements in the countries you can study in. Search by role, company or city, and narrow by destination or type. Every listing opens on the employer's own page." />
 
   {!live && (
   <section class="sec" aria-labelledby="h-dest">

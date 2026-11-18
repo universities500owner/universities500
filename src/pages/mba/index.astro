@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import MbaRow from '../../components/MbaRow.astro';
 import Icons from '../../components/Icons.astro';
 import { PUBLISH, items, generatedAt, fmtIso, filterLists, TRACKS, tracksOf, trackCount, KIND, expChip, val, feeCard, NOT_STATED, countryName } from '../../lib/mba.js';
@@ -33,14 +34,10 @@ const data = JSON.stringify({
   noindex={!live}
   current="mba"
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>MBA Explorer</nav>
+  <PageHead slot="head" crumbs={[['MBA Explorer', null]]} title="MBA Explorer" lede={live ? "Find an MBA, a master's in management or an Executive MBA that fits the work experience you have. Every fact is copied from the school's own page, with the sentence it came from. We show no rankings." : 'This page is not open yet.'} />
 
   {live ? (
     <>
-    <div class="q-head">
-      <h1>MBA Explorer</h1>
-      <p>Find an MBA, a master's in management or an Executive MBA that fits the work experience you have. Every fact is copied from the school's own page, with the sentence it came from. We show no rankings.</p>
-    </div>
 
     <section class="sec" aria-labelledby="h-find">
       <h2 id="h-find" class="sr-only">Search</h2>
@@ -115,10 +112,6 @@ const data = JSON.stringify({
     </>
   ) : (
     <>
-    <div class="q-head">
-      <h1>MBA Explorer</h1>
-      <p>This page is not open yet.</p>
-    </div>
     </>
   )}
 </Base>
