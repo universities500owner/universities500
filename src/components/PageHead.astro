@@ -1,0 +1,18 @@
+---
+// The blue band at the top of an inner page: breadcrumb, title and one line of introduction.
+// Passed to Base as slot="head"; Base then puts the rest of the page on the pale body band below it.
+// crumbs: [[label, href|null], ...] after "Home". lede may hold simple markup written in this repo (never user text).
+const { crumbs = [], title, lede = '' } = Astro.props;
+---
+<section class="pg-head">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      {crumbs.map(([label, href]) => (
+        <Fragment><span aria-hidden="true">/</span>{href ? <a href={href}>{label}</a> : label}</Fragment>
+      ))}
+    </nav>
+    <h1>{title}</h1>
+    {lede && <p class="pg-lede" set:html={lede} />}
+  </div>
+</section>

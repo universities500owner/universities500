@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import CourseRow from '../../components/CourseRow.astro';
 import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
@@ -49,14 +50,10 @@ const crsData = JSON.stringify({
   noindex={live ? false : hiddenFromSearch(path)}
   current="courses"
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Course search</nav>
+  <PageHead slot="head" crumbs={[['Course search', null]]} title="Course search" lede={live ? `Bachelor's and Master's courses that are full-time on campus and open to international students, read from each university's own course page. Compare up to three. No scoring here: <a href="/course-fitment/">course fitment</a> does that.` : `Filter the catalogue yourself, then put up to three courses side by side. No scoring here. That is what <a href="/course-fitment/">course fitment</a> is for.`} />
 
   {live ? (
     <>
-    <div class="q-head">
-      <h1>Course search</h1>
-      <p>Bachelor's and Master's courses that are full-time on campus and open to international students, read from each university's own course page. Compare up to three. No scoring here: <a href="/course-fitment/">course fitment</a> does that.</p>
-    </div>
 
     <section class="sec subj" aria-labelledby="h-find">
       <h2 id="h-find">What do you want to study?</h2>
@@ -160,10 +157,6 @@ const crsData = JSON.stringify({
     </>
   ) : (
     <>
-    <div class="q-head">
-      <h1>Course search</h1>
-      <p>Filter the catalogue yourself, then put up to three courses side by side. No scoring here. That is what <a href="/course-fitment/">course fitment</a> is for.</p>
-    </div>
 
     <div class="searchlay">
       <aside class="tcard">

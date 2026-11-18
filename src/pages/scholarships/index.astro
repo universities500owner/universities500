@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import { hiddenFromSearch } from '../../lib/noindex.js';
@@ -26,11 +27,7 @@ const updated = generatedAt ? fmtIso(generatedAt.slice(0, 10)) : '';
   noindex={hiddenFromSearch(path)}
   current="scholarships"
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Scholarships</nav>
-  <div class="q-head">
-    <h1>Scholarship search</h1>
-    <p>Scholarships open to international students on Bachelor's and Master's courses. Every entry links to the official page it was read from.</p>
-  </div>
+  <PageHead slot="head" crumbs={[['Scholarships', null]]} title="Scholarship search" lede="Scholarships open to international students on Bachelor's and Master's courses. Every entry links to the official page it was read from." />
 
   {PUBLISH && rows.length > 0 ? (
     <>
