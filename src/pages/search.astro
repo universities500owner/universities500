@@ -2,27 +2,28 @@
 import Base from '../layouts/Base.astro';
 import { hiddenFromSearch } from '../lib/noindex.js';
 const path = '/search/';
-const tries = ['visa', 'scholarships', 'Germany', 'IELTS', 'work rights', 'budget'];
+const tries = ['masters in nursing in canada', 'data science under 25000 AUD', 'scholarships for engineering in germany', 'bachelor business UK IELTS 6', 'student visa canada', 'work rights ireland'];
 ---
 <Base
   title="Search Universities500"
-  description="Search the guides, tools and universities on Universities500."
+  description="Ask in plain words, for example masters in nursing in Canada. Search courses, scholarships, internships, universities and guides on Universities500."
   path={path}
   noindex={hiddenFromSearch(path)}
 >
   <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Search</nav>
   <div class="q-head">
     <h1>Search</h1>
-    <p>Look up a country, a topic or a university. Search runs on this device. What you type is not sent anywhere or saved.</p>
+    <p>Ask in plain words: a subject, a level, a country, a fee limit or an IELTS score. Search runs on this device. What you type is not sent anywhere or saved.</p>
   </div>
   <form class="ss-form" id="ss-form" role="search">
-    <input id="ss-q" type="search" name="q" placeholder="Try “student visa Canada”" aria-label="Search the site" autocomplete="off" />
+    <input id="ss-q" type="search" name="q" placeholder="Try “masters in nursing in canada”" aria-label="Search the site" autocomplete="off" />
     <button class="btn" type="submit">Search</button>
   </form>
-  <ul class="ss-try" aria-label="Try searching for">
+  <ul class="ss-try" id="ss-try-top" aria-label="Try searching for">
     {tries.map((t) => <li><a href={`/search/?q=${encodeURIComponent(t)}`}>{t}</a></li>)}
   </ul>
+  <div class="ss-says" id="ss-says"></div>
   <p class="tally" id="ss-tally" role="status"></p>
-  <ol class="ss-res" id="ss-res"></ol>
+  <div id="ss-out"></div>
   <script>import '../scripts/search.js';</script>
 </Base>

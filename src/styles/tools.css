@@ -315,6 +315,18 @@
 .ss-res small { display: block; color: var(--muted); }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ss-says { margin-top: 1rem; display: grid; gap: .4rem; }
+.ss-says p { margin: 0; }
+.ss-under { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; }
+.ss-under .segs { display: flex; flex-wrap: wrap; gap: .4rem; }
+.ss-fix { font-size: .95rem; }
+.ss-sec { margin: 1.75rem 0 0; }
+.ss-sec h2 { font-size: 1.3rem; margin: 0 0 .25rem; }
+.ss-sec .ss-res { margin: .6rem 0; }
+.ss-narrow { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; margin: .35rem 0 0; padding: 0; }
+.ss-narrow a.seg { text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; }
+.ss-narrow-l { margin: .9rem 0 0; }
+.ss-more { margin: 1.25rem 0 0; }
 .ss-try { display: flex; gap: .5rem; flex-wrap: wrap; margin: 1rem 0 0; padding: 0; list-style: none; }
 .ss-try a { display: inline-block; padding: .3rem .8rem; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--ink); font-size: .92rem; }
 .ss-try a:hover { border-color: var(--ink); }

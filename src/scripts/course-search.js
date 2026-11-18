@@ -3,7 +3,7 @@
 // and builds the rows a visitor can see, so a long list does not mean a heavy page. Nothing is sent anywhere: saved courses stay in this browser.
 import { $, fill } from './lib.js';
 import { wireSaves, isSaved } from './saved.js';
-import { norm, exactSubject, suggestSubjects } from '../lib/subjects.js';
+import { exactSubject, suggestSubjects, compileLite } from '../lib/subjects.js';
 
 const list = $('crs-list');
 const q = $('crs-q'), u = $('crs-u'), f = $('crs-f'), e = $('crs-e'), m = $('crs-m'), o = $('crs-o');
@@ -21,7 +21,7 @@ const countries = new Set();  // empty means all countries
 const data = JSON.parse($('crs-data').textContent);
 const BOOKMARK = $('crs-bookmark').innerHTML;
 // Subjects: the same words the site used to give each course its subjects. `alias` is what a visitor can type to name one.
-const compiled = { subjects: data.S.map(([id, name, group, also], index) => ({ id, name, group, index, alias: [norm(name), ...also.map(norm)] })) };
+const compiled = compileLite(data.S.map(([id, name, , also]) => [id, name, also]));
 const rows = data.C.map(([uni, slug, name, degree, lv, level, field, ln, years, feeText, ieText, score, st, months, sjs]) => {
   const [uniName, country] = data.U[uni];
   const countryName = data.K[country] || country;
