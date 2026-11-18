@@ -41,7 +41,7 @@ const groups = [
     { id: 'scholarships', name: 'Scholarships', text: 'Open to international students, with value, deadline and the official page.', href: '/scholarships/', stat: SCH_ON && schItems.length ? plural(schItems.length, 'scholarship', 'scholarships') : 'Where to look' },
     { id: 'internships', name: 'Internships', text: 'Internships, co-ops and placements, each opening on the employer’s page.', href: '/internships/', stat: INT_ON && intItems.length ? plural(intItems.length, 'listing', 'listings') : 'Where to look' },
     { id: 'loan', name: 'Education loan guidance', text: 'RBI rules, collateral, lenders, and what a loan costs over its life.', href: '/education-loan-guide/', stat: 'Guide and calculator' },
-    { id: 'visa', name: 'Visa guidance', text: 'What a student visa asks for in each destination, and what you have.', href: '/visa-readiness/', stat: 'Checklist by destination' },
+    { id: 'visa', name: 'Visa guidance', text: 'What a student visa asks for in each destination, and what you have.', href: '/visa-readiness/', stat: 'Visa checklist' },
   ] },
 ];
 
@@ -114,25 +114,33 @@ const ld = [
             <ul class="tiles">
               {g.tiles.map((t) => (
                 <li class={`tile${t.wide ? ' tile-wide' : ''}${t.half ? ' tile-half' : ''}`}>
-                  <div class="tile-head">
-                    <span class="tile-go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" /></svg></span>
-                    <a class="tile-name" href={t.href}>{t.name}</a>
-                  </div>
-                  <div class="tile-body">
-                    <p class="tile-txt">{t.text}</p>
-                    {t.chips && <ul class="tile-chips">{t.chips.map((c) => <li>{c}</li>)}</ul>}
-                    {t.tips && (
-                      <div class="tile-tips">
-                        {t.tips.map(([h, list]) => (
-                          <div>
-                            <h4>{h}</h4>
-                            <ul>{list.map((x) => <li>{x}</li>)}</ul>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                    <p class="tile-stat">{t.stat}</p>
-                  </div>
+                  <span class="tile-ico" aria-hidden="true">
+                  {t.id === 'courses' && <svg viewBox="0 0 24 24"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.5v13c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2v-13c-3.6 0-6.2.5-8 2z" /><path d="M12 6.5v13" /></svg>}
+                  {t.id === 'universities' && <svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5" /><path d="M5 10.5V18M9.5 10.5V18M14.5 10.5V18M19 10.5V18" /><path d="M3 20h18" /></svg>}
+                  {t.id === 'destinations' && <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M3.5 12h17M12 3.5c2.4 2.4 3.4 5.2 3.4 8.5s-1 6.1-3.4 8.5c-2.4-2.4-3.4-5.2-3.4-8.5s1-6.1 3.4-8.5z" /></svg>}
+                  {t.id === 'mba' && <svg viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2" /><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17" /></svg>}
+                  {t.id === 'english' && <svg viewBox="0 0 24 24"><path d="M4 5.5h16v10H12l-4.5 3.5v-3.5H4z" /><path d="m8.5 12.5 2-5 2 5M9.2 11h2.6" /></svg>}
+                  {t.id === 'exams' && <svg viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16" rx="2" /><path d="M9 4.5V3.5h6v1M8.5 12.5l2 2 4-4.5" /></svg>}
+                  {t.id === 'scholarships' && <svg viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="5" /><path d="m9 14 -1.5 6.5 4.5-2.5 4.5 2.5L15 14" /></svg>}
+                  {t.id === 'internships' && <svg viewBox="0 0 24 24"><rect x="4.5" y="3.5" width="15" height="17" rx="2" /><circle cx="12" cy="9.5" r="2.2" /><path d="M8.5 16c.5-2 1.8-3 3.5-3s3 1 3.5 3" /></svg>}
+                  {t.id === 'loan' && <svg viewBox="0 0 24 24"><rect x="3" y="6.5" width="18" height="11" rx="2" /><circle cx="12" cy="12" r="2.6" /><path d="M6.5 9.5v.01M17.5 14.5v.01" /></svg>}
+                  {t.id === 'visa' && <svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2" /><circle cx="12" cy="10.5" r="3" /><path d="M9 16.5h6" /></svg>}
+                  {t.id === 'sop' && <svg viewBox="0 0 24 24"><path d="M6 3.5h8.5L19 8v12.5H6z" /><path d="M14 3.5V8h5M9 12.5h7M9 16h5" /></svg>}
+                  </span>
+                  <h4 class="tile-title"><a class="tile-name" href={t.href}>{t.name}</a></h4>
+                  <p class="tile-txt">{t.text}</p>
+                  {t.chips && <ul class="tile-chips">{t.chips.map((c) => <li>{c}</li>)}</ul>}
+                  {t.tips && (
+                    <div class="tile-tips">
+                      {t.tips.map(([h, list]) => (
+                        <div>
+                          <h5>{h}</h5>
+                          <ul>{list.map((x) => <li>{x}</li>)}</ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <p class="tile-stat"><span>{t.stat}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6" /></svg></p>
                 </li>
               ))}
             </ul>
@@ -171,55 +179,48 @@ const ld = [
     .home-v2 .ask-try { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; position: relative; z-index: 4; max-width: 56rem; }
     .home-v2 .sx-q { display: inline-flex; align-items: center; text-decoration: none; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 0.32rem 0.85rem; font-size: 0.92rem; color: var(--ink); }
     .home-v2 .sx-q:hover { border-color: var(--ink); }
-    /* Professional blues on white: panels alternate a solid KPMG-palette blue with a white one, so the page stays light. */
+    /* KPMG-style sections: a solid KPMG-blue band with a white heading and flush white cards, alternating with a pale band. */
     .home-v2 .tiles-band { padding: 0; border-top: 0; }
-    .home-v2 .tgroup { padding: clamp(2.25rem, 5vw, 3.25rem) 0 clamp(2.25rem, 5vw, 3.25rem); background: #F4F8FC; color: #0C233C; border-top: 1px solid var(--line); }
-    .home-v2 .tgroup + .tgroup { background: #fff; }
-    .home-v2 .tgroup + .tgroup + .tgroup { background: #F4F8FC; }
-    .home-v2 .grp-find { --c1: #00338D; --c3: #1E49E2; }
-    .home-v2 .grp-prepare { --c1: #1E49E2; --c3: #1E49E2; }
-    .home-v2 .grp-fund { --c1: #1E49E2; --c3: #00338D; }
-    .home-v2 .tgroup-h { font-size: clamp(2.1rem, 4.8vw, 3.2rem); line-height: 1.04; letter-spacing: -0.025em; font-weight: 600; color: #00338D; max-width: none; margin: 0 0 clamp(1.25rem, 3vw, 1.9rem); }
-    .home-v2 .tgroup-h::before { content: ''; display: block; width: 3rem; height: 0.3rem; border-radius: 2px; background: #00B8F5; margin-bottom: 1rem; }
-    .home-v2 .tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .home-v2 .tgroup { padding: clamp(2.25rem, 5vw, 3.5rem) 0 clamp(2.5rem, 5vw, 3.75rem); background: #F4F8FC; color: #333; border-top: 1px solid var(--line); }
+    .home-v2 .grp-find, .home-v2 .grp-fund { background: #00338D; border-top: 0; }
+    .home-v2 .tgroup-h { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; color: #00338D; max-width: none; margin: 0 0 clamp(1.25rem, 3vw, 2rem); }
+    .home-v2 .grp-find .tgroup-h, .home-v2 .grp-fund .tgroup-h { color: #fff; }
+    .home-v2 .tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid #D3D9EF; border-left: 1px solid #D3D9EF; background: #fff; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     @media (min-width: 1000px) { .home-v2 .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
     @media (max-width: 560px) { .home-v2 .tiles { grid-template-columns: minmax(0, 1fr); } }
-    /* A panel is white by default. Odd panels take the group blue. The wide panel is a pale blue. */
-    .home-v2 .tile, .home-v2 .tile:hover { --bg: #fff; --title: #00338D; --txt: #1F3A52; --acc: #1E49E2; --edge: var(--line); --chip: rgba(0, 51, 141, 0.35); --hov: rgba(30, 73, 226, 0.07);
-      border: 0; border-right: 1px solid var(--edge); border-bottom: 1px solid var(--edge); border-radius: 0; background-color: var(--bg); color: var(--txt); }
-    .home-v2 .tile:nth-child(odd):not(.tile-wide) { --bg: var(--c1); --title: #fff; --txt: rgba(255, 255, 255, 0.92); --acc: #ACEAFF; --edge: rgba(255, 255, 255, 0.24); --chip: rgba(255, 255, 255, 0.45); --hov: rgba(255, 255, 255, 0.1); }
-    .home-v2 .tile:nth-child(3):not(.tile-wide) { --bg: var(--c3); }
-    .home-v2 .tile-wide { --bg: #E8F1FC; }
-    .home-v2 .tile { position: relative; display: flex; flex-direction: column; gap: 0; min-height: 0; padding: 1.9rem 1.6rem 1.6rem; transition: background-image 0.15s; }
-    .home-v2 .tile:hover { background-image: linear-gradient(var(--hov), var(--hov)); }
-    .home-v2 .tile:focus-within { outline: 3px solid #00B8F5; outline-offset: -6px; }
+    .home-v2 .tile, .home-v2 .tile:hover { border: 0; border-right: 1px solid #D3D9EF; border-bottom: 1px solid #D3D9EF; border-radius: 0; background-color: #fff; color: #333; }
+    .home-v2 .tile { position: relative; display: flex; flex-direction: column; gap: 0; min-height: 0; padding: 1.75rem 1.6rem 1.4rem; transition: background-color 0.15s; }
+    .home-v2 .tile:hover { background-color: #F1F5FD; }
+    .home-v2 .tile:focus-within { outline: 3px solid #1E49E2; outline-offset: -4px; }
     .home-v2 .tile-wide { grid-column: 1 / -1; }
     @media (min-width: 1000px) { .home-v2 .tile-half { grid-column: span 2; } }
-    .home-v2 .tile-head { display: flex; align-items: flex-start; gap: 0.65rem; margin-bottom: 0.85rem; }
-    .home-v2 .tile-go { flex: 0 0 auto; display: grid; place-items: center; width: 1.5rem; height: 1.5rem; margin-top: 0.15em; color: var(--acc); transition: transform 0.15s; }
-    .home-v2 .tile:hover .tile-go { transform: translateX(4px); }
-    .home-v2 .tile-go svg { width: 1.5rem; height: 1.5rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-    .home-v2 .tile-name { font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 2.4vw, 2.1rem); line-height: 1.08; letter-spacing: -0.02em; color: var(--title); text-decoration: none; text-underline-offset: 0.2em; text-decoration-thickness: 2px; text-decoration-color: var(--acc); }
+    /* Circle icon in brand purple, as on KPMG's cards. */
+    .home-v2 .tile-ico { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border: 1.5px solid #7213EA; border-radius: 50%; color: #7213EA; margin-bottom: 1.15rem; }
+    .home-v2 .tile-ico svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+    /* A mint bar on the card edge marks the title. */
+    .home-v2 .tile-title { margin: 0 0 0.8rem -1.6rem; padding-left: 1.2rem; border-left: 0.4rem solid #60EBD8; font-family: var(--display); font-weight: 700; font-size: clamp(1.45rem, 2.1vw, 1.75rem); line-height: 1.15; letter-spacing: -0.01em; }
+    .home-v2 .tile-name { color: #00338D; text-decoration: none; text-underline-offset: 0.18em; text-decoration-thickness: 2px; }
     .home-v2 .tile:hover .tile-name { text-decoration-line: underline; }
     .home-v2 .tile-name::after { content: ''; position: absolute; inset: 0; }
     .home-v2 .tile-name:focus-visible { outline: none; }
-    .home-v2 .tile-body { flex: 1 1 auto; display: flex; flex-direction: column; align-items: stretch; padding-left: 2.15rem; }
-    .home-v2 .tile-txt { font-size: 1.05rem; line-height: 1.5; color: var(--txt); margin: 0 0 1.1rem; }
-    .home-v2 .tile-chips { list-style: none; margin: 0 0 1.1rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .home-v2 .tile-chips li { font-size: 0.9rem; font-weight: 600; border: 1px solid var(--chip); border-radius: 999px; padding: 0.12rem 0.75rem; color: var(--title); background: transparent; }
-    .home-v2 .tile-tips { display: grid; gap: 1.1rem 2.25rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 1.1rem; }
+    .home-v2 .tile-txt { font-size: 1.05rem; line-height: 1.6; color: #333; margin: 0 0 1.25rem; max-width: none; }
+    .home-v2 .tile-chips { list-style: none; margin: 0 0 1.25rem; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .home-v2 .tile-chips li { font-size: 0.9rem; font-weight: 700; border: 1px solid #1E49E2; border-radius: 0; padding: 0.12rem 0.7rem; color: #1E49E2; background: transparent; }
+    .home-v2 .tile-tips { display: grid; gap: 1.1rem 2.25rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 1.25rem; }
     @media (max-width: 700px) { .home-v2 .tile-tips { grid-template-columns: minmax(0, 1fr); } }
-    .home-v2 .tile-tips h4 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; margin: 0 0 0.4rem; letter-spacing: -0.01em; color: var(--title); }
-    .home-v2 .tile-tips ul { margin: 0; padding-left: 1.1rem; font-size: 1rem; line-height: 1.5; color: var(--txt); }
+    .home-v2 .tile-tips h5 { font-family: var(--display); font-weight: 700; font-size: 1.15rem; margin: 0 0 0.4rem; color: #00338D; }
+    .home-v2 .tile-tips ul { margin: 0; padding-left: 1.1rem; font-size: 1rem; line-height: 1.55; color: #333; }
     .home-v2 .tile-tips li { margin: 0 0 0.3rem; }
-    .home-v2 .tile-tips li::marker { color: var(--acc); }
-    .home-v2 .tile-stat { max-width: none; margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--edge); font-size: 0.95rem; font-weight: 700; line-height: 1.3; color: var(--acc); }
+    .home-v2 .tile-tips li::marker { color: #1E49E2; }
+    /* Bottom of every card: a hairline, then the count and a chevron, like KPMG's "Explore". */
+    .home-v2 .tile-stat { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; max-width: none; margin: auto 0 0; padding-top: 0.85rem; border-top: 1px solid #D3D9EF; font-size: 1.05rem; font-weight: 700; line-height: 1.3; color: #1E49E2; }
+    .home-v2 .tile-stat svg { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.15s; }
+    .home-v2 .tile:hover .tile-stat svg { transform: translateX(4px); }
     @media (max-width: 560px) {
-      .home-v2 .tiles { margin-inline: -1.25rem; border-left: 0; }
-      .home-v2 .tile, .home-v2 .tile:hover { border-right: 0; }
-      .home-v2 .tile { padding: 1.3rem 1.25rem 1.2rem; }
-      .home-v2 .tile-head { margin-bottom: 0.6rem; }
-      .home-v2 .tile-txt { margin-bottom: 0.9rem; }
+      .home-v2 .tile { padding: 1.4rem 1.25rem 1.15rem; }
+      .home-v2 .tile-title { margin-left: -1.25rem; padding-left: 0.85rem; }
+      .home-v2 .tile-ico { margin-bottom: 0.9rem; }
+      .home-v2 .tile-txt { margin-bottom: 1rem; }
     }
     .home-v2 .trust { margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--muted); max-width: 70ch; line-height: 1.55; }
     .home-v2 .trust a { color: var(--accent); }
