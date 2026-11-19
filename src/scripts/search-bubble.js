@@ -7,9 +7,14 @@ const WAIT = 160;                     // ms to wait after the last key before se
 const levelName = (lv) => (lv === 'm' ? "Master's" : "Bachelor's");
 const full = (q) => `/search/?q=${encodeURIComponent(q)}`;
 
+let refresh = () => {};
+// Called each time the panel opens: the page's sections can differ from one page to the next, so the list is rebuilt.
+export function opened() { refresh(); }
+
 export function start(dlg) {
   const $ = (id) => dlg.querySelector(`#${id}`);
   const input = $('fs-q'), form = $('fs-form'), tries = $('fs-try'), says = $('fs-says'), tally = $('fs-tally'), out = $('fs-out'), foot = $('fs-foot'), body = $('fs-body');
+  const idle = $('fs-idle'), priv = $('fs-priv'), here = $('fs-here'), hereList = $('fs-here-list');
   let seq = 0;          // the latest search wins
   let timer = 0;
   let data = null;      // the loaded search data, once it has arrived
@@ -46,7 +51,7 @@ export function start(dlg) {
     out.replaceChildren(h('p', { class: 'small' }, none
       ? 'The Search page shows what was understood and lets you drop a part of it. Or try a subject, a level and a country, for example:'
       : 'Try a subject, a level and a country, for example:'));
-    tries.hidden = false;
+    tries.hidden = false; idle.hidden = true; priv.hidden = true;
     foot.replaceChildren(...[
       none ? h('a', { class: 'btn', href: full(text) }, 'Open the Search page') : null,
       h('a', { class: none ? 'fs-msg' : 'btn ghost', href: '/contact/' }, 'Send us a message'),
@@ -58,7 +63,7 @@ export function start(dlg) {
   function render(text) {
     const t = text.trim();
     const d = data;
-    tries.hidden = Boolean(t);
+    tries.hidden = Boolean(t); idle.hidden = Boolean(t); priv.hidden = Boolean(t);
     if (!t) { says.replaceChildren(); out.replaceChildren(); foot.replaceChildren(); foot.hidden = true; tally.textContent = ''; return; }
     const P = plan(t, d);
     const u = P.u;
@@ -102,6 +107,31 @@ export function start(dlg) {
     render(t);
   }
   const later = () => { clearTimeout(timer); timer = setTimeout(run, WAIT); };
+
+  // "On this page": the sections of the page the visitor is on, so a long guide can be jumped through.
+  function buildHere() {
+    const seen = new Set();
+    const items = [];
+    document.querySelectorAll('main h2').forEach((el, i) => {
+      if (el.closest('[hidden]') || !el.getClientRects().length) return;     // skip headings that are not showing
+      const text = el.textContent.replace(/\s+/g, ' ').trim();
+      if (!text || seen.has(text)) return;
+      seen.add(text);
+      if (!el.id) el.id = `sec-${i + 1}`;
+      items.push({ id: el.id, text });
+    });
+    const list = items.slice(0, 10);
+    hereList.replaceChildren(...list.map((x) => h('li', null, h('a', { href: `#${x.id}`, 'data-jump': x.id }, h('span', null, x.text), h('span', { class: 'n', 'aria-hidden': 'true' }, '›')))));
+    here.hidden = list.length < 3;
+  }
+  refresh = buildHere;
+  hereList.addEventListener('click', (ev) => {
+    const a = ev.target.closest('a[data-jump]');
+    if (!a) return;
+    ev.preventDefault();
+    dlg.dataset.jump = a.dataset.jump;       // the page script scrolls there once the panel has closed
+    dlg.close();
+  });
 
   input.addEventListener('input', later);
   form.addEventListener('submit', (ev) => { if (!input.value.trim()) { ev.preventDefault(); input.focus(); } });   // a filled box goes to the Search page

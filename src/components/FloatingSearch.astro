@@ -1,12 +1,30 @@
 ---
-// The search panel behind the round search button in the corner of every page (not on the Search page itself).
+// The search panel behind the small round search button in the corner of every page (not on the Search page itself).
 // It opens as a sheet from the bottom on phones and a small card in the corner on larger screens.
 // Search runs on this device: what is typed is not sent anywhere or saved. The search data (about 1.5 MB before
 // compression) is fetched only when the panel is first opened. Without JavaScript the button is a plain link to /search/.
+// Until something is typed the panel is a quick-jump list: this page's own sections (added by the script), then the main places on the site.
+import { all, countries } from '../lib/data.js';
+import { PUBLISH as SCH_ON, items as schItems } from '../lib/scholarships.js';
+import { PUBLISH as INT_ON, items as intItems } from '../lib/internships.js';
+import { PUBLISH as CRS_ON, total as crsTotal } from '../lib/courses.js';
+
 const tries = ['masters in nursing in canada', 'data science under 25000 AUD', 'scholarships for engineering in germany', 'bachelor business UK IELTS 6', 'student visa canada', 'work rights ireland'];
+const n = (x) => x.toLocaleString('en-GB');
+// A count is shown only where there is something real to count, the same rule as the home page.
+const goTo = [
+  ['Courses', '/courses/', CRS_ON && crsTotal > 0 ? n(crsTotal) : null],
+  ['Universities', '/universities/', n(all.length)],
+  ['Scholarships', '/scholarships/', SCH_ON && schItems.length > 0 ? n(schItems.length) : null],
+  ['Internships', '/internships/', INT_ON && intItems.length > 0 ? n(intItems.length) : null],
+  ['Destinations', '/study-in/', n(countries.length)],
+  ['Budget planner', '/budget/', null],
+  ['Visa readiness', '/visa-readiness/', null],
+  ['Application prep', '/application-prep/', null],
+];
 ---
 <dialog class="fs" id="fs" aria-labelledby="fs-title">
-  <div class="fs-card">
+  <div class="fs-card" tabindex="-1">
     <div class="fs-top">
       <h2 class="fs-title" id="fs-title">Search Universities500</h2>
       <button class="fs-close" id="fs-close" type="button" aria-label="Close search">
@@ -14,17 +32,29 @@ const tries = ['masters in nursing in canada', 'data science under 25000 AUD', '
       </button>
     </div>
     <form class="fs-form" id="fs-form" role="search" action="/search/" method="get">
-      <input id="fs-q" type="search" name="q" placeholder="Try “masters in nursing in canada”" aria-label="Search the site" autocomplete="off" enterkeyhint="search" />
+      <input id="fs-q" type="search" name="q" placeholder="Ask in your own words" aria-label="Search the site" autocomplete="off" enterkeyhint="search" />
       <button class="btn" type="submit">Search</button>
     </form>
     <div class="fs-body" id="fs-body">
-      <p class="fs-priv">Ask in plain words. Search runs on this device. What you type is not sent anywhere or saved.</p>
       <div id="fs-says"></div>
       <p class="fs-tally" id="fs-tally" role="status" aria-live="polite"></p>
       <div id="fs-out"></div>
+      <div id="fs-idle">
+        <section class="fs-sec" id="fs-here" aria-labelledby="fs-here-h" hidden>
+          <h3 class="fs-h" id="fs-here-h">On this page</h3>
+          <ul class="fs-go" id="fs-here-list"></ul>
+        </section>
+        <section class="fs-sec" aria-labelledby="fs-go-h">
+          <h3 class="fs-h" id="fs-go-h">Go to</h3>
+          <ul class="fs-go">
+            {goTo.map(([name, href, count]) => <li><a href={href}><span>{name}</span><span class="n" aria-hidden={count ? undefined : 'true'}>{count ?? '›'}</span></a></li>)}
+          </ul>
+        </section>
+      </div>
       <ul class="fs-try" id="fs-try" aria-label="Try searching for">
         {tries.map((t) => <li><button type="button" data-q={t}>{t}</button></li>)}
       </ul>
+      <p class="fs-priv" id="fs-priv">Ask in plain words. Search runs on this device. What you type is not sent anywhere or saved.</p>
     </div>
     <div class="fs-foot" id="fs-foot" hidden></div>
   </div>
@@ -38,7 +68,9 @@ const tries = ['masters in nursing in canada', 'data science under 25000 AUD', '
     const input = document.getElementById('fs-q') as HTMLInputElement;
     const vv = window.visualViewport;
     let opener: HTMLElement | null = null;
-    let started = false;
+    const card = dlg.querySelector<HTMLElement>('.fs-card');
+    const touch = window.matchMedia('(pointer: coarse)').matches;
+    let mod: Promise<{ start: (d: HTMLDialogElement) => void; opened: () => void }> | null = null;
 
     // On a phone the on-screen keyboard covers the bottom of the page, so keep the sheet above it.
     const fit = () => {
@@ -57,14 +89,16 @@ const tries = ['masters in nursing in canada', 'data science under 25000 AUD', '
       fit();
       vv?.addEventListener('resize', fit);
       vv?.addEventListener('scroll', fit);
-      input.focus();
-      if (!started) {
-        started = true;
-        import('../scripts/search-bubble.js').then((m) => m.start(dlg)).catch(() => {
+      // On a phone, leave the keyboard down so the quick-jump list is in view; a tap in the box brings the keyboard up.
+      if (touch) card?.focus(); else input.focus();
+      if (!mod) {
+        mod = import('../scripts/search-bubble.js');
+        mod.then((m) => m.start(dlg)).catch(() => {
           const t = document.getElementById('fs-tally');
           if (t) t.textContent = 'Search could not load. Close this and try again, or use the Search page.';
         });
       }
+      mod.then((m) => m.opened()).catch(() => {});
     });
     document.getElementById('fs-close')?.addEventListener('click', close);
     dlg.addEventListener('click', (ev) => { if (ev.target === dlg) close(); });   // a tap outside the panel
@@ -83,7 +117,16 @@ const tries = ['masters in nursing in canada', 'data science under 25000 AUD', '
       root.classList.remove('fs-lock');
       vv?.removeEventListener('resize', fit);
       vv?.removeEventListener('scroll', fit);
-      if (opener && document.contains(opener)) opener.focus();
+      // A jump from the "On this page" list: scroll to that section and put keyboard focus there.
+      const id = dlg.dataset.jump;
+      delete dlg.dataset.jump;
+      const target = id ? document.getElementById(id) : null;
+      if (target) {
+        const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+      } else if (opener && document.contains(opener)) opener.focus();
     });
   }
 </script>
