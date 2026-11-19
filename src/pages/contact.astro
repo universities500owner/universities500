@@ -1,0 +1,145 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+---
+<Base
+  title="Contact us | Universities500"
+  description="Send a message to the Universities500 team: report a mistake, suggest a university or scholarship, or ask about the site."
+  path="/contact/"
+  current="contact"
+  read={true}
+  share={false}
+>
+  <PageHead slot="head" tone="read" crumbs={[['Contact us', null]]} title="Contact us" lede="Questions, corrections or ideas for the site? Send us a message and we will reply by email." />
+
+  <section class="sec" aria-labelledby="h-contact">
+    <h2 id="h-contact">Send us a message</h2>
+    <div class="ct-lay">
+      <div class="tcard ct-card">
+        <form id="contact-form" class="ct-form" method="post" action="/api/contact">
+          <div class="f">
+            <label for="c-name">Name</label>
+            <input id="c-name" name="name" type="text" autocomplete="name" required maxlength="100" aria-describedby="c-name-err" />
+            <p class="ct-err" id="c-name-err" hidden></p>
+          </div>
+          <div class="f">
+            <label for="c-email">Email address</label>
+            <input id="c-email" name="email" type="email" autocomplete="email" required maxlength="254" aria-describedby="c-email-err" />
+            <p class="ct-err" id="c-email-err" hidden></p>
+          </div>
+          <div class="f">
+            <label for="c-subject">Subject line</label>
+            <input id="c-subject" name="subject" type="text" required maxlength="150" aria-describedby="c-subject-err" />
+            <p class="ct-err" id="c-subject-err" hidden></p>
+          </div>
+          <div class="f">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" rows="8" required minlength="10" maxlength="4000" aria-describedby="c-message-err c-count"></textarea>
+            <p class="ct-err" id="c-message-err" hidden></p>
+            <p class="hint" id="c-count"><span id="c-n">0</span> of 4,000 characters</p>
+          </div>
+          <div class="ct-trap" aria-hidden="true">
+            <label>Leave this field empty<input name="website" type="text" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <input type="hidden" name="t" id="c-t" value="" />
+          <div class="ct-actions">
+            <button class="btn" id="c-send" type="submit">Send message</button>
+            <p class="ct-status" id="c-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+        <div class="ct-done" id="contact-done" role="status" tabindex="-1" hidden>
+          <h3>Message sent</h3>
+          <p>Thank you<span id="c-who"></span>. We will reply to <strong id="c-to"></strong>.</p>
+          <button class="btn ghost" id="c-again" type="button">Send another message</button>
+        </div>
+      </div>
+
+      <aside class="ct-aside" aria-label="Before you write">
+        <div class="panel">
+          <h3>Found a mistake?</h3>
+          <p>Tell us the page and what looks wrong. Paste the page link if you can. Facts on this site should match their official source, and we want to know when they do not.</p>
+        </div>
+        <div class="panel">
+          <h3>Missing something?</h3>
+          <p>Suggest a university, scholarship, guide or tool you would like to see here.</p>
+        </div>
+        <div class="panel">
+          <h3>Your details</h3>
+          <p>We use your name and email address only to reply to your message. Read the <a href="/privacy/">privacy page</a> for more.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      var done = document.getElementById('contact-done');
+      var status = document.getElementById('c-status');
+      var send = document.getElementById('c-send');
+      var msg = document.getElementById('c-message');
+      var count = document.getElementById('c-n');
+      var stamp = document.getElementById('c-t');
+      var names = ['name', 'email', 'subject', 'message'];
+      var EMAIL = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[^\s@<>()[\]\\,;:"]{2,}$/;
+      form.noValidate = true; // the checks below replace the browser's own pop-ups; without JavaScript the browser checks instead
+      stamp.value = String(Date.now());
+
+      function setErr(name, text) {
+        var el = form.elements[name], p = document.getElementById('c-' + name + '-err');
+        if (text) { p.textContent = text; p.hidden = false; el.setAttribute('aria-invalid', 'true'); }
+        else { p.textContent = ''; p.hidden = true; el.removeAttribute('aria-invalid'); }
+      }
+      function check() {
+        var v = {}; names.forEach(function (n) { v[n] = (form.elements[n].value || '').trim(); });
+        var e = {};
+        if (!v.name) e.name = 'Enter your name.';
+        if (!v.email) e.email = 'Enter your email address.';
+        else if (!EMAIL.test(v.email)) e.email = 'Enter a valid email address, like name@example.com.';
+        if (!v.subject) e.subject = 'Enter a subject.';
+        if (!v.message) e.message = 'Write your message.';
+        else if (v.message.length < 10) e.message = 'Write a little more so we can help.';
+        names.forEach(function (n) { setErr(n, e[n] || ''); });
+        return e;
+      }
+      msg.addEventListener('input', function () { count.textContent = msg.value.length.toLocaleString('en-IN'); });
+
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        status.textContent = ''; status.classList.remove('is-bad');
+        var e = check(), first = names.filter(function (n) { return e[n]; })[0];
+        if (first) { form.elements[first].focus(); return; }
+        send.disabled = true; send.textContent = 'Sending…';
+        fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+          .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok, j: j }; }); })
+          .then(function (res) {
+            if (res.ok) {
+              document.getElementById('c-who').textContent = form.elements.name.value.trim() ? ', ' + form.elements.name.value.trim().split(/\s+/)[0] : '';
+              document.getElementById('c-to').textContent = form.elements.email.value.trim();
+              form.hidden = true; done.hidden = false; done.focus();
+              return;
+            }
+            if (res.j && res.j.errors) {
+              names.forEach(function (n) { setErr(n, res.j.errors[n] || ''); });
+              var f = names.filter(function (n) { return res.j.errors[n]; })[0]; if (f) form.elements[f].focus();
+            } else {
+              status.textContent = (res.j && res.j.message) || 'Sorry, your message could not be sent. Please try again.';
+              status.classList.add('is-bad');
+            }
+          })
+          .catch(function () {
+            status.textContent = 'Sorry, your message could not be sent. Check your connection and try again.';
+            status.classList.add('is-bad');
+          })
+          .then(function () { send.disabled = false; send.textContent = 'Send message'; });
+      });
+
+      document.getElementById('c-again').addEventListener('click', function () {
+        form.reset(); count.textContent = '0'; stamp.value = String(Date.now());
+        names.forEach(function (n) { setErr(n, ''); });
+        done.hidden = true; form.hidden = false; form.elements.name.focus();
+      });
+    })();
+  </script>
+</Base>
