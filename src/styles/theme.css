@@ -15,6 +15,7 @@
   --k-title: #00338D;     /* bold blue card titles and headings */
   --k-cobalt: #1E49E2;    /* icons, chips, numbers, links */
   --k-mint: #60EBD8;      /* the bar on a title's left edge */
+  --results-bg: var(--band); /* the band behind a list of result cards; a lighter tint such as #D9E4F7 works too */
 }
 html[data-theme="dark"] {
   --pale: var(--paper);
@@ -78,22 +79,30 @@ html[data-theme="dark"] {
 .pg .seg:hover, .pg .pill:hover, .pg .cmp:hover { background: var(--k-card-hover); }
 .pg .seg[aria-pressed="true"], .pg .pill[aria-pressed="true"], .pg .cmp[aria-pressed="true"] { background: var(--band); border-color: var(--band); color: #fff; }
 .pg .seg[aria-pressed="true"] .seg-n { color: #fff; }
-.pg .rc-chips li, .pg .crs-tags li, .pg .chips li { border: 1px solid var(--k-cobalt); border-radius: 0; background: var(--k-card); color: var(--k-cobalt); font-weight: 600; }
+.pg .rc-chips li, .pg .chips li { border: 1px solid var(--k-cobalt); border-radius: 0; background: var(--k-card); color: var(--k-cobalt); font-weight: 600; }
 .pg .btn { border-radius: 0; }
 .pg .btn.ghost { border: 1px solid var(--k-cobalt); color: var(--k-cobalt); }
 .pg .btn.ghost:hover { background: var(--k-card-hover); }
 .pg .rc-save { border-radius: 0; }
 
-/* ---------- universities: a flush grid of tiles ---------- */
-.pg ul.grid { gap: 0; margin: 1rem 1px 0 0; padding: 0; }
-.pg ul.grid > li { margin: 0 -1px -1px 0; display: flex; min-width: 0; }
-.pg .card { display: flex; flex-direction: column; flex: 1; width: 100%; padding: 1.4rem 1.4rem 1.1rem; text-decoration: none; }
+/* ---------- result lists: white cards with a clear gap, on a band of blue ---------- */
+/* The band runs the full width of the screen (the box-shadow and clip-path carry it past the page column) while the cards stay in the column. */
+.pg .rc-list, .pg .crs-list, .pg ul.grid {
+  list-style: none; margin: 1rem 0 0; padding: 1.1rem 0; gap: 1.1rem; border: 0;
+  background: var(--results-bg); box-shadow: 0 0 0 100vmax var(--results-bg); clip-path: inset(0 -100vmax);
+}
+.pg .rc-list:empty, .pg .crs-list:empty, .pg ul.grid:empty,
+.pg .rc-list:not(:has(> :not([hidden]))), .pg .crs-list:not(:has(> :not([hidden]))), .pg ul.grid:not(:has(> :not([hidden]))) { display: none; }
+.pg .rc-list > .rc, .pg .crs-list > .crs, .pg ul.grid > li { margin: 0; border: 0; }
+
+/* universities */
+.pg ul.grid > li { display: flex; min-width: 0; background: var(--k-card); }
+.pg .card { display: flex; flex-direction: column; flex: 1; width: 100%; padding: 1.4rem 1.4rem 1.1rem; text-decoration: none; border: 0; }
 .pg .card strong { font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 1.25; margin-bottom: 1rem; display: block; }
 .pg .card span { margin-top: auto; padding-top: .8rem; border-top: 1px solid var(--k-hair); color: var(--k-cobalt); font-weight: 700; font-size: .95rem; }
 
-/* ---------- scholarship and internship cards ---------- */
-.pg .rc-list { gap: 0; margin: 1rem 1px 0 0; }
-.pg .rc-list > .rc { margin: 0 -1px -1px 0; padding: 1.4rem 1.4rem 1.2rem; gap: .75rem; }
+/* scholarship and internship cards */
+.pg .rc-list > .rc { padding: 1.4rem 1.4rem 1.2rem; gap: .75rem; }
 .pg .rc-mono { border-radius: 50%; }
 .pg .rc-org { color: var(--ink); font-weight: 600; }
 .pg .rc-pill { border-radius: 0; }
@@ -104,17 +113,37 @@ html[data-theme="dark"] {
 .pg .rc-facts dt { color: var(--muted); }
 .pg .rc-act { padding-top: .25rem; margin-top: 0; }
 
-/* ---------- course and MBA rows: one flush list ---------- */
-.pg .crs-list { gap: 0; margin: 1rem 0 0; border-top: 1px solid var(--k-hair); }
-.pg .crs-list > .crs { border-width: 0 1px 1px 1px; padding: 1.3rem 1.4rem; align-items: stretch; }
-.pg .crs-title { font-size: 1.25rem; }
-.pg .crs-where { color: var(--ink); }
-.pg .crs-facts { border-left: 1px solid var(--k-hair); padding-left: 1.4rem; align-content: start; }
-.pg .crs-facts dt { color: var(--muted); }
-.pg .crs-facts dd { color: var(--ink); }
-.pg .crs-act { justify-content: flex-start; }
+/* course and MBA rows. Left: the name, the university, the small tags and one line of facts. Right: what to do with it. */
+.pg .crs-list { gap: .9rem; }
+.pg .crs-list > .crs { display: grid; grid-template-columns: minmax(0, 1fr) 12.5rem; gap: 0 1.5rem; align-items: stretch; padding: 1.15rem 1.4rem; }
+.pg .crs-main { min-width: 0; }
+.pg .crs-title { font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1.2; margin: 0 0 .5rem -1.4rem; padding-left: 1rem; }
+.pg .crs-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .9rem; }
+.pg .crs-where { margin: 0; font-size: 1.1rem; line-height: 1.3; color: var(--ink); }
+.pg .crs-where a { color: var(--ink); font-weight: 700; text-decoration: none; }
+.pg .crs-where a:hover { color: var(--k-cobalt); text-decoration: underline; text-underline-offset: 3px; }
+.pg .crs-ctry { font-size: .88rem; color: var(--muted); }
+.pg .crs-tags { margin: 0; gap: .3rem; }
+.pg .crs-tags li { font-size: .74rem; line-height: 1.5; padding: .05rem .5rem; border: 1px solid var(--k-hair); border-radius: 0; background: var(--pale); color: var(--muted); font-weight: 500; }
+.pg .crs-facts { display: flex; flex-wrap: wrap; gap: .2rem 1.6rem; margin: .8rem 0 0; padding-top: .75rem; border-top: 1px solid var(--k-hair); }
+.pg .crs-facts > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .45rem; min-width: 0; }
+.pg .crs-facts dt { font-size: .85rem; color: var(--muted); }
+.pg .crs-facts dd { margin: 0; font-size: .95rem; font-weight: 700; color: var(--ink); }
+.pg .crs-facts dd.none { font-weight: 400; color: var(--muted); }
+.pg .crs-act { border-left: 1px solid var(--k-hair); padding-left: 1.4rem; display: grid; grid-template-columns: 1fr 1fr; align-content: center; align-items: center; gap: .85rem .5rem; }
+.pg .crs-act .btn { grid-column: 1 / -1; justify-content: center; text-align: center; background: var(--band); border: 1px solid var(--band); color: #fff; font-weight: 700; padding: .62rem 1rem; }
+.pg .crs-act .btn:hover { background: #00266B; border-color: #00266B; color: #fff; }
+.pg .crs-act .rc-save { width: auto; height: auto; margin: 0; padding: .15rem 0; background: none; display: inline-flex; align-items: center; gap: .35rem; justify-self: start; font: inherit; font-size: .9rem; font-weight: 600; color: var(--k-title); }
+.pg .crs-act .rc-save:hover { background: none; color: var(--k-cobalt); }
+.pg .crs-act .rc-save svg { width: 1.2rem; height: 1.2rem; }
+.pg .crs-act .rc-save[aria-pressed="true"] { color: var(--k-cobalt); }
+.pg .rc-save-t .t-on, .pg .rc-save[aria-pressed="true"] .t-off { display: none; }
+.pg .rc-save[aria-pressed="true"] .t-on { display: inline; }
+.pg .crs-cmp { justify-self: end; font-size: .9rem; font-weight: 600; color: var(--k-title); }
 @media (max-width: 760px) {
-  .pg .crs-facts { border-left: 0; padding-left: 0; border-top: 1px solid var(--k-hair); padding-top: .9rem; }
+  .pg .crs-list > .crs { grid-template-columns: minmax(0, 1fr); }
+  .pg .crs-act { border-left: 0; padding-left: 0; margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--k-hair); display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.1rem; }
+  .pg .crs-act .btn { order: 3; margin-left: auto; padding: .5rem 1.4rem; }
 }
 
 /* ---------- MBA tabs and destination tiles ---------- */
@@ -133,6 +162,7 @@ html[data-theme="dark"] {
   .pg .rc-title, .pg .crs-title, .pg .card strong { margin-left: -1.1rem; padding-left: .85rem; }
   .pg .rc-list > .rc, .pg .card { padding: 1.15rem 1.1rem 1rem; }
   .pg .crs-list > .crs { padding: 1.1rem; }
+  .pg .rc-list, .pg .crs-list, .pg ul.grid { gap: 6px; padding: 6px 0; margin-inline: -1.25rem; }
   .pg .filterbar, .pg .subj-box { margin-inline: -1.25rem; border-inline-width: 0; padding-inline: 1.25rem; }
 }
 
@@ -200,3 +230,7 @@ html[data-theme="dark"] {
 .site-foot .totop { border: 1px solid #fff; border-radius: 0; color: #fff; }
 .site-foot .totop:hover { background: rgba(255, 255, 255, .14); }
 .foot-about { scroll-margin-top: 4rem; }
+
+/* "More filters" is one button: no box around it. Cards in a row keep their own height, so a short card has no empty gap. */
+.pg .filterbar#crs-bar { background: none; border: 0; padding: 0; margin: .9rem 0 .25rem; }
+.pg .rc-list { align-items: start; }

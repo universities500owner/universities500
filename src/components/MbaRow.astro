@@ -8,22 +8,24 @@ const chip = expChip(m);
 <li class="crs mba" data-id={`mba:${m.id}`}>
   <div class="crs-main">
     <h3 class="crs-title"><a href={path(m)}>{m.name}</a></h3>
-    <p class="crs-where">{m.school}<span aria-hidden="true"> · </span>{m.uniName}<span aria-hidden="true"> · </span>{countryName(m.country)}</p>
-    <ul class="crs-tags" aria-label="About this programme">
-      <li>{KIND[m.kind]}</li>
-      {chip && <li>{chip}</li>}
-    </ul>
+    <div class="crs-meta">
+      <p class="crs-where">{m.school}<span class="crs-ctry"><span aria-hidden="true"> · </span>{m.uniName}<span aria-hidden="true"> · </span>{countryName(m.country)}</span></p>
+      <ul class="crs-tags" aria-label="About this programme">
+        <li>{KIND[m.kind]}</li>
+        {chip && <li>{chip}</li>}
+      </ul>
+    </div>
+    <dl class="crs-facts">
+      <div><dt>Length</dt><dd class={m.length ? '' : 'none'}>{val(m.length)}</dd></div>
+      <div><dt>Tuition</dt><dd class={m.fee ? '' : 'none'}>{feeCard(m)}</dd></div>
+      <div><dt>Work experience</dt><dd class={m.exp ? '' : 'none'}>{val(m.exp)}</dd></div>
+      <div><dt>Test</dt><dd class={m.test ? '' : 'none'}>{val(m.test)}</dd></div>
+      <div><dt>Starts</dt><dd class={m.start ? '' : 'none'}>{val(m.start)}</dd></div>
+    </dl>
   </div>
-  <dl class="crs-facts">
-    <div><dt>Length</dt><dd class={m.length ? '' : 'none'}>{val(m.length)}</dd></div>
-    <div><dt>Tuition</dt><dd class={m.fee ? '' : 'none'}>{feeCard(m)}</dd></div>
-    <div><dt>Work experience</dt><dd class={m.exp ? '' : 'none'}>{val(m.exp)}</dd></div>
-    <div><dt>Test</dt><dd class={m.test ? '' : 'none'}>{val(m.test)}</dd></div>
-    <div><dt>Starts</dt><dd class={m.start ? '' : 'none'}>{val(m.start)}</dd></div>
-  </dl>
   <div class="crs-act">
-    <button type="button" class="rc-save" data-save aria-pressed="false" aria-label={`Save ${m.name}`} title="Save on this device"><Icons name="bookmark" /></button>
+    <a class="btn" href={path(m)}>Details</a>
+    <button type="button" class="rc-save" data-save aria-pressed="false" aria-label={`Shortlist ${m.name}`} title="Shortlist on this device"><Icons name="bookmark" /><span class="rc-save-t"><span class="t-off">Shortlist</span><span class="t-on">Shortlisted</span></span></button>
     <label class="crs-cmp"><input type="checkbox" data-compare aria-label={`Compare ${m.name}`} /> Compare</label>
-    <a class="btn ghost" href={path(m)}>Details</a>
   </div>
 </li>

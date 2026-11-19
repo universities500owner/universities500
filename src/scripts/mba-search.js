@@ -40,12 +40,12 @@ const path = (r) => `/mba/${r.slug}/`;
 const fact = (label, v) => `<div><dt>${label}</dt><dd${v ? '' : ' class="none"'}>${esc(v || NOT_STATED)}</dd></div>`;
 const rowHtml = (r) => `<li class="crs mba" data-id="${esc(r.id)}">`
   + `<div class="crs-main"><h3 class="crs-title"><a href="${esc(path(r))}">${esc(r.name)}</a></h3>`
-  + `<p class="crs-where">${esc(r.school)}<span aria-hidden="true"> · </span>${esc(r.uniName)}<span aria-hidden="true"> · </span>${esc(r.countryName)}</p>`
+  + `<div class="crs-meta"><p class="crs-where">${esc(r.school)}<span class="crs-ctry"><span aria-hidden="true"> · </span>${esc(r.uniName)}<span aria-hidden="true"> · </span>${esc(r.countryName)}</span></p>`
   + `<ul class="crs-tags" aria-label="About this programme"><li>${esc(r.kindLabel)}</li>${r.chip ? `<li>${esc(r.chip)}</li>` : ''}</ul></div>`
-  + `<dl class="crs-facts">${fact('Length', r.ln)}${fact('Tuition', r.fe)}${fact('Work experience', r.ex)}${fact('Test', r.ts)}${fact('Starts', r.st)}</dl>`
-  + `<div class="crs-act"><button type="button" class="rc-save" data-save aria-pressed="${isSaved(r.id)}" aria-label="Save ${esc(r.name)}" title="Save on this device">${BOOKMARK}</button>`
-  + `<label class="crs-cmp"><input type="checkbox" data-compare aria-label="Compare ${esc(r.name)}" /> Compare</label>`
-  + `<a class="btn ghost" href="${esc(path(r))}">Details</a></div></li>`;
+  + `<dl class="crs-facts">${fact('Length', r.ln)}${fact('Tuition', r.fe)}${fact('Work experience', r.ex)}${fact('Test', r.ts)}${fact('Starts', r.st)}</dl></div>`
+  + `<div class="crs-act"><a class="btn" href="${esc(path(r))}">Details</a>`
+  + `<button type="button" class="rc-save" data-save aria-pressed="${isSaved(r.id)}" aria-label="Shortlist ${esc(r.name)}" title="Shortlist on this device">${BOOKMARK}<span class="rc-save-t"><span class="t-off">Shortlist</span><span class="t-on">Shortlisted</span></span></button>`
+  + `<label class="crs-cmp"><input type="checkbox" data-compare aria-label="Compare ${esc(r.name)}" /> Compare</label></div></li>`;
 
 // The university list follows the destination and the track: only universities that have a programme here.
 function fillUnis(keep) {
