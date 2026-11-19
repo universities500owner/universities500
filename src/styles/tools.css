@@ -20,7 +20,7 @@
   position: absolute; top: calc(100% + .35rem); left: 0; min-width: 15rem; background: var(--paper);
   border: 1px solid var(--line); border-radius: var(--radius); padding: .5rem; box-shadow: 0 10px 28px var(--shadow);
 }
-.nav-group:last-child .nav-panel { left: auto; right: 0; }
+.nav-group:nth-last-child(2) .nav-panel { left: auto; right: 0; }
 .nav-panel[hidden] { display: none !important; }
 .nav-panel.wide { min-width: 30rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
 .nav-panel h2 { font-size: .8rem; margin: .4rem .6rem .2rem; color: var(--muted); font-weight: 600; }
@@ -42,7 +42,7 @@
   .site-head .nav-list.open { display: flex; }
   .nav-btn { width: 100%; justify-content: space-between; }
   .nav-link { width: 100%; margin-right: 0; }
-  .nav-group:last-child .nav-panel { right: auto; }
+  .nav-group:nth-last-child(2) .nav-panel { right: auto; }
   .nav-panel, .nav-panel.wide { position: static; box-shadow: none; border: 0; border-left: 2px solid var(--line); border-radius: 0; margin: 0 0 .5rem .6rem; min-width: 0; display: block; }
 }
 
