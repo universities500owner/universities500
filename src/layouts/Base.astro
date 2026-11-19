@@ -12,7 +12,7 @@ import { topics as articleTopics, articles as allArticles } from '../lib/article
 import IndustryNewsStrip from '../components/IndustryNewsStrip.astro';
 import { PUBLISH as NEWS_ON } from '../lib/news.js';
 
-const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false } = Astro.props;
+const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false, about = false } = Astro.props;
 const hasHead = Astro.slots.has('head');
 const url = new URL(path, SITE).href;
 const ld = jsonld ? JSON.stringify(jsonld).replace(/</g, '\\u003c') : null;
@@ -132,12 +132,14 @@ const onGuide = current === 'guide';
     {news && <IndustryNewsStrip />}
     <footer class="site-foot">
       <div class="wrap">
-        <div class="foot-top">
-          <div class="foot-about">
+        <div class={about ? 'foot-top has-about' : 'foot-top'}>
+          {about && (
+          <div class="foot-about" id="about">
             <h2>About us</h2>
             <p>We help you plan studying abroad on your own. Browse universities by country, then check costs, visa rules and scholarships in one place, with a source for every fact.</p>
             <p>Fees, deadlines and visa rules come from university and government sources and change often. Use them to get started, then check the official page before you act.</p>
           </div>
+          )}
           <div class="foot-cols">
             {NAV.map((g) => (
               <div>
@@ -170,6 +172,7 @@ const onGuide = current === 'guide';
               <li><a href="/disclaimer/">Disclaimer and data sources</a></li>
               <li><a href="/privacy/">Privacy</a></li>
               <li><a href="/terms/">Terms</a></li>
+              {!about && <li><a href="/#about">About us</a></li>}
               <li>© 2026 Universities500</li>
             </ul>
             <a class="totop" href="#top" id="to-top">Back to top</a>
