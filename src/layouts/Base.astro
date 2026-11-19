@@ -12,7 +12,7 @@ import { topics as articleTopics, articles as allArticles } from '../lib/article
 import IndustryNewsStrip from '../components/IndustryNewsStrip.astro';
 import { PUBLISH as NEWS_ON } from '../lib/news.js';
 
-const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false, about = false } = Astro.props;
+const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false, about = false, read = false } = Astro.props;
 const hasHead = Astro.slots.has('head');
 const url = new URL(path, SITE).href;
 const ld = jsonld ? JSON.stringify(jsonld).replace(/</g, '\\u003c') : null;
@@ -114,7 +114,7 @@ const onGuide = current === 'guide';
     {hasHead ? (
       <main id="main" class="pgmain">
         <slot name="head" />
-        <div class="pg"><div class="wrap"><slot /></div></div>
+        <div class={read ? 'pg pg-read' : 'pg'}><div class="wrap"><slot /></div></div>
       </main>
     ) : (
       <main id="main" class={wide ? undefined : 'wrap'}>

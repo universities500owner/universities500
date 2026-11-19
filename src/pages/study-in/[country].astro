@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import GuideBlocks from '../../components/GuideBlocks.astro';
 import { byCountry, countries, SITE } from '../../lib/data.js';
 import { guides, runsText } from '../../lib/guides.js';
@@ -81,15 +82,11 @@ const overviewBlocks = (overview?.blocks || []).filter((b) => b.t === 'p');
   path={`/study-in/${g.slug}/`}
   jsonld={ld}
   current="guide"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/study-in/">Study in</a><span aria-hidden="true">/</span>{g.name}
-  </nav>
+  <PageHead slot="head" tone="read" crumbs={[['Study in', '/study-in/'], [g.name, null]]} title={g.title} lede={lede.replace(/&/g, '&amp;').replace(/</g, '&lt;')} />
 
-  <section class="ghero">
-    <p class="g-eyebrow">Destination guide · {g.name}</p>
-    <h1>{g.title}</h1>
-    <p class="lede">{lede}</p>
+  <section class="rd-top">
     {coverLine && <p class="g-cover"><strong>What this guide covers:</strong> {coverLine}.</p>}
     {g.stats.length > 0 && (
       <div class="gstats" role="list" aria-label={`${g.name} study guide at a glance`}>
@@ -144,6 +141,15 @@ const overviewBlocks = (overview?.blocks || []).filter((b) => b.t === 'p');
   </section>
 
   <p class="g-info">Fees, visa settings and work rules change often. Check each one on the official government or university site before you rely on it.</p>
+
+  <section class="rd-cta" aria-labelledby="h-go">
+    <h2 id="h-go">Ready to look at {nm}?</h2>
+    <ul>
+      <li><a href={`/universities/?c=${g.slug}`}>Universities in {nm}</a></li>
+      <li><a href="/courses/">Search courses</a></li>
+      <li><a href="/scholarships/">Find scholarships</a></li>
+    </ul>
+  </section>
 
   {arts.length > 0 && (
     <section class="gsec" id="s-articles">

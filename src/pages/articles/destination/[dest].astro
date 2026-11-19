@@ -1,5 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
 import { destinations, byDestination, topics } from '../../../lib/articles.js';
 import { guideBySlug } from '../../../lib/guides.js';
@@ -29,10 +30,16 @@ const others = destinations.filter((x) => x.slug !== d.slug);
   path={path}
   jsonld={ld}
   current="articles"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/articles/">Articles</a><span aria-hidden="true">/</span>{d.name}</nav>
-  <h1>{d.slug === 'global' ? 'Articles for every destination' : `Studying in ${d.name}`}</h1>
-  <p class="lede">{list.length} {list.length === 1 ? 'article' : 'articles'}. {guide && <>For the overview, see <a href={`/study-in/${d.slug}/`}>the {d.name} guide</a>.</>}</p>
+  <PageHead
+    slot="head"
+    tone="read"
+    crumbs={[['Articles', '/articles/'], [d.name, null]]}
+    title={d.slug === 'global' ? 'Articles for every destination' : `Studying in ${d.name}`}
+    lede={guide ? `For the overview, see <a href="/study-in/${d.slug}/">the ${d.name} guide</a>.` : ''}
+    facts={[['Articles', String(list.length)]]}
+  />
   <ul class="acards wide">
     {list.map((a) => <li><ArticleCard a={a} /></li>)}
   </ul>

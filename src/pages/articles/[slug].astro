@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import ArticleBlocks from '../../components/ArticleBlocks.astro';
 import ArtRuns from '../../components/ArtRuns.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
@@ -66,19 +67,21 @@ if (a.faq.length) {
   });
 }
 ---
-<Base title={title} description={description} path={path} jsonld={ld} current="articles">
-  <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/articles/">Articles</a><span aria-hidden="true">/</span><a href={`/articles/destination/${a.destination}/`}>{a.destName}</a>
-  </nav>
+<Base title={title} description={description} path={path} jsonld={ld} current="articles" read={true}>
+  <PageHead
+    slot="head"
+    tone="read"
+    crumbs={[['Articles', '/articles/'], [a.destName, `/articles/destination/${a.destination}/`]]}
+    title={a.title}
+    facts={[
+      ['Destination', [a.destName, `/articles/destination/${a.destination}/`]],
+      ['Topic', [a.topicLabel, `/articles/topic/${a.topic}/`]],
+      ['Reading time', readLabel(a)],
+      ...(checked ? [['Facts as of', checked]] : []),
+    ]}
+  />
 
   <article class="tip">
-    <header>
-      <p class="tip-kick">
-        <a href={`/articles/destination/${a.destination}/`}>{a.destName}</a> <span aria-hidden="true">·</span> <a href={`/articles/topic/${a.topic}/`}>{a.topicLabel}</a>
-      </p>
-      <h1>{a.title}</h1>
-      <p class="tip-meta">{readLabel(a)}{checked && <> <span aria-hidden="true">·</span> Facts as of {checked}</>}</p>
-    </header>
 
     <div class="tip-lay">
     <div class="tip-main">
@@ -130,7 +133,7 @@ if (a.faq.length) {
     )}
     </div>
 
-    <section class="tip-next" aria-labelledby="next-h">
+    <section class="tip-next rd-cta" aria-labelledby="next-h">
       <h2 id="next-h">Put this to use</h2>
       <ul>
         {tools.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
@@ -154,7 +157,7 @@ if (a.faq.length) {
   </article>
 
   {(sameDest.length > 0 || sameTopic.length > 0) && (
-    <div class="tip-more">
+    <div class="tip-more rd-pale">
       {sameDest.length > 0 && (
         <section aria-labelledby="more-d">
           <h2 id="more-d">More on {a.destName}</h2>

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import { SITE } from '../../lib/data.js';
@@ -23,12 +24,9 @@ const ld = [
   jsonld={ld}
   current="exams"
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Exam guides</nav>
+  <PageHead slot="head" tone="read" crumbs={[['Exam guides', null]]} title="Which exam do you need to study abroad?" lede="From English proficiency tests to undergraduate and graduate admissions exams: what each one measures, who may need it, and where to prepare." />
 
-  <section class="ghero">
-    <p class="g-eyebrow">Prepare · Exam guides</p>
-    <h1>Which exam do you need to study abroad?</h1>
-    <p class="lede">From English proficiency tests to undergraduate and graduate admissions exams: what each one measures, who may need it, and where to prepare.</p>
+  <section class="rd-top">
     <p class="g-cover"><strong>Not every student needs every exam.</strong> Check each programme's requirements, and any separate visa-language rules, before you book a test.</p>
   </section>
 

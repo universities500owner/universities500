@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
 import { hiddenFromSearch } from '../lib/noindex.js';
@@ -11,12 +12,9 @@ const path = '/english-test/';
   path={path}
   noindex={hiddenFromSearch(path)}
   current="english-test"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>English test</nav>
-  <div class="q-head">
-    <h1>English test</h1>
-    <p>Which test to sit, why the score matters, and how to prepare for each skill.</p>
-  </div>
+  <PageHead slot="head" tone="read" crumbs={[['English test', null]]} title="English test" lede="Which test to sit, why the score matters, and how to prepare for each skill." />
 
   <section class="sec" aria-labelledby="h-test">
     <h2 id="h-test">Which English test to sit</h2>

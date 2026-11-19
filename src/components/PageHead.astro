@@ -1,10 +1,13 @@
 ---
 // The blue band at the top of an inner page: breadcrumb, title and one line of introduction.
-// Passed to Base as slot="head"; Base then puts the rest of the page on the pale body band below it.
+// Passed to Base as slot="head"; Base then puts the rest of the page on the body band below it.
 // crumbs: [[label, href|null], ...] after "Home". lede may hold simple markup written in this repo (never user text).
-const { crumbs = [], title, lede = '' } = Astro.props;
+// tone="read" is the article look (bright blue band) used by the guides, articles and exam pages; facts is an optional
+// strip under it, [[label, value], ...], in the deep blue; a value may be [text, href] to make it a link.
+const { crumbs = [], title, lede = '', tone = '', facts = [] } = Astro.props;
+const read = tone === 'read';
 ---
-<section class="pg-head">
+<section class={read ? 'pg-head pg-head--read' : 'pg-head'}>
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href="/">Home</a>
@@ -16,3 +19,14 @@ const { crumbs = [], title, lede = '' } = Astro.props;
     {lede && <p class="pg-lede" set:html={lede} />}
   </div>
 </section>
+{facts.length > 0 && (
+  <div class="pg-facts">
+    <div class="wrap">
+      <dl>
+        {facts.map(([label, value]) => (
+          <div><dt>{label}</dt><dd>{Array.isArray(value) ? <a href={value[1]}>{value[0]}</a> : value}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </div>
+)}

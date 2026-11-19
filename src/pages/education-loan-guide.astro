@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
 import { hiddenFromSearch } from '../lib/noindex.js';
@@ -26,20 +27,24 @@ const ld = [
   noindex={hiddenFromSearch(path)}
   jsonld={ld}
   current="education-loan-guide"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Education loan guide</nav>
+  <PageHead
+    slot="head"
+    tone="read"
+    crumbs={[['Education loan guide', null]]}
+    title="Education loans for overseas study"
+    lede="An education loan can make an overseas degree possible. Before you borrow, understand the rules, compare lenders and know what repayment could look like."
+    facts={[['Made for', 'Indian students'], ['Topics', String(topics.length)], ['Lenders listed', String(lenders.length)], ['Updated', UPDATED]]}
+  />
 
-  <section class="ghero">
-    <p class="g-eyebrow">Visa and money · India</p>
-    <h1>Education loans for overseas study</h1>
-    <p class="lede">An education loan can make an overseas degree possible. Before you borrow, understand the rules, compare lenders and know what repayment could look like.</p>
+  <section class="rd-top">
     <div class="xnote"><p><strong>Before you rely on a loan:</strong> a lender's advertised offer is not a sanction. Eligibility, rates, collateral and university lists depend on the lender's current policy and your profile.</p></div>
     <p class="hero-actions">
       <a class="btn" href="#g-topics">Explore the guide</a>
       <a class="btn ghost" href="#lenders">Find lenders</a>
       <a class="btn ghost" href="/loan/">Loan calculator</a>
     </p>
-    <p class="small">Updated {UPDATED}</p>
   </section>
 
   <section class="sec" aria-labelledby="h-start">
@@ -139,7 +144,7 @@ const ld = [
     </div>
   </section>
 
-  <section class="sec xcta" aria-labelledby="h-cta">
+  <section class="sec xcta rd-cta" aria-labelledby="h-cta">
     <div>
       <h2 id="h-cta">Know the cost before you commit.</h2>
       <p>See the monthly instalment, the interest during study and the total you would repay.</p>
