@@ -413,20 +413,24 @@ html[data-theme="dark"] .ct-status.is-bad { color: #FF9B94; }
   .head-actions { gap: .4rem; }
 }
 
-/* ---------- floating search: a round button in the bottom-right corner of every page, and its panel ---------- */
-/* The corner stack: the scroll arrows sit above the search button, which stays put. */
-.scrollnav { z-index: 35; }
-.scrollnav .fs-open {
-  width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; text-decoration: none;
-  background: var(--band); color: #fff; border: 2px solid #fff; box-shadow: 0 2px 10px rgba(0, 21, 34, .35);
+/* ---------- floating search: a small dock in the bottom-right corner of every page, and its panel ---------- */
+/* One soft capsule: the scroll arrows (when there is somewhere to scroll) above a solid blue search button. At the top of a page it is just the blue circle. */
+.scrollnav {
+  z-index: 35; align-items: center; gap: 2px; padding: 4px; border-radius: 999px;
+  background: var(--paper); border: 1px solid var(--k-hair); box-shadow: 0 6px 18px var(--shadow);
 }
-.scrollnav .fs-open:hover { background: var(--k-cobalt); }
-html[data-theme="dark"] .scrollnav .fs-open { border-color: var(--k-edge); }
-html[data-theme="dark"] .scrollnav .fs-open:hover { background: #1A3CB8; }
-.scrollnav .fs-open:focus-visible { outline: 3px solid var(--k-mint); outline-offset: 2px; }
-.scrollnav .fs-open svg { display: block; width: 1.1rem; height: 1.1rem; }
-.scrollnav button { width: 2.5rem; height: 2.5rem; }
+.scrollnav button {
+  width: 36px; height: 34px; border: 0; border-radius: 18px; background: transparent; box-shadow: none; color: var(--muted);
+}
+.scrollnav button:hover { background: var(--k-card-hover); color: var(--ink); border: 0; }
 .scrollnav button svg { width: 1.05rem; height: 1.05rem; }
+.scrollnav .fs-open {
+  width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; text-decoration: none;
+  background: #1E49E2; color: #fff;
+}
+.scrollnav .fs-open:hover { background: #1A3CB8; }
+.scrollnav :is(button, .fs-open):focus-visible { outline: 2px solid var(--k-cobalt); outline-offset: 1px; }
+.scrollnav .fs-open svg { display: block; width: 1.1rem; height: 1.1rem; }
 html.fs-lock { overflow: hidden; }
 
 /* The panel: a sheet from the bottom on phones, a card above the button on larger screens. */

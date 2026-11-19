@@ -186,7 +186,7 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
         </div>
       </div>
     </footer>
-    <div class="scrollnav" id="scrollnav" role="group" aria-label="Page shortcuts">
+    <div class="scrollnav" id="scrollnav" role="group" aria-label="Page shortcuts" hidden={!floatSearch}>
       {floatSearch && (
         <a class="fs-open" id="fs-open" href="/search/" aria-label="Search the site" title="Search the site" aria-haspopup="dialog">
           <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="7" cy="7" r="5" /><path d="m11 11 3.5 3.5" /></svg>
@@ -276,7 +276,7 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
           raf = 0;
           var d = document.documentElement, y = window.pageYOffset || d.scrollTop, left = d.scrollHeight - window.innerHeight - y;
           var cu = y > 240, cd = left > 240;
-          up.hidden = !cu; down.hidden = !cd;
+          up.hidden = !cu; down.hidden = !cd; box.hidden = !(cu || cd || box.querySelector('.fs-open'));
         }
         function queue() { if (!raf) raf = requestAnimationFrame(sync); }
         window.addEventListener('scroll', queue, { passive: true });
