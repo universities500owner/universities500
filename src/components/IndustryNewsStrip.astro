@@ -14,7 +14,11 @@ const rows = latest(4);
       <ul class="news-grid">
         {rows.map((i) => <li><NewsItem item={i} clamp={true} /></li>)}
       </ul>
-      <p class="news-fine">Short excerpts of the official text, checked every day{lastCheckedAny ? `, last on ${fmtIso(lastCheckedAny)}` : ''}. Open the official notice for the full text. This is not legal or immigration advice.</p>
+      <p class="news-fine">
+        <span class="nf-long">Short excerpts of the official text, checked every day{lastCheckedAny ? `, last on ${fmtIso(lastCheckedAny)}` : ''}. Open the official notice for the full text.</span>
+        <span class="nf-short">Each headline opens the official notice. Checked every day{lastCheckedAny ? `, last on ${fmtIso(lastCheckedAny)}` : ''}.</span>
+        {' '}This is not legal or immigration advice.
+      </p>
     </div>
   </section>
 )}

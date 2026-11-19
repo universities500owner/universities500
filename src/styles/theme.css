@@ -187,12 +187,20 @@ html[data-theme="dark"] {
 .news-strip .news-src::after { content: "\203A"; font-size: 1.6rem; line-height: .8; transition: transform .15s; }
 .news-strip .news-item:hover .news-src::after { transform: translateX(4px); }
 .news-fine { color: var(--ink); opacity: .8; margin-top: 1rem; }
+.news-fine .nf-short { display: none; }
 @media (max-width: 560px) {
   .news-strip-head { flex-direction: column; align-items: flex-start; }
   .news-strip .news-grid { grid-template-columns: minmax(0, 1fr); gap: 5px; background: var(--band); border: 5px solid var(--band); border-inline-width: 0; margin-inline: -1.25rem; }
   .news-strip .news-grid > li { border: 0; }
-  .news-strip .news-item { padding: 1.25rem 1.25rem 1.1rem; }
-  .news-strip .news-item h3 { margin-left: -1.25rem; padding-left: .95rem; }
+  .news-strip .news-item { padding: 1rem 1.25rem 1.05rem; gap: .45rem; position: relative; }
+  .news-strip .news-item h3 { margin-left: -1.25rem; padding-left: .95rem; font-size: 1.12rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  /* Phone: country, date and headline only. The headline links to the official notice and the whole card is the tap target. */
+  .news-strip .news-item .news-note, .news-strip .news-item .news-src, .news-strip .news-item .news-body, .news-strip .news-lede { display: none; }
+  .news-strip .news-item h3 a::after { content: ""; position: absolute; inset: 0; }
+  .news-strip .news-meta { font-size: .88rem; }
+  .news-strip-head { margin-bottom: 1.1rem; }
+  .news-fine .nf-long { display: none; }
+  .news-fine .nf-short { display: inline; }
 }
 
 /* The /industry-news/ page: coloured headlines, a line between every item. */
