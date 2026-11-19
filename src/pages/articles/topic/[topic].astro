@@ -1,5 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
 import ArticleCard from '../../../components/ArticleCard.astro';
 import { topics, byTopic } from '../../../lib/articles.js';
 import { SITE } from '../../../lib/data.js';
@@ -27,10 +28,9 @@ const others = topics.filter((x) => x.slug !== t.slug);
   path={path}
   jsonld={ld}
   current="articles"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/articles/">Articles</a><span aria-hidden="true">/</span>{t.label}</nav>
-  <h1>{t.label}</h1>
-  <p class="lede">{t.blurb}</p>
+  <PageHead slot="head" tone="read" crumbs={[['Articles', '/articles/'], [t.label, null]]} title={t.label} lede={t.blurb.replace(/&/g, '&amp;').replace(/</g, '&lt;')} facts={[['Articles', String(list.length)]]} />
   <ul class="acards wide">
     {list.map((a) => <li><ArticleCard a={a} /></li>)}
   </ul>

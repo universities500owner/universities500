@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../../lib/articles.js';
 import { SITE } from '../../lib/data.js';
@@ -45,15 +46,11 @@ const ld = [
   path={href(e)}
   jsonld={ld}
   current="exams"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/exams/">Exam guides</a><span aria-hidden="true">/</span>{e.name}
-  </nav>
+  <PageHead slot="head" tone="read" crumbs={[['Exam guides', '/exams/'], [e.name, null]]} title={e.title} lede={e.lead.replace(/&/g, '&amp;').replace(/</g, '&lt;')} />
 
-  <section class="ghero">
-    <p class="g-eyebrow">Exam guide · {group}</p>
-    <h1>{e.title}</h1>
-    <p class="lede">{e.lead}</p>
+  <section class="rd-top">
     <div class="gstats" role="list" aria-label={`${e.name} at a glance`}>
       {e.stats.map((s) => <div class="gstat" role="listitem"><b>{s.v}</b><span>{s.l}</span></div>)}
     </div>

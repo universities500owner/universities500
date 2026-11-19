@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import { countries, all, byCountry } from '../../lib/data.js';
 import { englishGuides, otherGuides } from '../../lib/guides.js';
 
@@ -14,12 +15,16 @@ const count = (slug) => byCountry(slug).length;
   description={`Pick a destination and read its guide: study levels, universities, intakes, costs, work rights and visas. ${all.length} universities in ${countries.length} countries.`}
   path="/study-in/"
   current="study-in"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Study in</nav>
-  <div class="q-head">
-    <h1>Pick a country.</h1>
-    <p>Each tile opens a full guide: study levels, universities, intakes, costs, work rights and visas.</p>
-  </div>
+  <PageHead
+    slot="head"
+    tone="read"
+    crumbs={[['Study in', null]]}
+    title="Pick a country."
+    lede="Each tile opens a full guide: study levels, universities, intakes, costs, work rights and visas."
+    facts={[['Destination guides', String(groups.reduce((n, g) => n + g[2].length, 0))], ['Universities listed', String(all.length)]]}
+  />
 
   {groups.map(([title, sub, list]) => (
     <section class="tile-sec">

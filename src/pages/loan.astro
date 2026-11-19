@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
 import { forTopics, TOOL_TOPICS } from '../lib/articles.js';
 import { hiddenFromSearch } from '../lib/noindex.js';
@@ -11,12 +12,9 @@ const path = '/loan/';
   path={path}
   noindex={hiddenFromSearch(path)}
   current="loan"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Education loan</nav>
-  <div class="q-head">
-    <h1>Education loan</h1>
-    <p>What borrowing actually costs over the life of the loan, and where to compare lenders.</p>
-  </div>
+  <PageHead slot="head" tone="read" crumbs={[['Education loan guide', '/education-loan-guide/'], ['Loan calculator', null]]} title="Education loan calculator" lede="What borrowing actually costs over the life of the loan, and where to compare lenders." />
 
   <section class="sec" aria-labelledby="h-loan">
     <h2 id="h-loan">If you borrow</h2>

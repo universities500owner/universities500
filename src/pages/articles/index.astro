@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { articles, destinations, topics } from '../../lib/articles.js';
 import { SITE } from '../../lib/data.js';
@@ -20,10 +21,15 @@ const ld = [
   path="/articles/"
   jsonld={ld}
   current="articles"
+  read={true}
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Articles</nav>
-  <h1>Articles</h1>
-  <p class="lede">Short answers first, then the detail. Each one names the official pages it draws on.</p>
+  <PageHead
+    slot="head"
+    tone="read"
+    title="Articles"
+    lede="Short answers first, then the detail. Each one names the official pages it draws on."
+    facts={[['Articles', String(articles.length)], ['Topics', String(topics.length)], ['Destinations', String(destinations.length)]]}
+  />
 
   <h2 class="hub-h">By topic</h2>
   <ul class="pills">

@@ -234,3 +234,110 @@ html[data-theme="dark"] {
 /* "More filters" is one button: no box around it. Cards in a row keep their own height, so a short card has no empty gap. */
 .pg .filterbar#crs-bar { background: none; border: 0; padding: 0; margin: .9rem 0 .25rem; }
 .pg .rc-list { align-items: start; }
+
+/* ---------- reading pages: articles, destination guides, exam guides, English test, education loan ---------- */
+/* The article look of kpmg.com: a bright blue top band, a deep blue strip of key facts, big bold headings on white, pale square cards,
+   big blue figures, and a blue band at the foot with the next steps. Base.astro gives these pages class "pg pg-read". */
+:root { --read-hero: #1E49E2; --read-pale: #F5F6FA; }
+html[data-theme="dark"] { --read-hero: #1A3CB8; --read-pale: var(--surface); }
+
+.pg-head--read { background: var(--read-hero); padding-bottom: clamp(1.9rem, 4.5vw, 3.2rem); }
+.pg-head--read h1 { font-size: clamp(1.85rem, 5vw, 3.6rem); line-height: 1.05; max-width: 24ch; margin-bottom: .8rem; text-wrap: balance; }
+.pg-head--read .pg-lede { max-width: 62ch; font-size: clamp(1.02rem, 1.7vw, 1.25rem); }
+.pg-facts { background: var(--band); color: #fff; }
+.pg-facts dl { margin: 0; padding: 1.15rem 0 1.3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1rem 2rem; }
+.pg-facts dt { font-weight: 700; font-size: .98rem; }
+.pg-facts dd { margin: .15rem 0 0; color: rgba(255, 255, 255, .92); line-height: 1.4; }
+.pg-facts a { color: #fff; text-underline-offset: 3px; }
+@media (max-width: 560px) { .pg-facts dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 1.25rem; } }
+
+.pg-read { background: var(--paper); padding-top: clamp(2rem, 4.5vw, 3.25rem); }
+.pg-read .tip { max-width: none; margin: 0; padding-bottom: 0; }
+.pg-read .rd-top { margin: 0 0 clamp(2rem, 4vw, 3rem); display: grid; gap: 1.75rem; }
+.pg-read .rd-top > * { margin: 0; }
+
+/* headings: big, bold, dark */
+.pg-read .sec > h2, .pg-read .gsec > h2, .pg-read .g-tools h2, .pg-read .g-card h2, .pg-read .tip-sec h2, .pg-read .tip-more h2, .pg-read .hub-h, .pg-read .sec-sub {
+  color: var(--ink); font-weight: 700; letter-spacing: -.015em; line-height: 1.12;
+}
+.pg-read .sec > h2, .pg-read .gsec > h2, .pg-read .g-tools h2 { font-size: clamp(1.75rem, 3.4vw, 2.6rem); }
+.pg-read .tip-sec h2 { font-size: clamp(1.55rem, 3vw, 2.15rem); margin-bottom: .8rem; }
+.pg-read .g-card h2 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); }
+.pg-read .hub-h { font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 2.5rem 0 .6rem; }
+.pg-read .sec-sub { font-size: clamp(1.25rem, 2.2vw, 1.6rem); }
+.pg-read .sec { margin: clamp(2rem, 4vw, 3rem) 0; }
+.pg-read .gsec { margin-top: clamp(2.25rem, 4.5vw, 3.5rem); }
+.pg-read .tip-body a, .pg-read .sec-lede a, .pg-read .src a, .pg-read .g-info a { color: var(--k-cobalt); }
+
+/* key figures: big blue numbers, no box */
+.pg-read .gstats { grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr)); gap: 1.5rem 2.25rem; margin: 0; }
+.pg-read .gstat { background: none; border: 0; border-radius: 0; padding: 0; }
+.pg-read .gstat b { color: var(--k-cobalt); font-size: clamp(2.1rem, 4.6vw, 3.3rem); font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+.pg-read .gstat span { margin-top: .55rem; color: var(--ink); font-weight: 600; font-size: .98rem; }
+
+/* pale square cards on the white page */
+.pg-read .g-card, .pg-read .dcard, .pg-read .tcard, .pg-read .panel, .pg-read .note, .pg-read .acard, .pg-read .xcard, .pg-read .tip-toc, .pg-read .tile {
+  background: var(--read-pale); border: 1px solid transparent; border-radius: 0; box-shadow: none; color: var(--ink);
+}
+.pg-read .acard:hover, .pg-read .xcard:hover, .pg-read .tile:hover { background: var(--k-card-hover); border-color: var(--k-cobalt); box-shadow: none; }
+.pg-read .acard { padding: 1.2rem 1.3rem; }
+.pg-read .acard-kick, .pg-read .xtag { color: var(--k-cobalt); }
+.pg-read .acard-title, .pg-read .xcard h3, .pg-read .dcard h3, .pg-read .tile h3 { color: var(--ink); font-weight: 700; }
+.pg-read .xgo, .pg-read .tile-go { color: var(--k-cobalt); }
+.pg-read .xgo::after { content: " \203A"; }
+.pg-read .tile { padding: 1.2rem 1.3rem; }
+.pg-read .tile-fact b { color: var(--k-cobalt); font-size: 1.6rem; }
+.pg-read .g-cover, .pg-read .xnote, .pg-read .xtip, .pg-read .tip-quick, .pg-read .tip-callout, .pg-read .g-info {
+  background: var(--read-pale); color: var(--ink); border: 0; border-left: .4rem solid var(--k-mint); border-radius: 0; max-width: none;
+}
+.pg-read .xnote { border-left-color: var(--warm-2); }
+.pg-read .tip-callout { border-left-color: var(--k-cobalt); }
+.pg-read .g-info { border-left-color: var(--k-hair); }
+.pg-read .g-cover, .pg-read .tip-quick { padding: 1.2rem 1.5rem; }
+.pg-read .tip-quick { margin: 0 0 2rem; }
+.pg-read .tip-quick-h { color: var(--k-title); }
+
+/* accordions: pale when shut, white with a mint bar when open */
+.pg-read .topic { background: var(--read-pale); border: 1px solid var(--read-pale); border-left: .4rem solid var(--k-hair); border-radius: 0; box-shadow: none; margin: .6rem 0; }
+.pg-read .topic[open] { background: var(--paper); border-color: var(--k-hair); border-left-color: var(--k-mint); box-shadow: none; }
+.pg-read .topic summary:hover { background: var(--k-card-hover); }
+.pg-read .topic summary::after { color: var(--k-cobalt); }
+.pg-read .num { border-radius: 0; background: var(--band); color: #fff; }
+.pg-read .topic-title { color: var(--ink); font-size: clamp(1.15rem, 2.2vw, 1.45rem); }
+.pg-read .gbody details, .pg-read .tip-q { border-radius: 0; }
+.pg-read .gbody details { background: var(--read-pale); border-color: var(--k-hair); }
+.pg-read .tip-q summary::after { color: var(--k-cobalt); }
+.pg-read .tip-side a:hover { border-left-color: var(--k-cobalt); color: var(--k-cobalt); }
+.pg-read .tip-side h2 { color: var(--k-title); }
+
+/* tables: deep blue header row, lavender lines */
+.pg-read .tbl thead th, .pg-read .tip-table thead th { background: var(--band); color: #fff; }
+.pg-read .tbl thead th a { color: #fff; }
+.pg-read .tbl th, .pg-read .tbl td, .pg-read .tip-table th, .pg-read .tip-table td { border-bottom-color: var(--k-hair); }
+
+/* chips */
+.pg-read .pills a { border: 1px solid var(--k-cobalt); border-radius: 0; background: var(--paper); color: var(--k-cobalt); font-weight: 600; }
+.pg-read .pills a:hover, .pg-read .pills a:hover span { background: var(--band); border-color: var(--band); color: #fff; }
+.pg-read .pills span { color: var(--muted); }
+.pg-read .btn { border-radius: 0; }
+
+/* full-width bands: the next steps in bright blue, and a pale one for related reading */
+.pg-read .rd-cta, .pg-read .rd-pale { clip-path: inset(0 -100vmax); }
+.pg-read .rd-cta { background: var(--read-hero); box-shadow: 0 0 0 100vmax var(--read-hero); color: #fff; border: 0; border-radius: 0; margin: clamp(2.5rem, 5vw, 3.75rem) 0; padding: clamp(2rem, 4.5vw, 3.25rem) 0; max-width: none; }
+.pg-read .rd-pale { background: var(--read-pale); box-shadow: 0 0 0 100vmax var(--read-pale); padding: clamp(2rem, 4vw, 3rem) 0; margin: clamp(2.5rem, 5vw, 3.75rem) 0 0; }
+.pg-read .rd-cta h2 { color: #fff; font-size: clamp(1.75rem, 3.4vw, 2.6rem); line-height: 1.12; letter-spacing: -.015em; margin: 0 0 1.1rem; }
+.pg-read .rd-cta p { color: rgba(255, 255, 255, .92); }
+.pg-read .rd-cta ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .75rem; }
+.pg-read .rd-cta ul a, .pg-read .rd-cta .btn { display: inline-block; padding: .72rem 1.4rem; background: #fff; border: 2px solid #fff; border-radius: 0; color: #1E49E2; font-weight: 700; text-decoration: none; }
+.pg-read .rd-cta ul a:hover, .pg-read .rd-cta .btn:hover { background: transparent; color: #fff; }
+.pg-read .rd-cta :focus-visible { outline-color: #fff; }
+.pg-read .rd-pale .acard { background: var(--k-card); border-color: var(--k-hair); }
+.pg-read .rd-pale .acard:hover { border-color: var(--k-cobalt); }
+.pg-read .xcta { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem 2rem; flex-wrap: wrap; }
+.pg-read .xcta h2 { margin-bottom: .4rem; }
+.pg-read .tile-group h2 { color: var(--ink); font-weight: 700; font-size: clamp(1.5rem, 2.6vw, 2rem); letter-spacing: -.015em; }
+@media (max-width: 560px) {
+  .pg-read .gstats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem 1.25rem; }
+  .pg-read .gstat b { font-size: clamp(1.7rem, 8vw, 2.2rem); }
+  .pg-read .gstat span { font-size: .9rem; }
+}
