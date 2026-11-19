@@ -136,9 +136,9 @@ test('ElevenLabs: sends the key, voice, format and neighbouring text', async () 
   assert.deepEqual(body.voice_settings, { stability: 0.5 });
 });
 
-test('ElevenLabs: v3 models are sent without neighbouring text', async () => {
+test('ElevenLabs: v3 and v4 models are sent without neighbouring text', async () => {
   let body;
-  const synth = elevenlabs({ apiKey: 'k', cfg: { ...CFG, model: 'eleven_v3' }, fetchImpl: async (u, i) => { body = JSON.parse(i.body); return okRes(); } });
+  const synth = elevenlabs({ apiKey: 'k', cfg: { ...CFG, model: 'eleven_v4' }, fetchImpl: async (u, i) => { body = JSON.parse(i.body); return okRes(); } });
   await synth({ text: 'Hi.', previousText: 'a', nextText: 'b' });
   assert.equal(body.previous_text, undefined);
   assert.equal(body.next_text, undefined);

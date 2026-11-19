@@ -1,15 +1,16 @@
 {
-  "_about": "Settings for the Listen audio. voiceId is empty until a voice is chosen: with no voice, no page shows a Listen button. Changing provider, model, voiceId, format, settings or version makes every clip count as new (all audio is made again), so change them on purpose.",
+  "_about": "Settings for the Listen audio. With no voiceId no page shows a Listen button. tonePrefix is a cue placed before every clip; it is used only with Eleven v3/v4 models (leave it empty for others). Changing provider, model, voiceId, tonePrefix, format, settings or version makes every clip count as new (all audio is made again), so change them on purpose.",
   "version": 1,
   "provider": "elevenlabs",
-  "model": "eleven_multilingual_v2",
-  "voiceId": "",
+  "model": "eleven_v4",
+  "voiceId": "wJ5MX7uuKXZwFqGdWM4N",
+  "tonePrefix": "[warmly]",
   "format": "mp3_44100_64",
   "bitrateKbps": 64,
   "settings": { "stability": 0.5, "similarity_boost": 0.75, "style": 0, "use_speaker_boost": true, "speed": 1.0 },
-  "stitch": true,
+  "stitch": false,
   "concurrency": 3,
   "monthlyChars": 700000,
-  "pricePer1kChars": 0.1,
+  "pricePer1kChars": 0.08,
   "audioBase": "https://audio.universities500.com"
 }

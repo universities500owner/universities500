@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { speak, blockSpeech, guideClips, articleClips, clipHash, withHashes, resolveListen, MAX_CHARS, GUIDE_CLOSING } from '../src/lib/listen.js';
+import { speak, takesTags, spokenText, blockSpeech, guideClips, articleClips, clipHash, withHashes, resolveListen, MAX_CHARS, GUIDE_CLOSING } from '../src/lib/listen.js';
 
 const CFG = { version: 1, provider: 'elevenlabs', model: 'eleven_multilingual_v2', voiceId: 'VOICE1', format: 'mp3_44100_64', settings: { stability: 0.5 }, audioBase: 'https://audio.example.com/' };
 const R = (t, extra = {}) => ({ t, ...extra });
@@ -111,4 +111,22 @@ test('resolveListen: audio is offered only when every clip matches the current t
   assert.equal(resolveListen(edited, have(hashed), CFG), null, 'text changed since the audio was made');
   assert.equal(resolveListen(clips, have(hashed), { ...CFG, voiceId: '' }), null, 'no voice chosen');
   assert.equal(resolveListen([], have(hashed), CFG), null);
+});
+
+test('tone cue is added only for models that read tags, and is part of the fingerprint', () => {
+  const v4 = { ...CFG, model: 'eleven_v4', tonePrefix: '[warmly]' };
+  assert.equal(takesTags(v4), true);
+  assert.equal(takesTags({ ...CFG, model: 'eleven_v4_turbo' }), true);
+  assert.equal(takesTags({ ...CFG, model: 'eleven_v3' }), true);
+  assert.equal(takesTags(CFG), false);
+  assert.equal(spokenText(v4, 'Hello.'), '[warmly] Hello.');
+  assert.equal(spokenText({ ...CFG, tonePrefix: '[warmly]' }, 'Hello.'), 'Hello.', 'older model: never say the cue aloud');
+  assert.equal(spokenText({ ...v4, tonePrefix: '' }, 'Hello.'), 'Hello.');
+  const clips = guideClips(GUIDE);
+  const a = withHashes(clips, v4);
+  assert.ok(a.every((c) => c.text.startsWith('[warmly] ')));
+  assert.notEqual(a[0].hash, withHashes(clips, { ...v4, tonePrefix: '[calm]' })[0].hash);
+  const have = { clips: Object.fromEntries(a.map((c) => [c.hash, { seconds: 30, bytes: 1, chars: 1 }])) };
+  assert.ok(resolveListen(clips, have, v4), 'the page finds its audio with the same settings');
+  assert.equal(resolveListen(clips, have, { ...v4, tonePrefix: '[calm]' }), null, 'a different tone means new audio');
 });
