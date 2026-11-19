@@ -1,7 +1,7 @@
 ---
 // One course in the list. Every fact is copied from the course's official page; a fact the page did not state says so.
 import Icons from './Icons.astro';
-import { path, levelText, lengthText, feeText, ieltsText, ieltsScore, startsText, countryName, NOT_STATED } from '../lib/courses.js';
+import { path, levelText, lengthText, feeText, ieltsScore, startsText, countryName, NOT_STATED } from '../lib/courses.js';
 const { c } = Astro.props;
 const months = (c.intakes && c.intakes.months) || [];
 const search = [c.name, c.uniName, c.field || '', c.degree || '', countryName(c.country)].join(' ').toLowerCase();
@@ -9,21 +9,22 @@ const search = [c.name, c.uniName, c.field || '', c.degree || '', countryName(c.
 <li class="crs" data-id={`crs:${c.uni}/${c.slug}`} data-search={search} data-name={c.name.toLowerCase()} data-uni={c.uni} data-uniname={c.uniName} data-country={c.country} data-level={c.level.toLowerCase()} data-field={c.field || ''} data-ielts={ieltsScore(c) != null ? ieltsScore(c) : ''} data-months={months.join(' ')} data-fee={c.fee ? '1' : ''} data-years={c.duration ? c.duration.years : ''}>
   <div class="crs-main">
     <h3 class="crs-title"><a href={path(c)}>{c.name}</a></h3>
-    <p class="crs-where"><a href={`/universities/${c.uni}/`}>{c.uniName}</a><span aria-hidden="true"> · </span>{countryName(c.country)}</p>
-    <ul class="crs-tags" aria-label="About this course">
-      <li>{levelText(c)}</li>
-      {c.field && <li>{c.field}</li>}
-    </ul>
+    <div class="crs-meta">
+      <p class="crs-where"><a href={`/universities/${c.uni}/`}>{c.uniName}</a><span class="crs-ctry"><span aria-hidden="true"> · </span>{countryName(c.country)}</span></p>
+      <ul class="crs-tags" aria-label="About this course">
+        <li>{levelText(c)}</li>
+        {c.field && <li>{c.field}</li>}
+      </ul>
+    </div>
+    <dl class="crs-facts">
+      <div><dt>Duration</dt><dd class={c.duration ? '' : 'none'}>{lengthText(c, NOT_STATED)}</dd></div>
+      <div><dt title="Fee for international students">Fees</dt><dd class={c.fee ? '' : 'none'}>{feeText(c, NOT_STATED)}</dd></div>
+      <div><dt>Intakes</dt><dd class={months.length ? '' : 'none'}>{startsText(c, NOT_STATED)}</dd></div>
+    </dl>
   </div>
-  <dl class="crs-facts">
-    <div><dt>Length</dt><dd class={c.duration ? '' : 'none'}>{lengthText(c, NOT_STATED)}</dd></div>
-    <div><dt>International fee</dt><dd class={c.fee ? '' : 'none'}>{feeText(c, NOT_STATED)}</dd></div>
-    <div><dt>English</dt><dd class={ieltsScore(c) != null ? '' : 'none'}>{ieltsText(c, NOT_STATED)}</dd></div>
-    <div><dt>Starts</dt><dd class={months.length ? '' : 'none'}>{startsText(c, NOT_STATED)}</dd></div>
-  </dl>
   <div class="crs-act">
-    <button type="button" class="rc-save" data-save aria-pressed="false" aria-label={`Save ${c.name}`} title="Save on this device"><Icons name="bookmark" /></button>
+    <a class="btn" href={path(c)}>Details</a>
+    <button type="button" class="rc-save" data-save aria-pressed="false" aria-label={`Shortlist ${c.name}`} title="Shortlist on this device"><Icons name="bookmark" /><span class="rc-save-t"><span class="t-off">Shortlist</span><span class="t-on">Shortlisted</span></span></button>
     <label class="crs-cmp"><input type="checkbox" data-compare aria-label={`Compare ${c.name}`} /> Compare</label>
-    <a class="btn ghost" href={path(c)}>Details</a>
   </div>
 </li>

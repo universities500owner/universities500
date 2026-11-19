@@ -50,12 +50,12 @@ const path = (r) => `/courses/${r.uni}/${r.slug}/`;
 const fact = (label, v) => `<div><dt>${label}</dt><dd${v ? '' : ' class="none"'}>${esc(v || NOT_STATED)}</dd></div>`;
 const rowHtml = (r) => `<li class="crs" data-id="${esc(r.id)}">`
   + `<div class="crs-main"><h3 class="crs-title"><a href="${esc(path(r))}">${esc(r.name)}</a></h3>`
-  + `<p class="crs-where"><a href="/universities/${esc(r.uni)}/">${esc(r.uniName)}</a><span aria-hidden="true"> · </span>${esc(r.countryName)}</p>`
+  + `<div class="crs-meta"><p class="crs-where"><a href="/universities/${esc(r.uni)}/">${esc(r.uniName)}</a><span class="crs-ctry"><span aria-hidden="true"> · </span>${esc(r.countryName)}</span></p>`
   + `<ul class="crs-tags" aria-label="About this course"><li>${esc(r.lv)}</li>${r.fd ? `<li>${esc(r.fd)}</li>` : ''}</ul></div>`
-  + `<dl class="crs-facts">${fact('Length', r.ln)}${fact('International fee', r.fe)}${fact('English', r.ie)}${fact('Starts', r.st)}</dl>`
-  + `<div class="crs-act"><button type="button" class="rc-save" data-save aria-pressed="${isSaved(r.id)}" aria-label="Save ${esc(r.name)}" title="Save on this device">${BOOKMARK}</button>`
-  + `<label class="crs-cmp"><input type="checkbox" data-compare aria-label="Compare ${esc(r.name)}" /> Compare</label>`
-  + `<a class="btn ghost" href="${esc(path(r))}">Details</a></div></li>`;
+  + `<dl class="crs-facts">${fact('Duration', r.ln)}<div><dt title="Fee for international students">Fees</dt><dd${r.fe ? '' : ' class="none"'}>${esc(r.fe || NOT_STATED)}</dd></div>${fact('Intakes', r.st)}</dl></div>`
+  + `<div class="crs-act"><a class="btn" href="${esc(path(r))}">Details</a>`
+  + `<button type="button" class="rc-save" data-save aria-pressed="${isSaved(r.id)}" aria-label="Shortlist ${esc(r.name)}" title="Shortlist on this device">${BOOKMARK}<span class="rc-save-t"><span class="t-off">Shortlist</span><span class="t-on">Shortlisted</span></span></button>`
+  + `<label class="crs-cmp"><input type="checkbox" data-compare aria-label="Compare ${esc(r.name)}" /> Compare</label></div></li>`;
 
 // The university list follows the destinations: only universities that have a course in the chosen countries.
 const unis = new Map();
