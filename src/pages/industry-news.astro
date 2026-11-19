@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
 import NewsFeedItem from '../components/NewsFeedItem.astro';
 import { PUBLISH, feed, destinations, COLOR, sourcesFor, lastChecked, lastCheckedAny, fmtIso } from '../lib/news.js';
 
@@ -16,11 +17,7 @@ const where = destinations.map((c) => ({ ...c, srcs: sourcesFor(c.code), checked
   current="industry-news"
   news={false}
 >
-  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span>Industry news</nav>
-  <div class="q-head">
-    <h1>Industry news</h1>
-    <p>Visa, fee and rule changes for international students across 14 study destinations, newest first. Official notices and trade-press reports are mixed together and every item is labelled.</p>
-  </div>
+  <PageHead slot="head" crumbs={[['Industry news', null]]} title="Industry news" lede="Visa, fee and rule changes for international students across 14 study destinations, newest first. Official notices and trade-press reports are mixed together and every item is labelled." />
 
   {!live && (
     <div class="note draft">

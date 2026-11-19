@@ -206,14 +206,13 @@ const ld = [
       /* Each tile is cut off from the next by a thick line in the band blue. */
       .home-v2 .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; margin-inline: -1.25rem; border: 5px solid #00338D; border-inline-width: 0; background: #00338D; }
       .home-v2 .tile, .home-v2 .tile:hover { border: 0; }
-      .home-v2 .tile:not(.tile-wide) { display: grid; grid-template-columns: 1.9rem minmax(0, 1fr); grid-template-rows: auto auto 1fr; column-gap: 0.5rem; align-items: center; align-content: stretch; aspect-ratio: 1 / 1; padding: 0.85rem 0.75rem 0.7rem 1rem; }
-      .home-v2 .tile:not(.tile-wide)::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 0.4rem; height: 1.9rem; background: #60EBD8; }
-      .home-v2 .tile:not(.tile-wide) .tile-ico { width: 1.9rem; height: 1.9rem; margin: 0; }
-      .home-v2 .tile:not(.tile-wide) .tile-ico svg { width: 0.9rem; height: 0.9rem; }
-      .home-v2 .tile:not(.tile-wide) .tile-title { margin: 0; padding: 0; border-left: 0; font-size: 1.02rem; line-height: 1.12; }
-      .home-v2 .tile:not(.tile-wide) .tile-txt { grid-column: 1 / -1; align-self: start; font-size: 0.82rem; line-height: 1.35; margin: 0.55rem 0 0; }
+      .home-v2 .tile:not(.tile-wide) { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto 1fr auto; align-content: stretch; padding: 0.95rem 0.75rem 0.75rem 1rem; }
+      .home-v2 .tile:not(.tile-wide) .tile-ico { width: 1.9rem; height: 1.9rem; margin: 0 0 0.55rem; }
+      .home-v2 .tile:not(.tile-wide) .tile-ico svg { width: 0.95rem; height: 0.95rem; }
+      .home-v2 .tile:not(.tile-wide) .tile-title { margin: 0 0 0 -1rem; padding-left: 0.6rem; border-left: 0.4rem solid #60EBD8; font-size: 1.3rem; line-height: 1.1; overflow-wrap: break-word; }
+      .home-v2 .tile:not(.tile-wide) .tile-txt { align-self: start; font-size: 0.82rem; line-height: 1.35; margin: 0.5rem 0 0; }
       .home-v2 .tile:not(.tile-wide) .tile-chips { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-      .home-v2 .tile:not(.tile-wide) .tile-stat { grid-column: 1 / -1; align-self: end; margin: 0.4rem 0 0; padding-top: 0.45rem; font-size: 0.85rem; line-height: 1.25; }
+      .home-v2 .tile:not(.tile-wide) .tile-stat { align-self: end; margin: 0.4rem 0 0; padding-top: 0.45rem; font-size: 0.85rem; line-height: 1.25; }
       .home-v2 .tile:not(.tile-wide) .tile-stat svg { display: none; }
       .home-v2 .tile-wide { padding: 1.15rem 1.1rem 0.95rem; }
       .home-v2 .tile-wide .tile-title { margin-left: -1.1rem; font-size: 1.45rem; }
