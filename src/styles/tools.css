@@ -77,7 +77,7 @@
 .site-foot a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .site-foot ul { display: block; padding: 0; margin: 0; list-style: none; }
 .foot-top { display: grid; gap: 2rem 3rem; }
-@media (min-width: 62rem) { .foot-top { grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); } }
+@media (min-width: 62rem) { .foot-top.has-about { grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); } }
 .foot-about h2 { font-size: 1.3rem; }
 .foot-about p { margin: 0 0 .8rem; max-width: 40ch; line-height: 1.6; }
 .foot-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 1.5rem 2rem; align-content: start; }

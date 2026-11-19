@@ -185,3 +185,18 @@ html[data-theme="dark"] {
   .pg .feed-item { padding: 1.2rem 1.25rem 1.1rem; }
   .pg .feed-item h2 { margin-left: -1.25rem; padding-left: .95rem; font-size: 1.2rem; }
 }
+
+/* ---------- footer: the same blue as the page-top band, white text ---------- */
+.site-foot { background: var(--band); border-top: 0; color: rgba(255, 255, 255, .86); padding: clamp(2.25rem, 4vw, 3.25rem) 0 2rem; }
+.site-foot h2 { color: #fff; }
+.site-foot a { color: #fff; }
+.site-foot a:hover { color: #fff; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.site-foot :focus-visible { outline-color: #fff; }
+.foot-cols h2, .foot-guides h2 { border-left: .3rem solid var(--k-mint); padding-left: .6rem; }
+.foot-about h2 { font-size: 1.5rem; border-left: .4rem solid var(--k-mint); padding-left: .75rem; }
+.foot-about p { color: rgba(255, 255, 255, .9); }
+.foot-guides, .foot-legal { border-top-color: rgba(255, 255, 255, .28); }
+.foot-wip { color: rgba(255, 255, 255, .82); }
+.site-foot .totop { border: 1px solid #fff; border-radius: 0; color: #fff; }
+.site-foot .totop:hover { background: rgba(255, 255, 255, .14); }
+.foot-about { scroll-margin-top: 4rem; }
