@@ -135,3 +135,53 @@ html[data-theme="dark"] {
   .pg .crs-list > .crs { padding: 1.1rem; }
   .pg .filterbar, .pg .subj-box { margin-inline: -1.25rem; border-inline-width: 0; padding-inline: 1.25rem; }
 }
+
+/* ---------- Industry news: the home strip and the /industry-news/ feed ---------- */
+/* The home strip: a pale band, a big bold blue heading, four flush white cards. */
+.news-strip { background: var(--pale); border-top: 1px solid var(--k-hair); margin-top: 2.5rem; padding: clamp(2.25rem, 5vw, 3.5rem) 0 clamp(2.5rem, 5vw, 3.5rem); }
+.news-strip-head { align-items: flex-end; margin-bottom: .75rem; }
+.news-strip-head h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; letter-spacing: -0.02em; font-weight: 700; color: var(--k-title); }
+.news-all { color: var(--k-cobalt); font-size: 1.05rem; }
+.news-lede { color: var(--ink); font-size: 1.05rem; line-height: 1.6; margin: 0 0 clamp(1.25rem, 3vw, 2rem); }
+.news-strip .news-grid { gap: 0; background: var(--k-card); border-top: 1px solid var(--k-hair); border-left: 1px solid var(--k-hair); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 1000px) { .news-strip .news-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.news-strip .news-grid > li { display: flex; border-right: 1px solid var(--k-hair); border-bottom: 1px solid var(--k-hair); }
+.news-strip .news-item { width: 100%; height: auto; background: var(--k-card); border: 0; border-radius: 0; padding: 1.5rem 1.4rem 1.2rem; gap: .75rem; transition: background-color .15s; }
+.news-strip .news-item:hover { background: var(--k-card-hover); }
+.news-strip .news-item h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.15rem, 1.6vw, 1.3rem); line-height: 1.22; color: var(--k-title); border-left: .4rem solid var(--k-mint); padding-left: 1rem; margin-left: -1.4rem; }
+.news-strip .news-item h3 a { color: inherit; }
+.news-strip .news-item h3 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .18em; }
+.news-strip .news-country { color: var(--k-title); }
+.news-strip .news-meta { order: -1; }
+.news-strip .news-src { margin-top: auto; padding-top: .85rem; border-top: 1px solid var(--k-hair); color: var(--k-cobalt); font-weight: 700; font-size: .95rem; display: flex; justify-content: space-between; align-items: center; gap: .75rem; text-decoration: none; }
+.news-strip .news-src::after { content: "\203A"; font-size: 1.6rem; line-height: .8; transition: transform .15s; }
+.news-strip .news-item:hover .news-src::after { transform: translateX(4px); }
+.news-fine { color: var(--ink); opacity: .8; margin-top: 1rem; }
+@media (max-width: 560px) {
+  .news-strip-head { flex-direction: column; align-items: flex-start; }
+  .news-strip .news-grid { grid-template-columns: minmax(0, 1fr); gap: 5px; background: var(--band); border: 5px solid var(--band); border-inline-width: 0; margin-inline: -1.25rem; }
+  .news-strip .news-grid > li { border: 0; }
+  .news-strip .news-item { padding: 1.25rem 1.25rem 1.1rem; }
+  .news-strip .news-item h3 { margin-left: -1.25rem; padding-left: .95rem; }
+}
+
+/* The /industry-news/ page: coloured headlines, a line between every item. */
+.pg .feed-filters { background: var(--k-card); border: 1px solid var(--k-hair); padding: 1rem 1.1rem; margin: .25rem 0 1.25rem; }
+.pg .feed-filters .seg { border-radius: 0; }
+.pg .feed { max-width: none; gap: 0; background: var(--k-card); border: 1px solid var(--k-hair); border-bottom: 0; }
+.pg .feed-item { padding: 1.5rem 1.6rem 1.35rem; border-bottom: 1px solid var(--k-hair); }
+.pg .feed-item h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 2vw, 1.55rem); line-height: 1.2; margin: 0 0 .5rem -1.6rem; padding-left: 1.2rem; border-left: .4rem solid var(--k-mint); }
+.pg .feed-item h2 a { color: var(--k-title); }
+.pg .feed-item h2 a:hover { color: var(--k-cobalt); }
+.pg .feed-meta { margin-bottom: .6rem; }
+.pg .feed-kind { border: 1px solid currentColor; padding: 0 .5rem; font-size: .8rem; }
+.pg .feed-kind.press { color: var(--muted); }
+.pg .feed-note { max-width: 72ch; }
+.pg .feed-link a { color: var(--k-cobalt); }
+.pg .feed-empty { max-width: none; }
+.pg .feed-fine, .pg .feed-where { max-width: 72ch; }
+@media (max-width: 560px) {
+  .pg .feed { margin-inline: -1.25rem; border-inline-width: 0; }
+  .pg .feed-item { padding: 1.2rem 1.25rem 1.1rem; }
+  .pg .feed-item h2 { margin-left: -1.25rem; padding-left: .95rem; font-size: 1.2rem; }
+}
