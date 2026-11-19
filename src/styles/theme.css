@@ -359,10 +359,10 @@ html[data-theme="dark"] { --read-hero: #1A3CB8; --read-pale: var(--surface); }
 .nav-btn[data-here], .nav-link[aria-current="page"] { border-radius: 0; box-shadow: inset 0 -3px 0 var(--k-cobalt); }
 .head-cta { border-radius: 0; padding: .75rem 1rem; font-size: .95rem; }
 .head-right { gap: .4rem; }
-@media (min-width: 621px) { .brand img { height: 40px; } }
-/* Phones: the logo takes the room left beside the three buttons (44px at 390 wide, 48px at most), and the buttons are a little slimmer to make room. */
+/* The logo is 48px tall. With the search icon gone from the header it fits on every phone from 365px wide, and it shrinks a little below that to stay clear of the menu buttons. */
+@media (min-width: 621px) { .brand img { height: 48px; } }
 @media (max-width: 620px) {
-  .brand img { height: clamp(28px, calc((100vw - 200px) / 4.31), 48px); }
+  .brand img { height: clamp(28px, calc((100vw - 158px) / 4.31), 48px); }
   .nav-toggle { padding: .5rem .6rem; }
   .head-search, .theme { width: 2.25rem; height: 2.25rem; }
   .head-actions { gap: .35rem; }
@@ -412,3 +412,65 @@ html[data-theme="dark"] .ct-status.is-bad { color: #FF9B94; }
   .nav-btn { gap: .25rem; }
   .head-actions { gap: .4rem; }
 }
+
+/* ---------- floating search: a round button in the bottom-right corner of every page, and its panel ---------- */
+/* The corner stack: the scroll arrows sit above the search button, which stays put. */
+.scrollnav { z-index: 35; }
+.scrollnav .fs-open {
+  width: 3rem; height: 3rem; border-radius: 50%; display: grid; place-items: center; text-decoration: none;
+  background: var(--band); color: #fff; border: 2px solid #fff; box-shadow: 0 3px 14px rgba(0, 21, 34, .35);
+}
+.scrollnav .fs-open:hover { background: var(--k-cobalt); }
+html[data-theme="dark"] .scrollnav .fs-open { border-color: var(--k-edge); }
+html[data-theme="dark"] .scrollnav .fs-open:hover { background: #1A3CB8; }
+.scrollnav .fs-open:focus-visible { outline: 3px solid var(--k-mint); outline-offset: 2px; }
+.scrollnav .fs-open svg { display: block; width: 1.3rem; height: 1.3rem; }
+html.fs-lock { overflow: hidden; }
+
+/* The panel: a sheet from the bottom on phones, a card above the button on larger screens. */
+.fs { position: fixed; inset: auto 0 var(--fs-bottom, 0) 0; width: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--ink); overflow: visible; }
+.fs::backdrop { background: rgba(0, 21, 34, .55); }
+.fs-card {
+  display: flex; flex-direction: column; background: var(--paper); border-top: 4px solid var(--k-mint);
+  max-height: calc(var(--fs-h, 100dvh) * .9); padding: .9rem 1rem 0; box-shadow: 0 -8px 30px var(--shadow);
+}
+.fs-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .6rem; }
+.fs-title { margin: 0; font-size: 1.1rem; line-height: 1.25; color: var(--k-title); }
+.fs-close { flex: none; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; border: 1px solid var(--k-edge); border-radius: 0; background: var(--k-card); color: var(--ink); cursor: pointer; padding: 0; }
+.fs-close:hover { background: var(--k-card-hover); }
+.fs-close svg { width: 1rem; height: 1rem; }
+.fs-form { display: flex; gap: .5rem; }
+.fs-form input { flex: 1; min-width: 0; font: inherit; font-size: 1rem; padding: .65rem .75rem; border: 1px solid var(--k-edge); border-radius: 0; background: var(--paper); color: var(--ink); }
+.fs-form input:focus-visible { outline: 3px solid var(--k-cobalt); outline-offset: 1px; border-color: var(--k-cobalt); }
+.fs-form .btn { flex: none; padding: .65rem 1rem; }
+.fs-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: .7rem 0 .9rem; }
+.fs-priv { margin: 0 0 .6rem; font-size: .88rem; color: var(--muted); }
+.fs-try { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; margin: 0 0 .5rem; padding: 0; }
+.fs-try[hidden] { display: none; }
+.fs-try button { font: inherit; font-size: .9rem; padding: .35rem .65rem; border: 1px solid var(--k-cobalt); border-radius: 0; background: var(--k-card); color: var(--k-cobalt); font-weight: 600; cursor: pointer; text-align: left; }
+.fs-try button:hover { background: var(--k-card-hover); }
+.fs-fix, .fs-under { margin: 0 0 .4rem; font-size: .92rem; }
+.fs-under { color: var(--muted); }
+.fs-tally { margin: 0 0 .3rem; font-size: .88rem; color: var(--muted); }
+.fs-tally:empty { display: none; }
+.fs-sec { margin: .7rem 0 0; }
+.fs-h { margin: 0; font-size: 1rem; color: var(--k-title); border-left: .3rem solid var(--k-mint); padding-left: .55rem; }
+.fs-res { list-style: none; margin: .2rem 0 0; padding: 0; }
+.fs-res li { padding: .55rem 0; border-bottom: 1px solid var(--k-hair); }
+.fs-res a { font-weight: 600; }
+.fs-res small { display: block; color: var(--muted); }
+.fs-foot { padding: .75rem 0 calc(.75rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--k-hair); display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
+.fs-foot[hidden] { display: none; }
+.fs-foot .btn { text-align: center; }
+.fs-msg { font-weight: 600; }
+.fs-card :focus-visible { outline: 3px solid var(--k-cobalt); outline-offset: 2px; }
+@media (min-width: 700px) {
+  .fs { inset: auto .75rem var(--fs-bottom, .75rem) auto; width: 27rem; max-width: calc(100vw - 1.5rem); }
+  .fs::backdrop { background: rgba(0, 21, 34, .2); }
+  .fs-card { max-height: min(38rem, calc(var(--fs-h, 100dvh) - 1.5rem)); border: 1px solid var(--k-hair); border-top: 4px solid var(--k-mint); box-shadow: 0 10px 34px var(--shadow); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fs[open] .fs-card { animation: fs-up .2s ease-out; }
+  @keyframes fs-up { from { transform: translateY(1.25rem); opacity: 0; } }
+}
+@media print { .fs { display: none !important; } }
