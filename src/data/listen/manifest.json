@@ -1,4 +1,77 @@
 {
-  "clips": {},
-  "usage": {}
+ "clips": {
+  "265d5c8476c5176d73b30a71": {
+   "seconds": 44.2,
+   "bytes": 353845,
+   "chars": 701
+  },
+  "37fb31efc5ca9df936e8bf80": {
+   "seconds": 8.5,
+   "bytes": 68379,
+   "chars": 141
+  },
+  "482e3067d9ad63c966c0274d": {
+   "seconds": 90.1,
+   "bytes": 720604,
+   "chars": 1334
+  },
+  "4e056a22768cb5993c8e2cf5": {
+   "seconds": 66.1,
+   "bytes": 528552,
+   "chars": 903
+  },
+  "56e61d5b0f55e389e7d405b7": {
+   "seconds": 54.8,
+   "bytes": 438273,
+   "chars": 806
+  },
+  "7961764221b7771a6740b7e7": {
+   "seconds": 57.1,
+   "bytes": 456872,
+   "chars": 884
+  },
+  "a3fa48b00f3cf8efb4e04e18": {
+   "seconds": 41.4,
+   "bytes": 331484,
+   "chars": 558
+  },
+  "aca611359f5e2c1002d31f40": {
+   "seconds": 34,
+   "bytes": 271925,
+   "chars": 575
+  },
+  "afeb313dbfaba4c52ba041d8": {
+   "seconds": 81.4,
+   "bytes": 650805,
+   "chars": 1165
+  },
+  "bbc232a511dd873270f5e607": {
+   "seconds": 69.9,
+   "bytes": 559272,
+   "chars": 1058
+  },
+  "bf5d4a554af50bea15fe6f00": {
+   "seconds": 41.8,
+   "bytes": 334619,
+   "chars": 667
+  },
+  "e45bd007fa83b950653b4558": {
+   "seconds": 68.6,
+   "bytes": 549032,
+   "chars": 995
+  },
+  "e940cacef47d5aefa03fa3a6": {
+   "seconds": 36.7,
+   "bytes": 293659,
+   "chars": 577
+  },
+  "fe8fb3f9e2b3af4a2a6248de": {
+   "seconds": 88.8,
+   "bytes": 710364,
+   "chars": 1306
+  }
+ },
+ "usage": {
+  "2026-11": 11670
+ }
 }
