@@ -11,8 +11,8 @@ const clip = (s, n) => String(s || '').trim().slice(0, n);
 export function elevenlabs({ apiKey, cfg, fetchImpl = fetch, sleep = sleepMs, retries = 4 }) {
   if (!apiKey) throw new FatalProviderError('ELEVENLABS_API_KEY is not set.');
   if (!cfg.voiceId) throw new FatalProviderError('No voice chosen yet: set "voiceId" in src/data/listen/config.json.');
-  // The "continue from the neighbouring text" fields are for models that support them (not the v3 family).
-  const stitch = cfg.stitch !== false && !/v3/i.test(cfg.model);
+  // The "continue from the neighbouring text" fields are for models that support them (not confirmed for v3 or v4, so not sent).
+  const stitch = cfg.stitch !== false && !/v[34]/i.test(cfg.model);
   const url = `https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(cfg.voiceId)}?output_format=${encodeURIComponent(cfg.format)}`;
 
   return async function synth({ text, previousText, nextText }) {

@@ -187,7 +187,16 @@ export const voiceKey = (cfg) =>
 
 export const clipHash = (cfg, text) => createHash('sha256').update(`${voiceKey(cfg)}\n${text}`).digest('hex').slice(0, 24);
 
-export const withHashes = (clips, cfg) => clips.map((c) => ({ ...c, hash: clipHash(cfg, c.text) }));
+// Eleven v3 and v4 read bracketed cues such as [warmly] as direction, not words. Older models would say them aloud,
+// so the tone cue (config "tonePrefix") is added only for v3/v4 models. It is part of the text, so it is part of the fingerprint.
+export const takesTags = (cfg) => /v[34]/i.test(String(cfg.model ?? ''));
+export const spokenText = (cfg, text) => (cfg.tonePrefix && takesTags(cfg) ? `${cfg.tonePrefix} ${text}` : text);
+
+export const withHashes = (clips, cfg) =>
+  clips.map((c) => {
+    const text = spokenText(cfg, c.text);
+    return { ...c, text, hash: clipHash(cfg, text) };
+  });
 
 // The manifest is { clips: { <hash>: { seconds, bytes, chars } }, usage: { 'YYYY-MM': characters } }.
 // Returns the data the player needs, or null when any clip of the page has no audio for its current text.

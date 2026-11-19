@@ -16,6 +16,8 @@ Each destination guide and article can have a "Listen to this guide" button that
 1. **ElevenLabs.** Create a key at elevenlabs.io > Developers > API Keys. Allow only *Text to Speech* (and *Voices: read*), and
    set a monthly character limit on the key. Pick a voice in the Voice Library, add it to *My Voices*, copy its Voice ID into
    `voiceId` in `src/data/listen/config.json`. Changing the voice later makes all audio count as new (and be made again).
+   With an Eleven v3/v4 model, `tonePrefix` (for example `[warmly]`) is placed before every clip to set the delivery. It is ignored for
+   older models, which would read it aloud. Try the tone on the Canada guide first: a re-run after a change costs about $1 for that guide.
 2. **Cloudflare R2.** Create a bucket (for example `universities500-audio`). Under the bucket's Settings > Public access, connect the
    custom domain `audio.universities500.com`. Then R2 > Manage API tokens > Create token with *Object Read & Write* on that bucket.
    Keep the Account ID, Access Key ID and Secret Access Key it shows.
