@@ -341,3 +341,17 @@ html[data-theme="dark"] { --read-hero: #1A3CB8; --read-pale: var(--surface); }
   .pg-read .gstat b { font-size: clamp(1.7rem, 8vw, 2.2rem); }
   .pg-read .gstat span { font-size: .9rem; }
 }
+
+/* ---------- top menu: roomier, square, with the mint bar under the page you are on ---------- */
+.site-head { background: var(--paper); border-bottom: 1px solid var(--k-hair); }
+.site-head .wrap { min-height: 5rem; }
+.nav-btn, .site-head .nav-link { font-size: .95rem; padding: .6rem .4rem; border-radius: 0; min-height: 3rem; border-bottom: 0; }
+.nav-link { margin-right: 0; }
+.nav-btn:hover, .nav-link:hover, .nav-btn[aria-expanded="true"] { background: transparent; box-shadow: inset 0 -3px 0 var(--k-mint); }
+.nav-btn[data-here], .nav-link[aria-current="page"] { border-radius: 0; box-shadow: inset 0 -3px 0 var(--k-cobalt); }
+.head-cta { border-radius: 0; padding: .75rem 1rem; font-size: .95rem; }
+.head-right { gap: .4rem; }
+@media (min-width: 621px) { .brand img { height: 42px; } }
+.head-search, .theme, .nav-toggle { border-radius: 0; border-color: var(--k-edge); }
+.nav-panel { border-radius: 0; border-color: var(--k-hair); border-top: 3px solid var(--k-mint); }
+.nav-panel a { border-radius: 0; }
