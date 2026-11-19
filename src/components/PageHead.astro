@@ -17,6 +17,7 @@ const read = tone === 'read';
     </nav>
     <h1>{title}</h1>
     {lede && <p class="pg-lede" set:html={lede} />}
+    <slot />
   </div>
 </section>
 {facts.length > 0 && (

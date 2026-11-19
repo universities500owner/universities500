@@ -1,0 +1,51 @@
+---
+// The Listen button (placed in the blue band under a page title) and the audio player bar at the foot of the screen.
+// Rendered only when the page's audio is current (see src/lib/listen-site.js), so a page without audio shows nothing.
+// data: { clips: [{ u: audio address, t: section name, s: section number, d: seconds }], minutes }. noun: "guide" or "article".
+const { data, noun = 'guide' } = Astro.props;
+const payload = JSON.stringify({ noun, clips: data.clips }).replace(/</g, '\\u003c');
+---
+<div class="listen" data-listen>
+  <button type="button" class="listen-btn" aria-controls="lp">
+    <span class="listen-ic" aria-hidden="true">
+      <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor" /></svg>
+      <svg class="ic-pause" viewBox="0 0 24 24" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor" /></svg>
+    </span>
+    <span class="listen-t">Listen to this {noun}</span>
+    <span class="listen-m"><span class="sr-only">, </span>{data.minutes} min</span>
+  </button>
+  <script type="application/json" data-listen-data is:inline set:html={payload}></script>
+</div>
+
+<div class="lp" id="lp" role="region" aria-label="Audio player" hidden>
+  <div class="lp-top">
+    <p class="lp-now"><span class="lp-sec" data-lp="sec">Overview</span><span class="lp-count" data-lp="count"></span></p>
+    <button type="button" class="lp-x" data-lp="close" aria-label="Close the player">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" /></svg>
+    </button>
+  </div>
+  <div class="lp-bar">
+    <span class="lp-time" data-lp="pos">0:00</span>
+    <input type="range" class="lp-seek" data-lp="seek" min="0" max="1" value="0" step="1" aria-label="Position in the audio" />
+    <span class="lp-time" data-lp="len">0:00</span>
+  </div>
+  <div class="lp-ctl">
+    <button type="button" class="lp-b" data-lp="back" aria-label="Back 15 seconds">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z" fill="currentColor" /><text x="12" y="16.2" font-size="7.5" font-weight="700" text-anchor="middle" fill="currentColor">15</text></svg>
+    </button>
+    <button type="button" class="lp-play" data-lp="play" aria-label="Play">
+      <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor" /></svg>
+      <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor" /></svg>
+    </button>
+    <button type="button" class="lp-b" data-lp="fwd" aria-label="Forward 15 seconds">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2l5 4-5 4V7a6 6 0 1 0 6 6h2a8 8 0 1 1-8-8z" fill="currentColor" /><text x="12" y="16.2" font-size="7.5" font-weight="700" text-anchor="middle" fill="currentColor">15</text></svg>
+    </button>
+    <button type="button" class="lp-speed" data-lp="speed" aria-label="Playback speed 1 times">1×</button>
+  </div>
+  <p class="lp-note" data-lp="note">AI voice. Confirm key facts on the official pages.</p>
+  <p class="sr-only" role="status" aria-live="polite" data-lp="live"></p>
+</div>
+
+<script>
+  import '../scripts/listen.js';
+</script>

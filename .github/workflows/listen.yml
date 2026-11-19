@@ -1,0 +1,124 @@
+name: Listen audio (ElevenLabs voice)
+
+# Makes the spoken audio for the destination guides and the articles, puts the audio files in Cloudflare R2, and records
+# them in src/data/listen/manifest.json. A page shows its Listen button only when all of its audio matches its current text.
+#
+# Manual run (Actions tab > Listen audio > Run workflow):
+#   only     leave blank for everything that is missing or out of date, or name pages: guide:canada  or  guide:canada,article:CAN-01
+#   dry_run  ticked by default: counts what is missing and what it would cost, and calls nothing. Untick it to make the audio.
+#
+# Automatic run: when the guides, the articles or the voice settings change on main, but only if the repository variable
+# LISTEN_AUTO is set to "on" (Settings > Secrets and variables > Actions > Variables). Leave it off until a first manual run worked.
+#
+# Safety: a monthly character cap (variable LISTEN_MONTHLY_CHARS, otherwise "monthlyChars" in src/data/listen/config.json)
+# stops the run when it is reached. Only text that changed is ever voiced again.
+#
+# Settings needed (Settings > Secrets and variables > Actions): see scripts/listen/README.md
+#   Secrets:   ELEVENLABS_API_KEY, R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY
+#   Variables: R2_BUCKET
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these pages, comma-separated, for example guide:canada (blank = everything missing)"
+        required: false
+        default: ""
+      dry_run:
+        description: "Count and estimate only. Calls nothing and spends nothing (untick to make the audio)"
+        type: boolean
+        default: true
+  push:
+    branches: [main]
+    paths:
+      - "src/data/guides.json"
+      - "src/data/articles/**"
+      - "src/data/listen/config.json"
+      - "src/lib/listen.js"
+
+concurrency:
+  group: listen
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  audio:
+    if: github.event_name == 'workflow_dispatch' || vars.LISTEN_AUTO == 'on'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Self-test (no internet, no voice service)
+        run: node --test tests/listen.test.mjs tests/listen-generate.test.mjs
+      - name: Check the settings
+        if: env.DRY != 'true'
+        env:
+          K1: ${{ secrets.ELEVENLABS_API_KEY }}
+          K2: ${{ secrets.R2_ACCOUNT_ID }}
+          K3: ${{ secrets.R2_ACCESS_KEY_ID }}
+          K4: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          B: ${{ vars.R2_BUCKET }}
+        run: |
+          miss=""
+          [ -z "$K1" ] && miss="$miss ELEVENLABS_API_KEY"
+          [ -z "$K2" ] && miss="$miss R2_ACCOUNT_ID"
+          [ -z "$K3" ] && miss="$miss R2_ACCESS_KEY_ID"
+          [ -z "$K4" ] && miss="$miss R2_SECRET_ACCESS_KEY"
+          [ -z "$B" ] && miss="$miss R2_BUCKET(variable)"
+          if [ -n "$miss" ]; then echo "::error::Missing settings:$miss. See scripts/listen/README.md."; exit 1; fi
+      - name: Make the audio
+        id: gen
+        continue-on-error: true
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          LISTEN_MONTHLY_CHARS: ${{ vars.LISTEN_MONTHLY_CHARS }}
+          ONLY: ${{ github.event_name == 'workflow_dispatch' && inputs.only || '' }}
+        run: |
+          ARGS="--out out/audio"
+          if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
+          if [ "$DRY" = "true" ]; then ARGS="$ARGS --dry-run"; fi
+          node scripts/listen/generate.mjs $ARGS
+      - name: Put the audio in R2
+        if: always() && env.DRY != 'true' && hashFiles('out/audio/*.mp3') != ''
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+          AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
+        run: |
+          aws s3 sync out/audio "s3://${{ vars.R2_BUCKET }}/" \
+            --endpoint-url "https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com" \
+            --content-type audio/mpeg --cache-control "public, max-age=31536000, immutable" --only-show-errors
+      # The manifest is saved only after the audio is safely in R2, so the site never points at a file that is not there.
+      - name: Save the manifest
+        if: always() && env.DRY != 'true' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "universities500-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/listen/manifest.json
+          if git diff --cached --quiet; then
+            echo "No change to save."
+          else
+            git commit -m "Listen audio: update manifest $(date -u +%F)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always() && env.DRY != 'true'
+        with:
+          name: listen-audio
+          path: out/audio/
+          retention-days: 3
+          if-no-files-found: ignore
+      - name: Fail the job if the run did not finish cleanly
+        if: steps.gen.outcome == 'failure'
+        run: |
+          echo "Some audio could not be made (see the log above). Anything that was made has been saved; run again to carry on."
+          exit 1

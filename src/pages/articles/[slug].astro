@@ -6,6 +6,9 @@ import ArtRuns from '../../components/ArtRuns.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { articles, TOPICS, related, readLabel, checkedLabel, blockText, flat, slugify, shortSources } from '../../lib/articles.js';
 import { SITE } from '../../lib/data.js';
+import Listen from '../../components/Listen.astro';
+import { articleClips } from '../../lib/listen.js';
+import { listenFor } from '../../lib/listen-site.js';
 
 export function getStaticPaths() {
   return articles.map((a) => ({ params: { slug: a.slug }, props: { a } }));
@@ -32,6 +35,7 @@ const { sameDest, sameTopic } = related(a);
 const tools = TOPICS[a.topic]?.tools || [];
 const srcs = shortSources(a, 3);
 const careful = a.topic === 'visas' || a.topic === 'after-study';
+const listen = listenFor(articleClips(a)); // null unless every part of this article has up-to-date audio
 
 const ld = [
   {
@@ -79,7 +83,9 @@ if (a.faq.length) {
       ['Reading time', readLabel(a)],
       ...(checked ? [['Facts as of', checked]] : []),
     ]}
-  />
+  >
+    {listen && <Listen data={listen} noun="article" />}
+  </PageHead>
 
   <article class="tip">
 

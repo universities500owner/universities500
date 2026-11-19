@@ -6,6 +6,9 @@ import { byCountry, countries, SITE } from '../../lib/data.js';
 import { guides, runsText } from '../../lib/guides.js';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { byDestination } from '../../lib/articles.js';
+import Listen from '../../components/Listen.astro';
+import { guideClips } from '../../lib/listen.js';
+import { listenFor } from '../../lib/listen-site.js';
 
 export function getStaticPaths() {
   return guides.map((g) => ({ params: { country: g.slug }, props: { g } }));
@@ -49,6 +52,7 @@ if (faqItems.length) {
 const topics = g.sections.filter((s) => s.blocks.length && s.key !== 'overview');
 const arts = byDestination(g.slug);
 const nm = g.name;
+const listen = listenFor(guideClips(g)); // null unless every part of this guide has up-to-date audio
 
 // One plain line per topic, the same for every destination. No figures, so nothing here can go stale.
 const BLURB = {
@@ -84,7 +88,9 @@ const overviewBlocks = (overview?.blocks || []).filter((b) => b.t === 'p');
   current="guide"
   read={true}
 >
-  <PageHead slot="head" tone="read" crumbs={[['Study in', '/study-in/'], [g.name, null]]} title={g.title} lede={lede.replace(/&/g, '&amp;').replace(/</g, '&lt;')} />
+  <PageHead slot="head" tone="read" crumbs={[['Study in', '/study-in/'], [g.name, null]]} title={g.title} lede={lede.replace(/&/g, '&amp;').replace(/</g, '&lt;')}>
+    {listen && <Listen data={listen} noun="guide" />}
+  </PageHead>
 
   <section class="rd-top">
     {coverLine && <p class="g-cover"><strong>What this guide covers:</strong> {coverLine}.</p>}
