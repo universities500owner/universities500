@@ -1,7 +1,7 @@
 // The student account API. Each handler takes a Request and returns a Response, and gets fetch and the clock
 // passed in, so the tests can run them against a fake Supabase (tests/fake-supabase.mjs) with no network.
 //
-// Cloudflare Pages settings (Settings > Variables and Secrets). Until the first three are set every handler
+// Cloudflare Worker settings (Settings > Variables and Secrets). Until the first three are set every handler
 // answers "not_configured" and the sign-in page says sign-in is not open yet; nothing else on the site is affected.
 //   SUPABASE_URL           Secret or plain text. Project URL, like https://abcdwxyz.supabase.co
 //   SUPABASE_ANON_KEY      Secret. The "anon public" key

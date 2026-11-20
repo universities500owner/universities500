@@ -1,7 +1,7 @@
 // Contact form: checks a message from /contact/ and emails it to the site owner through Resend.
 // The destination address lives only in the Cloudflare setting CONTACT_TO, never in this repository or on a page.
 //
-// Cloudflare Pages settings (Settings > Variables and Secrets), all as Secret type:
+// Cloudflare Worker settings (Settings > Variables and Secrets), all as Secret type:
 //   RESEND_API_KEY  an API key from resend.com (Sending access is enough)
 //   CONTACT_TO      the address that receives the messages
 //   CONTACT_FROM    optional sender, for example  Universities500 <contact@universities500.com>
@@ -95,7 +95,7 @@ export async function handleContact(request, env = {}, fetchImpl = fetch, now = 
   }
 
   if (!env.RESEND_API_KEY || !env.CONTACT_TO) {
-    console.error('contact: RESEND_API_KEY or CONTACT_TO is not set in the Cloudflare Pages settings');
+    console.error('contact: RESEND_API_KEY or CONTACT_TO is not set in the Cloudflare Worker settings');
     return fail(500, 'not_configured', 'Sorry, messages cannot be sent right now. Please try again later.');
   }
 

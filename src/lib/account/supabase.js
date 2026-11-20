@@ -1,5 +1,5 @@
 // A thin wrapper over Supabase's web APIs, using plain fetch so it runs on Cloudflare and in tests.
-// Two keys are used, both set as Cloudflare Pages secrets and never sent to the browser:
+// Two keys are used, both set as Cloudflare Worker secrets and never sent to the browser:
 //   SUPABASE_ANON_KEY     the publishable key (or the older anon key): asks for sign-in codes, checks them, refreshes sessions, and acts as the student
 //   SUPABASE_SERVICE_KEY  the secret key (or the older service_role key): creates and deletes accounts, and writes the consent record. Server only.
 // Every call returns { ok, status, data } and never throws on an HTTP error.
