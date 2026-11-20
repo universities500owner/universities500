@@ -39,7 +39,8 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
 
   // Who is calling the database: the server (service key) or a student (a valid access token).
   const caller = (headers) => {
-    const bearer = String(headers.get('authorization') || '').replace(/^Bearer /, '');
+    // Like the real service: a student's token comes in Authorization; the keys come in apikey.
+    const bearer = String(headers.get('authorization') || '').replace(/^Bearer /, '') || headers.get('apikey');
     if (bearer === KEYS.service) return { role: 'service' };
     const t = f.tokens.get(bearer);
     if (t && t.exp * 1000 > f.clock.t) return { role: 'student', id: t.sub };
