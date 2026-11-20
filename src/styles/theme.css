@@ -362,10 +362,22 @@ html[data-theme="dark"] { --read-hero: #1A3CB8; --read-pale: var(--surface); }
 /* The logo is 48px tall. With the search icon gone from the header it fits on every phone from 365px wide, and it shrinks a little below that to stay clear of the menu buttons. */
 @media (min-width: 621px) { .brand img { height: 48px; } }
 @media (max-width: 620px) {
-  .brand img { height: clamp(28px, calc((100vw - 158px) / 4.31), 48px); }
   .nav-toggle { padding: .5rem .6rem; }
-  .head-search, .theme { width: 2.25rem; height: 2.25rem; }
-  .head-actions { gap: .35rem; }
+}
+/* Phones and tablets: the bar holds only the logo and Menu. The logo takes the room the icons used to need (60px tall at most,
+   shrinking on a narrow screen so it never touches the Menu button) and the light/dark switch moves to the end of the menu. */
+.nav-theme { display: none; }
+@media (max-width: 1000px) {
+  .site-head .wrap { min-height: 5.25rem; }
+  .brand img { height: clamp(36px, calc((100vw - 130px) / 4.31), 60px); }
+  .head-actions { display: none; }
+  .nav-list.open + .nav-theme { display: block; border-top: 1px solid var(--k-hair); padding: .3rem 0 1rem; }
+  .theme-row { display: flex; align-items: center; gap: .7rem; width: 100%; min-height: 3rem; padding: .6rem .34rem; border: 0; background: transparent; color: var(--ink); font: inherit; font-weight: 600; font-size: .94rem; text-align: left; cursor: pointer; }
+  .theme-row:hover { box-shadow: inset 0 -3px 0 var(--k-mint); }
+  .theme-row svg { flex: none; width: 1.2rem; height: 1.2rem; }
+  .theme-row .sun { display: none; }
+  html[data-theme="dark"] .theme-row .sun { display: block; }
+  html[data-theme="dark"] .theme-row .moon { display: none; }
 }
 .head-search, .theme, .nav-toggle { border-radius: 0; border-color: var(--k-edge); }
 .nav-panel { border-radius: 0; border-color: var(--k-hair); border-top: 3px solid var(--k-mint); }
