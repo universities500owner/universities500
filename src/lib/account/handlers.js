@@ -78,7 +78,7 @@ async function turnstileOk(env, token, ip, fetchImpl) {
 // ---- sign-in --------------------------------------------------------------------------------------------------
 
 // What the sign-in page needs to know before it draws itself.
-export async function handleConfig(request, env = {}, fetchImpl = fetch) {
+async function handleConfigImpl(request, env = {}, fetchImpl = fetch) {
   const bad = guard(request, ['GET']);
   if (bad) return bad;
   return reply(200, { ok: true, configured: supabase(env, fetchImpl).configured, turnstileSiteKey: env.TURNSTILE_SECRET && env.TURNSTILE_SITE_KEY ? env.TURNSTILE_SITE_KEY : null });
@@ -86,7 +86,7 @@ export async function handleConfig(request, env = {}, fetchImpl = fetch) {
 
 // Step 1. A Gmail address, the two consents and (when switched on) the Turnstile check. Creates the account the
 // first time, then asks Supabase to email a 6-digit code. The answer is the same for new and returning students.
-export async function handleRequestCode(request, env = {}, fetchImpl = fetch, now = Date.now()) {
+async function handleRequestCodeImpl(request, env = {}, fetchImpl = fetch, now = Date.now()) {
   const bad = guard(request, ['POST']);
   if (bad) return bad;
   const sb = supabase(env, fetchImpl);
@@ -121,7 +121,7 @@ export async function handleRequestCode(request, env = {}, fetchImpl = fetch, no
 }
 
 // Step 2. The 6-digit code. On success the session cookies are set and the student record exists.
-export async function handleVerify(request, env = {}, fetchImpl = fetch, now = Date.now()) {
+async function handleVerifyImpl(request, env = {}, fetchImpl = fetch, now = Date.now()) {
   const bad = guard(request, ['POST']);
   if (bad) return bad;
   const sb = supabase(env, fetchImpl);
@@ -161,7 +161,7 @@ export async function handleVerify(request, env = {}, fetchImpl = fetch, now = D
   return reply(200, { ok: true, next: '/student/' }, { cookies: sessionCookies(v.data, isSecure(request)) });
 }
 
-export async function handleLogout(request, env = {}, fetchImpl = fetch) {
+async function handleLogoutImpl(request, env = {}, fetchImpl = fetch) {
   const bad = guard(request, ['POST']);
   if (bad) return bad;
   const jwt = parseCookies(request.headers.get('cookie')).u500_at;
@@ -211,7 +211,7 @@ async function loadAccount(sb, s) {
 }
 
 // /api/me: GET reads the account, PATCH saves changes, DELETE removes the account and everything in it.
-export async function handleMe(request, env = {}, fetchImpl = fetch, now = Date.now()) {
+async function handleMeImpl(request, env = {}, fetchImpl = fetch, now = Date.now()) {
   const bad = guard(request, ['GET', 'PATCH', 'DELETE']);
   if (bad) return bad;
   const sb = supabase(env, fetchImpl);
@@ -278,7 +278,7 @@ export async function handleMe(request, env = {}, fetchImpl = fetch, now = Date.
 }
 
 // /api/me/export: everything stored about the student, as a file they can keep.
-export async function handleExport(request, env = {}, fetchImpl = fetch, now = Date.now()) {
+async function handleExportImpl(request, env = {}, fetchImpl = fetch, now = Date.now()) {
   const bad = guard(request, ['GET']);
   if (bad) return bad;
   const sb = supabase(env, fetchImpl);
@@ -294,3 +294,21 @@ export async function handleExport(request, env = {}, fetchImpl = fetch, now = D
     { cookies: s.cookies, headers: { 'content-disposition': 'attachment; filename="universities500-my-data.json"' } },
   );
 }
+
+// ---- exports ---------------------------------------------------------------------------------------------------
+// Anything unexpected becomes a plain JSON answer (and a line in the Cloudflare logs) instead of an error page,
+// so the sign-in form can always show a readable message.
+const safe = (name, fn) => async (...args) => {
+  try {
+    return await fn(...args);
+  } catch (e) {
+    console.error('account: unexpected error in', name, e && e.message);
+    return reply(500, { ok: false, error: 'server_error', message: 'Sorry, something went wrong on our side. Please try again in a few minutes.' });
+  }
+};
+export const handleConfig = safe('handleConfig', handleConfigImpl);
+export const handleRequestCode = safe('handleRequestCode', handleRequestCodeImpl);
+export const handleVerify = safe('handleVerify', handleVerifyImpl);
+export const handleLogout = safe('handleLogout', handleLogoutImpl);
+export const handleMe = safe('handleMe', handleMeImpl);
+export const handleExport = safe('handleExport', handleExportImpl);

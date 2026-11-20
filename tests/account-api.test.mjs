@@ -429,3 +429,13 @@ test('new-style keys go in the apikey header only, old JWT keys also as the bear
   await legacy.createUser('a@gmail.com', {});
   assert.equal(seen[0].get('authorization'), 'Bearer eyJservice');
 });
+
+test('an unexpected failure becomes a readable JSON answer, not an error page', async () => {
+  const fake = createFakeSupabase();
+  const broken = { ...fake.env, get SUPABASE_URL() { throw new Error('boom'); } };
+  const r = await handleRequestCode(post(`${SITE}/api/auth/request`, { email: 'asha.rao@gmail.com', adult: true, terms: true }), broken, fake.fetch);
+  assert.equal(r.status, 500);
+  const j = await J(r);
+  assert.equal(j.error, 'server_error');
+  assert.match(j.message, /something went wrong/);
+});
