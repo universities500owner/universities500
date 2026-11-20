@@ -10,7 +10,7 @@ The site's account pages and `/api` functions are in the repository. They stay s
    - Authentication > Sign In / Providers: turn **off** "Allow new users to sign up". Email OTP length 6, expiry 600 seconds.
    - Authentication > Emails > Templates > Magic Link: make the body show the code with `{{ .Token }}` (for example "Your Universities500 sign-in code is {{ .Token }}. It works for 10 minutes.").
 4. **Database.** Run `supabase/migrations/0001_students.sql` once in the SQL editor.
-5. **Cloudflare Pages** > Settings > Variables and Secrets (Production), then redeploy:
+5. **Cloudflare** > Workers & Pages > universities500 > Settings > Variables and Secrets (the Worker's runtime settings, not the build settings), then redeploy:
    - `SUPABASE_URL` (the Project URL), `SUPABASE_ANON_KEY` (the **publishable** key, `sb_publishable_...`), `SUPABASE_SERVICE_KEY` (the **secret** key, `sb_secret_...`; Secret type; never anywhere else). The older `anon` and `service_role` keys also work in the same two settings.
    - Optional but recommended: `TURNSTILE_SECRET` (Secret) and `TURNSTILE_SITE_KEY` (plain text) from a Turnstile widget for `universities500.com`.
 6. **Rate limit.** In Cloudflare > Security > WAF > Rate limiting rules, limit `/api/auth/` to about 10 requests per minute per IP.
