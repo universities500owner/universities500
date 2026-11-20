@@ -409,3 +409,23 @@ test('no response ever contains the Supabase keys or a token in its body', async
   for (const b of bodies) assert.ok(!/service-key|anon-key|eyJ|rt-/.test(b));
   assert.ok(fake.calls.length > 0);
 });
+
+test('new-style keys go in the apikey header only, old JWT keys also as the bearer', async () => {
+  const { supabase } = await import('../src/lib/account/supabase.js');
+  const seen = [];
+  const spy = async (url, init) => { seen.push(new Headers(init.headers)); return new Response('{}', { status: 200 }); };
+  const modern = supabase({ SUPABASE_URL: 'https://x.supabase.co', SUPABASE_ANON_KEY: 'sb_publishable_abc', SUPABASE_SERVICE_KEY: 'sb_secret_def' }, spy);
+  await modern.createUser('a@gmail.com', {});
+  await modern.sendCode('a@gmail.com');
+  await modern.db('students?id=eq.1', { jwt: 'user.jwt.token' });
+  assert.equal(seen[0].get('apikey'), 'sb_secret_def');
+  assert.equal(seen[0].get('authorization'), null);
+  assert.equal(seen[1].get('apikey'), 'sb_publishable_abc');
+  assert.equal(seen[1].get('authorization'), null);
+  assert.equal(seen[2].get('apikey'), 'sb_publishable_abc');
+  assert.equal(seen[2].get('authorization'), 'Bearer user.jwt.token');
+  seen.length = 0;
+  const legacy = supabase({ SUPABASE_URL: 'https://x.supabase.co', SUPABASE_ANON_KEY: 'eyJanon', SUPABASE_SERVICE_KEY: 'eyJservice' }, spy);
+  await legacy.createUser('a@gmail.com', {});
+  assert.equal(seen[0].get('authorization'), 'Bearer eyJservice');
+});

@@ -1,8 +1,12 @@
 // A thin wrapper over Supabase's web APIs, using plain fetch so it runs on Cloudflare and in tests.
 // Two keys are used, both set as Cloudflare Pages secrets and never sent to the browser:
-//   SUPABASE_ANON_KEY     public-level key: asks for sign-in codes, checks them, refreshes sessions, and acts as the student
-//   SUPABASE_SERVICE_KEY  full access: creates and deletes accounts, and writes the consent record. Used only on the server.
+//   SUPABASE_ANON_KEY     the publishable key (or the older anon key): asks for sign-in codes, checks them, refreshes sessions, and acts as the student
+//   SUPABASE_SERVICE_KEY  the secret key (or the older service_role key): creates and deletes accounts, and writes the consent record. Server only.
 // Every call returns { ok, status, data } and never throws on an HTTP error.
+
+// Supabase's newer keys (sb_publishable_..., sb_secret_...) are not JWTs and must be sent in the apikey header only.
+// The older anon and service_role keys are JWTs and are also sent as the bearer token, as before.
+const isJwt = (k) => typeof k === 'string' && k.startsWith('eyJ');
 
 export function supabase(env = {}, fetchImpl = fetch) {
   const base = String(env.SUPABASE_URL || '').replace(/\/+$/, '');
@@ -16,7 +20,7 @@ export function supabase(env = {}, fetchImpl = fetch) {
         method,
         headers: {
           apikey: key,
-          authorization: `Bearer ${jwt || key}`,
+          ...(jwt ? { authorization: `Bearer ${jwt}` } : isJwt(key) ? { authorization: `Bearer ${key}` } : {}),
           ...(body !== undefined ? { 'content-type': 'application/json' } : {}),
           ...headers,
         },
