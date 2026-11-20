@@ -1,0 +1,51 @@
+---
+// The frame every student page shares: the blue band, a side menu, and a content area that stays hidden until the
+// browser has confirmed the student is signed in (src/scripts/student.js). These pages are never indexed.
+import Base from './Base.astro';
+import PageHead from '../components/PageHead.astro';
+import '../styles/student.css';
+
+const { title, lede = '', active, page } = Astro.props;
+// [id, label, href]. A null href is a part that is not built yet; it is listed so students can see what is coming.
+const MENU = [
+  ['overview', 'Overview', '/student/'],
+  ['profile', 'My profile', '/student/profile/'],
+  ['shortlist', 'Shortlisted courses', null],
+  ['visa', 'Visa self-check', null],
+  ['sop', 'SOP editor', null],
+  ['lor', 'LOR helper', null],
+  ['settings', 'Settings', '/student/settings/'],
+];
+---
+<Base
+  title={`${title} | Universities500`}
+  description="Your Universities500 student dashboard."
+  path={Astro.url.pathname}
+  noindex={true}
+  current="student"
+  read={true}
+  share={false}
+>
+  <PageHead slot="head" tone="read" crumbs={active === 'overview' ? [['My dashboard', null]] : [['My dashboard', '/student/'], [title, null]]} title={title} lede={lede} />
+
+  <div class="dash" data-student data-page={page || active}>
+    <nav class="st-nav" aria-label="Student dashboard">
+      <ul>
+        {MENU.map(([id, label, href]) => (
+          <li>
+            {href
+              ? <a href={href} aria-current={id === active ? 'page' : undefined}>{label}</a>
+              : <span class="st-later">{label}<em>Soon</em></span>}
+          </li>
+        ))}
+      </ul>
+      <button class="st-out" type="button" data-signout>Sign out</button>
+    </nav>
+
+    <div class="st-main">
+      <p class="st-loading" data-loading role="status">Loading your dashboard…</p>
+      <div class="st-notice" data-notice hidden role="alert"></div>
+      <div data-content hidden><slot /></div>
+    </div>
+  </div>
+</Base>

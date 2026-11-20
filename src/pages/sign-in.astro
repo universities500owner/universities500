@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import '../styles/student.css';
+---
+<Base
+  title="Sign in | Universities500"
+  description="Sign in to Universities500 with your Gmail address. We email you a 6-digit code, so there is no password to remember."
+  path="/sign-in/"
+  noindex={true}
+  current="student"
+  read={true}
+  share={false}
+>
+  <PageHead slot="head" tone="read" crumbs={[['Sign in', null]]} title="Sign in or create your account" lede="Use your Gmail address. We email you a 6-digit code, so there is no password to remember." />
+
+  <div class="si">
+    <div class="si-card">
+      <p class="st-notice" id="si-in" hidden style="margin-bottom:1.1rem">You are already signed in. <a href="/student/">Go to your dashboard</a>.</p>
+      <p class="st-notice" id="si-off" hidden role="alert" style="margin-bottom:1.1rem"><strong>Sign-in is not open yet.</strong> Please check back soon.</p>
+
+      <div id="si-step1">
+        <h2>Your Gmail address</h2>
+        <p>New here? Your account is created the first time you confirm a code.</p>
+        <form id="si-form" class="si-form" novalidate>
+          <div class="f">
+            <label for="si-email">Gmail address</label>
+            <input id="si-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="yourname@gmail.com" required aria-describedby="si-email-err" />
+            <p class="ct-err" id="si-email-err" hidden></p>
+          </div>
+          <fieldset class="si-checks">
+            <legend>Before you continue</legend>
+            <label class="st-chk"><input type="checkbox" id="si-adult" name="adult" /><span>I am 18 or older.</span></label>
+            <label class="st-chk"><input type="checkbox" id="si-terms" name="terms" /><span>I accept the <a href="/terms/" target="_blank" rel="noopener">Terms</a> and have read the <a href="/privacy/" target="_blank" rel="noopener">Privacy page</a>.</span></label>
+            <label class="st-chk"><input type="checkbox" id="si-marketing" name="marketing" /><span>Optional: send me occasional study-abroad updates by email.</span></label>
+            <p class="ct-err" id="si-consent-err" hidden></p>
+          </fieldset>
+          <div id="si-turnstile"></div>
+          <div class="st-actions" style="margin-top:0">
+            <button class="btn" id="si-send" type="submit">Email me a code</button>
+            <p class="st-status" id="si-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+
+      <div id="si-step2" hidden>
+        <h2>Enter your code</h2>
+        <p>We sent a 6-digit code to <strong id="si-sent-to"></strong>. It works for 10 minutes. Check your spam folder if it does not arrive.</p>
+        <form id="si-code-form" class="si-form" novalidate>
+          <div class="f">
+            <label for="si-code">6-digit code</label>
+            <input id="si-code" class="si-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="7" pattern="[0-9 ]*" aria-describedby="si-code-err" />
+            <p class="ct-err" id="si-code-err" hidden></p>
+          </div>
+          <div class="st-actions" style="margin-top:0">
+            <button class="btn" id="si-verify" type="submit">Confirm and sign in</button>
+            <p class="st-status" id="si-status2" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+        <div class="si-row">
+          <button class="st-link" id="si-back" type="button">Use a different address, or ask for a new code</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="si-aside" aria-label="About accounts">
+      <div class="panel">
+        <h3>What we keep</h3>
+        <ul>
+          <li>Your Gmail address, and only what you choose to add on your dashboard.</li>
+          <li>No password, phone number, passport number or documents.</li>
+          <li>Download everything, or delete your account, any time in Settings.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Why Gmail only?</h3>
+        <p>It keeps sign-in simple and secure with one code. Other email providers may follow.</p>
+      </div>
+      <div class="panel">
+        <h3>Not ready yet?</h3>
+        <p>You can browse every guide, course and scholarship without an account. Sign in when you want to save your plans.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script>import '../scripts/signin.js';</script>
+</Base>

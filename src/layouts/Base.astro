@@ -44,6 +44,8 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
         var t = 'light';
         try { t = localStorage.getItem('u500-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
         document.documentElement.dataset.theme = t;
+        // A plain flag cookie set at sign-in (it holds no identity). Lets the header say "My dashboard" with no flash.
+        try { if (/(?:^|;\s*)u500_in=1/.test(document.cookie)) document.documentElement.dataset.in = '1'; } catch (e) {}
       })();
     </script>
     {ld && <script type="application/ld+json" set:html={ld} />}
@@ -96,6 +98,9 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
                 <a class="all all-listen" href="/listen/">Listen to the guides</a>
               </div>
             </li>
+            <li class="nav-group nav-account">
+              <a class="nav-link" href="/sign-in/" data-account aria-current={current === 'student' ? 'page' : undefined}><span class="acc-out">Sign in</span><span class="acc-in">My dashboard</span></a>
+            </li>
             <li class="nav-group nav-contact">
               <a class="nav-link" href="/contact/" aria-current={current === 'contact' ? 'page' : undefined}>Contact us</a>
             </li>
@@ -113,6 +118,9 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
           <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">Menu</button>
           <div class="head-actions">
             <a class="head-cta" href="/universities/">Find my university</a>
+            <a class="head-search head-account" href="/sign-in/" data-account aria-label="Sign in" title="Sign in" aria-current={current === 'student' ? 'page' : undefined}>
+              <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5.2" r="2.7" /><path d="M2.5 14c.5-3 2.7-4.6 5.5-4.6s5 1.6 5.5 4.6" /></svg>
+            </a>
             <a class="head-search head-contact" href="/contact/" aria-label="Contact us" title="Contact us" aria-current={current === 'contact' ? 'page' : undefined}>
               <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="3" width="13" height="10" /><path d="m2 4 6 4.6L14 4" /></svg>
             </a>
@@ -294,6 +302,13 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
         queue();
         var t = document.getElementById('to-top');
         if (t) t.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: smooth() }); });
+      })();
+      (function () {
+        if (!document.documentElement.dataset.in) return;
+        Array.prototype.forEach.call(document.querySelectorAll('[data-account]'), function (a) {
+          a.href = '/student/';
+          if (a.classList.contains('head-account')) { a.setAttribute('aria-label', 'My dashboard'); a.title = 'My dashboard'; }
+        });
       })();
       (function () {
         var toggles = Array.prototype.slice.call(document.querySelectorAll('[data-theme-toggle]'));
