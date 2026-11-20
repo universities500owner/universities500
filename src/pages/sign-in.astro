@@ -5,14 +5,14 @@ import '../styles/student.css';
 ---
 <Base
   title="Sign in | Universities500"
-  description="Sign in to Universities500 with your Gmail address. We email you a 6-digit code, so there is no password to remember."
+  description="Sign in to Universities500 with your Gmail address. We email you a one-time code, so there is no password to remember."
   path="/sign-in/"
   noindex={true}
   current="student"
   read={true}
   share={false}
 >
-  <PageHead slot="head" tone="read" crumbs={[['Sign in', null]]} title="Sign in or create your account" lede="Use your Gmail address. We email you a 6-digit code, so there is no password to remember." />
+  <PageHead slot="head" tone="read" crumbs={[['Sign in', null]]} title="Sign in or create your account" lede="Use your Gmail address. We email you a one-time code, so there is no password to remember." />
 
   <div class="si">
     <div class="si-card">
@@ -45,11 +45,11 @@ import '../styles/student.css';
 
       <div id="si-step2" hidden>
         <h2>Enter your code</h2>
-        <p>We sent a 6-digit code to <strong id="si-sent-to"></strong>. It works for 10 minutes. Check your spam folder if it does not arrive.</p>
+        <p>We sent a code to <strong id="si-sent-to"></strong>. It works for 10 minutes. Check your spam folder if it does not arrive.</p>
         <form id="si-code-form" class="si-form" novalidate>
           <div class="f">
-            <label for="si-code">6-digit code</label>
-            <input id="si-code" class="si-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="7" pattern="[0-9 ]*" aria-describedby="si-code-err" />
+            <label for="si-code">Code from the email</label>
+            <input id="si-code" class="si-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="14" pattern="[0-9 ]*" aria-describedby="si-code-err" />
             <p class="ct-err" id="si-code-err" hidden></p>
           </div>
           <div class="st-actions" style="margin-top:0">

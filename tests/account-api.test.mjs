@@ -439,3 +439,12 @@ test('an unexpected failure becomes a readable JSON answer, not an error page', 
   assert.equal(j.error, 'server_error');
   assert.match(j.message, /something went wrong/);
 });
+
+test('codes of 7 or 8 digits (a longer Supabase setting) are accepted in shape and checked by Supabase', async () => {
+  const { api } = setup();
+  await api.request({ email: 'asha.rao@gmail.com', adult: true, terms: true });
+  for (const code of ['1234567', '12345678', '123 4567']) {
+    assert.equal((await api.verify({ email: 'asha.rao@gmail.com', code })).status, 401, code); // not 422: the shape is fine, the code is wrong
+  }
+  assert.equal((await api.verify({ email: 'asha.rao@gmail.com', code: '12345678901' })).status, 422);
+});

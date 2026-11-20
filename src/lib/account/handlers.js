@@ -85,7 +85,7 @@ async function handleConfigImpl(request, env = {}, fetchImpl = fetch) {
 }
 
 // Step 1. A Gmail address, the two consents and (when switched on) the Turnstile check. Creates the account the
-// first time, then asks Supabase to email a 6-digit code. The answer is the same for new and returning students.
+// first time, then asks Supabase to email a one-time code. The answer is the same for new and returning students.
 async function handleRequestCodeImpl(request, env = {}, fetchImpl = fetch, now = Date.now()) {
   const bad = guard(request, ['POST']);
   if (bad) return bad;
@@ -120,7 +120,8 @@ async function handleRequestCodeImpl(request, env = {}, fetchImpl = fetch, now =
   return reply(200, { ok: true, email: gm.email });
 }
 
-// Step 2. The 6-digit code. On success the session cookies are set and the student record exists.
+// Step 2. The one-time code (Supabase sends 6 to 10 digits, depending on the project setting).
+// On success the session cookies are set and the student record exists.
 async function handleVerifyImpl(request, env = {}, fetchImpl = fetch, now = Date.now()) {
   const bad = guard(request, ['POST']);
   if (bad) return bad;
@@ -132,7 +133,7 @@ async function handleVerifyImpl(request, env = {}, fetchImpl = fetch, now = Date
   const gm = normaliseGmail(body.email);
   const code = String(body.code ?? '').replace(/\s+/g, '');
   if (!gm.ok) return reply(422, { ok: false, error: 'invalid', errors: { email: gm.message } });
-  if (!/^\d{6}$/.test(code)) return reply(422, { ok: false, error: 'invalid', errors: { code: 'Enter the 6-digit code from the email.' } });
+  if (!/^\d{6,10}$/.test(code)) return reply(422, { ok: false, error: 'invalid', errors: { code: 'Enter the code from the email (numbers only).' } });
 
   const v = await sb.verifyCode(gm.email, code);
   if (v.status === 429) return reply(429, { ok: false, error: 'rate_limited', message: 'Too many tries. Wait a few minutes, then try again.' });

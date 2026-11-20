@@ -1,4 +1,4 @@
-// Sign-in page: asks for a Gmail address and consent, then for the 6-digit code. All checks that matter are repeated
+// Sign-in page: asks for a Gmail address and consent, then for the code from the email. All checks that matter are repeated
 // on the server (src/lib/account/handlers.js); the checks here only save a round trip.
 const $ = (id) => document.getElementById(id);
 const step1 = $('si-step1'), step2 = $('si-step2');
@@ -96,7 +96,7 @@ $('si-code-form').addEventListener('submit', (ev) => {
   say(status, '');
   fieldErr('si-code', 'si-code-err', '');
   const code = $('si-code').value.replace(/\s+/g, '');
-  if (!/^\d{6}$/.test(code)) { fieldErr('si-code', 'si-code-err', 'Enter the 6-digit code from the email.'); $('si-code').focus(); return; }
+  if (!/^\d{6,10}$/.test(code)) { fieldErr('si-code', 'si-code-err', 'Enter the code from the email (numbers only).'); $('si-code').focus(); return; }
   const btn = $('si-verify');
   btn.disabled = true; btn.textContent = 'Checking…';
   post('/api/auth/verify', { email, code })
