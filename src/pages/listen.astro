@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import ListenHub from '../components/ListenHub.astro';
+import ListenPlay from '../components/ListenPlay.astro';
+import { listenHub } from '../lib/listen-site.js';
+import { englishGuides, otherGuides } from '../lib/guides.js';
+
+const hub = listenHub();
+const lists = hub ? hub.lists : [];
+const playlists = lists.filter((l) => !l.id.startsWith('g:'));
+const byGuide = Object.fromEntries(lists.filter((l) => l.slug).map((l) => [l.slug, l]));
+const everything = playlists.find((l) => l.id === 'all');
+const groups = [
+  ['Study and live in English', englishGuides],
+  ['Study in English, live in another language', otherGuides],
+].map(([title, list]) => [title, list.filter((g) => byGuide[g.slug])]).filter(([, list]) => list.length);
+---
+<Base
+  title="Listen to the study abroad guides | Universities500"
+  description="Every country guide read aloud: study levels, universities, intakes, costs, work rights and visas. Play one guide, or the costs and visas of every country back to back."
+  path="/listen/"
+  current="listen"
+  read={true}
+>
+  <PageHead
+    slot="head"
+    tone="read"
+    crumbs={[['Listen', null]]}
+    title="Listen to the guides."
+    lede="Each country guide, read aloud. Play one while you travel or cook, or line them up and let them run."
+    facts={everything ? [['Country guides', String(everything.groups)], ['Listening time', everything.length]] : []}
+  />
+
+  {hub ? (
+    <ListenHub hub={hub}>
+      <section class="lh-sec" aria-labelledby="h-playlists">
+        <h2 id="h-playlists">Playlists</h2>
+        <ul class="lh-rows">
+          {playlists.map((l) => (
+            <li class="lh-row">
+              <ListenPlay id={l.id} label={l.title} />
+              <div class="lh-row-t">
+                <h3>{l.title}</h3>
+                <p>{l.note}</p>
+              </div>
+              <span class="lh-row-m">{l.groups} countries · {l.length}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="lh-sec" aria-labelledby="h-each">
+        <h2 id="h-each">One country at a time</h2>
+        {groups.map(([title, list]) => (
+          <>
+            <h3 class="lh-sub">{title}</h3>
+            <ul class="lh-rows lh-rows-tight">
+              {list.map((g) => (
+                <li class="lh-row">
+                  <ListenPlay id={`g:${g.slug}`} label={`the ${g.name} guide`} />
+                  <div class="lh-row-t">
+                    <h3>{g.name}</h3>
+                    <p class="lh-row-sub">{byGuide[g.slug].length} · <a class="lh-read" href={`/study-in/${g.slug}/`}>Read it<span class="sr-only"> : the {g.name} guide</span></a></p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        ))}
+      </section>
+    </ListenHub>
+  ) : (
+    <p class="note">The audio guides are being prepared. Each country guide can still be read on its own page.</p>
+  )}
+
+  <p class="note">The voice is AI and reads the same text as the written guide. Fees, rules and dates change, so check the official pages before you decide. Prefer to read? <a href="/study-in/">Compare all destinations</a>.</p>
+</Base>

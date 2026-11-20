@@ -1,0 +1,13 @@
+---
+// A play button for one playlist (id from src/lib/listen-playlists.js). It only works inside <ListenHub>, which owns the player.
+// With text in the slot it is a labelled button ("Play all 14 guides") and the text becomes Pause or Resume; without, it is a round icon.
+const { id, label, class: cls = '' } = Astro.props;
+const hasText = Astro.slots.has('default');
+---
+<button type="button" class={`pl-btn ${cls}`.trim()} data-pl={id} data-label={label} aria-label={`Play ${label}`}>
+  <span class="pl-ic" aria-hidden="true">
+    <svg class="ic-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor" /></svg>
+    <svg class="ic-pause" viewBox="0 0 24 24" hidden><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor" /></svg>
+  </span>
+  {hasText && <span class="pl-t"><slot /></span>}
+</button>
