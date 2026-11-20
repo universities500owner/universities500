@@ -84,7 +84,7 @@ $('si-form').addEventListener('submit', (ev) => {
       }
       if (j.errors && j.errors.email) { fieldErr('si-email', 'si-email-err', j.errors.email); $('si-email').focus(); }
       else if (j.errors && j.errors.consent) fieldErr(null, 'si-consent-err', j.errors.consent);
-      else say(status, j.message || 'Sorry, something went wrong. Please try again.', true);
+      else say(status, j.message || `Sorry, something went wrong (error ${code}). Please try again.`, true);
     })
     .catch(() => say(status, 'Sorry, we could not reach the site. Check your connection and try again.', true))
     .then(() => { resetCaptcha(); btn.disabled = !cfg.configured; btn.textContent = 'Email me a code'; });
@@ -104,7 +104,7 @@ $('si-code-form').addEventListener('submit', (ev) => {
       if (s === 200 && j.ok) { say(status, 'Signed in. Opening your dashboard…'); location.assign(landing(j.next)); return; }
       btn.disabled = false; btn.textContent = 'Confirm and sign in';
       if (j.errors && j.errors.code) { fieldErr('si-code', 'si-code-err', j.errors.code); $('si-code').select(); }
-      else say(status, j.message || 'Sorry, something went wrong. Please try again.', true);
+      else say(status, j.message || `Sorry, something went wrong (error ${s}). Please try again.`, true);
     })
     .catch(() => { btn.disabled = false; btn.textContent = 'Confirm and sign in'; say(status, 'Sorry, we could not reach the site. Check your connection and try again.', true); });
 });
