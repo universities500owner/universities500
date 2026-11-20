@@ -158,8 +158,8 @@ async function handleVerifyImpl(request, env = {}, fetchImpl = fetch, now = Date
     },
   });
   if (!row.ok) {
-    console.error('account: could not create the student record', row.status);
-    return reply(502, { ok: false, error: 'unavailable', message: 'Sorry, we could not finish signing you in. Please try again.' });
+    console.error('account: could not create the student record', row.status, row.data?.code || '', row.data?.message || '');
+    return reply(502, { ok: false, error: 'unavailable', message: `Sorry, we could not finish signing you in (reference db-${row.status}). Please try again.` });
   }
   return reply(200, { ok: true, next: '/student/' }, { cookies: sessionCookies(v.data, isSecure(request)) });
 }
