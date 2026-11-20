@@ -138,6 +138,8 @@ async function handleVerifyImpl(request, env = {}, fetchImpl = fetch, now = Date
   const v = await sb.verifyCode(gm.email, code);
   if (v.status === 429) return reply(429, { ok: false, error: 'rate_limited', message: 'Too many tries. Wait a few minutes, then try again.' });
   if (!v.ok || !v.data?.access_token || !v.data?.user?.id) {
+    // Only the status and Supabase's own reason are logged (never the code or the address), so a failure can be traced in the Worker logs.
+    console.error('account: code check failed', v.status, v.data?.error_code || v.data?.error || v.data?.msg || '');
     if (v.status >= 500 || v.status === 0) return reply(502, { ok: false, error: 'unavailable', message: 'Sorry, we could not check the code. Please try again in a few minutes.' });
     return reply(401, { ok: false, error: 'bad_code', errors: { code: 'That code is wrong or has expired. Check it, or ask for a new one.' } });
   }
