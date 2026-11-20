@@ -15,6 +15,7 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
     users: new Map(),        // id -> { id, email, user_metadata }
     students: new Map(),     // id -> row
     sections: new Map(),     // `${id}|${section}` -> row
+    saved: new Map(),        // `${id}|${item_id}` -> row (saved_items)
     codes: new Map(),        // email -> { code, at }
     outbox: [],              // every sign-in email "sent": { email, code }
     tokens: new Map(),       // access token -> { sub, exp }
@@ -95,6 +96,7 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
       const id = u.pathname.split('/').pop();
       if (!f.users.delete(id)) return res(404, { msg: 'User not found' });
       f.students.delete(id); // on delete cascade
+      for (const k of [...f.saved.keys()]) if (k.startsWith(id + '|')) f.saved.delete(k);
       for (const k of [...f.sections.keys()]) if (k.startsWith(id + '|')) f.sections.delete(k);
       for (const [t, v] of f.tokens) if (v.sub === id) f.tokens.delete(t);
       for (const [t, v] of f.refresh) if (v === id) f.refresh.delete(t);
@@ -134,14 +136,19 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
     if (u.pathname.startsWith('/rest/v1/')) {
       if (who.role === 'invalid') return res(401, { code: 'PGRST301', message: 'JWT expired' });
       const table = u.pathname.slice('/rest/v1/'.length);
-      const store = table === 'students' ? f.students : table === 'profile_sections' ? f.sections : null;
+      const store = table === 'students' ? f.students : table === 'profile_sections' ? f.sections : table === 'saved_items' ? f.saved : null;
       if (!store) return res(404, { message: 'no such table' });
       const owner = (row) => (table === 'students' ? row.id : row.student_id);
+      const SAVED_STATUS = { crs: ['shortlisted', 'preparing', 'applied', 'offer', 'accepted', 'dropped'], mba: ['shortlisted', 'preparing', 'applied', 'offer', 'accepted', 'dropped'], sch: ['saved', 'applying', 'applied', 'awarded', 'dropped'], int: ['saved', 'applying', 'applied', 'offer', 'dropped'] };
       const visible = (row) => who.role === 'service' || (who.role === 'student' && owner(row) === who.id);
       const prefer = headers.get('prefer') || '';
 
       if (method === 'GET') {
-        const rows = [...store.values()].filter((r) => visible(r) && matches(r, u.searchParams));
+        let rows = [...store.values()].filter((r) => visible(r) && matches(r, u.searchParams));
+        const ord = u.searchParams.get('order');
+        if (ord) { const [col, dir] = ord.split('.'); rows.sort((a, b) => (a[col] < b[col] ? -1 : a[col] > b[col] ? 1 : 0) * (dir === 'desc' ? -1 : 1)); }
+        const lim = Number(u.searchParams.get('limit'));
+        if (lim) rows = rows.slice(0, lim);
         return res(200, rows.map((r) => pick(r, u.searchParams.get('select'))));
       }
       if (method === 'POST') {
@@ -152,6 +159,19 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
           for (const it of items) {
             if (store.has(it.id)) { if (prefer.includes('ignore-duplicates')) continue; return res(409, { code: '23505' }); }
             store.set(it.id, { display_name: null, countries: [], level: null, subject_groups: [], subjects: [], stage: null, onboarded_at: null, created_at: new Date(f.clock.t).toISOString(), ...it });
+          }
+          return res(201);
+        }
+        if (table === 'saved_items') {
+          for (const it of items) {
+            if (who.role === 'student' && it.student_id !== who.id) return res(403, { message: 'new row violates row-level security policy' });
+            if (who.role !== 'student' && who.role !== 'service') return res(403, { message: 'denied' });
+            if (!f.students.has(it.student_id)) return res(409, { code: '23503', message: 'foreign key' });
+            if (!(SAVED_STATUS[it.kind] || []).includes(it.status) || it.item_id.split(':')[0] !== it.kind) return res(400, { code: '23514', message: 'check constraint' });
+            const key = `${it.student_id}|${it.item_id}`;
+            if (store.has(key)) { if (prefer.includes('ignore-duplicates')) continue; return res(409, { code: '23505' }); }
+            if ([...store.values()].filter((r) => r.student_id === it.student_id).length >= 200) return res(400, { code: '23514', message: 'saved_items limit reached' });
+            store.set(key, { note: '', sub: '', url: '', ...it });
           }
           return res(201);
         }
@@ -170,7 +190,14 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
           const bad = Object.keys(body).filter((k) => !STUDENT_UPDATABLE.includes(k));
           if (bad.length) return res(403, { code: '42501', message: `permission denied for column ${bad[0]}` });
         }
+        if (table === 'saved_items' && body.status) {
+          for (const r of store.values()) if (visible(r) && matches(r, u.searchParams) && !(SAVED_STATUS[r.kind] || []).includes(body.status)) return res(400, { code: '23514', message: 'check constraint' });
+        }
         for (const r of store.values()) if (visible(r) && matches(r, u.searchParams)) Object.assign(r, body);
+        return res(204);
+      }
+      if (method === 'DELETE' && table === 'saved_items') {
+        for (const [k, r] of [...store.entries()]) if (visible(r) && matches(r, u.searchParams)) store.delete(k);
         return res(204);
       }
       return res(405, {});

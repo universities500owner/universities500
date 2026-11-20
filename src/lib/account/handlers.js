@@ -12,6 +12,7 @@
 // Privacy by design: the only identifier is a Gmail address. No passwords, phone numbers, passport numbers or
 // documents are collected. A student can download everything stored and delete the account at any time.
 
+import { CAP, cleanItem, cleanChange, ID_RE } from './saved.js';
 import { normaliseGmail } from './gmail.js';
 import { supabase } from './supabase.js';
 import { parseCookies, sessionCookies, clearCookies, jwtClaims, UUID } from './session.js';
@@ -280,6 +281,77 @@ async function handleMeImpl(request, env = {}, fetchImpl = fetch, now = Date.now
   return out(200, { ok: true, student: cs.value, sections: cleaned, onboarded: body.onboarded === true });
 }
 
+// /api/me/saved: the student's shortlist. GET lists it; POST adds items (also used to merge a guest's bookmarks);
+// PATCH changes an item's status or note; DELETE removes one or more items.
+const SAVED_COLUMNS = 'item_id,kind,title,sub,url,status,note,saved_at,updated_at';
+const SAVED_ADD_MAX = 100;
+
+async function handleSavedImpl(request, env = {}, fetchImpl = fetch, now = Date.now()) {
+  const bad = guard(request, ['GET', 'POST', 'PATCH', 'DELETE']);
+  if (bad) return bad;
+  const sb = supabase(env, fetchImpl);
+  if (!sb.configured) return notConfigured();
+  const s = await openSession(request, sb, now);
+  if (!s) return signedOut(request);
+  const out = (status, body) => reply(status, body, { cookies: s.cookies });
+  const unavailable = () => out(502, { ok: false, error: 'unavailable', message: 'Sorry, your shortlist could not be reached. Please try again.' });
+  const list = () => sb.db(`saved_items?student_id=eq.${s.uid}&select=${SAVED_COLUMNS}&order=saved_at.desc&limit=${CAP}`, { jwt: s.jwt });
+  const sendList = async (extra = {}) => {
+    const r = await list();
+    if (r.status === 401) return signedOut(request);
+    if (!r.ok || !Array.isArray(r.data)) return unavailable();
+    return out(200, { ok: true, items: r.data, ...extra });
+  };
+
+  if (request.method === 'GET') return sendList();
+
+  const { res, body } = await bodyOr(request);
+  if (res) return res;
+  const iso = new Date(now).toISOString();
+
+  if (request.method === 'POST') {
+    const incoming = Array.isArray(body.items) ? body.items.slice(0, SAVED_ADD_MAX) : [];
+    if (!incoming.length) return out(422, { ok: false, error: 'invalid', message: 'Nothing to save.' });
+    const have = await sb.db(`saved_items?student_id=eq.${s.uid}&select=item_id&limit=${CAP}`, { jwt: s.jwt });
+    if (have.status === 401) return signedOut(request);
+    if (!have.ok || !Array.isArray(have.data)) return unavailable();
+    const known = new Set(have.data.map((r) => r.item_id));
+    const rows = [];
+    for (const raw of incoming) {
+      const c = cleanItem(raw);
+      if (c.error || known.has(c.value.item_id)) continue;
+      known.add(c.value.item_id);
+      rows.push({ ...c.value, student_id: s.uid, saved_at: iso, updated_at: iso });
+    }
+    const room = Math.max(0, CAP - have.data.length);
+    const capped = rows.length > room;
+    const add = rows.slice(0, room);
+    if (add.length) {
+      const w = await sb.db('saved_items?on_conflict=student_id,item_id', { method: 'POST', jwt: s.jwt, prefer: 'resolution=ignore-duplicates,return=minimal', body: add });
+      if (w.status === 401) return signedOut(request);
+      if (!w.ok) { console.error('account: could not save items', w.status); return unavailable(); }
+    }
+    return sendList({ added: add.length, capped });
+  }
+
+  if (request.method === 'PATCH') {
+    const c = cleanChange(body);
+    if (c.error) return out(422, { ok: false, error: 'invalid', message: c.error });
+    const w = await sb.db(`saved_items?student_id=eq.${s.uid}&item_id=eq.${encodeURIComponent(c.id)}`, { method: 'PATCH', jwt: s.jwt, prefer: 'return=minimal', body: { ...c.value, updated_at: iso } });
+    if (w.status === 401) return signedOut(request);
+    if (!w.ok) { console.error('account: could not change an item', w.status); return unavailable(); }
+    return out(200, { ok: true });
+  }
+
+  // DELETE: { id } or { ids: [...] }
+  const ids = (Array.isArray(body.ids) ? body.ids : [body.id]).filter((id) => typeof id === 'string' && ID_RE.test(id)).slice(0, 50);
+  if (!ids.length) return out(422, { ok: false, error: 'invalid', message: 'Nothing to remove.' });
+  const gone = await Promise.all(ids.map((id) => sb.db(`saved_items?student_id=eq.${s.uid}&item_id=eq.${encodeURIComponent(id)}`, { method: 'DELETE', jwt: s.jwt, prefer: 'return=minimal' })));
+  if (gone.some((r) => r.status === 401)) return signedOut(request);
+  if (gone.some((r) => !r.ok)) { console.error('account: could not remove items', gone.map((r) => r.status).join(',')); return unavailable(); }
+  return out(200, { ok: true });
+}
+
 // /api/me/export: everything stored about the student, as a file they can keep.
 async function handleExportImpl(request, env = {}, fetchImpl = fetch, now = Date.now()) {
   const bad = guard(request, ['GET']);
@@ -288,12 +360,15 @@ async function handleExportImpl(request, env = {}, fetchImpl = fetch, now = Date
   if (!sb.configured) return notConfigured();
   const s = await openSession(request, sb, now);
   if (!s) return signedOut(request);
-  const a = await loadAccount(sb, s);
+  const [a, sv] = await Promise.all([
+    loadAccount(sb, s),
+    sb.db(`saved_items?student_id=eq.${s.uid}&select=${SAVED_COLUMNS}&order=saved_at.desc&limit=${CAP}`, { jwt: s.jwt }),
+  ]);
   if (a.gone) return signedOut(request);
-  if (a.error) return reply(502, { ok: false, error: 'unavailable', message: 'Sorry, your details could not be loaded. Please try again.' }, { cookies: s.cookies });
+  if (a.error || !sv.ok) return reply(502, { ok: false, error: 'unavailable', message: 'Sorry, your details could not be loaded. Please try again.' }, { cookies: s.cookies });
   return reply(
     200,
-    { exported_at: new Date(now).toISOString(), site: 'universities500.com', student: a.student, sections: a.sections },
+    { exported_at: new Date(now).toISOString(), site: 'universities500.com', student: a.student, sections: a.sections, shortlist: Array.isArray(sv.data) ? sv.data : [] },
     { cookies: s.cookies, headers: { 'content-disposition': 'attachment; filename="universities500-my-data.json"' } },
   );
 }
@@ -314,4 +389,5 @@ export const handleRequestCode = safe('handleRequestCode', handleRequestCodeImpl
 export const handleVerify = safe('handleVerify', handleVerifyImpl);
 export const handleLogout = safe('handleLogout', handleLogoutImpl);
 export const handleMe = safe('handleMe', handleMeImpl);
+export const handleSaved = safe('handleSaved', handleSavedImpl);
 export const handleExport = safe('handleExport', handleExportImpl);

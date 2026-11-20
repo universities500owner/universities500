@@ -2,6 +2,8 @@
 // named in data-page. Nothing a student typed is put into the page as HTML.
 import { STAGES, LEVELS, COUNTRIES, SUBJECT_GROUPS, SECTION_IDS, sectionDone, plansDone } from '../lib/account/schema.js';
 import { renderSection } from './student-form.js';
+import { STATUSES, STATUS_LABEL, NOTE_MAX } from '../lib/account/saved.js';
+import { syncWithAccount, api as savedApi, clearLocal, forgetLocal } from './saved-sync.js';
 
 const root = document.querySelector('[data-student]');
 const page = root.dataset.page;
@@ -52,7 +54,7 @@ function overview() {
     $('[data-hello]').textContent = firstName() ? `Hi ${firstName()}` : 'Welcome';
     $('[data-welcome]').textContent = s.onboarded_at
       ? 'Here is where you are, and what to do next.'
-      : 'Welcome. Two quick questions help us show what is useful to you. You can change any answer later.';
+      : 'Two quick questions help us show what is useful to you. You can change any answer later.';
   };
 
   // Where are you now
@@ -216,9 +218,124 @@ function settings() {
     go.disabled = true; say(dst, 'Deleting…');
     const r = await api('DELETE', '/api/me', { confirm: 'delete' });
     if (r.ok) {
+      clearLocal();
       notice('Your account has been deleted', 'Your details have been removed from Universities500. You can still browse the site without an account.', { label: 'Back to the home page', run: () => location.assign('/') });
     } else { go.disabled = false; say(dst, r.j.message || 'Could not delete the account. Try again, or contact us.', 'bad'); }
   });
+}
+
+// ---- My shortlist ----------------------------------------------------------------------------------------------
+
+const TABS = [
+  ['courses', 'Courses', ['crs', 'mba'], '/courses/', 'Browse courses', 'course or MBA programme'],
+  ['scholarships', 'Scholarships', ['sch'], '/scholarships/', 'Browse scholarships', 'scholarship'],
+  ['internships', 'Internships', ['int'], '/internships/', 'Browse internships', 'internship'],
+];
+const safeHref = (u) => (/^\/(?!\/)/.test(u) || /^https:\/\//.test(u) ? u : '');
+
+function shortlist() {
+  const tabsEl = $('[data-tabs]'), listEl = $('[data-list]'), emptyEl = $('[data-empty]'), st = $('[data-sl-status]');
+  let items = [];
+  let tab = TABS.some((t) => t[0] === location.hash.slice(1)) ? location.hash.slice(1) : 'courses';
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const inTab = (t) => items.filter((i) => t[2].includes(i.kind));
+
+  function paintTabs() {
+    tabsEl.replaceChildren(...TABS.map((t) => {
+      const b = el('button', '', t[1]);
+      b.type = 'button';
+      b.setAttribute('aria-pressed', String(t[0] === tab));
+      b.append(el('span', 'n', `(${inTab(t).length})`));
+      b.addEventListener('click', () => { tab = t[0]; history.replaceState(null, '', '#' + tab); say(st, ''); paint(); });
+      return b;
+    }));
+  }
+
+  function row(it) {
+    const li = el('li', 'sl-item');
+    li.dataset.status = it.status;
+    const main = el('div', 'sl-main');
+    const h = el('h3', 'sl-title');
+    const href = safeHref(it.url || '');
+    if (href) {
+      const a = el('a', '', it.title); a.href = href;
+      if (!href.startsWith('/')) { a.target = '_blank'; a.rel = 'noopener nofollow'; }
+      h.append(a);
+    } else h.textContent = it.title;
+    main.append(h);
+    if (it.sub) main.append(el('p', 'sl-sub', it.sub));
+    if (it.saved_at) main.append(el('p', 'sl-when', 'Saved ' + new Date(it.saved_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })));
+
+    const side = el('div', 'sl-side');
+    const lab = el('label', 'sl-status');
+    lab.append(el('span', '', 'Status'));
+    const sel = el('select');
+    for (const k of STATUSES[it.kind]) { const o = el('option', '', STATUS_LABEL[k]); o.value = k; sel.append(o); }
+    sel.value = it.status;
+    lab.append(sel);
+    sel.addEventListener('change', async () => {
+      const before = it.status;
+      say(st, 'Saving…');
+      const r = await savedApi('PATCH', { id: it.item_id, status: sel.value });
+      if (r.status === 401) return toSignIn();
+      if (r.ok) { it.status = sel.value; li.dataset.status = it.status; say(st, 'Saved.', 'ok'); }
+      else { sel.value = before; say(st, r.j.message || 'Could not save. Try again.', 'bad'); }
+    });
+    const rm = el('button', 'sl-remove', 'Remove'); rm.type = 'button';
+    rm.setAttribute('aria-label', `Remove ${it.title} from my shortlist`);
+    rm.addEventListener('click', async () => {
+      rm.disabled = true;
+      const r = await savedApi('DELETE', { id: it.item_id });
+      if (r.status === 401) return toSignIn();
+      if (r.ok) { items = items.filter((x) => x.item_id !== it.item_id); forgetLocal(it.item_id); say(st, 'Removed.', 'ok'); paint(); }
+      else { rm.disabled = false; say(st, r.j.message || 'Could not remove it. Try again.', 'bad'); }
+    });
+    side.append(lab, rm);
+
+    const note = el('details', 'sl-note');
+    note.open = !!it.note;
+    const sum = el('summary', '', it.note ? 'Your note' : 'Add a note');
+    const ta = el('textarea'); ta.rows = 3; ta.maxLength = NOTE_MAX; ta.value = it.note || '';
+    ta.setAttribute('aria-label', `Note about ${it.title}`);
+    const nst = el('p', 'st-status'); nst.setAttribute('role', 'status'); nst.setAttribute('aria-live', 'polite');
+    ta.addEventListener('change', async () => {
+      say(nst, 'Saving…');
+      const r = await savedApi('PATCH', { id: it.item_id, note: ta.value });
+      if (r.status === 401) return toSignIn();
+      if (r.ok) { it.note = ta.value.trim(); sum.textContent = it.note ? 'Your note' : 'Add a note'; say(nst, 'Saved.', 'ok'); }
+      else say(nst, r.j.message || 'Could not save the note. Try again.', 'bad');
+    });
+    note.append(sum, ta, nst);
+
+    li.append(main, side, note);
+    return li;
+  }
+
+  function paint() {
+    paintTabs();
+    const t = TABS.find((x) => x[0] === tab);
+    const rows = inTab(t);
+    listEl.replaceChildren(...rows.map(row));
+    emptyEl.hidden = rows.length > 0;
+    if (!rows.length) {
+      const p = el('p', '', `Nothing saved here yet. Use the bookmark button on any ${t[5]} while you browse and it will appear here.`);
+      const a = el('a', 'btn ghost', t[4]); a.href = t[3];
+      emptyEl.replaceChildren(p, a);
+    }
+  }
+
+  (async () => {
+    const synced = await syncWithAccount();
+    let list = synced;
+    if (!list) {
+      const r = await savedApi('GET');
+      if (r.status === 401) return toSignIn();
+      if (!r.ok) return notice('We could not load your shortlist', r.j.message || 'Please try again.', { label: 'Try again', run: () => location.reload() });
+      list = r.j.items;
+    }
+    items = list;
+    paint();
+  })();
 }
 
 // ---- start -----------------------------------------------------------------------------------------------------
@@ -226,6 +343,7 @@ function settings() {
 $$('[data-signout]').forEach((b) => b.addEventListener('click', async () => {
   b.disabled = true;
   await api('POST', '/api/auth/logout', {});
+  clearLocal(); // bookmarks kept in this browser are cleared too, so the next person on this device does not see them
   location.assign('/sign-in/');
 }));
 // Coming back with the Back button after signing out must not show the old page from the cache.
@@ -238,5 +356,6 @@ window.addEventListener('pageshow', (e) => { if (e.persisted) location.reload();
   if (!r.ok) return notice('We could not load your dashboard', r.j.message || 'Please try again.', { label: 'Try again', run: () => location.reload() });
   me = r.j;
   loading.hidden = true; content.hidden = false;
-  ({ overview, profile, settings }[page] || (() => {}))();
+  ({ overview, profile, settings, shortlist }[page] || (() => {}))();
+  if (page !== 'shortlist') syncWithAccount().then((list) => { const sum = $('[data-sl-sum]'); if (list && sum && list.length) sum.textContent = `${list.length} saved: ${list.filter((i) => ['crs', 'mba'].includes(i.kind)).length} courses, ${list.filter((i) => i.kind === 'sch').length} scholarships, ${list.filter((i) => i.kind === 'int').length} internships.`; });
 })();

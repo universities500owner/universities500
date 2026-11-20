@@ -41,6 +41,12 @@ const subjectData = JSON.stringify(subjects.subjects.map((s) => [s.id, s.name, s
     </form>
   </section>
 
+  <section class="st-card" aria-labelledby="st-sl-h">
+    <h2 id="st-sl-h">My shortlist</h2>
+    <p class="st-sub" data-sl-sum>Courses, scholarships and internships you save while browsing, each with a status and a note.</p>
+    <div class="st-actions" style="margin-top:0"><a class="btn ghost" href="/student/shortlist/">Open my shortlist</a></div>
+  </section>
+
   <section class="st-card" aria-labelledby="st-prog-h">
     <h2 id="st-prog-h">Your profile</h2>
     <p class="st-sub">The more you add, the better the tools below can help. Everything is optional except what each form marks as needed.</p>
@@ -52,7 +58,6 @@ const subjectData = JSON.stringify(subjects.subjects.map((s) => [s.id, s.name, s
     <h2 id="st-soon-h">Coming next</h2>
     <p class="st-sub">These are being built. They will use what you add to your profile.</p>
     <div class="st-soon">
-      <div><h3>Shortlisted courses</h3><p>Courses you save while browsing, each with a status: researching, applied, offer or accepted.</p></div>
       <div><h3>Visa self-check</h3><p>A readiness score with a Green, Amber or Red band, what helps you and what to strengthen. A self-check, not advice.</p></div>
       <div><h3>SOP editor</h3><p>Write your statement of purpose and get feedback and questions to sharpen it. The words stay yours.</p></div>
       <div><h3>LOR helper</h3><p>A brief to give your recommender, and a check of the letter once they have written it.</p></div>

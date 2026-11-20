@@ -7,7 +7,7 @@ const assets = (calls) => ({ fetch: (req) => { calls.push(new URL(req.url).pathn
 
 test('every API address in the site code has a route', () => {
   assert.deepEqual(Object.keys(ROUTES).sort(), [
-    '/api/auth/config', '/api/auth/logout', '/api/auth/request', '/api/auth/verify', '/api/contact', '/api/me', '/api/me/export',
+    '/api/auth/config', '/api/auth/logout', '/api/auth/request', '/api/auth/verify', '/api/contact', '/api/me', '/api/me/export', '/api/me/saved',
   ]);
 });
 
