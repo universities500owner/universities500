@@ -57,7 +57,9 @@ export function renderSection(host, name, data) {
   const spec = SECTIONS[name];
   const flat = el('div', { class: 'st-grid' });
   const rows = [];
+  let group = null;
   for (const f of spec.fields) {
+    if (f.group && f.group !== group) { group = f.group; flat.append(el('h3', { class: 'st-group', text: group })); }
     const row = fieldRow(f, `${name}-${f.id}`, f.id, data[f.id]);
     row.__f = f;
     rows.push(row);

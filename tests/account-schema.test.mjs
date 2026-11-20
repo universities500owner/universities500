@@ -156,5 +156,5 @@ test('progress helpers', () => {
   assert.equal(sectionDone('work', { none: true }), true);
   assert.equal(sectionDone('english', { test: 'none' }), true);
   assert.equal(sectionDone('english', { test: 'ielts' }), false);
-  assert.deepEqual(SECTION_IDS, ['profile', 'academic', 'english', 'work', 'immigration']);
+  assert.deepEqual(SECTION_IDS, ['profile', 'academic', 'english', 'work', 'immigration', 'visa_au']);
 });

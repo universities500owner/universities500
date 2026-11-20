@@ -203,3 +203,69 @@ html[data-theme="dark"] .btn-danger:hover:not([disabled]) { background: #FF9B94;
   .sl-status select { min-width: 0; width: 100%; }
   .sl-remove { align-self: flex-start; }
 }
+
+/* ---------- visa self-check ---------- */
+.st-grid .st-group { grid-column: 1 / -1; margin: .6rem 0 -.2rem; padding-top: .9rem; border-top: 1px solid var(--k-hair); font-size: 1.02rem; color: var(--k-title); }
+.st-grid > .st-group:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.vc-scope { margin: 0 0 1.25rem; padding: .85rem 1.1rem; max-width: 72ch; background: var(--k-card); border: 1px solid var(--k-hair); border-left: .4rem solid var(--k-cobalt); }
+.vc-scope b { color: var(--k-title); }
+.vc-result:focus { outline: none; }
+.vc-result:focus-visible { outline: 3px solid var(--k-cobalt); outline-offset: 2px; }
+.vc-top { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem 1.4rem; align-items: stretch; margin: .3rem 0 1rem; }
+/* The band is a solid block: its colour, its word and its mark all say the same thing, so colour is never the only signal. */
+.vc-band { --b: #5A6478; --on: #fff; display: flex; flex-direction: column; justify-content: center; gap: .15rem; min-width: 9rem; padding: 1rem 1.3rem; background: var(--b); color: var(--on); }
+.vc-band[data-band="green"] { --b: #17653D; --on: #fff; }
+.vc-band[data-band="amber"] { --b: #F2B134; --on: #231700; }
+.vc-band[data-band="red"] { --b: #B3261E; --on: #fff; }
+.vc-glyph { display: grid; place-items: center; width: 2rem; height: 2rem; border: .17rem solid currentColor; border-radius: 50%; font-weight: 800; font-size: 1.1rem; line-height: 1; }
+.vc-band b { font-size: 2.1rem; line-height: 1.05; font-weight: 800; letter-spacing: -.01em; }
+.vc-band small { font-weight: 700; font-size: .85rem; opacity: .9; }
+.vc-score { --b: #5A6478; align-self: center; min-width: 0; }
+.vc-score[data-band="green"] { --b: #17653D; }
+.vc-score[data-band="amber"] { --b: #C98A0A; }
+.vc-score[data-band="red"] { --b: #B3261E; }
+html[data-theme="dark"] .vc-score[data-band="green"] { --b: #4FD08E; }
+html[data-theme="dark"] .vc-score[data-band="amber"] { --b: #F2B134; }
+html[data-theme="dark"] .vc-score[data-band="red"] { --b: #FF8A80; }
+.vc-points { margin: 0 0 .45rem; color: var(--muted); font-weight: 600; }
+.vc-points b { font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1; color: var(--k-title); font-variant-numeric: tabular-nums; }
+.vc-bar { height: .7rem; background: var(--hover); border: 1px solid var(--k-hair); }
+.vc-bar i { display: block; height: 100%; background: var(--b, var(--k-cobalt)); }
+.vc-bar-s { height: .5rem; }
+.vc-say { margin: .7rem 0 0; font-weight: 700; color: var(--k-title); font-size: 1.08rem; }
+.vc-held { margin: 0 0 1rem; padding: .8rem 1rem; background: var(--k-card-hover); border: 1px solid var(--k-hair); border-left: .4rem solid #B3261E; }
+.vc-held p { margin: 0 0 .3rem; font-weight: 700; color: var(--k-title); }
+.vc-held ul { margin: 0; padding-left: 1.2rem; }
+.vc-h { margin: 1.4rem 0 .6rem; font-size: 1.1rem; color: var(--k-title); }
+.vc-factors, .vc-actions, .vc-notes ul, .vc-src { margin: 0; }
+.vc-factors { list-style: none; padding: 0; border-top: 1px solid var(--k-hair); }
+.vc-factor { padding: .85rem 0; border-bottom: 1px solid var(--k-hair); }
+.vc-fhead { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: .4rem; }
+.vc-fhead b { color: var(--k-title); font-size: 1.02rem; }
+.vc-fpts { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vc-notes-l { margin: .55rem 0 0; padding-left: 1.1rem; color: var(--muted); font-size: .94rem; }
+.vc-notes-l li + li { margin-top: .15rem; }
+.vc-actions { padding-left: 1.4rem; }
+.vc-actions li { padding: .35rem 0 .35rem .2rem; max-width: 70ch; }
+.vc-actions li::marker { font-weight: 800; color: var(--k-cobalt); }
+.vc-must { color: #B3261E; }
+html[data-theme="dark"] .vc-must { color: #FF9B94; }
+.vc-none { margin: 0; color: var(--muted); }
+.vc-profile { list-style: none; margin: 0 0 1.2rem; padding: 0; border: 1px solid var(--k-hair); }
+.vc-profile li { display: grid; grid-template-columns: minmax(9rem, 12rem) minmax(0, 1fr) auto; gap: .6rem 1rem; align-items: baseline; padding: .6rem .9rem; }
+.vc-profile li + li { border-top: 1px solid var(--k-hair); }
+.vc-profile .k { font-weight: 700; color: var(--k-title); }
+.vc-profile .v { color: var(--ink); }
+.vc-profile a { font-weight: 700; }
+.vc-notes ul { padding-left: 1.2rem; max-width: 72ch; }
+.vc-notes li + li { margin-top: .35rem; }
+.vc-src { padding-left: 1.2rem; }
+@media (max-width: 560px) {
+  .vc-top { grid-template-columns: minmax(0, 1fr); }
+  .vc-band { flex-direction: row; align-items: center; gap: .8rem; }
+  .vc-profile li { grid-template-columns: minmax(0, 1fr) auto; }
+  .vc-profile .k { grid-column: 1 / -1; }
+}
+/* A tick box inside a form row: the global .f label and .f input rules (block, full width, padded) must not win. */
+.st-sec .f .st-chk { display: flex; align-items: flex-start; gap: .6rem; margin: 0; font-size: 1rem; font-weight: 600; color: var(--ink); line-height: 1.45; }
+.st-sec .f .st-chk input { flex: none; width: 1.2rem; height: 1.2rem; min-height: 0; margin: .12rem 0 0; padding: 0; }

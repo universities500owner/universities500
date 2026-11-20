@@ -103,7 +103,7 @@ function cleanObject(fields, input, path, errors) {
   return out;
 }
 
-// ---- the five sections ----------------------------------------------------------------------------------------
+// ---- the sections ----------------------------------------------------------------------------------------
 
 const GRADE_TYPES = [['percentage', 'Percentage'], ['cgpa10', 'CGPA out of 10'], ['gpa4', 'GPA out of 4'], ['other', 'Other grading']];
 const GRADE_MAX = { percentage: 100, cgpa10: 10, gpa4: 4, other: 1000 };
@@ -220,9 +220,37 @@ export const SECTIONS = {
       ],
     },
   },
+
+  // Answers for the Australian student visa self-check (/student/visa-check/). Not a profile page section: the visa page asks for it.
+  // What the check needs that the profile does not already hold. English and visa history are read from the sections above.
+  visa_au: {
+    label: 'Visa self-check: Australia',
+    blurb: 'Answers for the Australian student visa self-check. Do not enter passport numbers, visa numbers or bank account numbers.',
+    fields: [
+      { id: 'tuition', group: 'Money for your first year', type: 'number', int: true, min: 0, max: 400000, label: 'Tuition for your first 12 months (AUD)', required: true, requiredMsg: 'Enter the tuition fee, or 0 if it is fully covered.', hint: 'From your offer letter or the university fee page. For a course shorter than a year, enter the whole course fee.' },
+      { id: 'funds', type: 'number', int: true, min: 0, max: 5000000, label: 'Money you can show (AUD)', required: true, requiredMsg: 'Enter the amount you can show, or 0 if none yet.', hint: 'Savings, fixed deposits, a sanctioned education loan and a scholarship you hold. Convert to Australian dollars.' },
+      { id: 'funds_status', type: 'select', label: 'Where is that money?', required: true, requiredMsg: 'Choose where the money is.', options: [['ready', 'In an account, or a loan that is already sanctioned'], ['partial', 'Part is ready, the rest is in progress'], ['planned', 'Not arranged yet']] },
+      { id: 'funds_trail', type: 'select', label: 'Can you show where the money came from?', required: true, requiredMsg: 'Choose an answer.', options: [['documented', 'Yes, I have the papers (statements, tax returns, loan papers)'], ['some', 'Some of it'], ['no', 'Not yet']] },
+      { id: 'partner', type: 'check', label: 'My partner is coming with me' },
+      { id: 'children', type: 'number', int: true, min: 0, max: 8, label: 'Children coming with you', hint: 'Leave empty if none.' },
+      { id: 'school_children', type: 'number', int: true, min: 0, max: 8, label: 'How many of them are of school age?', show: (d) => (d.children || 0) > 0 },
+      { id: 'course_link', group: 'Your course and your story', type: 'select', label: 'Is this course related to what you studied or did before?', required: true, requiredMsg: 'Choose an answer.', options: [['related', 'Yes, it follows from it'], ['partly', 'Partly'], ['unrelated', 'No, it is a change of direction']] },
+      { id: 'reasons', type: 'select', label: 'Can you explain why this course and this university?', required: true, requiredMsg: 'Choose an answer.', options: [['clear', 'Yes, with specifics (modules, skills, the job it leads to)'], ['general', 'In general terms'], ['not_yet', 'Not yet']] },
+      { id: 'gap', type: 'select', label: 'Is there a gap of more than a year in your study or work?', required: true, requiredMsg: 'Choose an answer.', options: [['none', 'No gap'], ['explained', 'Yes, and I can explain it with proof'], ['unexplained', 'Yes, and I cannot explain it well yet']] },
+      { id: 'ties_family', group: 'Ties to home and your documents', type: 'check', label: 'Close family stays in my home country' },
+      { id: 'ties_assets', type: 'check', label: 'I own property or a business at home' },
+      { id: 'ties_career', type: 'check', label: 'I have a job or a clear career plan to return to' },
+      { id: 'docs', type: 'select', label: 'How are your documents?', required: true, requiredMsg: 'Choose an answer.', options: [['ready', 'Ready'], ['some', 'Some are ready'], ['not_started', 'Not started']] },
+    ],
+    check(d, at, errors) {
+      if ((d.school_children || 0) > (d.children || 0)) errors[at + 'school_children'] = 'This cannot be more than the number of children.';
+    },
+  },
 };
 
+// Every section that is stored, and the ones that are filled in on the profile page (the rest have their own page).
 export const SECTION_IDS = Object.keys(SECTIONS);
+export const PROFILE_SECTION_IDS = ['profile', 'academic', 'english', 'work', 'immigration'];
 
 // Checks one section's data. Returns { value, errors }. errors is empty when the data is fine.
 // Error keys are field ids, or "items.2.institution" for a field inside a list entry.
@@ -297,6 +325,7 @@ export function sectionDone(name, data) {
     case 'english': return !!d.test && (d.test === 'none' || !!d.status);
     case 'work': return !!d.none || (Array.isArray(d.items) && d.items.length > 0);
     case 'immigration': return !!d.history;
+    case 'visa_au': return SECTIONS.visa_au.fields.filter((f) => f.required).every((f) => d[f.id] !== undefined && d[f.id] !== null && d[f.id] !== '');
     default: return false;
   }
 }

@@ -1,7 +1,8 @@
 // The student dashboard. One script for every /student/ page: it asks /api/me who is signed in, then runs the code for the page
 // named in data-page. Nothing a student typed is put into the page as HTML.
-import { STAGES, LEVELS, COUNTRIES, SUBJECT_GROUPS, SECTION_IDS, sectionDone, plansDone } from '../lib/account/schema.js';
+import { STAGES, LEVELS, COUNTRIES, SUBJECT_GROUPS, ENGLISH_TESTS, PROFILE_SECTION_IDS, sectionDone, plansDone, label } from '../lib/account/schema.js';
 import { renderSection } from './student-form.js';
+import { assessAu, BAND_LABEL, BAND_SAY } from '../lib/visa/au-check.js';
 import { STATUSES, STATUS_LABEL, NOTE_MAX } from '../lib/account/saved.js';
 import { syncWithAccount, api as savedApi, clearLocal, forgetLocal } from './saved-sync.js';
 
@@ -137,7 +138,7 @@ function overview() {
 
   // What is left to fill in
   const progress = () => {
-    const items = [['Your plans', '#plans', plansDone(s)]].concat(SECTION_IDS.map((id) => [
+    const items = [['Your plans', '#plans', plansDone(s)]].concat(PROFILE_SECTION_IDS.map((id) => [
       { profile: 'About you', academic: 'Academic history', english: 'English test', work: 'Work experience', immigration: 'Immigration history' }[id],
       `/student/profile/#${id}`, sectionDone(id, me.sections[id]),
     ]));
@@ -167,7 +168,7 @@ function profile() {
     card.classList.toggle('is-done', ok);
     $('.state', card).textContent = ok ? 'Added' : 'Not added yet';
   };
-  for (const id of SECTION_IDS) {
+  for (const id of PROFILE_SECTION_IDS) {
     const card = $(`#${id}`);
     const form = renderSection($('[data-form]', card), id, me.sections[id] || {});
     forms[id] = form;
@@ -189,7 +190,7 @@ function profile() {
   }
   const openFrom = () => {
     const target = document.getElementById(location.hash.slice(1));
-    const card = target && target.matches('.st-sec') ? target : SECTION_IDS.map((id) => $(`#${id}`)).find((c) => !c.classList.contains('is-done'));
+    const card = target && target.matches('.st-sec') ? target : PROFILE_SECTION_IDS.map((id) => $(`#${id}`)).find((c) => !c.classList.contains('is-done'));
     if (card) { card.open = true; if (target === card) card.scrollIntoView({ block: 'start' }); }
   };
   openFrom();
@@ -338,6 +339,113 @@ function shortlist() {
   })();
 }
 
+// ---- Visa self-check: Australia --------------------------------------------------------------------------------
+
+const GLYPH = { green: '✓', amber: '!', red: '×' };
+const aud = (n) => 'AUD ' + Math.round(n).toLocaleString('en-IN');
+
+function visa() {
+  const card = $('#visa_au'), result = $('[data-result]'), empty = $('[data-empty]');
+  const form = renderSection($('[data-form]', card), 'visa_au', me.sections.visa_au || {});
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  // What is read from the profile, with a link to change it.
+  function paintProfile() {
+    const eng = me.sections.english || {}, imm = me.sections.immigration || {};
+    let e = 'Not added yet';
+    if (eng.test === 'none') e = 'No test yet';
+    else if (eng.test) e = `${label(ENGLISH_TESTS, eng.test)}, ${eng.status === 'taken' && eng.overall !== undefined ? 'score ' + eng.overall : eng.status === 'booked' ? 'test date booked' : 'planning to take it'}`;
+    let h = 'Not added yet';
+    if (imm.history === 'none') h = 'No earlier problems';
+    else if (imm.history === 'prefer_not') h = 'Prefer not to say';
+    else if (imm.history === 'some') h = `${(imm.items || []).length} application${(imm.items || []).length === 1 ? '' : 's'} listed`;
+    const row = (name, value, href) => {
+      const li = el('li');
+      li.append(el('span', 'k', name), el('span', 'v', value));
+      const a = el('a', '', value === 'Not added yet' ? 'Add' : 'Edit'); a.href = href; a.setAttribute('aria-label', `${a.textContent} ${name.toLowerCase()} in your profile`);
+      li.append(a);
+      return li;
+    };
+    $('[data-profile]').replaceChildren(row('English test', e, '/student/profile/#english'), row('Earlier visa applications', h, '/student/profile/#immigration'));
+  }
+
+  function paint() {
+    paintProfile();
+    const done = sectionDone('visa_au', me.sections.visa_au);
+    card.classList.toggle('is-done', done);
+    $('.state', card).textContent = done ? 'Saved' : 'Not saved yet';
+    const r = assessAu(me.sections);
+    result.hidden = !r.complete;
+    empty.hidden = r.complete;
+    if (!r.complete) { card.open = true; return; }
+
+    const band = $('[data-band]');
+    band.dataset.band = r.band;
+    $('[data-glyph]').textContent = GLYPH[r.band];
+    $('[data-band-name]').textContent = BAND_LABEL[r.band];
+    $('[data-score]').textContent = String(r.score);
+    $('[data-score-bar]').style.width = r.score + '%';
+    $('.vc-score', result).dataset.band = r.band;
+    $('[data-say]').textContent = BAND_SAY[r.band];
+
+    const held = $('[data-held]');
+    held.replaceChildren();
+    held.hidden = !r.flags.length;
+    if (r.flags.length) {
+      if (r.held) held.append(el('p', 'vc-held-lead', `Your points alone would be ${BAND_LABEL[r.scoreBand]}, but something holds the band down:`));
+      const ul = el('ul');
+      for (const f of r.flags) ul.append(el('li', '', f.text));
+      held.append(ul);
+    }
+
+    const list = $('[data-factors]');
+    list.replaceChildren();
+    for (const f of r.factors) {
+      const li = el('li', 'vc-factor');
+      const head = el('div', 'vc-fhead');
+      head.append(el('b', '', f.label), el('span', 'vc-fpts', `${f.score} / ${f.max}`));
+      const bar = el('div', 'vc-bar vc-bar-s'); bar.setAttribute('aria-hidden', 'true');
+      const fill = el('i'); fill.style.width = Math.round((f.score / f.max) * 100) + '%'; bar.append(fill);
+      li.append(head, bar);
+      const notes = el('ul', 'vc-notes-l');
+      for (const n of f.notes) notes.append(el('li', '', n));
+      li.append(notes);
+      list.append(li);
+    }
+
+    const acts = $('[data-actions]');
+    acts.replaceChildren();
+    for (const a of r.actions) {
+      const li = el('li');
+      if (a.must) li.append(el('b', 'vc-must', 'Do this first. '));
+      li.append(document.createTextNode(a.text));
+      acts.append(li);
+    }
+    acts.hidden = !r.actions.length;
+    $('[data-no-actions]').hidden = r.actions.length > 0;
+  }
+
+  const save = $('[data-save]', card), st = $('[data-status]', card);
+  save.addEventListener('click', async () => {
+    say(st, 'Saving…'); save.disabled = true;
+    const r = await api('PATCH', '/api/me', { sections: { visa_au: form.collect() } });
+    save.disabled = false;
+    if (r.status === 401) return toSignIn();
+    if (r.ok) {
+      me.sections.visa_au = r.j.sections.visa_au || {};
+      form.clearErrors(); say(st, 'Saved.', 'ok');
+      paint();
+      if (!result.hidden) { card.open = false; result.scrollIntoView({ block: 'start' }); result.focus({ preventScroll: true }); }
+    } else if (r.status === 422) {
+      const loose = form.showErrors(r.j.errors?.sections?.visa_au || {});
+      say(st, loose.length ? loose.join(' ') : 'Check the highlighted answers.', 'bad');
+    } else say(st, r.j.message || 'Could not save. Try again.', 'bad');
+  });
+  paint();
+  // Nothing saved yet: open the questions. Saved before: show the result, with the answers one click away.
+  card.open = !sectionDone('visa_au', me.sections.visa_au);
+}
+
 // ---- start -----------------------------------------------------------------------------------------------------
 
 $$('[data-signout]').forEach((b) => b.addEventListener('click', async () => {
@@ -356,6 +464,6 @@ window.addEventListener('pageshow', (e) => { if (e.persisted) location.reload();
   if (!r.ok) return notice('We could not load your dashboard', r.j.message || 'Please try again.', { label: 'Try again', run: () => location.reload() });
   me = r.j;
   loading.hidden = true; content.hidden = false;
-  ({ overview, profile, settings, shortlist }[page] || (() => {}))();
+  ({ overview, profile, settings, shortlist, visa }[page] || (() => {}))();
   if (page !== 'shortlist') syncWithAccount().then((list) => { const sum = $('[data-sl-sum]'); if (list && sum && list.length) sum.textContent = `${list.length} saved: ${list.filter((i) => ['crs', 'mba'].includes(i.kind)).length} courses, ${list.filter((i) => i.kind === 'sch').length} scholarships, ${list.filter((i) => i.kind === 'int').length} internships.`; });
 })();
