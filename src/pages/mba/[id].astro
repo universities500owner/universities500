@@ -27,7 +27,7 @@ const rows = [
 ];
 const desc = `${m.name}, ${m.school}, ${m.uniName}. ${KIND[m.kind]}${m.length ? `, ${m.length.t.toLowerCase()}` : ''}${m.fee ? `, tuition ${m.fee.t}` : ''}. Facts copied from the school's own page.`;
 ---
-<Base title={`${m.name}, ${m.school} | MBA Explorer | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="mba">
+<Base signup="shortlist" title={`${m.name}, ${m.school} | MBA Explorer | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="mba">
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a><span aria-hidden="true">/</span><a href="/mba/">MBA Explorer</a><span aria-hidden="true">/</span>{m.school}
   </nav>

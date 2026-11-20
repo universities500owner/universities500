@@ -1,0 +1,37 @@
+---
+// The home page's "why sign up" section. Every benefit below is something a signed-in student can do today.
+// Hidden once the student is signed in (html[data-in] is set before the page paints).
+const benefits = [
+  { id: 'list', title: 'A shortlist that follows you', text: 'Save courses, scholarships and internships, add a status and a note, and open them on any device.' },
+  { id: 'profile', title: 'Your plans, saved once', text: 'Add the countries, level and subjects you are considering, and where you are now. Change them any time.' },
+  { id: 'visa', title: 'Australia visa self-check', text: 'A Green, Amber or Red readiness band, with what helps you and what to strengthen. A self-check, not advice.' },
+  { id: 'data', title: 'Your data stays yours', text: 'Download everything we hold about you, or delete your account, whenever you like.' },
+];
+---
+<section class="su-home" aria-labelledby="h-signup" data-signup>
+  <div class="wrap su-home-in">
+    <div class="su-home-copy">
+      <h2 id="h-signup">A free account keeps your plans in one place.</h2>
+      <p>Sign in with your Gmail address. We email you a one-time code, so there is no password to remember.</p>
+      <div class="su-home-cta">
+        <a class="btn" href="/sign-in/">Sign up free</a>
+        <a class="su-link" href="/sign-in/">Already signed up? Sign in</a>
+      </div>
+      <p class="su-fine">For students aged 18 and over. Free. You can leave and delete your account any time.</p>
+    </div>
+    <ul class="su-benefits" aria-label="What a free account gives you">
+      {benefits.map((b) => (
+        <li>
+          <span class="su-ico" aria-hidden="true">
+            {b.id === 'list' && <svg viewBox="0 0 24 24"><path d="M6.5 3.5h11v17l-5.5-4-5.5 4z" /></svg>}
+            {b.id === 'profile' && <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6" /><path d="M4.5 20c.7-4 3.7-6 7.5-6s6.8 2 7.5 6" /></svg>}
+            {b.id === 'visa' && <svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2" /><circle cx="12" cy="10.5" r="3" /><path d="M9 16.5h6" /></svg>}
+            {b.id === 'data' && <svg viewBox="0 0 24 24"><path d="M12 3.5 5 6.2v5.6c0 4 2.7 7 7 8.7 4.3-1.7 7-4.7 7-8.7V6.2z" /><path d="m9 12 2.2 2.2L15.2 10" /></svg>}
+          </span>
+          <h3>{b.title}</h3>
+          <p>{b.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

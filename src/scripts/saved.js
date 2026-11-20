@@ -1,6 +1,7 @@
 // Bookmarks for result cards. Signed out, they are kept only in this browser (localStorage) and never sent anywhere.
 // Signed in, they are also saved to the student's shortlist (see saved-sync.js).
 import { readIds, writeIds, readMeta, writeMeta, metaFromCard, signedIn, saveToAccount, removeFromAccount, syncWithAccount } from './saved-sync.js';
+import { nudgeToSignUp } from './signup-nudge.js';
 
 let ids = readIds();
 const persist = () => writeIds(ids);
@@ -41,6 +42,7 @@ export function wireSaves(list, onChange) {
       ids.add(id);
       meta[id] = metaFromCard(li);
       if (signedIn()) saveToAccount(id, meta[id]);
+      else nudgeToSignUp();
     }
     writeMeta(meta);
     paint(li);
