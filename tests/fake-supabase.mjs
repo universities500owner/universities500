@@ -21,13 +21,14 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
     tokens: new Map(),       // access token -> { sub, exp }
     refresh: new Map(),      // refresh token -> user id (valid only until used)
     calls: [],               // every request, for assertions: "METHOD path"
+    adminReads: [],          // every read of the admin views, with its query string
     nextCode: '123456',
     failNext: new Set(),     // names: 'otp', 'students-insert', 'delete'
     captchaGood: 'good-token',
   };
   let n = 0;
   const uuid = () => `00000000-0000-4000-8000-${String(++n).padStart(12, '0')}`;
-  const res = (status, data) => new Response(data === undefined ? null : JSON.stringify(data), { status, headers: { 'content-type': 'application/json' } });
+  const res = (status, data, extra = {}) => new Response(data === undefined ? null : JSON.stringify(data), { status, headers: { 'content-type': 'application/json', ...extra } });
 
   const issue = (user) => {
     const exp = Math.floor(f.clock.t / 1000) + 3600;
@@ -55,14 +56,48 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
     for (const c of select.split(',')) out[c] = row[c];
     return out;
   };
+  // One filter: "eq.x", "is.null", "not.is.null", "gt.n", "gte.iso", "cs.{a,b}" (array contains), "ilike.*text*".
+  const test = (val, v) => {
+    if (v.startsWith('eq.')) return String(val) === v.slice(3);
+    if (v === 'is.null') return val === null || val === undefined;
+    if (v === 'not.is.null') return !(val === null || val === undefined);
+    if (v.startsWith('gte.')) return val !== null && val !== undefined && String(val) >= decodeURIComponent(v.slice(4));
+    if (v.startsWith('gt.')) return Number(val) > Number(v.slice(3));
+    if (v.startsWith('cs.')) return Array.isArray(val) && v.slice(4, -1).split(',').every((x) => val.includes(x));
+    if (v.startsWith('ilike.')) { const needle = v.slice(6).replace(/\*/g, '').toLowerCase(); return typeof val === 'string' && val.toLowerCase().includes(needle); }
+    return false;
+  };
+  const NOT_FILTERS = ['select', 'on_conflict', 'order', 'limit', 'offset'];
   const matches = (row, params) => {
     for (const [k, v] of params) {
-      if (['select', 'on_conflict', 'order', 'limit'].includes(k)) continue;
-      if (v.startsWith('eq.')) { if (String(row[k]) !== v.slice(3)) return false; }
-      else if (v === 'is.null') { if (row[k] !== null && row[k] !== undefined) return false; }
-      else return false;
+      if (NOT_FILTERS.includes(k)) continue;
+      if (k === 'or') {
+        // or=(email.ilike.*a*,display_name.ilike.*a*)
+        const parts = v.replace(/^\(|\)$/g, '').split(',').map((x) => { const i = x.indexOf('.'); return [x.slice(0, i), x.slice(i + 1)]; });
+        if (!parts.some(([col, cond]) => test(row[col], cond))) return false;
+        continue;
+      }
+      if (!test(row[k], v)) return false;
     }
     return true;
+  };
+  // The admin views from supabase/migrations/0004_admin_views.sql, worked out from the tables.
+  const adminRows = () => [...f.students.values()].map((s) => {
+    const secs = [...f.sections.values()].filter((x) => x.student_id === s.id);
+    return {
+      id: s.id, email: s.email, display_name: s.display_name ?? null,
+      full_name: (secs.find((x) => x.section === 'profile') || { data: {} }).data.full_name ?? null,
+      created_at: s.created_at, updated_at: s.updated_at ?? s.created_at, onboarded_at: s.onboarded_at ?? null,
+      consent_at: s.consent_at, consent_version: s.consent_version, marketing_opt_in: !!s.marketing_opt_in,
+      countries: s.countries || [], level: s.level ?? null, stage: s.stage ?? null, subject_groups: s.subject_groups || [],
+      shortlist_count: [...f.saved.values()].filter((x) => x.student_id === s.id).length,
+      sections: secs.map((x) => x.section).sort(),
+    };
+  });
+  const adminStats = () => {
+    const rows = adminRows(), within = (d) => rows.filter((r) => new Date(r.created_at).getTime() >= f.clock.t - d * 86400000).length;
+    return [{ total: rows.length, last_7: within(7), last_30: within(30), onboarded: rows.filter((r) => r.onboarded_at).length, marketing: rows.filter((r) => r.marketing_opt_in).length,
+      with_shortlist: rows.filter((r) => r.shortlist_count > 0).length, with_visa_check: rows.filter((r) => r.sections.includes('visa_au')).length }];
   };
 
   f.fetch = async (url, init = {}) => {
@@ -136,6 +171,24 @@ export function createFakeSupabase({ clock = { t: Date.UTC(2026, 10, 20, 12, 0, 
     if (u.pathname.startsWith('/rest/v1/')) {
       if (who.role === 'invalid') return res(401, { code: 'PGRST301', message: 'JWT expired' });
       const table = u.pathname.slice('/rest/v1/'.length);
+      if (table === 'admin_students' || table === 'admin_stats') {
+        // Like the real views: only the server's secret key may read them. Everyone else is refused.
+        if (who.role !== 'service') return res(403, { code: '42501', message: `permission denied for view ${table}` });
+        if (method !== 'GET') return res(405, { message: 'read only' });
+        if (f.failNext.delete('admin-view')) return res(500, { message: 'boom' });
+        let rows = table === 'admin_stats' ? adminStats() : adminRows().filter((r) => matches(r, u.searchParams));
+        const total = rows.length;
+        const ord = u.searchParams.get('order');
+        if (ord) {
+          const keys = ord.split(',').map((x) => x.split('.'));
+          rows.sort((a, b) => { for (const [col, dir] of keys) { const av = a[col] ?? null, bv = b[col] ?? null; if (av === bv) continue; if (av === null) return 1; if (bv === null) return -1; return (av < bv ? -1 : 1) * (dir === 'desc' ? -1 : 1); } return 0; });
+        }
+        const off = Number(u.searchParams.get('offset')) || 0, lim = Number(u.searchParams.get('limit')) || 1000;
+        rows = rows.slice(off, off + Math.min(lim, 1000));
+        const extra = (headers.get('prefer') || '').includes('count=exact') ? { 'content-range': `${rows.length ? off : '*'}${rows.length ? '-' + (off + rows.length - 1) : ''}/${total}` } : {};
+        f.adminReads.push({ table, query: u.search });
+        return res(200, rows.map((r) => pick(r, u.searchParams.get('select'))), extra);
+      }
       const store = table === 'students' ? f.students : table === 'profile_sections' ? f.sections : table === 'saved_items' ? f.saved : null;
       if (!store) return res(404, { message: 'no such table' });
       const owner = (row) => (table === 'students' ? row.id : row.student_id);

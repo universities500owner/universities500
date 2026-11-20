@@ -391,3 +391,6 @@ export const handleLogout = safe('handleLogout', handleLogoutImpl);
 export const handleMe = safe('handleMe', handleMeImpl);
 export const handleSaved = safe('handleSaved', handleSavedImpl);
 export const handleExport = safe('handleExport', handleExportImpl);
+
+// Shared with the admin handlers (admin.js).
+export { reply, guard, notConfigured, openSession, signedOut, safe };

@@ -34,7 +34,8 @@ export function supabase(env = {}, fetchImpl = fetch) {
       const text = await res.text();
       if (text) { try { data = JSON.parse(text); } catch { data = text; } }
     } catch { /* an empty or unreadable body is fine */ }
-    return { ok: res.ok, status: res.status, data };
+    // content-range is how PostgREST reports a total (Prefer: count=exact), like "0-24/137".
+    return { ok: res.ok, status: res.status, data, range: res.headers.get('content-range') || '' };
   }
 
   return {
