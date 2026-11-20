@@ -46,3 +46,8 @@ grant update (display_name, countries, level, subject_groups, subjects, stage, o
   on public.students to authenticated;
 grant select on public.students to authenticated;
 grant select, insert, update, delete on public.profile_sections to authenticated;
+
+-- New Supabase projects no longer give the API roles access to new tables automatically, so the grants are explicit.
+-- The site's server uses the secret (service) key, which needs full access to both tables. It still skips row level security.
+grant select, insert, update, delete on public.students to service_role;
+grant select, insert, update, delete on public.profile_sections to service_role;
