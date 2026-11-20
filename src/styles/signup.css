@@ -1,0 +1,55 @@
+/* Sign-up promotion: the home page section, the slim band on high-intent pages, the one-time note after a guest saves
+   something, and the header label. Everything here hides itself once the student is signed in (html[data-in]). */
+html[data-in] [data-signup], html[data-in] .su-toast { display: none; }
+
+/* ---------- home page section ---------- */
+.su-home { background: var(--surface); border-top: 1px solid var(--k-hair); border-bottom: 1px solid var(--k-hair); padding: clamp(2rem, 4.5vw, 3.25rem) 0; }
+.su-home .wrap { max-width: var(--wrap); padding-inline: 1.25rem; }
+.su-home-in { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+.su-home .su-home-copy h2 { font-family: var(--display); font-weight: 700; color: var(--k-title); font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.1; letter-spacing: -.015em; margin: 0 0 .8rem; max-width: 16ch; text-wrap: balance; }
+.su-home .su-home-copy > p { margin: 0 0 1.2rem; max-width: 42ch; color: var(--ink); }
+.su-home-cta { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; margin-bottom: .9rem; }
+.su-home-cta .btn { text-decoration: none; }
+.su-link { font-weight: 600; color: var(--k-cobalt); }
+.su-fine { margin: 0; font-size: .9rem; color: var(--muted); max-width: 48ch; line-height: 1.5; }
+.su-fine a { color: var(--k-cobalt); font-weight: 600; }
+.su-home .su-home-copy > p.su-fine { margin-bottom: 0; }
+
+.su-benefits { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; background: var(--k-card); border-top: 1px solid var(--k-hair); border-left: 1px solid var(--k-hair); }
+.su-benefits li { display: flex; flex-direction: column; margin: 0; padding: 1.25rem 1.3rem 1.2rem; background: var(--k-card); border-right: 1px solid var(--k-hair); border-bottom: 1px solid var(--k-hair); }
+.su-ico { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border: 1.5px solid var(--k-cobalt); border-radius: 50%; color: var(--k-cobalt); margin-bottom: .9rem; }
+.su-ico svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.su-home .su-benefits h3 { margin: 0 0 .45rem -1.3rem; padding-left: 1.05rem; border-left: .4rem solid var(--k-mint); font-family: var(--display); font-weight: 700; font-size: 1.15rem; line-height: 1.2; color: var(--k-title); }
+.su-home .su-benefits p { margin: 0; font-size: .98rem; line-height: 1.5; color: var(--ink); max-width: none; }
+@media (max-width: 900px) { .su-home-in { grid-template-columns: minmax(0, 1fr); } .su-home .su-home-copy h2 { max-width: 22ch; } }
+@media (max-width: 560px) {
+  .su-benefits { grid-template-columns: minmax(0, 1fr); }
+  .su-benefits li { padding: 1rem 1.1rem 1rem 1.1rem; }
+  .su-home .su-benefits h3 { margin-left: -1.1rem; }
+}
+
+/* ---------- slim band on other pages ---------- */
+.su-band { background: var(--surface); border-top: 1px solid var(--k-hair); padding: 1.6rem 0; margin-top: 2.5rem; }
+.su-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
+.su-copy { flex: 1 1 26rem; min-width: 0; }
+.su-copy h2 { margin: 0 0 .5rem; padding-left: 1rem; border-left: .4rem solid var(--k-mint); font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.15; color: var(--k-title); }
+.su-copy p { margin: 0; max-width: 62ch; color: var(--ink); padding-left: 1.4rem; }
+.su-act { flex: 0 1 auto; display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; }
+.su-act .btn { text-decoration: none; }
+.su-act .su-fine { max-width: 30ch; }
+@media (max-width: 700px) { .su-act .su-fine { max-width: none; } }
+
+/* ---------- note shown once to a signed-out visitor who saves something ---------- */
+.su-toast { position: fixed; z-index: 60; left: 1rem; bottom: 1rem; width: min(24rem, calc(100vw - 2rem)); background: var(--k-card); color: var(--ink); border: 1px solid var(--k-edge); border-left: .4rem solid var(--k-mint); padding: .95rem 1rem 1rem; box-shadow: 0 14px 34px -18px rgba(0, 20, 80, .55); }
+.su-toast b { display: block; font-family: var(--display); color: var(--k-title); font-size: 1.05rem; margin-bottom: .25rem; }
+.su-toast p { margin: 0 0 .75rem; font-size: .95rem; line-height: 1.45; max-width: none; }
+.su-toast-act { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem .9rem; }
+.su-toast .btn { padding: .5rem .95rem; font-size: .95rem; text-decoration: none; }
+.su-toast button.su-no { border: 0; background: transparent; color: var(--k-cobalt); font: inherit; font-weight: 600; padding: .4rem .2rem; cursor: pointer; text-decoration: underline; text-underline-offset: .18em; }
+@media (max-width: 560px) { .su-toast { right: 4.75rem; width: auto; bottom: .75rem; left: .75rem; } }
+
+/* ---------- header: while signed out, the account icon is filled so it stands out from the outlined icons beside it ---------- */
+html:not([data-in]) .head-account { background: var(--k-cobalt); border-color: var(--k-cobalt); color: #fff; }
+html:not([data-in]) .head-account:hover, html:not([data-in]) .head-account[aria-current="page"] { background: var(--band); border-color: var(--band); }
+html[data-theme="dark"]:not([data-in]) .head-account { color: #001522; }
+html[data-theme="dark"]:not([data-in]) .head-account:hover { background: var(--k-cobalt); border-color: var(--k-cobalt); }

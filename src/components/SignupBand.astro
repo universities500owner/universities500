@@ -1,0 +1,23 @@
+---
+// A slim "sign up free" band for pages where saving or checking something is the natural next step.
+// It is hidden once the student is signed in: the u500_in flag sets html[data-in] before the page paints.
+const { kind = 'default' } = Astro.props;
+const COPY = {
+  default: ['Keep your plans in one place', 'Sign up free to save what you find and come back to it on any device.'],
+  shortlist: ['Save your shortlist', 'Sign up free to keep the courses, scholarships and internships you save on every device, each with a status and a note.'],
+  visa: ['Try the Australia visa self-check', 'Sign up free to get a Green, Amber or Red readiness band and what to strengthen. A self-check, not advice.'],
+};
+const [title, text] = COPY[kind] || COPY.default;
+---
+<aside class="su-band" aria-labelledby="su-band-h" data-signup>
+  <div class="wrap su-in">
+    <div class="su-copy">
+      <h2 id="su-band-h">{title}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="su-act">
+      <a class="btn" href="/sign-in/">Sign up free</a>
+      <p class="su-fine">Gmail code, no password. For students 18 and over. <a href="/sign-in/">Already signed up? Sign in</a></p>
+    </div>
+  </div>
+</aside>

@@ -14,7 +14,7 @@ const uni = s.providerSlug ? all.find((u) => u.slug === s.providerSlug) : null;
 const apply = s.applyUrl || s.url;
 const desc = s.description || `${s.name} at ${s.provider}. Value, deadline and eligibility, with the official page.`;
 ---
-<Base title={`${s.name}, ${s.provider} | Universities500`} description={desc.slice(0, 155)} path={path} noindex={hiddenFromSearch(path)} current="scholarships">
+<Base signup="shortlist" title={`${s.name}, ${s.provider} | Universities500`} description={desc.slice(0, 155)} path={path} noindex={hiddenFromSearch(path)} current="scholarships">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/scholarships/">Scholarships</a><span aria-hidden="true">/</span>{s.name}</nav>
   <h1>{s.name}</h1>
   <p class="sch-sub lead">{uni ? <a href={`/universities/${uni.slug}/`}>{s.provider}</a> : s.provider} · {countryName(s.country)}</p>

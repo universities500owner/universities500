@@ -10,6 +10,7 @@ import { PUBLISH as MBA_ON, items as mbaItems } from '../lib/mba.js';
 import { exams } from '../lib/exams.js';
 import ListenHub from '../components/ListenHub.astro';
 import ListenPlay from '../components/ListenPlay.astro';
+import SignupBenefits from '../components/SignupBenefits.astro';
 import { listenHub } from '../lib/listen-site.js';
 
 // Decorative rings, drawn once at build time.
@@ -151,6 +152,8 @@ const ld = [
         </section>
       </ListenHub>
     )}
+
+    <SignupBenefits />
 
     <section class="band tiles-band" aria-labelledby="h-tiles">
       <h2 id="h-tiles" class="sr-only">Everything on Universities500</h2>
