@@ -392,6 +392,13 @@ html[data-theme="dark"] { --read-hero: #1A3CB8; --read-pale: var(--surface); }
   .head-contact { display: none; }
   .nav-contact { display: block; }
 }
+/* sign in / my dashboard: an icon beside the contact icon on desktop, a line in the phone menu */
+.head-account:hover, .head-account[aria-current="page"] { box-shadow: inset 0 -3px 0 var(--k-mint); border-color: var(--k-edge); }
+.nav-account { display: none; }
+@media (max-width: 1000px) { .head-account { display: none; } .nav-account { display: block; } }
+.acc-in { display: none; }
+html[data-in] .acc-in { display: inline; }
+html[data-in] .acc-out { display: none; }
 .pg .f textarea { border: 1px solid var(--k-edge); border-radius: 0; background: var(--k-card); color: var(--ink); min-height: 9rem; resize: vertical; line-height: 1.5; }
 .pg .f input:focus-visible, .pg .f textarea:focus-visible { outline: 3px solid var(--k-cobalt); outline-offset: 1px; border-color: var(--k-cobalt); }
 .ct-lay { display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }

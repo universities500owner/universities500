@@ -1,0 +1,61 @@
+---
+import Student from '../../layouts/Student.astro';
+---
+<Student title="My profile" lede="Your details for study abroad. Each part saves on its own, and every part is yours to change or remove." active="profile">
+  <details class="st-sec" id="profile">
+    <summary><span class="tick" aria-hidden="true"></span><span>About you</span><span class="state"></span></summary>
+    <div class="st-sec-body">
+      <p class="st-sub">The basics. Nothing here is shared with anyone.</p>
+      <div data-form></div>
+      <div class="st-actions">
+        <button class="btn" type="button" data-save>Save about you</button>
+        <p class="st-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </details>
+  <details class="st-sec" id="academic">
+    <summary><span class="tick" aria-hidden="true"></span><span>Academic history</span><span class="state"></span></summary>
+    <div class="st-sec-body">
+      <p class="st-sub">Add each qualification you have finished or are studying now, latest first. Marks are used to check course entry requirements.</p>
+      <div data-form></div>
+      <div class="st-actions">
+        <button class="btn" type="button" data-save>Save academic history</button>
+        <p class="st-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </details>
+  <details class="st-sec" id="english">
+    <summary><span class="tick" aria-hidden="true"></span><span>English test</span><span class="state"></span></summary>
+    <div class="st-sec-body">
+      <p class="st-sub">Tell us which English test you plan to take or have taken.</p>
+      <div data-form></div>
+      <div class="st-actions">
+        <button class="btn" type="button" data-save>Save english test</button>
+        <p class="st-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </details>
+  <details class="st-sec" id="work">
+    <summary><span class="tick" aria-hidden="true"></span><span>Work experience</span><span class="state"></span></summary>
+    <div class="st-sec-body">
+      <p class="st-sub">Jobs, internships and self-employment, latest first. Skip this if you have not worked yet.</p>
+      <div data-form></div>
+      <div class="st-actions">
+        <button class="btn" type="button" data-save>Save work experience</button>
+        <p class="st-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </details>
+  <details class="st-sec" id="immigration">
+    <summary><span class="tick" aria-hidden="true"></span><span>Immigration history</span><span class="state"></span></summary>
+    <div class="st-sec-body">
+      <p class="st-sub">Optional. Earlier visa applications matter for later ones, so this helps us give you a fair self-check. Do not enter passport or visa numbers.</p>
+      <div data-form></div>
+      <div class="st-actions">
+        <button class="btn" type="button" data-save>Save immigration history</button>
+        <p class="st-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </details>
+  <script>import '../../scripts/student.js';</script>
+</Student>

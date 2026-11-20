@@ -1,9 +1,90 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
 ---
-<Base title="Privacy | Universities500" description="Privacy information for Universities500." path="/privacy/" noindex={true}>
-  <h1>Privacy</h1>
-  <div class="note">
-    <p><strong>Draft.</strong> This page is not final. The full privacy notice will be published, after legal review, before sign-ups open. Until then, the only personal information the site asks for is what you type into the <a href="/contact/">contact form</a> (your name, email address and message), which is used only to reply to you.</p>
+<Base
+  title="Privacy | Universities500"
+  description="What Universities500 keeps when you sign in, why, who helps us run the site, and how to download or delete your data."
+  path="/privacy/"
+  noindex={true}
+  read={true}
+  share={false}
+>
+  <PageHead slot="head" tone="read" crumbs={[['Privacy', null]]} title="Privacy" lede="What we keep when you use Universities500 and sign in, and how you stay in control of it." />
+
+  <div class="note draft">
+    <p><strong>Draft.</strong> This page is being finished and will be reviewed before accounts open to the public. To confirm before launch: where the database is hosted, how long unconfirmed sign-ups are kept, and the grievance contact details.</p>
   </div>
+
+  <section class="sec" aria-labelledby="p-who">
+    <h2 id="p-who">Who we are</h2>
+    <p>Universities500 is an independent study-abroad search site. It is not run by, or a partner of, any university, agency or government. We do not take applications and we do not pass your details to universities, agents or employers.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="p-nosignin">
+    <h2 id="p-nosignin">Without an account</h2>
+    <p>You can read every guide and use every tool without signing in. Choices such as a course shortlist or the light or dark theme are stored only in your own browser, on your own device. We do not receive them. Clearing your browser data removes them.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="p-keep">
+    <h2 id="p-keep">With an account</h2>
+    <p>We keep:</p>
+    <ul>
+      <li>Your Gmail address, which is how you sign in.</li>
+      <li>When you confirmed you are 18 or older and accepted the Terms, which version of this page you saw, and whether you chose optional emails.</li>
+      <li>What you choose to add on your dashboard: the countries, level and subjects you are interested in; where you are in your journey; and your profile, academic history, English test, work experience and immigration history.</li>
+    </ul>
+    <p>We do not collect passwords, phone numbers, passport or visa numbers, or documents. Please do not type them into free-text boxes. Every section of your profile is optional, and the immigration history has a "prefer not to say" answer.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="p-why">
+    <h2 id="p-why">Why we use it</h2>
+    <ul>
+      <li>To let you sign in with a code and come back to your plans.</li>
+      <li>To show you what is useful at your stage, and to power the tools on your dashboard as they are added.</li>
+      <li>To send you sign-in codes. If you chose optional emails, occasional study-abroad updates as well. You can turn these off in Settings at any time.</li>
+    </ul>
+    <p>We use your details only for these purposes. We do not sell them and we do not use them for advertising. Our legal basis is your consent, which you give when you create the account and can withdraw at any time by deleting it.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="p-who2">
+    <h2 id="p-who2">Who helps us run the site</h2>
+    <p>These services handle data for us only to run the site, under their own security and privacy terms:</p>
+    <ul>
+      <li>Supabase: the sign-in system and the database that holds your account.</li>
+      <li>Resend: sends the sign-in code and optional emails, and delivers messages from the contact form.</li>
+      <li>Cloudflare: hosts the site and runs a security check on the sign-in form (Turnstile) to stop automated abuse.</li>
+    </ul>
+    <p>We may also share information if the law requires it.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="p-cookies">
+    <h2 id="p-cookies">Cookies and browser storage</h2>
+    <ul>
+      <li><code>u500_at</code> and <code>u500_rt</code>: keep you signed in. They cannot be read by scripts on the page and are sent only to our account service.</li>
+      <li><code>u500_in</code>: a plain flag that lets the menu say "My dashboard". It holds no personal information.</li>
+      <li>Browser storage on your device for the theme and your shortlist. No tracking or advertising cookies are used on the account pages.</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="p-rights">
+    <h2 id="p-rights">Your choices</h2>
+    <ul>
+      <li>See and change everything you added, on your dashboard.</li>
+      <li>Download a copy of your data: Settings, then "Download my data".</li>
+      <li>Delete your account and everything in it: Settings, then "Delete my account". This takes effect straight away and cannot be undone.</li>
+      <li>Withdraw consent for optional emails in Settings at any time.</li>
+      <li>Raise a concern or ask a question through the <a href="/contact/">contact page</a>.</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="p-age">
+    <h2 id="p-age">Age</h2>
+    <p>Accounts are for people aged 18 or older. If you are younger, you are welcome to read the site without an account.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="p-changes">
+    <h2 id="p-changes">Changes</h2>
+    <p>If this page changes in a way that matters, we will ask you to confirm again the next time you sign in.</p>
+  </section>
 </Base>

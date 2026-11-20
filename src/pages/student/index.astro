@@ -1,0 +1,64 @@
+---
+import Student from '../../layouts/Student.astro';
+import subjects from '../../data/subjects.json';
+// Specific subjects for the optional picker: [id, name, group]. The groups themselves come from src/lib/account/schema.js.
+const subjectData = JSON.stringify(subjects.subjects.map((s) => [s.id, s.name, s.group])).replace(/</g, '\\u003c');
+---
+<Student title="My dashboard" lede="Your plans, your profile and what to do next, in one place." active="overview">
+  <section class="st-card st-hello" aria-labelledby="st-hello">
+    <h2 id="st-hello" data-hello>Welcome</h2>
+    <p data-welcome></p>
+  </section>
+
+  <section class="st-card" aria-labelledby="st-stage-h">
+    <fieldset class="st-stages">
+      <legend id="st-stage-h">Where are you now?</legend>
+      <p class="st-sub">Universities500 does not take applications, so this just helps us point you to what is useful at your stage.</p>
+      <ol class="st-track" data-track></ol>
+      <p class="st-status" data-stage-status role="status" aria-live="polite"></p>
+      <div class="st-next" data-next hidden></div>
+    </fieldset>
+  </section>
+
+  <section class="st-card" id="plans" aria-labelledby="st-plans-h">
+    <h2 id="st-plans-h" data-plans-title>What you are looking for</h2>
+    <p class="st-sub">Choose as many countries and subject areas as you like. You can change these any time.</p>
+    <form data-plans novalidate>
+      <fieldset class="st-q"><legend>Countries you are considering</legend><div class="st-chips" data-countries></div></fieldset>
+      <fieldset class="st-q"><legend>Level of study</legend><div class="st-chips" data-levels></div></fieldset>
+      <fieldset class="st-q">
+        <legend>Subject areas</legend>
+        <div class="st-chips" data-groups></div>
+        <details class="st-more">
+          <summary>Pick specific subjects (optional)</summary>
+          <div data-subjects></div>
+        </details>
+      </fieldset>
+      <div class="st-actions">
+        <button class="btn" type="submit" data-plans-save>Save and continue</button>
+        <p class="st-status" data-plans-status role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </section>
+
+  <section class="st-card" aria-labelledby="st-prog-h">
+    <h2 id="st-prog-h">Your profile</h2>
+    <p class="st-sub">The more you add, the better the tools below can help. Everything is optional except what each form marks as needed.</p>
+    <div class="st-prog"><b data-prog-text></b><span class="meter"><i data-prog-bar style="width:0"></i></span></div>
+    <ul class="st-todo" data-todo></ul>
+  </section>
+
+  <section class="st-card" aria-labelledby="st-soon-h">
+    <h2 id="st-soon-h">Coming next</h2>
+    <p class="st-sub">These are being built. They will use what you add to your profile.</p>
+    <div class="st-soon">
+      <div><h3>Shortlisted courses</h3><p>Courses you save while browsing, each with a status: researching, applied, offer or accepted.</p></div>
+      <div><h3>Visa self-check</h3><p>A readiness score with a Green, Amber or Red band, what helps you and what to strengthen. A self-check, not advice.</p></div>
+      <div><h3>SOP editor</h3><p>Write your statement of purpose and get feedback and questions to sharpen it. The words stay yours.</p></div>
+      <div><h3>LOR helper</h3><p>A brief to give your recommender, and a check of the letter once they have written it.</p></div>
+    </div>
+  </section>
+
+  <script type="application/json" id="st-subjects" set:html={subjectData} />
+  <script>import '../../scripts/student.js';</script>
+</Student>

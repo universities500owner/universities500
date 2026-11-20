@@ -4,3 +4,9 @@ https://:project.pages.dev/*
   X-Robots-Tag: noindex
 https://:project.:account.workers.dev/*
   X-Robots-Tag: noindex
+
+# Account pages have no public content. Their data is loaded after sign-in, never written into the page.
+/sign-in/*
+  X-Robots-Tag: noindex
+/student/*
+  X-Robots-Tag: noindex

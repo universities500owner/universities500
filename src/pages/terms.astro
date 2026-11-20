@@ -1,9 +1,51 @@
 ---
 import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
 ---
-<Base title="Terms | Universities500" description="Terms of use for Universities500." path="/terms/" noindex={true}>
-  <h1>Terms</h1>
-  <div class="note">
-    <p><strong>Draft.</strong> This page is not final. The terms of use will be published, after legal review, before sign-ups open.</p>
+<Base
+  title="Terms | Universities500"
+  description="Terms of use for Universities500: using the site, student accounts, and what the tools can and cannot do."
+  path="/terms/"
+  noindex={true}
+  read={true}
+  share={false}
+>
+  <PageHead slot="head" tone="read" crumbs={[['Terms', null]]} title="Terms" lede="The ground rules for using Universities500 and having a student account." />
+
+  <div class="note draft">
+    <p><strong>Draft.</strong> This page is being finished and will be reviewed before accounts open to the public.</p>
   </div>
+
+  <section class="sec" aria-labelledby="t-site">
+    <h2 id="t-site">Using the site</h2>
+    <p>Universities500 helps you research studying abroad. Facts such as fees, deadlines and visa rules come from university and government sources and change often. We check them, but the site is a work in progress, so confirm anything important on the official page before you act on it. See the <a href="/disclaimer/">disclaimer and data sources</a>.</p>
+    <p>You may use the site for your own research. Please do not copy it in bulk, overload it, or try to get around its security.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="t-account">
+    <h2 id="t-account">Student accounts</h2>
+    <ul>
+      <li>Accounts are for people aged 18 or older, and need a Gmail address that you can read.</li>
+      <li>You sign in with a code sent to that address. Keep your inbox secure, because anyone who can read it can sign in as you.</li>
+      <li>Give accurate information. The tools are only as useful as what you put in.</li>
+      <li>You can download your data or delete your account at any time in Settings. How we handle your details is in the <a href="/privacy/">Privacy page</a>.</li>
+      <li>We may close an account that is used to abuse the site or other people.</li>
+    </ul>
+  </section>
+
+  <section class="sec" aria-labelledby="t-advice">
+    <h2 id="t-advice">What the tools are, and are not</h2>
+    <p>The tools on your dashboard, including the visa self-check and the writing helpers when they are added, are for guidance and learning. They are not immigration, legal, financial or admissions advice, and they do not predict or guarantee any decision by a university or a government. A visa decision is made only by the immigration authority. For advice about your own case, talk to a registered migration agent or an official source.</p>
+    <p>The writing helpers are designed to give feedback and questions. Your statement of purpose and your recommender's letter must be your own and your recommender's own words. Universities and visa offices can and do check this.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="t-liab">
+    <h2 id="t-liab">Our responsibility</h2>
+    <p>We work to keep the site accurate and available, but we provide it as it is, without promises that it will always be error-free or uninterrupted. To the extent the law allows, we are not responsible for decisions you make based on it. Nothing here limits rights you have under the law.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="t-changes">
+    <h2 id="t-changes">Changes and contact</h2>
+    <p>We may update these terms. If a change matters, we will ask you to accept it again when you next sign in. Questions are welcome on the <a href="/contact/">contact page</a>.</p>
+  </section>
 </Base>
