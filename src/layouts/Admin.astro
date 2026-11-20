@@ -1,0 +1,45 @@
+---
+// The frame for the owner's pages: no site menu, no footer, no floating buttons. Just a slim bar and the content.
+// Never indexed. Who may see the content is decided by the /api/admin/* functions, not by this page.
+import '@fontsource-variable/bricolage-grotesque/wght.css';
+import '@fontsource-variable/instrument-sans/wght.css';
+import '../styles/global.css';
+import '../styles/tools.css';
+import '../styles/theme.css';
+
+const { title, description = 'Owner pages for Universities500.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="stylesheet" href="https://use.typekit.net/owi7oys.css" />
+    <script is:inline>
+      (function () {
+        var t = 'light';
+        try { t = localStorage.getItem('u500-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body id="top">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="ad-top">
+      <a class="ad-brand" href="/" aria-label="Universities500 home page">
+        <img class="logo-light" src="/brand/full-light.png" alt="Universities500" width="207" height="48" />
+        <img class="logo-dark" src="/brand/full-dark.png" alt="" width="207" height="48" aria-hidden="true" />
+      </a>
+      <span class="ad-tag">Admin</span>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+  </body>
+</html>
