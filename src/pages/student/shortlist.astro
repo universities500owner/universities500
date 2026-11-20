@@ -1,0 +1,15 @@
+---
+import Student from '../../layouts/Student.astro';
+---
+<Student title="My shortlist" lede="Courses, scholarships and internships you have saved, and where each one stands." active="shortlist">
+  <section class="st-card" aria-labelledby="st-sl-h">
+    <h2 id="st-sl-h">What you have saved</h2>
+    <p class="st-sub">Use the bookmark button on any course, scholarship or internship while you browse. It appears here with a status you can update and a private note.</p>
+    <div class="sl-tabs" data-tabs role="group" aria-label="Kind of item"></div>
+    <ul class="sl-list" data-list></ul>
+    <div class="sl-empty" data-empty hidden></div>
+    <p class="st-status" data-sl-status role="status" aria-live="polite"></p>
+  </section>
+
+  <script>import '../../scripts/student.js';</script>
+</Student>
