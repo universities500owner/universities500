@@ -1,0 +1,12 @@
+---
+// Wraps a part of a page that has play buttons for playlists. One player bar and one audio element serve all of them:
+// pressing a button loads that playlist into the bar and plays it. hub comes from listenHub() in src/lib/listen-site.js.
+import ListenBar from './ListenBar.astro';
+const { hub, class: cls = '' } = Astro.props;
+const payload = JSON.stringify({ base: hub.base, titles: hub.titles, lists: hub.lists.map(({ id, title, items }) => ({ id, title, items })) }).replace(/</g, '\\u003c');
+---
+<div class={`lh ${cls}`.trim()} data-listen-hub>
+  <slot />
+  <script type="application/json" data-listen-data is:inline set:html={payload}></script>
+</div>
+<ListenBar />

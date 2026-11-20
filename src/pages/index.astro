@@ -8,6 +8,9 @@ import { PUBLISH as INT_ON, items as intItems } from '../lib/internships.js';
 import { PUBLISH as CRS_ON, items as crsItems, total as crsTotal } from '../lib/courses.js';
 import { PUBLISH as MBA_ON, items as mbaItems } from '../lib/mba.js';
 import { exams } from '../lib/exams.js';
+import ListenHub from '../components/ListenHub.astro';
+import ListenPlay from '../components/ListenPlay.astro';
+import { listenHub } from '../lib/listen-site.js';
 
 // Decorative rings, drawn once at build time.
 const rings = Array.from({ length: 26 }, (_, i) => ({
@@ -16,6 +19,11 @@ const rings = Array.from({ length: 26 }, (_, i) => ({
   rot: i * 7,
   op: (0.5 - i * 0.012).toFixed(3),
 }));
+
+// The Listen band: a few playlists of the country guides whose audio is ready. Nothing shows until there is audio.
+const homeHub = listenHub(['all', 'costs', 'visa', 'work']);
+const homeAll = homeHub?.lists.find((l) => l.id === 'all');
+const homeMini = homeHub ? homeHub.lists.filter((l) => l.id !== 'all') : [];
 
 const crsLive = CRS_ON && crsTotal > 0;
 const n = (x) => x.toLocaleString('en-GB');
@@ -118,6 +126,31 @@ const ld = [
         </ul>
       </div>
     </section>
+
+    {homeHub && homeAll && (
+      <ListenHub hub={homeHub} class="lh-home">
+        <section class="lh-band" aria-labelledby="h-listen">
+          <div class="wrap lh-band-in">
+            <div class="lh-band-copy">
+              <h2 id="h-listen">Don’t read it. Listen to it.</h2>
+              <p>Every country guide, read aloud. {homeAll.groups} guides, {homeAll.length} in all, free. Put one on while you travel, cook or wait for the bus.</p>
+              <div class="lh-band-cta">
+                <ListenPlay id="all" label={`all ${homeAll.groups} country guides`} class="pl-primary">Play all {homeAll.groups} guides</ListenPlay>
+                <a class="lh-link" href="/listen/">See all playlists</a>
+              </div>
+            </div>
+            <ul class="lh-mini" aria-label="More playlists">
+              {homeMini.map((l) => (
+                <li>
+                  <ListenPlay id={l.id} label={l.title} />
+                  <div><b>{l.title}</b><span>{l.groups} countries · {l.length}</span></div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </ListenHub>
+    )}
 
     <section class="band tiles-band" aria-labelledby="h-tiles">
       <h2 id="h-tiles" class="sr-only">Everything on Universities500</h2>

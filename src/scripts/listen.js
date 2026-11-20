@@ -1,26 +1,47 @@
 // The Listen player. Plays a page's clips one after another, like a podcast made from the page.
 // One <audio> element is reused for every clip so phones keep playing with the screen locked.
+// Two ways to use it: a page's own Listen button ([data-listen]), or a set of playlist buttons ([data-listen-hub], each
+// button naming its playlist in data-pl) that share the one player and load a playlist when pressed.
 const root = document.querySelector('[data-listen]');
-if (root) init(root);
+const hub = document.querySelector('[data-listen-hub]');
+if (root) init(root, null);
+else if (hub) init(null, hub);
 
-function init(root) {
+// The page sends each playlist as short lists of numbers; this turns them into clips the player can use.
+function expand(d) {
+  const out = {};
+  for (const l of d.lists) out[l.id] = { title: l.title, clips: l.items.map(([h, s, g, t]) => ({ u: `${d.base}/${h}.mp3`, t: d.titles[t], s: g, d: s })) };
+  return out;
+}
+
+function init(root, hub) {
+  const host = root || hub;
   let data;
-  try { data = JSON.parse(root.querySelector('[data-listen-data]').textContent); } catch { return; }
-  const clips = data.clips;
+  try { data = JSON.parse(host.querySelector('[data-listen-data]').textContent); } catch { return; }
+  const lists = hub ? expand(data) : null;
+  let clips = hub ? [] : data.clips;
   const bar = document.getElementById('lp');
-  if (!clips || !clips.length || !bar) return;
+  if (!bar || (!hub && (!clips || !clips.length))) return;
   document.body.appendChild(bar); // the bar is fixed to the screen; keep it out of the page layout
 
   const $ = (k) => bar.querySelector(`[data-lp="${k}"]`);
-  const btn = root.querySelector('.listen-btn');
+  const btn = root ? root.querySelector('.listen-btn') : null;
   const el = { sec: $('sec'), count: $('count'), close: $('close'), pos: $('pos'), len: $('len'), seek: $('seek'), back: $('back'), play: $('play'), fwd: $('fwd'), speed: $('speed'), note: $('note'), live: $('live') };
   const html = document.documentElement;
   const RATES = [1, 1.25, 1.5, 2];
-  const last = clips.length - 1;
-  const sections = clips[last].s + 1;
-  const dur = clips.map((c) => c.d); // seconds; replaced by the real length as each clip loads
+  let last = 0, sections = 1, dur = []; // dur: seconds per clip, replaced by the real length as each clip loads
   const warm = new Set();
   let idx = 0, want = false, finished = false, pending = null, dragging = false, announced = -1, lastState = 0;
+  let current = null, lastBtn = null, album = '';
+  function setClips(list) {
+    clips = list;
+    last = list.length - 1;
+    sections = list[last].s + 1;
+    dur = list.map((c) => c.d);
+    warm.clear();
+    idx = 0; pending = null; finished = false; announced = -1;
+  }
+  if (!hub) setClips(clips);
 
   const audio = new Audio();
   audio.preload = 'metadata';
@@ -61,18 +82,31 @@ function init(root) {
       el.live.textContent = `${c.t}, part ${c.s + 1} of ${sections}`;
     }
     if ('mediaSession' in navigator && window.MediaMetadata) {
-      navigator.mediaSession.metadata = new MediaMetadata({ title: c.t, artist: 'Universities500', album: document.querySelector('h1')?.textContent?.trim() || 'Universities500' });
+      navigator.mediaSession.metadata = new MediaMetadata({ title: c.t, artist: 'Universities500', album: album || document.querySelector('h1')?.textContent?.trim() || 'Universities500' });
     }
   }
+  // SVG elements have no .hidden property, so the attribute is set directly.
+  const icon = (host, on) => { host.querySelector('.ic-play').toggleAttribute('hidden', on); host.querySelector('.ic-pause').toggleAttribute('hidden', !on); };
   function state(playing) {
     const open = !bar.hidden;
-    // SVG elements have no .hidden property, so the attribute is set directly.
-    const icon = (host, on) => { host.querySelector('.ic-play').toggleAttribute('hidden', on); host.querySelector('.ic-pause').toggleAttribute('hidden', !on); };
-    icon(btn, playing);
+    if (btn) {
+      icon(btn, playing);
+      btn.querySelector('.listen-t').textContent = playing ? 'Pause' : open && !finished ? 'Resume' : `Listen to this ${data.noun}`;
+      btn.querySelector('.listen-m').hidden = playing || open;
+    }
     icon(el.play, playing);
     el.play.setAttribute('aria-label', playing ? 'Pause' : 'Play');
-    btn.querySelector('.listen-t').textContent = playing ? 'Pause' : open && !finished ? 'Resume' : `Listen to this ${data.noun}`;
-    btn.querySelector('.listen-m').hidden = playing || open;
+    if (hub) {
+      // The button of the playlist that is loaded shows Pause or Resume; the others show their own name.
+      hub.querySelectorAll('[data-pl]').forEach((b) => {
+        const mine = b.dataset.pl === current, on = mine && playing, resume = mine && open && !finished && !playing, name = b.dataset.label || '';
+        icon(b, on);
+        b.classList.toggle('is-on', mine && open);
+        b.setAttribute('aria-label', on ? `Pause ${name}` : resume ? `Resume ${name}` : `Play ${name}`);
+        const t = b.querySelector('.pl-t');
+        if (t) t.textContent = on ? 'Pause' : resume ? 'Resume' : b.dataset.idle;
+      });
+    }
     if ('mediaSession' in navigator) navigator.mediaSession.playbackState = playing ? 'playing' : 'paused';
   }
   function message(text) { el.note.textContent = text; el.note.classList.toggle('lp-err', text !== NOTE); }
@@ -140,7 +174,7 @@ function init(root) {
     html.classList.remove('has-lp');
     html.style.removeProperty('--lp-top');
     state(false);
-    btn.focus();
+    (btn || lastBtn)?.focus();
   }
 
   // ---- the audio element ----
@@ -184,10 +218,34 @@ function init(root) {
   });
 
   // ---- controls ----
-  btn.addEventListener('click', () => {
+  if (btn) btn.addEventListener('click', () => {
     open();
     if (want) pause(); else play();
   });
+  if (hub) {
+    hub.querySelectorAll('[data-pl]').forEach((b) => { const t = b.querySelector('.pl-t'); if (t) b.dataset.idle = t.textContent; });
+    hub.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-pl]');
+      if (!b || !hub.contains(b)) return;
+      const id = b.dataset.pl, list = lists[id];
+      if (!list) return;
+      lastBtn = b;
+      if (id !== current) {
+        // A different playlist: stop what was playing and start this one from the beginning.
+        pause();
+        audio.removeAttribute('src');
+        current = id;
+        album = list.title;
+        setClips(list.clips);
+        open();
+        load(0);
+        play();
+      } else {
+        open();
+        if (want) pause(); else play();
+      }
+    });
+  }
   el.play.addEventListener('click', () => { if (want) pause(); else play(); });
   el.back.addEventListener('click', () => seekTo(pos() - 15));
   el.fwd.addEventListener('click', () => seekTo(pos() + 15));
@@ -214,9 +272,8 @@ function init(root) {
   }
 
   applyRate();
-  section();
-  paint();
-  root.classList.add('is-ready');
+  if (!hub) { section(); paint(); }
+  host.classList.add('is-ready');
   // Test hook for the page's own checks; harmless otherwise.
-  root.__listen = { audio, seekTo, state: () => ({ idx, want, finished, rate, total: total() }) };
+  host.__listen = { audio, seekTo, state: () => ({ idx, want, finished, rate, current, total: total() }) };
 }
