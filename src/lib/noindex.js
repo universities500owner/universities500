@@ -2,7 +2,7 @@
 // DRAFT: stubs whose own text says "Draft" (legal and method pages), and the 404 page.
 export const DRAFT = ['/privacy/', '/terms/', '/404/'];
 // ACCOUNT: sign-in and the student dashboard. They have no public content, so they are kept out of search and the sitemap.
-export const ACCOUNT = ['/sign-in/', '/student/'];
+export const ACCOUNT = ['/sign-in/', '/student/', '/admin/'];
 // UNCHECKED: pages whose figures are labelled placeholders, and the on-site search page (it has no content of its own).
 // Remove a path from this list once its facts are real and sourced.
 export const UNCHECKED = [

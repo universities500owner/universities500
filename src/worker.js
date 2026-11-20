@@ -2,6 +2,7 @@
 // (wrangler.jsonc sends nothing else to it). Each route hands the request to a plain function whose logic and
 // settings are described in src/lib/account/handlers.js and src/lib/contact-handler.js.
 import { handleConfig, handleRequestCode, handleVerify, handleLogout, handleMe, handleSaved, handleExport } from './lib/account/handlers.js';
+import { handleAdminList, handleAdminStudent, handleAdminExport } from './lib/account/admin.js';
 import { handleContact } from './lib/contact-handler.js';
 
 const json = (status, body, headers = {}) =>
@@ -23,6 +24,9 @@ export const ROUTES = {
   '/api/me': handleMe,
   '/api/me/saved': handleSaved,
   '/api/me/export': handleExport,
+  '/api/admin/students': handleAdminList,
+  '/api/admin/student': handleAdminStudent,
+  '/api/admin/export': handleAdminExport,
 };
 
 export default {

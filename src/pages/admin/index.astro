@@ -1,0 +1,99 @@
+---
+// The owner's list of everyone who has signed up. A static shell only: every name and number comes from /api/admin/students,
+// which answers only to a signed-in student whose Gmail address is in the ADMIN_EMAILS setting. Never indexed.
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import '../../styles/admin.css';
+---
+<Base title="Students | Universities500 admin" description="Owner's list of students who have signed up." path="/admin/" noindex={true} current="student" read={true} share={false} wide={true}>
+  <PageHead slot="head" tone="read" crumbs={[['Admin', null]]} title="Students" lede="Everyone who has signed up. Only the site owner can open this page." />
+
+  <div class="ad" data-admin>
+    <p class="ad-load" data-loading role="status">Checking access…</p>
+    <div class="ad-notice" data-notice hidden role="alert" tabindex="-1"></div>
+
+    <div data-content hidden>
+      <ul class="ad-stats" data-stats aria-label="Totals. Choose one to filter the list."></ul>
+
+      <form class="ad-bar" data-bar role="search" aria-label="Find students">
+        <div class="ad-f ad-find">
+          <label for="ad-q">Search</label>
+          <input id="ad-q" type="search" name="q" placeholder="Name or email" autocomplete="off" maxlength="60" />
+        </div>
+        <div class="ad-f">
+          <label for="ad-joined">Joined</label>
+          <select id="ad-joined" name="joined">
+            <option value="">Any time</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="90">Last 90 days</option>
+          </select>
+        </div>
+        <div class="ad-f">
+          <label for="ad-country">Interested in</label>
+          <select id="ad-country" name="country"><option value="">Any country</option></select>
+        </div>
+        <div class="ad-f">
+          <label for="ad-onboarded">Setup</label>
+          <select id="ad-onboarded" name="onboarded">
+            <option value="">All</option><option value="1">Finished setup</option><option value="0">Not finished</option>
+          </select>
+        </div>
+        <div class="ad-f">
+          <label for="ad-marketing">Updates</label>
+          <select id="ad-marketing" name="marketing">
+            <option value="">All</option><option value="1">Agreed to updates</option>
+          </select>
+        </div>
+        <div class="ad-f">
+          <label for="ad-has">Has</label>
+          <select id="ad-has" name="has">
+            <option value="">Anything</option><option value="shortlist">A shortlist</option><option value="visa">A visa self-check</option>
+          </select>
+        </div>
+        <div class="ad-actions">
+          <button class="ad-btn ad-ghost" type="button" data-clear>Clear</button>
+          <a class="ad-btn" href="/api/admin/export" data-export download>Download CSV</a>
+        </div>
+      </form>
+      <p class="ad-hint">The CSV holds what you see here, for every match, not only this page. Email only students who agreed to updates. Everyone else signed up for their own account and nothing more.</p>
+
+      <p class="ad-count" data-count role="status" aria-live="polite"></p>
+      <div class="ad-wrap" data-wrap>
+        <table class="ad-table">
+          <caption class="sr-only">Students who have signed up. Choose a column heading to sort. Choose a student to open their details.</caption>
+          <thead>
+            <tr>
+              <th scope="col" data-sort="email" aria-sort="none"><button type="button">Student</button></th>
+              <th scope="col" data-sort="created_at" aria-sort="none"><button type="button">Joined</button></th>
+              <th scope="col">Interested in</th>
+              <th scope="col">Stage</th>
+              <th scope="col">Profile</th>
+              <th scope="col" data-sort="shortlist_count" aria-sort="none" class="ad-num"><button type="button">Shortlist</button></th>
+              <th scope="col">Updates</th>
+              <th scope="col" data-sort="updated_at" aria-sort="none"><button type="button">Last changed</button></th>
+            </tr>
+          </thead>
+          <tbody data-rows></tbody>
+        </table>
+      </div>
+      <p class="ad-empty" data-empty hidden></p>
+
+      <nav class="ad-pager" aria-label="Pages" data-pager>
+        <button class="ad-btn ad-ghost" type="button" data-prev>Previous</button>
+        <span data-page-info></span>
+        <button class="ad-btn ad-ghost" type="button" data-next>Next</button>
+        <label class="ad-size">Rows <select data-size><option>25</option><option>50</option><option>100</option></select></label>
+      </nav>
+    </div>
+
+    <dialog class="ad-dialog" data-dialog aria-labelledby="ad-d-name">
+      <div class="ad-d-head">
+        <div><h2 id="ad-d-name" tabindex="-1"></h2><p class="ad-d-email" data-d-email></p></div>
+        <button class="ad-btn ad-ghost" type="button" data-d-close>Close</button>
+      </div>
+      <p class="ad-load" data-d-loading hidden>Loading…</p>
+      <p class="ad-bad" data-d-error hidden role="alert"></p>
+      <div data-d-body></div>
+    </dialog>
+  </div>
+
+  <script>import '../../scripts/admin.js';</script>
+</Base>

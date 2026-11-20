@@ -20,10 +20,10 @@ function show(n) {
   step1.hidden = n !== 1; step2.hidden = n !== 2;
   (n === 1 ? $('si-email') : $('si-code')).focus();
 }
-// Only /student/ pages may be the place to land after sign-in.
+// Only /student/ pages (and the owner's /admin/ page) may be the place to land after sign-in.
 function landing(fallback) {
   const n = new URLSearchParams(location.search).get('next') || '';
-  return /^\/student\/[a-z0-9\/-]*$/.test(n) ? n : fallback || '/student/';
+  return /^\/(student|admin)\/[a-z0-9\/-]*$/.test(n) ? n : fallback || '/student/';
 }
 
 function loadTurnstile(siteKey) {
