@@ -233,7 +233,7 @@ test('a new student gets an empty account back', async () => {
   assert.equal(j.student.email, 'asharao@gmail.com');
   assert.equal(j.student.stage, null);
   assert.equal(j.student.onboarded_at, null);
-  assert.deepEqual(Object.keys(j.sections), ['profile', 'academic', 'english', 'work', 'immigration']);
+  assert.deepEqual(Object.keys(j.sections), ['profile', 'academic', 'english', 'work', 'immigration', 'visa_au']);
   assert.ok(!('consent_at' in j.student));
 });
 
@@ -303,6 +303,28 @@ test('onboarded_at is set once and keeps its first value', async () => {
   fake.clock.t += 3600000;
   await api.me(jar, 'PATCH', { onboarded: true, student: { stage: 'offer' } });
   assert.equal([...fake.students.values()][0].onboarded_at, first);
+});
+
+test('the visa self-check answers save, read back, export and stay private', async () => {
+  const { api } = setup();
+  const a = await api.signIn('asha.rao@gmail.com');
+  const answers = { tuition: 30000, funds: 80000, funds_status: 'ready', funds_trail: 'documented', course_link: 'related', reasons: 'clear', gap: 'none', ties_family: true, docs: 'ready' };
+  const saved = await api.me(a, 'PATCH', { sections: { visa_au: answers } });
+  assert.equal(saved.status, 200);
+  const back = await J(await api.me(a));
+  assert.equal(back.sections.visa_au.funds, 80000);
+  assert.equal(back.sections.visa_au.ties_family, true);
+  // a wrong answer is refused with a message on the field, and nothing is stored
+  const bad = await api.me(a, 'PATCH', { sections: { visa_au: { ...answers, funds: -1, docs: 'maybe' } } });
+  assert.equal(bad.status, 422);
+  const e = (await J(bad)).errors.sections.visa_au;
+  assert.ok(e.funds && e.docs);
+  assert.equal((await J(await api.me(a))).sections.visa_au.funds, 80000);
+  // the export holds it; another student sees none of it
+  assert.match(await (await api.export(a)).text(), /"funds":\s*80000/);
+  const b = await api.signIn('ravi.kumar@gmail.com');
+  assert.deepEqual((await J(await api.me(b))).sections.visa_au, {});
+  assert.ok(!(await (await api.export(b)).text()).includes('80000'));
 });
 
 test('a student only ever sees their own details', async () => {

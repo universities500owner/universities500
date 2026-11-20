@@ -1,0 +1,64 @@
+---
+import Student from '../../layouts/Student.astro';
+import { CHECKED_LABEL, SOURCES } from '../../lib/visa/au-rules.js';
+---
+<Student title="Visa self-check: Australia" lede="See how ready you look for an Australian student visa, and what to strengthen first. It takes about five minutes." active="visa" page="visa">
+  <p class="vc-scope"><b>A self-check, not advice.</b> It does not predict what Home Affairs will decide and it is not tied to any agent or university. A case officer reads your whole application, including things this check cannot see.</p>
+
+  <section class="st-card vc-result" data-result aria-labelledby="vc-res-h" tabindex="-1" hidden>
+    <h2 id="vc-res-h">Your result</h2>
+    <div class="vc-top">
+      <div class="vc-band" data-band>
+        <span class="vc-glyph" aria-hidden="true" data-glyph></span>
+        <b data-band-name></b>
+        <small>band</small>
+      </div>
+      <div class="vc-score">
+        <p class="vc-points"><b data-score></b><span> out of 100 points</span></p>
+        <div class="vc-bar" aria-hidden="true"><i data-score-bar style="width:0"></i></div>
+        <p class="vc-say" data-say></p>
+      </div>
+    </div>
+    <div class="vc-held" data-held hidden></div>
+    <h3 class="vc-h">What decides it</h3>
+    <ul class="vc-factors" data-factors></ul>
+    <h3 class="vc-h">What to strengthen first</h3>
+    <ol class="vc-actions" data-actions></ol>
+    <p class="vc-none" data-no-actions hidden>Nothing stands out. Keep your evidence together and check the official pages again just before you apply.</p>
+  </section>
+
+  <section class="st-card" data-empty aria-labelledby="vc-empty-h" hidden>
+    <h2 id="vc-empty-h">Answer a few questions to see your result</h2>
+    <p class="st-sub">We use the answers below plus your English test and visa history from your profile. Your result is worked out from the answers you save.</p>
+  </section>
+
+  <details class="st-sec" id="visa_au">
+    <summary><span class="tick" aria-hidden="true"></span><span>Your answers</span><span class="state"></span></summary>
+    <div class="st-sec-body">
+      <p class="st-sub">Answer for the course you are most likely to take. Do not enter passport numbers, visa numbers or bank account numbers.</p>
+      <ul class="vc-profile" data-profile aria-label="What we use from your profile"></ul>
+      <div data-form></div>
+      <div class="st-actions">
+        <button class="btn" type="button" data-save>Save and check</button>
+        <p class="st-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </details>
+
+  <section class="st-card vc-notes" aria-labelledby="vc-how-h">
+    <h2 id="vc-how-h">How this works</h2>
+    <ul>
+      <li>The points and the Green, Amber and Red bands are our own way of organising the public rules. They are not Home Affairs scores.</li>
+      <li>The money and English figures come from Australian law and were last compared with it in {CHECKED_LABEL}. Check the official pages before you rely on them.</li>
+      <li>The Government is consulting on changes to the Genuine Student and money rules, so these can change.</li>
+      <li>Nothing here uses artificial intelligence. The same answers always give the same result.</li>
+      <li>Your answers are saved on your account so you can come back. You can download or delete everything from Settings.</li>
+    </ul>
+    <h3 class="vc-h">Official sources</h3>
+    <ul class="vc-src">
+      {SOURCES.map((s) => <li><a href={s.url} target="_blank" rel="noopener nofollow">{s.label}</a></li>)}
+    </ul>
+  </section>
+
+  <script>import '../../scripts/student.js';</script>
+</Student>
