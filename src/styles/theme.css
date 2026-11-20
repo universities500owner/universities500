@@ -368,7 +368,8 @@ html[data-theme="dark"] { --read-hero: #1A3CB8; --read-pale: var(--surface); }
    shrinking on a narrow screen so it never touches the Menu button) and the light/dark switch moves to the end of the menu. */
 .nav-theme { display: none; }
 @media (max-width: 1000px) {
-  .site-head .wrap { min-height: 5.25rem; }
+  /* equal space above and below the logo; row-gap 0 so the closed menu row (zero height) adds nothing under it */
+  .site-head .wrap { min-height: 0; padding-block: .6rem; row-gap: 0; }
   .brand img { height: clamp(36px, calc((100vw - 130px) / 4.31), 60px); }
   .head-actions { display: none; }
   .nav-list.open + .nav-theme { display: block; border-top: 1px solid var(--k-hair); padding: .3rem 0 1rem; }
