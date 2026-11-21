@@ -1,0 +1,67 @@
+---
+// The bar fixed to the bottom of a phone screen (hidden above 760 px wide). Both versions are in the page; the html[data-in] flag
+// (set before the page paints, from the u500_in cookie) decides which one shows, so there is no flash of the wrong one.
+//   Signed out: a yellow bar with one line that matches the page, a sign-up button, a sign-in link, and an x that hides it for a week.
+//   Signed in:  the dashboard menu as tabs, with the rest under "More". On the dashboard the current page is marked.
+import '../styles/mobile-bar.css';
+import { LINES, lineFor } from '../lib/mobile-bar.js';
+import { MENU, TABS, TAB_IDS } from '../lib/student-menu.js';
+
+const { active = '' } = Astro.props;
+const line = LINES[lineFor(Astro.url.pathname)];
+const hrefOf = (id) => (MENU.find(([i]) => i === id) || [])[2];
+const more = MENU.filter(([id]) => !TAB_IDS.includes(id));
+const moreOn = active !== '' && !TAB_IDS.includes(active);
+const icons = {
+  overview: '<rect x="3.5" y="3.5" width="7" height="7"/><rect x="13.5" y="3.5" width="7" height="7"/><rect x="3.5" y="13.5" width="7" height="7"/><rect x="13.5" y="13.5" width="7" height="7"/>',
+  profile: '<circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c.7-4 3.7-6 7.5-6s6.8 2 7.5 6"/>',
+  shortlist: '<path d="M6.5 3.5h11v17l-5.5-4-5.5 4z"/>',
+  visa: '<rect x="5" y="3.5" width="14" height="17" rx="2"/><circle cx="12" cy="10.5" r="3"/><path d="M9 16.5h6"/>',
+  more: '<circle cx="5.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18.5" cy="12" r="1.2"/>',
+};
+---
+<div class="mb mb-out" role="region" aria-label="Free student account" data-mb-out>
+  <div class="mb-lead">
+    <p class="mb-line">{line}</p>
+    <a class="mb-sign" href="/sign-in/"><span class="mb-sign-long">Already signed up? </span>Sign in</a>
+  </div>
+  <a class="btn mb-go" href="/sign-in/">Sign up free</a>
+  <button class="mb-x" type="button" data-mb-hide aria-label="Hide this bar for a week">
+    <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13" /></svg>
+  </button>
+</div>
+
+<nav class="mb mb-in" aria-label="Student menu" data-mb-in>
+  <ul>
+    {TABS.map(([id, label]) => (
+      <li>
+        <a href={hrefOf(id)} aria-current={id === active ? 'page' : undefined}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" set:html={icons[id]} />
+          <span>{label}</span>
+        </a>
+      </li>
+    ))}
+    <li>
+      <button type="button" class={moreOn ? 'is-on' : undefined} aria-expanded="false" aria-controls="mb-sheet" data-mb-more>
+        <svg viewBox="0 0 24 24" aria-hidden="true" set:html={icons.more} />
+        <span>More</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<div class="mb-sheet" id="mb-sheet" data-mb-sheet hidden>
+  <div class="mb-card">
+    {more.map(([id, label, href]) => (
+      href
+        ? <a href={href} aria-current={id === active ? 'page' : undefined}>{label}</a>
+        : <span class="mb-soon">{label}<em>Soon</em></span>
+    ))}
+    <a href="/">Back to the main site</a>
+    <button type="button" class="mb-out-btn" data-mb-signout>Sign out</button>
+  </div>
+</div>
+
+<script>
+  import '../scripts/mobile-bar.js';
+</script>

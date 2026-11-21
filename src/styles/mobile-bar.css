@@ -1,0 +1,72 @@
+/* The bar at the bottom of a phone screen. Phones only (760 px and narrower); wider screens keep the strip and the side menu.
+   Which version shows is decided by two flags on <html>, both set before the page paints:
+     data-in       the student is signed in (cookie flag)             -> the tab bar
+     data-bar-off  the student hid the sign-up bar in the last week   -> nothing
+   data-typing is set while a text field has focus, so the bar does not sit on top of the keyboard. All rules need body[data-bar],
+   which the layout sets only on pages that have the bar (not the sign-in page). Colours come from the site's tokens, so dark mode follows. */
+.mb, .mb-sheet { display: none; }
+
+@media (max-width: 760px) {
+  body[data-bar] { --mb-h: 0px; }
+  html[data-in] body[data-bar],
+  html:not([data-in]):not([data-bar-off]) body[data-bar] { --mb-h: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  body[data-bar] { padding-bottom: var(--mb-h); }
+
+  /* the sign-up bar replaces the strip that closes the page, until the student hides the bar */
+  html:not([data-bar-off]) body[data-bar] .su-band { display: none; }
+
+  /* things that sit in the corners or at the bottom move up above the bar */
+  body[data-bar] .scrollnav { bottom: calc(var(--mb-h) + 1rem); }
+  body[data-bar] .su-toast { bottom: calc(var(--mb-h) + 1rem); }
+  body[data-bar] #share-toast { bottom: calc(var(--mb-h) + 1.25rem); }
+
+  .mb { position: fixed; left: 0; right: 0; bottom: 0; z-index: 36; background: var(--cta); color: var(--cta-on); box-shadow: 0 -6px 20px rgba(0, 21, 34, .3); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  html[data-typing] body[data-bar] .mb, html[data-typing] body[data-bar] .mb-sheet { display: none; }
+
+  /* ---- signed out ---- */
+  html:not([data-in]):not([data-bar-off]) .mb-out { display: flex; align-items: center; gap: .6rem; min-height: 64px; padding-top: .55rem; padding-left: max(1rem, env(safe-area-inset-left, 0px)); padding-right: max(.3rem, env(safe-area-inset-right, 0px)); }
+  .mb-lead { flex: 1; min-width: 0; }
+  .mb-line { margin: 0; max-width: none; font-family: var(--display); font-weight: 700; font-size: 1.02rem; line-height: 1.2; color: var(--cta-on); }
+  .mb-sign { display: inline-block; margin-top: .15rem; font-size: .82rem; font-weight: 700; color: var(--cta-on); text-decoration: underline; text-underline-offset: .22em; }
+  .mb-go.btn { flex: none; white-space: nowrap; border-radius: 0; padding: .62rem 1rem; background: var(--cta-on); color: var(--cta); text-decoration: none; }
+  .mb-go.btn:hover { background: var(--cta-on); color: var(--cta); }
+  .mb-x { flex: none; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; border: 0; background: transparent; color: var(--cta-on); cursor: pointer; padding: 0; }
+  .mb-x svg { width: .95rem; height: .95rem; }
+
+  /* narrow phones (360 px is common): a little tighter so the bar stays one row. If a line still wraps (320 px, or large text sizes),
+     the script measures the bar and sets --mb-h, so nothing at the bottom of the page is ever covered. */
+  @media (max-width: 380px) {
+    html:not([data-in]):not([data-bar-off]) .mb-out { gap: .4rem; padding-left: max(.85rem, env(safe-area-inset-left, 0px)); }
+    .mb-line { font-size: .96rem; }
+    .mb-sign { font-size: .78rem; }
+    .mb-go.btn { padding: .58rem .75rem; font-size: .95rem; }
+    .mb-x { width: 2.25rem; }
+  }
+
+  /* the smallest phones: "Sign in" alone. A bar that is still too tall (large text sizes) drops the sign-in line; the button goes to the same page. */
+  @media (max-width: 340px) { .mb-sign-long { display: none; } .mb-line { font-size: .92rem; } }
+  .mb-out.mb-tight .mb-sign { display: none; }
+
+  /* ---- signed in ---- */
+  html[data-in] .mb-in { display: block; }
+  .mb-in ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .mb-in li { margin: 0; padding: 0; }
+  .mb-in a, .mb-in button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .22rem; width: 100%; height: 64px; margin: 0; padding: .3rem 0 0; border: 0; border-radius: 0; background: transparent; color: var(--cta-on); font: inherit; font-size: .74rem; font-weight: 700; line-height: 1.1; text-decoration: none; cursor: pointer; }
+  .mb-in svg { width: 1.45rem; height: 1.45rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .mb-in [aria-current="page"], .mb-in .is-on, .mb-in [aria-expanded="true"] { background: var(--cta-on); color: var(--cta); }
+
+  /* ---- the "More" sheet: it opens above the bar ---- */
+  html[data-in] .mb-sheet:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 37; background: rgba(0, 21, 34, .55); }
+  .mb-card { position: absolute; left: 0; right: 0; bottom: var(--mb-h, 64px); background: var(--k-card); border-top: 4px solid var(--cta); padding: .25rem 0 0; }
+  .mb-card a, .mb-card .mb-soon, .mb-card .mb-out-btn { display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 0; padding: .95rem 1.1rem; border: 0; border-bottom: 1px solid var(--k-hair); border-radius: 0; background: transparent; color: var(--k-title); font: inherit; font-weight: 700; text-align: left; text-decoration: none; cursor: pointer; }
+  .mb-card a[aria-current="page"] { box-shadow: inset .3rem 0 0 var(--k-mint); background: var(--k-card-hover); }
+  .mb-card .mb-soon { color: var(--muted); font-weight: 600; cursor: default; }
+  .mb-card .mb-soon em { font-style: normal; font-size: .72rem; font-weight: 700; color: var(--muted); border: 1px solid var(--k-hair); padding: .1rem .4rem; }
+  .mb-card .mb-out-btn { color: var(--muted); font-weight: 600; border-bottom: 0; }
+  .mb-card a:hover, .mb-card .mb-out-btn:hover { background: var(--k-card-hover); }
+
+  .mb a:focus-visible, .mb button:focus-visible, .mb-card :focus-visible { outline: 3px solid var(--cta-on); outline-offset: -3px; }
+  .mb-card :focus-visible { outline-color: var(--k-cobalt); }
+}
+
+@media print { .mb, .mb-sheet { display: none !important; } }

@@ -13,10 +13,12 @@ import { topics as articleTopics, articles as allArticles } from '../lib/article
 import IndustryNewsStrip from '../components/IndustryNewsStrip.astro';
 import FloatingSearch from '../components/FloatingSearch.astro';
 import SignupBand from '../components/SignupBand.astro';
+import MobileBar from '../components/MobileBar.astro';
 import { PUBLISH as NEWS_ON } from '../lib/news.js';
 
-const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false, about = false, read = false, signup = true } = Astro.props;
+const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false, about = false, read = false, signup = true, bar = true, barActive = '' } = Astro.props;
 // A slim sign-up strip closes every public page. The home page has its own larger section; sign-in and the student area need none.
+// The bar fixed to the bottom of a phone screen (sign-up when signed out, the dashboard menu when signed in). Pages that must not have it pass bar={false}.
 const showSignup = signup !== false && path !== '/' && !path.startsWith('/sign-in/') && !path.startsWith('/student/');
 const hasHead = Astro.slots.has('head');
 const url = new URL(path, SITE).href;
@@ -50,11 +52,13 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
         document.documentElement.dataset.theme = t;
         // A plain flag cookie set at sign-in (it holds no identity). Lets the header say "My dashboard" with no flash.
         try { if (/(?:^|;\s*)u500_in=1/.test(document.cookie)) document.documentElement.dataset.in = '1'; } catch (e) {}
+        // The student hid the phone sign-up bar: it stays hidden until the time saved in the browser (a week).
+        try { if (+localStorage.getItem('u500_bar_off') > Date.now()) document.documentElement.dataset.barOff = '1'; } catch (e) {}
       })();
     </script>
     {ld && <script type="application/ld+json" set:html={ld} />}
   </head>
-  <body id="top">
+  <body id="top" data-bar={bar ? '' : undefined}>
     <a class="skip" href="#main">Skip to content</a>
     <header class="site-head">
       <div class="wrap">
@@ -216,6 +220,7 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
       )}
     </div>
     {floatSearch && <FloatingSearch />}
+    {bar && <MobileBar active={barActive} />}
     <script is:inline>
       (function () {
         var list = document.getElementById('nav-list'), tog = document.getElementById('nav-toggle');

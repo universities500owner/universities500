@@ -22,6 +22,8 @@
   .st-nav a[aria-current="page"] { border-bottom-color: var(--k-mint); }
   .st-out { width: auto; border-top: 0; border-left: 1px solid var(--k-hair); white-space: nowrap; padding: .8rem 1rem; }
 }
+/* On a phone the bar at the bottom of the screen (src/components/MobileBar.astro) carries this menu, so the row of tabs at the top is not needed. */
+@media (max-width: 760px) { html[data-in] .st-nav { display: none; } }
 .st-main { min-width: 0; }
 .st-loading { margin: 0; color: var(--muted); font-weight: 600; }
 .st-notice { background: var(--k-card); border: 1px solid var(--k-hair); border-left: .4rem solid var(--k-mint); padding: 1.1rem 1.25rem; }
