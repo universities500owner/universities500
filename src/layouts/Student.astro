@@ -4,18 +4,9 @@
 import Base from './Base.astro';
 import PageHead from '../components/PageHead.astro';
 import '../styles/student.css';
+import { MENU } from '../lib/student-menu.js';
 
 const { title, lede = '', active, page } = Astro.props;
-// [id, label, href]. A null href is a part that is not built yet; it is listed so students can see what is coming.
-const MENU = [
-  ['overview', 'Overview', '/student/'],
-  ['profile', 'My profile', '/student/profile/'],
-  ['shortlist', 'My shortlist', '/student/shortlist/'],
-  ['visa', 'Visa self-check', '/student/visa-check/'],
-  ['sop', 'SOP editor', null],
-  ['lor', 'LOR helper', null],
-  ['settings', 'Settings', '/student/settings/'],
-];
 ---
 <Base
   title={`${title} | Universities500`}
@@ -25,6 +16,7 @@ const MENU = [
   current="student"
   read={true}
   share={false}
+  barActive={active}
 >
   <PageHead slot="head" tone="read" crumbs={active === 'overview' ? [['My dashboard', null]] : [['My dashboard', '/student/'], [title, null]]} title={title} lede={lede} />
 
