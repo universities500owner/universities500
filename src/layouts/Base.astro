@@ -52,7 +52,7 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
         document.documentElement.dataset.theme = t;
         // A plain flag cookie set at sign-in (it holds no identity). Lets the header say "My dashboard" with no flash.
         try { if (/(?:^|;\s*)u500_in=1/.test(document.cookie)) document.documentElement.dataset.in = '1'; } catch (e) {}
-        // The student hid the phone sign-up bar: it stays hidden until the time saved in the browser (a week).
+        // The student hid the phone sign-up bar: it stays hidden until the time saved in the browser (the rest of the visit, 30 minutes).
         try { if (+localStorage.getItem('u500_bar_off') > Date.now()) document.documentElement.dataset.barOff = '1'; } catch (e) {}
       })();
     </script>

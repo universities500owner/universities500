@@ -1,7 +1,7 @@
 ---
 // The bar fixed to the bottom of a phone screen (hidden above 760 px wide). Both versions are in the page; the html[data-in] flag
 // (set before the page paints, from the u500_in cookie) decides which one shows, so there is no flash of the wrong one.
-//   Signed out: a yellow bar with one line that matches the page, a sign-up button, a sign-in link, and an x that hides it for a week.
+//   Signed out: a yellow bar with one line that matches the page, a sign-up button, a sign-in link, and an x that hides it for the rest of the visit (30 minutes).
 //   Signed in:  the dashboard menu as tabs, with the rest under "More". On the dashboard the current page is marked.
 import '../styles/mobile-bar.css';
 import { LINES, lineFor } from '../lib/mobile-bar.js';
@@ -26,7 +26,7 @@ const icons = {
     <a class="mb-sign" href="/sign-in/"><span class="mb-sign-long">Already signed up? </span>Sign in</a>
   </div>
   <a class="btn mb-go" href="/sign-in/">Sign up free</a>
-  <button class="mb-x" type="button" data-mb-hide aria-label="Hide this bar for a week">
+  <button class="mb-x" type="button" data-mb-hide aria-label="Hide this bar for now">
     <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13" /></svg>
   </button>
 </div>

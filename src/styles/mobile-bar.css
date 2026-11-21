@@ -1,7 +1,7 @@
 /* The bar at the bottom of a phone screen. Phones only (760 px and narrower); wider screens keep the strip and the side menu.
    Which version shows is decided by two flags on <html>, both set before the page paints:
      data-in       the student is signed in (cookie flag)             -> the tab bar
-     data-bar-off  the student hid the sign-up bar in the last week   -> nothing
+     data-bar-off  the student hid the sign-up bar in the last 30 minutes -> nothing
    data-typing is set while a text field has focus, so the bar does not sit on top of the keyboard. All rules need body[data-bar],
    which the layout sets only on pages that have the bar (not the sign-in page). Colours come from the site's tokens, so dark mode follows. */
 .mb, .mb-sheet { display: none; }

@@ -1,13 +1,13 @@
-// The phone bar (src/components/MobileBar.astro): hide the sign-up bar for a week, open the "More" sheet, sign out from any page,
+// The phone bar (src/components/MobileBar.astro): hide the sign-up bar for the rest of a visit, open the "More" sheet, sign out from any page,
 // and keep the bar off the keyboard while a student types. Which version shows is decided in CSS from flags on <html>.
 import { clearLocal } from './saved-sync.js';
 
 const root = document.documentElement;
 const KEY = 'u500_bar_off';   // when the student hid the bar, the time it comes back (the head script of every page reads it)
-const WEEK = 7 * 24 * 60 * 60 * 1000;
+const VISIT = 30 * 60 * 1000;  // how long the x hides it: one visit. A student who comes back later sees the bar again.
 
 document.querySelectorAll('[data-mb-hide]').forEach((b) => b.addEventListener('click', () => {
-  try { localStorage.setItem(KEY, String(Date.now() + WEEK)); } catch (e) { /* storage blocked: hidden until the page closes */ }
+  try { localStorage.setItem(KEY, String(Date.now() + VISIT)); } catch (e) { /* storage blocked: hidden until the page closes */ }
   root.dataset.barOff = '1';
 }));
 
