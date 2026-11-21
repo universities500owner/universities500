@@ -28,16 +28,27 @@ html[data-in] [data-signup], html[data-in] .su-toast { display: none; }
   .su-home .su-benefits h3 { margin-left: -1.1rem; }
 }
 
-/* ---------- slim band on other pages ---------- */
-.su-band { background: var(--surface); border-top: 1px solid var(--k-hair); padding: 1.6rem 0; margin-top: 2.5rem; }
-.su-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
-.su-copy { flex: 1 1 26rem; min-width: 0; }
-.su-copy h2 { margin: 0 0 .5rem; padding-left: 1rem; border-left: .4rem solid var(--k-mint); font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.15; color: var(--k-title); }
-.su-copy p { margin: 0; max-width: 62ch; color: var(--ink); padding-left: 1.4rem; }
-.su-act { flex: 0 1 auto; display: flex; flex-direction: column; align-items: flex-start; gap: .55rem; }
-.su-act .btn { text-decoration: none; }
-.su-act .su-fine { max-width: 30ch; }
-@media (max-width: 700px) { .su-act .su-fine { max-width: none; } }
+/* ---------- slim strip that closes every public page: one horizontal box ---------- */
+.su-band { padding: 2.5rem 0 2.25rem; }
+.su-band .wrap { max-width: var(--wrap); padding-inline: 1.25rem; }
+.su-box { display: grid; grid-template-columns: minmax(10rem, .9fr) minmax(0, 2fr) auto; align-items: center; gap: .9rem 1.6rem; padding: 1rem 1.25rem 1rem 1.1rem; background: var(--surface); border: 1px solid var(--k-hair); border-left: .4rem solid var(--k-mint); }
+.su-band p { margin: 0; max-width: none; }
+.su-lead-t { font-family: var(--display); font-weight: 700; font-size: 1.1rem; line-height: 1.2; color: var(--k-title); }
+.su-band .su-fine { margin: .2rem 0 0; font-size: .82rem; line-height: 1.4; color: var(--muted); }
+.su-hl { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem 1.4rem; }
+.su-hl li { display: flex; align-items: center; gap: .55rem; margin: 0; padding: 0; font-size: .95rem; line-height: 1.3; color: var(--ink); }
+.su-hl svg { flex: none; width: 1.15rem; height: 1.15rem; fill: none; stroke: var(--k-cobalt); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.su-act { display: flex; flex-direction: column; align-items: stretch; gap: .45rem; text-align: center; }
+.su-act .btn { text-decoration: none; white-space: nowrap; }
+.su-sign { font-size: .82rem; font-weight: 600; color: var(--k-cobalt); }
+@media (max-width: 900px) {
+  .su-box { grid-template-columns: minmax(0, 1fr); }
+  .su-act { flex-direction: row; flex-wrap: wrap; align-items: center; gap: .6rem 1.1rem; text-align: left; }
+}
+@media (max-width: 520px) {
+  .su-band { padding-top: 2rem; }
+  .su-hl { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* ---------- note shown once to a signed-out visitor who saves something ---------- */
 .su-toast { position: fixed; z-index: 60; left: 1rem; bottom: 1rem; width: min(24rem, calc(100vw - 2rem)); background: var(--k-card); color: var(--ink); border: 1px solid var(--k-edge); border-left: .4rem solid var(--k-mint); padding: .95rem 1rem 1rem; box-shadow: 0 14px 34px -18px rgba(0, 20, 80, .55); }

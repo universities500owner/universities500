@@ -75,7 +75,7 @@ const showModuleLists = !study.length && (core.length > 0 || optional.length > 0
 const showEmployerList = !careers.length && employers.length > 0;
 const registerNote = c.reg && REGISTER;
 ---
-<Base signup="shortlist" title={`${c.name}, ${c.uniName} | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="courses" jsonld={ld}>
+<Base title={`${c.name}, ${c.uniName} | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="courses" jsonld={ld}>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="/">Home</a><span aria-hidden="true">/</span><a href="/courses/">Course search</a><span aria-hidden="true">/</span><a href={`/universities/${c.uni}/`}>{c.uniName}</a>
   </nav>
