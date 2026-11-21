@@ -1,5 +1,11 @@
 /* The owner's student list (/admin/). Flat squares and hairlines, like the student pages. */
 .ad { max-width: 1320px; margin: 0 auto; padding: 1.5rem clamp(1rem, 3vw, 2rem) 3rem; }
+/* The slim bar above the list: the logo and the word Admin. No site menu and no footer on these pages. */
+.ad-top { display: flex; align-items: center; gap: 1rem; padding: .55rem clamp(1rem, 3vw, 2rem); border-bottom: 1px solid var(--k-hair); background: var(--paper); }
+.ad-brand { display: inline-flex; line-height: 0; }
+.ad-brand img { height: 30px; width: auto; }
+.ad-tag { font-weight: 700; font-size: .85rem; color: var(--k-title); border: 1px solid var(--k-hair); padding: .15rem .6rem; background: var(--k-card); }
+.ad-title { margin: 0 0 1rem; font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.1; color: var(--k-title); }
 .ad-load { color: var(--muted); }
 .ad-bad { color: #B3261E; font-weight: 700; }
 html[data-theme="dark"] .ad-bad { color: #FF9B94; }
@@ -26,7 +32,7 @@ html[data-theme="dark"] .ad-bad { color: #FF9B94; }
 .ad-find { grid-column: span 2; }
 .ad-f label { display: block; margin-bottom: .25rem; font-weight: 700; font-size: .88rem; color: var(--k-title); }
 .ad-f input, .ad-f select { width: 100%; min-height: 2.6rem; padding: .45rem .7rem; font: inherit; color: var(--ink); background: var(--paper); border: 1.5px solid var(--line); border-radius: 0; }
-.ad-actions { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
+.ad-actions { grid-column: 1 / -1; display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
 .ad-hint { margin: .6rem 0 1rem; max-width: 80ch; color: var(--muted); font-size: .92rem; }
 .ad-count { margin: 0 0 .5rem; font-weight: 700; color: var(--k-title); min-height: 1.4em; }
 
@@ -78,3 +84,6 @@ html[data-theme="dark"] .ad-bad { color: #FF9B94; }
   .ad-dl { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .ad-dl dd { margin-bottom: .5rem; }
 }
+.ad-brand .logo-dark { display: none; }
+html[data-theme="dark"] .ad-brand .logo-light { display: none; }
+html[data-theme="dark"] .ad-brand .logo-dark { display: block; }

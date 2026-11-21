@@ -1,14 +1,12 @@
 ---
 // The owner's list of everyone who has signed up. A static shell only: every name and number comes from /api/admin/students,
 // which answers only to a signed-in student whose Gmail address is in the ADMIN_EMAILS setting. Never indexed.
-import Base from '../../layouts/Base.astro';
-import PageHead from '../../components/PageHead.astro';
+import Admin from '../../layouts/Admin.astro';
 import '../../styles/admin.css';
 ---
-<Base title="Students | Universities500 admin" description="Owner's list of students who have signed up." path="/admin/" noindex={true} current="student" read={true} share={false} wide={true}>
-  <PageHead slot="head" tone="read" crumbs={[['Admin', null]]} title="Students" lede="Everyone who has signed up. Only the site owner can open this page." />
-
+<Admin title="Students | Universities500 admin" description="Owner's list of students who have signed up.">
   <div class="ad" data-admin>
+    <h1 class="ad-title">Students</h1>
     <p class="ad-load" data-loading role="status">Checking access…</p>
     <div class="ad-notice" data-notice hidden role="alert" tabindex="-1"></div>
 
@@ -96,4 +94,4 @@ import '../../styles/admin.css';
   </div>
 
   <script>import '../../scripts/admin.js';</script>
-</Base>
+</Admin>
