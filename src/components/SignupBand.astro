@@ -1,23 +1,37 @@
 ---
-// A slim "sign up free" band for pages where saving or checking something is the natural next step.
-// It is hidden once the student is signed in: the u500_in flag sets html[data-in] before the page paints.
-const { kind = 'default' } = Astro.props;
-const COPY = {
-  default: ['Keep your plans in one place', 'Sign up free to save what you find and come back to it on any device.'],
-  shortlist: ['Save your shortlist', 'Sign up free to keep the courses, scholarships and internships you save on every device, each with a status and a note.'],
-  visa: ['Try the Australia visa self-check', 'Sign up free to get a Green, Amber or Red readiness band and what to strengthen. A self-check, not advice.'],
-};
-const [title, text] = COPY[kind] || COPY.default;
+// The slim "sign up free" strip that closes every public page. It is hidden once the student is signed in:
+// the u500_in flag sets html[data-in] before the page paints. Every line below is something a signed-in student can do today.
+const highlights = [
+  { id: 'list', text: 'Shortlist on every device' },
+  { id: 'profile', text: 'Plans saved once' },
+  { id: 'visa', text: 'Australia visa self-check' },
+  { id: 'data', text: 'Download or delete your data' },
+];
 ---
-<aside class="su-band" aria-labelledby="su-band-h" data-signup>
-  <div class="wrap su-in">
-    <div class="su-copy">
-      <h2 id="su-band-h">{title}</h2>
-      <p>{text}</p>
-    </div>
-    <div class="su-act">
-      <a class="btn" href="/sign-in/">Sign up free</a>
-      <p class="su-fine">Gmail code, no password. For students 18 and over. <a href="/sign-in/">Already signed up? Sign in</a></p>
+<aside class="su-band" aria-label="Free student account" data-signup>
+  <div class="wrap">
+    <div class="su-box">
+      <div class="su-lead">
+        <p class="su-lead-t">Free student account</p>
+        <p class="su-fine">Gmail code, no password. For students 18 and over.</p>
+      </div>
+      <ul class="su-hl">
+        {highlights.map((h) => (
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              {h.id === 'list' && <path d="M6.5 3.5h11v17l-5.5-4-5.5 4z" />}
+              {h.id === 'profile' && <><circle cx="12" cy="8" r="3.6" /><path d="M4.5 20c.7-4 3.7-6 7.5-6s6.8 2 7.5 6" /></>}
+              {h.id === 'visa' && <><rect x="5" y="3.5" width="14" height="17" rx="2" /><circle cx="12" cy="10.5" r="3" /><path d="M9 16.5h6" /></>}
+              {h.id === 'data' && <><path d="M12 3.5 5 6.2v5.6c0 4 2.7 7 7 8.7 4.3-1.7 7-4.7 7-8.7V6.2z" /><path d="m9 12 2.2 2.2L15.2 10" /></>}
+            </svg>
+            <span>{h.text}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="su-act">
+        <a class="btn" href="/sign-in/">Sign up free</a>
+        <a class="su-sign" href="/sign-in/">Already signed up? Sign in</a>
+      </div>
     </div>
   </div>
 </aside>

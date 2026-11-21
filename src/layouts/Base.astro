@@ -15,7 +15,9 @@ import FloatingSearch from '../components/FloatingSearch.astro';
 import SignupBand from '../components/SignupBand.astro';
 import { PUBLISH as NEWS_ON } from '../lib/news.js';
 
-const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false, about = false, read = false, signup = '' } = Astro.props;
+const { title, description, path = '/', noindex = false, jsonld = null, current = '', wide = false, share = true, news = false, about = false, read = false, signup = true } = Astro.props;
+// A slim sign-up strip closes every public page. The home page has its own larger section; sign-in and the student area need none.
+const showSignup = signup !== false && path !== '/' && !path.startsWith('/sign-in/') && !path.startsWith('/student/');
 const hasHead = Astro.slots.has('head');
 const url = new URL(path, SITE).href;
 const ld = jsonld ? JSON.stringify(jsonld).replace(/</g, '\\u003c') : null;
@@ -144,7 +146,7 @@ const floatSearch = path !== '/search/';   // the Search page has its own box
         <slot />
       </main>
     )}
-    {signup && <SignupBand kind={signup} />}
+    {showSignup && <SignupBand />}
     {share && (
       <div class="wrap">
         <div class="share-row" data-share>

@@ -81,7 +81,6 @@ const topicTitle = (t) => (t.key === 'faq' ? 'Frequently asked questions' : t.ti
 const overviewBlocks = (overview?.blocks || []).filter((b) => b.t === 'p');
 ---
 <Base
-  signup={g.slug === 'australia' ? 'visa' : 'default'}
   title={`Study in ${g.name}: guide for international students | Universities500`}
   description={lede.length > 160 ? lede.slice(0, 157).replace(/\s+\S*$/, '') + '…' : lede}
   path={`/study-in/${g.slug}/`}
