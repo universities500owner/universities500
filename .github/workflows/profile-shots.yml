@@ -1,0 +1,58 @@
+name: Page screenshots (temporary)
+# Builds the site and takes screenshots of a few university pages with real network access, so the real Wikimedia photos show.
+# The images are printed into the log as base64 so they can be read from the log. Delete this file before merging.
+on:
+  push:
+    branches: [profile-page-v2]
+permissions:
+  contents: read
+jobs:
+  shots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npx astro build
+      - run: pip install playwright && python3 -m playwright install --with-deps chromium
+      - name: Serve and shoot
+        run: |
+          (npx astro preview --port 4322 > preview.log 2>&1 &)
+          sleep 6
+          python3 - <<'PY'
+          import base64, io, sys
+          from playwright.sync_api import sync_playwright
+          from PIL import Image
+          PAGES = ['university-of-toronto', 'curtin-university', 'abu-dhabi-university', 'stanford-university']
+          def emit(name, png):
+              im = Image.open(io.BytesIO(png)).convert('RGB')
+              buf = io.BytesIO(); im.save(buf, 'JPEG', quality=80, optimize=True)
+              b = base64.b64encode(buf.getvalue()).decode()
+              print(f'::group::{name}.jpg.b64'); print('\n'.join(b[i:i+3000] for i in range(0, len(b), 3000))); print('::endgroup::')
+          with sync_playwright() as p:
+              br = p.chromium.launch()
+              for slug in PAGES:
+                  for tag, w, h, sc, theme in (('desk', 1280, 900, 1, 'light'), ('phone', 390, 844, 2, 'light'), ('dark', 1280, 900, 1, 'dark')):
+                      if tag == 'dark' and slug != PAGES[0]: continue
+                      ctx = br.new_context(viewport={'width': w, 'height': h}, device_scale_factor=sc)
+                      ctx.add_init_script(f"try{{localStorage.setItem('u500-theme','{theme}')}}catch(e){{}}")
+                      pg = ctx.new_page()
+                      pg.goto(f'http://127.0.0.1:4322/universities/{slug}/', wait_until='load')
+                      pg.wait_for_timeout(1500)
+                      pg.evaluate("async()=>{for(let y=0;y<document.body.scrollHeight;y+=500){window.scrollTo(0,y);await new Promise(r=>setTimeout(r,150));}window.scrollTo(0,0);}")
+                      pg.wait_for_timeout(2500)
+                      pg.screenshot(path=f'/tmp/{slug}-{tag}.png', full_page=True)
+                      png = open(f'/tmp/{slug}-{tag}.png', 'rb').read()
+                      # the first screen on its own, then the full page in two parts so nothing is shrunk
+                      emit(f'{slug}-{tag}-top', pg.screenshot(clip={'x': 0, 'y': 0, 'width': w, 'height': h}))
+                      im = Image.open(io.BytesIO(png)); H = im.height
+                      step = 4200 if tag == 'phone' else 3000
+                      for k, y in enumerate(range(0, min(H, step * 4), step)):
+                          buf = io.BytesIO(); im.crop((0, y, im.width, min(H, y + step))).save(buf, 'PNG'); emit(f'{slug}-{tag}-p{k}', buf.getvalue())
+                      ctx.close()
+              br.close()
+          PY

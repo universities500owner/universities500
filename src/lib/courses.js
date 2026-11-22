@@ -14,11 +14,14 @@ const uniBySlug = new Map(all.map((u) => [u.slug, u]));
 // The subject list (src/data/subjects.json), ready to match course names. No AI: a course gets a subject when its name contains the subject's words.
 export const SUBJECTS = compile(subjectDef);
 
+import { guard } from './courseGuard.js';
+export { guard };
+
 // Every course gets its university, destination and subjects. A course whose university is not in the list is left out rather than guessed.
 export const items = PUBLISH
   ? data.items.filter((i) => uniBySlug.has(i.uni)).map((i) => {
     const u = uniBySlug.get(i.uni);
-    return { ...i, country: u.country, uniName: u.name, sj: subjectsOf(SUBJECTS, i, u.name) };
+    return { ...guard(i), country: u.country, uniName: u.name, sj: subjectsOf(SUBJECTS, i, u.name) };
   })
   : [];
 export const generatedAt = data.generatedAt;

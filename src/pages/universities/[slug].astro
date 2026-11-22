@@ -4,11 +4,12 @@ import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import SocialIcons from '../../components/SocialIcons.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
-import { profileFor, num, mapsLink, esc, host } from '../../lib/profiles.js';
+import { profileFor, num, esc, host } from '../../lib/profiles.js';
 import { forDestination } from '../../lib/articles.js';
 import { all, blurb, related, fmtDate, SITE } from '../../lib/data.js';
 import { itemsFor, hubFor, statusOf, STATUS_LABEL, fmtIso, scholarshipsLink, PUBLISH } from '../../lib/scholarships.js';
 import { itemsFor as coursesFor, path as coursePath, lengthText, feeText } from '../../lib/courses.js';
+import { rankingSites } from '../../lib/rankingSites.js';
 
 export function getStaticPaths() {
   return all.map((u) => ({ params: { slug: u.slug }, props: { u } }));
@@ -24,12 +25,21 @@ const masters = courses.filter((c) => c.level === 'Master');
 // The checked profile, when this university has one; everything below also works without it.
 const P = profileFor(u.slug) || {};
 const links = P.links || {};
-const camps = P.campuses || (u.campuses || []).map((c) => ({ name: c.n, maps: mapsLink(c.n, u.name), photo: null }));
+// Only campuses the university's own page names. Wikidata gives where the university is (P.place), not its campuses.
+const camps = P.campuses || [];
 const withPhoto = camps.filter((c) => c.photo);
 const noPhoto = camps.filter((c) => !c.photo);
 const faculties = P.faculties || [];
 const gallery = P.gallery || [];
 const partners = P.partners || [];
+// Industry connections stays hidden until we hold partner names for most universities (38 of 263 today). Set to true to show it again.
+const SHOW_INDUSTRY = false;
+// Big photos for the header slideshow: wide ones with a 1280px copy
+const hero = gallery.filter((g) => g.u2 && g.w && g.h && g.w / g.h >= 1.3).slice(0, 5);
+const heroH = (g) => Math.round(1280 * g.h / g.w);
+const slides = gallery.map((g) => ({ ...g, src: g.u2 || g.u, sw: g.u2 ? 1280 : g.w, sh: g.u2 ? Math.round(1280 * g.h / g.w) : g.h }));
+const initials = (n) => n.replace(/\(.*?\)/g, '').split(/\s+/).filter(Boolean).map((w) => w[0]).filter((c) => /\p{L}/u.test(c)).slice(0, 2).join('').toUpperCase();
+const facHref = (f) => f.url || links.faculties || web;
 const hasOverview = !P.brief && !!u.overview;
 const lede = P.brief || (u.overview ? (u.overview.length > 600 ? blurb(u.overview, 600) : u.overview) : '');
 const web = u.web || '';
@@ -60,20 +70,41 @@ const ld = {
 };
 ---
 <Base title={title} description={description} path={`/universities/${u.slug}/`} noindex={!u.listed} jsonld={ld} current="universities" share={false}>
-  <PageHead slot="head" crumbs={[['Universities', '/universities/'], [u.countryName, `/study-in/${u.country}/`]]} title={u.name}>
-    {lede && <p class="pg-lede uni-brief" set:html={esc(lede)} />}
-    {hasOverview && (
-      <p class="uni-credit">Summary from <a href={u.overviewSrc}>Wikipedia</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>){u.overviewTrimmed ? ', shortened' : ''}.</p>
+  <div slot="head" class={hero.length ? 'uni-hero has-photos' : 'uni-hero'} data-hero>
+    {hero.length > 0 && (
+      <div class="uni-hero-bg" aria-hidden="true">
+        {hero.map((g, i) => (
+          <img class={i === 0 ? 'is-on' : ''} src={i === 0 ? g.u2 : undefined} data-src={i > 0 ? g.u2 : undefined} width="1280" height={heroH(g)} alt="" decoding="async" fetchpriority={i === 0 ? 'high' : 'low'}
+            data-by={g.by} data-y={g.y || ''} data-lic={g.lic} data-licurl={g.licUrl || g.page} data-page={g.page} />
+        ))}
+      </div>
     )}
-    <div class="uni-actions">
-      {web && <a class="btn" href={web} rel="noopener">Official website</a>}
-      <SocialIcons links={P.social} name={u.name} />
-    </div>
-  </PageHead>
+    <PageHead crumbs={[['Universities', '/universities/'], [u.countryName, `/study-in/${u.country}/`]]} title={u.name}>
+      {lede && <p class="pg-lede uni-brief" set:html={esc(lede)} />}
+      {hasOverview && (
+        <p class="uni-credit">Summary from <a href={u.overviewSrc}>Wikipedia</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>){u.overviewTrimmed ? ', shortened' : ''}.</p>
+      )}
+      <div class="uni-actions">
+        {web && <a class="btn" href={web} rel="noopener">Official website</a>}
+        <SocialIcons links={P.social} name={u.name} />
+      </div>
+    </PageHead>
+    {hero.length > 0 && (
+      <div class="uni-hero-meta">
+        <div class="wrap">
+          <p class="uni-hero-cr" data-cr>Photo: {hero[0].by}{hero[0].y ? `, ${hero[0].y}` : ''}, <a href={hero[0].licUrl || hero[0].page} rel="noopener">{hero[0].lic}</a>, <a href={hero[0].page} rel="noopener">Wikimedia Commons</a></p>
+          {hero.length > 1 && <button type="button" class="uni-hero-pause" aria-pressed="false">Pause photos</button>}
+        </div>
+      </div>
+    )}
+  </div>
   <div slot="head" class="uni-facts">
     <div class="wrap">
       <dl>
         <div><dt>Country</dt><dd>{u.countryName}</dd></div>
+        {P.place && camps.length === 0 && (
+          <div><dt>Location</dt><dd>{P.place.name}</dd><small class="uni-src"><a href={P.place.maps} rel="noopener" target="_blank">View on Google Maps</a></small></div>
+        )}
         {(P.established || u.founded) && (
           <div>
             <dt>Established</dt>
@@ -126,7 +157,7 @@ const ld = {
           ))}
         </ul>
       )}
-      {!P.campuses && <p class="small">Locations from <a href={u.campusSrc}>Wikidata</a>. Other campuses may not be listed.</p>}
+      <p class="small">Campuses the university names on its own website. Check the website for the full list.</p>
     </section>
   )}
 
@@ -134,9 +165,9 @@ const ld = {
     <section class="sec" aria-labelledby="faculties">
       <h2 id="faculties">Faculties and departments</h2>
       <ul class="uni-facs">
-        {faculties.map((f) => <li>{f.url ? <a href={f.url} rel="noopener">{f.name}</a> : <span>{f.name}</span>}</li>)}
+        {faculties.map((f) => <li><a href={facHref(f)} rel="noopener">{f.name}</a></li>)}
       </ul>
-      <p class="small">As named by the university. Not every department is listed.</p>
+      <p class="small">As named by the university. Each name opens the faculty's own page where we found it, and the university's website where we did not. Not every department is listed.</p>
     </section>
   )}
 
@@ -145,27 +176,32 @@ const ld = {
       <h2 id="official">Official pages</h2>
       <ul class="uni-pages">
         {pages.map((x) => (
-          <li><a href={x.href} rel="noopener"><strong>{x.title}</strong><span>{x.text}</span><em>{host(x.href)}</em></a></li>
+          <li><a href={x.href} rel="noopener"><strong>{x.title}<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5" /></svg></strong><span>{x.text}</span><em>{host(x.href)}</em></a></li>
         ))}
       </ul>
     </section>
   )}
 
-  {gallery.length >= 4 && (
+  {slides.length >= 4 && (
     <section class="sec" aria-labelledby="gallery">
       <h2 id="gallery">Campus gallery</h2>
-      <div class="uni-gal">
-        {gallery.map((g) => (
-          <figure>
-            <a href={g.page} rel="noopener" target="_blank"><img src={g.u} width={g.w} height={g.h || undefined} alt={`${u.name} campus photo`} loading="lazy" decoding="async" /></a>
-            <figcaption>{g.by}{g.y ? `, ${g.y}` : ''}, <a href={g.licUrl || g.page} rel="noopener">{g.lic}</a>, <a href={g.page} rel="noopener">Commons</a></figcaption>
-          </figure>
-        ))}
+      <div class="uni-slider" data-slider>
+        <div class="uni-track" tabindex="0" role="region" aria-label={`${u.name} campus photos`}>
+          {slides.map((g, i) => (
+            <figure>
+              <a href={g.page} rel="noopener" target="_blank"><img src={g.src} width={g.sw} height={g.sh || undefined} alt={`${u.name} campus photo ${i + 1}`} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></a>
+              <figcaption>Photo: {g.by}{g.y ? `, ${g.y}` : ''}, <a href={g.licUrl || g.page} rel="noopener">{g.lic}</a>, <a href={g.page} rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
+          ))}
+        </div>
+        <button type="button" class="uni-prev" aria-label="Previous photo"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5" /></svg></button>
+        <button type="button" class="uni-next" aria-label="Next photo"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5" /></svg></button>
+        <p class="uni-count" aria-live="polite"><span data-n>1</span> / {slides.length}</p>
       </div>
     </section>
   )}
 
-  {(partners.length > 0 || links.partners) && (
+  {SHOW_INDUSTRY && (partners.length > 0 || links.partners) && (
     <section class="sec" aria-labelledby="industry">
       <h2 id="industry">Industry connections</h2>
       <div class="uni-industry">
@@ -207,13 +243,23 @@ const ld = {
   {PUBLISH && (schol.length > 0 || sLink) && (
     <section class="sec" aria-labelledby="schol">
       <h2 id="schol">Scholarships for international students</h2>
-      {schol.length > 0 && (
-        <ul>
-          {schol.map((s) => <li><a href={`/scholarships/${s.slug}/`}>{s.name}</a> <span class="muted">{STATUS_LABEL[statusOf(s)]}{s.deadline ? `, deadline ${fmtIso(s.deadline)}` : ''}</span></li>)}
-        </ul>
-      )}
-      {sLink && sLink.kind === 'page' && <p><a href={sLink.url} rel="noopener">{u.name}'s own scholarships page</a>{sLink.checked && <span class="muted"> (checked {fmtIso(sLink.checked)})</span>}</p>}
-      {sLink && sLink.kind === 'search' && <p>{schol.length === 0 && <Fragment>We have not read scholarships from this university's website. </Fragment>}<a href={sLink.url} rel="noopener">Search {u.name}'s website for scholarships</a></p>}
+      <ul class="uni-schol">
+        {schol.map((s) => (
+          <li>
+            <a href={`/scholarships/${s.slug}/`}>
+              <strong>{s.name}</strong>
+              <span class="uni-chip">{STATUS_LABEL[statusOf(s)]}</span>
+              {s.deadline && <small>Deadline {fmtIso(s.deadline)}</small>}
+            </a>
+          </li>
+        ))}
+        {sLink && sLink.kind === 'page' && (
+          <li class="uni-schol-own"><a href={sLink.url} rel="noopener"><strong>{u.name}'s own scholarships page</strong><small>{sLink.checked ? `Checked ${fmtIso(sLink.checked)}` : host(sLink.url)}</small></a></li>
+        )}
+        {sLink && sLink.kind === 'search' && (
+          <li class="uni-schol-own"><a href={sLink.url} rel="noopener"><strong>Search {u.name}'s website for scholarships</strong>{schol.length === 0 && <small>We have not read scholarships from this university's website yet.</small>}</a></li>
+        )}
+      </ul>
       <p class="small">{schol.length > 0 && 'Read by a program from the university\'s website. '}Check the official page before you apply. <a href="/scholarships/">Search all scholarships</a></p>
     </section>
   )}
@@ -237,9 +283,12 @@ const ld = {
   {u.alumni && u.alumni.length > 0 && (
     <section class="sec" aria-labelledby="alumni">
       <h2 id="alumni">People who studied here</h2>
-      <ul class="people">
+      <ul class="uni-people">
         {u.alumni.map((a) => (
-          <li><a href={a.u}>{a.n}</a>{a.w && <small>{a.w}</small>}</li>
+          <li>
+            <span class="uni-ini" aria-hidden="true">{initials(a.n)}</span>
+            <div><a href={a.u} rel="noopener">{a.n}</a>{a.w && <small>{a.w}</small>}</div>
+          </li>
         ))}
       </ul>
       <p class="small">From Wikidata, where "educated at" names this university. It is not a complete list.</p>
@@ -248,10 +297,13 @@ const ld = {
 
   <section class="sec" aria-labelledby="rank">
     <h2 id="rank">Rankings</h2>
-    <div class="note">
-      <p>Ranking sites measure different things, so a university can look very different on each. We don't copy their numbers. See how this university appears on the ranking sites themselves.</p>
-      <p><a href="/rankings/">Where to check the rankings</a></p>
-    </div>
+    <p>Ranking sites measure different things, so a university can look very different on each. We don't copy their numbers. Open each site to see how {u.name} appears.</p>
+    <ul class="uni-rank">
+      {rankingSites.map((r) => (
+        <li><a href={r.url} rel="noopener"><strong>{r.name}</strong><span>{r.by}{r.note ? `. ${r.note}` : ''}</span><em>{host(r.url)}</em></a></li>
+      ))}
+    </ul>
+    <p class="small">Independent organisations; Universities500 is not connected to them. <a href="/rankings/">How to read the rankings</a></p>
   </section>
 
   {peers.length > 0 && (
@@ -267,3 +319,56 @@ const ld = {
   )}
   <RelatedArticles list={forDestination(u.country, 3)} heading={`Reading on studying in ${u.countryName}`} more={[`/articles/destination/${u.country}/`, `All ${u.countryName} articles`]} />
 </Base>
+
+<script>
+  // Header photos: fade from one to the next every 6.5 seconds. Without script, or with reduced motion, the first photo stays.
+  const hero = document.querySelector('[data-hero]');
+  if (hero) {
+    const imgs = Array.from(hero.querySelectorAll('.uni-hero-bg img'));
+    const cr = hero.querySelector('[data-cr]');
+    const btn = hero.querySelector('.uni-hero-pause');
+    if (imgs.length > 1 && cr && btn) {
+      let i = 0;
+      let timer = 0;
+      let paused = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const load = (img) => { if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; } };
+      const el = (tag, text, href) => { const e = document.createElement(tag); if (text) e.textContent = text; if (href) { e.href = href; e.rel = 'noopener'; } return e; };
+      const credit = (img) => {
+        cr.textContent = '';
+        cr.append('Photo: ' + img.dataset.by + (img.dataset.y ? ', ' + img.dataset.y : '') + ', ', el('a', img.dataset.lic, img.dataset.licurl), ', ', el('a', 'Wikimedia Commons', img.dataset.page));
+      };
+      const show = (n) => { imgs[i].classList.remove('is-on'); i = n; imgs[i].classList.add('is-on'); credit(imgs[i]); };
+      const next = () => {
+        const n = (i + 1) % imgs.length;
+        const t = imgs[n];
+        load(t);
+        if (t.complete && t.naturalWidth) show(n); else t.addEventListener('load', () => show(n), { once: true });
+      };
+      const stop = () => { clearInterval(timer); timer = 0; };
+      const start = () => { stop(); if (!paused && !document.hidden) timer = setInterval(next, 6500); };
+      const label = () => { btn.textContent = paused ? 'Play photos' : 'Pause photos'; btn.setAttribute('aria-pressed', String(paused)); };
+      btn.addEventListener('click', () => { paused = !paused; label(); start(); });
+      document.addEventListener('visibilitychange', start);
+      window.addEventListener('load', () => setTimeout(() => load(imgs[1]), 1200));
+      label();
+      start();
+    }
+  }
+
+  // Campus gallery: swipe or scroll sideways; the arrows and the counter follow.
+  document.querySelectorAll('[data-slider]').forEach((box) => {
+    const track = box.querySelector('.uni-track');
+    const n = box.querySelector('[data-n]');
+    const prev = box.querySelector('.uni-prev');
+    const next = box.querySelector('.uni-next');
+    if (!track || !n || !prev || !next) return;
+    const count = track.children.length;
+    const at = () => Math.round(track.scrollLeft / track.clientWidth);
+    const go = (d) => track.scrollTo({ left: Math.max(0, Math.min(count - 1, at() + d)) * track.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    const sync = () => { n.textContent = String(at() + 1); prev.disabled = at() <= 0; next.disabled = at() >= count - 1; };
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
+    track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+    sync();
+  });
+</script>
