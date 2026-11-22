@@ -281,6 +281,7 @@ SYSTEM = (
     "and the year it refers to if the page says so (put the year inside the quote), and the year the university says it was founded (its origin, the earliest year it gives for itself). "
     "If the pages also say it took its present form in a later year (a merger, a new name, university status), give that year as present_form with its own quote. "
     "A quote is copied exactly, never reworded. If a page does not state a fact, return null for it. "
+    "Take every quote from the university's own pages (the ones marked 'page'); take the founding year from the Wikipedia text only when the university's pages do not state it. "
     "3) List the campuses (each with its own name, not 'campus life' or 'campus map'), the faculties or schools at the top level of the university, "
     "and the outside organisations the university says it works with (companies, industry bodies, research organisations), each as its own entry with its own name "
     "and the exact sentence that names it. Not the university's own offices, units, programmes or companies; not other universities or colleges; not sports clubs; not a list "
