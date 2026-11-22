@@ -19,6 +19,7 @@ import argparse
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -70,7 +71,9 @@ def one(r):
     if pub.get('founded') and fo.get('v'):
         out['established'] = {'v': fo['v'], 'note': (f"Present form {fo['present_form']['v']}" if fo.get('present_form') else ''), 'source': fo.get('source_text') or '', 'src': fo.get('src') or ''}
     st = r.get('students') or {}
-    if pub.get('students') and st.get('v'):
+    # a year in the future is a target the page talked about, not a count; leave the figure out
+    future = bool(st.get('asof')) and str(st['asof'])[:4].isdigit() and int(str(st['asof'])[:4]) > date.today().year
+    if pub.get('students') and st.get('v') and not future:
         out['students'] = {'v': st['v'], 'asof': st.get('asof'), 'source': st.get('source_text') or '', 'src': st.get('src') or ''}
 
     camps = []

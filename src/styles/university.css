@@ -106,8 +106,9 @@
 .uni-schol strong { font-family: var(--display); color: var(--k-title); font-size: 1.08rem; line-height: 1.25; }
 .uni-schol small { color: var(--muted); font-size: .85rem; margin-top: auto; }
 .uni-chip { display: inline-block; font-size: .78rem; font-weight: 700; color: var(--k-cobalt); border: 1px solid var(--k-cobalt); padding: .1rem .55rem; }
-.uni-schol .uni-schol-own a { border-top-color: var(--cta); background: #FFF8D6; }
-.uni-schol .uni-schol-own a:hover { background: #FFF1B0; }
+.uni-schol .uni-schol-own a { background: var(--cta); border-color: var(--cta); color: var(--cta-on); }
+.uni-schol .uni-schol-own a:hover { background: var(--cta-hover); border-color: var(--cta-hover); }
+.uni-schol .uni-schol-own strong, .uni-schol .uni-schol-own small { color: var(--cta-on); }
 
 /* people: a box each, in columns. Initials, not photographs. */
 .uni-people { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: .8rem; }

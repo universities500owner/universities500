@@ -37,6 +37,11 @@ def rec():
 
 
 class Tests(unittest.TestCase):
+    def test_future_dated_student_count_is_left_out(self):
+        r = rec()
+        r['students']['asof'] = 2099
+        self.assertNotIn('students', P.one(r))
+
     def test_everything_that_passed_is_in(self):
         o = P.one(rec())
         self.assertEqual(o['brief'], 'Stub University is a public university.')

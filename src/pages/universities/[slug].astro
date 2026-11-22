@@ -18,12 +18,16 @@ const { u } = Astro.props;
 const peers = related(u);
 const schol = itemsFor(u.slug).slice(0, 6);
 const sLink = scholarshipsLink(u);
+// the page reader sometimes keeps the menu word in front of a name: "Scholarships President's Scholars Program"
+const schName = (n) => String(n || '').replace(/^Scholarships\s+(?=[A-Z])/, '');
 const courses = coursesFor(u.slug);
 const bachelors = courses.filter((c) => c.level === 'Bachelor');
 const masters = courses.filter((c) => c.level === 'Master');
 
 // The checked profile, when this university has one; everything below also works without it.
 const P = profileFor(u.slug) || {};
+// Wikidata's student count is left out when the page already shows a checked one, so the page never gives two figures
+const moreStats = (u.stats || []).filter((s) => !(P.students && /^students?$/i.test(s.l)));
 const links = P.links || {};
 // Only campuses the university's own page names. Wikidata gives where the university is (P.place), not its campuses.
 const camps = P.campuses || [];
@@ -218,12 +222,12 @@ const ld = {
     </section>
   )}
 
-  {!P.established && (u.stats || []).length > 0 && (
+  {!P.established && moreStats.length > 0 && (
     <section class="sec" aria-labelledby="facts">
       <h2 id="facts">More facts</h2>
       <table class="facts">
         <tbody>
-          {(u.stats || []).map((s) => (
+          {moreStats.map((s) => (
             <tr>
               <th scope="row">{s.l}</th>
               <td>{s.v}{s.a ? ` (${s.a})` : ''}<a class="source" href={s.src}>Source: Wikidata. Can be out of date.</a></td>
@@ -247,7 +251,7 @@ const ld = {
         {schol.map((s) => (
           <li>
             <a href={`/scholarships/${s.slug}/`}>
-              <strong>{s.name}</strong>
+              <strong>{schName(s.name)}</strong>
               <span class="uni-chip">{STATUS_LABEL[statusOf(s)]}</span>
               {s.deadline && <small>Deadline {fmtIso(s.deadline)}</small>}
             </a>
