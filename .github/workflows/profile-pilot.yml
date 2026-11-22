@@ -2,7 +2,8 @@ name: Profile pilot (25 universities)
 
 # A trial. Reads Wikidata and Wikimedia Commons (open data) and the universities' own websites (politely: robots.txt
 # obeyed, 3 seconds between requests to the same site), for the 25 universities in scripts/profiles/pilot_25.json.
-# It writes nothing into src/data and commits nothing. Open the run summary for the fill-rate report;
+# If the ANTHROPIC_API_KEY repository secret is set, a second step has a model write the brief and copy out the university's own figures and
+# names, and look at each photo; code checks every answer against the page text. It writes nothing into src/data and commits nothing. Open the run summary for the fill-rate report;
 # the full records (profiles.json) and review.html (one page with every university, its photos and credits) are in the profile-pilot artifact.
 #
 # Run it from the Actions tab (Run workflow), or add the label "run-profile-pilot" to a pull request.
@@ -23,6 +24,8 @@ permissions:
 
 jobs:
   pilot:
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-profile-pilot'
     runs-on: ubuntu-latest
     timeout-minutes: 60
@@ -32,8 +35,10 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install beautifulsoup4 lxml
-      - name: Self-test (stub website and stub Wikimedia API, no internet)
-        run: python3 scripts/profiles/test_profiles.py
+      - name: Self-test (stub website, stub Wikimedia API and stub model, no internet)
+        run: |
+          python3 scripts/profiles/test_profiles.py
+          python3 scripts/profiles/test_ai.py
       - name: Collect
         env:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
@@ -42,9 +47,25 @@ jobs:
           ARGS="--out out --minutes 45"
           if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
           python3 scripts/profiles/collect.py $ARGS
+      - name: AI step (brief, the university's own figures, campus/faculty/partner names, photo check)
+        if: ${{ env.ANTHROPIC_API_KEY != '' }}
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+        run: |
+          pip install anthropic
+          python3 scripts/profiles/ai.py --in out --out out
+      - name: Note that the AI step was skipped
+        if: ${{ env.ANTHROPIC_API_KEY == '' }}
+        run: |
+          echo "AI step skipped - the ANTHROPIC_API_KEY repository secret is not set." >> "$GITHUB_STEP_SUMMARY"
       - name: Report
         if: always()
         run: |
+          if [ -f out/ai_report.md ]; then
+            cat out/ai_report.md >> "$GITHUB_STEP_SUMMARY"
+            echo "::group::ai_report.md"; cat out/ai_report.md; echo "::endgroup::"
+            echo "::group::profiles_ai.json"; cat out/profiles_ai.json; echo; echo "::endgroup::"
+          fi
           if [ -f out/report.md ]; then
             cat out/report.md >> "$GITHUB_STEP_SUMMARY"
             echo "::group::report.md"; cat out/report.md; echo "::endgroup::"
@@ -54,7 +75,8 @@ jobs:
         if: always()
         run: |
           if [ -f out/profiles.json ]; then
-            python3 scripts/profiles/review.py --in out/profiles.json --out out/review.html
+            SRC=out/profiles.json; if [ -f out/profiles_ai.json ]; then SRC=out/profiles_ai.json; fi
+            python3 scripts/profiles/review.py --in $SRC --out out/review.html
             echo "::group::review.html.gz.b64"; gzip -9c out/review.html | base64 -w 3000; echo; echo "::endgroup::"
           fi
       - uses: actions/upload-artifact@v4

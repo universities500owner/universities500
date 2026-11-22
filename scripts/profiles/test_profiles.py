@@ -276,6 +276,24 @@ class Tests(unittest.TestCase):
         self.assertEqual(CM.photo_year(saved['imageinfo'][0])[1], 'uploaded')          # not 'taken'
         self.assertEqual(CM.photo_year(FILES['File:Stub University library 2021.jpg']['imageinfo'][0]), (2021, 'taken'))
 
+    def test_gallery_prefers_photos_from_the_last_15_years(self):
+        class Api2(FakeApi):
+            def get_json(self, base, params):
+                if params.get('list') == 'categorymembers' and params['cmtype'] == 'file':
+                    return {'query': {'categorymembers': [{'title': f'File:Stub campus {i}.jpg'} for i in range(8)]}}
+                if params.get('list') == 'categorymembers':
+                    return {'query': {'categorymembers': []}}
+                if params.get('prop') == 'imageinfo':
+                    pages = []
+                    for t in params['titles'].split('|'):
+                        i = int(t.split()[-1].split('.')[0])
+                        pages.append(photo(t, 4000, 2500, date=f'{1908 if i == 0 else 2020 + i % 5}-05-01', artist=f'Author {i}'))
+                    return {'query': {'pages': pages}}
+                raise AssertionError(params)
+        photos, _ = CM.gallery(Api2(), 'Stub University', 2026, want=6)
+        self.assertEqual(len(photos), 6)
+        self.assertTrue(all(p['year'] >= 2011 for p in photos))
+
     def test_credit_must_be_a_name_not_an_instruction(self):
         for who in ('Thank you to indicate this credit line next to the image in case of reuse: Credit Sorbonne',
                     'Unknown author Unknown author', 'No machine-readable author provided. Donaldytong assumed', 'x' * 80):

@@ -159,6 +159,8 @@ def gallery(api, category, this_year=None, want=8, scan=260):
     # a campus gallery shows buildings and grounds: use photos whose title or categories say so, when there are enough
     scenic = [p for p in good if HINT_WORDS.search(p['title'] + ' ' + p.get('categories', ''))]
     pool = scenic if len(scenic) >= want // 2 else good
+    recent = [p for p in pool if (p.get('year') or 0) >= this_year - 15]        # 'latest' photos: taken within the last 15 years, when enough exist
+    pool = recent if len(recent) >= want // 2 else pool
     pool.sort(key=lambda x: -score(x, this_year))
     picked, per_author = [], {}
     for ph in pool:
