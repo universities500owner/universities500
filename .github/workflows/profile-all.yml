@@ -39,6 +39,15 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install beautifulsoup4 lxml anthropic
+      - name: Check the API key and credit first (one tiny call; fails in seconds instead of after 30 minutes)
+        run: |
+          python3 - <<'EOF'
+          import sys
+          sys.path.insert(0, 'scripts/profiles')
+          import ai
+          ai.make_client().messages.create(model=ai.MODEL, max_tokens=1, messages=[{'role': 'user', 'content': 'hi'}])
+          print('API key and credit are fine')
+          EOF
       - name: Collect
         run: python3 scripts/profiles/collect.py --out out --minutes 60 --all --shard ${{ matrix.shard }}/6
       - name: AI step
