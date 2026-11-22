@@ -21,7 +21,7 @@ jobs:
       - run: pip install playwright pillow && python3 -m playwright install --with-deps chromium
       - name: Serve and shoot
         run: |
-          (npx astro preview --port 4322 > preview.log 2>&1 &)
+          (python3 -m http.server 4322 --directory dist > preview.log 2>&1 &)
           sleep 6
           python3 - <<'PY'
           import base64, io, sys
