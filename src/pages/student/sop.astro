@@ -1,0 +1,161 @@
+---
+// The SOP builder, in four screens inside the student dashboard: where the profile stands, which course the SOP is for,
+// the story questions, and the draft with the facts it used. Everything dynamic is drawn by src/scripts/student-sop.js.
+import Student from '../../layouts/Student.astro';
+---
+<Student title="Statement of Purpose" lede="A first draft written only from your own answers and from university facts we checked against the university's own pages." active="sop" page="sop">
+  <ol class="sop-steps" data-steps aria-label="Where you are"></ol>
+
+  <section class="st-card sop-view" data-view="home" aria-labelledby="sop-home-h" hidden>
+    <h2 id="sop-home-h" tabindex="-1">Your first draft starts with your story</h2>
+    <p class="st-sub">We write only from what you tell us and from checked university facts. For the draft to be accurate and sound like you, your profile needs to be complete first.</p>
+    <div class="st-prog"><b data-pct></b><span class="meter" aria-hidden="true"><i data-bar style="width:0"></i></span></div>
+    <ul class="st-todo" data-rows></ul>
+    <div class="st-actions"><a class="btn" data-go href="/student/profile/">Complete my profile</a></div>
+    <div class="st-soon sop-trio">
+      <div><h3>Facts you can check</h3><p>Every university fact in your draft shows its source page and the day we last checked it.</p></div>
+      <div><h3>Your words, your voice</h3><p>The draft is built from your own answers and notes, not a template with the blanks filled in.</p></div>
+      <div><h3>A starting point, not a finish</h3><p>You review and edit before you download. A university wants to hear from you.</p></div>
+    </div>
+  </section>
+
+  <section class="sop-view" data-view="start" aria-labelledby="sop-start-h" hidden>
+    <div class="st-card">
+      <h2 id="sop-start-h" tabindex="-1">Where is this SOP going?</h2>
+      <p class="st-sub">Every SOP is written for one course at one university. Pick them first, so we ask the right questions and use the right facts.</p>
+      <div class="sop-short" data-short hidden>
+        <h3>From your shortlist</h3>
+        <ul data-short-list></ul>
+      </div>
+    </div>
+
+    <div class="st-card sop-pick">
+      <h3 class="sop-h"><span class="sop-n" data-n="1">1</span> Destination</h3>
+      <div class="st-chips" data-dests role="radiogroup" aria-label="Destination"></div>
+    </div>
+
+    <div class="st-card sop-pick" data-uni-card>
+      <h3 class="sop-h"><span class="sop-n" data-n="2">2</span> University</h3>
+      <label class="sop-find"><span class="sr-only">Search the universities</span><input type="search" data-uni-q autocomplete="off" placeholder="Search the universities" /></label>
+      <ul class="sop-opts" data-unis></ul>
+      <p class="st-sub sop-empty" data-uni-empty hidden></p>
+    </div>
+
+    <div class="st-card sop-pick" data-course-card>
+      <h3 class="sop-h"><span class="sop-n" data-n="3">3</span> Course</h3>
+      <p class="st-sub" data-course-note></p>
+      <label class="sop-find" data-course-find hidden><span class="sr-only">Search the courses</span><input type="search" data-course-q autocomplete="off" placeholder="Search the courses" /></label>
+      <ul class="sop-opts" data-courses></ul>
+      <details class="st-more sop-typed" data-typed>
+        <summary>My course is not listed</summary>
+        <div class="sop-typed-body">
+          <label class="sop-lab" for="sop-course-name">Course name</label>
+          <input id="sop-course-name" type="text" maxlength="140" autocomplete="off" placeholder="For example, MSc Data Science" data-course-name />
+          <p class="st-sub">With a course we have not read, the draft has no course facts to use. It will show gaps for you to fill from the university's page.</p>
+          <button class="btn ghost" type="button" data-use-typed>Use this course</button>
+        </div>
+      </details>
+    </div>
+
+    <div class="st-card sop-bar">
+      <p class="sop-for"><span>Writing for</span> <b data-summary>Nothing chosen yet</b></p>
+      <div class="sop-group" data-group-wrap hidden>
+        <label class="sop-lab" for="sop-group">Closest subject area</label>
+        <select id="sop-group" data-group></select>
+        <p class="st-sub">This decides which roles we suggest in question 5.</p>
+      </div>
+      <div class="st-actions">
+        <button class="btn" type="button" data-next disabled>Continue to your story</button>
+        <p class="st-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sop-view" data-view="story" aria-labelledby="sop-story-h" hidden>
+    <div class="st-card">
+      <p class="sop-for"><span>Writing for</span> <b data-for></b> <a href="#start" class="sop-change">Change course</a></p>
+      <h2 id="sop-story-h" tabindex="-1">Tell us your story</h2>
+      <p class="st-sub">Tap the options that fit you. Pick what is true for you, and add a few words of your own where you can. Those words are what make your draft different from anyone else's.</p>
+      <div class="st-prog"><b data-done-text></b><span class="meter" aria-hidden="true"><i data-bar style="width:0"></i></span></div>
+    </div>
+    <div data-qs></div>
+    <div class="st-card sop-q">
+      <fieldset class="st-q">
+        <legend>7. Which of these sounds most like you?</legend>
+        <p class="sop-hint">This sets the voice of your draft. Pick one. <b class="sop-count" data-tone-count></b></p>
+        <div class="sop-tones" data-tones role="radiogroup" aria-label="Voice"></div>
+      </fieldset>
+    </div>
+    <div class="st-card sop-bar">
+      <div class="st-actions">
+        <button class="btn" type="button" data-make disabled>Create my first draft</button>
+        <p class="st-status" data-status role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="st-soon sop-trio">
+      <div><h3>Why options?</h3><p>Options keep this quick. The few words you add decide how personal the draft sounds. Without them, two students who tap the same options get similar drafts.</p></div>
+      <div><h3>What we will not do</h3><p>We will not add achievements, marks, employers or dates you have not given us. If a detail is missing, the draft shows a gap for you to fill.</p></div>
+      <div><h3>From your profile</h3><p>Chips marked "profile" come from your work experience and education, so you do not type them twice.</p></div>
+    </div>
+  </section>
+
+  <section class="sop-view" data-view="draft" aria-labelledby="sop-draft-h" hidden>
+    <div class="st-card">
+      <p class="sop-for"><span>Writing for</span> <b data-for></b> <a href="#start" class="sop-change">Change course</a> <a href="#story" class="sop-change">Edit my answers</a></p>
+      <h2 id="sop-draft-h" tabindex="-1">Your first draft</h2>
+      <p class="st-sub" data-sub></p>
+      <ul class="sop-key" aria-label="Key to the colours">
+        <li><span class="sop-k sop-k-f"></span> Linked to a checked fact</li>
+        <li><span class="sop-k sop-k-s"></span> Your own statement</li>
+        <li><span class="sop-k sop-k-g"></span> A gap for you to fill</li>
+      </ul>
+    </div>
+
+    <div class="sop-grid">
+      <div class="sop-main">
+        <div class="st-card">
+          <h3 class="sop-h">How should it open?</h3>
+          <p class="st-sub">The same answers, a different opening. Pick the one that feels most like you.</p>
+          <div class="sop-arcs" data-arcs role="radiogroup" aria-label="Opening"></div>
+          <p class="sop-voice" data-voice></p>
+        </div>
+
+        <div class="st-card sop-paper-card">
+          <div class="sop-paper-head">
+            <h3 class="sop-h">Statement of Purpose</h3>
+            <span class="sop-words" data-words></span>
+          </div>
+          <p class="st-status is-ok" data-edited-note hidden></p>
+          <div class="sop-paper" data-paper></div>
+          <label class="sop-lab" for="sop-edit" data-edit-label hidden>Edit your draft. Replace each [gap] with your own words.</label>
+          <textarea id="sop-edit" class="sop-edit" data-edit rows="18" maxlength="9000" hidden></textarea>
+          <div class="st-actions">
+            <button class="btn ghost" type="button" data-edit-toggle>Edit in my own words</button>
+            <button class="btn ghost" type="button" data-restore hidden>Rebuild from my answers</button>
+            <p class="st-status" data-status role="status" aria-live="polite"></p>
+          </div>
+          <label class="sop-review"><input type="checkbox" data-review /> <span>I have read this draft, filled the gaps and changed it so it is in my own words.</span></label>
+          <div class="st-actions">
+            <button class="btn" type="button" data-download disabled>Download as .txt</button>
+            <span class="sop-plain">Plain text only. Paste it into the university's application form.</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="sop-side" aria-label="Facts and checks">
+        <div class="st-card">
+          <h3 class="sop-h">Facts used</h3>
+          <p class="st-sub" data-facts-sub>Tap a fact to see where it is used.</p>
+          <ul class="sop-facts" data-facts></ul>
+        </div>
+        <div class="st-card">
+          <h3 class="sop-h">Draft checks</h3>
+          <ul class="sop-checks" data-checks></ul>
+        </div>
+      </aside>
+    </div>
+    <p class="small sop-foot">Always check course details on the university's page before you apply. Fees, intakes and entry rules can change. Your answers are saved in your account; you can download or delete them from Settings.</p>
+  </section>
+
+  <script>import '../../scripts/student.js';</script>
+</Student>

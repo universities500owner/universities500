@@ -162,12 +162,13 @@ test('search text is stripped of anything that could change the query', async ()
   assert.equal(p.sort, 'created_at'); assert.equal(p.filters, '');
 });
 
-test('opening one student: details, with immigration and visa answers kept private and notes left out', async () => {
+test('opening one student: details, with immigration, visa and SOP answers kept private and notes left out', async () => {
   const { api, owner, fake, ids } = await world();
   const now = new Date(fake.clock.t).toISOString();
   fake.sections.set(`${ids.asha.id}|profile`, { student_id: ids.asha.id, section: 'profile', data: { full_name: 'Asha Rao' }, updated_at: now });
   fake.sections.set(`${ids.asha.id}|immigration`, { student_id: ids.asha.id, section: 'immigration', data: { history: 'some', items: [{ country: 'Canada', year: 2024, kind: 'study', outcome: 'refused' }] }, updated_at: now });
   fake.sections.set(`${ids.asha.id}|visa_au`, { student_id: ids.asha.id, section: 'visa_au', data: { funds: 999 }, updated_at: now });
+  fake.sections.set(`${ids.asha.id}|sop`, { student_id: ids.asha.id, section: 'sop', data: { notes: { q3: 'secret gap story' } }, updated_at: now });
   fake.saved.set(`${ids.asha.id}|crs:a/b`, { student_id: ids.asha.id, item_id: 'crs:a/b', kind: 'crs', title: 'MSc', status: 'shortlisted', note: 'my private note', sub: 'Uni', url: '/courses/a/b/', saved_at: now, updated_at: now });
   const r = await api.one(owner, ids.asha.id);
   assert.equal(r.status, 200);
@@ -177,7 +178,8 @@ test('opening one student: details, with immigration and visa answers kept priva
   assert.equal(j.sections.profile.data.full_name, 'Asha Rao');
   assert.deepEqual(j.sections.immigration, { hidden: true, updated_at: now });
   assert.deepEqual(j.sections.visa_au, { hidden: true, updated_at: now });
-  assert.ok(!/refused|Canada|999|my private note/.test(text), 'private answers and notes are not sent');
+  assert.deepEqual(j.sections.sop, { hidden: true, updated_at: now });
+  assert.ok(!/refused|Canada|999|my private note|secret gap story/.test(text), 'private answers and notes are not sent');
   assert.equal(j.shortlist.length, 1);
   assert.equal(j.shortlist[0].title, 'MSc');
   assert.equal((await api.one(owner, 'not-a-uuid')).status, 400);
