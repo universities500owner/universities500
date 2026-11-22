@@ -39,6 +39,7 @@ jobs:
         run: |
           python3 scripts/profiles/test_profiles.py
           python3 scripts/profiles/test_ai.py
+          python3 scripts/profiles/test_publish.py
       - name: Collect
         env:
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}

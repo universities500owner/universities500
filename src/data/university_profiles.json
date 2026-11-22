@@ -1,0 +1,3318 @@
+{
+ "monash-university": {
+  "name": "Monash University",
+  "generated": "2026-11-22",
+  "established": {
+   "v": 1958,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Monash_University"
+  },
+  "campuses": [
+   {
+    "name": "Melbourne",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Melbourne+Monash+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Faculty of Arts",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Education",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Engineering",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Information Technology",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Law",
+    "url": "http://www.law.monash.edu/"
+   },
+   {
+    "name": "Faculty of Pharmacy and Pharmaceutical Sciences",
+    "url": "http://www.pharm.monash.edu.au/"
+   },
+   {
+    "name": "Faculty of Science",
+    "url": ""
+   },
+   {
+    "name": "Institute of Railway Technology",
+    "url": ""
+   },
+   {
+    "name": "School of Biological Sciences",
+    "url": ""
+   },
+   {
+    "name": "School of Biomedical Sciences",
+    "url": ""
+   },
+   {
+    "name": "School of Chemistry",
+    "url": ""
+   },
+   {
+    "name": "School of Earth, Atmosphere and Environment",
+    "url": "https://www.monash.edu/science/schools/earth-atmosphere-environment"
+   },
+   {
+    "name": "School of Geography and Environmental Science",
+    "url": ""
+   },
+   {
+    "name": "School of Geosciences",
+    "url": ""
+   },
+   {
+    "name": "School of Languages Literatures Cultures and Linguistics",
+    "url": ""
+   },
+   {
+    "name": "School of Mathematical Sciences",
+    "url": ""
+   },
+   {
+    "name": "School of Nursing and Midwifery - Berwick Campus",
+    "url": ""
+   },
+   {
+    "name": "School of Nursing and Midwifery - Peninsula Campus",
+    "url": ""
+   },
+   {
+    "name": "School of Philosophical Historical and International Studies",
+    "url": ""
+   },
+   {
+    "name": "School of Physics",
+    "url": ""
+   },
+   {
+    "name": "School of Primary Health Care",
+    "url": ""
+   },
+   {
+    "name": "School of Psychological Sciences",
+    "url": ""
+   },
+   {
+    "name": "School of Public Health and Preventive Medicine - Clayton Campus",
+    "url": ""
+   },
+   {
+    "name": "School of Rural Health",
+    "url": ""
+   }
+  ],
+  "social": {
+   "instagram": "https://www.instagram.com/monash_uni/",
+   "linkedin": "https://www.linkedin.com/school/monash-university/",
+   "youtube": "https://www.youtube.com/channel/UCO3krgSinpAjqXE1DU47-cA"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Iie_msa_campus.jpg/960px-Iie_msa_campus.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Innocent Dlamini",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Iie_msa_campus.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Iie_msa_campus_two.jpg/960px-Iie_msa_campus_two.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Innocent Dlamini",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Iie_msa_campus_two.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Biomedical_Learning_and_Teaching_Building_-In_Explore-_%2847587403542%29.jpg/960px-Biomedical_Learning_and_Teaching_Building_-In_Explore-_%2847587403542%29.jpg",
+    "w": 960,
+    "h": 671,
+    "by": "Rob Deutscher from Melbourne, Australia",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Biomedical_Learning_and_Teaching_Building_-In_Explore-_(47587403542).jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Monash_Caulfield_Campus_Library_2_%2848720297591%29.jpg/960px-Monash_Caulfield_Campus_Library_2_%2848720297591%29.jpg",
+    "w": 960,
+    "h": 673,
+    "by": "Rob Deutscher from Melbourne, Australia",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Monash_Caulfield_Campus_Library_2_(48720297591).jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Monash_University%2C_Peninsula_Campus.jpg/960px-Monash_University%2C_Peninsula_Campus.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Michael Rowe",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Monash_University,_Peninsula_Campus.jpg",
+    "y": 2018
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Monash_University%2C_Clayton_campus_-_5.jpg/960px-Monash_University%2C_Clayton_campus_-_5.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Michael_Rowe",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Monash_University,_Clayton_campus_-_5.jpg",
+    "y": 2018
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Woodside_Building_for_Technology_and_Design%2C_Monash_University%2C_Clayton_campus.jpg/960px-Woodside_Building_for_Technology_and_Design%2C_Monash_University%2C_Clayton_campus.jpg",
+    "w": 960,
+    "h": 651,
+    "by": "Monash Information Technology",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Woodside_Building_for_Technology_and_Design,_Monash_University,_Clayton_campus.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Teesnow_sir_louis_matheson_library.jpg/960px-Teesnow_sir_louis_matheson_library.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "www.teesnow.com.au",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Teesnow_sir_louis_matheson_library.jpg",
+    "y": 2017
+   }
+  ]
+ },
+ "curtin-university": {
+  "name": "Curtin University",
+  "generated": "2026-11-22",
+  "brief": "Curtin University is a public research university in Bentley, Perth, Western Australia. Its main areas of study include agriculture, environment and sustainability; architecture and construction; arts and creative industries; business, innovation, management and law; education; engineering, mining and surveying; health; information technology; and physical sciences, geoscience and mathematics. Its largest campus is Curtin Perth in Bentley, and it has campuses in Kalgoorlie, Midland, Malaysia, Singapore, Dubai, Mauritius and Colombo.",
+  "established": {
+   "v": 1987,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q1145497"
+  },
+  "students": {
+   "v": 66893,
+   "asof": 2025,
+   "source": "Source: curtin.edu.au, 2025",
+   "src": "https://www.curtin.edu.au/about/history-facts/facts-figures/"
+  },
+  "campuses": [
+   {
+    "name": "Curtin Perth",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Curtin+Perth+Curtin+University",
+    "photo": null
+   },
+   {
+    "name": "Curtin Murray Street",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Curtin+Murray+Street+Curtin+University",
+    "photo": null
+   },
+   {
+    "name": "Curtin St Georges Terrace",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Curtin+St+Georges+Terrace+Curtin+University",
+    "photo": null
+   },
+   {
+    "name": "Curtin Kalgoorlie",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Curtin+Kalgoorlie+Curtin+University",
+    "photo": null
+   },
+   {
+    "name": "Curtin Midland",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Curtin+Midland+Curtin+University",
+    "photo": null
+   },
+   {
+    "name": "Curtin University Malaysia",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Curtin+University+Malaysia+Curtin+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Faculty of Health Sciences",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Business and Law",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Humanities",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Science and Engineering",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.curtin.edu.au/study/apply/",
+   "courses": "https://www.curtin.edu.au/study/undergraduate/",
+   "scholarships": "https://www.curtin.edu.au/study/scholarships/",
+   "partners": "https://www.curtin.edu.au/engage/partnerships/"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/curtinuniversity/",
+   "linkedin": "https://www.linkedin.com/school/8788/",
+   "youtube": "https://www.youtube.com/user/CurtinUniversity"
+  },
+  "partners": [
+   "Fremantle Dockers"
+  ]
+ },
+ "deakin-university": {
+  "name": "Deakin University",
+  "generated": "2026-11-22",
+  "established": {
+   "v": 1974,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q1180978"
+  },
+  "campuses": [
+   {
+    "name": "Melbourne",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Melbourne+Deakin+University",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Deakin_College_from_above_wide_0322_BT.jpg/500px-Deakin_College_from_above_wide_0322_BT.jpg",
+     "w": 500,
+     "h": 281,
+     "by": "Bob Tan",
+     "lic": "CC BY-SA 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Deakin_College_from_above_wide_0322_BT.jpg",
+     "y": 2022
+    }
+   }
+  ],
+  "faculties": [
+   {
+    "name": "College",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Arts and Education",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Business and Law",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Health",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Science Engineering and Built Environment",
+    "url": ""
+   },
+   {
+    "name": "Institute for Frontier Materials",
+    "url": ""
+   },
+   {
+    "name": "School of Accounting Economics and Finance",
+    "url": ""
+   },
+   {
+    "name": "School of Education",
+    "url": ""
+   },
+   {
+    "name": "School of Health and Social Development - Geelong Waterfront Campus",
+    "url": ""
+   },
+   {
+    "name": "School of International and Political Studies",
+    "url": ""
+   },
+   {
+    "name": "School of Law",
+    "url": ""
+   },
+   {
+    "name": "School of Life and Environmental Sciences - Warrnambool Campus",
+    "url": ""
+   },
+   {
+    "name": "School of Management and Marketing",
+    "url": ""
+   },
+   {
+    "name": "School of Nursing and Midwifery",
+    "url": ""
+   },
+   {
+    "name": "School of Psychology - Geelong Waterfront Campus",
+    "url": ""
+   }
+  ],
+  "social": {
+   "instagram": "https://www.instagram.com/deakinuniversity/"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Deakin_College_from_above_wide_0322_BT.jpg/960px-Deakin_College_from_above_wide_0322_BT.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "Bob Tan",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Deakin_College_from_above_wide_0322_BT.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Deakin_College_with_Box_Hill_0322_BT.jpg/960px-Deakin_College_with_Box_Hill_0322_BT.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "Bob Tan",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Deakin_College_with_Box_Hill_0322_BT.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Deakin_University%27s_Building_BC.jpg/960px-Deakin_University%27s_Building_BC.jpg",
+    "w": 960,
+    "h": 657,
+    "by": "Bob T",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Deakin_University%27s_Building_BC.jpg",
+    "y": 2017
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Aerial_photo_of_Deakin_University%27s_Building_C.jpg/960px-Aerial_photo_of_Deakin_University%27s_Building_C.jpg",
+    "w": 960,
+    "h": 598,
+    "by": "Bob T",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Aerial_photo_of_Deakin_University%27s_Building_C.jpg",
+    "y": 2017
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Deakin_by_night%2C_Geelong%2C_Victoria_Australia_%2815484920696%29.jpg/960px-Deakin_by_night%2C_Geelong%2C_Victoria_Australia_%2815484920696%29.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Rexness",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Deakin_by_night,_Geelong,_Victoria_Australia_(15484920696).jpg",
+    "y": 2014
+   }
+  ]
+ },
+ "imperial-college-london": {
+  "name": "Imperial College London",
+  "generated": "2026-11-22",
+  "brief": "Imperial College London is a public research university in London, England. Its history began with Prince Albert, who envisioned South Kensington as a cultural district with museums, colleges, and the Royal Albert Hall. Its main areas of study are engineering, medicine, natural sciences and business. The university has several campuses in London and the South East, including South Kensington, White City and Silwood Park, plus hospital campuses. Its four faculties are Engineering, Medicine, Natural Sciences and Imperial Business School.",
+  "established": {
+   "v": 1907,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q189022"
+  },
+  "campuses": [
+   {
+    "name": "South Kensington",
+    "maps": "https://www.google.com/maps/search/?api=1&query=South+Kensington+Imperial+College+London",
+    "photo": null
+   },
+   {
+    "name": "White City Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=White+City+Campus+Imperial+College+London",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Entrance_passage%2C_White_City_North_Campus_at_night.jpg/500px-Entrance_passage%2C_White_City_North_Campus_at_night.jpg",
+     "w": 500,
+     "h": 375,
+     "by": "Shadowssettle",
+     "lic": "CC BY-SA 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Entrance_passage,_White_City_North_Campus_at_night.jpg",
+     "y": 2020
+    }
+   },
+   {
+    "name": "Silwood Park",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Silwood+Park+Imperial+College+London",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Silwood_Park-_Sunningdale-_Natural_beauty_in_the_city_%2814854735597%29.jpg/500px-Silwood_Park-_Sunningdale-_Natural_beauty_in_the_city_%2814854735597%29.jpg",
+     "w": 500,
+     "h": 375,
+     "by": "Cameron Norman from Toronto, ON, Canada",
+     "lic": "CC BY 2.0",
+     "licUrl": "https://creativecommons.org/licenses/by/2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Silwood_Park-_Sunningdale-_Natural_beauty_in_the_city_(14854735597).jpg",
+     "y": 2014
+    }
+   },
+   {
+    "name": "Old Oak Innovation Cluster",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Old+Oak+Innovation+Cluster+Imperial+College+London",
+    "photo": null
+   },
+   {
+    "name": "Hammersmith Hospital",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Hammersmith+Hospital+Imperial+College+London",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Hammersmith_Hospital%2C_front_entrance_-_geograph.org.uk_-_4430986.jpg/500px-Hammersmith_Hospital%2C_front_entrance_-_geograph.org.uk_-_4430986.jpg",
+     "w": 500,
+     "h": 357,
+     "by": "Dr Neil Clifton",
+     "lic": "CC BY-SA 2.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Hammersmith_Hospital,_front_entrance_-_geograph.org.uk_-_4430986.jpg",
+     "y": 2015
+    }
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Faculty of Engineering",
+    "url": "https://www.imperial.ac.uk/engineering/"
+   },
+   {
+    "name": "Faculty of Medicine",
+    "url": "https://www.imperial.ac.uk/medicine/"
+   },
+   {
+    "name": "Faculty of Natural Sciences",
+    "url": "https://www.imperial.ac.uk/natural-sciences/"
+   },
+   {
+    "name": "Imperial Business School",
+    "url": "https://www.imperial.ac.uk/business-school/"
+   }
+  ],
+  "links": {
+   "admissions": "https://www.imperial.ac.uk/study/apply/",
+   "courses": "https://www.imperial.ac.uk/study/courses/",
+   "scholarships": "https://www.imperial.ac.uk/study/fees-and-funding/"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/imperialcollege/",
+   "youtube": "https://www.youtube.com/user/imperialcollegevideo"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Main_entrance_of_Imperial_College_London_in_South_Kensington.jpg/960px-Main_entrance_of_Imperial_College_London_in_South_Kensington.jpg",
+    "w": 960,
+    "h": 600,
+    "by": "sagesolar",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Main_entrance_of_Imperial_College_London_in_South_Kensington.jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Behind_Wilkinson_Hall_-_Imperial_College_London_-_geograph.org.uk_-_7829234.jpg/960px-Behind_Wilkinson_Hall_-_Imperial_College_London_-_geograph.org.uk_-_7829234.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Mr Ignavy",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Behind_Wilkinson_Hall_-_Imperial_College_London_-_geograph.org.uk_-_7829234.jpg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Imperial_College_Kensington_campus_-_geograph.org.uk_-_7720707.jpg/960px-Imperial_College_Kensington_campus_-_geograph.org.uk_-_7720707.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Mr Ignavy",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Imperial_College_Kensington_campus_-_geograph.org.uk_-_7720707.jpg",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Entrance_passage%2C_White_City_North_Campus_at_night.jpg/960px-Entrance_passage%2C_White_City_North_Campus_at_night.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Shadowssettle",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Entrance_passage,_White_City_North_Campus_at_night.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Pedestrian_passage_and_fountains%2C_White_City_North_Campus%2C_Imperial_College_London.jpg/960px-Pedestrian_passage_and_fountains%2C_White_City_North_Campus%2C_Imperial_College_London.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Shadowssettle",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pedestrian_passage_and_fountains,_White_City_North_Campus,_Imperial_College_London.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Royal_School_of_Mines.jpg/960px-Royal_School_of_Mines.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Cheller0425",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Royal_School_of_Mines.jpg",
+    "y": 2021
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Campus_of_Imperial_College_in_Hammersmith_and_Fullham%2C_Lodon%2C_spring_2013_%281%29.JPG/960px-Campus_of_Imperial_College_in_Hammersmith_and_Fullham%2C_Lodon%2C_spring_2013_%281%29.JPG",
+    "w": 960,
+    "h": 640,
+    "by": "Chmee2",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Campus_of_Imperial_College_in_Hammersmith_and_Fullham,_Lodon,_spring_2013_(1).JPG",
+    "y": 2013
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Campus_of_Imperial_College_in_Hammersmith_and_Fullham%2C_Lodon%2C_spring_2013_%282%29.JPG/960px-Campus_of_Imperial_College_in_Hammersmith_and_Fullham%2C_Lodon%2C_spring_2013_%282%29.JPG",
+    "w": 960,
+    "h": 640,
+    "by": "Chmee2",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Campus_of_Imperial_College_in_Hammersmith_and_Fullham,_Lodon,_spring_2013_(2).JPG",
+    "y": 2013
+   }
+  ]
+ },
+ "cardiff-university": {
+  "name": "Cardiff University",
+  "generated": "2026-11-22",
+  "established": {
+   "v": 1883,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Cardiff_University"
+  },
+  "campuses": [
+   {
+    "name": "Cardiff",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Cardiff+Cardiff+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Cardiff School of Biosciences",
+    "url": "https://www.cardiff.ac.uk/biosi"
+   },
+   {
+    "name": "Cardiff School of Education",
+    "url": ""
+   },
+   {
+    "name": "Cardiff School of Engineering",
+    "url": "https://www.cardiff.ac.uk/engineering"
+   },
+   {
+    "name": "Cardiff School of Journalism, Media and Cultural Studies",
+    "url": "https://www.cardiff.ac.uk/jomec"
+   },
+   {
+    "name": "Cardiff University Cardiff School of Chemistry",
+    "url": "https://www.cardiff.ac.uk/chemy"
+   },
+   {
+    "name": "Cardiff University Cardiff School of Nursing and Midwifery Studies",
+    "url": "https://www.cardiff.ac.uk/sonms"
+   },
+   {
+    "name": "College of Arts Humanities and Social Sciences",
+    "url": "https://www.cardiff.ac.uk/ahss"
+   },
+   {
+    "name": "College of Biomedical and Life Sciences",
+    "url": "https://www.cardiff.ac.uk/bls"
+   },
+   {
+    "name": "College of Physical Sciences and Engineering",
+    "url": "https://www.cardiff.ac.uk/pse"
+   },
+   {
+    "name": "Institute of Cancer and Genetics",
+    "url": ""
+   },
+   {
+    "name": "Institute of Medical Genetics",
+    "url": ""
+   },
+   {
+    "name": "Institute of Molecular and Experimental Medicine",
+    "url": ""
+   },
+   {
+    "name": "Institute of Psychological Medicine and Clinical Neurosciences",
+    "url": ""
+   },
+   {
+    "name": "School of Architecture",
+    "url": "https://www.cardiff.ac.uk/archi"
+   },
+   {
+    "name": "School of Computer Science and Informatics",
+    "url": "http://www.cs.cf.ac.uk"
+   },
+   {
+    "name": "School of Dentistry",
+    "url": "https://www.cardiff.ac.uk/dentistry"
+   },
+   {
+    "name": "School of Earth and Ocean Sciences",
+    "url": "https://www.cardiff.ac.uk/earth"
+   },
+   {
+    "name": "School of English Communication and Philosophy",
+    "url": "https://www.cardiff.ac.uk/encap"
+   },
+   {
+    "name": "School of Healthcare Studies",
+    "url": "https://www.cardiff.ac.uk/healthcarestudies"
+   },
+   {
+    "name": "School of History and Archaeology and Religion",
+    "url": "https://www.cardiff.ac.uk/share"
+   },
+   {
+    "name": "School of Mathematics",
+    "url": "https://www.cardiff.ac.uk/maths"
+   },
+   {
+    "name": "School of Medicine",
+    "url": ""
+   },
+   {
+    "name": "School of Modern Languages",
+    "url": "https://www.cardiff.ac.uk/modern-languages"
+   },
+   {
+    "name": "School of Music",
+    "url": "https://www.cardiff.ac.uk/music"
+   }
+  ],
+  "social": {
+   "instagram": "https://www.instagram.com/cardiffuni/"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Talybont_North_-_University_campus_-_geograph.org.uk_-_7368450.jpg/960px-Talybont_North_-_University_campus_-_geograph.org.uk_-_7368450.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Mr Ignavy",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Talybont_North_-_University_campus_-_geograph.org.uk_-_7368450.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Cardiff_Business_School.jpg/960px-Cardiff_Business_School.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Jklo286",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Cardiff_Business_School.jpg",
+    "y": 2015
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Hadyn_Ellis_Building.jpg/960px-Hadyn_Ellis_Building.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Jklo286",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Hadyn_Ellis_Building.jpg",
+    "y": 2015
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Cardiff_Law_School_-_Geograph-3427392-by-Bill-Boaden.jpg/960px-Cardiff_Law_School_-_Geograph-3427392-by-Bill-Boaden.jpg",
+    "w": 960,
+    "h": 643,
+    "by": "Bill Boaden",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Cardiff_Law_School_-_Geograph-3427392-by-Bill-Boaden.jpg",
+    "y": 2013
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Music_Building%2C_Cardiff_University.JPG/960px-Music_Building%2C_Cardiff_University.JPG",
+    "w": 960,
+    "h": 720,
+    "by": "Ham",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Music_Building,_Cardiff_University.JPG",
+    "y": 2012
+   }
+  ]
+ },
+ "aston-university": {
+  "name": "Aston University",
+  "generated": "2026-11-22",
+  "brief": "Aston University is a public university in the city centre of Birmingham, England. It was founded as the Birmingham Municipal Technical School in 1895 and became the UK's first college of advanced technology in 1956. Main areas of study include business, engineering and physical sciences, law, medicine, pharmacy, psychology and computer science. It is organised into schools and colleges, including Aston Business School, Aston Medical School and the College of Engineering and Physical Sciences. It has study locations in Birmingham, London and online.",
+  "established": {
+   "v": 1895,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Aston_University"
+  },
+  "campuses": [
+   {
+    "name": "London",
+    "maps": "https://www.google.com/maps/search/?api=1&query=London+Aston+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Aston Business School",
+    "url": "https://www.aston.ac.uk/bss/aston-business-school"
+   },
+   {
+    "name": "Aston Law School",
+    "url": ""
+   },
+   {
+    "name": "Aston Medical School",
+    "url": "https://www.aston.ac.uk/hls/aston-medical-school"
+   },
+   {
+    "name": "Health and Life Sciences",
+    "url": ""
+   },
+   {
+    "name": "College of Engineering and Physical Sciences",
+    "url": "http://www.aston.ac.uk/eps"
+   },
+   {
+    "name": "College of Business and Social Sciences",
+    "url": "https://www.aston.ac.uk/bss"
+   },
+   {
+    "name": "School of Social Sciences and Humanities",
+    "url": "https://www.aston.ac.uk/bss/social-sciences-and-humanities"
+   }
+  ],
+  "links": {
+   "admissions": "https://www.aston.ac.uk/international/students-applying-to-aston",
+   "courses": "https://www.aston.ac.uk/courses",
+   "scholarships": "https://www.aston.ac.uk/international/scholarships",
+   "partners": "https://www.aston.ac.uk/international/international-partnerships"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/AstonUniversity/",
+   "linkedin": "https://www.linkedin.com/school/aston-university/",
+   "youtube": "https://www.youtube.com/user/AstonUniversity"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/New_Aston_University_signs_-_Aston_University_Library_%2833429703523%29.jpg/960px-New_Aston_University_signs_-_Aston_University_Library_%2833429703523%29.jpg",
+    "w": 960,
+    "h": 542,
+    "by": "Elliott Brown from Birmingham, United Kingdom",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:New_Aston_University_signs_-_Aston_University_Library_(33429703523).jpg",
+    "y": 2017
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Fortress_of_Knowledge_%2816470123820%29.jpg/960px-Fortress_of_Knowledge_%2816470123820%29.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "marsupium photography",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Fortress_of_Knowledge_(16470123820).jpg",
+    "y": 2015
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Aston_University_%288097149310%29.jpg/960px-Aston_University_%288097149310%29.jpg",
+    "w": 960,
+    "h": 632,
+    "by": "Tony Hisgett from Birmingham, UK",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Aston_University_(8097149310).jpg",
+    "y": 2012
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Aston_uni_campus1.jpg/960px-Aston_uni_campus1.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Johand2222",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Aston_uni_campus1.jpg",
+    "y": 2013
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Aston_University_Student_Village_phase_2_completed_-_James_Watt_Queensway.jpg/960px-Aston_University_Student_Village_phase_2_completed_-_James_Watt_Queensway.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Elliott Brown",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Aston_University_Student_Village_phase_2_completed_-_James_Watt_Queensway.jpg",
+    "y": 2013
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Aston_University_Library_20110211.jpg/960px-Aston_University_Library_20110211.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Elliott Brown",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Aston_University_Library_20110211.jpg",
+    "y": 2011
+   }
+  ]
+ },
+ "arizona-state-university": {
+  "name": "Arizona State University",
+  "generated": "2026-11-22",
+  "brief": "Arizona State University is a public research university in Tempe, Arizona, United States. Its main areas of study include business, design and the arts, engineering, health solutions, journalism, law, liberal arts and sciences, nursing, and teaching. The university has four campuses in metropolitan Phoenix, plus locations in Los Angeles, Washington, D.C., Hawai‘i, and London. Its academic units include more than 450 undergraduate degree programs and more than 400 master's degree programs.",
+  "established": {
+   "v": 1885,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Arizona_State_University"
+  },
+  "students": {
+   "v": 203700,
+   "asof": 2026,
+   "source": "Source: asu.edu, 2026",
+   "src": "https://www.asu.edu/about/facts-and-figures"
+  },
+  "campuses": [
+   {
+    "name": "Downtown Phoenix campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Downtown+Phoenix+campus+Arizona+State+University",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Arizona_State_University%2C_Downtown_Campus%2C_Mercado_gate.jpg/500px-Arizona_State_University%2C_Downtown_Campus%2C_Mercado_gate.jpg",
+     "w": 500,
+     "h": 258,
+     "by": "Beyond My Ken",
+     "lic": "CC BY-SA 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Arizona_State_University,_Downtown_Campus,_Mercado_gate.jpg",
+     "y": 2021
+    }
+   },
+   {
+    "name": "Polytechnic campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Polytechnic+campus+Arizona+State+University",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/2021_Arizona_State_University%2C_Polytechnic_Campus%2C_Lantana_Hall_dormitory.jpg/500px-2021_Arizona_State_University%2C_Polytechnic_Campus%2C_Lantana_Hall_dormitory.jpg",
+     "w": 500,
+     "h": 230,
+     "by": "Beyond My Ken",
+     "lic": "CC BY-SA 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:2021_Arizona_State_University,_Polytechnic_Campus,_Lantana_Hall_dormitory.jpg",
+     "y": 2021
+    }
+   },
+   {
+    "name": "West Valley campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=West+Valley+campus+Arizona+State+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Business",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.asu.edu/admission",
+   "courses": "https://admission.asu.edu/apply/nondegree",
+   "scholarships": "https://tuition.asu.edu/financial-aid/scholarships?utm_source=collateral&utm_medium=print&utm_campaign=recruitment",
+   "partners": "https://news.asu.edu/20261112-university-news-asu-earns-top-marks-research-collaboration-inaugural-ranking"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/arizonastateuniversity/",
+   "linkedin": "https://www.linkedin.com/company/arizona-state-university/",
+   "youtube": "https://www.youtube.com/user/ASU"
+  },
+  "partners": [
+   "Africa Resource Center for Excellence in Supply Chain Management",
+   "CAPS Research",
+   "Deca Technologies",
+   "Applied Materials",
+   "Lockheed Martin",
+   "U.S. Air Force"
+  ],
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/231118-10_ASU_Research_Park.jpg/960px-231118-10_ASU_Research_Park.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Hunter Trick (TrickHunter)",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:231118-10_ASU_Research_Park.jpg",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/231206-4_Mirabella_at_ASU.jpg/960px-231206-4_Mirabella_at_ASU.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Hunter Trick (TrickHunter)",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:231206-4_Mirabella_at_ASU.jpg",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Arizona_State_University_Sky_Song_Campus%2C_Scottsdale%2C_AZ_-_panoramio_%281%29.jpg/960px-Arizona_State_University_Sky_Song_Campus%2C_Scottsdale%2C_AZ_-_panoramio_%281%29.jpg",
+    "w": 960,
+    "h": 636,
+    "by": "davidpinter",
+    "lic": "CC BY 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Arizona_State_University_Sky_Song_Campus,_Scottsdale,_AZ_-_panoramio_(1).jpg",
+    "y": 2014
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Arizona_State_University%2C_Polytechnic_Campus%2C_Mesa%2C_AZ_-_panoramio_%283%29.jpg/960px-Arizona_State_University%2C_Polytechnic_Campus%2C_Mesa%2C_AZ_-_panoramio_%283%29.jpg",
+    "w": 960,
+    "h": 636,
+    "by": "davidpinter",
+    "lic": "CC BY 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Arizona_State_University,_Polytechnic_Campus,_Mesa,_AZ_-_panoramio_(3).jpg",
+    "y": 2014
+   }
+  ]
+ },
+ "carnegie-mellon-university": {
+  "name": "Carnegie Mellon University",
+  "generated": "2026-11-22",
+  "brief": "Carnegie Mellon University is a private research university in Pittsburgh, Pennsylvania, United States. It was established in 1900 by Andrew Carnegie as the Carnegie Technical Schools. Its main areas include analytics, artificial intelligence, computer science, cybersecurity, software engineering and drama. The university is organised into schools and colleges, and it plans a new campus in Miami, CMU Miami, subject to regulatory approvals.",
+  "established": {
+   "v": 1900,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Carnegie_Mellon_University"
+  },
+  "students": {
+   "v": 15136,
+   "asof": 2021,
+   "source": "Source: Wikidata, 2021",
+   "src": "https://www.wikidata.org/wiki/Q190080"
+  },
+  "faculties": [
+   {
+    "name": "School of Music",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.cmu.edu/admission/",
+   "courses": "https://www.cmu.edu/admission/majors-programs",
+   "partners": "https://www.cmu.edu/business-engagement/"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/carnegiemellon/",
+   "linkedin": "https://www.linkedin.com/company/carnegie-mellon-university/",
+   "youtube": "https://www.youtube.com/channel/UCf-COwmdNelXvbj-KaMCuLw"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Skyline_from_the_outside_stairwell_of_a_Carnegie_Mellon_University_building_-_Mar_2025.jpg/960px-Skyline_from_the_outside_stairwell_of_a_Carnegie_Mellon_University_building_-_Mar_2025.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "LR.127",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Skyline_from_the_outside_stairwell_of_a_Carnegie_Mellon_University_building_-_Mar_2025.jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Gates_and_Hillman_Centers%2C_Carnegie_Mellon_University.jpg/960px-Gates_and_Hillman_Centers%2C_Carnegie_Mellon_University.jpg",
+    "w": 960,
+    "h": 723,
+    "by": "Sdkb",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Gates_and_Hillman_Centers,_Carnegie_Mellon_University.jpg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/McGill_Hall.jpg/960px-McGill_Hall.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Mihir Dhamankar",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:McGill_Hall.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Scobell_Hall.jpg/960px-Scobell_Hall.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Mihir Dhamankar",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Scobell_Hall.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Cmuatnight2011_02_01_19_12_35.jpg/960px-Cmuatnight2011_02_01_19_12_35.jpg",
+    "w": 960,
+    "h": 648,
+    "by": "Alex Lozupone",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Cmuatnight2011_02_01_19_12_35.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Doherty_Hall_-_Engineering_and_Science_-_Carnegie_Mellon_University_%2848069291522%29.jpg/960px-Doherty_Hall_-_Engineering_and_Science_-_Carnegie_Mellon_University_%2848069291522%29.jpg",
+    "w": 960,
+    "h": 659,
+    "by": "Tony Webster",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Doherty_Hall_-_Engineering_and_Science_-_Carnegie_Mellon_University_(48069291522).jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/CMU_Porter_Hall.jpg/960px-CMU_Porter_Hall.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Camerafiend",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:CMU_Porter_Hall.jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Entertainment_Technology_Center%2C_Carnegie_Mellon_University.jpg/960px-Entertainment_Technology_Center%2C_Carnegie_Mellon_University.jpg",
+    "w": 960,
+    "h": 641,
+    "by": "Dllu",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Entertainment_Technology_Center,_Carnegie_Mellon_University.jpg",
+    "y": 2016
+   }
+  ]
+ },
+ "columbia-university": {
+  "name": "Columbia University",
+  "generated": "2026-11-22",
+  "established": {
+   "v": 1754,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Columbia_University"
+  },
+  "students": {
+   "v": 30540,
+   "asof": 2021,
+   "source": "Source: Wikidata, 2021",
+   "src": "https://www.wikidata.org/wiki/Q49088"
+  },
+  "campuses": [
+   {
+    "name": "Manhattan",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Manhattan+Columbia+University",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/MMDA-Photos_-_2019-05-24_-_Columbia_University_Campus.jpg/500px-MMDA-Photos_-_2019-05-24_-_Columbia_University_Campus.jpg",
+     "w": 500,
+     "h": 375,
+     "by": "MMDA-Photos",
+     "lic": "CC BY-SA 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:MMDA-Photos_-_2019-05-24_-_Columbia_University_Campus.jpg",
+     "y": 2019
+    }
+   }
+  ],
+  "faculties": [
+   {
+    "name": "College of Dental Medicine",
+    "url": "http://dental.columbia.edu/"
+   },
+   {
+    "name": "College of Pharmaceutical Sciences",
+    "url": ""
+   },
+   {
+    "name": "Columbia Graduate School of Architecture, Planning and Preservation",
+    "url": "http://www.arch.columbia.edu/"
+   },
+   {
+    "name": "Columbia Graduate School of Arts and Sciences",
+    "url": "http://gsas.columbia.edu"
+   },
+   {
+    "name": "Columbia University Graduate School of Journalism",
+    "url": "http://www.journalism.columbia.edu/"
+   },
+   {
+    "name": "Columbia University Mailman School of Public Health",
+    "url": "https://publichealth.columbia.edu/"
+   },
+   {
+    "name": "Columbia University Vagelos College of Physicians and Surgeons",
+    "url": "http://ps.columbia.edu"
+   },
+   {
+    "name": "Faculty of Arts and Sciences",
+    "url": "https://fas.columbia.edu/"
+   },
+   {
+    "name": "Institute for Cancer Genetics",
+    "url": ""
+   },
+   {
+    "name": "Institute for Learning Technologies",
+    "url": "http://www.ilt.columbia.edu/"
+   },
+   {
+    "name": "Institute for Media Innovation",
+    "url": "http://brown.stanford.edu"
+   },
+   {
+    "name": "Institute for Research in African-American Studies",
+    "url": ""
+   },
+   {
+    "name": "Institute for Research on Alzheimer's Disease and the Aging Brain",
+    "url": "http://www.columbianeuroresearch.org/taub/"
+   },
+   {
+    "name": "Institute for the Study of Human Rights",
+    "url": "https://humanrightscolumbia.org/"
+   },
+   {
+    "name": "Institute of African Studies",
+    "url": ""
+   },
+   {
+    "name": "Institute of Comparative Medicine",
+    "url": ""
+   },
+   {
+    "name": "Institute of Latin American Studies",
+    "url": "https://ilas.columbia.edu/"
+   },
+   {
+    "name": "Institute on Education and the Economy",
+    "url": "https://www.tc.columbia.edu/centers/iee/"
+   },
+   {
+    "name": "School Psychology Program, Teachers College",
+    "url": "https://www.tc.columbia.edu/health-and-behavior-studies/school-psychology/"
+   },
+   {
+    "name": "School of General Studies",
+    "url": "https://gs.columbia.edu"
+   },
+   {
+    "name": "School of International and Public Affairs",
+    "url": "https://www.sipa.columbia.edu/"
+   },
+   {
+    "name": "School of Nursing",
+    "url": "http://nursing.columbia.edu/"
+   },
+   {
+    "name": "School of Professional Studies",
+    "url": "https://sps.columbia.edu"
+   },
+   {
+    "name": "School of the Arts",
+    "url": "http://arts.columbia.edu/"
+   }
+  ],
+  "social": {
+   "instagram": "https://www.instagram.com/columbia/",
+   "youtube": "https://www.youtube.com/channel/UChzhFUxUZFAQSJZ_Tp4B1fA"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Horace_Mann_Hall_-_Columbia_University_%2852009920190%29.jpg/960px-Horace_Mann_Hall_-_Columbia_University_%2852009920190%29.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "ajay_suresh",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Horace_Mann_Hall_-_Columbia_University_(52009920190).jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Miller_Theatre_-_Columbia_University_%2851242221295%29.jpg/960px-Miller_Theatre_-_Columbia_University_%2851242221295%29.jpg",
+    "w": 960,
+    "h": 600,
+    "by": "ajay_suresh",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Miller_Theatre_-_Columbia_University_(51242221295).jpg",
+    "y": 2021
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Columbia_University_SIPA_-_Jan_2020_appearance.jpg/960px-Columbia_University_SIPA_-_Jan_2020_appearance.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Lisianthus1215",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Columbia_University_SIPA_-_Jan_2020_appearance.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Columbia_University_-_The_Fu_Foundation_School_of_Engineering_And_Applied_Science_%2848170360946%29.jpg/960px-Columbia_University_-_The_Fu_Foundation_School_of_Engineering_And_Applied_Science_%2848170360946%29.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "Ajay Suresh from New York, NY, USA",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Columbia_University_-_The_Fu_Foundation_School_of_Engineering_And_Applied_Science_(48170360946).jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Columbia_Global_Center_Paris_entrance.jpg/960px-Columbia_Global_Center_Paris_entrance.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "YtoSu",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Columbia_Global_Center_Paris_entrance.jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Southwestern_corner_of_the_Nevis_Mansion_House.jpg/960px-Southwestern_corner_of_the_Nevis_Mansion_House.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Antigng",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Southwestern_corner_of_the_Nevis_Mansion_House.jpg",
+    "y": 2018
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/South_facade_of_the_Nevis_Mansion.jpg/960px-South_facade_of_the_Nevis_Mansion.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Antigng",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:South_facade_of_the_Nevis_Mansion.jpg",
+    "y": 2018
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Kent_Hall%2C_Columbia_University.jpg/960px-Kent_Hall%2C_Columbia_University.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Bitterteayen",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Kent_Hall,_Columbia_University.jpg",
+    "y": 2018
+   }
+  ]
+ },
+ "university-of-toronto": {
+  "name": "University of Toronto",
+  "generated": "2026-11-22",
+  "brief": "The University of Toronto is a public research university in the Greater Toronto Area of Ontario, Canada. It has three campuses: St. George (downtown Toronto), Mississauga (west of Toronto) and Scarborough (eastern Toronto). It was founded by royal charter in 1827 as King's College. Its academic programs are organised into faculties and divisions, including Applied Science & Engineering, Arts & Science, Medicine, Law and Management. Students at the St. George campus in Arts & Science are affiliated with one of seven colleges.",
+  "established": {
+   "v": 1827,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q180865"
+  },
+  "students": {
+   "v": 102431,
+   "asof": 2025,
+   "source": "Source: Wikidata, 2025",
+   "src": "https://www.wikidata.org/wiki/Q180865"
+  },
+  "campuses": [
+   {
+    "name": "St. George",
+    "maps": "https://www.google.com/maps/search/?api=1&query=St.+George+University+of+Toronto",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/A_view_from_the_Back_Campus_of_the_University_of_Toronto.jpg/500px-A_view_from_the_Back_Campus_of_the_University_of_Toronto.jpg",
+     "w": 500,
+     "h": 242,
+     "by": "Maksim Sokolov (Maxergon)",
+     "lic": "CC BY-SA 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:A_view_from_the_Back_Campus_of_the_University_of_Toronto.jpg",
+     "y": 2021
+    }
+   },
+   {
+    "name": "Mississauga",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Mississauga+University+of+Toronto",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Mississauga_Campus%2C_University_of_Toronto.jpg/500px-Mississauga_Campus%2C_University_of_Toronto.jpg",
+     "w": 500,
+     "h": 333,
+     "by": "Kevin Miller",
+     "lic": "Public domain",
+     "licUrl": "",
+     "page": "https://commons.wikimedia.org/wiki/File:Mississauga_Campus,_University_of_Toronto.jpg",
+     "y": 2026
+    }
+   },
+   {
+    "name": "Scarborough",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Scarborough+University+of+Toronto",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Applied Science & Engineering",
+    "url": ""
+   },
+   {
+    "name": "Architecture, Landscape & Design",
+    "url": ""
+   },
+   {
+    "name": "Arts & Science",
+    "url": ""
+   },
+   {
+    "name": "Continuing Studies",
+    "url": ""
+   },
+   {
+    "name": "Dentistry",
+    "url": ""
+   },
+   {
+    "name": "Education",
+    "url": ""
+   },
+   {
+    "name": "Graduate Studies",
+    "url": ""
+   },
+   {
+    "name": "Information",
+    "url": ""
+   },
+   {
+    "name": "Kinesiology & Physical Education",
+    "url": ""
+   },
+   {
+    "name": "Law",
+    "url": ""
+   },
+   {
+    "name": "Management",
+    "url": ""
+   },
+   {
+    "name": "Medicine",
+    "url": ""
+   },
+   {
+    "name": "Music",
+    "url": ""
+   },
+   {
+    "name": "Nursing",
+    "url": ""
+   },
+   {
+    "name": "Pharmacy",
+    "url": ""
+   },
+   {
+    "name": "Public Health",
+    "url": ""
+   },
+   {
+    "name": "Social Work",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://future.utoronto.ca/applying",
+   "courses": "https://www.utoronto.ca/academics/undergraduate-programs",
+   "scholarships": "https://future.utoronto.ca/financial-aid",
+   "partners": "https://www.bluedoor.utoronto.ca/"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/uoft/",
+   "linkedin": "https://www.linkedin.com/school/university-of-toronto/",
+   "youtube": "https://www.youtube.com/user/universitytoronto"
+  },
+  "partners": [
+   "Ericsson",
+   "Siemens",
+   "Vale",
+   "LG",
+   "IBM",
+   "Fujitsu",
+   "Merck",
+   "Desjardins",
+   "Moderna",
+   "Naver",
+   "Wattpad",
+   "Porsche"
+  ],
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/University_College%2C_University_of_Toronto_%282026%29.jpg/960px-University_College%2C_University_of_Toronto_%282026%29.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Can Pac Swire",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:University_College,_University_of_Toronto_(2026).jpg",
+    "y": 2026
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/West_Hill_Aerial_view_2025.jpg/960px-West_Hill_Aerial_view_2025.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Canmenwalker",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:West_Hill_Aerial_view_2025.jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Trinity_College_of_the_University_of_Toronto_in_April.jpg/960px-Trinity_College_of_the_University_of_Toronto_in_April.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Maksim Sokolov (maxergon.com)",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Trinity_College_of_the_University_of_Toronto_in_April.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/University_of_Toronto_Scarborough_aerial_view_2024.jpg/960px-University_of_Toronto_Scarborough_aerial_view_2024.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Canmenwalker",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:University_of_Toronto_Scarborough_aerial_view_2024.jpg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/View_of_campus_from_King%27s_College_Circle.jpg/960px-View_of_campus_from_King%27s_College_Circle.jpg",
+    "w": 960,
+    "h": 576,
+    "by": "Sarbjit Bahga",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:View_of_campus_from_King%27s_College_Circle.jpg",
+    "y": 2018
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Toronto_Rehabilitation_Institute%2C_main_entrances.jpg/960px-Toronto_Rehabilitation_Institute%2C_main_entrances.jpg",
+    "w": 960,
+    "h": 648,
+    "by": "Talar Nersesian",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Toronto_Rehabilitation_Institute,_main_entrances.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/University_College_Lawn%2C_University_of_Toronto%2C_Canada.jpg/960px-University_College_Lawn%2C_University_of_Toronto%2C_Canada.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Ken Eckert",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:University_College_Lawn,_University_of_Toronto,_Canada.jpg",
+    "y": 2018
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/University_of_Toronto_St._George.jpg/960px-University_of_Toronto_St._George.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "Eric Astrauskas from Burlington, Canada",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:University_of_Toronto_St._George.jpg",
+    "y": 2017
+   }
+  ]
+ },
+ "dalhousie-university": {
+  "name": "Dalhousie University",
+  "generated": "2026-11-22",
+  "brief": "Dalhousie University is a large public research university in Nova Scotia, Canada. It has campuses in Halifax, Truro and Bible Hill, Yarmouth, Sydney and Saint John. It offers programs across 13 faculties, including Agriculture, Architecture and Planning, Arts and Social Sciences, Computer Science, Dentistry, Engineering, Health, Law, Management, Medicine, Science, and Open Learning and Career Development.",
+  "established": {
+   "v": 1818,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q579321"
+  },
+  "campuses": [
+   {
+    "name": "Studley Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Studley+Campus+Dalhousie+University",
+    "photo": null
+   },
+   {
+    "name": "Carleton Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Carleton+Campus+Dalhousie+University",
+    "photo": null
+   },
+   {
+    "name": "Sexton Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Sexton+Campus+Dalhousie+University",
+    "photo": null
+   },
+   {
+    "name": "Agricultural Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Agricultural+Campus+Dalhousie+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Agriculture",
+    "url": ""
+   },
+   {
+    "name": "Architecture and Planning",
+    "url": ""
+   },
+   {
+    "name": "Arts and Social Sciences",
+    "url": ""
+   },
+   {
+    "name": "Computer Science",
+    "url": ""
+   },
+   {
+    "name": "Dentistry",
+    "url": ""
+   },
+   {
+    "name": "Engineering",
+    "url": ""
+   },
+   {
+    "name": "Health",
+    "url": ""
+   },
+   {
+    "name": "Law",
+    "url": ""
+   },
+   {
+    "name": "Management",
+    "url": ""
+   },
+   {
+    "name": "Medicine",
+    "url": ""
+   },
+   {
+    "name": "Open Learning and Career Development",
+    "url": ""
+   },
+   {
+    "name": "Science",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.dal.ca/admissions.html",
+   "courses": "https://www.dal.ca/study/programs.html",
+   "scholarships": "https://www.dal.ca/admissions/scholarships-financial-aid.html",
+   "partners": "https://www.dal.ca/research-and-innovation/innovation-industry-partnerships.html"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/dalhousieu/"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Medjuck_Building.jpg/960px-Medjuck_Building.jpg",
+    "w": 960,
+    "h": 600,
+    "by": "Quintin Soloviev",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Medjuck_Building.jpg",
+    "y": 2026
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Steele_Ocean_Sciences_Building.jpg/960px-Steele_Ocean_Sciences_Building.jpg",
+    "w": 960,
+    "h": 658,
+    "by": "LrdShen",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Steele_Ocean_Sciences_Building.jpg",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Life_Sciences_Research_Institute_and_Tupper_Building%2C_Halifax.jpg/960px-Life_Sciences_Research_Institute_and_Tupper_Building%2C_Halifax.jpg",
+    "w": 960,
+    "h": 534,
+    "by": "A Disappearing Act",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Life_Sciences_Research_Institute_and_Tupper_Building,_Halifax.jpg",
+    "y": 2021
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Forrest_Building%2C_Dalhousie_University%2C_Halifax%2C_Nova_Scotia_%2831451588408%29.jpg/960px-Forrest_Building%2C_Dalhousie_University%2C_Halifax%2C_Nova_Scotia_%2831451588408%29.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "Coastal Elite from Halifax, Canada",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Forrest_Building,_Dalhousie_University,_Halifax,_Nova_Scotia_(31451588408).jpg",
+    "y": 2018
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Gerard_Hall%2C_Dalhousie_University_%281%29.jpg/960px-Gerard_Hall%2C_Dalhousie_University_%281%29.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Cold, Indrid",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Gerard_Hall,_Dalhousie_University_(1).jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Gerard_Hall%2C_Dalhousie_University_%282%29.jpg/960px-Gerard_Hall%2C_Dalhousie_University_%282%29.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Cold, Indrid",
+    "lic": "CC BY-SA 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Gerard_Hall,_Dalhousie_University_(2).jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Dal_RoweBuilding.JPG/960px-Dal_RoweBuilding.JPG",
+    "w": 960,
+    "h": 571,
+    "by": "Verne Equinox",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Dal_RoweBuilding.JPG",
+    "y": 2016
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Dalhousie_University_Medjuck_Building.jpg/960px-Dalhousie_University_Medjuck_Building.jpg",
+    "w": 960,
+    "h": 692,
+    "by": "Citobun",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Dalhousie_University_Medjuck_Building.jpg",
+    "y": 2015
+   }
+  ]
+ },
+ "concordia-university": {
+  "name": "Concordia University",
+  "generated": "2026-11-22",
+  "brief": "Concordia University is a public English-language research university in Montreal, Quebec, Canada. It was formed by the merger of Loyola College and Sir George Williams University, and it was founded in 1974. Its main areas of study include Arts and Science, Fine Arts, Engineering and Computer Science, Business, Graduate Studies and Health. The university has two campuses in Montreal, the Sir George Williams Campus and the Loyola Campus.",
+  "established": {
+   "v": 1974,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Concordia_University"
+  },
+  "campuses": [
+   {
+    "name": "Sir George Williams Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Sir+George+Williams+Campus+Concordia+University",
+    "photo": null
+   },
+   {
+    "name": "Loyola Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Loyola+Campus+Concordia+University",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Loyola_concordia.jpg/500px-Loyola_concordia.jpg",
+     "w": 500,
+     "h": 306,
+     "by": "Adqproductions",
+     "lic": "CC BY-SA 3.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Loyola_concordia.jpg",
+     "y": 2008
+    }
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Faculty of Arts and Science",
+    "url": "https://www.concordia.ca/artsci.html"
+   },
+   {
+    "name": "Faculty of Fine Arts",
+    "url": ""
+   },
+   {
+    "name": "Gina Cody School of Engineering and Computer Science",
+    "url": ""
+   },
+   {
+    "name": "John Molson School of Business",
+    "url": ""
+   },
+   {
+    "name": "School of Graduate Studies",
+    "url": ""
+   },
+   {
+    "name": "School of Health",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.concordia.ca/admissions.html",
+   "courses": "https://www.concordia.ca/admissions/undergraduate.html",
+   "scholarships": "https://www.concordia.ca/gradstudies/funding.html",
+   "partners": "https://www.concordia.ca/cce/corporate-training.html"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/concordiauniversity/",
+   "linkedin": "https://www.linkedin.com/school/concordia-university/"
+  }
+ },
+ "rheinisch-westfalische-technische-hochschule-aachen": {
+  "name": "Rheinisch-Westfälische Technische Hochschule Aachen",
+  "generated": "2026-11-22",
+  "brief": "RWTH Aachen University (Rheinisch-Westfälische Technische Hochschule) is a public research university in Aachen, North Rhine-Westphalia, Germany. It is a technical university, and its website lists Architecture, Civil Engineering, Mechanical Engineering, Electrical Engineering and Information Technology, Computer Science, Medicine, and Business and Economics among its areas. The university has ten faculties, numbered Faculty 1 to Faculty 10, and a Research Campus and Campus Melaten and Campus West. Its website also lists Mathematics and Natural Sciences, Arts and Humanities, and Georesources and Materials Engineering as faculties.",
+  "established": {
+   "v": 1870,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q273263"
+  },
+  "students": {
+   "v": 47521,
+   "asof": 2021,
+   "source": "Source: Wikidata, 2021",
+   "src": "https://www.wikidata.org/wiki/Q273263"
+  },
+  "campuses": [
+   {
+    "name": "Research Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Research+Campus+Rheinisch-Westf%C3%A4lische+Technische+Hochschule+Aachen",
+    "photo": null
+   },
+   {
+    "name": "Campus Melaten",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Campus+Melaten+Rheinisch-Westf%C3%A4lische+Technische+Hochschule+Aachen",
+    "photo": null
+   },
+   {
+    "name": "Campus West",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Campus+West+Rheinisch-Westf%C3%A4lische+Technische+Hochschule+Aachen",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Faculty 1 Mathematics and Natural Sciences",
+    "url": "https://www.fb1.rwth-aachen.de/cms/~fvp/Mathematik-Naturwissenschafen/lidx/1/"
+   },
+   {
+    "name": "Faculty 2 Architecture",
+    "url": "https://arch.rwth-aachen.de/cms/~gfa/Architektur/lidx/1/"
+   },
+   {
+    "name": "Faculty 3 Civil Engineering",
+    "url": "https://www.fb3.rwth-aachen.de/cms/~goh/Bauingenieurwesen/lidx/1/"
+   },
+   {
+    "name": "Faculty 4 Mechanical Engineering",
+    "url": "https://www.maschinenbau.rwth-aachen.de/cms/~gxo/Maschinenbau/lidx/1/"
+   },
+   {
+    "name": "Faculty 5 Georesources and Materials Engineering",
+    "url": "https://www.fb5.rwth-aachen.de/cms/~hgv/Georessourcen/lidx/1/"
+   },
+   {
+    "name": "Faculty 6 Electrical Engineering and Information Technology",
+    "url": "https://www.elektrotechnik.rwth-aachen.de/cms/~mp/Elektrotechnik-und-Informationstechnik/lidx/1/"
+   },
+   {
+    "name": "Faculty 7 Arts and Humanities",
+    "url": "https://www.philosophische-fakultaet.rwth-aachen.de/cms/~hqc/Philosophie/lidx/1/"
+   },
+   {
+    "name": "Faculty 8 Business and Economics",
+    "url": "https://www.wiwi.rwth-aachen.de/cms/~hzj/Wirtschaftswissenschaften/lidx/1/"
+   },
+   {
+    "name": "Faculty 9 Computer Science",
+    "url": "https://www.informatik.rwth-aachen.de/cms/~mxz/informatik/lidx/1/"
+   },
+   {
+    "name": "Faculty 10 Medicine",
+    "url": "https://www.medizin.rwth-aachen.de/cms/~iiq/Medizin/lidx/1/"
+   }
+  ],
+  "links": {
+   "admissions": "https://www.rwth-aachen.de/cms/root/studium/Vor-dem-Studium/~egg/Bewerbung-um-einen-Studienplatz/lidx/1/",
+   "courses": "https://www.rwth-aachen.de/cms/root/forschung/Projekte/~oho/Koordinierte-DFG-Programme/lidx/1/",
+   "scholarships": "https://www.rwth-aachen.de/cms/root/studium/Im-Studium/~ehg/Stipendien-Foerderung/lidx/1/",
+   "partners": "https://www.rwth-aachen.de/cms/root/transfer/~ekp/Kooperation/lidx/1/"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/rwthaachenuniversity/",
+   "linkedin": "https://www.linkedin.com/school/rwth-aachen-university/",
+   "youtube": "https://www.youtube.com/user/RWTHAachenUniversity"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/RWTH-Zentrallabor_f%C3%BCr_Mikro-_u._Nanotechnologie%2C_Aachen.JPG/960px-RWTH-Zentrallabor_f%C3%BCr_Mikro-_u._Nanotechnologie%2C_Aachen.JPG",
+    "w": 960,
+    "h": 532,
+    "by": "ArthurMcGill",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RWTH-Zentrallabor_f%C3%BCr_Mikro-_u._Nanotechnologie,_Aachen.JPG",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/2025_Universit%C3%A4tsklinikum_Aachen_%2820%29.jpg/960px-2025_Universit%C3%A4tsklinikum_Aachen_%2820%29.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Kleon3",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2025_Universit%C3%A4tsklinikum_Aachen_(20).jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/2025_Universit%C3%A4tsklinikum_Aachen_%2821%29.jpg/960px-2025_Universit%C3%A4tsklinikum_Aachen_%2821%29.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Kleon3",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2025_Universit%C3%A4tsklinikum_Aachen_(21).jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/RWTH-G%C3%A4stehaus%2C_Aachen.JPG/960px-RWTH-G%C3%A4stehaus%2C_Aachen.JPG",
+    "w": 960,
+    "h": 638,
+    "by": "ArthurMcGill",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RWTH-G%C3%A4stehaus,_Aachen.JPG",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/RWTH_Aachen_Physikzentrum.jpg/960px-RWTH_Aachen_Physikzentrum.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Choinowski",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RWTH_Aachen_Physikzentrum.jpg",
+    "y": 2021
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/RWTH_Aachen_University_II._Physikalisches_Institut.jpg/960px-RWTH_Aachen_University_II._Physikalisches_Institut.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "Sascha Faber",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RWTH_Aachen_University_II._Physikalisches_Institut.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Fuel_Design_Center_RWTH.JPG/960px-Fuel_Design_Center_RWTH.JPG",
+    "w": 960,
+    "h": 720,
+    "by": "EveryPicture",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Fuel_Design_Center_RWTH.JPG",
+    "y": 2015
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/RWTH_Aachen_Metallurgische_Prozesstechnik.JPG/960px-RWTH_Aachen_Metallurgische_Prozesstechnik.JPG",
+    "w": 960,
+    "h": 720,
+    "by": "EveryPicture",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:RWTH_Aachen_Metallurgische_Prozesstechnik.JPG",
+    "y": 2015
+   }
+  ]
+ },
+ "karlsruhe-institute-of-technology": {
+  "name": "Karlsruhe Institute of Technology",
+  "generated": "2026-11-22",
+  "brief": "Karlsruhe Institute of Technology (KIT) is a German public research university in Karlsruhe, Baden-Württemberg, and a research center of the Helmholtz Association. Its main areas include Elementary and Astroparticle Physics, Energy, Health, Information, Climate and Environment, Materials, Mathematics, Humans and Technology, and Mobility. KIT has three campuses: North, South and East.",
+  "established": {
+   "v": 2009,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q309988"
+  },
+  "students": {
+   "v": 21848,
+   "asof": 2021,
+   "source": "Source: Wikidata, 2021",
+   "src": "https://www.wikidata.org/wiki/Q309988"
+  },
+  "campuses": [
+   {
+    "name": "Campus North",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Campus+North+Karlsruhe+Institute+of+Technology",
+    "photo": null
+   },
+   {
+    "name": "Campus South",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Campus+South+Karlsruhe+Institute+of+Technology",
+    "photo": null
+   },
+   {
+    "name": "Campus East",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Campus+East+Karlsruhe+Institute+of+Technology",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Architecture",
+    "url": ""
+   },
+   {
+    "name": "Civil Engineering, Geo- and Environmental Sciences",
+    "url": ""
+   },
+   {
+    "name": "Chemistry and Biosciences",
+    "url": ""
+   },
+   {
+    "name": "Chemical and Process Engineering",
+    "url": ""
+   },
+   {
+    "name": "Electrical Engineering and Information Technology",
+    "url": ""
+   },
+   {
+    "name": "Humanities and Social Sciences",
+    "url": ""
+   },
+   {
+    "name": "Informatics",
+    "url": ""
+   },
+   {
+    "name": "Mechanical Engineering",
+    "url": ""
+   },
+   {
+    "name": "Mathematics",
+    "url": ""
+   },
+   {
+    "name": "Business and Economics",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.sle.kit.edu/english/vorstudium/88.php",
+   "courses": "https://www.kit.edu/research/helmholtz_programs.php",
+   "partners": "https://www.kit.edu/research/collaborative-research-centers.php"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/kitkarlsruhe/",
+   "linkedin": "https://www.linkedin.com/school/kit/",
+   "youtube": "https://www.youtube.com/user/KITVideoclips"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Karlsruhe_at_night_%E2%80%93_Karlsruher_Institut_f%C3%BCr_Technologie.jpg/960px-Karlsruhe_at_night_%E2%80%93_Karlsruher_Institut_f%C3%BCr_Technologie.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Killarnee",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Karlsruhe_at_night_%E2%80%93_Karlsruher_Institut_f%C3%BCr_Technologie.jpg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Karlsruhe_KIT_H%C3%B6rsaalgeb%C3%A4ude_2025-02-06.jpg/960px-Karlsruhe_KIT_H%C3%B6rsaalgeb%C3%A4ude_2025-02-06.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Entbert",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Karlsruhe_KIT_H%C3%B6rsaalgeb%C3%A4ude_2025-02-06.jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Karlsruhe_Institute_of_Technology%2C_Karlsruhe%2C_Germany_Jul_12%2C_2024_01-20-57_PM.jpeg/960px-Karlsruhe_Institute_of_Technology%2C_Karlsruhe%2C_Germany_Jul_12%2C_2024_01-20-57_PM.jpeg",
+    "w": 960,
+    "h": 720,
+    "by": "KaiKemmann",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Karlsruhe_Institute_of_Technology,_Karlsruhe,_Germany_Jul_12,_2024_01-20-57_PM.jpeg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Karlsruhe_Institute_of_Technology%2C_Karlsruhe%2C_Germany_Jul_12%2C_2024_01-19-52_PM.jpeg/960px-Karlsruhe_Institute_of_Technology%2C_Karlsruhe%2C_Germany_Jul_12%2C_2024_01-19-52_PM.jpeg",
+    "w": 960,
+    "h": 720,
+    "by": "KaiKemmann",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Karlsruhe_Institute_of_Technology,_Karlsruhe,_Germany_Jul_12,_2024_01-19-52_PM.jpeg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Karlsruhe_Kaiserstra%C3%9Fe_KIT_2024-11-06.jpg/960px-Karlsruhe_Kaiserstra%C3%9Fe_KIT_2024-11-06.jpg",
+    "w": 960,
+    "h": 723,
+    "by": "Entbert",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Karlsruhe_Kaiserstra%C3%9Fe_KIT_2024-11-06.jpg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/KarlsruheKITcampusNord2019-04-20-12-00-14.jpg/960px-KarlsruheKITcampusNord2019-04-20-12-00-14.jpg",
+    "w": 960,
+    "h": 611,
+    "by": "Rolf Kickuth",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:KarlsruheKITcampusNord2019-04-20-12-00-14.jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Ehrenhof_der_Universit%C3%A4t_Karlsruhe_2.JPG/960px-Ehrenhof_der_Universit%C3%A4t_Karlsruhe_2.JPG",
+    "w": 960,
+    "h": 540,
+    "by": "Günter Josef Radig",
+    "lic": "CC BY-SA 3.0 de",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Ehrenhof_der_Universit%C3%A4t_Karlsruhe_2.JPG",
+    "y": 2014
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Karlsruhe%2C_Elektrotechnisches_Institut_--_2013_--_5260.jpg/960px-Karlsruhe%2C_Elektrotechnisches_Institut_--_2013_--_5260.jpg",
+    "w": 960,
+    "h": 726,
+    "by": "Dietmar Rabich",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Karlsruhe,_Elektrotechnisches_Institut_--_2013_--_5260.jpg",
+    "y": 2013
+   }
+  ]
+ },
+ "sorbonne-university": {
+  "name": "Sorbonne University",
+  "generated": "2026-11-22",
+  "brief": "Sorbonne University is a public research university in Paris, France. It has three faculties: Arts and Humanities, Health Sciences, and Science and Engineering. Its Cordeliers campus is in Paris, and it has a campus in Abu Dhabi. Its research partners include international universities and companies.",
+  "students": {
+   "v": 56821,
+   "asof": 2023,
+   "source": "Source: Wikidata and the university website, 2023",
+   "src": "https://www.wikidata.org/wiki/Q41497113"
+  },
+  "campuses": [
+   {
+    "name": "Cordeliers campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Cordeliers+campus+Sorbonne+University",
+    "photo": null
+   },
+   {
+    "name": "Sorbonne University Abu Dhabi",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Sorbonne+University+Abu+Dhabi+Sorbonne+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Faculty of Arts and Humanities",
+    "url": "https://www.sorbonne-universite.fr/en/university/governance-and-organization/faculties/faculty-arts-and-humanities"
+   },
+   {
+    "name": "Faculty of Health Sciences",
+    "url": "https://www.sorbonne-universite.fr/en/university/governance-and-organization/faculties/faculty-health-sciences"
+   },
+   {
+    "name": "Faculty of Science and Engineering",
+    "url": "https://www.sorbonne-universite.fr/en/university/governance-and-organization/faculties/faculty-science-and-engineering"
+   }
+  ],
+  "links": {
+   "admissions": "https://www.sorbonne-universite.fr/en/doctorate/application-and-admission",
+   "courses": "https://www.sorbonne-universite.fr/en/education/study-sorbonne-university/our-academic-programs",
+   "partners": "https://www.sorbonne-universite.fr/en/research-1/research-partners"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/sorbonne_univ/",
+   "linkedin": "https://www.linkedin.com/school/sorbonne-universite/",
+   "youtube": "https://www.youtube.com/channel/UCJRfmVMO9aeYDHDAJuEv6bw"
+  }
+ },
+ "institut-polytechnique-de-paris": {
+  "name": "Institut Polytechnique de Paris",
+  "generated": "2026-11-22",
+  "brief": "Institut Polytechnique de Paris is a public technological university located in Palaiseau, France. It brings together six engineering grandes écoles: École polytechnique, ENSTA Paris, ENSAE Paris, École nationale des ponts et chaussées, Télécom Paris and Télécom SudParis. Its main areas include engineering, research in 14 research areas, and innovation and entrepreneurship. Its campus includes ecosystem, infrastructure, student life, libraries and a health center.",
+  "established": {
+   "v": 2019,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q48759778"
+  },
+  "campuses": [
+   {
+    "name": "IP Paris Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=IP+Paris+Campus+Institut+Polytechnique+de+Paris",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "École polytechnique",
+    "url": ""
+   },
+   {
+    "name": "ENSTA Paris",
+    "url": ""
+   },
+   {
+    "name": "Ecole des Ponts",
+    "url": ""
+   },
+   {
+    "name": "ENSAE Paris",
+    "url": ""
+   },
+   {
+    "name": "Télécom Paris",
+    "url": ""
+   },
+   {
+    "name": "Télécom SudParis",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.ip-paris.fr/en/education/useful-information/admissions",
+   "courses": "https://www.ip-paris.fr/en/course-finder",
+   "partners": "https://www.ip-paris.fr/en/corporate"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/ip_paris_/",
+   "linkedin": "https://www.linkedin.com/school/institut-polytechnique-de-paris/",
+   "youtube": "https://www.youtube.com/channel/UCaxra_1kClW70KStY8O8jmg"
+  },
+  "partners": [
+   "CNRS",
+   "CEA",
+   "INRIA",
+   "INSERM",
+   "ONERA",
+   "IFREMER"
+  ]
+ },
+ "delft-university-of-technology": {
+  "name": "Delft University of Technology",
+  "generated": "2026-11-22",
+  "brief": "Delft University of Technology is a public technical university in Delft, the Netherlands. It specialises in engineering, technology, computing, design and natural sciences. The university has eight faculties, which cover almost 40 technological and scientific disciplines. Research is also carried out at research institutes such as QuTech and the TU Delft Reactor Institute.",
+  "established": {
+   "v": 1842,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q752663"
+  },
+  "campuses": [
+   {
+    "name": "Delft",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Delft+Delft+University+of+Technology",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Delft_University_of_Technology_SW2_building_low_part.jpg/500px-Delft_University_of_Technology_SW2_building_low_part.jpg",
+     "w": 500,
+     "h": 333,
+     "by": "Ymblanter",
+     "lic": "CC BY-SA 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Delft_University_of_Technology_SW2_building_low_part.jpg",
+     "y": 2023
+    }
+   },
+   {
+    "name": "TU Delft Campus",
+    "maps": "https://www.google.com/maps/search/?api=1&query=TU+Delft+Campus+Delft+University+of+Technology",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Campus_%2839818306%29.jpeg/500px-Campus_%2839818306%29.jpeg",
+     "w": 500,
+     "h": 333,
+     "by": "Frits De Jong",
+     "lic": "CC0",
+     "licUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+     "page": "https://commons.wikimedia.org/wiki/File:Campus_(39818306).jpeg",
+     "y": 2013
+    }
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Aerospace Engineering",
+    "url": ""
+   },
+   {
+    "name": "Applied Sciences",
+    "url": ""
+   },
+   {
+    "name": "Architecture and the Built Environment",
+    "url": ""
+   },
+   {
+    "name": "Civil Engineering and Geosciences",
+    "url": ""
+   },
+   {
+    "name": "Electrical Engineering, Mathematics and Computer Science",
+    "url": ""
+   },
+   {
+    "name": "Industrial Design Engineering",
+    "url": ""
+   },
+   {
+    "name": "Mechanical Engineering",
+    "url": ""
+   },
+   {
+    "name": "Technology, Policy and Management",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.tudelft.nl/en/education/admission-and-application",
+   "courses": "https://www.tudelft.nl/en/education/programmes",
+   "scholarships": "https://www.tudelft.nl/en/2026/tu-delft/delft-researchers-awarded-nwo-funding-in-kic-programme-line-to-reduce-critical-raw-materials-in-the-energy-transition"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/tudelft/",
+   "youtube": "https://www.youtube.com/user/tudelft"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Delft_X_buildings_seen_from_the_north.jpg/960px-Delft_X_buildings_seen_from_the_north.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Ymblanter",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Delft_X_buildings_seen_from_the_north.jpg",
+    "y": 2026
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Delft_University_Sport_Center_seen_from_the_northeast.jpg/960px-Delft_University_Sport_Center_seen_from_the_northeast.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Ymblanter",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Delft_University_Sport_Center_seen_from_the_northeast.jpg",
+    "y": 2026
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/TU_Delft_-_Werktuigbouwkunde_en_scheepsbouwkunde_%282026-10-23%29.jpg/960px-TU_Delft_-_Werktuigbouwkunde_en_scheepsbouwkunde_%282026-10-23%29.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Sneeuwvlakte",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:TU_Delft_-_Werktuigbouwkunde_en_scheepsbouwkunde_(2026-10-23).jpg",
+    "y": 2026
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Aerial_view_of_TU_Delft_campus.jpg/960px-Aerial_view_of_TU_Delft_campus.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "We Like Sharing",
+    "lic": "CC0",
+    "licUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_TU_Delft_campus.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Delft_buildings_TU.JPG/960px-Delft_buildings_TU.JPG",
+    "w": 960,
+    "h": 599,
+    "by": "Natubico",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Delft_buildings_TU.JPG",
+    "y": 2012
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Cultureel_Centrum_TU_Delft.JPG/960px-Cultureel_Centrum_TU_Delft.JPG",
+    "w": 960,
+    "h": 720,
+    "by": "Amdrial",
+    "lic": "CC BY 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Cultureel_Centrum_TU_Delft.JPG",
+    "y": 2011
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Campus_%2839818306%29.jpeg/960px-Campus_%2839818306%29.jpeg",
+    "w": 960,
+    "h": 640,
+    "by": "Frits De Jong",
+    "lic": "CC0",
+    "licUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Campus_(39818306).jpeg",
+    "y": 2013
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Delft_-_2013_-_panoramio_%28224%29.jpg/960px-Delft_-_2013_-_panoramio_%28224%29.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "StevenL",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Delft_-_2013_-_panoramio_(224).jpg",
+    "y": 2013
+   }
+  ]
+ },
+ "leiden-university": {
+  "name": "Leiden University",
+  "generated": "2026-11-22",
+  "brief": "Leiden University is a public research university in Leiden, Netherlands. Its areas of study include Archaeology, Governance and Global Affairs, Humanities, Law, Medicine, Science, and Social and Behavioural Sciences. The university has locations in Leiden and The Hague, and its organisation includes faculties and interfaculty institutes such as the African Studies Centre Leiden and the International Institute for Asian Studies.",
+  "established": {
+   "v": 1575,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Leiden_University"
+  },
+  "students": {
+   "v": 33474,
+   "asof": 2024,
+   "source": "Source: Wikidata, 2024",
+   "src": "https://www.wikidata.org/wiki/Q156598"
+  },
+  "campuses": [
+   {
+    "name": "Campus The Hague",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Campus+The+Hague+Leiden+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Archaeology",
+    "url": ""
+   },
+   {
+    "name": "Governance and Global Affairs",
+    "url": ""
+   },
+   {
+    "name": "Humanities",
+    "url": ""
+   },
+   {
+    "name": "Law",
+    "url": ""
+   },
+   {
+    "name": "Medicine/LUMC",
+    "url": ""
+   },
+   {
+    "name": "Science",
+    "url": ""
+   },
+   {
+    "name": "Social and Behavioural Sciences",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.universiteitleiden.nl/en/education/admission-and-application",
+   "scholarships": "https://www.student.universiteitleiden.nl/en/scholarships?pageNumber=1&incoming=outgoing",
+   "partners": "https://www.universiteitleiden.nl/en/collaboration"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/universiteitleiden/",
+   "linkedin": "https://www.linkedin.com/company/leiden-university/",
+   "youtube": "https://www.youtube.com/user/UniversiteitLeiden"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Sylviusweg_72_Leiden_University_2019.jpg/960px-Sylviusweg_72_Leiden_University_2019.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Steven Lek",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Sylviusweg_72_Leiden_University_2019.jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Wijhaven_building_Leiden_University_The_Hague_2019.jpg/960px-Wijhaven_building_Leiden_University_The_Hague_2019.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Steven Lek",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Wijhaven_building_Leiden_University_The_Hague_2019.jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Campus_Den_Haag_Universiteit_Leiden_03.jpg/960px-Campus_Den_Haag_Universiteit_Leiden_03.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "OSeveno",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Campus_Den_Haag_Universiteit_Leiden_03.jpg",
+    "y": 2017
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Campus_Den_Haag_Universiteit_Leiden_01.jpg/960px-Campus_Den_Haag_Universiteit_Leiden_01.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "OSeveno",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Campus_Den_Haag_Universiteit_Leiden_01.jpg",
+    "y": 2017
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c4/Einsteinweg_2_Leiden.JPG/960px-Einsteinweg_2_Leiden.JPG",
+    "w": 960,
+    "h": 640,
+    "by": "Bic",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Einsteinweg_2_Leiden.JPG",
+    "y": 2015
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Den_Haag_Centraal-1569.jpg/960px-Den_Haag_Centraal-1569.jpg",
+    "w": 960,
+    "h": 651,
+    "by": "Hubertl",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Den_Haag_Centraal-1569.jpg",
+    "y": 2015
+   }
+  ]
+ },
+ "trinity-college-dublin-the-university-of-dublin": {
+  "name": "Trinity College, Dublin",
+  "generated": "2026-11-22",
+  "brief": "Trinity College Dublin is a university in Dublin, Ireland, and the sole constituent college of the University of Dublin. It was founded in 1592 by Queen Elizabeth I through a royal charter. Its main areas of study are arranged in three faculties: Arts, Humanities and Social Sciences; Health Sciences; and Science, Technology, Engineering and Mathematics. Each faculty is divided into schools, and each school into disciplines.",
+  "established": {
+   "v": 1592,
+   "note": "",
+   "source": "Source: Wikipedia and Wikidata",
+   "src": "https://en.wikipedia.org/wiki/Trinity_College_Dublin"
+  },
+  "campuses": [
+   {
+    "name": "Dublin",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Dublin+Trinity+College%2C+Dublin",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Dublin_Trinity_College_Botany_Building_01.jpg/500px-Dublin_Trinity_College_Botany_Building_01.jpg",
+     "w": 500,
+     "h": 334,
+     "by": "Spike",
+     "lic": "CC BY-SA 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:Dublin_Trinity_College_Botany_Building_01.jpg",
+     "y": 2025
+    }
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Faculty of Arts, Humanities and Social Sciences",
+    "url": "https://www.tcd.ie/structure/faculties-and-schools/"
+   },
+   {
+    "name": "Faculty of Health Sciences",
+    "url": "https://www.tcd.ie/structure/faculties-and-schools/"
+   },
+   {
+    "name": "Faculty of Science, Technology, Engineering and Mathematics",
+    "url": "https://www.tcd.ie/structure/faculties-and-schools/"
+   }
+  ],
+  "links": {
+   "courses": "https://www.tcd.ie/courses/"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/trinitycollegedublin/",
+   "linkedin": "https://www.linkedin.com/school/trinity-college-dublin/",
+   "youtube": "https://www.youtube.com/user/trinitycollegedublin"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/%22Ein_wundersch%C3%B6ner_historischer_Campus%22._04.jpg/960px-%22Ein_wundersch%C3%B6ner_historischer_Campus%22._04.jpg",
+    "w": 960,
+    "h": 426,
+    "by": "Holger Uwe Schmitt",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:%22Ein_wundersch%C3%B6ner_historischer_Campus%22._04.jpg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Dublin_Trinity_College_Botany_Building_01.jpg/960px-Dublin_Trinity_College_Botany_Building_01.jpg",
+    "w": 960,
+    "h": 642,
+    "by": "Spike",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Dublin_Trinity_College_Botany_Building_01.jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Dublin_Trinity_College_Exterior_Parliament_Square_3.jpg/960px-Dublin_Trinity_College_Exterior_Parliament_Square_3.jpg",
+    "w": 960,
+    "h": 644,
+    "by": "Zairon",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Dublin_Trinity_College_Exterior_Parliament_Square_3.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/House_39_at_Trinity_College_campus_in_Dublin%2C_Ireland.jpg/960px-House_39_at_Trinity_College_campus_in_Dublin%2C_Ireland.jpg",
+    "w": 960,
+    "h": 454,
+    "by": "Yair Haklai",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:House_39_at_Trinity_College_campus_in_Dublin,_Ireland.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Platanus_orientalis-Trinity_College_Dublin.jpg/960px-Platanus_orientalis-Trinity_College_Dublin.jpg",
+    "w": 960,
+    "h": 454,
+    "by": "Yair Haklai",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Platanus_orientalis-Trinity_College_Dublin.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Front_Square_of_Trinity_College_Dublin.jpg/960px-Front_Square_of_Trinity_College_Dublin.jpg",
+    "w": 960,
+    "h": 636,
+    "by": "Adam McGrath",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Front_Square_of_Trinity_College_Dublin.jpg",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Central_garden_at_Trinity_College_Dublin.jpg/960px-Central_garden_at_Trinity_College_Dublin.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Rcarter74",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Central_garden_at_Trinity_College_Dublin.jpg",
+    "y": 2024
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Patricks_Day_2021_Trinity_College_%2851044002773%29.jpg/960px-Patricks_Day_2021_Trinity_College_%2851044002773%29.jpg",
+    "w": 960,
+    "h": 565,
+    "by": "Cityswift - Ireland",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Patricks_Day_2021_Trinity_College_(51044002773).jpg",
+    "y": 2021
+   }
+  ]
+ },
+ "the-university-of-auckland": {
+  "name": "University of Auckland",
+  "generated": "2026-11-22",
+  "brief": "The University of Auckland is a public research university in Auckland, New Zealand. It was established as Auckland University College under the Auckland University College Act 1882 and formally opened in 1883. Its main areas of study include Arts and Education, Business, Engineering and Design, Law, Medical and Health Sciences, and Science. It is organised into faculties and has campuses in Auckland.",
+  "campuses": [
+   {
+    "name": "Auckland City",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Auckland+City+University+of+Auckland",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/University_Of_Auckland_Tamaki_Campus.jpg/500px-University_Of_Auckland_Tamaki_Campus.jpg",
+     "w": 500,
+     "h": 375,
+     "by": "Ingolfson",
+     "lic": "Public domain",
+     "licUrl": "",
+     "page": "https://commons.wikimedia.org/wiki/File:University_Of_Auckland_Tamaki_Campus.jpg",
+     "y": 2008
+    }
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Arts and Education",
+    "url": ""
+   },
+   {
+    "name": "Business School",
+    "url": "https://www.auckland.ac.nz/en/business.html"
+   },
+   {
+    "name": "Engineering and Design",
+    "url": ""
+   },
+   {
+    "name": "Law",
+    "url": ""
+   },
+   {
+    "name": "Medical and Health Sciences",
+    "url": ""
+   },
+   {
+    "name": "Science",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.auckland.ac.nz/en/study/applications-and-admissions.html",
+   "scholarships": "https://www.auckland.ac.nz/en/study/scholarships-and-awards.html",
+   "partners": "https://www.auckland.ac.nz/en/research/research-resources/transdisciplinary-research-collaboration-research-centres.html"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/universityofauckland/",
+   "linkedin": "https://www.linkedin.com/school/university-of-auckland/",
+   "youtube": "https://www.youtube.com/user/UNIofAUCKLAND"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Newman_Hall%2C_Auckland_PA01.jpg/960px-Newman_Hall%2C_Auckland_PA01.jpg",
+    "w": 960,
+    "h": 709,
+    "by": "Paora",
+    "lic": "CC0",
+    "licUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Newman_Hall,_Auckland_PA01.jpg",
+    "y": 2026
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/B110_110N_Thomas_Building_Complex_The_University_of_Auckland.jpg/960px-B110_110N_Thomas_Building_Complex_The_University_of_Auckland.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Mk6aizsc",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:B110_110N_Thomas_Building_Complex_The_University_of_Auckland.jpg",
+    "y": 2019
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/NZL-Auckl-clock-tower.jpg/960px-NZL-Auckl-clock-tower.jpg",
+    "w": 960,
+    "h": 636,
+    "by": "Balou46",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:NZL-Auckl-clock-tower.jpg",
+    "y": 2017
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/It%27s_a_quasi-secret_room_at_the_top_of_a_building_at_The_Auckland_University_%2815456345425%29.jpg/960px-It%27s_a_quasi-secret_room_at_the_top_of_a_building_at_The_Auckland_University_%2815456345425%29.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "cogdogblog",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:It%27s_a_quasi-secret_room_at_the_top_of_a_building_at_The_Auckland_University_(15456345425).jpg",
+    "y": 2014
+   }
+  ]
+ },
+ "national-university-of-singapore": {
+  "name": "National University of Singapore",
+  "generated": "2026-11-22",
+  "brief": "The National University of Singapore (NUS) is a national public research university in Singapore. It was officially established in 1980 through the government-directed merger of the public University of Singapore and the private Nanyang University. The university is a public institution located in Singapore. Its founding year and merger history are stated above. Prospective international students should consult the university's own pages for programmes, campuses and faculties.",
+  "campuses": [
+   {
+    "name": "Singapore",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Singapore+National+University+of+Singapore",
+    "photo": {
+     "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/National_University_of_Singapore_-_Sports_and_Recreation_Centre.jpg/500px-National_University_of_Singapore_-_Sports_and_Recreation_Centre.jpg",
+     "w": 500,
+     "h": 375,
+     "by": "RFNirmala",
+     "lic": "CC BY 4.0",
+     "licUrl": "https://creativecommons.org/licenses/by/4.0",
+     "page": "https://commons.wikimedia.org/wiki/File:National_University_of_Singapore_-_Sports_and_Recreation_Centre.jpg",
+     "y": 2026
+    }
+   }
+  ],
+  "faculties": [
+   {
+    "name": "College of Design and Engineering",
+    "url": "https://cde.nus.edu.sg/"
+   },
+   {
+    "name": "Faculty of Arts and Social Sciences",
+    "url": "https://www.fas.nus.edu.sg/"
+   },
+   {
+    "name": "Faculty of Dentistry",
+    "url": "http://www.dentistry.nus.edu.sg/"
+   },
+   {
+    "name": "Faculty of Engineering",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Law",
+    "url": "https://law.nus.edu.sg"
+   },
+   {
+    "name": "Faculty of Science",
+    "url": "http://www.science.nus.edu.sg"
+   },
+   {
+    "name": "Institute of Water Policy",
+    "url": ""
+   },
+   {
+    "name": "Lee Kuan Yew School of Public Policy",
+    "url": "https://lkyspp.nus.edu.sg"
+   },
+   {
+    "name": "NUS Saw Swee Hock School of Public Health",
+    "url": "https://sph.nus.edu.sg/"
+   },
+   {
+    "name": "School of Computing",
+    "url": "https://www.comp.nus.edu.sg/"
+   },
+   {
+    "name": "School of Design and Environment",
+    "url": ""
+   },
+   {
+    "name": "Yong Loo Lin School of Medicine",
+    "url": "https://medicine.nus.edu.sg/"
+   }
+  ],
+  "social": {
+   "instagram": "https://www.instagram.com/nus_singapore/",
+   "youtube": "https://www.youtube.com/channel/UChXZqIuwcw-vVCLSyqqUNfA"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/College_of_Medicine_Building%2C_Singapore_General_Hospital%2C_October_2025.jpg/960px-College_of_Medicine_Building%2C_Singapore_General_Hospital%2C_October_2025.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "GoAheadFan95",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:College_of_Medicine_Building,_Singapore_General_Hospital,_October_2025.jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/NUS_University_Hall%2C_Singapore.jpg/960px-NUS_University_Hall%2C_Singapore.jpg",
+    "w": 960,
+    "h": 723,
+    "by": "Ralff Nestor Nacor",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:NUS_University_Hall,_Singapore.jpg",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/College_of_Medicine_Building%2C_October_2025.jpg/960px-College_of_Medicine_Building%2C_October_2025.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "GoAheadFan95",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:College_of_Medicine_Building,_October_2025.jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/%E6%96%B0%E5%8A%A0%E5%9D%A1%E5%9B%BD%E7%AB%8B%E5%A4%A7%E5%AD%A6Raffles_Hall%E4%B8%80%E8%A7%92_-_panoramio.jpg/960px-%E6%96%B0%E5%8A%A0%E5%9D%A1%E5%9B%BD%E7%AB%8B%E5%A4%A7%E5%AD%A6Raffles_Hall%E4%B8%80%E8%A7%92_-_panoramio.jpg",
+    "w": 960,
+    "h": 717,
+    "by": "空之境界",
+    "lic": "CC BY 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:%E6%96%B0%E5%8A%A0%E5%9D%A1%E5%9B%BD%E7%AB%8B%E5%A4%A7%E5%AD%A6Raffles_Hall%E4%B8%80%E8%A7%92_-_panoramio.jpg",
+    "y": 2013
+   }
+  ]
+ },
+ "universiti-malaya": {
+  "name": "Universiti Malaya",
+  "generated": "2026-11-22",
+  "brief": "Universiti Malaya is a public research university in Kuala Lumpur, Malaysia. Its faculties cover built environment, languages and linguistics, pharmacy, engineering, education, dentistry, business and economics, medicine, science, computer science and information technology, arts and social sciences, creative arts, law, and sport and exercise sciences. Its academic programmes include coursework, mixed-mode, research, and clinical tracks, offered full-time, part-time, and through Open and Distance Learning.",
+  "established": {
+   "v": 1934,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q1142924"
+  },
+  "campuses": [
+   {
+    "name": "Kuala Lumpur",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Kuala+Lumpur+Universiti+Malaya",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Built Environment",
+    "url": ""
+   },
+   {
+    "name": "Languages and Linguistics",
+    "url": ""
+   },
+   {
+    "name": "Pharmacy",
+    "url": ""
+   },
+   {
+    "name": "Engineering",
+    "url": ""
+   },
+   {
+    "name": "Education",
+    "url": ""
+   },
+   {
+    "name": "Dentistry",
+    "url": ""
+   },
+   {
+    "name": "Business and Economics",
+    "url": ""
+   },
+   {
+    "name": "Medicine",
+    "url": ""
+   },
+   {
+    "name": "Science",
+    "url": ""
+   },
+   {
+    "name": "Computer Science and Information Technology",
+    "url": ""
+   },
+   {
+    "name": "Arts and Social Sciences",
+    "url": ""
+   },
+   {
+    "name": "Creative Arts",
+    "url": ""
+   },
+   {
+    "name": "Law",
+    "url": ""
+   },
+   {
+    "name": "Sport & Exercise Sciences",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://study.um.edu.my/how-to-apply",
+   "courses": "https://aasd.um.edu.my/financial-aid-for-undergraduate",
+   "scholarships": "https://bendahari.um.edu.my/",
+   "partners": "https://www.um.edu.my/partnerships-um"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/unimalaya/",
+   "youtube": "https://www.youtube.com/user/UniOfMalaya"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Bangunan_Cyberview_23_Universiti_Malaya_Cyberjaya_Campus_main_entrance_%28250423%29.jpg/960px-Bangunan_Cyberview_23_Universiti_Malaya_Cyberjaya_Campus_main_entrance_%28250423%29.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "*angys*",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Bangunan_Cyberview_23_Universiti_Malaya_Cyberjaya_Campus_main_entrance_(250423).jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Jalan_Elmu_gate_UM_%28231012%29.jpg/960px-Jalan_Elmu_gate_UM_%28231012%29.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "*angys*",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Jalan_Elmu_gate_UM_(231012).jpg",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Dewan_Tunku_Canselor_at_night.jpg/960px-Dewan_Tunku_Canselor_at_night.jpg",
+    "w": 960,
+    "h": 651,
+    "by": "PeaceSeekers",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Dewan_Tunku_Canselor_at_night.jpg",
+    "y": 2023
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/The_university_malaya_exam_hall_parking.jpg/960px-The_university_malaya_exam_hall_parking.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Cerevisae",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:The_university_malaya_exam_hall_parking.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Perdanasiswa_complex_oppsite_the_main_library.jpg/960px-Perdanasiswa_complex_oppsite_the_main_library.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Cerevisae",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Perdanasiswa_complex_oppsite_the_main_library.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/UMBalaiUngkuAziz.jpg/960px-UMBalaiUngkuAziz.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Victor Pogadaev",
+    "lic": "CC0",
+    "licUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:UMBalaiUngkuAziz.jpg",
+    "y": 2012
+   }
+  ]
+ },
+ "khalifa-university-of-science-and-technology": {
+  "name": "Khalifa University of Science and Technology",
+  "generated": "2026-11-22",
+  "established": {
+   "v": 2007,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q6399651"
+  },
+  "campuses": [
+   {
+    "name": "Abu Dhabi",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Abu+Dhabi+Khalifa+University+of+Science+and+Technology",
+    "photo": null
+   }
+  ],
+  "social": {
+   "instagram": "https://www.instagram.com/khalifa_university/",
+   "linkedin": "https://www.linkedin.com/school/khalifauniversity/",
+   "youtube": "https://www.youtube.com/channel/UCQe3Bp2TEEtsKPji6B5_vhQ"
+  }
+ },
+ "lund-university": {
+  "name": "Lund University",
+  "generated": "2026-11-22",
+  "brief": "Lund University is a public research university in Sweden and one of Northern Europe's oldest universities. It is located in the city of Lund in the Swedish province of Scania. It is organised into faculties, including the Faculty of Humanities and Theology, the Faculty of Law, the Faculty of Social Sciences, the Faculty of Engineering (LTH) and the Faculty of Fine and Performing Arts in Malmö. It also has a campus in Helsingborg, Campus Helsingborg, where it offers education and research in close cooperation with companies and organisations.",
+  "established": {
+   "v": 1666,
+   "note": "",
+   "source": "Source: Wikidata",
+   "src": "https://www.wikidata.org/wiki/Q218506"
+  },
+  "campuses": [
+   {
+    "name": "Campus Helsingborg",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Campus+Helsingborg+Lund+University",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Humanistiska och teologiska fakulteterna",
+    "url": ""
+   },
+   {
+    "name": "Juridiska fakulteten",
+    "url": ""
+   },
+   {
+    "name": "Konstnärliga fakulteten i Malmö",
+    "url": ""
+   },
+   {
+    "name": "LTH | Lunds tekniska högskola",
+    "url": ""
+   },
+   {
+    "name": "Samhällsvetenskapliga fakulteten",
+    "url": ""
+   }
+  ],
+  "links": {
+   "admissions": "https://www.lu.se/studera/anmalan-och-antagning",
+   "courses": "https://www.lu.se/studera/hitta-utbildning",
+   "scholarships": "https://www.lu.se/student/stipendier-dig-som-ar-student"
+  },
+  "social": {
+   "instagram": "https://www.instagram.com/lundsuniversitet/",
+   "linkedin": "https://www.linkedin.com/company/lunduniversity/",
+   "youtube": "https://www.youtube.com/user/LundUniversity"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/20200517_Max_IV_i_Lund_006_%2849913223326%29.jpg/960px-20200517_Max_IV_i_Lund_006_%2849913223326%29.jpg",
+    "w": 960,
+    "h": 606,
+    "by": "Johan Wessman / News Oresund",
+    "lic": "CC BY 2.0",
+    "licUrl": "https://creativecommons.org/licenses/by/2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:20200517_Max_IV_i_Lund_006_(49913223326).jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Lund%2C_university%2C_house_%22Gamla_Kirurgen%22.JPG/960px-Lund%2C_university%2C_house_%22Gamla_Kirurgen%22.JPG",
+    "w": 960,
+    "h": 640,
+    "by": "Dguendel",
+    "lic": "CC BY 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lund,_university,_house_%22Gamla_Kirurgen%22.JPG",
+    "y": 2018
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/K%C3%A5rhuset_vid_LTH.jpg/960px-K%C3%A5rhuset_vid_LTH.jpg",
+    "w": 960,
+    "h": 639,
+    "by": "Thehagen",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:K%C3%A5rhuset_vid_LTH.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Campus_Helsingborg.jpg/960px-Campus_Helsingborg.jpg",
+    "w": 960,
+    "h": 639,
+    "by": "Thehagen",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Campus_Helsingborg.jpg",
+    "y": 2022
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Lux_Lund_01.jpg/960px-Lux_Lund_01.jpg",
+    "w": 960,
+    "h": 640,
+    "by": "Bengt Oberger",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lux_Lund_01.jpg",
+    "y": 2017
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Picture_of_BMC_%28Biomedicinskt_Centrum%29%2C_at_Lund_University.JPG/960px-Picture_of_BMC_%28Biomedicinskt_Centrum%29%2C_at_Lund_University.JPG",
+    "w": 960,
+    "h": 720,
+    "by": "Amicus serpentis",
+    "lic": "CC BY-SA 3.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Picture_of_BMC_(Biomedicinskt_Centrum),_at_Lund_University.JPG",
+    "y": 2012
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Kulturanatomen.JPG/960px-Kulturanatomen.JPG",
+    "w": 960,
+    "h": 720,
+    "by": "Moralist",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Kulturanatomen.JPG",
+    "y": 2012
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Sociologiska_institutionen_Lund.JPG/960px-Sociologiska_institutionen_Lund.JPG",
+    "w": 960,
+    "h": 720,
+    "by": "Moralist",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Sociologiska_institutionen_Lund.JPG",
+    "y": 2012
+   }
+  ]
+ },
+ "university-of-oslo": {
+  "name": "University of Oslo",
+  "generated": "2026-11-22",
+  "brief": "The University of Oslo is a public research university in Oslo, Norway, and Norway's oldest university of its kind. UiO has been committed to education, research, science communication and innovation since 1811. Its areas of study include climate, environment and sustainability, democracy, and life science. It has 8 faculties, 2 museums and 1 university library, and offers 226 study programmes. It also runs the Climate House and Domus Bibliotheca, both in Oslo.",
+  "established": {
+   "v": 1811,
+   "note": "",
+   "source": "Source: uio.no and Wikidata",
+   "src": "https://www.uio.no/english/about/facts/"
+  },
+  "students": {
+   "v": 27400,
+   "asof": 2025,
+   "source": "Source: uio.no, 2025",
+   "src": "https://www.uio.no/english/about/facts/"
+  },
+  "campuses": [
+   {
+    "name": "Blindern",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Blindern+University+of+Oslo",
+    "photo": null
+   }
+  ],
+  "faculties": [
+   {
+    "name": "Faculty of Dentistry",
+    "url": "https://www.odont.uio.no"
+   },
+   {
+    "name": "Faculty of Educational Sciences",
+    "url": ""
+   },
+   {
+    "name": "Faculty of Humanities",
+    "url": "https://hf.uio.no"
+   },
+   {
+    "name": "Faculty of Law",
+    "url": "http://www.jus.uio.no/"
+   },
+   {
+    "name": "Faculty of Mathematics and Natural Sciences",
+    "url": "http://www.mn.uio.no/"
+   },
+   {
+    "name": "Faculty of Medicine",
+    "url": ""
+   },
+   {
+    "name": "Faculty of social sciences",
+    "url": "https://www.sv.uio.no/"
+   },
+   {
+    "name": "Institute for experimental medical research",
+    "url": ""
+   },
+   {
+    "name": "The Faculty of Theology",
+    "url": "https://www.tf.uio.no"
+   }
+  ],
+  "links": {
+   "partners": "https://www.uio.no/english/about/global/collaborate-with-us/"
+  },
+  "gallery": [
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Universitetsbiblioteket_i_Oslo%2C_2025.jpg/960px-Universitetsbiblioteket_i_Oslo%2C_2025.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "Ssu",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Universitetsbiblioteket_i_Oslo,_2025.jpg",
+    "y": 2025
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Domus_Medica_-_Universitetet_I_Oslo_-_Oslo%2C_Norway_2020-10-09.jpg/960px-Domus_Medica_-_Universitetet_I_Oslo_-_Oslo%2C_Norway_2020-10-09.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "Ryan Hodnett",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Domus_Medica_-_Universitetet_I_Oslo_-_Oslo,_Norway_2020-10-09.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Domus_Medica_-_Universitetet_I_Oslo_-_Oslo%2C_Norway_2020-09-25.jpg/960px-Domus_Medica_-_Universitetet_I_Oslo_-_Oslo%2C_Norway_2020-09-25.jpg",
+    "w": 960,
+    "h": 540,
+    "by": "Ryan Hodnett",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Domus_Medica_-_Universitetet_I_Oslo_-_Oslo,_Norway_2020-09-25.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/2020-08_Kabelgt_40.jpg/960px-2020-08_Kabelgt_40.jpg",
+    "w": 960,
+    "h": 720,
+    "by": "QUB1",
+    "lic": "CC BY-SA 4.0",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2020-08_Kabelgt_40.jpg",
+    "y": 2020
+   },
+   {
+    "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Fontene_universitetet_oslo_id_165745.jpg/960px-Fontene_universitetet_oslo_id_165745.jpg",
+    "w": 960,
+    "h": 549,
+    "by": "GAD",
+    "lic": "CC BY-SA 3.0 no",
+    "licUrl": "https://creativecommons.org/licenses/by-sa/3.0/no/deed.en",
+    "page": "https://commons.wikimedia.org/wiki/File:Fontene_universitetet_oslo_id_165745.jpg",
+    "y": 2014
+   }
+  ]
+ }
+}
