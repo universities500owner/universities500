@@ -214,12 +214,37 @@ STUDENTS_RX = re.compile(r'\d[\d,.\u202f\u00a0 ]*\+?\s+(?:[\w-]+\s+){0,2}(?:stud
                          r'|\b(?:enrol?lments?|student (?:body|population|numbers?))\b[^.]{0,50}\d{1,3}(?:[,.\u202f\u00a0 ]\d{3})+', re.I)
 
 
-def check_brief(text, sources_text):
+ABBREVIATIONS = {'st', 'dr', 'mr', 'mrs', 'ms', 'prof', 'mt', 'no', 'inc', 'ltd', 'co', 'corp', 'vs', 'etc', 'ca', 'cf', 'jr', 'sr'}
+
+
+def sentences(text):
+    out, start = [], 0
+    for m in re.finditer(r'(?<=[a-z0-9)\u00df-\u00ff])[.!?]\s+(?=[A-Z0-9\u00c0-\u00de"\u201c\u2018\'])', text):
+        word = re.findall(r'(\w+)$', text[start:m.start()])
+        if word and word[-1].lower() in ABBREVIATIONS:
+            continue
+        out.append(text[start:m.end()].strip())
+        start = m.end()
+    out.append(text[start:].strip())
+    return [x for x in out if x]
+
+
+def tidy_brief(text):
+    """Only takes away: one paragraph; sentences that remark on missing pages, praise, or give a student count are dropped; a brief that is too long
+    loses its last sentences. Nothing is added or reworded, so no new fact can get in."""
+    t = re.sub(r'\s+', ' ', text or '').strip()
+    ss = [x for x in sentences(t) if not (META_RX.search(x) or PROMO_RX.search(x) or STUDENTS_RX.search(x))]
+    while len(' '.join(ss)) > BRIEF_MAX and len(ss) > 1:
+        ss = ss[:-1]
+    return ' '.join(ss)
+
+
+def check_brief(text, sources_text, minimum=BRIEF_MIN):
     """4-5 lines of plain words. Every number or year in it is in the sources; no student counts, no praise, no remarks about missing pages.
     Returns (ok, reason); the reason is specific because it is sent back to the model for one more try."""
     t = re.sub(r'\s+', ' ', text or '').strip()                       # one paragraph: the page breaks it into lines
-    if not BRIEF_MIN <= len(t) <= BRIEF_MAX:
-        return False, f'length is {len(t)} characters; it must be {BRIEF_MIN} to {BRIEF_MAX}'
+    if not minimum <= len(t) <= BRIEF_MAX:
+        return False, f'length is {len(t)} characters; it must be {minimum} to {BRIEF_MAX}'
     src_nums, src_norm = numbers(sources_text), norm(sources_text)
     bad = sorted(n for n in numbers(t) - src_nums)
     if bad:
@@ -383,14 +408,15 @@ def process(client, rec, pages, fetch, api, usage, today):
 
     # brief: up to two more tries, each told what was wrong
     sources = wiki + ' ' + ' '.join(pages.values())
-    text, tries = re.sub(r'\s+', ' ', ans.get('brief') or '').strip(), []
+    minimum = BRIEF_MIN if pages else 150                 # an unreadable site leaves only the Wikipedia lead, which may be short
+    text, tries = tidy_brief(ans.get('brief')), []
     for attempt in range(3):
-        ok, reason = check_brief(text, sources)
+        ok, reason = check_brief(text, sources, minimum)
         if ok:
             break
         tries.append({'text': text, 'why': reason})
         if attempt < 2:
-            text = rewrite_brief(client, rec, pages, usage, text, reason)
+            text = tidy_brief(rewrite_brief(client, rec, pages, usage, text, reason))
     ai['brief_tries'] = tries
     if ok:
         rec['brief'] = {'text': text, 'status': 'verified', 'src': 'university pages and Wikipedia lead' if pages else 'Wikipedia lead only'}
@@ -471,7 +497,7 @@ def publish_flags(rec, today):
     st = rec.get('students') or {}
     students = bool(st.get('v') and st.get('asof') and (st.get('status') == 'official' or st.get('status') == 'verified'))
     fo = (rec.get('founded') or {})
-    return {'students': students, 'founded': bool(fo.get('v')) and fo.get('status') in ('confirmed', 'official'), 'university': True, 'brief': (rec.get('brief') or {}).get('status') == 'verified',
+    return {'students': students, 'founded': bool(fo.get('v')) and fo.get('status') in ('confirmed', 'official'), 'university': True, 'brief': (rec.get('brief') or {}).get('status') == 'verified' and (rec.get('brief') or {}).get('src') != 'Wikipedia lead only',
             'campuses': any(c.get('photo') for c in rec.get('campuses') or []), 'gallery': len((rec.get('gallery') or {}).get('photos') or []) >= 4}
 
 

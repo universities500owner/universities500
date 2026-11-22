@@ -116,7 +116,7 @@ class Tests(unittest.TestCase):
     def test_invented_values_are_dropped(self):
         out = run(answer(students={'total': 40000, 'asof_year': 2024, 'quote': 'In 2023, 31,200 students studied here', 'page': 'facts'},   # number not in quote
                          founded={'year': 1901, 'quote': 'was founded in 1901', 'page': 'facts'},                                       # quote not on the page
-                         brief='Stub University was founded in 1901 and has 45,000 students. ' + 'It is a public university in Stubville. ' * 6))
+                         brief='Stub University was founded in 1901. ' + 'It is a public university in Stubville. ' * 8))
         self.assertIn('1901', out['brief']['status'])                                         # the reason names the number that is not in the pages
         self.assertEqual(out['students']['status'], 'single-source')                         # the collector's value stays untouched
         self.assertEqual(out['founded']['status'], 'ok')
@@ -158,16 +158,16 @@ class Tests(unittest.TestCase):
         self.assertTrue(A.check_brief(BRIEF.replace('its North Campus and Loyola Campus are both', 'its two campuses are both'), src + ' two campuses')[0])
 
     def test_a_refused_brief_gets_another_try_with_the_reason(self):
-        bad = BRIEF + ' The pages do not state a total enrollment figure.'
+        bad = BRIEF.replace('1958', '1901')                      # a year that is not in the pages: not something to cut out, so the model is asked again
         client = FakeClient(answer(brief=bad), rewrites=[BRIEF])
         out = A.process(client, rec(), PAGES, lambda u: 'data:image/jpeg;base64,AAAA', None, A.Usage(), datetime.date(2026, 11, 22))
         self.assertEqual((out['brief']['status'], out['brief']['text']), ('verified', BRIEF))
         self.assertEqual(len(out['ai']['brief_tries']), 1)
-        self.assertIn('never mention the pages', client.rewrite_prompts[0])            # the model is told what was wrong
+        self.assertIn('1901', client.rewrite_prompts[0])            # the model is told what was wrong
         self.assertIn(bad, client.rewrite_prompts[0])
 
     def test_a_brief_is_tried_three_times_then_given_up(self):
-        bad = BRIEF + ' The pages do not state a founding year.'
+        bad = BRIEF.replace('1958', '1901')
         client = FakeClient(answer(brief=bad), rewrites=[bad, bad])
         out = A.process(client, rec(), PAGES, lambda u: 'data:image/jpeg;base64,AAAA', None, A.Usage(), datetime.date(2026, 11, 22))
         self.assertTrue(out['brief']['status'].startswith('rejected'))
@@ -250,6 +250,26 @@ class Tests(unittest.TestCase):
         out = run(answer(brief=BRIEF.replace('. ', '.\n')))
         self.assertEqual(out['brief']['status'], 'verified')
         self.assertNotIn('\n', out['brief']['text'])
+
+    def test_tidy_brief_only_takes_away(self):
+        t = A.tidy_brief(BRIEF + ' The pages do not state a total enrollment figure. About 31,200 students study here. It is a world-class place.')
+        self.assertEqual(t, BRIEF)
+        long = BRIEF + ' ' + 'It also has a library. ' * 20
+        t = A.tidy_brief(long)
+        self.assertLessEqual(len(t), A.BRIEF_MAX)
+        self.assertTrue(t.startswith(BRIEF) and t.endswith('.'))
+        self.assertEqual(A.tidy_brief('Its campuses are St. George, Mississauga and Scarborough. It is public.'), 'Its campuses are St. George, Mississauga and Scarborough. It is public.')
+        self.assertEqual(A.tidy_brief('Line one.\nLine two.'), 'Line one. Line two.')
+
+    def test_an_unreadable_site_may_have_a_shorter_brief_that_is_not_published_on_its_own(self):
+        r = rec()
+        r['brief'] = {'text': 'Stub University is a public university in Stubville. It was founded in 1958.', 'status': 'pending-ai', 'src': 'https://en.wikipedia.org/wiki/Stub'}
+        short = ('Stub University is a public university in Stubville. It was founded in 1958 and teaches arts and science. '
+                 'Its North Campus and Loyola Campus are in the city.')
+        r['brief']['text'] = short + ' It works with industry partners.'
+        out = A.process(FakeClient(answer(brief=short)), r, {}, lambda u: '', None, A.Usage(), datetime.date(2026, 11, 22))
+        self.assertEqual((out['brief']['status'], out['brief']['src']), ('verified', 'Wikipedia lead only'))
+        self.assertFalse(out['publish']['brief'])
 
     def test_founding_year_is_published_only_when_confirmed_or_stated_by_the_university(self):
         self.assertTrue(run(answer())['publish']['founded'])                                       # the university says 1958, Wikidata says 1958
