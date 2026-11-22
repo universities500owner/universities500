@@ -83,6 +83,10 @@ jobs:
           print(f'{len(recs)} profiles merged from {len(glob.glob("batches/batch-*/profiles_ai.json"))} batches; {expected} universities expected')
           if len(recs) != expected:
               raise SystemExit(f'{len(recs)} profiles merged but {expected} expected - a batch is missing or doubled. Nothing was pushed.')
+          errs = [r['slug'] for r in recs if (r.get('ai') or {}).get('error')]
+          if len(errs) > 3:
+              msg = (next(r['ai']['error'] for r in recs if (r.get('ai') or {}).get('error')))[:200]
+              raise SystemExit(f'{len(errs)} universities had an AI-step error, so nothing was pushed. First error: {msg}')
           json.dump(recs, open('profiles_ai_all.json', 'w', encoding='utf-8'), ensure_ascii=False)
           EOF
       - name: Publish (checked values only)
