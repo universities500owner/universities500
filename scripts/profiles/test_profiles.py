@@ -268,6 +268,26 @@ class Tests(unittest.TestCase):
         ok = photo('File:Stub quad.jpg', 4000, 2500, cats='Buildings of Stub University')
         self.assertTrue(CM.gate(ok)[0])
 
+    def test_engravings_and_undated_files_are_not_gallery_photos(self):
+        eng = photo('File:Stub University view.jpg', 4000, 2500, cats='Engravings of Stub University')
+        self.assertEqual(CM.gate(eng)[1], 'topic')
+        saved = photo('File:Stub University scan.jpg', 4000, 2500, date='')          # no capture date, only a saved-on date
+        saved['imageinfo'][0]['extmetadata']['DateTime'] = {'value': '2024-02-02'}
+        self.assertEqual(CM.photo_year(saved['imageinfo'][0])[1], 'uploaded')          # not 'taken'
+        self.assertEqual(CM.photo_year(FILES['File:Stub University library 2021.jpg']['imageinfo'][0]), (2021, 'taken'))
+
+    def test_credit_must_be_a_name_not_an_instruction(self):
+        for who in ('Thank you to indicate this credit line next to the image in case of reuse: Credit Sorbonne',
+                    'Unknown author Unknown author', 'No machine-readable author provided. Donaldytong assumed', 'x' * 80):
+            self.assertEqual(CM.gate(photo('File:Stub aerial.jpg', 4000, 2500, artist=who))[1], 'author text', who[:30])
+        self.assertTrue(CM.gate(photo('File:Stub aerial.jpg', 4000, 2500, artist='Maksim Sokolov (Maxergon)'))[0])
+
+    def test_campus_noise_words_are_dropped(self):
+        links = [{'url': f'https://www.stub.test/{i}/', 'text': t, 'footer': False} for i, t in
+                 enumerate(['North Campus', 'Campus Life', 'Campus Tours', 'Smoke-free campus', 'Accessible Campus', 'Loyola Campus'])]
+        names = [n['name'] for n in S.names_from_links(links, S.CAMPUS_NAME, 'stub.test', 12)]
+        self.assertEqual(names, ['North Campus', 'Loyola Campus'])
+
     def test_founded_year_is_checked_against_the_lead(self):
         wd = {'src': 'x', 'founded': {'v': 2018, 'all': [2018], 'conflict': False}}
         self.assertEqual(C.founded_block(wd, 'It was founded in 1257 and merged in 2018.')['status'], 'check')

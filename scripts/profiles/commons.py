@@ -13,16 +13,19 @@ LICENCE_OK = re.compile(r'^(?:CC[ -]BY(?:[ -]SA)?(?:[ -]\d(?:\.\d)?)?(?:[ -][A-Z
 NAME_BAD = re.compile(
     r'logo|seal\b|crest|coat[ _]of|\barms\b|flag\b|\bmap\b|\bplan\b|diagram|poster|banner|brochure|portrait|signature|sticker|icon|'
     r'emblem|graduat|ceremony|protest|demonstration|\bbus\b|\btram\b|\btrain\b|plaque|statue of|bust of|\bprofessor\b|\bdr\.? |'
-    r'screenshot|infographic|chart|\bgraph\b|\.svg$|\.pdf$|\.tif|protest|demolition|encampment|\bcamp\b|rally|vigil|memorial|'
+    r'screenshot|infographic|chart|\bgraph\b|engraving|etching|drawing|painting|lithograph|woodcut|illustration|atlas|gravure|estampe|\.svg$|\.pdf$|\.tif|protest|demolition|encampment|\bcamp\b|rally|vigil|memorial|'
     r'\bfire\b|flood|accident|riot|strike|construction|\bcrane\b|vehicle|\bcars?\b|truck|cushman|\.thumb\.|\binterior|\bsalle\b|banner', re.I)
 CATS_BAD = re.compile(
     r'protest|demonstration|encampment|construction|vehicle|\bcars?\b|portrait|graduat|ceremon|events?\b|sport|concert|exhibition|logos?\b|'
-    r'murals?|artworks?|statues?|people|interiors?|food|conference|lectures?\b|stock|plaques?|signs?\b|demolition|disaster|crime', re.I)
+    r'murals?|artworks?|statues?|people|interiors?|food|conference|lectures?\b|stock|plaques?|signs?\b|demolition|disaster|crime|'
+    r'\bmaps?\b|atlas|prints?\b|engravings?|etchings?|paintings?|drawings?|illustrations?|lithograph|woodcut|postcards?|stamps?|manuscripts?|books?\b|'
+    r'historic(?:al)? (?:images?|photographs?|views?)|meetings?|visits?\b|delegations?|groups?\b', re.I)
 SUBCAT_KEEP = re.compile(r'campus|building|library|quad|hall\b|tower|gate\b|entrance|architecture|exterior|aerial|lecture|laborator|student cent|main', re.I)
 SUBCAT_SKIP = re.compile(r'people|alumni|portrait|sport|event|logo|coat|map|history|\d{2}th|stub|document|publication|persons|staff|students? ', re.I)
 HINT_WORDS = re.compile(r'campus|aerial|library|quad|entrance|exterior|building|tower|hall|facade|main|gate|courtyard', re.I)
 GENERIC = {'the', 'of', 'and', 'campus', 'main', 'university', 'universität', 'universite', 'université', 'city', 'centre', 'center',
            'college', 'institute', 'school', 'de', 'la', 'le', 'du', 'des', 'van', 'der', 'den', 'von', 'zu', 'for'}
+CREDIT_BAD = re.compile(r'please|thank you|credit line|unknown|no machine-readable|assumed|this image was|see source|own work by|anonymous', re.I)
 MIN_W, MIN_H = 1600, 900
 
 
@@ -35,10 +38,11 @@ def meta(info, key):
 
 
 def photo_year(info):
-    for key in ('DateTimeOriginal', 'DateTime'):
-        m = re.search(r'\b(19|20)\d\d\b', meta(info, key))
-        if m:
-            return int(m.group(0)), 'taken'
+    # only DateTimeOriginal is a capture date; 'DateTime' is when the file was last saved, which is how a scanned engraving
+    # ends up looking recent
+    m = re.search(r'\b(19|20)\d\d\b', meta(info, 'DateTimeOriginal'))
+    if m:
+        return int(m.group(0)), 'taken'
     m = re.match(r'^(\d{4})-', info.get('timestamp') or '')
     return (int(m.group(1)), 'uploaded') if m else (None, '')
 
@@ -65,8 +69,11 @@ def gate(page):
         return False, 'restricted'
     if CATS_BAD.search(meta(ii, 'Categories')):
         return False, 'topic'
-    if not meta(ii, 'Artist') and not meta(ii, 'Credit'):
+    who = meta(ii, 'Artist') or meta(ii, 'Credit')
+    if not who:
         return False, 'no author'
+    if len(who) > 70 or CREDIT_BAD.search(who):     # an instruction or a sentence is not a name we can print under a photo
+        return False, 'author text'
     return True, ''
 
 
@@ -142,7 +149,11 @@ def gallery(api, category, this_year=None, want=8, scan=260):
     for p in pages:
         ok, why = gate(p)
         if ok:
-            good.append(to_photo(p, 960))
+            ph = to_photo(p, 960)
+            if ph['yearFrom'] != 'taken':           # no camera date: cannot say it is recent, and may not be a photograph
+                counts['no date'] = counts.get('no date', 0) + 1
+                continue
+            good.append(ph)
         else:
             counts[why] = counts.get(why, 0) + 1
     # a campus gallery shows buildings and grounds: use photos whose title or categories say so, when there are enough
@@ -180,7 +191,11 @@ def campus_photo(api, campus, uni_name, this_year=None):
         if not ok:
             continue
         ph = to_photo(p, 480)
+        if ph['yearFrom'] != 'taken':
+            continue
         hay = (ph['title'] + ' ' + ph['categories']).lower()
+        if not HINT_WORDS.search(hay):               # a campus thumbnail must show buildings or grounds
+            continue
         if ctoks and not any(t in hay for t in ctoks):
             continue
         if not any(t in hay for t in utoks[:2]):

@@ -234,6 +234,11 @@ CAMPUS_NAME = re.compile(
     r"[A-Z\u00C0-\u00DE][\w'’.&-]*(?: [A-Z\u00C0-\u00DE&][\w'’.&-]*){0,3} [Cc]ampus$|^[Cc]ampus (?:de |du |d'|di |van )?[A-Z\u00C0-\u00DE][\w'’-]+(?: [A-Z\u00C0-\u00DE][\w'’-]+)?$")
 
 
+CAMPUS_NOISE = re.compile(
+    r'\b(life|tours?|maps?|card|resources|accessible|smoke|free|safety|security|parking|transport|housing|dining|food|sports?|shop|store|facilities|'
+    r'services|news|events|plan|guide|visit|virtual|wi-?fi|pathways|locations|directions|access)\b', re.I)
+
+
 def names_from_links(links, rx, home_reg, cap=40):
     """Faculty or campus names taken from the link text of a hub page: [{'name','url'}]."""
     seen = {}
@@ -241,7 +246,7 @@ def names_from_links(links, rx, home_reg, cap=40):
         t = l['text'].strip()
         if not 4 <= len(t) <= 70 or not rx.search(t) or FACULTY_BAD.search(t) and not re.search(r'faculty|school|college|department', t, re.I):
             continue
-        if rx.pattern == CAMPUS_NAME.pattern and not CAMPUS_NAME.match(t):
+        if rx.pattern == CAMPUS_NAME.pattern and (not CAMPUS_NAME.match(t) or CAMPUS_NOISE.search(t)):
             continue
         if JUNK_PATH.search(l['url']) or t.lower() in seen:
             continue
