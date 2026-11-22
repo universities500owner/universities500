@@ -310,10 +310,11 @@ def process(client, rec, pages, fetch, api, usage, today):
 
 
 def publish_flags(rec, today):
-    """What could go live. Only checked values count. 'university' follows the student-total rule while that rule is undecided."""
+    """What could go live. Only checked values count. A university stays listed whether or not it has a verified student total:
+    without one, only the student-number field is hidden (decided by Raja, 2026-11-22)."""
     st = rec.get('students') or {}
     students = bool(st.get('v') and st.get('asof') and (st.get('status') == 'official' or st.get('status') == 'verified'))
-    return {'students': students, 'university': students, 'brief': (rec.get('brief') or {}).get('status') == 'verified',
+    return {'students': students, 'university': True, 'brief': (rec.get('brief') or {}).get('status') == 'verified',
             'campuses': any(c.get('photo') for c in rec.get('campuses') or []), 'gallery': len((rec.get('gallery') or {}).get('photos') or []) >= 4}
 
 

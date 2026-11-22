@@ -133,6 +133,11 @@ class Tests(unittest.TestCase):
         self.assertEqual(out['ai']['note'], 'no page text to read')
         self.assertEqual(out['students']['status'], 'single-source')
 
+    def test_a_university_without_a_verified_total_is_still_listed(self):
+        out = run(answer(students=None))
+        self.assertFalse(out['publish']['students'])        # the number is hidden
+        self.assertTrue(out['publish']['university'])       # the university is not
+
     def test_unjudged_photos_are_not_used(self):
         r = rec()
         out = A.process(FakeClient(answer()), r, PAGES, lambda u: '', None, A.Usage(), datetime.date(2026, 11, 22))     # fetch failed: no image
