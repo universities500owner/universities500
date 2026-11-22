@@ -5,6 +5,11 @@
     python3 scripts/courses/detail_run.py prepare ...    # fetch the pages, write out/detail/requests.jsonl and out/detail/pages.json
     python3 scripts/courses/detail_run.py submit         # send the batch, write out/detail/batch.json
     python3 scripts/courses/detail_run.py collect        # wait for the batch, check every answer against the page, write src/data/course-detail/
+    python3 scripts/courses/detail_run.py run --source held --only georgia-institute-of-technology,university-of-cambridge --per-uni 20   # the pilot, see below
+
+Pilot (--source held): for universities where the reader fetched pages but could not decide (study mode or international students unclear, or a page taken for a listing),
+the pages it held back are read by the model, which also says whether each is one bachelor's or master's course, how it is taught, and whether international
+students can apply. Results go to data/course-pilot/ (never to the site) with a CSV and a coverage report in out/detail/.
 
 Needs ANTHROPIC_API_KEY (GitHub secret) and `pip install anthropic`. Batch only: half the price of normal requests, results within 24 hours.
 Pages are fetched politely (robots.txt, 3 seconds between requests to one site, identified User-Agent) by the same fetcher as the course reader.
@@ -12,9 +17,11 @@ The model is given the page's own text and never browses. Every quote and name i
 A page is read again only when its text changed (page hash), so a monthly run costs little.
 """
 import argparse
+import csv
 import hashlib
 import json
 import os
+import re
 import sys
 import time
 from collections import Counter
@@ -31,6 +38,8 @@ from fetcher import Fetcher  # noqa: E402
 
 OUT = ROOT / 'out/detail'
 DETAIL_DIR = ROOT / 'src/data/course-detail'
+PILOT_DIR = ROOT / 'data/course-pilot'       # the pilot's results: kept for review, not shipped to the site
+READER_DIR = ROOT / 'data/courses'          # what the reader saw at each university
 BATCH_PRICE = {'in': 0.05, 'out': 0.25}      # USD per million tokens, Haiku 5.5 batch, prompts up to 100,000 tokens
 CHUNK = 2000                                  # requests per batch
 
@@ -65,18 +74,59 @@ def pick(recs, per_uni):
     return [recs[int(i * step)] for i in range(per_uni)]
 
 
+HELD_FIRST = ('study-mode-unclear', 'international-unclear')              # the reader read a programme-like page and could not settle one question
+HELD_ALSO = ('listing-page', 'not-a-course-page', 'not-a-programme-name')   # taken for a listing, or for something that is not a course: sometimes wrongly
+NOT_COURSE_PATH = re.compile(
+    r'/(?:news|nieuws|nyheter|aktuellt|aktuelt|aktuelles|actualit[a-z]*|noticias|nachrichten|events?|evenement(?:en)?|agenda|kalender|calendar|blog|stories|story|press|presse|'
+    r'features?|magazine|podcasts?|videos?|alumni|staff|people|jobs|cookie[a-z-]*|privacy|contact|login|search|tag|category|open-?days?|opendag(?:en)?|virtual-?tours?|'
+    r'visits?|campus-?tours?|research|publications?|faqs?|contacts?|important-contacts|examination-offices?|student-support|[a-z-]*master-plan|[a-z-]*thesis[a-z0-9-]*|guidelines?)(?:/|-|$)|\b20\d\d-\d\d-\d\d\b', re.I)
+DEGREE_PATH = re.compile(r'bachelor|master|msc|bsc|degree|programme|program|course|studies|study|studium|studiengang|opleiding|utbildning|licence|formation|undergraduate|graduate|honours', re.I)
+
+
+def held_pool(slug, per_uni, reader_dir=None):
+    """Pages the reader fetched at this university and held back, most promising first, at most per_uni: [{'url', 'verdict'}].
+    First the pages it could not settle (study mode or international students unclear), then pages it took for listings whose address looks like a degree."""
+    seen = load((reader_dir or READER_DIR) / f'{slug}.json', {}).get('seen') or {}
+    first, also, done = [], [], set()
+    for url, v in sorted(seen.items(), key=lambda kv: (not kv[0].startswith('https'), kv[0])):          # https first, so it is the one kept
+        verdict = v[1] if isinstance(v, list) and len(v) > 1 else ''
+        if verdict not in HELD_FIRST + HELD_ALSO:
+            continue
+        key = re.sub(r'^https?://(?:www\d?\.)?', '', X.canon(url.replace(':443', '')))        # the same page over http and https, with or without www
+        if key in done or X.JUNK_PATH.search(url) or NOT_COURSE_PATH.search(url):
+            continue
+        done.add(key)
+        rec = {'url': url, 'verdict': verdict}
+        if verdict in HELD_FIRST:
+            first.append(rec)
+        elif DEGREE_PATH.search(url):
+            also.append(rec)
+    out = pick(first, per_uni)
+    if per_uni and len(out) < per_uni:
+        out += pick(also, per_uni - len(out))
+    return out
+
+
+def held_courses(only, per_uni, reader_dir=None):
+    """{university slug: [pages]} for the pilot. The pilot never runs on every university: it needs `only`."""
+    slugs = [x for x in (only or '').split(',') if x]
+    return {s: recs for s in slugs for recs in [held_pool(s, per_uni, reader_dir)] if recs}
+
+
 def prepare(a, fx=None):
     """Fetch the chosen course pages and cut them into sections. Returns (requests, pages)."""
     OUT.mkdir(parents=True, exist_ok=True)
-    chosen = accepted_courses(a.courses_file, a.only)
+    held = getattr(a, 'source', 'accepted') == 'held'
+    chosen = held_courses(a.only, a.per_uni) if held else accepted_courses(a.courses_file, a.only)
     unis = sorted(chosen)[:a.limit_unis] if a.limit_unis else sorted(chosen)
+    dest = PILOT_DIR if held else DETAIL_DIR
     if fx is None:
         ua = f"Universities500Bot/1.0 (+https://universities500.com/bot/{'; ' + a.contact if a.contact else ''})"
         fx = Fetcher(ua, delay=a.delay, deadline=time.monotonic() + a.max_minutes * 60)
     requests, pages, skipped, failed = [], {}, Counter(), Counter()
     for slug in unis:
-        prev = load(DETAIL_DIR / f'{slug}.json', {}).get('pages', {})
-        for rec in pick(chosen[slug], a.per_uni):
+        prev = load(dest / f'{slug}.json', {}).get('pages', {})
+        for rec in (chosen[slug] if held else pick(chosen[slug], a.per_uni)):
             url = rec['url']
             res = fx.get(url)
             if not res.ok:
@@ -137,9 +187,10 @@ def usage_of(message):
     return getattr(u, 'input_tokens', 0) or 0, getattr(u, 'output_tokens', 0) or 0
 
 
-def collect(client, ids, pages, today, model=D.MODEL):
-    """Check every answer against its page and merge what survives into src/data/course-detail/<university>.json. Returns the report dict."""
-    by_uni, rep = {}, {'ok': 0, 'failed': 0, 'rejected': Counter(), 'fields': Counter(), 'sections': Counter(), 'in': 0, 'out': 0, 'samples': []}
+def collect(client, ids, pages, today, model=D.MODEL, dest=None):
+    """Check every answer against its page and merge what survives into <dest>/<university>.json (src/data/course-detail by default). Returns the report dict."""
+    by_uni, rep = {}, {'ok': 0, 'failed': 0, 'rejected': Counter(), 'fields': Counter(), 'sections': Counter(), 'in': 0, 'out': 0, 'samples': [],
+                       'unis': {}, 'rows': []}
     for bid in ids:
         for entry in client.messages.batches.results(bid):
             page = pages.get(entry.custom_id)
@@ -159,8 +210,16 @@ def collect(client, ids, pages, today, model=D.MODEL):
             detail, rejected = D.verify(ti, page['sections'])
             for what, why in rejected:
                 rep['rejected'][f'{what}: {why}'] += 1
-            detail.update({'hash': page['hash'], 'readOn': today, 'model': model})
+            detail.update({'hash': page['hash'], 'readOn': today, 'model': model, 'eligible': D.eligibility(detail)})
             rep['ok'] += 1
+            u = rep['unis'].setdefault(page['uni'], {'pages': 0, 'degree': 0, 'yes': 0, 'maybe': 0, 'fields': Counter()})
+            u['pages'] += 1
+            lvl = ((detail['facts'].get('level') or {}).get('value')) or 'unknown'
+            if lvl in ('bachelor', 'master'):
+                u['degree'] += 1
+                u[detail['eligible']] = u.get(detail['eligible'], 0) + 1
+                u['fields'].update(D.fields_present(detail))
+            rep['rows'].append((page['uni'], page['url'], detail))
             for k, v in detail['facts'].items():
                 if v:
                     rep['fields'][k] += 1
@@ -169,15 +228,79 @@ def collect(client, ids, pages, today, model=D.MODEL):
             by_uni.setdefault(page['uni'], {})[page['url']] = detail
             if len(rep['samples']) < 12:
                 rep['samples'].append({'url': page['url'], 'detail': detail, 'rejected': rejected})
-    DETAIL_DIR.mkdir(parents=True, exist_ok=True)
+    dest = dest or DETAIL_DIR
+    dest.mkdir(parents=True, exist_ok=True)
     for slug, new in by_uni.items():
-        path = DETAIL_DIR / f'{slug}.json'
+        path = dest / f'{slug}.json'
         doc = load(path, {'slug': slug, 'pages': {}})
         doc['slug'] = slug
         doc['pages'].update(new)
         path.write_text(D.dump(doc), encoding='utf-8')
     rep['cost_usd'] = round(rep['in'] / 1e6 * BATCH_PRICE['in'] + rep['out'] / 1e6 * BATCH_PRICE['out'], 4)
     return rep
+
+
+CSV_COLUMNS = ['university', 'link', 'course name', 'level', 'taught', 'international students', 'listed on the site?', 'faculty or school', 'fee per year (international)',
+               'other fees', 'scholarships', 'admission requirement', 'IELTS', 'other English tests', 'additional requirements', 'programme objectives',
+               'career outcomes', 'industry connections', 'internships', 'fields filled']
+
+
+def _short(text, n=300):
+    t = re.sub(r'\s+', ' ', text or '').strip()
+    return t if len(t) <= n else t[:n - 1].rstrip() + '…'
+
+
+def row_of(slug, url, detail):
+    """One page as a row a person can read in a spreadsheet. Every cell is text copied from the page (or a value the page's quote supports)."""
+    f, sec = detail.get('facts') or {}, detail.get('sections') or {}
+    first = lambda t: _short(' '.join(b['text'] for b in sec.get(t, [])[:1]))
+    fee = lambda x: f"{x.get('currency', '')} {x['amount']:,} per {x['period']}" + (f" ({x['year']})" if x.get('year') else '')
+    intl = [fee(x) for x in f.get('fees') or [] if x.get('audience') == 'international']
+    rest = [f"{x['audience']}: {fee(x)}" for x in f.get('fees') or [] if x.get('audience') != 'international']
+    get = lambda k, key='text': (f.get(k) or {}).get(key, '')
+    return {
+        'university': slug, 'link': url, 'course name': get('courseName'), 'level': get('level', 'value'), 'taught': get('delivery', 'value'),
+        'international students': get('international', 'value'), 'listed on the site?': detail.get('eligible', ''), 'faculty or school': get('faculty'),
+        'fee per year (international)': '; '.join(intl), 'other fees': '; '.join(rest),
+        'scholarships': '; '.join(x['name'] + (f" ({x['amount']})" if x.get('amount') else '') for x in f.get('scholarships') or []) or first('scholarships'),
+        'admission requirement': get('academicEntry') or first('entry_requirements'),
+        'IELTS': (f"{f['ielts']['overall']}" + (f" (no band below {f['ielts']['minBand']:g})" if f['ielts'].get('minBand') else '')) if f.get('ielts') else '',
+        'other English tests': '; '.join(f"{x['test']} {x['score']}" for x in f.get('otherEnglish') or []),
+        'additional requirements': '; '.join(f"{x['kind']}: {x['text']}" for x in f.get('additionalRequirements') or []),
+        'programme objectives': first('objectives'), 'career outcomes': '; '.join(f.get('employers') or []) or first('careers'),
+        'industry connections': '; '.join(x['text'] for x in f.get('industryLinks') or []) or first('industry_placements'),
+        'internships': '; '.join(x['text'] for x in f.get('internships') or []),
+        'fields filled': len(D.fields_present(detail)),
+    }
+
+
+def coverage_lines(rep):
+    """A table per university: pages read, how many are one bachelor's or master's course, how many the reader's rules would list, and how often each field was filled."""
+    unis = rep.get('unis') or {}
+    if not unis:
+        return []
+    lines = ['', '## By university (pages the model read; "degree pages" are the ones it called one bachelor\'s or master\'s course)', '',
+             '| University | Pages | Degree pages | Listed (taught on campus, international open) | Maybe (not stated) |', '|---|---:|---:|---:|---:|']
+    tot = Counter()
+    for slug, u in sorted(unis.items()):
+        lines.append(f"| {slug} | {u['pages']} | {u['degree']} | {u.get('yes', 0)} | {u.get('maybe', 0)} |")
+        tot.update({'pages': u['pages'], 'degree': u['degree'], 'yes': u.get('yes', 0), 'maybe': u.get('maybe', 0)})
+        tot.update({'f:' + k: v for k, v in u['fields'].items()})
+    n = tot['degree'] or 1
+    lines += ['', f"## Fields filled, among the {tot['degree']} degree pages (every value checked against the page)", '']
+    for name, _ in D.FIELDS:
+        v = tot['f:' + name]
+        lines.append(f'- {name}: {v} ({100 * v // n}%)')
+    return lines
+
+
+def write_csv(rep):
+    OUT.mkdir(parents=True, exist_ok=True)
+    with open(OUT / 'pilot.csv', 'w', encoding='utf-8-sig', newline='') as fh:
+        w = csv.DictWriter(fh, fieldnames=CSV_COLUMNS)
+        w.writeheader()
+        for slug, url, detail in sorted(rep.get('rows') or [], key=lambda r: (r[0], r[1])):
+            w.writerow(row_of(slug, url, detail))
 
 
 def write_report(rep, total):
@@ -194,6 +317,8 @@ def write_report(rep, total):
     lines += ['', '## Thrown away because the page does not show it']
     for k, v in rep['rejected'].most_common():
         lines.append(f'- {k}: {v}')
+    lines += coverage_lines(rep)
+    write_csv(rep)
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / 'report.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     (OUT / 'samples.json').write_text(json.dumps(rep['samples'], ensure_ascii=False, indent=1), encoding='utf-8')
@@ -220,6 +345,7 @@ def main():
     ap.add_argument('cmd', choices=['run', 'prepare', 'submit', 'collect'])
     ap.add_argument('--courses-file', default=str(ROOT / 'src/data/courses.json'))
     ap.add_argument('--only', default='')
+    ap.add_argument('--source', choices=['accepted', 'held'], default='accepted', help="accepted: courses the site lists. held: pages the reader fetched but held back (the pilot; needs --only)")
     ap.add_argument('--per-uni', type=int, default=2, help='courses read per university (0 = all)')
     ap.add_argument('--limit-unis', type=int, default=0)
     ap.add_argument('--model', default=D.MODEL)
@@ -231,6 +357,9 @@ def main():
     ap.add_argument('--contact', default=os.environ.get('CONTACT_EMAIL', ''))
     a = ap.parse_args()
     today = datetime.now(timezone.utc).date().isoformat()
+    if a.source == 'held' and not a.only:
+        print('--source held needs --only with the university slugs to try.')
+        return 2
     if a.cmd in ('run', 'prepare'):
         requests, pages = prepare(a)
         if a.cmd == 'prepare' or not requests:
@@ -250,7 +379,7 @@ def main():
     if not wait(client, ids, a.wait_minutes):
         print('The batch has not finished yet. Run `collect` later.')
         return 0
-    rep = collect(client, ids, pages, today, a.model)
+    rep = collect(client, ids, pages, today, a.model, PILOT_DIR if a.source == 'held' else None)
     write_report(rep, len(pages))
     return 0
 

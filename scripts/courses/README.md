@@ -105,3 +105,13 @@ The run summary and the `courses-all` artifact hold `course_report.md`, `univers
 - Results: `src/data/course-detail/<university>.json`, one entry per course page address, with the page hash. A page is read again only when its text changed.
 - `src/data/course_text_policy.json` decides how much of the university's own text the site shows (`full`, `excerpt`, or `optOut` per university). Change it and rebuild to respond to a takedown request.
 - `mode = preview` prints how each page was cut (no API key, no cost). `mode = run` needs the repository secret `ANTHROPIC_API_KEY`. Batch rate for Haiku 5.5 is half the normal price; the run report prints tokens and cost.
+
+### Pilot: universities the reader could not read (`source = held`)
+
+For some universities the reader fetched pages but held them all back (`study-mode-unclear`, `international-unclear`, or a degree page taken for a listing), so the site lists no courses. The pilot gives those held pages to the model and measures what it recovers.
+
+- `detail_run.py ... --source held --only <slugs>` takes each university's held pages from `data/courses/<slug>.json` (`seen`): first the pages it could not settle, then pages taken for listings whose address looks like a degree. News, events, contacts and the reader's firm decisions (online, domestic only, research degree, diploma, foundation) are left out.
+- The model also says what each page is (`level`: bachelor, master, doctorate, other award, not a degree page), how it is taught (`delivery`) and whether international students can apply (`international`), each with a quote from the page. `eligibility()` applies the reader's rule to that: `yes` (bachelor's or master's, stated on campus, international open), `maybe` (not stated, nothing against), `no`.
+- Fields: course name (the page's own heading is the fallback, never the model's words), overview, faculty or school, fees, scholarships, admission requirement, English tests, other tests or requirements, programme objectives, career outcomes, industry connections, internships. University name and the page's address come from code.
+- Results go to `data/course-pilot/<slug>.json` and are never read by the site. The run's artifact has `pilot.csv` (one row per page) and `report.md` (pages, degree pages and eligibility per university; how often each field was filled; what was thrown away).
+- Not covered yet: pages that hold university-wide facts (international admissions, English requirements, fees, scholarships) and finding degree pages at universities where the reader held none (Warwick, MIT: the reader spent its page budget on other pages).

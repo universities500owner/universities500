@@ -1090,5 +1090,176 @@ class DetailRunTests(unittest.TestCase):
         self.assertTrue(d['hash'])
 
 
+PILOT_HTML = """<html><head><title>MSc Data Science | Example University</title></head><body><nav>Menu</nav><main>
+<h1>MSc Data Science</h1>
+<p>Faculty of Science and Engineering</p>
+<p>Taught on campus in Leeds. International students are welcome to apply.</p>
+<p>Data science sits where statistics, computing and domain knowledge meet. Students work in small groups on real datasets from health, transport and finance, learn to build and test models, and present their findings to the people who rely on them.</p>
+<h2>Aims and learning outcomes</h2><p>This course aims to give you the skills to design data systems.</p>
+<h2>Entry requirements</h2><p>A 2:1 degree. You must also pass the GRE general test.</p>
+<h2>Fees</h2><p>International students: £30,000 per year.</p>
+<h2>Scholarships</h2><p>The Global Excellence Scholarship is worth £5,000.</p>
+<h2>Placements</h2><p>You can take a 12-month industrial placement. We work with Siemens and Arm.</p>
+</main><footer>Cookie policy</footer></body></html>"""
+
+
+def pilot_answer(secs):
+    ids = {s['heading']: s['id'] for s in secs}
+    return {
+        'sections': [{'id': ids['Aims and learning outcomes'], 'type': 'objectives'}, {'id': ids['Entry requirements'], 'type': 'entry_requirements'},
+                     {'id': ids['Placements'], 'type': 'industry_placements'}, {'id': ids['Scholarships'], 'type': 'scholarships'}],
+        'level': {'value': 'master', 'quote': 'MSc Data Science'},
+        'delivery': {'value': 'on_campus', 'quote': 'Taught on campus in Leeds'},
+        'international': {'value': 'open', 'quote': 'International students are welcome to apply'},
+        'course_name': {'text': 'MSc Data Science', 'quote': 'MSc Data Science'},
+        'faculty': {'text': 'Faculty of Science and Engineering', 'quote': 'Faculty of Science and Engineering'},
+        'fees': [{'audience': 'international', 'amount': 30000, 'currency': 'GBP', 'period': 'year', 'quote': 'International students: £30,000 per year'}],
+        'scholarship_items': [{'name': 'Global Excellence Scholarship', 'amount_text': '£5,000', 'quote': 'The Global Excellence Scholarship is worth £5,000'}],
+        'additional_requirements': [{'kind': 'test', 'text': 'GRE general test', 'quote': 'You must also pass the GRE general test'}],
+        'industry_links': [{'text': 'We work with Siemens and Arm', 'quote': 'We work with Siemens and Arm'}],
+        'internships': [{'text': '12-month industrial placement', 'quote': 'You can take a 12-month industrial placement'}],
+    }
+
+
+class PilotFieldsTests(unittest.TestCase):
+    def secs(self):
+        return D.sections_of(PILOT_HTML, 'https://u.edu/msc-data-science')
+
+    def test_every_field_is_kept_when_the_page_shows_it(self):
+        secs = self.secs()
+        detail, rejected = D.verify(pilot_answer(secs), secs)
+        f = detail['facts']
+        self.assertEqual(rejected, [])
+        self.assertEqual((f['level']['value'], f['delivery']['value'], f['international']['value']), ('master', 'on_campus', 'open'))
+        self.assertEqual(f['courseName']['text'], 'MSc Data Science')
+        self.assertEqual(f['faculty']['text'], 'Faculty of Science and Engineering')
+        self.assertEqual(f['scholarships'], [{'name': 'Global Excellence Scholarship', 'amount': '£5,000', 'quote': 'The Global Excellence Scholarship is worth £5,000'}])
+        self.assertEqual(f['additionalRequirements'][0]['kind'], 'test')
+        self.assertEqual(f['industryLinks'][0]['text'], 'We work with Siemens and Arm')
+        self.assertEqual(f['internships'][0]['text'], '12-month industrial placement')
+        self.assertIn('design data systems', detail['sections']['objectives'][0]['text'])         # copied by code
+        self.assertEqual(D.eligibility(detail), 'yes')
+        missing = [n for n, _ in D.FIELDS if n not in D.fields_present(detail)]
+        self.assertEqual(missing, ['Overview', 'English test requirement', 'Career outcomes'])         # the page has none of these
+
+    def test_unsupported_values_are_thrown_away(self):
+        secs = self.secs()
+        ans = pilot_answer(secs)
+        ans['level'] = {'value': 'doctorate', 'quote': 'PhD Data Science'}                                  # not on the page
+        ans['delivery'] = {'value': 'teleport', 'quote': 'Taught on campus in Leeds'}                       # not an allowed value
+        ans['international'] = {'value': 'open', 'quote': 'All nationalities are welcome'}                  # not on the page
+        ans['faculty'] = {'text': 'Faculty of Magic', 'quote': 'Faculty of Magic'}
+        ans['internships'] = [{'text': 'paid year in Silicon Valley', 'quote': 'paid year in Silicon Valley'}]
+        ans['industry_links'] = []
+        detail, rejected = D.verify(ans, secs)
+        f = detail['facts']
+        self.assertEqual((f['level'], f['delivery'], f['international'], f['faculty'], f['internships']), (None, None, None, None, []))
+        self.assertEqual(D.eligibility(detail), 'no')                                                    # no level, so never listed
+        self.assertEqual(len(rejected), 5)
+
+    def test_course_name_falls_back_to_the_pages_own_heading(self):
+        secs = self.secs()
+        ans = pilot_answer(secs)
+        ans['course_name'] = {'text': 'Master of Wizardry', 'quote': 'Master of Wizardry'}
+        detail, _ = D.verify(ans, secs)
+        self.assertEqual(detail['facts']['courseName']['text'], 'MSc Data Science')                      # the h1, never the model's invention
+
+    def test_eligibility_rules(self):
+        def d(level, delivery, intl):
+            mk = lambda v: {'value': v, 'quote': 'q'} if v else None
+            return {'facts': {'level': mk(level), 'delivery': mk(delivery), 'international': mk(intl)}}
+        self.assertEqual(D.eligibility(d('master', 'on_campus', 'open')), 'yes')
+        self.assertEqual(D.eligibility(d('bachelor', 'on_campus', 'unstated')), 'maybe')                # on campus, but the page does not mention international students
+        self.assertEqual(D.eligibility(d('bachelor', 'unclear', 'open')), 'maybe')                      # international open, mode not stated
+        self.assertEqual(D.eligibility(d('bachelor', None, None)), 'maybe')
+        self.assertEqual(D.eligibility(d('master', 'online', 'open')), 'no')
+        self.assertEqual(D.eligibility(d('master', 'blended', 'open')), 'no')
+        self.assertEqual(D.eligibility(d('master', 'on_campus', 'restricted')), 'no')
+        self.assertEqual(D.eligibility(d('doctorate', 'on_campus', 'open')), 'no')
+        self.assertEqual(D.eligibility(d('other_award', 'on_campus', 'open')), 'no')
+        self.assertEqual(D.eligibility(d('not_a_degree_page', None, None)), 'no')
+        self.assertEqual(D.eligibility({}), 'no')
+
+
+class HeldPoolTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        seen = {
+            'https://u.edu/degrees/msc-physics': ['2026-11-17', 'study-mode-unclear'],
+            'http://www.u.edu/degrees/msc-physics': ['2026-11-17', 'study-mode-unclear'],            # the same page over http: counted once
+            'https://u.edu/degrees/ba-history': ['2026-11-17', 'international-unclear'],
+            'https://u.edu/news/our-masters-students-win': ['2026-11-17', 'study-mode-unclear'],      # news: never a course
+            'https://u.edu/students/examination-offices/master': ['2026-11-17', 'study-mode-unclear'],
+            'https://u.edu/degrees/msc-online': ['2026-11-17', 'online-or-distance'],                 # the reader's firm decisions are kept
+            'https://u.edu/degrees/ba-law': ['2026-11-17', 'domestic-only'],
+            'https://u.edu/degrees/ma-art': ['2026-11-17', 'ok'],                                     # already listed
+            'https://u.edu/programmes/msc-chemistry': ['2026-11-17', 'listing-page'],                 # taken for a listing, address looks like a degree
+            'https://u.edu/about/the-founders': ['2026-11-17', 'listing-page'],                       # a listing, and not a degree address
+            'https://u.edu/file.pdf': ['2026-11-17', 'study-mode-unclear'],
+        }
+        (self.tmp / 'u.json').write_text(json.dumps({'slug': 'u', 'seen': seen}))
+
+    def test_pool_keeps_unsettled_pages_first_and_drops_news_and_firm_decisions(self):
+        got = DR.held_pool('u', 20, self.tmp)
+        self.assertEqual([(r['url'], r['verdict']) for r in got], [
+            ('https://u.edu/degrees/ba-history', 'international-unclear'), ('https://u.edu/degrees/msc-physics', 'study-mode-unclear'),
+            ('https://u.edu/programmes/msc-chemistry', 'listing-page')])
+
+    def test_pool_is_capped_and_prefers_unsettled_pages(self):
+        got = DR.held_pool('u', 2, self.tmp)
+        self.assertEqual([r['verdict'] for r in got], ['international-unclear', 'study-mode-unclear'])
+
+    def test_missing_reader_file_gives_nothing(self):
+        self.assertEqual(DR.held_pool('nope', 5, self.tmp), [])
+        self.assertEqual(DR.held_courses('', 5, self.tmp), {})                                              # the pilot never runs on everything
+        self.assertEqual(list(DR.held_courses('u,nope', 5, self.tmp)), ['u'])
+
+
+class PilotRunTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.reader = self.tmp / 'reader'
+        self.reader.mkdir()
+        (self.reader / 'u1.json').write_text(json.dumps({'slug': 'u1', 'seen': {
+            'https://u.edu/degrees/msc-data': ['2026-11-17', 'study-mode-unclear'], 'https://u.edu/degrees/ba-maths': ['2026-11-17', 'international-unclear']}}))
+        DR.OUT, DR.DETAIL_DIR, DR.PILOT_DIR, DR.READER_DIR = self.tmp / 'out', self.tmp / 'detail', self.tmp / 'pilot', self.reader
+        self.args = type('A', (), dict(source='held', courses_file='', only='u1', per_uni=5, limit_unis=0, force=False, model=D.MODEL, delay=0, max_minutes=1, contact=''))()
+
+    def test_pilot_reads_held_pages_and_writes_to_the_pilot_folder_only(self):
+        reqs, pages = DR.prepare(self.args, FakeFetch(PILOT_HTML))
+        self.assertEqual(len(reqs), 2)
+        secs = next(iter(pages.values()))['sections']
+        ids = list(pages)
+        answers = {ids[0]: pilot_answer(secs), ids[1]: dict(pilot_answer(secs), level={'value': 'not_a_degree_page', 'quote': 'MSc Data Science'})}
+        client = type('C', (), {'messages': type('M', (), {'batches': FakeBatches(answers)})()})()
+        DR.submit(client, reqs)
+        rep = DR.collect(client, ['batch_1'], pages, '2026-11-23', D.MODEL, DR.PILOT_DIR)
+        self.assertEqual(rep['ok'], 2)
+        self.assertTrue((DR.PILOT_DIR / 'u1.json').exists())
+        self.assertFalse(DR.DETAIL_DIR.exists())                                                           # nothing reaches the site's data
+        u = rep['unis']['u1']
+        self.assertEqual((u['pages'], u['degree'], u['yes']), (2, 1, 1))
+        self.assertEqual(u['fields']['Faculty or school'], 1)
+        saved = json.loads((DR.PILOT_DIR / 'u1.json').read_text())
+        self.assertEqual(sorted(d['eligible'] for d in saved['pages'].values()), ['no', 'yes'])
+        DR.write_report(rep, 2)
+        with open(DR.OUT / 'pilot.csv', encoding='utf-8-sig') as fh:
+            rows = list(__import__('csv').DictReader(fh))
+        self.assertEqual(len(rows), 2)
+        good = next(r for r in rows if r['level'] == 'master')
+        self.assertEqual((good['course name'], good['taught'], good['listed on the site?']), ('MSc Data Science', 'on_campus', 'yes'))
+        self.assertEqual(good['fee per year (international)'], 'GBP 30,000 per year')
+        self.assertIn('GRE general test', good['additional requirements'])
+        self.assertIn('| u1 | 2 | 1 | 1 | 0 |', (DR.OUT / 'report.md').read_text())
+
+    def test_pilot_needs_university_slugs(self):
+        old = sys.argv
+        sys.argv = ['detail_run.py', 'prepare', '--source', 'held']
+        try:
+            self.assertEqual(DR.main(), 2)
+        finally:
+            sys.argv = old
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

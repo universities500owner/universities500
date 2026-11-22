@@ -25,16 +25,17 @@ sys.path.insert(0, str(HERE.parent / 'scholarships'))
 import extract as X  # noqa: E402
 
 MODEL = 'claude-haiku-5-5'
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 # What a section can be labelled. "other" is anything the course page does not need (contact box, related links, news).
 SECTION_TYPES = ['overview', 'key_facts', 'fees', 'entry_requirements', 'english_requirements', 'modules', 'teaching_assessment',
-                 'careers', 'accreditation', 'scholarships', 'how_to_apply', 'deadlines', 'other']
+                 'careers', 'accreditation', 'scholarships', 'how_to_apply', 'deadlines', 'objectives', 'industry_placements', 'other']
 # Sections whose own words are shown on the page (copied by code, in page order; a type may have several blocks). The rest are used for facts only.
-SHOWN_SECTIONS = ['overview', 'entry_requirements', 'english_requirements', 'modules', 'teaching_assessment', 'careers', 'accreditation', 'scholarships', 'how_to_apply', 'deadlines']
+SHOWN_SECTIONS = ['overview', 'entry_requirements', 'english_requirements', 'modules', 'teaching_assessment', 'careers', 'accreditation', 'scholarships', 'how_to_apply', 'deadlines',
+                  'objectives', 'industry_placements']
 MAX_SECTION_CHARS = 6000          # what one section may keep
-MAX_PROMPT_SECTION = 2500         # how much of one section the model is shown
-MAX_PROMPT_CHARS = 26000          # about 6,500 tokens
+MAX_PROMPT_SECTION = 3500         # how much of one section the model is shown
+MAX_PROMPT_CHARS = 40000          # about 10,000 tokens: a page's fees and requirements often sit low on it
 
 HEADING = re.compile(r'^h([1-6])$')
 MARK = '§H'
@@ -112,9 +113,20 @@ SYSTEM = (
     "The page may be for a home-students version of a course: only call a fee 'international' if the page says international, overseas or non-EU/non-UK. "
     "Section types: overview (what the course is, who it suits), key_facts (a box of duration, mode, campus, code), fees, entry_requirements (academic), "
     "english_requirements, modules (core and optional units), teaching_assessment (how it is taught and assessed), careers (outcomes, employers, further study), "
-    "accreditation (professional bodies), scholarships (funding for this course), how_to_apply, deadlines, other (contact boxes, news, related courses, anything else). "
+    "accreditation (professional bodies), scholarships (funding for this course), how_to_apply, deadlines, "
+    "objectives (aims, what the course sets out to do, learning outcomes), industry_placements (industry links, partner companies, internships, work placements, co-op), "
+    "other (contact boxes, news, related courses, anything else). "
+    "Also say what the page is: 'level' is bachelor, master, doctorate, other_award (diploma, certificate, short course, foundation) or not_a_degree_page (news, event, department, listing, anything that is not one course). "
+    "'delivery' is on_campus, online (online or distance learning), blended or unclear: say on_campus only when the page says the course is taught on campus or in person, and online when the page says online or distance. "
+    "'international' is open when the page says international students can apply or lists international entry requirements or fees, restricted when it says they cannot, otherwise unstated. "
+    "Each of these needs a quote. If the page is not one course, still fill 'level' and leave the rest empty. "
     "Give one entry per section that is not 'other'. Call the record_course_detail tool."
 )
+
+LEVELS = ['bachelor', 'master', 'doctorate', 'other_award', 'not_a_degree_page']
+DELIVERIES = ['on_campus', 'online', 'blended', 'unclear']
+INTERNATIONALS = ['open', 'restricted', 'unstated']
+REQUIREMENT_KINDS = ['test', 'portfolio', 'interview', 'work_experience', 'documents', 'prerequisites', 'other']
 
 TOOL = {
     'name': 'record_course_detail',
@@ -144,6 +156,17 @@ TOOL = {
             'optional_modules': {'type': 'array', 'items': {'type': 'string'}},
             'employers': {'type': 'array', 'items': {'type': 'string'}},
             'accreditations': {'type': 'array', 'items': {'type': 'string'}},
+            'course_name': {'type': ['object', 'null'], 'properties': {'text': {'type': 'string'}, 'quote': {'type': 'string'}}},
+            'faculty': {'type': ['object', 'null'], 'properties': {'text': {'type': 'string'}, 'quote': {'type': 'string'}}},
+            'level': {'type': ['object', 'null'], 'properties': {'value': {'type': 'string', 'enum': LEVELS}, 'quote': {'type': 'string'}}},
+            'delivery': {'type': ['object', 'null'], 'properties': {'value': {'type': 'string', 'enum': DELIVERIES}, 'quote': {'type': 'string'}}},
+            'international': {'type': ['object', 'null'], 'properties': {'value': {'type': 'string', 'enum': INTERNATIONALS}, 'quote': {'type': 'string'}}},
+            'scholarship_items': {'type': 'array', 'items': {'type': 'object', 'properties': {
+                'name': {'type': 'string'}, 'amount_text': {'type': ['string', 'null']}, 'quote': {'type': 'string'}}, 'required': ['name', 'quote']}},
+            'additional_requirements': {'type': 'array', 'items': {'type': 'object', 'properties': {
+                'kind': {'type': 'string', 'enum': REQUIREMENT_KINDS}, 'text': {'type': 'string'}, 'quote': {'type': 'string'}}, 'required': ['kind', 'text', 'quote']}},
+            'industry_links': {'type': 'array', 'items': {'type': 'object', 'properties': {'text': {'type': 'string'}, 'quote': {'type': 'string'}}, 'required': ['text', 'quote']}},
+            'internships': {'type': 'array', 'items': {'type': 'object', 'properties': {'text': {'type': 'string'}, 'quote': {'type': 'string'}}, 'required': ['text', 'quote']}},
         },
         'required': ['sections'],
     },
@@ -165,7 +188,7 @@ def prompt_of(secs, url=''):
 def request_of(custom_id, secs, url='', model=MODEL):
     """One Batch API request (a line of the batch)."""
     return {'custom_id': custom_id, 'params': {
-        'model': model, 'max_tokens': 3000, 'system': SYSTEM,
+        'model': model, 'max_tokens': 4500, 'system': SYSTEM,
         'tools': [TOOL], 'tool_choice': {'type': 'tool', 'name': 'record_course_detail'},
         'messages': [{'role': 'user', 'content': prompt_of(secs, url)}]}}
 
@@ -267,6 +290,32 @@ def verify(tool_input, secs):
                 rejected.append((name, 'name-not-on-page'))
         facts[key] = got
 
+    # what the page is, and the fields added for the pilot: each needs a quote that is on the page
+    def pick(name, allowed):
+        v = ti.get(name)
+        if not v:
+            return None
+        if _quoted(v, hay) and v.get('value') in allowed:
+            return {'value': v['value'], 'quote': v['quote'].strip()}
+        rejected.append((name, 'value-or-quote-not-on-page'))
+        return None
+
+    facts['level'] = pick('level', LEVELS)
+    facts['delivery'] = pick('delivery', DELIVERIES)
+    facts['international'] = pick('international', INTERNATIONALS)
+    facts['faculty'] = one('faculty')
+    name = one('course_name')
+    if not name:
+        h1 = next((s['heading'] for s in secs if s['level'] == 1 and s['heading']), '')       # the page's own main heading, taken by code
+        name = {'text': h1, 'quote': h1} if h1 else None
+    facts['courseName'] = name
+    facts['scholarships'] = [{'name': shown_text(v, 'name', hay), 'amount': (v.get('amount_text') or '').strip() if present(v.get('amount_text') or '', hay) else '', 'quote': v['quote'].strip()}
+                             for v in many('scholarship_items') if shown_text(v, 'name', hay)]
+    facts['additionalRequirements'] = [{'kind': v['kind'] if v.get('kind') in REQUIREMENT_KINDS else 'other', 'text': shown_text(v, 'text', hay), 'quote': v['quote'].strip()}
+                                       for v in many('additional_requirements') if shown_text(v, 'text', hay)]
+    for key, name_ in (('industryLinks', 'industry_links'), ('internships', 'internships')):
+        facts[key] = [{'text': shown_text(v, 'text', hay), 'quote': v['quote'].strip()} for v in many(name_) if shown_text(v, 'text', hay)]
+
     labels = {}
     for s in ti.get('sections') or []:
         if isinstance(s, dict) and isinstance(s.get('id'), int) and 0 <= s['id'] < len(secs) and s.get('type') in SECTION_TYPES:
@@ -281,13 +330,54 @@ def verify(tool_input, secs):
     return {'v': SCHEMA_VERSION, 'facts': facts, 'sections': shown}, rejected
 
 
+
+def eligibility(detail):
+    """The reader's own rule for what the site lists, applied to what the model found: 'yes' (a bachelor's or master's, on campus, and the page does not say
+    international students cannot apply), 'maybe' (the same, but the page does not say whether it is taught on campus or open to international students,
+    and says nothing about online study), or 'no'. Each reason is a word from the page's own quote, never the model's opinion."""
+    f = (detail or {}).get('facts') or {}
+    level, delivery, intl = (f.get(k) or {} for k in ('level', 'delivery', 'international'))
+    if level.get('value') not in ('bachelor', 'master'):
+        return 'no'
+    if delivery.get('value') in ('online', 'blended') or intl.get('value') == 'restricted':
+        return 'no'
+    if delivery.get('value') == 'on_campus' and intl.get('value') == 'open':
+        return 'yes'
+    return 'maybe'
+
+
+# The fields a student wants from a course page, and where each one lives in a checked detail record.
+# (University name and the course's web address are known to code, so they are not listed.)
+FIELDS = [
+    ('Course name', lambda f, s: f.get('courseName')),
+    ('Overview', lambda f, s: s.get('overview')),
+    ('Faculty or school', lambda f, s: f.get('faculty')),
+    ('Tuition fee (international, per year)', lambda f, s: any(x.get('audience') == 'international' and x.get('period') == 'year' for x in f.get('fees') or [])),
+    ('Tuition fee (any)', lambda f, s: f.get('fees')),
+    ('Scholarships', lambda f, s: f.get('scholarships') or s.get('scholarships')),
+    ('Admission requirement', lambda f, s: f.get('academicEntry') or s.get('entry_requirements')),
+    ('English test requirement', lambda f, s: f.get('ielts') or f.get('otherEnglish') or s.get('english_requirements')),
+    ('Additional tests or requirements', lambda f, s: f.get('additionalRequirements')),
+    ('Programme objectives', lambda f, s: s.get('objectives')),
+    ('Career outcomes', lambda f, s: s.get('careers') or f.get('employers')),
+    ('Industry connections', lambda f, s: f.get('industryLinks') or s.get('industry_placements')),
+    ('Internships or placements', lambda f, s: f.get('internships')),
+]
+
+
+def fields_present(detail):
+    """The names of the fields this page filled, after checking."""
+    f, s = (detail or {}).get('facts') or {}, (detail or {}).get('sections') or {}
+    return [name for name, has in FIELDS if has(f, s)]
+
+
 def empty_detail():
     return {'v': SCHEMA_VERSION, 'facts': {}, 'sections': {}}
 
 
 def has_content(detail):
     f = (detail or {}).get('facts') or {}
-    return bool((detail or {}).get('sections')) or any(f.get(k) for k in f)
+    return bool((detail or {}).get('sections')) or any(f.get(k) for k in f if k != 'courseName')       # a page title alone is not content
 
 
 def parse_tool_input(message_content):
