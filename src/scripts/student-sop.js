@@ -3,7 +3,7 @@
 // questions and a voice) and draft (the draft with the facts it used). Nothing a student typed is put into the page as HTML.
 import { COUNTRIES, SUBJECT_GROUPS, sectionDone, label } from '../lib/account/schema.js';
 import {
-  PROFILE_GATE, NOTE_MAX, ARCS, TONES, QIDS, withThe, questions, courseChosen, storyDone, toneDone, answered, answersDone, nextStep,
+  PROFILE_GATE, NOTE_MAX, ARCS, TONES, QIDS, WORDS, LIMIT_MIN, LIMIT_MAX, wordsTarget, withThe, questions, courseChosen, storyDone, toneDone, answered, answersDone, nextStep,
   factsFor, buildDraft, checks, draftText, wordCount,
 } from '../lib/sop/model.js';
 
@@ -36,11 +36,17 @@ export function initSop({ root, me, api, getSaved }) {
   const have = () => Object.fromEntries(PROFILE_GATE.map(([id]) => [id, sectionDone(id, sections[id])]));
   const gateMet = () => PROFILE_GATE.every(([id]) => have()[id]);
   const destName = () => label(COUNTRIES, S.dest) || '';
+  // The length to aim for: what the student chose, or the university's own limit if that is lower.
+  const aimWords = () => Math.min(wordsTarget(S), S.limit || Infinity);
   const profileChips = () => [
     ...((sections.work && sections.work.items) || []).slice(0, 2).map((w) => `My work as ${w.title} at ${w.employer}`),
     ...((sections.academic && sections.academic.items) || []).filter((a) => a.institution).slice(0, 2).map((a) => (a.field ? `My studies in ${a.field} at ${a.institution}` : `My studies at ${a.institution}`)),
   ];
-  const ctx = () => ({ destName: withThe(S.dest, destName()), courseName: S.course_name || '', uniName: S.uni_name || '', group: S.group || '', profileChips: profileChips() });
+  const ctx = () => ({
+    destName: withThe(S.dest, destName()), courseName: S.course_name || '', uniName: S.uni_name || '', group: S.group || '', profileChips: profileChips(),
+    academic: (sections.academic && sections.academic.items) || [],
+    work: sections.work && !sections.work.none ? (sections.work.items || []) : [],
+  });
   const forText = () => [S.course_name, S.uni_name, destName()].filter(Boolean).join(' · ');
 
   // ---- the university data (loaded only when needed) ----------------------------------------------------------
@@ -278,6 +284,13 @@ export function initSop({ root, me, api, getSaved }) {
         c.classList.toggle('is-ok', cur.length > 0);
         for (const box of el.querySelectorAll('input[type=checkbox]')) box.disabled = !box.checked && cur.length >= q.max;
       }
+      // how much the answers and the profile can fill, against the length the student is aiming for
+      const target = aimWords();
+      const lower = S.limit && S.limit < wordsTarget(S) ? `The university's limit is ${S.limit} words, so we aim for that. ` : '';
+      const have = wordCount(draftText(buildDraft(S, ctx(), [])));
+      $('[data-meter]', v).textContent = lower + (have >= target * 0.9
+        ? `Your answers and profile already make about ${have} words of draft, enough for the length you chose.`
+        : `Your answers and profile make about ${have} words of draft so far. For about ${target} words, add two or three sentences of your own under the questions, most of all questions 2 and 4.`);
       const tc = $('[data-tone-count]', v);
       tc.textContent = S.tone ? '1 of 1 chosen' : '0 of 1 chosen';
       tc.classList.toggle('is-ok', !!S.tone);
@@ -306,7 +319,7 @@ export function initSop({ root, me, api, getSaved }) {
           h('p', { class: 'sop-hint' }, q.hint + ' ', h('b', { class: 'sop-count' })),
           h('div', { class: 'st-chips' }, chips)),
         h('label', { class: 'sop-lab', for: noteId, text: 'Add a few words of your own (optional)' }),
-        h('textarea', { id: noteId, class: 'sop-note', rows: 2, maxlength: String(NOTE_MAX), placeholder: q.placeholder, props: { value: S.notes[q.id] || '' }, on: { input: (e) => {
+        h('textarea', { id: noteId, class: 'sop-note', rows: 3, maxlength: String(NOTE_MAX), placeholder: q.placeholder, props: { value: S.notes[q.id] || '' }, on: { input: (e) => {
           const t = e.target.value.replace(/\s+/g, ' ').trim();
           if (t) S.notes[q.id] = e.target.value.slice(0, NOTE_MAX); else delete S.notes[q.id];
           counter.textContent = `${e.target.value.length}/${NOTE_MAX}`;
@@ -318,6 +331,21 @@ export function initSop({ root, me, api, getSaved }) {
     $('[data-tones]', v).replaceChildren(...TONES.map(([id, name, sample]) => h('label', { class: 'sop-tone' },
       h('input', { type: 'radio', name: 'sop-tone', value: id, props: { checked: S.tone === id }, on: { change: () => { S.tone = id; refresh(); queueSave(); } } }),
       h('span', {}, h('b', { text: name }), h('i', { text: `“${sample}”` })))));
+
+    $('[data-lengths]', v).replaceChildren(...WORDS.map((n) => h('label', { class: 'st-chip' },
+      h('input', { type: 'radio', name: 'sop-words', value: String(n), props: { checked: wordsTarget(S) === n }, on: { change: () => { S.words = n; refresh(); queueSave(); } } }),
+      h('span', { text: `About ${n} words` }))));
+    const limitBox = $('[data-limit]', v), limitMsg = $('[data-limit-msg]', v);
+    limitBox.value = S.limit || '';
+    limitBox.oninput = () => {
+      const raw = limitBox.value.trim();
+      const n = Number(raw);
+      if (!raw) { delete S.limit; limitMsg.textContent = ''; }
+      else if (Number.isInteger(n) && n >= LIMIT_MIN && n <= LIMIT_MAX) { S.limit = n; limitMsg.textContent = ''; }
+      else { delete S.limit; limitMsg.textContent = `Enter a whole number from ${LIMIT_MIN} to ${LIMIT_MAX}, or leave it empty.`; }
+      refresh();
+      queueSave();
+    };
 
     $('[data-make]', v).onclick = async (e) => {
       e.currentTarget.disabled = true;
@@ -375,13 +403,20 @@ export function initSop({ root, me, api, getSaved }) {
       f.sourceUrl ? h('a', { class: 'sop-src', href: f.sourceUrl, target: '_blank', rel: 'noopener nofollow', text: f.source || 'Source page' }) : h('span', { class: 'sop-src', text: f.source }))));
     $('[data-facts-sub]', v).textContent = facts.length ? 'Tap a fact to see where it is used.' : 'No checked facts for this course yet.';
 
+    const aim = aimWords();
+    const lengthRows = () => {
+      const n = wordCount(text());
+      const rows = [['Length', `${n} of about ${aim} words`]];
+      if (S.limit) rows.push(['University limit', n > S.limit ? `${n - S.limit} words over` : `${S.limit - n} words to spare`]);
+      return rows;
+    };
     const renderChecks = () => {
       const c = checks(paras, facts);
       const edited = !!S.edited;
       const gaps = edited ? (S.edited.match(GAP_RX) || []).length : c.gaps;
       const rows = edited
-        ? [['Gaps left to fill', gaps], ['Your edits', 'Saved in your account']]
-        : [['Checked facts in this draft', c.factsUsed], ['Not due for a re-check', `${c.factsFresh} of ${c.factsUsed}`], ['Your own statements (not verified)', c.own], ['Gaps for you to fill', c.gaps]];
+        ? [...lengthRows(), ['Gaps left to fill', gaps], ['Your edits', 'Saved in your account']]
+        : [...lengthRows(), ['Checked facts in this draft', c.factsUsed], ['Not due for a re-check', `${c.factsFresh} of ${c.factsUsed}`], ['Your own statements (not verified)', c.own], ['Gaps for you to fill', c.gaps]];
       $('[data-checks]', v).replaceChildren(...rows.map(([k, val]) => h('li', {}, h('span', { text: k }), h('b', { text: String(val) }))));
     };
 
@@ -390,7 +425,14 @@ export function initSop({ root, me, api, getSaved }) {
     const dl = $('[data-download]', v), review = $('[data-review]', v);
     const draw = () => {
       const t = text();
-      $('[data-words]', v).textContent = `${wordCount(t)} words`;
+      const n = wordCount(t);
+      $('[data-words]', v).textContent = `${n} words`;
+      const len = $('[data-len]', v);
+      const over = S.limit && n > S.limit;
+      len.classList.toggle('is-bad', !!over);
+      len.textContent = over
+        ? `This is ${n - S.limit} words over the university's limit of ${S.limit}. Trim it before you submit.`
+        : `You are aiming for about ${aim} words${S.limit && S.limit < wordsTarget(S) ? ', the university\'s limit' : ''}. Writing to this length comes in the next update. For now the draft is as long as your answers and profile make it${n < aim * 0.9 ? `, so add detail in your own words or under the questions to get closer` : ''}.`;
       if (S.edited) {
         paper.replaceChildren(...S.edited.split(/\n{2,}/).map((p) => h('p', {}, ...p.split(/(\[[^\]\n]+\])/).map((bit) => (HAS_GAP.test(bit) ? h('span', { class: 'sop-s sop-s-g', text: bit }) : bit)))));
         note.hidden = false;
