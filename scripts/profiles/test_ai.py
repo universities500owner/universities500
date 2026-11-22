@@ -65,6 +65,12 @@ def rec():
             'gallery': {'photos': [photo('good1'), photo('chair'), photo('good2'), photo('good3'), photo('good4'), photo('good5')]}}
 
 
+def no_wikidata():
+    r = rec()
+    r['students'] = {'v': None, 'asof': None, 'status': 'missing'}
+    return r
+
+
 def answer(**over):
     a = {'brief': BRIEF,
          'students': {'total': 31200, 'asof_year': 2023, 'quote': 'In 2023, 31,200 students studied here', 'page': 'facts'},
@@ -119,7 +125,7 @@ class Tests(unittest.TestCase):
         self.assertFalse(out['publish']['students'])
 
     def test_year_must_be_in_the_quote(self):
-        out = run(answer(students={'total': 31200, 'asof_year': 2024, 'quote': 'In 2023, 31,200 students studied here', 'page': 'facts'}))
+        out = run(answer(students={'total': 31200, 'asof_year': 2024, 'quote': 'In 2023, 31,200 students studied here', 'page': 'facts'}), no_wikidata())
         self.assertEqual((out['students']['v'], out['students']['asof'], out['students']['status']), (31200, None, 'official-no-year'))
         self.assertFalse(out['publish']['students'])             # no 'as on' year, so not publishable
 
@@ -197,6 +203,58 @@ class Tests(unittest.TestCase):
         self.assertIn('[sentences about student numbers', text)
         self.assertIn('44,100 students', text)
         self.assertNotIn('44,100', text.split('[sentences about student numbers')[0])          # it is not in the cut-off page text itself
+
+    def test_a_year_beside_the_figure_on_the_page_is_its_year(self):
+        out = run(answer(students={'total': 31200, 'asof_year': 2023, 'quote': '31,200 students studied here', 'page': 'facts'}))      # 2023 is in the sentence before
+        self.assertEqual((out['students']['asof'], out['students']['status']), (2023, 'official'))
+        out = run(answer(students={'total': 31200, 'asof_year': 2019, 'quote': '31,200 students studied here', 'page': 'facts'}), no_wikidata())      # 2019 is nowhere near
+        self.assertIsNone(out['students']['asof'])
+
+    def test_range_of_years_counts_for_its_second_year(self):
+        self.assertEqual(A.years_in('annual enrollment 2025 - 26'), {2025, 2026})
+        self.assertEqual(A.years_in('fall 2025-26 and 1958'), {2025, 2026})
+
+    def test_a_round_figure_without_a_year_is_confirmed_by_a_dated_wikidata_figure(self):
+        pages = dict(PAGES, facts='We have 31,000 students. Founded in 1958.')
+        out = run(answer(students={'total': 31000, 'asof_year': None, 'quote': 'We have 31,000 students', 'page': 'facts'}), pages=pages)
+        s = out['students']
+        self.assertEqual((s['v'], s['asof'], s['status']), (30000, 2021, 'verified'))              # the dated figure is shown, the university's own is the second source
+        self.assertEqual(s['also']['v'], 31000)
+        self.assertTrue(out['publish']['students'])
+        far = rec()
+        far['students'] = {'v': 20000, 'asof': 2021, 'status': 'single-source'}                    # 31,000 vs 20,000: not within 15%
+        out = run(answer(students={'total': 31000, 'asof_year': None, 'quote': 'We have 31,000 students', 'page': 'facts'}), far, pages)
+        self.assertEqual(out['students']['status'], 'official-no-year')
+        self.assertFalse(out['publish']['students'])
+
+    def test_campus_names_built_from_the_universitys_name_match_their_quote(self):
+        out = run(answer(campuses=[{'name': 'Stub University North', 'quote': 'North Campus is in the city centre'},
+                                   {'name': 'Loyola Campus (west)', 'quote': 'Loyola Campus is in the west'},
+                                   {'name': 'East Campus', 'quote': 'North Campus is in the city centre'}]))
+        self.assertEqual([c['name'] for c in out['campuses']], ['Stub University North', 'Loyola Campus (west)'])
+
+    def test_a_faculty_named_on_the_pages_is_kept_even_when_its_quote_is_another_sentence(self):
+        out = run(answer(faculties=[{'name': 'Faculty of Law', 'quote': 'Faculty of Arts. Faculty of Science.'}, {'name': 'Faculty of Magic', 'quote': 'Faculty of Arts. Faculty of Science.'}]))
+        self.assertEqual([f['name'] for f in out['faculties']], ['Faculty of Law'])
+
+    def test_partners_are_outside_organisations(self):
+        pages = dict(PAGES, partners='We work with LG, Stub University Holdings, the Office of Industry, Other University and Acme Corp.')
+        out = run(answer(partners=[{'name': n, 'quote': 'We work with LG, Stub University Holdings, the Office of Industry, Other University and Acme Corp.'}
+                                   for n in ('LG', 'Stub University Holdings', 'Office of Industry', 'Other University', 'Acme Corp')]), pages=pages)
+        self.assertEqual([p['name'] for p in out['partners']['names']], ['LG', 'Acme Corp'])
+
+    def test_a_brief_does_not_mention_wikipedia_and_is_one_paragraph(self):
+        src = BRIEF + ' 1958'
+        self.assertIn('pages', A.check_brief(BRIEF + ' The brief uses only the facts in the Wikipedia opening paragraph.', src)[1])
+        self.assertIn('pages', A.check_brief(BRIEF + ' It offers over 200 degree programs, according to Wikipedia.', src)[1])
+        out = run(answer(brief=BRIEF.replace('. ', '.\n')))
+        self.assertEqual(out['brief']['status'], 'verified')
+        self.assertNotIn('\n', out['brief']['text'])
+
+    def test_founding_year_is_published_only_when_confirmed_or_stated_by_the_university(self):
+        self.assertTrue(run(answer())['publish']['founded'])                                       # the university says 1958, Wikidata says 1958
+        self.assertFalse(run(answer(founded=None))['publish']['founded'])                          # Wikidata alone: not yet
+        self.assertFalse(run(answer(founded={'year': 1900, 'quote': 'was founded in 1958', 'page': 'facts'}))['publish']['founded'])   # year not in its quote -> not used
 
     def test_reasons_for_refusals_are_kept_for_the_report(self):
         out = run(answer())

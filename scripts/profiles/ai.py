@@ -81,6 +81,39 @@ def year_ok(y):
     return isinstance(y, int) and 1100 <= y <= datetime.date.today().year
 
 
+STOP = {'campus', 'campuses', 'university', 'universities', 'the', 'of', 'and', 'de', 'du', 'la', 'le', 'in', 'at', 'a', 'an'}
+PARTNER_BAD = re.compile(r'\b(?:universit\w*|universiti|universit[aä]t|universit[eé]|college|office|department|faculty|school of|club|holdings|institute of (?:technology|engineering))\b', re.I)
+
+
+def tokens(text):
+    return re.findall(r'[^\W_]+', norm(text))
+
+
+def bare(name):
+    """A name without any bracketed part: 'Sydney (Cape Breton)' -> 'Sydney'."""
+    return re.sub(r'\s+', ' ', re.sub(r'\(.*?\)', ' ', name or '')).strip()
+
+
+def name_in(name, hay_norm):
+    """The name stands in the text as whole words (so 'LG' is found in 'LG Research' but 'art' is not found in 'party')."""
+    n = norm(bare(name))
+    return len(n) >= 2 and re.search(r'(?<!\w)' + re.escape(n) + r'(?!\w)', hay_norm) is not None
+
+
+def campus_in(name, quote, uni_name):
+    """A campus name matches its quote when every distinctive word of it is in the quote ('Curtin Kalgoorlie' <- '... Kalgoorlie is the base ...')."""
+    own = set(tokens(uni_name))
+    core = [t for t in tokens(bare(name)) if t not in STOP and t not in own]
+    q = set(tokens(quote))
+    return bool(core) and all(t in q for t in core)
+
+
+def faculty_in(name, quote, hay):
+    """A faculty is named on the pages: its words are all in the quote, or the whole name stands somewhere on the pages."""
+    t = [x for x in tokens(bare(name)) if x not in STOP]
+    return (bool(t) and set(t) <= set(tokens(quote))) or any(name_in(name, h) for h in hay.values())
+
+
 def where(quote, hay):
     """Name of the page whose text holds the quote, or None. `hay` is {name: normalised text}."""
     for k, v in hay.items():
@@ -89,7 +122,22 @@ def where(quote, hay):
     return None
 
 
-def check_facts(inp, pages, wiki=''):
+def years_in(text):
+    """Years a text mentions: 2025 and 2026 for '2025 - 26'."""
+    ys = {int(x) for x in re.findall(r'(?<!\d)(20[0-3]\d)(?!\d)', text or '')}
+    for a, b in re.findall(r'(?<!\d)(20[0-3]\d)\s*[-/]\s*(\d\d)(?!\d)', text or ''):
+        ys.add(int(a[:2] + b))
+    return ys
+
+
+def quote_window(hay_text, quote, width=200):
+    """The quote and the text just before and after it, from the page: a year beside a figure belongs to it."""
+    q = norm(quote)
+    i = hay_text.find(q)
+    return hay_text[max(0, i - width): i + len(q) + width] if i >= 0 else q
+
+
+def check_facts(inp, pages, wiki='', uni_name=''):
     """The model's answer -> only what passes. `pages` is {name: text}; `wiki` is the Wikipedia lead.
     Returns (checked, rejected_counts, why) where why is a short list of reasons to read in the report.
     Student totals and the three lists must be quoted from the university's own pages; the founding year may also come from the Wikipedia lead."""
@@ -113,7 +161,9 @@ def check_facts(inp, pages, wiki=''):
             reject('students', 'total not in the quote', st['quote'])
         else:
             y = st.get('asof_year')
-            out['students'] = {'total': v, 'asof': y if year_ok(y) and number_in(st['quote'], y) else None, 'quote': st['quote'][:300], 'page': pg}
+            near = quote_window(hay[pg], st['quote'])
+            out['students'] = {'total': v, 'asof': y if year_ok(y) and y >= datetime.date.today().year - 10 and y in years_in(near) else None,
+                               'quote': st['quote'][:300], 'page': pg}
     f = inp.get('founded')
     if isinstance(f, dict) and f.get('quote'):
         y = f.get('year')
@@ -136,8 +186,15 @@ def check_facts(inp, pages, wiki=''):
             pg = where(q, hay)
             if not pg:
                 reject(key, 'quote not on the pages', f'{name} | {q}')
-            elif not present(name, norm(q)):
-                reject(key, 'name not in its quote', f'{name} | {q}')
+                continue
+            if key == 'campuses':
+                good = campus_in(name, q, uni_name)
+            elif key == 'faculties':
+                good = faculty_in(name, q, hay)
+            else:
+                good = name_in(name, norm(q)) and not PARTNER_BAD.search(name) and not (set(tokens(name)) <= set(tokens(uni_name)))
+            if not good:
+                reject(key, 'name not supported by its quote' if key != 'partners' else 'not a named outside organisation', f'{name} | {q}')
             else:
                 seen.add(norm(name))
                 rows.append({'name': name, 'quote': q[:240], 'page': pg})
@@ -149,7 +206,9 @@ WORD_NUM = {'two': '2', 'three': '3', 'four': '4', 'five': '5', 'six': '6', 'sev
 PROMO_RX = re.compile(r'\b(?:best|leading|top[- ]ranked|world[- ]class|premier|renowned|prestigious|number one|elite|outstanding)\b|#1', re.I)
 # a brief never talks about what the pages lack
 META_RX = re.compile(r"\b(?:the|these|those|provided|reviewed|given)\s+(?:pages?|sources?|text|website|material)\b|\bnot\s+(?:state[ds]?|specif\w+|mention\w*|provid\w+|available|given|listed|clear)\b"
-                     r"|\bno\s+(?:information|data|figure|details?)\b|\bunknown\b|\bunclear\b|\b(?:do|does|did)\s+not\s+(?:say|give|list|show|include)\b", re.I)
+                     r"|\bno\s+(?:information|data|figure|details?)\b|\bunknown\b|\bunclear\b|\b(?:do|does|did)\s+not\s+(?:say|give|list|show|include)\b"
+                     r"|\bwikipedia\b|\bopening paragraph\b|\bthe brief\b|\baccording to\b|\b(?:listed|described|found|stated|shown)\s+(?:on|in)\s+(?:the|its|their)\s+(?:university'?s?\s+)?(?:site|website|web ?pages?|pages?)\b"
+                     r"|\bthis (?:text|summary|brief)\b", re.I)
 # student numbers live in their own field, with the year; the brief does not repeat them (they would disagree)
 STUDENTS_RX = re.compile(r'\d[\d,.\u202f\u00a0 ]*\+?\s+(?:[\w-]+\s+){0,2}(?:students|undergraduates|postgraduates|graduates|learners|enrol?lments)\b'
                          r'|\b(?:enrol?lments?|student (?:body|population|numbers?))\b[^.]{0,50}\d{1,3}(?:[,.\u202f\u00a0 ]\d{3})+', re.I)
@@ -158,7 +217,7 @@ STUDENTS_RX = re.compile(r'\d[\d,.\u202f\u00a0 ]*\+?\s+(?:[\w-]+\s+){0,2}(?:stud
 def check_brief(text, sources_text):
     """4-5 lines of plain words. Every number or year in it is in the sources; no student counts, no praise, no remarks about missing pages.
     Returns (ok, reason); the reason is specific because it is sent back to the model for one more try."""
-    t = (text or '').strip()
+    t = re.sub(r'\s+', ' ', text or '').strip()                       # one paragraph: the page breaks it into lines
     if not BRIEF_MIN <= len(t) <= BRIEF_MAX:
         return False, f'length is {len(t)} characters; it must be {BRIEF_MIN} to {BRIEF_MAX}'
     src_nums, src_norm = numbers(sources_text), norm(sources_text)
@@ -190,7 +249,9 @@ SYSTEM = (
     "and the year it refers to if the page says so (put the year inside the quote), and the year the university says it was founded. "
     "A quote is copied exactly, never reworded. If a page does not state a fact, return null for it. "
     "3) List the campuses (each with its own name, not 'campus life' or 'campus map'), the faculties or schools at the top level of the university, "
-    "and the industry or corporate partners the university names, each with the exact sentence that names it. "
+    "and the outside organisations the university says it works with (companies, industry bodies, research organisations), each as its own entry with its own name "
+    "and the exact sentence that names it. Not the university's own offices, units, programmes or companies; not other universities or colleges; not sports clubs; not a list "
+    "of several organisations in one entry. For faculties give the name as the university writes it. "
     "Return only what the pages state. Call the record_profile tool."
 )
 ITEM = {'type': 'object', 'properties': {'name': {'type': 'string'}, 'quote': {'type': 'string'}}, 'required': ['name', 'quote']}
@@ -279,7 +340,7 @@ def rewrite_brief(client, rec, pages, usage, previous, problem):
     msg = client.messages.create(model=MODEL, max_tokens=1000, system=SYSTEM, tools=[BRIEF_TOOL], tool_choice={'type': 'tool', 'name': 'record_brief'},
                                  messages=[{'role': 'user', 'content': prompt_of(rec, pages) + note}])
     usage.add(msg)
-    return ((tool_input(msg, 'record_brief') or {}).get('brief') or '').strip()
+    return re.sub(r'\s+', ' ', (tool_input(msg, 'record_brief') or {}).get('brief') or '').strip()
 
 
 def read_university(client, rec, pages, usage):
@@ -316,13 +377,13 @@ def process(client, rec, pages, fetch, api, usage, today):
     if not pages:
         ai['note'] = "the university's site could not be read: brief and founding year come from the Wikipedia lead only"
     ans = read_university(client, rec, pages, usage) or {}
-    checked, r, why = check_facts(ans, pages, wiki)
+    checked, r, why = check_facts(ans, pages, wiki, rec['name'])
     rej.update(r)
     ai['why'] = why
 
     # brief: up to two more tries, each told what was wrong
     sources = wiki + ' ' + ' '.join(pages.values())
-    text, tries = (ans.get('brief') or '').strip(), []
+    text, tries = re.sub(r'\s+', ' ', ans.get('brief') or '').strip(), []
     for attempt in range(3):
         ok, reason = check_brief(text, sources)
         if ok:
@@ -351,6 +412,11 @@ def process(client, rec, pages, fetch, api, usage, today):
         status = 'check' if far else ('official' if off['asof'] else 'official-no-year')
         rec['students'] = {'v': off['total'], 'asof': off['asof'], 'status': status, 'src': page_url(off.get('page') or 'facts'),
                            'quote': off['quote'], 'wikidata': {'v': wv, 'asof': wd_students.get('asof'), 'agrees': agree} if wv else None}
+        if status == 'official-no-year' and agree and wd_students.get('asof'):
+            # the university gives a round figure with no year, and a dated Wikidata figure agrees with it within 15%: show the dated figure,
+            # with the university's own sentence as the second source
+            rec['students'].update({'v': wv, 'asof': wd_students['asof'], 'status': 'verified', 'src': wd_students.get('src') or rec['students']['src'],
+                                    'also': {'v': off['total'], 'src': page_url(off.get('page') or 'facts'), 'quote': off['quote']}})
     # year established
     fo = dict(rec.get('founded') or {})
     of = checked.get('founded')
@@ -404,7 +470,8 @@ def publish_flags(rec, today):
     without one, only the student-number field is hidden (decided by Raja, 2026-11-22)."""
     st = rec.get('students') or {}
     students = bool(st.get('v') and st.get('asof') and (st.get('status') == 'official' or st.get('status') == 'verified'))
-    return {'students': students, 'university': True, 'brief': (rec.get('brief') or {}).get('status') == 'verified',
+    fo = (rec.get('founded') or {})
+    return {'students': students, 'founded': bool(fo.get('v')) and fo.get('status') in ('confirmed', 'official'), 'university': True, 'brief': (rec.get('brief') or {}).get('status') == 'verified',
             'campuses': any(c.get('photo') for c in rec.get('campuses') or []), 'gallery': len((rec.get('gallery') or {}).get('photos') or []) >= 4}
 
 
