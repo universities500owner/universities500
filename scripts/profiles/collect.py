@@ -10,6 +10,7 @@ Run by the 'Profile pilot' workflow (the sandbox cannot reach these sites). Stan
 A value is only marked publishable when it has a source link and passes its check. Everything else is kept, labelled,
 and listed in the report for a person to look at. Nothing here writes into src/data."""
 import argparse
+import re
 import concurrent.futures as cf
 import datetime
 import json
@@ -39,6 +40,25 @@ def maps_link(*parts):
 
 def agree(a, b, tol=0.15):
     return bool(a and b and abs(a - b) / max(a, b) <= tol)
+
+
+YEAR_CTX = re.compile(r'(?:founded|established|formed|created|chartered|opened|since)\D{0,25}?((?:1[0-9]|20)\d\d)', re.I)
+
+
+def founded_block(wd, overview):
+    """Wikidata's year, checked against the year the Wikipedia lead gives. Wikidata 'inception' is sometimes the date of a merger or of
+    university status, not the heritage year a university quotes, so a year the lead contradicts is sent for review."""
+    f = wd.get('founded')
+    if not f:
+        return {'v': None, 'status': 'missing'}
+    said = sorted({int(y) for y in YEAR_CTX.findall(overview or '')})
+    if f['conflict']:
+        status = 'conflict'
+    elif not said:
+        status = 'ok'
+    else:
+        status = 'confirmed' if f['v'] in said else 'check'
+    return {'v': f['v'], 'status': status, 'all': f['all'], 'lead_years': said, 'src': wd['src']}
 
 
 def students_block(wd, site):
@@ -81,7 +101,7 @@ def social_block(site, wd):
         if kind in got:
             s = got[kind]
             out[kind] = {'url': s['url'], 'from': s['from'], 'agree': s['agree'], 'others': s['others'],
-                         'status': 'verified' if s['from'] in ('footer', 'jsonld') and s['agree'] is not False else 'check'}
+                         'status': 'verified' if (s['from'] in ('footer', 'jsonld') and s['agree'] is not False) or s['agree'] is True else 'check'}
         elif wd.get(kind):
             out[kind] = {'url': WD.social_url(kind, wd[kind]), 'from': 'wikidata', 'agree': None, 'others': [], 'status': 'wikidata-only'}
     return out
@@ -116,7 +136,7 @@ def process(uni, wd_facts, api, fetcher, today):
 
     site = step('site', lambda: SITE.crawl(fetcher, uni.get('web') or wd.get('website') or ''), {'home': {'error': 'crawl failed'}, 'links': {}, 'social': {}, 'faculties': [], 'campuses': [], 'students2': [], 'cache': {}})
     site['social'] = SITE.socials(site.pop('social_links', []), site.pop('_same_as', []), wd)
-    wd_fac = step('wikidata faculties', lambda: WD.faculties(api, uni['qid']), [])
+    wd_fac = step('wikidata faculties', lambda: WD.faculties(api, uni['qid'], uni['name']), [])
     gallery, counts = step('commons gallery', lambda: CM.gallery(api, wd['commons'], today.year), ([], {})) if wd.get('commons') else ([], {'note': 'no Commons category on Wikidata'})
 
     # photos for campuses: one search each, at most 4 per university
@@ -131,8 +151,7 @@ def process(uni, wd_facts, api, fetcher, today):
 
     rec['website'] = {'url': site['home'].get('final') or uni.get('web'), 'status': site['home'].get('status'),
                       'error': site['home'].get('error', ''), 'robots': site['home'].get('robots', False)}
-    f = wd.get('founded')
-    rec['founded'] = {'v': f['v'], 'status': 'conflict' if f['conflict'] else 'ok', 'all': f['all'], 'src': wd['src']} if f else {'v': None, 'status': 'missing'}
+    rec['founded'] = founded_block(wd, uni.get('overview', ''))
     rec['students'] = students_block(wd, site)
     rec['campuses'] = campuses_block(uni, site, photos)
     rec['faculties'] = faculties_block(wd_fac, site)

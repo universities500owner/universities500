@@ -219,6 +219,62 @@ class Tests(unittest.TestCase):
         self.assertEqual(ph['title'], 'File:North campus Stub University 2022.jpg')   # not the 'Random street' result
         self.assertIsNone(CM.campus_photo(FakeApi(), 'Harbour', 'Stub University', 2026))
 
+    # ---------- fixes found by the first real run ----------
+    def test_social_compares_only_like_with_like(self):
+        self.assertIsNone(S.same_account('youtube', 'UCO3krgSinpAjqXE1DU47-cA', 'sorbonneuniversite'))   # channel id vs name: cannot compare
+        self.assertFalse(S.same_account('youtube', 'someone', 'sorbonneuniversite'))
+        self.assertTrue(S.same_account('youtube', 'UCO3krgSinpAjqXE1DU47-cA', 'channel/UCO3krgSinpAjqXE1DU47-cA'))
+        self.assertIsNone(S.same_account('linkedin', 'monash-university', '8788'))
+        self.assertTrue(S.same_account('instagram', 'monash_uni', 'monash_uni'))
+        self.assertIsNone(S.same_account('instagram', '', 'monash_uni'))
+
+    def test_campus_names_must_look_like_campuses(self):
+        good = ['North campus', 'Clayton Campus', 'Campus de Jussieu', 'Main campus']
+        bad = ['Cross-campus pathways', 'Campus locations', 'Campus maps', 'Vie des campus', 'Our campuses', 'View all campuses', 'Virtual campus']
+        for t in good:
+            self.assertTrue(S.CAMPUS_NAME.match(t), t)
+        for t in bad:
+            self.assertFalse(S.CAMPUS_NAME.match(t), t)
+
+    def test_facts_role_ignores_a_page_that_only_says_facts_in_passing(self):
+        links = [{'url': 'https://www.stub.test/about/merger-proposal/', 'text': 'About the merger proposal: claims and facts', 'footer': False},
+                 {'url': 'https://www.stub.test/about/facts-and-figures/', 'text': 'Facts and figures', 'footer': False}]
+        top = S.role_candidates('facts', links, 'stub.test')
+        self.assertEqual(top[0]['url'], 'https://www.stub.test/about/facts-and-figures/')
+        self.assertEqual(len(top), 1)
+
+    def test_english_page_is_used_and_social_links_from_both_pages_are_kept(self):
+        PAGES['/en-home/'] = page('Stub University', '<nav><a href="/admissions/">Admissions</a></nav><h1>Welcome</h1>').replace('<html>', '<html lang="en">')
+        PAGES['/no-home/'] = ('<html lang="no"><head><title>Stub</title><link rel="alternate" hreflang="en" href="/en-home/"></head><body>'
+                              '<footer><a href="https://www.instagram.com/stubuni/">Instagram</a></footer></body></html>')
+        fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+        out = S.crawl(fx, f'http://127.0.0.1:{PORT["p"]}/no-home/')
+        self.assertTrue(out['home'].get('english', '').endswith('/en-home/'))
+        self.assertEqual(out['links']['admissions']['grade'], 'verified')
+        soc = S.socials(out['social_links'], out['_same_as'], {})
+        self.assertEqual(soc['instagram']['url'], 'https://www.instagram.com/stubuni/')   # from the original page's footer
+
+    def test_wikidata_faculties_are_tidied(self):
+        self.assertEqual(WD.tidy_faculty('UiO Faculty of Dentistry', 'University of Oslo'), 'Faculty of Dentistry')
+        self.assertEqual(WD.tidy_faculty('Faculty of Law, University of Oslo', 'University of Oslo'), 'Faculty of Law')
+        self.assertEqual(WD.tidy_faculty('University of Oslo Faculty of Theology', 'University of Oslo'), 'Faculty of Theology')
+
+    def test_gallery_drops_protests_and_prefers_buildings(self):
+        bad = photo('File:Pro-palestine protest at Stub.jpg', 4000, 2500)
+        self.assertEqual(CM.gate(bad)[1], 'name')
+        cat = photo('File:Stub quad.jpg', 4000, 2500, cats='Protests at Stub University')
+        self.assertEqual(CM.gate(cat)[1], 'topic')
+        ok = photo('File:Stub quad.jpg', 4000, 2500, cats='Buildings of Stub University')
+        self.assertTrue(CM.gate(ok)[0])
+
+    def test_founded_year_is_checked_against_the_lead(self):
+        wd = {'src': 'x', 'founded': {'v': 2018, 'all': [2018], 'conflict': False}}
+        self.assertEqual(C.founded_block(wd, 'It was founded in 1257 and merged in 2018.')['status'], 'check')
+        self.assertEqual(C.founded_block(wd, 'It was established in 2018.')['status'], 'confirmed')
+        self.assertEqual(C.founded_block(wd, 'A public university.')['status'], 'ok')
+        self.assertEqual(C.founded_block({'src': 'x'}, '')['status'], 'missing')
+
+
     # ---------- the whole record ----------
     def test_process_builds_a_record(self):
         base = f'http://127.0.0.1:{PORT["p"]}/'

@@ -23,14 +23,14 @@ def build(recs, meta=None):
          f'{meta.get("requests_site", "?")} website requests, {meta.get("requests_api", "?")} Wikimedia requests, {meta.get("seconds", "?")} s.', '']
 
     # ---- field table
-    L += ['## Fill rate by field', '', 'Ready = could be shown today. Review = found, but a person should look first.', '',
+    L += ['## Fill rate by field', '', 'Ready = two sources agree, or an official page that passed its checks. Review = found, but a person should look first.', '',
           '| Field | Ready | Review | Missing | What counts as ready |', '|---|---|---|---|---|']
 
     def row(label, ready, review, rule):
         L.append(f'| {label} | {ready} | {review} | {n - ready - review} | {rule} |')
 
     c = collections.Counter(r.get('founded', {}).get('status') for r in recs)
-    row('Year established', c['ok'], c['conflict'], 'one year on Wikidata, no conflict')
+    row('Year established', c['confirmed'], c['ok'] + c['check'] + c['conflict'], 'Wikidata year that the Wikipedia lead repeats; review = one source only, or the two differ')
     c = collections.Counter(r.get('students', {}).get('status') for r in recs)
     row('Students + as-on year', c['verified'], c['single-source'] + c['site-only'] + c['missing-year'],
         'Wikidata number with a year, and the university site says about the same')
@@ -69,7 +69,8 @@ def build(recs, meta=None):
                        for k in ('instagram', 'linkedin', 'youtube'))
         w = r.get('website') or {}
         site = 'ok' if w.get('status') == 200 else ('robots' if w.get('robots') else (w.get('error') or 'fail')[:18])
-        L.append(f"| {r['name'][:34]} | {r['country'][:12]} | {(r.get('founded') or {}).get('v') or '-'} | {stu} | {st.get('status', '-')} | {site} | {links} | {soc} | "
+        fo = r.get('founded') or {}
+        L.append(f"| {r['name'][:34]} | {r['country'][:12]} | {fo.get('v') or '-'}{'' if fo.get('status') == 'confirmed' else ' ?'} | {stu} | {st.get('status', '-')} | {site} | {links} | {soc} | "
                  f"{len(r.get('faculties') or [])} | {len((r.get('gallery') or {}).get('photos') or [])} | {sum(1 for c in r.get('campuses') or [] if c.get('photo'))}/{len(r.get('campuses') or [])} |")
     L.append('')
 

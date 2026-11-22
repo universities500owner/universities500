@@ -35,8 +35,8 @@ ROLES = {
         r'campus|campuses|locations|standorte|campussen|campuser',
         r'virtual tour|open day|events?\b|news|jobs|parking|map of|safety'),
     'facts': (
-        r'facts|figures|at a glance|key facts|about us|about the university|about\b|zahlen|chiffres|cijfers|siffror|tall og|fakta',
-        r'news|alumni|jobs|careers|contact|events'),
+        r'facts and figures|facts & figures|key facts|quick facts|at a glance|statistics|university in numbers|in numbers|zahlen und fakten|zahlen|chiffres cl[eé]s|chiffres|cijfers|siffror|tall og fakta|fakta om',
+        r'news|alumni|jobs|careers|contact|events|merger|proposal|claims|employment|graduate outcomes|insertion'),
 }
 ROLES = {k: (re.compile(p, re.I), re.compile(n, re.I)) for k, (p, n) in ROLES.items()}
 GUESS = {
@@ -46,7 +46,7 @@ GUESS = {
     'faculties': ['/faculties/', '/schools/', '/academics/', '/about/faculties/'],
     'partners': ['/industry/', '/partnerships/', '/business/', '/industry-partnerships/'],
     'campuses': ['/campuses/', '/about/campuses/', '/our-campuses/', '/campus/'],
-    'facts': ['/about/facts-and-figures/', '/about/facts/', '/facts-and-figures/', '/about-us/', '/about/'],
+    'facts': ['/about/facts-and-figures/', '/about/facts/', '/facts-and-figures/', '/about/key-facts/'],
 }
 JUNK_PATH = re.compile(
     r'/(?:news|blog|events?|stories|story|press|articles?|alumni|staff|jobs|careers|people|tag|category|feed|login|search|cart|shop|gallery|video|podcast|privacy|terms|cookies?|sitemap)(?:/|$)|'
@@ -115,10 +115,16 @@ def page_info(html, base_url):
                 v = d.get('sameAs')
                 same_as += [v] if isinstance(v, str) else [x for x in (v or []) if isinstance(x, str)]
                 stack += [x for x in d.values() if isinstance(x, (dict, list))]
+    lang = ((soup.html.get('lang') if soup.html else '') or '').lower()
+    english = ''
+    for l in soup.find_all('link', attrs={'rel': 'alternate', 'hreflang': True}):
+        if re.match(r'^en(?:[-_]|$)', (l.get('hreflang') or '').lower()) and l.get('href'):
+            english = canon(urllib.parse.urljoin(base_url, l['href']))
+            break
     for t in soup(['script', 'style', 'noscript', 'svg', 'template']):
         t.decompose()
     text = re.sub(r'\s+', ' ', soup.get_text(' ', strip=True))
-    return {'title': title, 'h1': h1, 'links': links, 'same_as': same_as, 'text': text}
+    return {'title': title, 'h1': h1, 'links': links, 'same_as': same_as, 'text': text, 'lang': lang, 'english': english}
 
 
 def role_candidates(role, links, home_reg, limit=3):
@@ -149,6 +155,22 @@ def role_candidates(role, links, home_reg, limit=3):
         if l['url'] not in best or s > best[l['url']]['score']:
             best[l['url']] = {'url': l['url'], 'text': l['text'], 'score': round(s, 2)}
     return sorted(best.values(), key=lambda x: -x['score'])[:limit]
+
+
+def same_account(kind, wd, handle):
+    """True/False when Wikidata and the site give the same kind of identifier (both a channel id, both a name); None when they
+    are different kinds (a YouTube channel id against an @name, a LinkedIn number against a slug) and so cannot be compared."""
+    if not wd:
+        return None
+    wd, handle = wd.lower(), handle.lower()
+    if kind == 'youtube':
+        def form(x):
+            return 'id' if re.match(r'^(?:channel/)?uc[\w-]{20,}$', x, re.I) else 'name'
+        a, b = re.sub(r'^(?:channel|user|c)/', '', wd), re.sub(r'^(?:channel|user|c)/', '', handle)
+        return (a == b) if form(a) == form(b) else None
+    if kind == 'linkedin':
+        return (wd == handle) if wd.isdigit() == handle.isdigit() else None
+    return wd == handle
 
 
 def socials(links, same_as, wikidata):
@@ -185,7 +207,7 @@ def socials(links, same_as, wikidata):
         top = rows[0]
         distinct = sorted({r['handle'] for r in rows})
         wd = (wikidata.get(kind) or '').lower().lstrip('@')
-        top = dict(top, others=[h for h in distinct if h != top['handle']][:4], agree=(wd == top['handle']) if wd else None)
+        top = dict(top, others=[h for h in distinct if h != top['handle']][:4], agree=same_account(kind, wd, top['handle']))
         out[kind] = top
     return out
 
@@ -207,12 +229,19 @@ def student_numbers(text):
     return out[:12]
 
 
+CAMPUS_NAME = re.compile(
+    r"^(?!(?i:our|all|view|find|explore|virtual|visit|other|global|online|the|campus)\b)"
+    r"[A-Z\u00C0-\u00DE][\w'’.&-]*(?: [A-Z\u00C0-\u00DE&][\w'’.&-]*){0,3} [Cc]ampus$|^[Cc]ampus (?:de |du |d'|di |van )?[A-Z\u00C0-\u00DE][\w'’-]+(?: [A-Z\u00C0-\u00DE][\w'’-]+)?$")
+
+
 def names_from_links(links, rx, home_reg, cap=40):
     """Faculty or campus names taken from the link text of a hub page: [{'name','url'}]."""
     seen = {}
     for l in links:
         t = l['text'].strip()
         if not 4 <= len(t) <= 70 or not rx.search(t) or FACULTY_BAD.search(t) and not re.search(r'faculty|school|college|department', t, re.I):
+            continue
+        if rx.pattern == CAMPUS_NAME.pattern and not CAMPUS_NAME.match(t):
             continue
         if JUNK_PATH.search(l['url']) or t.lower() in seen:
             continue
@@ -242,10 +271,21 @@ def crawl(fetcher, home_url, cap_text=9000):
     home_reg = reg_domain(urllib.parse.urlsplit(res.final_url).netloc)
     out['home']['reg'] = home_reg
     home = page_info(res.text, res.final_url)
+    extra_links, extra_same_as = [], []
+    if home['lang'] and not home['lang'].startswith('en'):
+        # a home page in another language: use its English version when it names one on the same domain,
+        # and keep the original page's links too (social links often sit only on the national-language page)
+        eng = home['english'] or next((l['url'] for l in home['links'] if l['text'].strip().lower() in ('english', 'en', 'in english')), '')
+        if eng and reg_domain(urllib.parse.urlsplit(eng).netloc) == home_reg and eng != res.final_url:
+            r2 = fetcher.get(eng)
+            if r2.ok and r2.text:
+                extra_links, extra_same_as = home['links'], home['same_as']
+                res, home = r2, page_info(r2.text, r2.final_url)
+                out['home']['english'] = r2.final_url
     out['home']['title'] = home['title']
     out['cache']['home'] = home['text'][:cap_text]
-    out['social_links'] = home['links']
-    out['_same_as'] = home['same_as']
+    out['social_links'] = home['links'] + extra_links
+    out['_same_as'] = home['same_as'] + extra_same_as
     base = urllib.parse.urlsplit(res.final_url)
     root = f'{base.scheme}://{base.netloc}'
 
@@ -268,7 +308,7 @@ def crawl(fetcher, home_url, cap_text=9000):
                     if role == 'faculties':
                         out['faculties'] = names_from_links(pg['links'], FACULTY_WORD, home_reg)
                     if role == 'campuses':
-                        out['campuses'] = names_from_links(pg['links'], re.compile(r'campus', re.I), home_reg, 12)
+                        out['campuses'] = names_from_links(pg['links'], CAMPUS_NAME, home_reg, 12)
                     if role == 'facts':
                         out['students2'] += student_numbers(pg['text'])
                 break

@@ -14,7 +14,9 @@ P = {
 POINT_IN_TIME = 'P585'
 FACULTY_WORD = re.compile(
     r'\b(faculty|faculties|school|college|department|institute|faculté|fakultät|facultad|fakulteit|fakultet|fakulti|fachbereich)\b', re.I)
+FACULTY_START = re.compile(r'^(?:faculty|faculties|school|college|institute|facult[eé]|fakult[aä]t|facultad|fakulteit|fakultet|fakulti)\b|\b(?:faculty|school|college|facult[eé]|fakult[aä]t) (?:of|for|de|des|der|f[uü]r|voor)\b', re.I)
 FACULTY_SKIP = re.compile(
+    r'\bdepartment\b|\bbuilding\b|\bespaces?\b|clinical school|'
     r'hospital|library|press\b|museum|club\b|union\b|foundation|alumni|association|sports?\b|orchestra|choir|society|'
     r'high school|secondary school|primary school|nursery|kindergarten|research (centre|center|group)|laboratory|observatory|'
     r'students[\'’]? ', re.I)
@@ -119,17 +121,25 @@ def social_url(kind, handle):
     return ''
 
 
-def faculties(api, qid):
+def tidy_faculty(name, uni_name):
+    """'UiO Faculty of Dentistry' / 'Faculty of Law, University of Oslo' -> 'Faculty of Dentistry' / 'Faculty of Law'."""
+    n = re.sub(r',\s*' + re.escape(uni_name) + r'$', '', name.strip(), flags=re.I)
+    n = re.sub(r'^(?:' + re.escape(uni_name) + r'|(?!The\b)[A-Z][A-Za-z]{1,5})\s+(?=(?i:faculty|school|college|institute)\b)', '', n)
+    return n.strip()
+
+
+def faculties(api, qid, uni_name=''):
     """Units that name the university as their parent: [{'name', 'url'}] (url may be empty). Needs the query service."""
     q = (f'SELECT ?f ?fLabel ?site WHERE {{ {{ ?f wdt:P749 wd:{qid} }} UNION {{ ?f wdt:P361 wd:{qid} }} '
          f'OPTIONAL {{ ?f wdt:P856 ?site }} SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }} }} LIMIT 400')
     data = api.get_json(SPARQL, {'query': q, 'format': 'json'})
     seen = {}
     for b in (data.get('results') or {}).get('bindings', []):
-        name = (b.get('fLabel') or {}).get('value', '').strip()
-        if not name or re.match(r'^Q\d+$', name) or not FACULTY_WORD.search(name) or FACULTY_SKIP.search(name):
+        name = tidy_faculty((b.get('fLabel') or {}).get('value', ''), uni_name)
+        if not name or re.match(r'^Q\d+$', name) or not FACULTY_START.search(name) or FACULTY_SKIP.search(name):
             continue
         url = (b.get('site') or {}).get('value', '')
-        if name not in seen or (url and not seen[name]['url']):
-            seen[name] = {'name': name, 'url': url, 'src': wd_url(qid)}
+        k = name.lower()
+        if k not in seen or (url and not seen[k]['url']):
+            seen[k] = {'name': name, 'url': url, 'src': wd_url(qid)}
     return sorted(seen.values(), key=lambda x: x['name'])
