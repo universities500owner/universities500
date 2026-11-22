@@ -18,7 +18,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx astro build
-      - run: pip install playwright && python3 -m playwright install --with-deps chromium
+      - run: pip install playwright pillow && python3 -m playwright install --with-deps chromium
       - name: Serve and shoot
         run: |
           (npx astro preview --port 4322 > preview.log 2>&1 &)
