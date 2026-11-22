@@ -119,10 +119,10 @@ class Tests(unittest.TestCase):
                          brief='Stub University was founded in 1901. ' + 'It is a public university in Stubville. ' * 8))
         self.assertIn('1901', out['brief']['status'])                                         # the reason names the number that is not in the pages
         self.assertEqual(out['students']['status'], 'single-source')                         # the collector's value stays untouched
+        self.assertEqual(out['students']['v'], 30000)
         self.assertEqual(out['founded']['status'], 'ok')
         self.assertTrue(out['brief']['status'].startswith('rejected'))
         self.assertEqual(out['brief']['text'], '')
-        self.assertFalse(out['publish']['students'])
 
     def test_year_must_be_in_the_quote(self):
         out = run(answer(students={'total': 31200, 'asof_year': 2024, 'quote': 'In 2023, 31,200 students studied here', 'page': 'facts'}), no_wikidata())
@@ -271,10 +271,54 @@ class Tests(unittest.TestCase):
         self.assertEqual((out['brief']['status'], out['brief']['src']), ('verified', 'Wikipedia lead only'))
         self.assertFalse(out['publish']['brief'])
 
-    def test_founding_year_is_published_only_when_confirmed_or_stated_by_the_university(self):
-        self.assertTrue(run(answer())['publish']['founded'])                                       # the university says 1958, Wikidata says 1958
-        self.assertFalse(run(answer(founded=None))['publish']['founded'])                          # Wikidata alone: not yet
-        self.assertFalse(run(answer(founded={'year': 1900, 'quote': 'was founded in 1958', 'page': 'facts'}))['publish']['founded'])   # year not in its quote -> not used
+    def test_founding_year_published_when_stated_by_the_university_or_agreed_by_wikidata(self):
+        out = run(answer())                                                                         # the university says 1958, Wikidata says 1958
+        self.assertEqual((out['founded']['status'], out['founded']['source_text']), ('confirmed', 'Source: stub.test and Wikidata'))
+        self.assertTrue(out['publish']['founded'])
+        out = run(answer(founded=None))                                                             # the university is silent: Wikidata's year, with its source
+        self.assertEqual((out['founded']['status'], out['founded']['source_text']), ('ok', 'Source: Wikidata'))
+        self.assertTrue(out['publish']['founded'])
+        out = run(answer(founded={'year': 1900, 'quote': 'was founded in 1958', 'page': 'facts'}))  # year not in its quote -> not used, Wikidata's stays
+        self.assertEqual(out['founded']['v'], 1958)
+
+    def test_the_universitys_own_origin_year_wins_and_its_present_form_is_shown_beside_it(self):
+        pages = dict(PAGES, facts='Its legacy reaches back to 1257. In 2018 it took its present form by merger. In 2023, 31,200 students studied here.')
+        out = run(answer(founded={'year': 1257, 'quote': 'Its legacy reaches back to 1257', 'page': 'facts'},
+                         present_form={'year': 2018, 'quote': 'In 2018 it took its present form by merger', 'page': 'facts'}), pages=pages)
+        fo = out['founded']
+        self.assertEqual((fo['v'], fo['status'], fo['differs'], fo['wikidata']), (1257, 'official', True, 1958))     # the stub's Wikidata year is 1958
+        self.assertEqual(fo['present_form']['v'], 2018)
+        self.assertEqual(fo['source_text'], 'Source: stub.test')
+        self.assertTrue(out['publish']['founded'])
+        # a present-form year that is not later, or whose quote is not on the pages, is dropped
+        out = run(answer(founded={'year': 1257, 'quote': 'Its legacy reaches back to 1257', 'page': 'facts'},
+                         present_form={'year': 2018, 'quote': 'merged in 2018', 'page': 'facts'}), pages=pages)
+        self.assertNotIn('present_form', out['founded'])
+
+    def test_a_year_from_the_wikipedia_lead_that_differs_from_wikidata_is_held_for_a_look(self):
+        r = rec()
+        r['brief'] = {'text': 'Stub University is a public university in Stubville. It was established in 1980 through a merger.', 'status': 'pending-ai', 'src': 'https://en.wikipedia.org/wiki/Stub'}
+        out = run(answer(founded={'year': 1980, 'quote': 'It was established in 1980 through a merger.', 'page': 'wikipedia'}), r)
+        self.assertEqual(out['founded']['status'], 'check')
+        self.assertFalse(out['publish']['founded'])
+
+    def test_students_from_wikidata_alone_are_shown_with_year_and_source_when_recent(self):
+        out = run(answer(students=None))                                                            # Wikidata: 30,000 as on 2021
+        self.assertEqual(out['students']['source_text'], 'Source: Wikidata, 2021')
+        self.assertTrue(out['publish']['students'])
+        old = rec()
+        old['students'] = {'v': 24000, 'asof': 2018, 'status': 'single-source'}                    # too old to show on one source
+        self.assertFalse(run(answer(students=None), old)['publish']['students'])
+        undated = rec()
+        undated['students'] = {'v': 24000, 'asof': None, 'status': 'missing-year'}
+        self.assertFalse(run(answer(students=None), undated)['publish']['students'])
+
+    def test_source_lines_for_each_kind_of_student_total(self):
+        out = run(answer())                                                                         # official, with a year
+        self.assertEqual(out['students']['source_text'], 'Source: stub.test, 2023')
+        pages = dict(PAGES, facts='We have 31,000 students. Founded in 1958.')
+        out = run(answer(students={'total': 31000, 'asof_year': None, 'quote': 'We have 31,000 students', 'page': 'facts'}), pages=pages)     # dated Wikidata figure confirmed
+        self.assertEqual(out['students']['source_text'], 'Source: Wikidata and the university website, 2021')
 
     def test_reasons_for_refusals_are_kept_for_the_report(self):
         out = run(answer())
@@ -302,7 +346,7 @@ class Tests(unittest.TestCase):
         self.assertEqual([c for c in out['campuses'] if c.get('quote')], [])
 
     def test_a_university_without_a_verified_total_is_still_listed(self):
-        out = run(answer(students=None))
+        out = run(answer(students=None), no_wikidata())
         self.assertFalse(out['publish']['students'])        # the number is hidden
         self.assertTrue(out['publish']['university'])       # the university is not
 

@@ -176,6 +176,13 @@ def check_facts(inp, pages, wiki='', uni_name=''):
             reject('founded', 'year not in the quote', f['quote'])
         else:
             out['founded'] = {'year': y, 'quote': f['quote'][:300], 'page': pg}
+    pf = inp.get('present_form')
+    if isinstance(pf, dict) and pf.get('quote'):
+        y, pg = pf.get('year'), where(pf['quote'], {**hay, **wiki_hay})
+        if year_ok(y) and pg and number_in(pf['quote'], y):
+            out['present_form'] = {'year': y, 'quote': pf['quote'][:300], 'page': pg}
+        else:
+            reject('present_form', 'quote not on the pages or year not in it', pf['quote'])
     for key in ('campuses', 'faculties', 'partners'):
         seen, rows = set(), []
         for it in (inp.get(key) or [])[:CAPS[key] * 2]:
@@ -271,7 +278,8 @@ SYSTEM = (
     "Use only facts that appear in the pages given; every number or year must appear in them, written as it appears. "
     "If a fact is not in the pages, leave it out; never write a sentence about what the pages do not say, and never mention the pages. "
     "2) Copy out, with the exact sentence from the page as the quote: the total number of students enrolled (all students, not only international ones) "
-    "and the year it refers to if the page says so (put the year inside the quote), and the year the university says it was founded. "
+    "and the year it refers to if the page says so (put the year inside the quote), and the year the university says it was founded (its origin, the earliest year it gives for itself). "
+    "If the pages also say it took its present form in a later year (a merger, a new name, university status), give that year as present_form with its own quote. "
     "A quote is copied exactly, never reworded. If a page does not state a fact, return null for it. "
     "3) List the campuses (each with its own name, not 'campus life' or 'campus map'), the faculties or schools at the top level of the university, "
     "and the outside organisations the university says it works with (companies, industry bodies, research organisations), each as its own entry with its own name "
@@ -288,6 +296,7 @@ TOOL = {
         'students': {'type': ['object', 'null'], 'properties': {
             'total': {'type': 'integer'}, 'asof_year': {'type': ['integer', 'null']}, 'quote': {'type': 'string'}, 'page': {'type': 'string'}}},
         'founded': {'type': ['object', 'null'], 'properties': {'year': {'type': 'integer'}, 'quote': {'type': 'string'}, 'page': {'type': 'string'}}},
+        'present_form': {'type': ['object', 'null'], 'properties': {'year': {'type': 'integer'}, 'quote': {'type': 'string'}, 'page': {'type': 'string'}}},
         'campuses': {'type': 'array', 'items': ITEM},
         'faculties': {'type': 'array', 'items': ITEM},
         'partners': {'type': 'array', 'items': ITEM},
@@ -443,13 +452,17 @@ def process(client, rec, pages, fetch, api, usage, today):
             # with the university's own sentence as the second source
             rec['students'].update({'v': wv, 'asof': wd_students['asof'], 'status': 'verified', 'src': wd_students.get('src') or rec['students']['src'],
                                     'also': {'v': off['total'], 'src': page_url(off.get('page') or 'facts'), 'quote': off['quote']}})
-    # year established
+    # year established: the year the university itself gives for its origin; its present-form year, when different, is shown beside it
     fo = dict(rec.get('founded') or {})
-    of = checked.get('founded')
+    of, pf = checked.get('founded'), checked.get('present_form')
     if of:
         same = fo.get('v') == of['year']
-        rec['founded'] = {'v': of['year'], 'status': 'confirmed' if same else ('official' if not fo.get('v') else 'check'), 'src': page_url(of.get('page') or 'facts'),
-                          'quote': of['quote'], 'wikidata': fo.get('v')}
+        from_univ = of.get('page') != 'wikipedia'
+        status = 'confirmed' if same else ('official' if from_univ or not fo.get('v') else 'check')
+        rec['founded'] = {'v': of['year'], 'status': status, 'src': page_url(of.get('page') or 'facts'), 'quote': of['quote'], 'wikidata': fo.get('v'),
+                          'differs': bool(fo.get('v')) and not same}
+        if pf and pf['year'] > of['year']:
+            rec['founded']['present_form'] = {'v': pf['year'], 'src': page_url(pf.get('page') or 'facts'), 'quote': pf['quote']}
     # lists
     if checked.get('faculties'):
         known = {f['name'].lower(): f.get('url') for f in rec.get('faculties') or []}
@@ -487,17 +500,40 @@ def process(client, rec, pages, fetch, api, usage, today):
             rej['campus photo'] = rej.get('campus photo', 0) + 1
             c['photo'] = None
     rec['ai'] = ai
+    source_texts(rec)
     rec['publish'] = publish_flags(rec, today)
     return rec
 
 
+def who(url):
+    u = (url or '').lower()
+    if 'wikidata.org' in u:
+        return 'Wikidata'
+    if 'wikipedia.org' in u:
+        return 'Wikipedia'
+    return urllib.parse.urlparse(url or '').netloc.removeprefix('www.') or 'the university website'
+
+
+def source_texts(rec):
+    """The small line shown under a figure: where it comes from. Wikidata is named as Wikidata."""
+    st, fo = rec.get('students') or {}, rec.get('founded') or {}
+    year = f', {st["asof"]}' if st.get('asof') else ''
+    if st.get('v'):
+        st['source_text'] = {'official': f'Source: {who(st.get("src"))}{year}', 'official-no-year': f'Source: {who(st.get("src"))}',
+                             'verified': f'Source: Wikidata and the university website{year}', 'single-source': f'Source: Wikidata{year}'}.get(st.get('status'), '')
+    if fo.get('v'):
+        w = who(fo.get('src'))
+        fo['source_text'] = {'confirmed': 'Source: ' + (f'{w} and Wikidata' if w != 'Wikidata' else 'Wikidata'), 'official': f'Source: {w}', 'ok': 'Source: Wikidata'}.get(fo.get('status'), '')
+
+
 def publish_flags(rec, today):
-    """What could go live. Only checked values count. A university stays listed whether or not it has a verified student total:
+    """What could go live. Only checked values count (a figure from Wikidata alone goes live with its source and year shown). A university stays listed whether or not it has a verified student total:
     without one, only the student-number field is hidden (decided by Raja, 2026-11-22)."""
     st = rec.get('students') or {}
-    students = bool(st.get('v') and st.get('asof') and (st.get('status') == 'official' or st.get('status') == 'verified'))
+    recent = st.get('status') == 'single-source' and (st.get('asof') or 0) >= today.year - 5        # one source, but dated within five years: shown with its source and year
+    students = bool(st.get('v') and st.get('asof') and (st.get('status') in ('official', 'verified') or recent))
     fo = (rec.get('founded') or {})
-    return {'students': students, 'founded': bool(fo.get('v')) and fo.get('status') in ('confirmed', 'official'), 'university': True, 'brief': (rec.get('brief') or {}).get('status') == 'verified' and (rec.get('brief') or {}).get('src') != 'Wikipedia lead only',
+    return {'students': students, 'founded': bool(fo.get('v')) and fo.get('status') in ('confirmed', 'official', 'ok'), 'university': True, 'brief': (rec.get('brief') or {}).get('status') == 'verified' and (rec.get('brief') or {}).get('src') != 'Wikipedia lead only',
             'campuses': any(c.get('photo') for c in rec.get('campuses') or []), 'gallery': len((rec.get('gallery') or {}).get('photos') or []) >= 4}
 
 
@@ -507,10 +543,11 @@ def report(recs, usage):
     L = ['# AI step report', '', f'{n} universities. {usage.calls} model calls, {usage.inp:,} tokens in, {usage.out:,} out, about ${usage.usd:.2f} at Haiku 5.5 prices.', '',
          '| Field | Ready | What counts as ready |', '|---|---|---|',
          f"| Brief of 4-5 lines | {c(lambda r: (r.get('brief') or {}).get('status') == 'verified')} | written from the university's pages; every number is in the sources |",
-         f"| Students + as-on year | {c(lambda r: (r.get('publish') or {}).get('students'))} | the university's own sentence, with the year, quote found on its page |",
+         f"| Student total shown, with year and source | {c(lambda r: (r.get('publish') or {}).get('students'))} | the university's own sentence with the year; or Wikidata, dated within five years, with its source named |",
+         f"| Year established shown | {c(lambda r: (r.get('publish') or {}).get('founded'))} | the university's own year, or Wikidata's when the university is silent; the source is named |",
          f"| Students, no year | {c(lambda r: (r.get('students') or {}).get('status') == 'official-no-year')} | official number but the page gives no year |",
          f"| Year established confirmed | {c(lambda r: (r.get('founded') or {}).get('status') == 'confirmed')} | the university's year matches Wikidata's |",
-         f"| Year established differs | {c(lambda r: (r.get('founded') or {}).get('status') == 'check')} | the university says a different year from Wikidata: look |",
+         f"| Year established differs | {c(lambda r: (r.get('founded') or {}).get('status') == 'check' or (r.get('founded') or {}).get('differs'))} | the university gives a year that differs from Wikidata's: look |",
          f"| Campuses (1 or more named) | {c(lambda r: any(x.get('from') == 'university page' for x in r.get('campuses') or []))} | named on the university's page, quote checked |",
          f"| Campus with a photo | {c(lambda r: (r.get('publish') or {}).get('campuses'))} | the photo passed the image check |",
          f"| Faculties (3 or more) | {c(lambda r: sum(1 for f in r.get('faculties') or [] if f.get('quote')) >= 3)} | named on the university's page, quote checked |",

@@ -61,7 +61,7 @@ a.chip:hover{border-color:currentColor}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:6px}
 .g img,.g .ph{width:100%;height:100px;object-fit:cover;border-radius:6px;background:#e6e9ee;display:block}
 .cr{font-size:10.5px;color:var(--mut);line-height:1.25;margin-top:2px;word-break:break-word}.cr a{color:var(--mut)}
-.names{font-size:13px;color:var(--mut)}.brief{margin:6px 0 8px;max-width:75ch}
+.src{font-size:10px;color:var(--mut);margin-left:6px}.names{font-size:13px;color:var(--mut)}.brief{margin:6px 0 8px;max-width:75ch}
 """
 
 
@@ -89,15 +89,23 @@ def card(r, thumb):
     elif str(br.get('status', '')).startswith('rejected'):
         out.append(f'<p class="names">Brief not used: {E(br["status"])}</p>')
     fk = {'confirmed': 'ok', 'official': 'ok', 'ok': 'rv', 'check': 'rv', 'conflict': 'rv'}.get(fo.get('status'), 'no')
+    if fo.get('differs'):
+        fk = 'rv'
     lead = f' (lead says {", ".join(map(str, fo["lead_years"]))})' if fo.get('lead_years') and fo.get('status') == 'check' else ''
-    if fo.get('status') == 'check' and fo.get('wikidata'):
+    if (fo.get('status') == 'check' or fo.get('differs')) and fo.get('wikidata'):
         lead = f' (Wikidata says {fo["wikidata"]})'
-    out.append(f'<div class="row"><span class="lab">Established</span>{chip(str(fo.get("v") or "missing") + lead, fk, fo.get("src", ""))}</div>')
+    pf = fo.get('present_form')
+    note = f'<span class="src">Present form {pf["v"]}</span>' if pf else ''
+    srcline = f'<span class="src">{E(fo["source_text"])}</span>' if fo.get('source_text') else ''
+    out.append(f'<div class="row"><span class="lab">Established</span>{chip(str(fo.get("v") or "missing") + lead, fk, fo.get("src", ""))}{note}{srcline}</div>')
     sk = {'verified': 'ok', 'official': 'ok', 'single-source': 'rv', 'site-only': 'rv', 'missing-year': 'rv', 'official-no-year': 'rv', 'check': 'rv'}.get(st.get('status'), 'no')
     sv = f'{st["v"]:,} as on {st["asof"] or "year unknown"}' if st.get('v') else 'missing'
     sec = st.get('second') or {}
-    out.append(f'<div class="row"><span class="lab">Students</span>{chip(sv, sk, st.get("src", ""))}'
-               + (f'{chip("site says " + format(sec["v"], ","), "no")}' if sec else '') + f'{chip(st.get("status", "missing"), "no")}</div>')
+    srcline = f'<span class="src">{E(st["source_text"])}</span>' if st.get('source_text') else ''
+    shown = (r.get('publish') or {}).get('students')
+    out.append(f'<div class="row"><span class="lab">Students</span>{chip(sv, sk, st.get("src", ""))}{srcline}'
+               + (f'{chip("site says " + format(sec["v"], ","), "no")}' if sec else '') + f'{chip(st.get("status", "missing"), "no")}'
+               + ('' if shown is None else f'{chip("shown" if shown else "hidden", "ok" if shown else "no")}') + '</div>')
     ws = 'ok' if w.get('status') == 200 else 'bad'
     out.append(f'<div class="row"><span class="lab">Own site</span>{chip("readable" if w.get("status") == 200 else (w.get("error") or "not readable"), ws, w.get("url") or "")}</div>')
     row = ['<div class="row"><span class="lab">Pages</span>']
