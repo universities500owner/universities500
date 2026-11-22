@@ -1,0 +1,30 @@
+name: Profile dump (temporary)
+on:
+  push:
+    branches: [profile-page-v2]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: batch-*
+          path: batches
+          run-id: 45046288771
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print merged records
+        run: |
+          python3 - <<'PY'
+          import glob, json
+          recs = []
+          for f in sorted(glob.glob('batches/batch-*/profiles_ai.json')):
+              recs += json.load(open(f, encoding='utf-8'))
+          json.dump(recs, open('all.json', 'w', encoding='utf-8'), ensure_ascii=False)
+          print(len(recs), 'records')
+          PY
+          echo "::group::all.json.gz.b64"; gzip -9c all.json | base64 -w 3000; echo; echo "::endgroup::"
+          for b in 1 2 3 4 5 6; do cat batches/batch-$b/ai_report.md; done > reports.md
+          echo "::group::reports.md.gz.b64"; gzip -9c reports.md | base64 -w 3000; echo; echo "::endgroup::"
