@@ -50,7 +50,7 @@ main{max-width:1100px;margin:0 auto;padding:8px 12px 40px;display:grid;gap:14px}
 .ok{background:var(--okbg);color:var(--ok)}.rv{background:var(--rvbg);color:var(--rv)}.no{background:var(--nobg);color:var(--no)}.bad{background:var(--badbg);color:var(--bad)}
 a.chip:hover{border-color:currentColor}
 .camps{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}.camp{width:150px;font-size:12.5px}
-.camp .ph{width:150px;height:96px;border-radius:6px;background:#e6e9ee;object-fit:cover;display:block}
+.camp img,.camp .ph{width:150px;height:96px;border-radius:6px;background:#e6e9ee;object-fit:cover;display:block}
 .camp a{color:var(--ink);font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:6px}
 .g img,.g .ph{width:100%;height:100px;object-fit:cover;border-radius:6px;background:#e6e9ee;display:block}
