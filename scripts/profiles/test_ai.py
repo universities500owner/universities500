@@ -366,7 +366,7 @@ class Tests(unittest.TestCase):
     def test_report_lists_each_field(self):
         out = run(answer())
         text = A.report([out], A.Usage())
-        for word in ('Brief of 4-5 lines', 'Students + as-on year', 'Partner names', 'Stub University'):
+        for word in ('Brief of 4-5 lines', 'Student total shown', 'Partner names', 'Stub University'):
             self.assertIn(word, text)
 
 
