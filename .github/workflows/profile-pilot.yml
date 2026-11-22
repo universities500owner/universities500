@@ -18,6 +18,8 @@ on:
         default: ""
   pull_request:
     types: [labeled]
+  push:
+    branches: [profile-pilot]     # a push runs it only when the commit message contains [run-pilot]; remove this trigger before merging
 
 permissions:
   contents: read
@@ -26,7 +28,7 @@ jobs:
   pilot:
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-profile-pilot'
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-profile-pilot' || (github.event_name == 'push' && contains(github.event.head_commit.message, '[run-pilot]'))
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
