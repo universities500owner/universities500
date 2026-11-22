@@ -8,7 +8,15 @@ name: Course detail (Claude Haiku 5.5, batch)
 #   mode = preview: fetch the pages and print how each was cut into sections. No API key, no cost. Use it first.
 #   mode = run:     send the pages to the Batch API (half price, answers within hours), check them, write src/data/course-detail/.
 # Needs the repository secret ANTHROPIC_API_KEY (Anthropic Console). Settings: CONTACT_EMAIL as for the course reader.
-# A pilot: mode = run, per_uni = 2, limit_unis = 15, commit = false. The run log prints samples and the cost.
+# A small test on accepted courses: mode = run, per_uni = 2, limit_unis = 15, commit = false. The run log prints samples and the cost.
+#
+# The pilot for universities the course reader could not read (source = held):
+#   The reader fetched pages at these universities but held them back (study mode or international students unclear, or taken for a listing).
+#   The model reads those pages, says whether each is one bachelor's or master's course, how it is taught and whether international students can apply,
+#   and fills the course fields (name, overview, faculty, fees, scholarships, entry and English requirements, other requirements, objectives, careers,
+#   industry connections, internships). Every value is checked against the page. Results go to data/course-pilot/ (never to the site);
+#   the run's artifact holds pilot.csv (one row per page, open it in Excel) and report.md (coverage by university and by field).
+#   Needs `only` (the university slugs). Use per_uni = 20 and commit = false.
 on:
   workflow_dispatch:
     inputs:
@@ -17,8 +25,13 @@ on:
         type: choice
         options: [preview, run]
         default: preview
+      source:
+        description: "accepted = courses the site lists. held = pages the reader held back (the pilot; fill in only)"
+        type: choice
+        options: [accepted, held]
+        default: accepted
       only:
-        description: "Only these university slugs, comma-separated (blank = all)"
+        description: "Only these university slugs, comma-separated (blank = all; required for source = held)"
         required: false
         default: ""
       per_uni:
@@ -34,7 +47,7 @@ on:
         type: boolean
         default: false
       commit:
-        description: "Commit src/data/course-detail to the branch the run started from"
+        description: "Commit the results (src/data/course-detail, or data/course-pilot for source = held) to the branch the run started from"
         type: boolean
         default: false
 
@@ -63,6 +76,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
           MODE: ${{ inputs.mode }}
+          SOURCE: ${{ inputs.source }}
           ONLY: ${{ inputs.only }}
           PER_UNI: ${{ inputs.per_uni }}
           LIMIT_UNIS: ${{ inputs.limit_unis }}
@@ -71,6 +85,10 @@ jobs:
           case "$PER_UNI" in ''|*[!0-9]*) PER_UNI=2;; esac
           case "$LIMIT_UNIS" in ''|*[!0-9]*) LIMIT_UNIS=0;; esac
           ARGS="--per-uni $PER_UNI --limit-unis $LIMIT_UNIS --max-minutes 120 --wait-minutes 200"
+          if [ "$SOURCE" = "held" ]; then
+            ARGS="$ARGS --source held"
+            if [ -z "$ONLY" ]; then echo "::error::source = held needs the university slugs in 'only'."; exit 1; fi
+          fi
           if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
           if [ "$FORCE" = "true" ]; then ARGS="$ARGS --force"; fi
           if [ -z "$CONTACT_EMAIL" ]; then echo "::warning::CONTACT_EMAIL is not set. The reader's User-Agent has no contact address."; fi
@@ -92,7 +110,7 @@ jobs:
         run: |
           git config user.name "universities500-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/course-detail
+          git add src/data/course-detail data/course-pilot
           if git diff --cached --quiet; then
             echo "No change to commit."
           else
