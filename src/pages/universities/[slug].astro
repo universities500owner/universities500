@@ -1,6 +1,10 @@
 ---
+import '../../styles/university.css';
 import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import SocialIcons from '../../components/SocialIcons.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
+import { profileFor, num, mapsLink, esc, host } from '../../lib/profiles.js';
 import { forDestination } from '../../lib/articles.js';
 import { all, blurb, related, fmtDate, SITE } from '../../lib/data.js';
 import { itemsFor, hubFor, statusOf, STATUS_LABEL, fmtIso, scholarshipsLink, PUBLISH } from '../../lib/scholarships.js';
@@ -17,102 +21,191 @@ const courses = coursesFor(u.slug);
 const bachelors = courses.filter((c) => c.level === 'Bachelor');
 const masters = courses.filter((c) => c.level === 'Master');
 
+// The checked profile, when this university has one; everything below also works without it.
+const P = profileFor(u.slug) || {};
+const links = P.links || {};
+const camps = P.campuses || (u.campuses || []).map((c) => ({ name: c.n, maps: mapsLink(c.n, u.name), photo: null }));
+const withPhoto = camps.filter((c) => c.photo);
+const noPhoto = camps.filter((c) => !c.photo);
+const faculties = P.faculties || [];
+const gallery = P.gallery || [];
+const partners = P.partners || [];
+const hasOverview = !P.brief && !!u.overview;
+const lede = P.brief || (u.overview ? (u.overview.length > 600 ? blurb(u.overview, 600) : u.overview) : '');
+const web = u.web || '';
+const credit = (ph) => ph && ph.by ? ph : null;
+const pages = [
+  links.admissions && { href: links.admissions, title: 'Admissions', text: 'How to apply, entry requirements and key dates.' },
+  links.courses && { href: links.courses, title: 'Programs offered', text: 'The full list of courses on the university\'s own site.' },
+  links.scholarships && { href: links.scholarships, title: 'Scholarships', text: 'Funding the university offers international students.' },
+].filter(Boolean);
+
 const title = `${u.name}: facts, campuses and official links | Universities500`;
-const description = u.overview
+const description = P.brief
+  ? blurb(P.brief, 150)
+  : u.overview
   ? blurb(u.overview, 150)
   : `${u.name} in ${u.countryName}: official website and basic facts, with sources.`;
 
-const sameAs = [u.wikidata, u.overviewSrc].filter(Boolean);
+const sameAs = [u.wikidata, u.overviewSrc, ...Object.values(P.social || {})].filter(Boolean);
 const ld = {
   '@context': 'https://schema.org',
   '@type': 'CollegeOrUniversity',
   name: u.name,
   url: u.web || undefined,
-  foundingDate: u.founded?.v,
+  foundingDate: P.established?.v ? String(P.established.v) : u.founded?.v,
+  description: P.brief || undefined,
   address: { '@type': 'PostalAddress', addressCountry: u.countryName },
   sameAs,
 };
 ---
-<Base title={title} description={description} path={`/universities/${u.slug}/`} noindex={!u.listed} jsonld={ld} current="universities">
-  <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a><span aria-hidden="true">/</span>
-    <a href="/universities/">Universities</a><span aria-hidden="true">/</span>
-    <a href={`/study-in/${u.country}/`}>{u.countryName}</a>
-  </nav>
+<Base title={title} description={description} path={`/universities/${u.slug}/`} noindex={!u.listed} jsonld={ld} current="universities" share={false}>
+  <PageHead slot="head" crumbs={[['Universities', '/universities/'], [u.countryName, `/study-in/${u.country}/`]]} title={u.name}>
+    {lede && <p class="pg-lede uni-brief" set:html={esc(lede)} />}
+    {hasOverview && (
+      <p class="uni-credit">Summary from <a href={u.overviewSrc}>Wikipedia</a> (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>){u.overviewTrimmed ? ', shortened' : ''}.</p>
+    )}
+    <div class="uni-actions">
+      {web && <a class="btn" href={web} rel="noopener">Official website</a>}
+      <SocialIcons links={P.social} name={u.name} />
+    </div>
+  </PageHead>
+  <div slot="head" class="uni-facts">
+    <div class="wrap">
+      <dl>
+        <div><dt>Country</dt><dd>{u.countryName}</dd></div>
+        {(P.established || u.founded) && (
+          <div>
+            <dt>Established</dt>
+            <dd>{P.established ? P.established.v : u.founded.v}</dd>
+            {P.established?.note && <small class="uni-note">{P.established.note}</small>}
+            <small class="uni-src">{P.established ? (P.established.source) : 'Source: Wikidata'}</small>
+          </div>
+        )}
+        {P.students && (
+          <div>
+            <dt>Students</dt>
+            <dd>{num(P.students.v)}</dd>
+            <small class="uni-note">as on {P.students.asof}</small>
+            <small class="uni-src">{P.students.source}</small>
+          </div>
+        )}
+        {web && <div><dt>Website</dt><dd><a href={web} rel="noopener">{host(web)}</a></dd></div>}
+      </dl>
+    </div>
+  </div>
 
-  <h1>{u.name}</h1>
-  <ul class="chips">
-    <li>{u.countryName}</li>
-    {u.founded && <li>Founded {u.founded.v}</li>}
-  </ul>
-
-  {u.web && (
-    <ul class="links">
-      <li><a class="btn" href={u.web} rel="noopener">Official website</a></li>
-    </ul>
-  )}
-
-  {u.overview && (
-    <section aria-labelledby="overview">
-      <h2 id="overview">Overview</h2>
-      <p>{u.overview}</p>
-      <p class="small">
-        Text from <a href={u.overviewSrc}>Wikipedia</a>, licensed{' '}
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.{u.overviewTrimmed ? ' Shortened from the original.' : ''}
-      </p>
+  {camps.length > 0 && (
+    <section class="sec" aria-labelledby="campuses">
+      <h2 id="campuses">Campuses</h2>
+      {withPhoto.length > 0 && (
+        <ul class="uni-camps">
+          {withPhoto.map((c) => (
+            <li>
+              <img src={c.photo.u} width={c.photo.w} height={c.photo.h || undefined} alt={`${c.name}, ${u.name}`} loading="lazy" decoding="async" />
+              <div class="uni-camp-body">
+                <a class="uni-pin" href={c.maps} rel="noopener" target="_blank">
+                  <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14.5s4.7-4.2 4.7-7.9A4.7 4.7 0 0 0 3.3 6.6c0 3.7 4.7 7.9 4.7 7.9Z" /><circle cx="8" cy="6.6" r="1.7" /></svg>
+                  <span>{c.name}</span><span class="sr-only"> on Google Maps</span>
+                </a>
+                <p class="uni-cr">Photo: {c.photo.by}, <a href={c.photo.licUrl || c.photo.page} rel="noopener">{c.photo.lic}</a>, <a href={c.photo.page} rel="noopener">Wikimedia Commons</a></p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+      {noPhoto.length > 0 && (
+        <ul class="uni-pins">
+          {noPhoto.map((c) => (
+            <li>
+              <a class="uni-pin" href={c.maps} rel="noopener" target="_blank">
+                <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14.5s4.7-4.2 4.7-7.9A4.7 4.7 0 0 0 3.3 6.6c0 3.7 4.7 7.9 4.7 7.9Z" /><circle cx="8" cy="6.6" r="1.7" /></svg>
+                <span>{c.name}</span><span class="sr-only"> on Google Maps</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+      {!P.campuses && <p class="small">Locations from <a href={u.campusSrc}>Wikidata</a>. Other campuses may not be listed.</p>}
     </section>
   )}
 
-  <section aria-labelledby="facts">
-    <h2 id="facts">Key facts</h2>
-    <table class="facts">
-      <tbody>
-        {u.founded && (
-          <tr>
-            <th scope="row">Founded</th>
-            <td>{u.founded.v}<a class="source" href={u.founded.src}>Source: Wikidata</a></td>
-          </tr>
-        )}
-        {u.campuses && (
-          <tr>
-            <th scope="row">{u.campuses.length > 1 ? 'Locations' : 'Main location'}</th>
-            <td>
-              {u.campuses.map((c) => c.n).join('; ')}
-              <a class="source" href={u.campusSrc}>Source: Wikidata. Other campuses may not be listed.</a>
-            </td>
-          </tr>
-        )}
-        {(u.stats || []).map((s) => (
-          <tr>
-            <th scope="row">{s.l}</th>
-            <td>{s.v}{s.a ? ` (${s.a})` : ''}<a class="source" href={s.src}>Source: Wikidata. Can be out of date.</a></td>
-          </tr>
+  {faculties.length > 0 && (
+    <section class="sec" aria-labelledby="faculties">
+      <h2 id="faculties">Faculties and departments</h2>
+      <ul class="uni-facs">
+        {faculties.map((f) => <li>{f.url ? <a href={f.url} rel="noopener">{f.name}</a> : <span>{f.name}</span>}</li>)}
+      </ul>
+      <p class="small">As named by the university. Not every department is listed.</p>
+    </section>
+  )}
+
+  {pages.length > 0 && (
+    <section class="sec" aria-labelledby="official">
+      <h2 id="official">Official pages</h2>
+      <ul class="uni-pages">
+        {pages.map((x) => (
+          <li><a href={x.href} rel="noopener"><strong>{x.title}</strong><span>{x.text}</span><em>{host(x.href)}</em></a></li>
         ))}
-        {u.web && (
-          <tr>
-            <th scope="row">Website</th>
-            <td><a href={u.web} rel="noopener">{u.web.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}</a></td>
-          </tr>
+      </ul>
+    </section>
+  )}
+
+  {gallery.length >= 4 && (
+    <section class="sec" aria-labelledby="gallery">
+      <h2 id="gallery">Campus gallery</h2>
+      <div class="uni-gal">
+        {gallery.map((g) => (
+          <figure>
+            <a href={g.page} rel="noopener" target="_blank"><img src={g.u} width={g.w} height={g.h || undefined} alt={`${u.name} campus photo`} loading="lazy" decoding="async" /></a>
+            <figcaption>{g.by}{g.y ? `, ${g.y}` : ''}, <a href={g.licUrl || g.page} rel="noopener">{g.lic}</a>, <a href={g.page} rel="noopener">Commons</a></figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {(partners.length > 0 || links.partners) && (
+    <section class="sec" aria-labelledby="industry">
+      <h2 id="industry">Industry connections</h2>
+      <div class="uni-industry">
+        {partners.length > 0 && (
+          <Fragment>
+            <p>Organisations this university names as partners on its own website.</p>
+            <ul class="uni-partners">{partners.map((n) => <li>{n}</li>)}</ul>
+          </Fragment>
         )}
-        {u.ig && (
-          <tr>
-            <th scope="row">Instagram</th>
-            <td><a href={u.ig} rel="noopener">Official account</a></td>
-          </tr>
+        {links.partners && (
+          <p class="uni-more"><a href={links.partners} rel="noopener">{partners.length > 0 ? 'See the full list on the university\'s partnerships page' : `See ${u.name}'s industry and partnerships page`}</a> <span class="muted">({host(links.partners)})</span></p>
         )}
-        {u.yt && (
-          <tr>
-            <th scope="row">YouTube</th>
-            <td><a href={u.yt} rel="noopener">Official channel</a></td>
-          </tr>
-        )}
-      </tbody>
-    </table>
-    {u.read && <p class="small">Data read on {fmtDate(u.read)}. Check the university's own site for current details.</p>}
-  </section>
+      </div>
+    </section>
+  )}
+
+  {!P.established && (u.stats || []).length > 0 && (
+    <section class="sec" aria-labelledby="facts">
+      <h2 id="facts">More facts</h2>
+      <table class="facts">
+        <tbody>
+          {(u.stats || []).map((s) => (
+            <tr>
+              <th scope="row">{s.l}</th>
+              <td>{s.v}{s.a ? ` (${s.a})` : ''}<a class="source" href={s.src}>Source: Wikidata. Can be out of date.</a></td>
+            </tr>
+          ))}
+          {u.ig && !P.social && <tr><th scope="row">Instagram</th><td><a href={u.ig} rel="noopener">Official account</a></td></tr>}
+          {u.yt && !P.social && <tr><th scope="row">YouTube</th><td><a href={u.yt} rel="noopener">Official channel</a></td></tr>}
+        </tbody>
+      </table>
+      {u.read && <p class="small">Data read on {fmtDate(u.read)}. Check the university's own site for current details.</p>}
+    </section>
+  )}
+  {P.name && (
+    <p class="small uni-checked">Profile checked on {fmtDate(P.generated)}. Each figure names its source. Check the university's own site for current details.</p>
+  )}
 
   {PUBLISH && (schol.length > 0 || sLink) && (
-    <section aria-labelledby="schol">
+    <section class="sec" aria-labelledby="schol">
       <h2 id="schol">Scholarships for international students</h2>
       {schol.length > 0 && (
         <ul>
@@ -126,7 +219,7 @@ const ld = {
   )}
 
   {courses.length > 0 && (
-    <section aria-labelledby="courses">
+    <section class="sec" aria-labelledby="courses">
       <h2 id="courses">Courses read from the university's website</h2>
       <p>{courses.length} Bachelor's and Master's course{courses.length === 1 ? '' : 's'} that are full-time on campus and open to international students. This is what our reader could confirm from the course pages, not every course the university offers.</p>
       {[["Bachelor's", bachelors], ["Master's", masters]].map(([label, list]) => list.length > 0 && (
@@ -142,7 +235,7 @@ const ld = {
   )}
 
   {u.alumni && u.alumni.length > 0 && (
-    <section aria-labelledby="alumni">
+    <section class="sec" aria-labelledby="alumni">
       <h2 id="alumni">People who studied here</h2>
       <ul class="people">
         {u.alumni.map((a) => (
@@ -153,7 +246,7 @@ const ld = {
     </section>
   )}
 
-  <section aria-labelledby="rank">
+  <section class="sec" aria-labelledby="rank">
     <h2 id="rank">Rankings</h2>
     <div class="note">
       <p>Ranking sites measure different things, so a university can look very different on each. We don't copy their numbers. See how this university appears on the ranking sites themselves.</p>
@@ -162,7 +255,7 @@ const ld = {
   </section>
 
   {peers.length > 0 && (
-    <section aria-labelledby="more">
+    <section class="sec" aria-labelledby="more">
       <h2 id="more">More universities in {u.countryName}</h2>
       <ul class="grid">
         {peers.map((p) => (
