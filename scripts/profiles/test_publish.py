@@ -37,6 +37,11 @@ def rec():
 
 
 class Tests(unittest.TestCase):
+    def test_future_dated_student_count_is_left_out(self):
+        r = rec()
+        r['students']['asof'] = 2099
+        self.assertNotIn('students', P.one(r))
+
     def test_everything_that_passed_is_in(self):
         o = P.one(rec())
         self.assertEqual(o['brief'], 'Stub University is a public university.')
@@ -52,6 +57,36 @@ class Tests(unittest.TestCase):
         for k in ('brief', 'established', 'students', 'gallery'):
             self.assertNotIn(k, o)
         self.assertTrue(o['campuses'] and o['faculties'])                                           # the university stays listed with the rest
+
+    def test_wikidata_city_is_a_place_not_a_campus(self):
+        r = rec()
+        r['campuses'] = [{'name': 'Berkeley', 'maps': 'https://m', 'from': 'wikidata', 'photo': None}]
+        o = P.one(r)
+        self.assertNotIn('campuses', o)
+        self.assertEqual(o['place']['name'], 'Berkeley')
+        self.assertIn('Stub+University', o['place']['maps'])                                        # the map searches for the university, not for the city
+        r['campuses'] = [{'name': 'Queensland', 'maps': 'https://m', 'from': 'wikidata', 'photo': None}]
+        self.assertNotIn('place', P.one(r))                                                         # a region is not somewhere to put a pin
+
+    def test_menu_labels_and_buildings_are_not_campuses(self):
+        r = rec()
+        r['campuses'] = [{'name': n, 'maps': 'https://m', 'from': src, 'quote': 'x', 'photo': None} for n, src in
+                         (('Campus Bus Routes', 'site'), ('Campus Buildings', 'university page'), ('Hammersmith Hospital', 'university page'), ('Faculty of Medicine campus', 'university page'),
+                          ('Water sports center (Pleinfeld)', 'university page'), ('Main Campus', 'site'), ('Bentley Campus', 'university page'))]
+        self.assertEqual([c['name'] for c in P.one(r)['campuses']], ['Bentley Campus'])
+
+    def test_one_or_two_faculties_are_not_shown(self):
+        r = rec()
+        r['faculties'] = [{'name': 'Faculty of Law', 'url': ''}, {'name': 'Faculty of Arts', 'url': ''}, {'name': 'University Libraries', 'url': ''}]
+        self.assertNotIn('faculties', P.one(r))
+
+    def test_wide_copy_only_when_the_original_is_big_enough(self):
+        r = rec()
+        r['gallery']['photos'][0]['width'] = 1000
+        g = P.one(r)['gallery']
+        self.assertNotIn('u2', g[0])
+        self.assertIn('/1280px-', g[1]['u2'])
+        self.assertEqual(g[1]['o'], 4000)
 
     def test_only_verified_links_go_live(self):
         self.assertEqual(P.one(rec())['links'], {'admissions': 'https://stub.test/apply/', 'scholarships': 'https://stub.test/funding'})

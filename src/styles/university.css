@@ -1,7 +1,9 @@
 /* University page: the head band carries the brief and links, a white strip under it carries the facts, and each part of the profile
    is a section of white cards in the shared theme (square corners, lavender hairlines, mint bar on titles). Everything is scoped to .uni-* */
 
-.uni-brief { max-width: 92ch; }
+/* head band: a bigger name and an easier-to-read summary */
+.uni-hero .pg-head h1 { font-size: clamp(2.4rem, 6.6vw, 4.75rem); line-height: 1.03; letter-spacing: -0.02em; margin: 0 0 .7rem; max-width: 18ch; text-wrap: balance; }
+.uni-hero .pg-head .pg-lede.uni-brief { max-width: 68ch; font-size: clamp(1.05rem, 1.7vw, 1.28rem); line-height: 1.6; color: #fff; }
 .uni-credit { margin: .55rem 0 0; font-size: .8rem; color: rgba(255, 255, 255, .8); }
 .uni-credit a { color: #fff; }
 .uni-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.4rem; margin-top: 1.25rem; }
@@ -25,8 +27,8 @@
 .uni-src { font-size: .68rem; color: var(--muted); }
 
 /* photo credit lines are deliberately small */
-.uni-cr, .uni-gal figcaption { font-size: .66rem; line-height: 1.35; color: var(--muted); margin: .3rem 0 0; }
-.uni-cr a, .uni-gal figcaption a { color: inherit; text-decoration-thickness: 1px; }
+.uni-cr { font-size: .66rem; line-height: 1.35; color: var(--muted); margin: .3rem 0 0; }
+.uni-cr a { color: inherit; text-decoration-thickness: 1px; }
 
 /* campuses */
 .uni-camps { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; }
@@ -44,18 +46,85 @@
 .uni-facs a { font-weight: 600; color: var(--k-cobalt); }
 .uni-facs span { font-weight: 600; color: var(--ink); }
 
-/* official pages */
+/* official pages: yellow, so the three places to apply from stand out */
 .uni-pages { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
-.uni-pages a { display: flex; flex-direction: column; gap: .35rem; height: 100%; padding: 1.1rem 1.2rem; background: var(--k-card); border: 1px solid var(--k-hair); text-decoration: none; color: var(--ink); }
-.uni-pages a:hover { background: var(--k-card-hover); }
-.uni-pages strong { color: var(--k-title); font-family: var(--display); font-size: 1.15rem; border-left: .4rem solid var(--k-mint); padding-left: .8rem; margin-left: -1.2rem; }
-.uni-pages span { line-height: 1.4; }
-.uni-pages em { font-style: normal; font-size: .82rem; color: var(--muted); margin-top: auto; }
+.uni-pages a { display: flex; flex-direction: column; gap: .4rem; height: 100%; padding: 1.15rem 1.25rem 1.05rem; background: var(--cta); border: 2px solid var(--cta); text-decoration: none; color: var(--cta-on); }
+.uni-pages a:hover { background: var(--cta-hover); border-color: var(--cta-hover); }
+.uni-pages a:focus-visible { outline: 3px solid var(--k-title); outline-offset: 3px; }
+.uni-pages strong { display: flex; align-items: center; justify-content: space-between; gap: .6rem; font-family: var(--display); font-size: 1.3rem; line-height: 1.15; color: var(--cta-on); }
+.uni-pages strong svg { width: 1.25rem; height: 1.25rem; flex: none; }
+.uni-pages span { line-height: 1.45; }
+.uni-pages em { font-style: normal; font-size: .82rem; margin-top: auto; padding-top: .3rem; opacity: .8; }
 
-/* gallery: columns, so photos of any shape sit side by side without cropping */
-.uni-gal { columns: 3 16rem; column-gap: 1rem; margin-top: 1rem; }
-.uni-gal figure { margin: 0 0 1rem; break-inside: avoid; background: var(--k-card); border: 1px solid var(--k-hair); padding: .45rem .45rem .5rem; }
-.uni-gal img { width: 100%; height: auto; display: block; background: var(--k-hair); }
+/* header with photos: a slideshow behind the name */
+.uni-hero { position: relative; isolation: isolate; background: var(--band); overflow: hidden; }
+.uni-hero.has-photos .pg-head { background: transparent; position: relative; z-index: 1; display: flex; min-height: clamp(26rem, 54vw, 37rem); padding-bottom: 2.6rem; }
+.uni-hero.has-photos .pg-head > .wrap { flex: 1; display: flex; flex-direction: column; }
+.uni-hero.has-photos .pg-head .crumbs { margin-bottom: auto; }
+.uni-hero.has-photos .pg-head h1, .uni-hero.has-photos .pg-head .pg-lede { text-shadow: 0 1px 14px rgba(0, 12, 40, .45); }
+.uni-hero-bg { position: absolute; inset: 0; z-index: 0; background: var(--band); }
+.uni-hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; }
+.uni-hero-bg img.is-on { opacity: 1; }
+.uni-hero-bg::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(0, 24, 70, .82) 0%, rgba(0, 24, 70, .64) 55%, rgba(0, 24, 70, .22) 100%), linear-gradient(180deg, rgba(0, 24, 70, .4) 0%, rgba(0, 24, 70, 0) 32%, rgba(0, 24, 70, .5) 100%); }
+@media (prefers-reduced-motion: no-preference) {
+  .uni-hero-bg img.is-on { animation: uni-drift 9s ease-out forwards; }
+  @keyframes uni-drift { from { transform: scale(1); } to { transform: scale(1.06); } }
+}
+.uni-hero-meta { position: absolute; left: 0; right: 0; bottom: .55rem; z-index: 2; pointer-events: none; }
+.uni-hero-meta .wrap { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: .3rem .9rem; }
+.uni-hero-cr { margin: 0; font-size: .66rem; line-height: 1.35; color: rgba(255, 255, 255, .88); pointer-events: auto; text-shadow: 0 1px 4px rgba(0, 0, 0, .6); }
+.uni-hero-cr a { color: inherit; text-decoration-thickness: 1px; }
+.uni-hero-pause { pointer-events: auto; font: inherit; font-size: .7rem; font-weight: 600; color: #fff; background: rgba(0, 18, 54, .55); border: 1px solid rgba(255, 255, 255, .6); padding: .15rem .6rem; cursor: pointer; }
+.uni-hero-pause:hover { background: rgba(0, 18, 54, .8); }
+.uni-hero-pause:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.uni-hero .crumbs a, .uni-hero .crumbs { text-shadow: 0 1px 6px rgba(0, 12, 40, .5); }
+
+/* campus gallery: one big photo at a time, swipe or use the arrows */
+.uni-slider { position: relative; min-width: 0; max-width: 100%; margin-top: 1rem; background: var(--k-card); border: 1px solid var(--k-hair); }
+.uni-track { contain: paint; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.uni-track::-webkit-scrollbar { display: none; }
+.uni-track:focus-visible { outline: 3px solid var(--k-cobalt); outline-offset: -3px; }
+.uni-track figure { flex: 0 0 100%; margin: 0; scroll-snap-align: start; }
+.uni-track a { display: block; }
+.uni-track img { display: block; width: 100%; height: clamp(15rem, 52vw, 36rem); object-fit: cover; background: var(--k-hair); }
+.uni-track figcaption { padding: .5rem .9rem .6rem; font-size: .68rem; line-height: 1.35; color: var(--muted); }
+.uni-track figcaption a { display: inline; color: inherit; text-decoration-thickness: 1px; }
+.uni-prev, .uni-next { position: absolute; top: calc(clamp(15rem, 52vw, 36rem) / 2 - 1.5rem); width: 3rem; height: 3rem; display: grid; place-items: center; padding: 0; border: 0; background: rgba(0, 21, 34, .62); color: #fff; cursor: pointer; }
+.uni-prev { left: 0; }
+.uni-next { right: 0; }
+.uni-prev:hover:not(:disabled), .uni-next:hover:not(:disabled) { background: rgba(0, 21, 34, .86); }
+.uni-prev:disabled, .uni-next:disabled { opacity: .35; cursor: default; }
+.uni-prev:focus-visible, .uni-next:focus-visible { outline: 3px solid var(--cta); outline-offset: -3px; }
+.uni-prev svg, .uni-next svg { width: 1.2rem; height: 1.2rem; }
+.uni-count { position: absolute; top: .7rem; right: .7rem; margin: 0; padding: .15rem .6rem; font-size: .78rem; font-weight: 700; color: #fff; background: rgba(0, 21, 34, .62); }
+
+/* scholarships: one box each */
+.uni-schol { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem; }
+.uni-schol a { display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; height: 100%; padding: 1rem 1.15rem; background: var(--k-card); border: 1px solid var(--k-hair); border-top: .35rem solid var(--k-mint); text-decoration: none; color: var(--ink); }
+.uni-schol a:hover { background: var(--k-card-hover); }
+.uni-schol strong { font-family: var(--display); color: var(--k-title); font-size: 1.08rem; line-height: 1.25; }
+.uni-schol small { color: var(--muted); font-size: .85rem; margin-top: auto; }
+.uni-chip { display: inline-block; font-size: .78rem; font-weight: 700; color: var(--k-cobalt); border: 1px solid var(--k-cobalt); padding: .1rem .55rem; }
+.uni-schol .uni-schol-own a { background: var(--cta); border-color: var(--cta); color: var(--cta-on); }
+.uni-schol .uni-schol-own a:hover { background: var(--cta-hover); border-color: var(--cta-hover); }
+.uni-schol .uni-schol-own strong, .uni-schol .uni-schol-own small { color: var(--cta-on); }
+
+/* people: a box each, in columns. Initials, not photographs. */
+.uni-people { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: .8rem; }
+.uni-people li { display: flex; gap: .85rem; align-items: flex-start; padding: .9rem 1rem; background: var(--k-card); border: 1px solid var(--k-hair); min-width: 0; }
+.uni-ini { flex: none; display: grid; place-items: center; width: 2.9rem; height: 2.9rem; border-radius: 50%; background: var(--k-title); color: #fff; font-family: var(--display); font-weight: 700; font-size: 1rem; letter-spacing: .02em; }
+.uni-people div { min-width: 0; }
+.uni-people a { font-weight: 700; color: var(--k-title); overflow-wrap: anywhere; }
+.uni-people small { display: block; margin-top: .2rem; font-size: .85rem; line-height: 1.35; color: var(--muted); }
+
+/* rankings: a box per ranking site */
+.uni-rank { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr)); gap: 1rem; }
+.uni-rank a { display: flex; flex-direction: column; gap: .35rem; height: 100%; padding: 1rem 1.15rem; background: var(--k-card); border: 1px solid var(--k-hair); text-decoration: none; color: var(--ink); }
+.uni-rank a:hover { background: var(--k-card-hover); }
+.uni-rank strong { font-family: var(--display); color: var(--k-title); font-size: 1.05rem; line-height: 1.25; border-left: .35rem solid var(--k-mint); padding-left: .7rem; margin-left: -1.15rem; }
+.uni-rank span { font-size: .92rem; line-height: 1.4; }
+.uni-rank em { font-style: normal; font-size: .8rem; color: var(--k-cobalt); margin-top: auto; padding-top: .2rem; }
 
 /* industry connections */
 .uni-industry { background: var(--k-card); border: 1px solid var(--k-hair); padding: 1.1rem 1.2rem; margin-top: 1rem; }
@@ -67,8 +136,17 @@
 
 @media (max-width: 40rem) {
   .uni-facts dl { grid-template-columns: repeat(2, 1fr); }
-  .uni-gal { columns: 2 9rem; column-gap: .7rem; }
-  .uni-gal figure { margin-bottom: .7rem; }
+  .uni-hero.has-photos .pg-head { min-height: 27rem; padding-bottom: 3.2rem; }
+  .uni-hero-bg::after { background: rgba(0, 24, 70, .74); }
+  .uni-facs, .uni-rank { grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .uni-facs li { padding: .6rem .7rem; border-left-width: .3rem; }
+  .uni-rank { gap: .6rem; }
+  .uni-rank a { padding: .8rem .85rem; }
+  .uni-rank strong { font-size: .95rem; margin-left: -.85rem; padding-left: .6rem; }
+  .uni-pages { gap: .6rem; }
+  .uni-pages a { padding: .9rem 1rem .8rem; }
+  .uni-hero-meta .wrap { justify-content: flex-start; }
+  .uni-prev, .uni-next { width: 2.6rem; height: 2.6rem; top: calc(clamp(15rem, 52vw, 36rem) / 2 - 1.3rem); }
   .uni-camps { grid-template-columns: 1fr 1fr; gap: .7rem; }
   .uni-camp-body { padding: .6rem .65rem .7rem; }
   .uni-pin { font-size: .92rem; }
