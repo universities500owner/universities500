@@ -25,6 +25,7 @@ SUBCAT_SKIP = re.compile(r'people|alumni|portrait|sport|event|logo|coat|map|hist
 HINT_WORDS = re.compile(r'campus|aerial|library|quad|entrance|exterior|building|tower|hall|facade|main|gate|courtyard', re.I)
 GENERIC = {'the', 'of', 'and', 'campus', 'main', 'university', 'universität', 'universite', 'université', 'city', 'centre', 'center',
            'college', 'institute', 'school', 'de', 'la', 'le', 'du', 'des', 'van', 'der', 'den', 'von', 'zu', 'for'}
+CREDIT_BAD = re.compile(r'please|thank you|credit line|unknown|no machine-readable|assumed|this image was|see source|own work by|anonymous', re.I)
 MIN_W, MIN_H = 1600, 900
 
 
@@ -68,8 +69,11 @@ def gate(page):
         return False, 'restricted'
     if CATS_BAD.search(meta(ii, 'Categories')):
         return False, 'topic'
-    if not meta(ii, 'Artist') and not meta(ii, 'Credit'):
+    who = meta(ii, 'Artist') or meta(ii, 'Credit')
+    if not who:
         return False, 'no author'
+    if len(who) > 70 or CREDIT_BAD.search(who):     # an instruction or a sentence is not a name we can print under a photo
+        return False, 'author text'
     return True, ''
 
 

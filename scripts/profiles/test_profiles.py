@@ -276,6 +276,12 @@ class Tests(unittest.TestCase):
         self.assertEqual(CM.photo_year(saved['imageinfo'][0])[1], 'uploaded')          # not 'taken'
         self.assertEqual(CM.photo_year(FILES['File:Stub University library 2021.jpg']['imageinfo'][0]), (2021, 'taken'))
 
+    def test_credit_must_be_a_name_not_an_instruction(self):
+        for who in ('Thank you to indicate this credit line next to the image in case of reuse: Credit Sorbonne',
+                    'Unknown author Unknown author', 'No machine-readable author provided. Donaldytong assumed', 'x' * 80):
+            self.assertEqual(CM.gate(photo('File:Stub aerial.jpg', 4000, 2500, artist=who))[1], 'author text', who[:30])
+        self.assertTrue(CM.gate(photo('File:Stub aerial.jpg', 4000, 2500, artist='Maksim Sokolov (Maxergon)'))[0])
+
     def test_campus_noise_words_are_dropped(self):
         links = [{'url': f'https://www.stub.test/{i}/', 'text': t, 'footer': False} for i, t in
                  enumerate(['North Campus', 'Campus Life', 'Campus Tours', 'Smoke-free campus', 'Accessible Campus', 'Loyola Campus'])]
