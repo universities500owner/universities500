@@ -1,10 +1,14 @@
 ---
+import '../../../styles/university.css';
+import '../../../styles/course-page.css';
 import Base from '../../../layouts/Base.astro';
+import PageHead from '../../../components/PageHead.astro';
 import {
   PUBLISH, items, itemsFor, uniOf, path, levelText, lengthText, feeText, feePeriodNote, ieltsText, startsText, INTL_HOW, countryName, fmtIso, REGISTER, regTuitionText, regPlaces,
 } from '../../../lib/courses.js';
 import { detailOf, blocks, textMode, feeLine, intlFee, englishLine } from '../../../lib/course-detail.js';
 import { blurb } from '../../../lib/data.js';
+import { profileFor, host as siteHost } from '../../../lib/profiles.js';
 import CourseBlocks from '../../../components/CourseBlocks.astro';
 
 export function getStaticPaths() {
@@ -21,6 +25,12 @@ const f = (d && d.facts) || {};
 const host = c.url.replace(/^https?:\/\/(www\.)?/, '').split('/')[0];
 const months = (c.intakes && c.intakes.months) || [];
 const NONE = 'Not stated';
+
+// ---- the university's checked profile: a campus photo for the head band, and its own admissions and scholarships pages ----
+const P = profileFor(c.uni) || {};
+const links = P.links || {};
+const photo = (P.gallery || []).find((g) => g.u2 && g.w && g.h && g.w / g.h >= 1.3) || null;
+const photoH = photo ? Math.round((1280 * photo.h) / photo.w) : 0;
 
 // ---- the short facts: what the page states, checked; our reader's value when the page was not read in full ----
 const length = f.duration ? f.duration.text : c.duration ? c.duration.display : null;
@@ -47,17 +57,29 @@ const hasText = textMode(c.uni) !== 'none';
 const core = f.coreModules || [];
 const optional = f.optionalModules || [];
 const employers = f.employers || [];
+// fields read from the page by the newer reader (absent until a page has been read again)
+const faculty = f.faculty ? f.faculty.text : null;
+const objectives = blocks(d, ['objectives'], c.uni);
+const industry = blocks(d, ['industry_placements'], c.uni);
+const schItems = f.scholarships || [];
+const extraReqs = f.additionalRequirements || [];
+const industryLinks = f.industryLinks || [];
+const internships = f.internships || [];
+const REQ_KIND = { test: 'Test', portfolio: 'Portfolio', interview: 'Interview', work_experience: 'Work experience', documents: 'Documents', prerequisites: 'Prerequisites', other: '' };
 
+// in the order the sections appear on the page
 const nav = [
   overview.length && ['overview', 'Overview'],
-  (entry.length || english || f.academicEntry) && ['entry', 'Entry requirements'],
+  (entry.length || english || f.academicEntry || extraReqs.length) && ['entry', 'Entry requirements'],
   (fees.length || feeShown) && ['fees', 'Fees'],
+  (funding.length || schItems.length) && ['funding', 'Scholarships'],
   (study.length || core.length || optional.length) && ['study', 'What you will study'],
+  objectives.length && ['objectives', 'Aims and outcomes'],
   teaching.length && ['teaching', 'Teaching and assessment'],
   (careers.length || employers.length) && ['careers', 'Careers'],
+  (industry.length || industryLinks.length || internships.length) && ['industry', 'Industry and placements'],
   (accredText.length || accred.length) && ['accred', 'Accreditation'],
   apply.length && ['apply', 'How to apply'],
-  funding.length && ['funding', 'Scholarships'],
 ].filter(Boolean);
 
 const lead = overview.length ? (overview[0].paras.find((p) => p.p) || {}).p : '';
@@ -74,134 +96,213 @@ const ld = {
 const showModuleLists = !study.length && (core.length > 0 || optional.length > 0);
 const showEmployerList = !careers.length && employers.length > 0;
 const registerNote = c.reg && REGISTER;
+
+// the strip under the head band: the five things a student compares first
+const strip = [
+  ['Level', levelText(c), ''],
+  ['Length', length, ''],
+  ['Starts', starts, ''],
+  ['International fee', feeShown, feeNote],
+  ['English', english ? english.split('. ')[0] : null, ''],
+];
+const official = [
+  { href: c.url, title: 'Official course page', text: d ? 'The full details, as the university publishes them.' : 'Entry requirements, modules and career outcomes are on this page.' },
+  links.admissions && { href: links.admissions, title: 'Admissions', text: 'How to apply, entry requirements and key dates.' },
+  links.scholarships && { href: links.scholarships, title: 'Scholarships', text: 'Funding the university offers international students.' },
+].filter(Boolean);
 ---
 <Base title={`${c.name}, ${c.uniName} | Universities500`} description={desc.slice(0, 158)} path={here} noindex={!PUBLISH} current="courses" jsonld={ld}>
-  <nav class="crumbs" aria-label="Breadcrumb">
-    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/courses/">Course search</a><span aria-hidden="true">/</span><a href={`/universities/${c.uni}/`}>{c.uniName}</a>
-  </nav>
-  <h1>{c.name}</h1>
-  <p class="sch-sub lead"><a href={`/universities/${c.uni}/`}>{c.uniName}</a> · {place}</p>
-  <ul class="chips">
-    <li>{levelText(c)}</li>
-    <li>Full-time on campus</li>
-    {c.field && <li>{c.field}</li>}
-    {c.cricos && <li>CRICOS {c.cricos}</li>}
-  </ul>
-  <p><a class="btn" href={c.url} target="_blank" rel="noopener">Open the official course page</a></p>
+  <div slot="head" class={`uni-hero cp-hero${photo ? ' has-photos' : ''}${c.name.length > 60 ? ' cp-long' : ''}`}>
+    {photo && (
+      <div class="uni-hero-bg" aria-hidden="true">
+        <img class="is-on" src={photo.u2} width="1280" height={photoH} alt="" decoding="async" fetchpriority="high" />
+      </div>
+    )}
+    <PageHead crumbs={[['Course search', '/courses/'], [c.uniName, `/universities/${c.uni}/`]]} title={c.name}>
+      <p class="cp-by"><a href={`/universities/${c.uni}/`}>{c.uniName}</a>, {place}</p>
+      <ul class="cp-tags">
+        <li>{levelText(c)}</li>
+        <li>Full-time on campus</li>
+        {c.field && <li>{c.field}</li>}
+        {faculty && <li>{faculty}</li>}
+        {c.cricos && <li>CRICOS {c.cricos}</li>}
+      </ul>
+      <div class="uni-actions">
+        <a class="btn" href={c.url} target="_blank" rel="noopener">Open the official course page</a>
+      </div>
+    </PageHead>
+    {photo && (
+      <div class="uni-hero-meta">
+        <div class="wrap">
+          <p class="uni-hero-cr">Photo of {c.uniName}: {photo.by}{photo.y ? `, ${photo.y}` : ''}, <a href={photo.licUrl || photo.page} rel="noopener">{photo.lic}</a>, <a href={photo.page} rel="noopener">Wikimedia Commons</a></p>
+        </div>
+      </div>
+    )}
+  </div>
+  <div slot="head" class="uni-facts cp-facts">
+    <div class="wrap">
+      <dl>
+        {strip.map(([label, value, note]) => (
+          <div>
+            <dt>{label}</dt>
+            {value ? <dd>{value}</dd> : <dd class="cp-none">{NONE}</dd>}
+            {note && value && <small class="uni-note">{note}</small>}
+          </div>
+        ))}
+      </dl>
+      {(campus || deadlines.length > 0 || accred.length > 0) && (
+        <ul class="cp-more-facts">
+          {campus && <li><strong>Campus</strong> {campus}</li>}
+          {deadlines.length > 0 && <li><strong>Deadlines</strong> {deadlines.map((x) => `${x.label}: ${x.date}`).join('; ')}</li>}
+          {accred.length > 0 && <li><strong>Accredited by</strong> {accred.join('; ')}</li>}
+        </ul>
+      )}
+    </div>
+  </div>
 
-  {nav.length > 1 && (
-    <nav class="jump" aria-label="On this page">
+  {nav.length > 3 && (
+    <nav class="cp-jump" aria-label="On this page">
       {nav.map(([id, label]) => <a href={`#${id}`}>{label}</a>)}
     </nav>
   )}
 
-  <section aria-labelledby="facts">
-    <h2 id="facts">Key facts</h2>
-    <table class="facts">
-      <tbody>
-        <tr><th scope="row">Length</th><td>{length || <span class="muted">{NONE}</span>}</td></tr>
-        <tr><th scope="row">Starts</th><td>{starts || <span class="muted">{NONE}</span>}</td></tr>
-        <tr><th scope="row">International fee</th><td>{feeShown || <span class="muted">{NONE}</span>}{feeNote && feeShown && <span class="source">{feeNote}</span>}</td></tr>
-        <tr><th scope="row">English</th><td>{english || <span class="muted">{NONE}</span>}</td></tr>
-        {campus && <tr><th scope="row">Campus</th><td>{campus}</td></tr>}
-        {deadlines.length > 0 && <tr><th scope="row">Deadlines</th><td>{deadlines.map((x) => <span class="line">{x.label}: {x.date}</span>)}</td></tr>}
-        {accred.length > 0 && <tr><th scope="row">Accredited by</th><td>{accred.join('; ')}</td></tr>}
-      </tbody>
-    </table>
-  </section>
-
   {overview.length > 0 && (
-    <section aria-labelledby="overview" class="copied">
+    <section class="sec" aria-labelledby="overview">
       <h2 id="overview">Overview</h2>
-      <CourseBlocks list={overview} />
-      {overview.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">Read the full description on {host}</a></p>}
+      <div class="cp-box cp-lede">
+        <CourseBlocks list={overview} />
+        {overview.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">Read the full description on {host}</a></p>}
+      </div>
     </section>
   )}
 
-  {nav.some(([id]) => id === 'entry') && (
-    <section aria-labelledby="entry" class="copied">
-      <h2 id="entry">Entry requirements</h2>
-      {entry.length === 0 && f.academicEntry && <p>{f.academicEntry.text}</p>}
-      <CourseBlocks list={entry} />
-      {entry.length === 0 && english && <p><strong>English:</strong> {english}</p>}
-      {entry.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">Read the full requirements on {host}</a></p>}
-    </section>
-  )}
+  <div class="cp-pair">
+    {nav.some(([id]) => id === 'entry') && (
+      <section class="sec" aria-labelledby="entry">
+        <h2 id="entry">Entry requirements</h2>
+        <div class="cp-box">
+          {entry.length === 0 && f.academicEntry && <p>{f.academicEntry.text}</p>}
+          <CourseBlocks list={entry} />
+          {entry.length === 0 && english && <p><strong>English:</strong> {english}</p>}
+          {extraReqs.length > 0 && (
+            <Fragment>
+              <h3>Other requirements</h3>
+              <ul>{extraReqs.map((r) => <li>{REQ_KIND[r.kind] ? <strong>{REQ_KIND[r.kind]}: </strong> : null}{r.text}</li>)}</ul>
+            </Fragment>
+          )}
+          {entry.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">Read the full requirements on {host}</a></p>}
+        </div>
+      </section>
+    )}
 
-  {nav.some(([id]) => id === 'fees') && (
-    <section aria-labelledby="fees" class="copied">
-      <h2 id="fees">Fees</h2>
-      {fees.length === 0 && feeShown && <p>International students: {feeShown}.</p>}
-      <CourseBlocks list={fees} />
-      <p class="small">Fees change each year and can differ by intake or campus. The university's page has the figure that applies to you.</p>
+    {nav.some(([id]) => id === 'fees') && (
+      <section class="sec" aria-labelledby="fees">
+        <h2 id="fees">Fees</h2>
+        <div class="cp-box">
+          {fees.length === 0 && feeShown && <p>International students: {feeShown}.</p>}
+          <CourseBlocks list={fees} />
+          <p class="small">Fees change each year and can differ by intake or campus. The university's page has the figure that applies to you.</p>
+        </div>
+      </section>
+    )}
+  </div>
+
+  {nav.some(([id]) => id === 'funding') && (
+    <section class="sec" aria-labelledby="funding">
+      <h2 id="funding">Scholarships</h2>
+      <div class="cp-box">
+        {schItems.length > 0 && <ul>{schItems.map((x) => <li><strong>{x.name}</strong>{x.amount ? `, ${x.amount}` : ''}</li>)}</ul>}
+        <CourseBlocks list={funding} />
+        <p class="small"><a href={`/universities/${c.uni}/#schol`}>More about {c.uniName}</a> · <a href="/scholarships/">Search all scholarships</a></p>
+      </div>
     </section>
   )}
 
   {nav.some(([id]) => id === 'study') && (
-    <section aria-labelledby="study" class="copied">
+    <section class="sec" aria-labelledby="study">
       <h2 id="study">What you will study</h2>
-      <CourseBlocks list={study} />
-      {showModuleLists && core.length > 0 && <Fragment><h3>Core modules</h3><ul>{core.map((m) => <li>{m}</li>)}</ul></Fragment>}
-      {showModuleLists && optional.length > 0 && <Fragment><h3>Optional modules</h3><ul>{optional.map((m) => <li>{m}</li>)}</ul></Fragment>}
-      {study.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">See all modules on {host}</a></p>}
+      <div class="cp-box">
+        <CourseBlocks list={study} />
+        {showModuleLists && core.length > 0 && <Fragment><h3>Core modules</h3><ul>{core.map((m) => <li>{m}</li>)}</ul></Fragment>}
+        {showModuleLists && optional.length > 0 && <Fragment><h3>Optional modules</h3><ul>{optional.map((m) => <li>{m}</li>)}</ul></Fragment>}
+        {study.some((b) => b.more) && <p class="small"><a href={c.url} target="_blank" rel="noopener">See all modules on {host}</a></p>}
+      </div>
+    </section>
+  )}
+
+  {objectives.length > 0 && (
+    <section class="sec" aria-labelledby="objectives">
+      <h2 id="objectives">Aims and outcomes</h2>
+      <div class="cp-box"><CourseBlocks list={objectives} /></div>
     </section>
   )}
 
   {teaching.length > 0 && (
-    <section aria-labelledby="teaching" class="copied">
+    <section class="sec" aria-labelledby="teaching">
       <h2 id="teaching">Teaching and assessment</h2>
-      <CourseBlocks list={teaching} />
+      <div class="cp-box"><CourseBlocks list={teaching} /></div>
     </section>
   )}
 
   {nav.some(([id]) => id === 'careers') && (
-    <section aria-labelledby="careers" class="copied">
+    <section class="sec" aria-labelledby="careers">
       <h2 id="careers">Careers</h2>
-      <CourseBlocks list={careers} />
-      {showEmployerList && <Fragment><p>Employers named on the course page:</p><ul>{employers.map((e) => <li>{e}</li>)}</ul></Fragment>}
+      <div class="cp-box">
+        <CourseBlocks list={careers} />
+        {showEmployerList && <Fragment><p>Employers named on the course page:</p><ul class="cp-tagsl">{employers.map((e) => <li>{e}</li>)}</ul></Fragment>}
+      </div>
+    </section>
+  )}
+
+  {nav.some(([id]) => id === 'industry') && (
+    <section class="sec" aria-labelledby="industry">
+      <h2 id="industry">Industry and placements</h2>
+      <div class="cp-box">
+        <CourseBlocks list={industry} />
+        {industryLinks.length > 0 && <Fragment><h3>Industry links</h3><ul>{industryLinks.map((x) => <li>{x.text}</li>)}</ul></Fragment>}
+        {internships.length > 0 && <Fragment><h3>Internships and placements</h3><ul>{internships.map((x) => <li>{x.text}</li>)}</ul></Fragment>}
+      </div>
     </section>
   )}
 
   {nav.some(([id]) => id === 'accred') && (
-    <section aria-labelledby="accred" class="copied">
+    <section class="sec" aria-labelledby="accred">
       <h2 id="accred">Accreditation</h2>
-      {accredText.length === 0 && accred.length > 0 && <ul>{accred.map((a) => <li>{a}</li>)}</ul>}
-      <CourseBlocks list={accredText} />
+      <div class="cp-box">
+        {accredText.length === 0 && accred.length > 0 && <ul>{accred.map((a) => <li>{a}</li>)}</ul>}
+        <CourseBlocks list={accredText} />
+      </div>
     </section>
   )}
 
   {nav.some(([id]) => id === 'apply') && (
-    <section aria-labelledby="apply" class="copied">
+    <section class="sec" aria-labelledby="apply">
       <h2 id="apply">How to apply</h2>
-      <CourseBlocks list={apply} />
+      <div class="cp-box"><CourseBlocks list={apply} /></div>
     </section>
   )}
 
-  {funding.length > 0 && (
-    <section aria-labelledby="funding" class="copied">
-      <h2 id="funding">Scholarships</h2>
-      <CourseBlocks list={funding} />
-      <p class="small"><a href={`/universities/${c.uni}/`}>More about {c.uniName}</a> · <a href="/scholarships/">Search all scholarships</a></p>
-    </section>
-  )}
-
-  {!d && (
-    <section aria-labelledby="more-info">
-      <h2 id="more-info">More about this course</h2>
-      <p>The entry requirements, modules and career outcomes are on <a href={c.url} target="_blank" rel="noopener">the university's course page</a>.</p>
-    </section>
-  )}
+  <section class="sec" aria-labelledby="official">
+    <h2 id="official">Official pages</h2>
+    <ul class="uni-pages">
+      {official.map((x) => (
+        <li><a href={x.href} target="_blank" rel="noopener"><strong>{x.title}<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5" /></svg></strong><span>{x.text}</span><em>{siteHost(x.href)}</em></a></li>
+      ))}
+    </ul>
+  </section>
 
   {registerNote && (
-    <section aria-labelledby="h-reg">
+    <section class="sec" aria-labelledby="h-reg">
       <h2 id="h-reg">On the government register</h2>
-      <dl class="sch-facts">
-        <div><dt>Registered length</dt><dd>{c.reg.weeks ? `${c.reg.weeks} weeks` : 'Not published'}</dd></div>
-        <div><dt>Registered tuition (older figure)</dt><dd>{regTuitionText(c)}</dd></div>
-        {regPlaces(c).length > 0 && <div><dt>Campuses</dt><dd>{regPlaces(c).join('; ')}</dd></div>}
-      </dl>
-      <p class="small">The registered tuition is the whole-course tuition recorded on the Australian Government register. It can be older than the fee the university charges now, so use the university's fee page when you plan a budget.</p>
-      <p class="small">Source: {REGISTER.name}, {REGISTER.by}, licensed {REGISTER.licence}. <a href={REGISTER.url} target="_blank" rel="noopener">Open the dataset</a>. Register file downloaded {fmtIso(REGISTER.downloaded)}.</p>
+      <div class="cp-box">
+        <dl class="sch-facts">
+          <div><dt>Registered length</dt><dd>{c.reg.weeks ? `${c.reg.weeks} weeks` : 'Not published'}</dd></div>
+          <div><dt>Registered tuition (older figure)</dt><dd>{regTuitionText(c)}</dd></div>
+          {regPlaces(c).length > 0 && <div><dt>Campuses</dt><dd>{regPlaces(c).join('; ')}</dd></div>}
+        </dl>
+        <p class="small">The registered tuition is the whole-course tuition recorded on the Australian Government register. It can be older than the fee the university charges now, so use the university's fee page when you plan a budget.</p>
+        <p class="small">Source: {REGISTER.name}, {REGISTER.by}, licensed {REGISTER.licence}. <a href={REGISTER.url} target="_blank" rel="noopener">Open the dataset</a>. Register file downloaded {fmtIso(REGISTER.downloaded)}.</p>
+      </div>
     </section>
   )}
 
@@ -218,10 +319,10 @@ const registerNote = c.reg && REGISTER;
   )}
 
   {others.length > 0 && (
-    <section aria-labelledby="h-more">
+    <section class="sec" aria-labelledby="h-more">
       <h2 id="h-more">More at {c.uniName}</h2>
-      <ul class="uni-courses">
-        {others.map((x) => <li><a href={path(x)}>{x.name}</a> <span class="muted">{levelText(x)}</span></li>)}
+      <ul class="uni-facs cp-more">
+        {others.map((x) => <li><a href={path(x)}>{x.name}</a><span class="muted">{levelText(x)}</span></li>)}
       </ul>
       {nOthers > others.length && <p><a href={`/universities/${c.uni}/#courses`}>All {nOthers + 1} courses at {c.uniName}</a></p>}
     </section>

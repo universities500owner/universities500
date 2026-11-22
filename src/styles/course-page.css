@@ -1,0 +1,52 @@
+/* Course page: the same look as the university page. The blue head band, the white facts strip and the yellow official-page cards reuse the
+   .uni-* rules in university.css; the rules here are only for what is new, all scoped to .cp-* */
+
+/* head band: course names are long, so the title is smaller than a university's, and the band is shorter */
+.cp-hero .pg-head h1 { font-size: clamp(1.9rem, 4.6vw, 3.3rem); line-height: 1.08; letter-spacing: -0.015em; max-width: 28ch; margin: 0 0 .7rem; text-wrap: balance; }
+.cp-hero.cp-long .pg-head h1 { font-size: clamp(1.45rem, 3.2vw, 2.2rem); line-height: 1.15; max-width: 44ch; }
+.cp-hero.has-photos .pg-head { min-height: clamp(20rem, 36vw, 26rem); padding-bottom: 2.6rem; }
+.cp-by { margin: 0 0 .9rem; font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.4; color: #fff; }
+.cp-by a { color: #fff; font-weight: 700; }
+.cp-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem .5rem; }
+.cp-tags li { border: 1px solid rgba(255, 255, 255, .8); color: #fff; padding: .2rem .7rem; font-weight: 600; font-size: .92rem; }
+.cp-hero.has-photos .cp-by, .cp-hero.has-photos .cp-tags { text-shadow: 0 1px 10px rgba(0, 12, 40, .5); }
+.cp-hero .uni-actions { margin-top: 1.1rem; }
+
+/* facts strip: a fact the page does not state is shown plainly, never guessed */
+.cp-facts dd.cp-none { font-family: inherit; font-size: 1rem; font-weight: 600; color: var(--muted); }
+.cp-more-facts { list-style: none; margin: 0; padding: 0 0 1.1rem; display: flex; flex-wrap: wrap; gap: .3rem 2rem; font-size: .92rem; }
+.cp-more-facts strong { color: var(--k-title); margin-right: .3rem; }
+
+/* jump links */
+.cp-jump { display: flex; flex-wrap: wrap; gap: .4rem .5rem; margin: 0 0 .2rem; padding: 1rem 0 0; }
+.cp-jump a { border: 1px solid var(--k-cobalt); background: var(--k-card); color: var(--k-cobalt); padding: .3rem .8rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.cp-jump a:hover { background: var(--k-card-hover); }
+.cp-jump a:focus-visible { outline: 3px solid var(--k-cobalt); outline-offset: 2px; }
+
+/* the university's words, in a white box with the mint bar of the profile page */
+.cp-box { background: var(--k-card); border: 1px solid var(--k-hair); border-left: .35rem solid var(--k-mint); padding: 1.1rem 1.3rem; margin-top: 1rem; min-width: 0; overflow-wrap: anywhere; }
+.cp-box > :first-child { margin-top: 0; }
+.cp-box > :last-child { margin-bottom: 0; }
+.cp-box p, .cp-box li { max-width: 72ch; line-height: 1.6; }
+.cp-box h3 { font-size: 1.05rem; color: var(--k-title); margin: 1.1rem 0 .4rem; }
+.cp-lede p:first-of-type { font-size: clamp(1.08rem, 1.5vw, 1.22rem); line-height: 1.65; }
+.cp-tagsl { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.cp-tagsl li { border: 1px solid var(--k-cobalt); color: var(--k-cobalt); background: var(--k-card); padding: .3rem .8rem; font-weight: 600; }
+
+/* entry requirements and fees side by side on a wide screen */
+.cp-pair { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 1.5rem; }
+@media (min-width: 56rem) { .cp-pair:has(> .sec + .sec) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.cp-pair > .sec { min-width: 0; }
+
+/* more courses at this university: cards with the mint bar, like the faculties */
+.cp-more li { display: flex; flex-direction: column; gap: .15rem; }
+.cp-more .muted { font-weight: 400; font-size: .85rem; }
+
+.source-line { margin-top: 1.6rem; max-width: 72ch; }
+
+/* phone: the jump links are one row you can swipe, not seven rows of chips */
+@media (max-width: 40rem) {
+  .cp-jump { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; padding-bottom: .5rem; scrollbar-width: thin; }
+  .cp-jump a { flex: none; }
+  .cp-box { padding: .95rem 1rem; }
+}
