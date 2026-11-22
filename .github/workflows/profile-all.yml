@@ -1,0 +1,100 @@
+name: Profiles for all universities
+
+# Builds the university profile data for every university in src/data/universities.json.
+# Same steps as the 25-university pilot (profile-pilot.yml), split into 6 batches that run side by side:
+#   each batch  = collect from Wikidata, Wikimedia Commons and the university's own website (polite: robots.txt obeyed,
+#                 3 seconds between requests to one site), then the AI step (needs the ANTHROPIC_API_KEY secret);
+#   last job    = merges the six batches, runs scripts/profiles/publish.py and pushes src/data/university_profiles.json
+#                 to the branch "profile-data". Nothing reaches main until someone merges a pull request from that branch.
+#
+# Run it from the Actions tab (Run workflow). Settings: CONTACT_EMAIL under Settings > Secrets and variables > Actions.
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Optional note shown in the run summary"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  batch:
+    name: Batch ${{ matrix.shard }} of 6
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4, 5, 6]
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install beautifulsoup4 lxml anthropic
+      - name: Collect
+        run: python3 scripts/profiles/collect.py --out out --minutes 60 --all --shard ${{ matrix.shard }}/6
+      - name: AI step
+        run: python3 scripts/profiles/ai.py --in out --out out
+      - name: Report
+        if: always()
+        run: |
+          for f in out/report.md out/ai_report.md; do
+            if [ -f "$f" ]; then cat "$f" >> "$GITHUB_STEP_SUMMARY"; fi
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch-${{ matrix.shard }}
+          path: |
+            out/profiles_ai.json
+            out/ai_report.md
+            out/report.md
+
+  publish:
+    name: Merge and push data branch
+    needs: batch
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: batch-*
+          path: batches
+      - name: Merge the batches
+        run: |
+          python3 - <<'EOF'
+          import glob, json
+          recs = []
+          for f in sorted(glob.glob('batches/batch-*/profiles_ai.json')):
+              recs += json.load(open(f, encoding='utf-8'))
+          expected = len([u for u in json.load(open('src/data/universities.json', encoding='utf-8')) if u.get('qid')])
+          print(f'{len(recs)} profiles merged from {len(glob.glob("batches/batch-*/profiles_ai.json"))} batches; {expected} universities expected')
+          if len(recs) != expected:
+              raise SystemExit(f'{len(recs)} profiles merged but {expected} expected - a batch is missing or doubled. Nothing was pushed.')
+          json.dump(recs, open('profiles_ai_all.json', 'w', encoding='utf-8'), ensure_ascii=False)
+          EOF
+      - name: Publish (checked values only)
+        env:
+          NOTE: ${{ inputs.note }}
+        run: |
+          python3 scripts/profiles/publish.py --in profiles_ai_all.json --out src/data/university_profiles.json 2> publish.txt
+          cat publish.txt
+          { echo "### Published fill rates"; echo '```'; cat publish.txt; echo '```'; if [ -n "$NOTE" ]; then echo "$NOTE"; fi; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Push the data branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b profile-data
+          git add src/data/university_profiles.json
+          git commit -m "Profile data for all universities (workflow run ${{ github.run_id }})"
+          git push --force origin profile-data
