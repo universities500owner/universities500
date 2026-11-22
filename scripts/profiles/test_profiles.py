@@ -14,6 +14,7 @@ sys.path.insert(0, str(HERE.parent / 'scholarships'))
 import collect as C  # noqa: E402
 import commons as CM  # noqa: E402
 import report as R  # noqa: E402
+import review as RV  # noqa: E402
 import sitereader as S  # noqa: E402
 import wikidata as WD  # noqa: E402
 from fetcher import Fetcher  # noqa: E402
@@ -300,6 +301,19 @@ class Tests(unittest.TestCase):
         text = R.build([rec], {})
         self.assertIn('Fill rate by field', text)
         self.assertIn('Stub University', text)
+
+    def test_review_page_builds_offline(self):
+        base = f'http://127.0.0.1:{PORT["p"]}/'
+        fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=5)
+        uni = {'slug': 'stub', 'name': 'Stub <University>', 'countryName': 'Australia', 'qid': 'Q1', 'web': base, 'campuses': [{'n': 'North', 'w': 'campus'}]}
+        wd = {'qid': 'Q1', 'src': 'https://www.wikidata.org/wiki/Q1', 'founded': {'v': 1958, 'all': [1958], 'conflict': False}, 'commons': 'Stub University'}
+        rec, _ = C.process(uni, wd, FakeApi(), fx, datetime.date(2026, 11, 22))
+        page_html = RV.build([rec], thumb=lambda u: 'data:image/jpeg;base64,AAAA')
+        self.assertIn('Stub &lt;University&gt;', page_html)                      # names are escaped
+        self.assertIn('https://www.google.com/maps/search/?api=1&amp;query=North', page_html)
+        self.assertIn('data:image/jpeg;base64,AAAA', page_html)
+        self.assertIn('Jane Doe', page_html)                                      # the credit line is printed
+        self.assertEqual(RV.small('https://upload.wikimedia.org/x/960px-A.jpg'), 'https://upload.wikimedia.org/x/330px-A.jpg')
 
     def test_a_site_that_will_not_answer_is_reported_not_fatal(self):
         fx = Fetcher('Universities500Bot/1.0 (test)', delay=0, timeout=2)

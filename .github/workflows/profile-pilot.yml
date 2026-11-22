@@ -3,7 +3,7 @@ name: Profile pilot (25 universities)
 # A trial. Reads Wikidata and Wikimedia Commons (open data) and the universities' own websites (politely: robots.txt
 # obeyed, 3 seconds between requests to the same site), for the 25 universities in scripts/profiles/pilot_25.json.
 # It writes nothing into src/data and commits nothing. Open the run summary for the fill-rate report;
-# the full records (profiles.json) are in the profile-pilot artifact.
+# the full records (profiles.json) and review.html (one page with every university, its photos and credits) are in the profile-pilot artifact.
 #
 # Run it from the Actions tab (Run workflow), or add the label "run-profile-pilot" to a pull request.
 #
@@ -48,7 +48,14 @@ jobs:
           if [ -f out/report.md ]; then
             cat out/report.md >> "$GITHUB_STEP_SUMMARY"
             echo "::group::report.md"; cat out/report.md; echo "::endgroup::"
-            echo "::group::profiles.json"; cat out/profiles.json; echo "::endgroup::"
+            echo "::group::profiles.json"; cat out/profiles.json; echo; echo "::endgroup::"
+          fi
+      - name: Review page (small photos embedded, one file)
+        if: always()
+        run: |
+          if [ -f out/profiles.json ]; then
+            python3 scripts/profiles/review.py --in out/profiles.json --out out/review.html
+            echo "::group::review.html.gz.b64"; gzip -9c out/review.html | base64 -w 3000; echo; echo "::endgroup::"
           fi
       - uses: actions/upload-artifact@v4
         if: always()
