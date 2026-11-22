@@ -362,6 +362,15 @@ class Tests(unittest.TestCase):
         self.assertEqual(rec['campuses'][0]['name'], 'Main campus')
         self.assertIn('site', R.build([rec], {}).lower())
 
+    def test_shards_cover_everyone_once(self):
+        slugs = [f'u{i}' for i in range(263)]
+        parts = [C.shard_of(slugs, f'{i}/6') for i in range(1, 7)]
+        self.assertEqual(sorted(sum(parts, [])), sorted(slugs))
+        self.assertLessEqual(max(map(len, parts)) - min(map(len, parts)), 1)
+        self.assertEqual(C.shard_of(slugs, ''), slugs)
+        with self.assertRaises(SystemExit):
+            C.shard_of(slugs, '7/6')
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

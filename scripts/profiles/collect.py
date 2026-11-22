@@ -164,13 +164,26 @@ def process(uni, wd_facts, api, fetcher, today):
     return rec, site.get('cache', {})
 
 
+def shard_of(slugs, spec):
+    """'2/6' = the 2nd of 6 slices, dealt out in turn so each slice mixes countries. Blank = everything."""
+    if not spec:
+        return list(slugs)
+    i, n = (int(x) for x in spec.split('/'))
+    if not 1 <= i <= n:
+        raise SystemExit(f'--shard {spec}: the first number must be from 1 to the second')
+    return list(slugs)[i - 1::n]
+
+
 def run(args):
     unis = {u['slug']: u for u in json.load(open(ROOT / 'src/data/universities.json', encoding='utf-8'))}
     pilot = json.load(open(HERE / 'pilot_25.json', encoding='utf-8'))['universities']
     slugs = [p['slug'] for p in pilot]
+    if args.all:
+        slugs = [s for s, u in unis.items() if u.get('qid')]
     if args.only:
         wanted = [s.strip() for s in args.only.split(',') if s.strip()]
         slugs = [s for s in wanted if s in unis]
+    slugs = shard_of(slugs, args.shard)
     out = Path(args.out)
     (out / 'pages').mkdir(parents=True, exist_ok=True)
     today = datetime.date.today()
@@ -205,6 +218,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--out', default='out')
     ap.add_argument('--only', default='')
+    ap.add_argument('--all', action='store_true', help='every university in src/data/universities.json, not just the pilot 25')
+    ap.add_argument('--shard', default='', help='I/N: run only the I-th of N slices, so several jobs can share the work')
     ap.add_argument('--contact', default=os.environ.get('CONTACT_EMAIL', ''))
     ap.add_argument('--delay', type=float, default=3.0)
     ap.add_argument('--workers', type=int, default=4)
