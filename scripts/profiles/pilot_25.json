@@ -1,0 +1,155 @@
+{
+ "note": "Profile pilot: 25 universities across the 14 countries. About half already have a student total, half do not, so the pilot shows both cases.",
+ "universities": [
+  {
+   "slug": "monash-university",
+   "name": "Monash University",
+   "country": "AU",
+   "has_students_today": true
+  },
+  {
+   "slug": "curtin-university",
+   "name": "Curtin University",
+   "country": "AU",
+   "has_students_today": true
+  },
+  {
+   "slug": "deakin-university",
+   "name": "Deakin University",
+   "country": "AU",
+   "has_students_today": false
+  },
+  {
+   "slug": "imperial-college-london",
+   "name": "Imperial College London",
+   "country": "GB",
+   "has_students_today": false
+  },
+  {
+   "slug": "cardiff-university",
+   "name": "Cardiff University",
+   "country": "GB",
+   "has_students_today": true
+  },
+  {
+   "slug": "aston-university",
+   "name": "Aston University",
+   "country": "GB",
+   "has_students_today": false
+  },
+  {
+   "slug": "arizona-state-university",
+   "name": "Arizona State University",
+   "country": "US",
+   "has_students_today": true
+  },
+  {
+   "slug": "carnegie-mellon-university",
+   "name": "Carnegie Mellon University",
+   "country": "US",
+   "has_students_today": true
+  },
+  {
+   "slug": "columbia-university",
+   "name": "Columbia University",
+   "country": "US",
+   "has_students_today": false
+  },
+  {
+   "slug": "university-of-toronto",
+   "name": "University of Toronto",
+   "country": "CA",
+   "has_students_today": true
+  },
+  {
+   "slug": "dalhousie-university",
+   "name": "Dalhousie University",
+   "country": "CA",
+   "has_students_today": true
+  },
+  {
+   "slug": "concordia-university",
+   "name": "Concordia University",
+   "country": "CA",
+   "has_students_today": false
+  },
+  {
+   "slug": "rheinisch-westfalische-technische-hochschule-aachen",
+   "name": "Rheinisch-Westfälische Technische Hochschule Aachen",
+   "country": "DE",
+   "has_students_today": true
+  },
+  {
+   "slug": "karlsruhe-institute-of-technology",
+   "name": "Karlsruhe Institute of Technology",
+   "country": "DE",
+   "has_students_today": false
+  },
+  {
+   "slug": "sorbonne-university",
+   "name": "Sorbonne University",
+   "country": "FR",
+   "has_students_today": true
+  },
+  {
+   "slug": "institut-polytechnique-de-paris",
+   "name": "Institut Polytechnique de Paris",
+   "country": "FR",
+   "has_students_today": false
+  },
+  {
+   "slug": "delft-university-of-technology",
+   "name": "Delft University of Technology",
+   "country": "NL",
+   "has_students_today": false
+  },
+  {
+   "slug": "leiden-university",
+   "name": "Leiden University",
+   "country": "NL",
+   "has_students_today": true
+  },
+  {
+   "slug": "trinity-college-dublin-the-university-of-dublin",
+   "name": "Trinity College, Dublin",
+   "country": "IE",
+   "has_students_today": false
+  },
+  {
+   "slug": "the-university-of-auckland",
+   "name": "University of Auckland",
+   "country": "NZ",
+   "has_students_today": false
+  },
+  {
+   "slug": "national-university-of-singapore",
+   "name": "National University of Singapore",
+   "country": "SG",
+   "has_students_today": false
+  },
+  {
+   "slug": "universiti-malaya",
+   "name": "Universiti Malaya",
+   "country": "MY",
+   "has_students_today": false
+  },
+  {
+   "slug": "khalifa-university-of-science-and-technology",
+   "name": "Khalifa University of Science and Technology",
+   "country": "AE",
+   "has_students_today": false
+  },
+  {
+   "slug": "lund-university",
+   "name": "Lund University",
+   "country": "SE",
+   "has_students_today": false
+  },
+  {
+   "slug": "university-of-oslo",
+   "name": "University of Oslo",
+   "country": "NO",
+   "has_students_today": true
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+name: Profile pilot (25 universities)
+
+# A trial. Reads Wikidata and Wikimedia Commons (open data) and the universities' own websites (politely: robots.txt
+# obeyed, 3 seconds between requests to the same site), for the 25 universities in scripts/profiles/pilot_25.json.
+# It writes nothing into src/data and commits nothing. Open the run summary for the fill-rate report;
+# the full records (profiles.json) and review.html (one page with every university, its photos and credits) are in the profile-pilot artifact.
+#
+# Run it from the Actions tab (Run workflow), or add the label "run-profile-pilot" to a pull request.
+#
+# Settings: CONTACT_EMAIL under Settings > Secrets and variables > Actions (a variable or a secret both work).
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these university slugs, comma-separated (blank = the 25)"
+        required: false
+        default: ""
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: read
+
+jobs:
+  pilot:
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'run-profile-pilot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install beautifulsoup4 lxml
+      - name: Self-test (stub website and stub Wikimedia API, no internet)
+        run: python3 scripts/profiles/test_profiles.py
+      - name: Collect
+        env:
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL || secrets.CONTACT_EMAIL }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          ARGS="--out out --minutes 45"
+          if [ -n "$ONLY" ]; then ARGS="$ARGS --only $ONLY"; fi
+          python3 scripts/profiles/collect.py $ARGS
+      - name: Report
+        if: always()
+        run: |
+          if [ -f out/report.md ]; then
+            cat out/report.md >> "$GITHUB_STEP_SUMMARY"
+            echo "::group::report.md"; cat out/report.md; echo "::endgroup::"
+            echo "::group::profiles.json"; cat out/profiles.json; echo; echo "::endgroup::"
+          fi
+      - name: Review page (small photos embedded, one file)
+        if: always()
+        run: |
+          if [ -f out/profiles.json ]; then
+            python3 scripts/profiles/review.py --in out/profiles.json --out out/review.html
+            echo "::group::review.html.gz.b64"; gzip -9c out/review.html | base64 -w 3000; echo; echo "::endgroup::"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: profile-pilot
+          path: out/
