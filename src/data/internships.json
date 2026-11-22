@@ -1,27 +1,27 @@
 {
  "version": 1,
- "generatedAt": "2026-11-21T22:20:02Z",
- "today": "2026-11-21",
+ "generatedAt": "2026-11-22T22:25:54Z",
+ "today": "2026-11-22",
  "stats": {
-  "items": 865,
+  "items": 903,
   "byCountry": {
    "australia": 1,
    "canada": 30,
-   "france": 116,
-   "germany": 374,
+   "france": 95,
+   "germany": 437,
    "ireland": 5,
-   "netherlands": 44,
+   "netherlands": 48,
    "new-zealand": 2,
    "singapore": 6,
-   "sweden": 39,
+   "sweden": 35,
    "uae": 1,
-   "uk": 33,
-   "usa": 214
+   "uk": 30,
+   "usa": 213
   },
   "bySource": {
-   "arbeitnow": 508,
-   "greenhouse": 253,
-   "jobtech": 39,
+   "arbeitnow": 551,
+   "greenhouse": 252,
+   "jobtech": 35,
    "lever": 65
   },
   "boardsRead": 128,
@@ -673,141 +673,6 @@
    "firstSeen": "2026-11-21"
   },
   {
-   "id": "fa6cd7490571",
-   "title": "Assistant.e Chef(fe) de projet évènementiel (stage)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactjobs/assistante-cheffe-de-projet-evenementiel-stage-9th-arrondissement-of-paris-75009-paris-46139",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "77e29e9736ad",
-   "title": "Assistant.e Chef(fe) de projet évènementiel (stage)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactlinkedin/assistante-cheffe-de-projet-evenementiel-stage-9th-arrondissement-of-paris-75009-paris-344696",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "a22cbb17a0eb",
-   "title": "Data Scientist Intern - Paris",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactjobs/data-scientist-intern-paris-9th-arrondissement-of-paris-75009-paris-471003",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "AI Applied Engineer",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "b4dbe2bc8f76",
-   "title": "Intern Data Analyst - Paris",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefact/intern-data-analyst-paris-9th-arrondissement-of-paris-75009-paris-271477",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "AI Applied Engineer",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "953012df69c7",
-   "title": "Intern Data Analyst - Paris",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactjobs/intern-data-analyst-paris-9th-arrondissement-of-paris-75009-paris-350360",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "AI Applied Engineer",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "c1ff68f67343",
-   "title": "Intern Data Analyst - Paris",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactlinkedin/intern-data-analyst-paris-9th-arrondissement-of-paris-75009-paris-284085",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "AI Applied Engineer",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "4d4b48e2bf36",
-   "title": "Stage Communication – Stratégie & création de contenus (Adopt AI)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefact/stage-communication-strategie-creation-de-contenus-adopt-ai-9th-arrondissement-of-paris-75009-paris-86122",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "55c9280f46ee",
-   "title": "Stage Communication – Stratégie & création de contenus (Adopt AI)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactjobs/stage-communication-strategie-creation-de-contenus-adopt-ai-9th-arrondissement-of-paris-75009-paris-484392",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "b66e1f22fa28",
-   "title": "Stage Communication – Stratégie & création de contenus (Adopt AI)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactlinkedin/stage-communication-strategie-creation-de-contenus-adopt-ai-9th-arrondissement-of-paris-75009-paris-172209",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "26332129d744",
    "title": "Stage Communication – Stratégie de communication innovante (Adopt AI)",
    "org": "Artefact",
@@ -850,81 +715,6 @@
    "firstSeen": "2026-11-20"
   },
   {
-   "id": "33df7cb9157f",
-   "title": "Stage Communication – Stratégie événementielle & coordination (Adopt AI)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefact/stage-communication-strategie-evenementielle-coordination-adopt-ai-9th-arrondissement-of-paris-75009-paris-96520",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "e212bd0a33cb",
-   "title": "Stage Communication – Stratégie événementielle & coordination (Adopt AI)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactjobs/stage-communication-strategie-evenementielle-coordination-adopt-ai-9th-arrondissement-of-paris-75009-paris-477858",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "3fa0cc49a815",
-   "title": "Stage Communication – Stratégie événementielle & coordination (Adopt AI)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactlinkedin/stage-communication-strategie-evenementielle-coordination-adopt-ai-9th-arrondissement-of-paris-75009-paris-189513",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "e67ca7c02663",
-   "title": "Stage Data Consultant - Paris - H/F/X",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactjobs/stage-data-consultant-paris-9th-arrondissement-of-paris-75009-paris-299986",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "AI Strategist",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "995803a72079",
-   "title": "Stage Software Engineer - Paris - H/F/X",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactjobs/stage-software-engineer-paris-9th-arrondissement-of-paris-75009-paris-208717",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "AI Applied Engineer",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "2cfb55315b5a",
    "title": "Stage – Assistant·e chargé·e de communication orienté.e contenus digitaux (F/H)",
    "org": "Artefact",
@@ -951,36 +741,6 @@
    "posted": "2026-11-20",
    "team": "Artefact Open Innovation",
    "firstSeen": "2026-11-21"
-  },
-  {
-   "id": "452e9e20b665",
-   "title": "Stage – Assistant·e chargé·e de communication orienté.e contenus digitaux (F/H)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactjobs/stage-assistante-chargee-de-communication-orientee-contenus-digitaux-f-h-9th-arrondissement-of-paris-75009-paris-189906",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "40c8b0c79f20",
-   "title": "Stage – Assistant·e chargé·e de communication orienté.e contenus digitaux (F/H)",
-   "org": "Artefact",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/artefactlinkedin/stage-assistante-chargee-de-communication-orientee-contenus-digitaux-f-h-9th-arrondissement-of-paris-75009-paris-468826",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Artefact Open Innovation",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "60a0d8c10710",
@@ -1025,21 +785,6 @@
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "c5a3ee10b844",
-   "title": "DevOps / Infrastructure Engineer - Internship",
-   "org": "Bitstack",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/bitstack/devops-infrastructure-engineer-internship-paris-257778",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Engineering",
-   "firstSeen": "2026-11-17",
-   "misses": 1
-  },
-  {
    "id": "be0afc6fc776",
    "title": "Stage en Communication Insights Analyst & Social Listening",
    "org": "Bursonglobalcareers",
@@ -1070,21 +815,6 @@
    "detail": 1
   },
   {
-   "id": "df7d729dbaf7",
-   "title": "Intern AI & Management Consulting (Value Engineering)",
-   "org": "celonis",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/celonis/intern-ai-management-consulting-value-engineering-paris-369448",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Value Engineering",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "85317dca94fb",
    "title": "Intern Technology & Management Consulting (Value Engineering)",
    "org": "Celonis",
@@ -1101,19 +831,18 @@
    "detail": 1
   },
   {
-   "id": "4eff92c46f26",
-   "title": "Intern Technology & Management Consulting (Value Engineering)",
-   "org": "celonis",
-   "city": "Paris",
+   "id": "f2931e717672",
+   "title": "Offre de stage de recherche Master 2 ou dernière année d’école d’ingénieur",
+   "org": "Centrale Innovation",
+   "city": "Ecully",
    "country": "france",
    "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/celonis/intern-technology-management-consulting-value-engineering-paris-90694",
+   "url": "https://www.arbeitnow.fr/jobs/companies/centrale-innovation/offre-de-stage-de-recherche-master-2-ou-derniere-annee-decole-dingenieur-ecully-434606",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Value Engineering",
-   "firstSeen": "2026-11-14",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "LTDS",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "c6200aa107b3",
@@ -1219,7 +948,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Customer Care",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
   },
   {
    "id": "3547d7ee9a33",
@@ -1248,21 +978,6 @@
    "posted": "2026-11-19",
    "team": "Engineering",
    "firstSeen": "2026-11-19"
-  },
-  {
-   "id": "f1fa3a161d7d",
-   "title": "Stage - Consultant intéropérabilité (x/f/m) - mars 2027",
-   "org": "Doctolib",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/doctolib/stage-consultant-interoperabilite-mars-2027-levallois-perret-232832",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Sales",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "6d1aa33687f1",
@@ -1305,6 +1020,20 @@
    "posted": "2026-11-19",
    "team": "Engineering",
    "firstSeen": "2026-11-19"
+  },
+  {
+   "id": "f051f05f99de",
+   "title": "Stage 2027 - IA/ML Engineer 50% R&D 50% Produit - Statistiques Bayésiennes",
+   "org": "Ekimetrics",
+   "city": "Paris",
+   "country": "france",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.fr/jobs/companies/ekimetrics/stage-2027-ia-ml-engineer-50-rd-50-produit-statistiques-bayesiennes-paris-76004",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Product Engineering",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "5d278141a1a9",
@@ -1436,7 +1165,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Hexa",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
   },
   {
    "id": "6055b51a7598",
@@ -1465,21 +1195,6 @@
    "posted": "2026-11-19",
    "team": "France",
    "firstSeen": "2026-11-19"
-  },
-  {
-   "id": "162fd71edef6",
-   "title": "Stage Data Analyst / Support Applicatifs Finance & Innovation (H/F/X) - Lyon",
-   "org": "Hi",
-   "city": "Lyon",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/hi/stage-data-analyst-support-applicatifs-finance-innovation-lyon-41827",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Finance & Accounting",
-   "firstSeen": "2026-11-15",
-   "misses": 1
   },
   {
    "id": "04b5c7e43d0c",
@@ -1552,21 +1267,6 @@
    "firstSeen": "2026-11-20"
   },
   {
-   "id": "e653adb64560",
-   "title": "Stagiaire rédacteur·rice scientifique (6 mois)",
-   "org": "Institut Mines-Télécom",
-   "city": "PALAISEAU",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/institut-mines-telecom/stagiaire-redacteurrice-scientifique-6-mois-palaiseau-181968",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Communication et Marketing",
-   "firstSeen": "2026-11-15",
-   "misses": 1
-  },
-  {
    "id": "f038bb09de5c",
    "title": "Business Developer (stage 6 mois)",
    "org": "Intersektion",
@@ -1578,7 +1278,8 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Business Development",
-   "firstSeen": "2026-11-16"
+   "firstSeen": "2026-11-16",
+   "misses": 1
   },
   {
    "id": "9fadcb215e61",
@@ -1593,6 +1294,20 @@
    "posted": "2026-11-20",
    "team": "Power Engineering and Environmental Engineering",
    "firstSeen": "2026-11-20"
+  },
+  {
+   "id": "e6302b6c3e88",
+   "title": "Assistant(e) Ressources Humaines - Stage",
+   "org": "Joivy",
+   "city": "Lyon",
+   "country": "france",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.fr/jobs/companies/joivy/assistante-ressources-humaines-stage-lyon-363305",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "People",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "1cf01799d9ed",
@@ -1620,7 +1335,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Retail",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
   },
   {
    "id": "29df6ffdfa75",
@@ -1735,21 +1451,6 @@
    "firstSeen": "2026-11-20"
   },
   {
-   "id": "93c69977e5cc",
-   "title": "Stage - Bras droit CEO / Chief of Staff (Paris)",
-   "org": "Matera",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/matera/stage-bras-droit-ceo-chief-of-staff-paris-398703",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Founders",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "8c87ee6c117d",
    "title": "Stage - Service client : Onboarding",
    "org": "Matera",
@@ -1821,21 +1522,6 @@
    "firstSeen": "2026-11-14",
    "team": "G&A",
    "detail": 1
-  },
-  {
-   "id": "4830030490b3",
-   "title": "Data & People analytics Intern - January 2027",
-   "org": "mirakl",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/mirakl/data-people-analytics-intern-january-2027-paris-315448",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-13",
-   "team": "G&A",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "cf36a09ec10f",
@@ -2028,6 +1714,20 @@
    "firstSeen": "2026-11-20"
   },
   {
+   "id": "45ff97973ee3",
+   "title": "Intern AI Researcher: Anomaly Detection for Predictive Maintenance in Distributed Storage",
+   "org": "Scality",
+   "city": "Paris",
+   "country": "france",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.fr/jobs/companies/scality/intern-ai-researcher-anomaly-detection-for-predictive-maintenance-in-distributed-storage-paris-france-483265",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "R&D Paris",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "1bd8a7b27acf",
    "title": "Gestionnaire Administratif et Finance - Alternance ou Stage",
    "org": "SeqOne",
@@ -2039,7 +1739,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Accounts Receivable",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
   },
   {
    "id": "66a84fb2e681",
@@ -2142,21 +1843,6 @@
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "e27f477152f5",
-   "title": "Associate Product Manager - Stage de fin d'études Paris - Theodo AI-Mod",
-   "org": "Theodo",
-   "city": "Paris",
-   "country": "france",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.fr/jobs/companies/theodo/associate-product-manager-stage-de-fin-detudes-paris-theodo-ai-mod-324581",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Product Management",
-   "firstSeen": "2026-11-15",
-   "misses": 1
-  },
-  {
    "id": "b6e7baf3b628",
    "title": "Stage de fin d'études - Consultant.e Business Consulting F/H",
    "org": "Vmlenterprisesolutions",
@@ -2182,7 +1868,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "VO2 Group",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
   },
   {
    "id": "dba152583093",
@@ -2227,6 +1914,21 @@
    "firstSeen": "2026-11-16"
   },
   {
+   "id": "7da071b10d74",
+   "title": "Internship Global Product Management (m/f/d)",
+   "org": "1KOMMA5˚",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/1komma50/internship-global-product-management-berlin-370700",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "18ffda7cfe9f",
    "title": "Internship Process & Operations - Energy (m/f/d)",
    "org": "1KOMMA5˚",
@@ -2239,6 +1941,21 @@
    "posted": "2026-11-20",
    "team": "Consulting",
    "firstSeen": "2026-11-18"
+  },
+  {
+   "id": "8df2665bb43e",
+   "title": "Internship Product Management Energy Products & Tariffs (m/f/d)",
+   "org": "1KOMMA5˚",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/1komma50/internship-product-management-energy-products-tariffs-berlin-219539",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "c6da2f10e1ae",
@@ -2325,6 +2042,34 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "id": "e8ffd36011e9",
+   "title": "Working Student - AI Product Designer (m/f/d)",
+   "org": "1KOMMA5˚",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/1komma50/working-student-ai-product-designer-berlin-58805",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Media",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "1f57c82875fb",
+   "title": "Working Student Product Management Energy Products & Tariffs (m/f/d)",
+   "org": "1KOMMA5˚",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/1komma50/working-student-product-management-energy-products-tariffs-berlin-323094",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Product Management",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "60478f675fcc",
    "title": "Werkstudent (gn) für Automatisierungstechnik",
    "org": "3D.aero GmbH",
@@ -2339,19 +2084,18 @@
    "firstSeen": "2026-11-20"
   },
   {
-   "id": "caa69e117b71",
-   "title": "Werkstudent HR – Recruiting & Employer Branding (m/w/d)",
-   "org": "ABRIO GmbH",
-   "city": "Frankfurt",
+   "id": "9e7d54d95df1",
+   "title": "Werkstudent:in Growth & Business Development (m/w/d)",
+   "org": "acemate.ai",
+   "city": "Berlin",
    "country": "germany",
    "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/abrio-gmbh/werkstudent-hr-recruiting-employer-branding-frankfurt-418360",
+   "url": "https://www.arbeitnow.com/jobs/companies/acemateai/werkstudentin-growth-business-development-berlin-116041",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-14",
-   "team": "People & Culture",
-   "firstSeen": "2026-11-14",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Business Development",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "7ae8b31eec32",
@@ -2396,21 +2140,6 @@
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "99a948ab0f96",
-   "title": "Working Student - Data Science (f/m/d)",
-   "org": "adjoe",
-   "city": "Hamburg",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/adjoe/working-student-data-science-hamburg-430330",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "adjoe",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "4780713d8688",
    "title": "Working Student - Supply Growth (f/m/d)",
    "org": "adjoe",
@@ -2422,7 +2151,23 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "adjoe",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
+  },
+  {
+   "id": "a5d47eb9f1af",
+   "title": "Werkstudent Founders Associate",
+   "org": "Adwise Media GmbH",
+   "city": "Bonn",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/adwise-media-gmbh/werkstudent-founders-associate-bonn-442650",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "6b9c743019b1",
@@ -2513,6 +2258,20 @@
    "firstSeen": "2026-11-21"
   },
   {
+   "id": "33d072e7e198",
+   "title": "Praktikant:in KI-gestützte Produktentwicklung Bahnbranche (m/w/d)",
+   "org": "aicorn GmbH",
+   "city": "Karlsruhe",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/aicorn-gmbh/praktikantin-ki-gestutzte-produktentwicklung-bahnbranche-karlsruhe-335038",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Software Development",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "31759442762a",
    "title": "Praktikum im betrieblichen Gesundheitsmanagement 2027",
    "org": "Aktivital GmbH",
@@ -2525,6 +2284,20 @@
    "posted": "2026-11-18",
    "team": "Engineering",
    "firstSeen": "2026-11-18"
+  },
+  {
+   "id": "21b94915d33f",
+   "title": "Founder’s Associate Intern (m/w/d)",
+   "org": "Amperecloud GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/amperecloud-gmbh/founders-associate-intern-berlin-41797",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "d5c08342ed0c",
@@ -2552,7 +2325,8 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Marketing",
-   "firstSeen": "2026-11-19"
+   "firstSeen": "2026-11-19",
+   "misses": 1
   },
   {
    "id": "732ac3f4f151",
@@ -2569,19 +2343,32 @@
    "firstSeen": "2026-11-16"
   },
   {
-   "id": "42520c91fcf6",
-   "title": "Forward Deployed Intern",
-   "org": "Andercore",
-   "city": "Berlin",
+   "id": "ad72cee0d708",
+   "title": "Praktikum / Werkstudententätigkeit Recruiting & Personalberatung (m/w/d)",
+   "org": "ANDERS CONSULTING & Cie. GmbH",
+   "city": "Munich",
    "country": "germany",
    "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/andercore/forward-deployed-intern-berlin-410084",
+   "url": "https://www.arbeitnow.com/jobs/companies/anders-consulting-cie-gmbh/praktikum-werkstudententatigkeit-recruiting-personalberatung-munich-98675",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Business Development",
-   "firstSeen": "2026-11-14",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Recruitment and Selection",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "484134448309",
+   "title": "Werkstudent Recruiting (m/w/d)",
+   "org": "ANDERS CONSULTING & Cie. GmbH",
+   "city": "Düsseldorf",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/anders-consulting-cie-gmbh/werkstudent-recruiting-dusseldorf-64861",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Recruitment and Selection",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "205314943f49",
@@ -2595,7 +2382,8 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Business Consulting",
-   "firstSeen": "2026-11-17"
+   "firstSeen": "2026-11-17",
+   "misses": 1
   },
   {
    "id": "eb8287893985",
@@ -2640,6 +2428,20 @@
    "firstSeen": "2026-11-21"
   },
   {
+   "id": "29a157c1a6f4",
+   "title": "Tax Technology Praktikum / Werkstudent (m/w/d) | Digitale Steuerlösungen",
+   "org": "AnyTax",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/anytax/tax-technology-praktikum-werkstudent-digitale-steuerlosungen-berlin-464797",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Product Management",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "d26e1d6e8d7b",
    "title": "Working Student Customer Success DACH (m/f/d)",
    "org": "appinio",
@@ -2652,21 +2454,6 @@
    "posted": "2026-11-19",
    "team": "Customer Success",
    "firstSeen": "2026-11-19"
-  },
-  {
-   "id": "e6bccd682e2d",
-   "title": "Founder's Associate - Internship or Working Student (m/w/d)",
-   "org": "ARCHIVE GmbH",
-   "city": "Munich",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/archive-gmbh/founders-associate-internship-or-working-student-munich-181655",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Business Operations",
-   "firstSeen": "2026-11-17",
-   "misses": 1
   },
   {
    "id": "0aa87d20afb3",
@@ -2725,21 +2512,6 @@
    "firstSeen": "2026-11-16"
   },
   {
-   "id": "44ff396a5527",
-   "title": "Praktikant (m/w/d) im Bereich Online-Marketing",
-   "org": "avalia GmbH & Co. KG",
-   "city": "Dresden",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/avalia-gmbh-co-kg/praktikant-im-bereich-online-marketing-dresden-413004",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Online Marketing",
-   "firstSeen": "2026-11-16",
-   "misses": 1
-  },
-  {
    "id": "47bf7efbb280",
    "title": "Praktikum Social Media & Content (inkl. Video-Schnitt)",
    "org": "Aventuras UG",
@@ -2751,7 +2523,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Social Media Manager",
-   "firstSeen": "2026-11-16"
+   "firstSeen": "2026-11-16",
+   "misses": 1
   },
   {
    "id": "075e64282aa3",
@@ -2765,7 +2538,50 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Software Development",
-   "firstSeen": "2026-11-16"
+   "firstSeen": "2026-11-16",
+   "misses": 1
+  },
+  {
+   "id": "efb7433513e5",
+   "title": "Working Student | Assistant Seedings & Events (m/w/d)",
+   "org": "AzureAgency GmbH",
+   "city": "Cologne",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/azureagency-gmbh/working-student-assistant-seedings-events-cologne-370096",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "bac95691ab3d",
+   "title": "Content & Community Marketing Intern: Mandatory Internship",
+   "org": "baesh social UG",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/baesh-social-ug/content-community-marketing-intern-mandatory-internship-berlin-199614",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "562178101d03",
+   "title": "Founder Associate Physical AI & Robotics (m/f/d) | full-time or gap-year intern",
+   "org": "Batch Robotics GmbH",
+   "city": "Munich",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/batch-robotics-gmbh/founder-associate-physical-ai-robotics-full-time-or-gap-year-intern-munich-175184",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "6aec7749cbe7",
@@ -2782,19 +2598,33 @@
    "firstSeen": "2026-11-16"
   },
   {
-   "id": "6f414e3d6ee9",
-   "title": "Werkstudent*in Marketing und Social Media",
-   "org": "BAVAROI Kultur + Produkt GmbH",
+   "id": "4bae85dd166e",
+   "title": "Working Student Influencer Marketing",
+   "org": "Beducated GmbH",
    "city": "Munich",
    "country": "germany",
    "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/bavaroi-kultur-produkt-gmbh/werkstudentin-marketing-und-social-media-munich-336739",
+   "url": "https://www.arbeitnow.com/jobs/companies/beducated-gmbh/working-student-influencer-marketing-munich-384840",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-20",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "9bc8c2811187",
+   "title": "Praktikum (m/w/d) Praktikum Social Media & Content Marketing",
+   "org": "Bela Living GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/bela-living-gmbh/praktikum-praktikum-social-media-content-marketing-berlin-158687",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
    "team": "Social Media Manager",
-   "firstSeen": "2026-11-20",
-   "misses": 1
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "bab514a89bcd",
@@ -2892,8 +2722,7 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Recruitment and Selection",
-   "firstSeen": "2026-11-18",
-   "misses": 1
+   "firstSeen": "2026-11-18"
   },
   {
    "id": "5158d042c6ea",
@@ -2924,6 +2753,34 @@
    "firstSeen": "2026-11-21"
   },
   {
+   "id": "cda06c53024d",
+   "title": "Praktikum HR-Management (m/w/d) in Hannover",
+   "org": "bundesweit.digital GmbH",
+   "city": "Hanover",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/bundesweitdigital-gmbh/praktikum-hr-management-in-hannover-hanover-450436",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Personnel Specialist",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "13e94a490c15",
+   "title": "Werkstudent (m/w/d) Recruiting & HR",
+   "org": "Burner Marketing GmbH",
+   "city": "Erlangen",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/burner-marketing-gmbh/werkstudent-recruiting-hr-erlangen-290827",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Recruitment and Selection",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "20abb7767a1f",
    "title": "Werkstudent:in Social Media Marketing (M/W/D)",
    "org": "care4coffee GmbH",
@@ -2949,8 +2806,7 @@
    "board": "germany",
    "posted": "2026-11-19",
    "team": "Business Analytics & Planning (BI)",
-   "firstSeen": "2026-11-20",
-   "misses": 1
+   "firstSeen": "2026-11-20"
   },
   {
    "id": "5fa55d4616c8",
@@ -3031,34 +2887,18 @@
    "detail": 1
   },
   {
-   "id": "af4e805055f9",
-   "title": "Working Student Legal Operations and Technology",
-   "org": "celonis",
-   "city": "Munich",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/celonis/working-student-legal-operations-and-technology-munich-482669",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Legal",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "2ac22334dd8d",
-   "title": "Bezahltes Praktikum im Content Marketing (m/w/d) - geballte Praxiserfahrung sammeln - 100% remote möglich",
-   "org": "chocoBRAIN",
-   "city": "Heidelberg",
+   "id": "004f47172955",
+   "title": "Praktikant (m/w/d) im Office der Geschäftsführung",
+   "org": "CERTA",
+   "city": "Cologne",
    "country": "germany",
    "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/chocobrain/bezahltes-praktikum-im-content-marketing-geballte-praxiserfahrung-sammeln-100-remote-moglich-heidelberg-379291",
+   "url": "https://www.arbeitnow.com/jobs/companies/certa/praktikant-im-office-der-geschaftsfuhrung-cologne-440629",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Social Media Manager",
-   "firstSeen": "2026-11-16",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "1a588abb27ad",
@@ -3185,22 +3025,22 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Business Development",
-   "firstSeen": "2026-11-19"
+   "firstSeen": "2026-11-19",
+   "misses": 1
   },
   {
-   "id": "8b30ec6a561d",
-   "title": "Praktikum \"Content Marketing Manager\"",
-   "org": "contentkueche GmbH",
-   "city": "Munich",
+   "id": "40ce07f81415",
+   "title": "Werkstudent Wirtschaftsinformatik / IT (m/w/d) - 20h/Woche",
+   "org": "Conesso",
+   "city": "Köln",
    "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/contentkueche-gmbh/praktikum-content-marketing-manager-munich-412588",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/conesso/werkstudent-wirtschaftsinformatik-it-20h-woche-koln-71821",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Social Media Manager",
-   "firstSeen": "2026-11-17",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Business Development",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "fec39b8284a5",
@@ -3217,6 +3057,20 @@
    "firstSeen": "2026-11-19"
   },
   {
+   "id": "02c70715d08f",
+   "title": "Working Student - Medical AI Data Annotation & Clinical Research",
+   "org": "cureVision GmbH",
+   "city": "Munich",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/curevision-gmbh/working-student-medical-ai-data-annotation-clinical-research-munich-294686",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Data Processing",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "08f715b71a27",
    "title": "Internship (Investment Team) at D11Z. Ventures, a data-driven Venture Capital Fund (Munich) (m/f/d)",
    "org": "D11Z Ventures",
@@ -3228,7 +3082,22 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Asset",
-   "firstSeen": "2026-11-17"
+   "firstSeen": "2026-11-17",
+   "misses": 1
+  },
+  {
+   "id": "2ca6517fc1d8",
+   "title": "Werkstudent HR (m/w/d)",
+   "org": "Daikin Refrigerants Frankfurt GmbH",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/daikin-refrigerants-frankfurt-gmbh/werkstudent-hr-frankfurt-am-main-199117",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Personnel Specialist",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "b338e63f7925",
@@ -3263,6 +3132,20 @@
    "detail": 1
   },
   {
+   "id": "e1c653006217",
+   "title": "Software Engineering Intern (2027 Start) - Berlin",
+   "org": "databricks",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/databricks/software-engineering-intern-2027-start-berlin-356841",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "University Recruiting - Engineering",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "c18bfbb862b9",
    "title": "Werkstudent:in / Praktikant:in Customer Success & Operations (m/w/d)",
    "org": "Decari GmbH",
@@ -3277,20 +3160,18 @@
    "firstSeen": "2026-11-16"
   },
   {
-   "id": "41cddfa55de5",
-   "title": "REMOTE Praktikum im Bereich Online-Marketing (Digital Publishing)",
-   "org": "Depeur UG",
-   "city": "Hamburg",
+   "id": "3a96c6817588",
+   "title": "Internship",
+   "org": "Deepsense",
+   "city": "Berlin",
    "country": "germany",
    "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/depeur-ug/remote-praktikum-im-bereich-online-marketing-digital-publishing-hamburg-75813",
+   "url": "https://www.arbeitnow.com/jobs/companies/deepsense/internship-berlin-387763",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-16",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Asset",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "e4675b4671c8",
@@ -3304,7 +3185,22 @@
    "board": "germany",
    "posted": "2026-11-16",
    "team": "Private Banking",
-   "firstSeen": "2026-11-16"
+   "firstSeen": "2026-11-16",
+   "misses": 1
+  },
+  {
+   "id": "5a362b133546",
+   "title": "Werkstudent Kundenberatung im Pflegebereich (Remote Möglichkeit)",
+   "org": "Deutsche Pflegegemeinschaft Sankt Josef GmbH (Berlin)",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/deutsche-pflegegemeinschaft-sankt-josef-gmbh-berlin/werkstudent-kundenberatung-im-pflegebereich-remote-moglichkeit-berlin-485640",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Customer Service",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "9969cd31bafb",
@@ -3321,6 +3217,20 @@
    "firstSeen": "2026-11-16"
   },
   {
+   "id": "4cc986e9f137",
+   "title": "Werkstudent Vertriebsunterstützung (m/w/d)",
+   "org": "die Bayerische",
+   "city": "München",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/die-bayerische/werkstudent-vertriebsunterstutzung-munchen-455994",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Vertrieb",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "967b186ded57",
    "title": "Research Working Student, Microbiology",
    "org": "Differential.bio",
@@ -3333,22 +3243,6 @@
    "posted": "2026-11-19",
    "team": "Research & Development",
    "firstSeen": "2026-11-19"
-  },
-  {
-   "id": "5a70e7f3254c",
-   "title": "Werkstudent Webdesign / Marketing (m/w/d)",
-   "org": "Digifom GmbH",
-   "city": "Dortmund",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/digifom-gmbh/werkstudent-webdesign-marketing-dortmund-400753",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-17",
-   "misses": 1
   },
   {
    "id": "e1acae8bad91",
@@ -3377,6 +3271,35 @@
    "posted": "2026-11-19",
    "team": "Marketing Creative",
    "firstSeen": "2026-11-19"
+  },
+  {
+   "id": "07aa522be439",
+   "title": "Marketing & KI - Personal Branding auf Social Media | Praktikum in jungem StartUp",
+   "org": "Digital Trendteam",
+   "city": "Mainz",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/digital-trendteam/marketing-ki-personal-branding-auf-social-media-praktikum-in-jungem-startup-mainz-53522",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "ea27d7602d67",
+   "title": "Pflichtpraktikant Business Development (m/w/d)",
+   "org": "Digitalagenten",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/digitalagenten/pflichtpraktikant-business-development-berlin-251779",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "09097b123273",
@@ -3465,22 +3388,6 @@
    "posted": "2026-11-19",
    "team": "Engineering",
    "firstSeen": "2026-11-19"
-  },
-  {
-   "id": "d84056912a7e",
-   "title": "Werkstudent:in Operations & Kundenbetreuung (m/w/d)",
-   "org": "docunest GmbH",
-   "city": "Berlin",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/docunest-gmbh/werkstudentin-operations-kundenbetreuung-berlin-473053",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-19",
-   "misses": 1
   },
   {
    "id": "e64b467b5875",
@@ -3792,6 +3699,21 @@
    "firstSeen": "2026-11-20"
   },
   {
+   "id": "943cb2f7b089",
+   "title": "Werkstudent LinkedIn Content & Copywriting (B2B) | remote möglich, 10–20 Std./Woche",
+   "org": "F& | Focus & Flow GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/f-focus-flow-gmbh/werkstudent-linkedin-content-copywriting-b2b-remote-moglich-10-20-std-woche-berlin-104935",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "9f6c1ae7af3e",
    "title": "Praktikant im Investment Banking (m/w/d) - Attraktive Vergütung in Höhe von (brutto) €3.500,- pro Monat",
    "org": "FCF Fox Corporate Finance GmbH",
@@ -3821,6 +3743,21 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "id": "f59283293fd1",
+   "title": "Pflichtpraktikum (unbezahlt) Femtec Startup",
+   "org": "Femlives",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/femlives/pflichtpraktikum-unbezahlt-femtec-startup-berlin-326671",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "16a9f9662dca",
    "title": "Pflichtpraktikum Marketing & Sales Startup",
    "org": "Fill the Gap",
@@ -3836,6 +3773,20 @@
    "firstSeen": "2026-11-20"
   },
   {
+   "id": "4ada28cde0b8",
+   "title": "Werkstudent:in (m/w/d) - Projektierung & Umsetzung, Batteriespeicher (BESS)",
+   "org": "FION Energy GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/fion-energy-gmbh/werkstudentin-projektierung-umsetzung-batteriespeicher-bess-berlin-357367",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Power Engineering and Environmental Engineering",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "1dc5dc04e6f5",
    "title": "Founder's Associate Intern (m/w/d)",
    "org": "Fioro Technology GmbH",
@@ -3848,6 +3799,34 @@
    "posted": "2026-11-17",
    "team": "Business Operations",
    "firstSeen": "2026-11-17"
+  },
+  {
+   "id": "ce1d3c68ba4f",
+   "title": "Praktikum Personal/Büromanagement (m/w/d) - ab Mitte September 2026",
+   "org": "First Mountain Hotel GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/first-mountain-hotel-gmbh/praktikum-personal-buromanagement-ab-mitte-september-2026-berlin-269998",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Personnel Specialist",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "471591d2ff11",
+   "title": "Werkstudent (m/w/d) Energiewirtschaft / Einspeiseprozesse (eMobility Powerbank)",
+   "org": "Fleetboost GmbH",
+   "city": "Greven",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/fleetboost-gmbh/werkstudent-energiewirtschaft-einspeiseprozesse-emobility-powerbank-greven-263103",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Power Engineering and Environmental Engineering",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "33ca9a630882",
@@ -3892,6 +3871,20 @@
    "firstSeen": "2026-11-21"
   },
   {
+   "id": "aefbcecd335d",
+   "title": "Founders Associate Praktikum (Full Time) DtC Health Brand (m/w/d)",
+   "org": "FORTĒA®",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/fortea/founders-associate-praktikum-full-time-dtc-health-brand-berlin-212305",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "541f9ac45c80",
    "title": "Werkstudent - Aushilfe im Bereich Marketing (m/w/d)",
    "org": "Franz Kohlack Consulting",
@@ -3903,7 +3896,36 @@
    "board": "germany",
    "posted": "2026-11-16",
    "team": "Marketing Assistant",
-   "firstSeen": "2026-11-16"
+   "firstSeen": "2026-11-16",
+   "misses": 1
+  },
+  {
+   "id": "89eb3a6cdbac",
+   "title": "Praktikum Vertrieb & Partneraufbau - Nachhaltiges Food Startup (m/w/d)",
+   "org": "Froyda",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/froyda/praktikum-vertrieb-partneraufbau-nachhaltiges-food-startup-berlin-391166",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Development",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "5fc54178a97b",
+   "title": "BRAND / SOCIAL MEDIA INTERN (full-/part-time; consumer brand pre-launch)",
+   "org": "GASOLINA",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/gasolina/brand-social-media-intern-full-part-time-consumer-brand-pre-launch-berlin-300168",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "72aa854b9c68",
@@ -3918,7 +3940,8 @@
    "posted": "2026-11-17",
    "team": "Remote",
    "mode": "Remote",
-   "firstSeen": "2026-11-17"
+   "firstSeen": "2026-11-17",
+   "misses": 1
   },
   {
    "id": "b4f3ce45a767",
@@ -3946,50 +3969,6 @@
    "board": "germany",
    "posted": "2026-11-20",
    "team": "Marketing Manager",
-   "firstSeen": "2026-11-20"
-  },
-  {
-   "id": "8fa114c90298",
-   "title": "Praktikant Business Development & AI (m/w/d)",
-   "org": "GOKIXX GmbH",
-   "city": "Cologne",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/gokixx-gmbh/praktikant-business-development-ai-cologne-430713",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Business Development",
-   "firstSeen": "2026-11-20",
-   "misses": 1
-  },
-  {
-   "id": "e29b2e8876f8",
-   "title": "Praktikant Marketing & Sponsoring (m/w/d)",
-   "org": "GOKIXX GmbH",
-   "city": "Cologne",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/gokixx-gmbh/praktikant-marketing-sponsoring-cologne-370077",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Marketing Assistant",
-   "firstSeen": "2026-11-20",
-   "misses": 1
-  },
-  {
-   "id": "eed3eee7e752",
-   "title": "Praktikant Operations Management (m/w/d)",
-   "org": "GOKIXX GmbH",
-   "city": "Cologne",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/gokixx-gmbh/praktikant-operations-management-cologne-315015",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Business Operations",
    "firstSeen": "2026-11-20",
    "misses": 1
   },
@@ -4005,7 +3984,8 @@
    "board": "germany",
    "posted": "2026-11-20",
    "team": "Training",
-   "firstSeen": "2026-11-20"
+   "firstSeen": "2026-11-20",
+   "misses": 1
   },
   {
    "id": "4e0da88b3b05",
@@ -4047,7 +4027,8 @@
    "board": "germany",
    "posted": "2026-11-20",
    "team": "Power Engineering and Environmental Engineering",
-   "firstSeen": "2026-11-20"
+   "firstSeen": "2026-11-20",
+   "misses": 1
   },
   {
    "id": "65333b45c080",
@@ -4064,6 +4045,62 @@
    "firstSeen": "2026-11-14"
   },
   {
+   "id": "b2f0eedb44f7",
+   "title": "Praktikant:in",
+   "org": "Grey Solutions GmbH",
+   "city": "Düsseldorf",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/grey-solutions-gmbh/praktikantin-dusseldorf-143955",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Recruitment and Selection",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "fb6466565853",
+   "title": "Content Creator (m/w/d) - Mini Job / Werkstudent",
+   "org": "Gusti Leder GmbH",
+   "city": "Rostock",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/gusti-leder-gmbh/content-creator-mini-job-werkstudent-rostock-244076",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "82a1ca598269",
+   "title": "Werkstudentin im Bereich E-Commerce / Marketplace (m/w/d)",
+   "org": "Gusti Leder GmbH",
+   "city": "Rostock",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/gusti-leder-gmbh/werkstudentin-im-bereich-e-commerce-marketplace-rostock-439995",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Sales",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "fb142fafcf09",
+   "title": "(PR-)Praktikum - Berlin (m/w/d)",
+   "org": "haebmau AG",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/haebmau-ag/pr-praktikum-berlin-13041",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Public Relations",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "6558fab3883c",
    "title": "(PR-)Praktikum München (m/w/d)",
    "org": "haebmau AG",
@@ -4076,6 +4113,34 @@
    "posted": "2026-11-16",
    "team": "Public Relations",
    "firstSeen": "2026-11-17"
+  },
+  {
+   "id": "d5eabb2f1353",
+   "title": "Werkstudent*in (m/w/d) - Marketing",
+   "org": "HAIAR GmbH",
+   "city": "Münster",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/haiar-gmbh/werkstudentin-marketing-munster-42830",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "5812fa28a434",
+   "title": "Werkstudent CRM-Systemanpassung (m/w/d)",
+   "org": "Hallo Welt! GmbH",
+   "city": "Regensburg",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/hallo-welt-gmbh/werkstudent-crm-systemanpassung-regensburg-132332",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "SAP/ERP Consulting",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "83f566fed315",
@@ -4120,21 +4185,6 @@
    "firstSeen": "2026-11-19"
   },
   {
-   "id": "6e483f6f6c1e",
-   "title": "Praktikanten (m/w) für den Bereich M&A Corporate Finance",
-   "org": "HCF Hanse Coprorate Finance GmbH",
-   "city": "Munich",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/hcf-hanse-coprorate-finance-gmbh/praktikanten-m-w-fur-den-bereich-ma-corporate-finance-munich-159471",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Mergers & Acquisitions",
-   "firstSeen": "2026-11-16",
-   "misses": 1
-  },
-  {
    "id": "755d1a279e29",
    "title": "Praktikantin/ Praktikant (w/m/d) - Online Marketing - Deutschland - Remote - unbezahlt",
    "org": "Heilig und Reuther eCommerce GbR",
@@ -4146,7 +4196,22 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Online Marketing",
-   "firstSeen": "2026-11-18"
+   "firstSeen": "2026-11-18",
+   "misses": 1
+  },
+  {
+   "id": "8d92c9678f02",
+   "title": "Founder's Associate Intern - Construction Growth Operations (m/w/d)",
+   "org": "Heizmüller GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/heizmuller-gmbh/founders-associate-intern-construction-growth-operations-berlin-65903",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "d7607eea5b10",
@@ -4161,6 +4226,20 @@
    "posted": "2026-11-20",
    "team": "Graphic Arts and Communication Design",
    "firstSeen": "2026-11-20"
+  },
+  {
+   "id": "162bd05f30fc",
+   "title": "Real Estate Acquisitions - Off-cycle Internship",
+   "org": "Home & Co Management GmbH",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/home-co-management-gmbh/real-estate-acquisitions-off-cycle-internship-frankfurt-am-main-314417",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Asset",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "1f80266e912a",
@@ -4314,7 +4393,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Career Starters",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
   },
   {
    "id": "e530098c0f8f",
@@ -4328,7 +4408,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Career Starters",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
   },
   {
    "id": "e8e928216ca8",
@@ -4342,7 +4423,8 @@
    "board": "germany",
    "posted": "2026-11-20",
    "team": "Career Starters",
-   "firstSeen": "2026-11-20"
+   "firstSeen": "2026-11-20",
+   "misses": 1
   },
   {
    "id": "120e1abc6eff",
@@ -4359,6 +4441,20 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "id": "6b2cb503c1e2",
+   "title": "Praktikum Data Governance & Security im Start-up (m/w/d)",
+   "org": "Implify",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/implify/praktikum-data-governance-security-im-start-up-frankfurt-am-main-442153",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Data Processing",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "0bdbb5f2a74d",
    "title": "Build Your Own Internship (m/w/d)",
    "org": "inca",
@@ -4370,7 +4466,8 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Data Scientist",
-   "firstSeen": "2026-11-18"
+   "firstSeen": "2026-11-18",
+   "misses": 1
   },
   {
    "id": "5664629ec49e",
@@ -4416,6 +4513,34 @@
    "firstSeen": "2026-11-19"
   },
   {
+   "id": "6955512b8521",
+   "title": "Werkstudent*in (m/w/d) im Bereich Consulting für Geografische Informationssysteme",
+   "org": "inno2grid GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/inno2grid-gmbh/werkstudentin-im-bereich-consulting-fur-geografische-informationssysteme-berlin-103752",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Information Systems",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "570cdc384939",
+   "title": "Werkstudent*in (m/w/d) UI/UX Design",
+   "org": "inno2grid GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/inno2grid-gmbh/werkstudentin-ui-ux-design-berlin-273014",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Media",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "d15f1c4e78d5",
    "title": "Recruiter (m/w/d) für unsere Bewerberhotline – Vollzeit / Werkstudent / Quereinsteiger",
    "org": "InnoSolv GmbH",
@@ -4444,19 +4569,18 @@
    "firstSeen": "2026-11-19"
   },
   {
-   "id": "18a1d3779410",
-   "title": "Working Student, Ground Systems (m/f/d)",
-   "org": "isaraerospace",
-   "city": "Ottobrunn",
+   "id": "9310eef31027",
+   "title": "Praktikant (m/w/d), Pflichtpraktikum im Bereich Ökotrophologie / physikalisch technischer Assistent (m/w/d)",
+   "org": "ipi Institute für Produkt-Markt-Forschung GmbH",
+   "city": "Stuttgart",
    "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/isaraerospace/working-student-ground-systems-ottobrunn-bavaria-40011",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/ipi-institute-fur-produkt-markt-forschung-gmbh/praktikant-pflichtpraktikum-im-bereich-okotrophologie-physikalisch-technischer-assistent-stuttgart-381960",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Ground Systems",
-   "firstSeen": "2026-11-14",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Development",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "b8a3fd322aff",
@@ -4487,19 +4611,60 @@
    "firstSeen": "2026-11-16"
   },
   {
-   "id": "3ed1888df766",
-   "title": "Pflichtpraktikum: Social Media Management #Jewelmusic",
-   "org": "JewelMusic",
+   "id": "6d6731517c7b",
+   "title": "Founders Associate Praktikum (m/w/d)",
+   "org": "itemdrop GmbH",
+   "city": "Düsseldorf",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/itemdrop-gmbh/founders-associate-praktikum-dusseldorf-158020",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "1068699b2980",
+   "title": "Werkstudent:in Produktfotografie, Listing & Live-Shopping (m/w/d)",
+   "org": "Julery",
+   "city": "Düsseldorf",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/julery/werkstudentin-produktfotografie-listing-live-shopping-dusseldorf-488938",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Online Marketing",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "69f89f9a6fe5",
+   "title": "Internship - International Social Media & Community Management",
+   "org": "Juvigo GmbH",
    "city": "Berlin",
    "country": "germany",
    "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/jewelmusic/pflichtpraktikum-social-media-management-jewelmusic-berlin-494524",
+   "url": "https://www.arbeitnow.com/jobs/companies/juvigo-gmbh/internship-international-social-media-community-management-berlin-60777",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-16",
+   "posted": "2026-11-22",
    "team": "Social Media Manager",
-   "firstSeen": "2026-11-17",
-   "misses": 1
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "63b8b1dfd84c",
+   "title": "Internship - International Travel Influencer",
+   "org": "Juvigo GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/juvigo-gmbh/internship-international-travel-influencer-berlin-368585",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "a6b884375fbd",
@@ -4527,7 +4692,8 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Finance",
-   "firstSeen": "2026-11-18"
+   "firstSeen": "2026-11-18",
+   "misses": 1
   },
   {
    "id": "a728dd3a677b",
@@ -4544,6 +4710,20 @@
    "firstSeen": "2026-11-20"
   },
   {
+   "id": "48ef1925ec3f",
+   "title": "Working Student Product Engineering (Ruby on Rails) for Auction Platform Kickdown (all genders)",
+   "org": "Kickdown GmbH",
+   "city": "Hamburg",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/kickdown-gmbh/working-student-product-engineering-ruby-on-rails-for-auction-platform-kickdown-all-genders-hamburg-460221",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Software Development",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "bd03a3754362",
    "title": "Praktikum als 3D-Artist (w/m/d)",
    "org": "Kleeblatt Medien GmbH",
@@ -4555,7 +4735,8 @@
    "board": "germany",
    "posted": "2026-11-16",
    "team": "Media",
-   "firstSeen": "2026-11-16"
+   "firstSeen": "2026-11-16",
+   "misses": 1
   },
   {
    "id": "e90774e2371e",
@@ -4601,6 +4782,21 @@
    "firstSeen": "2026-11-16"
   },
   {
+   "id": "3f196f6184c0",
+   "title": "Praktikum Marketing & Growth (m/w/d)",
+   "org": "KLUUU",
+   "city": "Cologne",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/kluuu/praktikum-marketing-growth-cologne-302410",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "db22aad93ffa",
    "title": "Founders Associate Intern (m/w/d)",
    "org": "KnowWay GmbH",
@@ -4643,6 +4839,33 @@
    "firstSeen": "2026-11-17"
   },
   {
+   "id": "07e05db378a4",
+   "title": "Werkstudent (m/w/d) im Verkauf Mode und Bekleidung",
+   "org": "KULT | OLYMP & HADES",
+   "city": "Aschaffenburg",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/kult-olymp-hades/werkstudent-im-verkauf-mode-und-bekleidung-aschaffenburg-110572",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "ed3aae8ef739",
+   "title": "Praktikanten im Bereich Projektentwicklung Photovoltaik (m/w/d)",
+   "org": "KWA Contracting AG",
+   "city": "Stuttgart",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/kwa-contracting-ag/praktikanten-im-bereich-projektentwicklung-photovoltaik-stuttgart-204580",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Power Engineering and Environmental Engineering",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "661900007c60",
    "title": "Sales Assistant, Werkstudent (m/w/d), Bikini/Kadewe Berlin",
    "org": "LAKRIDS BY BÜLOW",
@@ -4671,6 +4894,20 @@
    "firstSeen": "2026-11-16"
   },
   {
+   "id": "3e9c1b4ae623",
+   "title": "Werkstudent (m/w/d) im Bereich Projektentwicklung Energieversorgungsanlagen",
+   "org": "LAVA ENERGY",
+   "city": "Leipzig",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/lava-energy/werkstudent-im-bereich-projektentwicklung-energieversorgungsanlagen-leipzig-201495",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Power Engineering and Environmental Engineering",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "332672301fc5",
    "title": "Praktikum im Online Marketing",
    "org": "Lebepur",
@@ -4683,6 +4920,20 @@
    "posted": "2026-11-19",
    "team": "Social Media Manager",
    "firstSeen": "2026-11-19"
+  },
+  {
+   "id": "4b60baa0bfea",
+   "title": "Werkstudent (m/w/d) Hospitality Research & Data",
+   "org": "Leisure One GmbH",
+   "city": "Hamburg",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/leisure-one-gmbh/werkstudent-hospitality-research-data-hamburg-114931",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Data Scientist",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "1814b787b050",
@@ -4727,6 +4978,34 @@
    "firstSeen": "2026-11-17"
   },
   {
+   "id": "fb26417f8764",
+   "title": "Founders Associate Internship (m/w/d)",
+   "org": "LIMITD by Wunderproducts GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/limitd-by-wunderproducts-gmbh/founders-associate-internship-berlin-322050",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "621d35812ad2",
+   "title": "Praktikum - Business Development (m/w/d)",
+   "org": "LIMITD by Wunderproducts GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/limitd-by-wunderproducts-gmbh/praktikum-business-development-berlin-341992",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Development",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "d6134c90176e",
    "title": "Praktikum Social Media (m/w/d) ab sofort - mind. 6 Monate (getvuel)",
    "org": "Lini's Bites",
@@ -4741,6 +5020,20 @@
    "firstSeen": "2026-11-20"
   },
   {
+   "id": "7c642979de1e",
+   "title": "Technical Solutions Engineer (Junior oder Werkstudent*in) (m/w/d)",
+   "org": "Linkster GmbH",
+   "city": "Essen",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/linkster-gmbh/technical-solutions-engineer-junior-oder-werkstudentin-essen-366061",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Software Development",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "08a4cc0139d1",
    "title": "Forward Deployed Engineer Intern (all genders)",
    "org": "Lio",
@@ -4753,6 +5046,20 @@
    "posted": "2026-11-19",
    "team": "Engineering",
    "firstSeen": "2026-11-19"
+  },
+  {
+   "id": "c803d32dca67",
+   "title": "Werkstudent KI & Automatisierung (m/w/d)",
+   "org": "Lippe Personal GmbH",
+   "city": "Düsseldorf",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/lippe-personal-gmbh/werkstudent-ki-automatisierung-dusseldorf-434424",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Produkt",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "1337eb2bc1c0",
@@ -4770,6 +5077,20 @@
    "firstSeen": "2026-11-17"
   },
   {
+   "id": "91f8ad86560d",
+   "title": "Praktikant (m/w/d) Mergers & Acquisitions - Düsseldorf / Hamburg / Frankfurt",
+   "org": "Livingstone Partners GmbH",
+   "city": "Düsseldorf",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/livingstone-partners-gmbh/praktikant-mergers-acquisitions-dusseldorf-hamburg-frankfurt-496248",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Mergers & Acquisitions",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "f8c5e18acbb5",
    "title": "Junior IT-Security Consultant/Werkstudent:in (m/w/d) German C1",
    "org": "LocateRisk GmbH",
@@ -4783,6 +5104,20 @@
    "team": "Remote",
    "mode": "Remote",
    "firstSeen": "2026-11-16"
+  },
+  {
+   "id": "4df4fe356ed8",
+   "title": "Founders Associate Intern",
+   "org": "Logistica OS",
+   "city": "Munich",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/logistica-os/founders-associate-intern-munich-367785",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "1a98d4729a6b",
@@ -4822,10 +5157,9 @@
    "url": "https://www.arbeitnow.com/jobs/companies/loyamo-gmbh/werkstudent-content-marketing-munich-457143",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-19",
-   "team": "Marketing and Communication",
-   "firstSeen": "2026-11-19",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-19"
   },
   {
    "id": "884fadaa5b76",
@@ -4909,8 +5243,7 @@
    "board": "germany",
    "posted": "2026-11-19",
    "team": "Project Management",
-   "firstSeen": "2026-11-19",
-   "misses": 1
+   "firstSeen": "2026-11-19"
   },
   {
    "id": "c7a04fa73867",
@@ -4925,21 +5258,6 @@
    "posted": "2026-11-19",
    "team": "Software Development",
    "firstSeen": "2026-11-19"
-  },
-  {
-   "id": "6698c90f7477",
-   "title": "Werkstudent TikTok Live-Shopping & Content Creation (m/w/d) – Deutsch C1",
-   "org": "MAOMAO Technologies",
-   "city": "Berlin",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/maomao-technologies/werkstudent-tiktok-live-shopping-content-creation-berlin-495688",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Social Media Manager",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "36ab107068d8",
@@ -4967,7 +5285,8 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Graphic Arts and Communication Design",
-   "firstSeen": "2026-11-17"
+   "firstSeen": "2026-11-17",
+   "misses": 1
   },
   {
    "id": "77f6b13ff495",
@@ -4996,21 +5315,6 @@
    "posted": "2026-11-18",
    "team": "Business Operations",
    "firstSeen": "2026-11-18"
-  },
-  {
-   "id": "c15c038971bb",
-   "title": "Praktikum Tourismusmanagement – Customer Service & Operations (m/w/d)",
-   "org": "Meine Landausflüge",
-   "city": "Hamburg",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/meine-landausfluge/praktikum-tourismusmanagement-customer-service-operations-hamburg-313543",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Customer Service",
-   "firstSeen": "2026-11-19",
-   "misses": 1
   },
   {
    "id": "74c75ba7cc90",
@@ -5069,6 +5373,20 @@
    "firstSeen": "2026-11-16"
   },
   {
+   "id": "3c35657d60aa",
+   "title": "Werkstudent (m/w/d) - IT Consulting & KI",
+   "org": "MGRP",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/mgrp/werkstudent-it-consulting-ki-frankfurt-am-main-78603",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Consulting",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "f79e92af14cd",
    "title": "Werkstudent:in Software Engineering (m/w/d)",
    "org": "Mischok GmbH",
@@ -5080,7 +5398,8 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Software Development",
-   "firstSeen": "2026-11-17"
+   "firstSeen": "2026-11-17",
+   "misses": 1
   },
   {
    "id": "da9ed5c4c715",
@@ -5106,24 +5425,9 @@
    "url": "https://www.arbeitnow.com/jobs/companies/misiak/praktikum-fachhochschulreife-jahrespraktikum-fachabitur-musik-medien-hamburg-2026-191106",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Marketing and Communication",
+   "posted": "2026-11-22",
+   "team": "Online Marketing",
    "firstSeen": "2026-11-20"
-  },
-  {
-   "id": "0a710d77770e",
-   "title": "Praktikant*innen (Sprache: Deutsch) Fußball Redaktion/Social-Media",
-   "org": "mmc sport GmbH & Co KG",
-   "city": "Munich",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/mmc-sport-gmbh-co-kg/praktikantinnen-sprache-deutsch-fussball-redaktion-social-media-munich-343830",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Social Media Manager",
-   "firstSeen": "2026-11-17",
-   "misses": 1
   },
   {
    "id": "d717d45e4419",
@@ -5166,22 +5470,65 @@
    "posted": "2026-11-17",
    "team": "Remote",
    "mode": "Remote",
-   "firstSeen": "2026-11-17"
-  },
-  {
-   "id": "6ac72eedeb9d",
-   "title": "Werkstudent / Werkstudentin (w/m/d) Feldmanagement / Marktforschung",
-   "org": "Moventi GmbH",
-   "city": "Cologne",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/moventi-gmbh/werkstudent-werkstudentin-feldmanagement-marktforschung-cologne-353856",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Market Research",
    "firstSeen": "2026-11-17",
    "misses": 1
+  },
+  {
+   "id": "5e29935ea68e",
+   "title": "Jahrespraktikum:Content Agentur",
+   "org": "MOVYNG MEDIA UG",
+   "city": "Darmstadt",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/movyng-media-ug/jahrespraktikumcontent-agentur-darmstadt-433151",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "c3c8fdbceeca",
+   "title": "Werkstudent Low Code Development (m/w/d)",
+   "org": "moysies & partners GmbH",
+   "city": "Hamburg",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/moysies-partners-gmbh/werkstudent-low-code-development-hamburg-51956",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Software Development",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "41e4d3847dce",
+   "title": "Langzeitpraktikum (6 Monate+) im E-Commerce (m/w/d) - Starte deine Karriere bei uns!",
+   "org": "Mykitchens",
+   "city": "Hanover",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/mykitchens/langzeitpraktikum-6-monate-im-e-commerce-starte-deine-karriere-bei-uns-hanover-477807",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Online Marketing",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "f84959cdae3b",
+   "title": "Strategy & Operations Intern (m/w/d)",
+   "org": "myScribe GmbH",
+   "city": "Mannheim",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/myscribe-gmbh/strategy-operations-intern-mannheim-190692",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Development",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "6b2bb62154ac",
@@ -5198,6 +5545,20 @@
    "firstSeen": "2026-11-17"
   },
   {
+   "id": "f6675bbf11e0",
+   "title": "Werkstudent Retail Media / Marketplace (m/w/d)",
+   "org": "Nakoa Digital GmbH",
+   "city": "Munich",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/nakoa-digital-gmbh/werkstudent-retail-media-marketplace-munich-217824",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Online Marketing",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "f7ea7da350cc",
    "title": "Werkstudent Investments & Operations",
    "org": "Navigator Group",
@@ -5210,6 +5571,20 @@
    "posted": "2026-11-20",
    "team": "Asset",
    "firstSeen": "2026-11-18"
+  },
+  {
+   "id": "8f84723fcd34",
+   "title": "Werkstudent Verwaltungsinformatik / Digitale Verwaltungsprozesse (f/m/d)",
+   "org": "NDI - Neue Deutsche Infrastruktur GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/ndi-neue-deutsche-infrastruktur-gmbh/werkstudent-verwaltungsinformatik-digitale-verwaltungsprozesse-berlin-deutschland-hybrid-192869",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Consulting",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "22dae6c5f96c",
@@ -5238,6 +5613,20 @@
    "posted": "2026-11-20",
    "team": "IT",
    "firstSeen": "2026-11-20"
+  },
+  {
+   "id": "70100280e264",
+   "title": "Future HR Leader - Werkstudent HR (m/w/d)",
+   "org": "Neumüller Unternehmensgruppe",
+   "city": "Nuremberg",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/neumuller-unternehmensgruppe/future-hr-leader-werkstudent-hr-nuremberg-443902",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Personnel Specialist",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "459257cdd56c",
@@ -5296,21 +5685,6 @@
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "4adbe3d7d6fd",
-   "title": "Praktikant/ Werkstudent (m/w/d) im Business Development",
-   "org": "northh medical GmbH",
-   "city": "Hamburg",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/northh-medical-gmbh/praktikant-werkstudent-im-business-development-hamburg-308910",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Business Development",
-   "firstSeen": "2026-11-16",
-   "misses": 1
-  },
-  {
    "id": "724b374dafa1",
    "title": "Werkstudent:in Business Consultancy",
    "org": "Northwave Cyber Security",
@@ -5325,6 +5699,34 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "id": "d9b11ec61d21",
+   "title": "Founders Associate Praktikum - Schwerpunkt Operations (m/w/d) ab Mitte November",
+   "org": "Novosafe GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/novosafe-gmbh/founders-associate-praktikum-schwerpunkt-operations-ab-mitte-november-berlin-101057",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "bc10fd3f903c",
+   "title": "Praktikum Founders Associate (m/w/d) ab Dezember",
+   "org": "Novosafe GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/novosafe-gmbh/praktikum-founders-associate-ab-dezember-berlin-135024",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "f2a9f1dfba22",
    "title": "Werkstudent:in - Growth/ Marketing (m/w/d)",
    "org": "nu estate GmbH",
@@ -5334,7 +5736,7 @@
    "url": "https://www.arbeitnow.com/jobs/companies/nu-estate-gmbh/werkstudent-growth-marketing-hamburg-274391",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-20",
+   "posted": "2026-11-22",
    "team": "Social Media Manager",
    "firstSeen": "2026-11-20"
   },
@@ -5348,24 +5750,9 @@
    "url": "https://www.arbeitnow.com/jobs/companies/nu-estate-gmbh/werkstudent-in-tech-product-development-bi-onboarding-hamburg-136569",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-20",
+   "posted": "2026-11-22",
    "team": "Business Intelligence",
    "firstSeen": "2026-11-21"
-  },
-  {
-   "id": "76007a03542b",
-   "title": "Werkstudent Kundensupport (m/w/d)",
-   "org": "nuggit GmbH",
-   "city": "Berlin",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/nuggit-gmbh/werkstudent-kundensupport-berlin-467168",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Customer Service",
-   "firstSeen": "2026-11-17",
-   "misses": 1
   },
   {
    "id": "1fb7be208982",
@@ -5408,21 +5795,6 @@
    "board": "germany",
    "posted": "2026-11-16",
    "team": "Training",
-   "firstSeen": "2026-11-16"
-  },
-  {
-   "id": "7708680aeb2d",
-   "title": "Pflichtpraktikum/Schülerpraktikum im Bereich Modedesign (auch Home-Office möglich)",
-   "org": "Ocean Fighter",
-   "city": "Munich",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/ocean-fighter/pflichtpraktikum-schulerpraktikum-im-bereich-modedesign-auch-home-office-moglich-munich-311116",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Remote",
-   "mode": "Remote",
    "firstSeen": "2026-11-16",
    "misses": 1
   },
@@ -5438,7 +5810,8 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Entwicklung",
-   "firstSeen": "2026-11-19"
+   "firstSeen": "2026-11-19",
+   "misses": 1
   },
   {
    "id": "c1578f0edf50",
@@ -5494,7 +5867,8 @@
    "board": "germany",
    "posted": "2026-11-15",
    "team": "Customer Service",
-   "firstSeen": "2026-11-15"
+   "firstSeen": "2026-11-15",
+   "misses": 1
   },
   {
    "id": "eca0d9491402",
@@ -5525,6 +5899,34 @@
    "firstSeen": "2026-11-20"
   },
   {
+   "id": "3fa648be5a4b",
+   "title": "Visiting Associate Internship (m/w/d)",
+   "org": "PAUL Tech AG",
+   "city": "Mannheim",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/paul-tech-ag/visiting-associate-internship-mannheim-193720",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "82867cb0978c",
+   "title": "Visiting Venture Architect (m/w/d)",
+   "org": "PAUL Tech AG",
+   "city": "Mannheim",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/paul-tech-ag/visiting-venture-architect-mannheim-116448",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Consulting",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "b26fee0357c9",
    "title": "Praktikum Finanzberatung (m/w/d)",
    "org": "PF-Agency",
@@ -5550,8 +5952,7 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Personnel Specialist",
-   "firstSeen": "2026-11-17",
-   "misses": 1
+   "firstSeen": "2026-11-17"
   },
   {
    "id": "41db04430739",
@@ -5582,6 +5983,34 @@
    "firstSeen": "2026-11-19"
   },
   {
+   "id": "db2d49ec5875",
+   "title": "Praktikum Financial Consulting / Junior Consultant (m/w/d)",
+   "org": "PFP - PrivateFinancePartners GmbH",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/pfp-privatefinancepartners-gmbh/praktikum-financial-consulting-junior-consultant-frankfurt-am-main-289195",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Private Banking",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "8b2d6301bb06",
+   "title": "Werkstudent:in (m/w/d) Support Financial Consulting",
+   "org": "PFP - PrivateFinancePartners GmbH",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/pfp-privatefinancepartners-gmbh/werkstudentin-support-financial-consulting-frankfurt-am-main-387404",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Private Banking",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "b33ff42e0aee",
    "title": "Werkstudent:in (m/w/d) Support Financial Consulting",
    "org": "PFP - PrivateFinancePartners GmbH",
@@ -5596,19 +6025,18 @@
    "firstSeen": "2026-11-16"
   },
   {
-   "id": "dfaf36ad79da",
-   "title": "Praktikum Product Management (m/w/d)",
-   "org": "Photovate GmbH",
-   "city": "Mannheim",
+   "id": "47d831a39c4a",
+   "title": "Werkstudent:in (m/w/d) Support Financial Consulting",
+   "org": "PFP - PrivateFinancePartners GmbH",
+   "city": "Heidelberg",
    "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/photovate-gmbh/praktikum-product-management-mannheim-10451",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/pfp-privatefinancepartners-gmbh/werkstudentin-support-financial-consulting-heidelberg-136330",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Product Management",
-   "firstSeen": "2026-11-17",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Private Banking",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "ddf51337df8b",
@@ -5678,8 +6106,21 @@
    "board": "germany",
    "posted": "2026-11-19",
    "team": "Zentrale",
-   "firstSeen": "2026-11-19",
-   "misses": 1
+   "firstSeen": "2026-11-19"
+  },
+  {
+   "id": "d9cdbd0161f5",
+   "title": "Praktikum Business Development (Französisch) (m/w/d)",
+   "org": "prepmymeal GmbH",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/prepmymeal-gmbh/praktikum-business-development-franzosisch-frankfurt-am-main-79928",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Development",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "473baab342ad",
@@ -5710,6 +6151,20 @@
    "firstSeen": "2026-11-17"
   },
   {
+   "id": "93e2fbafcfdd",
+   "title": "Praktikum Marketing & Kommunikation (Tschechisch) (m/w/d)",
+   "org": "prepmymeal GmbH",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/prepmymeal-gmbh/praktikum-marketing-kommunikation-tschechisch-frankfurt-am-main-354396",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "6ac82377d36d",
    "title": "Praktikum/Werkstudium - Design (m/w/d)",
    "org": "prepmymeal GmbH",
@@ -5736,21 +6191,6 @@
    "posted": "2026-11-17",
    "team": "Online Marketing",
    "firstSeen": "2026-11-17"
-  },
-  {
-   "id": "331d3b420de6",
-   "title": "Werkstudent IT & KI (m/w/d) - Hands-on im Job, flexibel im Studium! | 20 Std./Woche",
-   "org": "Prokuras Beteiligungs GmbH",
-   "city": "Hamburg",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/prokuras-beteiligungs-gmbh/werkstudent-it-ki-hands-on-im-job-flexibel-im-studium-20-std-woche-hamburg-56551",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Software Development",
-   "firstSeen": "2026-11-20",
-   "misses": 1
   },
   {
    "id": "6d618d43ba4e",
@@ -5811,38 +6251,6 @@
    "firstSeen": "2026-11-18"
   },
   {
-   "id": "69f436c60b7c",
-   "title": "Pflichtpraktikum Business Development (m/w/d)",
-   "org": "PsyCurio",
-   "city": "Berlin",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/psycurio/pflichtpraktikum-business-development-berlin-274235",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-17",
-   "misses": 1
-  },
-  {
-   "id": "4e29dbe54f10",
-   "title": "Pflichtpraktikum im Bereich Tech (m/w/d)",
-   "org": "PsyCurio",
-   "city": "Berlin",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/psycurio/pflichtpraktikum-im-bereich-tech-berlin-69142",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-16",
-   "misses": 1
-  },
-  {
    "id": "5df5863728f8",
    "title": "Praktikant Marketing & Sales (m/w/d)",
    "org": "Pukka Berlin",
@@ -5855,6 +6263,48 @@
    "posted": "2026-11-20",
    "team": "Marketing Assistant",
    "firstSeen": "2026-11-18"
+  },
+  {
+   "id": "62da5b807095",
+   "title": "Internship Influencer Marketing",
+   "org": "Pulse Advertising GmbH",
+   "city": "Hamburg",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/pulse-advertising-gmbh/internship-influencer-marketing-hamburg-185647",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "b39cc88b3f07",
+   "title": "Founders Associate Intern: AI Product Consultant (m/w/d)",
+   "org": "qado GmbH",
+   "city": "Munich",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/qado-gmbh/founders-associate-intern-ai-product-consultant-munich-249672",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "60d8b0e949c8",
+   "title": "Founders Associate Intern: Growth & Strategy (m/w/d)",
+   "org": "qado GmbH",
+   "city": "Munich",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/qado-gmbh/founders-associate-intern-growth-strategy-munich-2117",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "e450663c422d",
@@ -5899,36 +6349,6 @@
    "firstSeen": "2026-11-19"
   },
   {
-   "id": "35c3bbc7c768",
-   "title": "Working Student - Returns Management (m/f/d)",
-   "org": "Quantum-Systems GmbH",
-   "city": "Gilching",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/quantum-systems-gmbh/working-student-returns-management-gilching-4623",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Student & Early Professionals",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "406d53717f35",
-   "title": "Working Student / Intern – Industrialization Land / UGV (m/f/d)",
-   "org": "Quantum-Systems GmbH",
-   "city": "Göppingen",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/quantum-systems-gmbh/working-student-intern-industrialization-land-ugv-goppingen-338227",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Student & Early Professionals",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "58ff1b4f5fac",
    "title": "Working Student - Business Analyst, Growth & Operations (m/f/d) – Dutch Market",
    "org": "raisin",
@@ -5944,7 +6364,7 @@
   },
   {
    "id": "7d6c7c2dc162",
-   "title": "Werkstudent Product Operations: PV & Wärmepumpe Modellierung(m/w/d)",
+   "title": "Werkstudent Product Builder (m/w/d)",
    "org": "re-green",
    "city": "Frankfurt",
    "country": "germany",
@@ -5952,8 +6372,8 @@
    "url": "https://www.arbeitnow.com/jobs/companies/re-green/werkstudent-product-operations-pv-warmepumpe-modellierung-frankfurt-am-main-217744",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Business Operations",
+   "posted": "2026-11-22",
+   "team": "Software Development",
    "firstSeen": "2026-11-20"
   },
   {
@@ -5969,6 +6389,20 @@
    "posted": "2026-11-17",
    "team": "Business Development",
    "firstSeen": "2026-11-17"
+  },
+  {
+   "id": "2d22099c662d",
+   "title": "Founders Associate (m/w/d) Praktikum",
+   "org": "re:fund",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/refund/founders-associate-praktikum-berlin-298607",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "84a5265d98d5",
@@ -6014,19 +6448,18 @@
    "firstSeen": "2026-11-21"
   },
   {
-   "id": "e650a8f8718b",
-   "title": "GTM Intern - New Products (AI x Greentech) (m/f/d)",
-   "org": "Reonic",
+   "id": "d9b1790e5ada",
+   "title": "Praktikant/in Operations & Analyse | Remote / Berlin",
+   "org": "RET10",
    "city": "Berlin",
    "country": "germany",
    "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/reonic/gtm-intern-new-products-ai-x-greentech-berlin-374892",
+   "url": "https://www.arbeitnow.com/jobs/companies/ret10/praktikant-in-operations-analyse-remote-berlin-206222",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Operations",
-   "firstSeen": "2026-11-14",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Asset",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "e8afca28f428",
@@ -6125,6 +6558,21 @@
    "posted": "2026-11-17",
    "team": "Online Marketing",
    "firstSeen": "2026-11-17"
+  },
+  {
+   "id": "a7c8570740be",
+   "title": "Werkstudent (m/w/d) Marketing, Sales & Admin Support - HubSpot Unit",
+   "org": "SalesPlaybook AG",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/salesplaybook-ag/werkstudent-marketing-sales-admin-support-hubspot-unit-berlin-471852",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "7e5d02aca4ec",
@@ -6362,7 +6810,8 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Social Media Manager",
-   "firstSeen": "2026-11-18"
+   "firstSeen": "2026-11-18",
+   "misses": 1
   },
   {
    "id": "5fd92d536165",
@@ -6421,6 +6870,35 @@
    "firstSeen": "2026-11-17"
   },
   {
+   "id": "0c58fdc14e6e",
+   "title": "Praktikant:in Marketing und Community Management",
+   "org": "SofaConcerts GmbH",
+   "city": "Hamburg",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/sofaconcerts-gmbh/praktikantin-marketing-und-community-management-hamburg-382192",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Remote",
+   "mode": "Remote",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "fbfa84d88005",
+   "title": "Pflichtpraktikum GIS / Geografie / Erneuerbare Energien (m/w/d)",
+   "org": "Solarfarm RE GmbH",
+   "city": "Mainz",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/solarfarm-re-gmbh/pflichtpraktikum-gis-geografie-erneuerbare-energien-mainz-69084",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Power Engineering and Environmental Engineering",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "0ac92e8b9812",
    "title": "Werkstudent (m/w/d) im Customer Support/Kundenservice",
    "org": "Solarscouts",
@@ -6432,24 +6910,21 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Customer Service",
-   "firstSeen": "2026-11-17",
-   "misses": 1
+   "firstSeen": "2026-11-17"
   },
   {
-   "id": "fc275f078235",
-   "title": "Praktikantin Content creation, Instagram & social media",
-   "org": "sovi socials",
-   "city": "Aachen",
+   "id": "8e9bbcdfcf22",
+   "title": "People & Organizational Development - Customer Success - Praktikant*in (w/m/d)",
+   "org": "SPARRKS",
+   "city": "Berlin",
    "country": "germany",
    "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/sovi-socials/praktikantin-content-creation-instagram-social-media-aachen-471934",
+   "url": "https://www.arbeitnow.com/jobs/companies/sparrks/people-organizational-development-customer-success-praktikantin-berlin-482828",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-16",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Customer Service",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "215a1ae89a32",
@@ -6477,7 +6952,8 @@
    "board": "germany",
    "posted": "2026-11-20",
    "team": "Business Operations",
-   "firstSeen": "2026-11-20"
+   "firstSeen": "2026-11-20",
+   "misses": 1
   },
   {
    "id": "701b972d1e10",
@@ -6536,6 +7012,34 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "id": "e6a732b2fc05",
+   "title": "Founder's Associate Intern (M&A & VentureDev Focus) @ T1 VC-backed Mobility Stealth Start-up from Sep/Oct '26",
+   "org": "Stealth Start-up (Mobility, Berlin)",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/stealth-start-up-mobility-berlin/founders-associate-intern-ma-venturedev-focus-at-t1-vc-backed-mobility-stealth-start-up-from-sep-oct-26-berlin-359964",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "dcab090f7fa4",
+   "title": "Founder's Associate Intern (M&A, VentureDev Focus) @Stealth Start-up from Sep/Oct '26 | Berlin On-Site (T1 VC-backed)",
+   "org": "Stealth Start-up (Mobility, Berlin)",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/stealth-start-up-mobility-berlin/founders-associate-intern-ma-venturedev-focus-at-stealth-start-up-from-sep-oct-26-berlin-on-site-t1-vc-backed-93502",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "355677c4364d",
    "title": "Praktikum Backend Developer (m/w/d) - Schwerpunkt Python / Azure",
    "org": "Stella.Coach - First virtual AI coach",
@@ -6547,7 +7051,8 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Software Development",
-   "firstSeen": "2026-11-17"
+   "firstSeen": "2026-11-17",
+   "misses": 1
   },
   {
    "id": "947ae607350a",
@@ -6577,6 +7082,62 @@
    "posted": "2026-11-16",
    "team": "kaufm: Verkauf/Einkauf/Personal/IT/AV",
    "firstSeen": "2026-11-16"
+  },
+  {
+   "id": "e6c99ae1ab8b",
+   "title": "Praktikum Entrepreneur in Residence (m/w/d)",
+   "org": "Störtebekker",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/stortebekker/praktikum-entrepreneur-in-residence-frankfurt-am-main-205649",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "5084603e76e5",
+   "title": "Praktikum Founders Associate (m/w/d)",
+   "org": "Störtebekker",
+   "city": "Frankfurt",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/stortebekker/praktikum-founders-associate-frankfurt-am-main-287255",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Operations",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "8a7de7a85c51",
+   "title": "Business Development Praktikum",
+   "org": "SUPA - Sport Und Party App",
+   "city": "Cologne",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/supa-sport-und-party-app/business-development-praktikum-cologne-265811",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Development",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "c8dd45236f35",
+   "title": "Praktikum Social Media & Marketing",
+   "org": "SUPA - Sport Und Party App",
+   "city": "Cologne",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/supa-sport-und-party-app/praktikum-social-media-marketing-cologne-494965",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Social Media Manager",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "b966569ec305",
@@ -6776,21 +7337,6 @@
    "firstSeen": "2026-11-19"
   },
   {
-   "id": "04c3f045a69b",
-   "title": "Traumpraktikum mit Perspektive: Werde Fachinformatiker für Anwendungsentwicklung (m/w/d)!",
-   "org": "TenMedia GmbH",
-   "city": "Berlin",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/tenmedia-gmbh/traumpraktikum-mit-perspektive-werde-fachinformatiker-fur-anwendungsentwicklung-berlin-322320",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-20",
-   "team": "Software Development",
-   "firstSeen": "2026-11-20",
-   "misses": 1
-  },
-  {
    "id": "0f6aede31d15",
    "title": "Traumpraktikum mit Perspektive: Werde Fachinformatiker für Anwendungsentwicklung (m/w/d)!",
    "org": "TenMedia GmbH",
@@ -6844,7 +7390,8 @@
    "board": "germany",
    "posted": "2026-11-17",
    "team": "Social Media Manager",
-   "firstSeen": "2026-11-14"
+   "firstSeen": "2026-11-14",
+   "misses": 1
   },
   {
    "id": "24c4aad1e064",
@@ -6903,6 +7450,34 @@
    "firstSeen": "2026-11-18"
   },
   {
+   "id": "4f8b15150a0a",
+   "title": "Customer Service Intern (m/w/d)",
+   "org": "Tiens Europe GmbH",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/tiens-europe-gmbh/customer-service-intern-berlin-430484",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Customer Service",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "10cd2cbf3a3e",
+   "title": "Praktikant:in (w/m/d) in nachhaltiger Kommunikationsagentur",
+   "org": "tippingpoints GmbH",
+   "city": "Bonn",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/tippingpoints-gmbh/praktikantin-in-nachhaltiger-kommunikationsagentur-bonn-200097",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Public Relations",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "163f434c5e56",
    "title": "Werkstudent Software Engineering (all genders)",
    "org": "Titanom Technologies",
@@ -6929,6 +7504,20 @@
    "posted": "2026-11-17",
    "team": "Social Media Manager",
    "firstSeen": "2026-11-17"
+  },
+  {
+   "id": "ef1deb663997",
+   "title": "Praktikant / Masterand - AI-Automation & Internal Operations (m/w/d)",
+   "org": "TOOLPLACE GmbH",
+   "city": "Leipzig",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/toolplace-gmbh/praktikant-masterand-ai-automation-internal-operations-leipzig-145841",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Software Development",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "eba5c7a159fa",
@@ -7039,19 +7628,18 @@
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "f12dbb811287",
-   "title": "Werde Teil unserer AI-Reise! Praktikum in Vollzeit Marketing & Branding (m/w/d)",
-   "org": "twigbit technologies GmbH",
-   "city": "Berlin",
+   "id": "dd4d005339ec",
+   "title": "Marketing Werkstudent / Praktikant (m/w/d)",
+   "org": "TruPhysics GmbH",
+   "city": "Stuttgart",
    "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/twigbit-technologies-gmbh/werde-teil-unserer-ai-reise-praktikum-in-vollzeit-marketing-branding-berlin-347331",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/truphysics-gmbh/marketing-werkstudent-praktikant-stuttgart-460518",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Online Marketing",
-   "firstSeen": "2026-11-16",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Marketing Assistant",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "bb89bc544ea8",
@@ -7066,22 +7654,6 @@
    "posted": "2026-11-17",
    "team": "Business Operations",
    "firstSeen": "2026-11-17"
-  },
-  {
-   "id": "bf75c1792be7",
-   "title": "Pflichtpraktikum Video Marketing & Social Media (m,w,d)",
-   "org": "Unseen Media GmbH",
-   "city": "Berlin",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/unseen-media-gmbh/pflichtpraktikum-social-media-marketing-mwd-berlin-203296",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "0fa834408ecc",
@@ -7112,21 +7684,6 @@
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "71fccb0703c4",
-   "title": "Strategy Intern (f/m/d)",
-   "org": "Upvest",
-   "city": "Berlin",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/upvest/strategy-intern-berlin-294496",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Strategy & Org",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "aeb84cceaab4",
    "title": "Business Development & Growth Intern",
    "org": "Valova",
@@ -7139,21 +7696,6 @@
    "posted": "2026-11-20",
    "team": "Business Development",
    "firstSeen": "2026-11-20"
-  },
-  {
-   "id": "56157f9d7898",
-   "title": "Werkstudent Marketing & Sales (m/w/d) Werbeartikel",
-   "org": "VANILLA & PEPPER Marketing GmbH",
-   "city": "Hamburg",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/vanilla-pepper-marketing-gmbh/werkstudent-marketing-sales-werbeartikel-hamburg-249903",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Marketing Assistant",
-   "firstSeen": "2026-11-17",
-   "misses": 1
   },
   {
    "id": "dee16ed40255",
@@ -7254,21 +7796,6 @@
    "firstSeen": "2026-11-18"
   },
   {
-   "id": "e99e87d06d6f",
-   "title": "Go-To-Market & Growth Intern (d/f/m)",
-   "org": "Vivenu",
-   "city": "Düsseldorf",
-   "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/vivenu/go-to-market-growth-intern-dusseldorf-11744",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Operations",
-   "firstSeen": "2026-11-15",
-   "misses": 1
-  },
-  {
    "id": "1a35be5bbaf3",
    "title": "Praktikant/in für praktisches Semester (m/w/d) in den Bereichen App-Entwicklung / UI-Design / Projektmanagement-IT",
    "org": "vmapit GmbH",
@@ -7280,7 +7807,8 @@
    "board": "germany",
    "posted": "2026-11-16",
    "team": "Software Development",
-   "firstSeen": "2026-11-16"
+   "firstSeen": "2026-11-16",
+   "misses": 1
   },
   {
    "id": "5835f12b659f",
@@ -7309,6 +7837,20 @@
    "posted": "2026-11-16",
    "team": "Graphic Arts and Communication Design",
    "firstSeen": "2026-11-16"
+  },
+  {
+   "id": "36dda15cb31d",
+   "title": "Werkstudent Business Intelligence & Data Analytics (m/w/d)",
+   "org": "Waldemar Link GmbH & Co. KG",
+   "city": "Norderstedt",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/waldemar-link-gmbh-co-kg/werkstudent-business-intelligence-data-analytics-norderstedt-20447",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Business Intelligence",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "5d9c3d401360",
@@ -7353,19 +7895,60 @@
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "798f1e40fe09",
-   "title": "(Pflicht-)Praktikant Social Media/Content Creation (m/w/d)",
-   "org": "Witefield GmbH",
-   "city": "Frankfurt",
+   "id": "d59ba1a1f9ae",
+   "title": "Praktikum Customer Success & Onboarding (m/w/d)",
+   "org": "Werkia",
+   "city": "Berlin",
    "country": "germany",
    "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/witefield-gmbh/pflicht-praktikant-social-media-content-creation-frankfurt-am-main-198874",
+   "url": "https://www.arbeitnow.com/jobs/companies/werkia/praktikum-customer-success-onboarding-berlin-106485",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-16",
-   "team": "Social Media Manager",
-   "firstSeen": "2026-11-16",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Customer Service",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "e2fd54b93ead",
+   "title": "Praktikum im Customer Success Management (m/w/d)",
+   "org": "Werkia",
+   "city": "Berlin",
+   "country": "germany",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.com/jobs/companies/werkia/praktikum-im-customer-success-management-berlin-318884",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Recruitment and Selection",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "be465e3d6266",
+   "title": "Werkstudent (m/w/d)",
+   "org": "WerraEnergie GmbH",
+   "city": "Bad Salzungen",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/werraenergie-gmbh/werkstudent-bad-salzungen-192190",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Werraenergie GmbH",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "9da5b71b22a8",
+   "title": "Werkstudent Elektrotechnik / Energietechnik (m/w/d)",
+   "org": "WerraEnergie GmbH",
+   "city": "Bad Salzungen",
+   "country": "germany",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/werraenergie-gmbh/werkstudent-elektrotechnik-energietechnik-bad-salzungen-309098",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "WerraEnergiedienste GmbH",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "b89e765cc60f",
@@ -7477,7 +8060,8 @@
    "posted": "2026-11-17",
    "team": "Remote",
    "mode": "Remote",
-   "firstSeen": "2026-11-17"
+   "firstSeen": "2026-11-17",
+   "misses": 1
   },
   {
    "id": "40e304d00b3e",
@@ -7494,51 +8078,18 @@
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "3aacddd88768",
-   "title": "Marketing & Social-Media Internship | 2-month unpaid trail | After Funding: full payment and long-term chanes to grow with the company",
-   "org": "YouCould",
+   "id": "61758a2c44e1",
+   "title": "Customer Support im Berliner SaaS Startup - Werkstudent",
+   "org": "Yoffix",
    "city": "Berlin",
    "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/youcould/marketing-social-media-internship-2-month-unpaid-trail-after-funding-full-payment-and-long-term-chanes-to-grow-with-the-company-berlin-69721",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-17",
-   "misses": 1
-  },
-  {
-   "id": "1e5292b16ced",
-   "title": "Werkstudent Content Creation (m/w/d)",
-   "org": "YZ Media",
-   "city": "Frankfurt",
-   "country": "germany",
    "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/yz-media/werkstudent-content-creation-frankfurt-am-main-412337",
+   "url": "https://www.arbeitnow.com/jobs/companies/yoffix/customer-support-im-berliner-saas-startup-werkstudent-333176",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Remote",
-   "mode": "Remote",
-   "firstSeen": "2026-11-17",
-   "misses": 1
-  },
-  {
-   "id": "c5dd1b4168c9",
-   "title": "Werkstudent Content Creation (m/w/d) | FRANKFURT",
-   "org": "YZ Media",
-   "city": "Frankfurt",
-   "country": "germany",
-   "kind": "Working student",
-   "url": "https://www.arbeitnow.com/jobs/companies/yz-media/werkstudent-content-creation-frankfurt-frankfurt-am-main-330270",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-17",
-   "team": "Social Media Manager",
-   "firstSeen": "2026-11-17",
-   "misses": 1
+   "posted": "2026-11-22",
+   "team": "Customer Service",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "3e10bb52bbb8",
@@ -7550,24 +8101,23 @@
    "url": "https://www.arbeitnow.com/jobs/companies/yzr-capital/visiting-analyst-investments-automation-munich-86638",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-17",
+   "posted": "2026-11-22",
    "team": "Asset",
    "firstSeen": "2026-11-17"
   },
   {
-   "id": "106cfacd427d",
-   "title": "Fachpraktikum im Bereich Social Media, Öffentlichkeitsarbeit und Marketing (m/w/d)",
-   "org": "Zeisberg Carbon GmbH",
-   "city": "Hanover",
+   "id": "479cafed3c8c",
+   "title": "Werkstudent:in Social Media & Video Content",
+   "org": "Zattoo",
+   "city": "Berlin",
    "country": "germany",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.com/jobs/companies/zeisberg-carbon-gmbh/fachpraktikum-im-bereich-social-media-offentlichkeitsarbeit-und-marketing-hanover-127095",
+   "kind": "Working student",
+   "url": "https://www.arbeitnow.com/jobs/companies/zattoo/werkstudentin-social-media-video-content-berlin-248565",
    "source": "arbeitnow",
    "board": "germany",
-   "posted": "2026-11-17",
+   "posted": "2026-11-22",
    "team": "Social Media Manager",
-   "firstSeen": "2026-11-18",
-   "misses": 1
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "1a1a2de9f195",
@@ -7677,21 +8227,6 @@
    "posted": "2026-11-17",
    "team": "Logistiek",
    "firstSeen": "2026-11-18"
-  },
-  {
-   "id": "a92bf00bf248",
-   "title": "AI Quantitative Researcher | Internship | '27",
-   "org": "Blocktech",
-   "city": "Amsterdam",
-   "country": "netherlands",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.nl/jobs/companies/blocktech/ai-quantitative-researcher-internship-27-amsterdam-178821",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Trading",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "49aa10fdd6cf",
@@ -8089,7 +8624,36 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Stage",
-   "firstSeen": "2026-11-18"
+   "firstSeen": "2026-11-18",
+   "misses": 1
+  },
+  {
+   "id": "ee164211bc60",
+   "title": "Meewerk Stage Continuous Improvement (Power BI & Power Automate)",
+   "org": "Heras B.V.",
+   "city": "Oirschot",
+   "country": "netherlands",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.nl/jobs/companies/heras-bv/meewerk-stage-continuous-improvement-power-bi-power-automate-oirschot-64841",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Stage",
+   "firstSeen": "2026-11-22"
+  },
+  {
+   "id": "24a087bd975d",
+   "title": "Meewerk Stage Marketing & Communicatie",
+   "org": "Heras B.V.",
+   "city": "Oirschot",
+   "country": "netherlands",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.nl/jobs/companies/heras-bv/meewerk-stage-marketing-communicatie-oirschot-490396",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Stage",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "729419ba318c",
@@ -8132,6 +8696,20 @@
    "posted": "2026-11-16",
    "team": "Front Office",
    "firstSeen": "2026-11-16"
+  },
+  {
+   "id": "c75548e5fc74",
+   "title": "Data Engineering Intern",
+   "org": "Metyis AG",
+   "city": "Amsterdam",
+   "country": "netherlands",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.nl/jobs/companies/metyis-ag/data-engineering-intern-amsterdam-200037",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Data & Analytics",
+   "firstSeen": "2026-11-22"
   },
   {
    "id": "1ee1abecde7a",
@@ -8204,6 +8782,20 @@
    "firstSeen": "2026-11-17"
   },
   {
+   "id": "172a7c27ddc4",
+   "title": "Stage Privacy & Data",
+   "org": "The Sharing Group",
+   "city": "Amsterdam",
+   "country": "netherlands",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.nl/jobs/companies/the-sharing-group/stage-privacy-data-amsterdam-267801",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Development",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "2a37a37fea9f",
    "title": "Stagiair Rechtshulp",
    "org": "Univé",
@@ -8215,7 +8807,8 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Juridisch",
-   "firstSeen": "2026-11-18"
+   "firstSeen": "2026-11-18",
+   "misses": 1
   },
   {
    "id": "58cfff4950fd",
@@ -8246,6 +8839,20 @@
    "firstSeen": "2026-11-17"
   },
   {
+   "id": "0472ce4be1ae",
+   "title": "Stagiair",
+   "org": "VDK Groep B.V.",
+   "city": "Amsterdam",
+   "country": "netherlands",
+   "kind": "Internship",
+   "url": "https://www.arbeitnow.nl/jobs/companies/vdk-groep-bv/stagiair-amsterdam-465593",
+   "source": "arbeitnow",
+   "board": "germany",
+   "posted": "2026-11-22",
+   "team": "Stage",
+   "firstSeen": "2026-11-22"
+  },
+  {
    "id": "670cbcfc2eac",
    "title": "Stage Brand & Culture",
    "org": "wppmedia",
@@ -8257,7 +8864,8 @@
    "board": "germany",
    "posted": "2026-11-18",
    "team": "Marketing",
-   "firstSeen": "2026-11-18"
+   "firstSeen": "2026-11-18",
+   "misses": 1
   },
   {
    "id": "d24b6455068a",
@@ -8430,21 +9038,6 @@
    "firstSeen": "2026-11-14"
   },
   {
-   "id": "cfe21aa0d9b1",
-   "title": "Praktikant till avdelningen Communications & Government Affairs",
-   "org": "BAE Systems Bofors AB",
-   "city": "Karlskoga",
-   "country": "sweden",
-   "kind": "Internship",
-   "url": "https://arbetsformedlingen.se/platsbanken/annonser/31604483",
-   "source": "jobtech",
-   "board": "sweden",
-   "posted": "2026-10-16",
-   "deadline": "2026-11-20",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "66d7546a85e8",
    "title": "Internship in Business Controlling",
    "org": "Bosch Thermoteknik AB",
@@ -8459,21 +9052,6 @@
    "firstSeen": "2026-11-14"
   },
   {
-   "id": "026f7293d4fe",
-   "title": "Internship in Electrical Engineering",
-   "org": "Bosch Thermoteknik AB",
-   "city": "Tranås",
-   "country": "sweden",
-   "kind": "Internship",
-   "url": "https://arbetsformedlingen.se/platsbanken/annonser/31626025",
-   "source": "jobtech",
-   "board": "sweden",
-   "posted": "2026-10-21",
-   "deadline": "2026-11-20",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "168f35c0a6da",
    "title": "Internship in Health, Safety & Environment Department",
    "org": "Bosch Thermoteknik AB",
@@ -8486,21 +9064,6 @@
    "posted": "2026-11-12",
    "deadline": "2026-12-12",
    "firstSeen": "2026-11-14"
-  },
-  {
-   "id": "5a775a312d21",
-   "title": "Internship in Human Resources",
-   "org": "Bosch Thermoteknik AB",
-   "city": "Tranås",
-   "country": "sweden",
-   "kind": "Internship",
-   "url": "https://arbetsformedlingen.se/platsbanken/annonser/31626048",
-   "source": "jobtech",
-   "board": "sweden",
-   "posted": "2026-10-21",
-   "deadline": "2026-11-20",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "b543ae1a7112",
@@ -8937,21 +9500,6 @@
    "firstSeen": "2026-11-19"
   },
   {
-   "id": "aa6eeefbc859",
-   "title": "Snickare praktik",
-   "org": "Wolfbuilder Stockholm AB",
-   "city": "Vaxholm",
-   "country": "sweden",
-   "kind": "Internship",
-   "url": "https://arbetsformedlingen.se/platsbanken/annonser/31626422",
-   "source": "jobtech",
-   "board": "sweden",
-   "posted": "2026-10-21",
-   "deadline": "2026-11-20",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "450f2859c0e6",
    "title": "Tamara Internship Program",
    "org": "Tamara",
@@ -8966,36 +9514,6 @@
    "firstSeen": "2026-11-14",
    "team": "All",
    "detail": 1
-  },
-  {
-   "id": "15e827637072",
-   "title": "LBS Internship 2026 (Part-time/Full-time)",
-   "org": "Aptura",
-   "city": "London",
-   "country": "uk",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/aptura/lbs-internship-2026-part-time-full-time-london-71118",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Operations",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
-   "id": "602a8306e0a0",
-   "title": "Expression of Interest - Internships",
-   "org": "Callosum",
-   "city": "London",
-   "country": "uk",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/callosum/expression-of-interest-internships-london-153047",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "Expression of Interest",
-   "firstSeen": "2026-11-14",
-   "misses": 1
   },
   {
    "id": "7eac8684a00f",
@@ -9351,21 +9869,6 @@
    "firstSeen": "2026-11-14"
   },
   {
-   "id": "22c90ea01cd1",
-   "title": "Intern, System Architecture",
-   "org": "Psiquantum",
-   "city": "Daresbury",
-   "country": "uk",
-   "kind": "Internship",
-   "url": "https://www.arbeitnow.co.uk/jobs/companies/psiquantum/intern-system-architecture-daresbury-78937",
-   "source": "arbeitnow",
-   "board": "germany",
-   "posted": "2026-11-14",
-   "team": "3600 - Systems Architecture",
-   "firstSeen": "2026-11-14",
-   "misses": 1
-  },
-  {
    "id": "aa62ae16b49b",
    "title": "Software Engineering Intern (Summer 2027)",
    "org": "Scale AI",
@@ -9437,7 +9940,8 @@
    "board": "germany",
    "posted": "2026-11-19",
    "team": "Operations",
-   "firstSeen": "2026-11-19"
+   "firstSeen": "2026-11-19",
+   "misses": 1
   },
   {
    "id": "221716a31ef0",
@@ -11933,24 +12437,6 @@
    "detail": 1
   },
   {
-   "id": "9e1a4414eb26",
-   "title": "Supply Chain Intern Spring 2027",
-   "org": "Rocket Lab",
-   "city": "Long Beach",
-   "country": "usa",
-   "kind": "Internship",
-   "url": "https://job-boards.greenhouse.io/rocketlab/jobs/7985032003",
-   "source": "greenhouse",
-   "board": "rocketlab",
-   "posted": "2026-09-17",
-   "ref": "7985032003",
-   "firstSeen": "2026-11-14",
-   "team": "2652 USA Supply Chain",
-   "pay": "USD 25 / hour",
-   "detail": 1,
-   "misses": 1
-  },
-  {
    "id": "574f1dd03cff",
    "title": "Supply Chain Intern Spring 2027",
    "org": "Rocket Lab",
@@ -12954,7 +13440,7 @@
    ],
    "note": "Graduate jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "gradconnection-au",
@@ -12965,7 +13451,7 @@
    ],
    "note": "Graduate jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "handshake",
@@ -12976,7 +13462,7 @@
    ],
    "note": "Open to students of partner universities. Sign in through your university.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "simplify",
@@ -12987,7 +13473,7 @@
    ],
    "note": "Internship and new-graduate listings.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "wayup",
@@ -12998,7 +13484,7 @@
    ],
    "note": "Internships and entry-level jobs.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "ripplematch",
@@ -13009,7 +13495,7 @@
    ],
    "note": "Early-career roles.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "wellfound",
@@ -13020,7 +13506,7 @@
    ],
    "note": "Start-up jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "prospects",
@@ -13031,7 +13517,7 @@
    ],
    "note": "Graduate jobs, internships and placements.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "targetjobs",
@@ -13042,7 +13528,7 @@
    ],
    "note": "Graduate jobs, internships and placements.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "brightnetwork",
@@ -13053,7 +13539,7 @@
    ],
    "note": "Early-career roles.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "ratemyplacement",
@@ -13064,7 +13550,7 @@
    ],
    "note": "Industrial placements and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "jobbank-youth",
@@ -13075,7 +13561,7 @@
    ],
    "note": "Government of Canada student and youth jobs.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "talentegg",
@@ -13086,7 +13572,7 @@
    ],
    "note": "Student and graduate jobs, many co-op.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "magnet",
@@ -13098,7 +13584,7 @@
    ],
    "note": "Student and graduate opportunities.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "gradireland",
@@ -13109,7 +13595,7 @@
    ],
    "note": "Graduate jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "prosple-ie",
@@ -13120,7 +13606,7 @@
    ],
    "note": "Graduate jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "irishjobs",
@@ -13130,8 +13616,8 @@
     "ireland"
    ],
    "note": "Jobs board.",
-   "ok": false,
-   "checked": null
+   "ok": true,
+   "checked": "2026-11-22"
   },
   {
    "id": "gradconnection-nz",
@@ -13142,7 +13628,7 @@
    ],
    "note": "Graduate jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "prosple-nz",
@@ -13153,7 +13639,7 @@
    ],
    "note": "Graduate jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "summer-of-tech",
@@ -13164,7 +13650,7 @@
    ],
    "note": "IT and design internships in New Zealand.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "make-it-in-germany",
@@ -13175,7 +13661,7 @@
    ],
    "note": "German government portal for working in Germany.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "arbeitnow",
@@ -13186,7 +13672,7 @@
    ],
    "note": "Job board with English-language roles.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "studentjob-de",
@@ -13197,7 +13683,7 @@
    ],
    "note": "Student jobs, internships and working-student roles.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "stellenwerk",
@@ -13208,7 +13694,7 @@
    ],
    "note": "Student and graduate jobs.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "wttj",
@@ -13219,7 +13705,7 @@
    ],
    "note": "Jobs and internships, with language and contract filters.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "jobteaser",
@@ -13231,7 +13717,7 @@
    ],
    "note": "Career platform used by many universities.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "welcome-to-nl",
@@ -13242,7 +13728,7 @@
    ],
    "note": "Dutch portal for international talent.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "studentjob-nl",
@@ -13253,7 +13739,7 @@
    ],
    "note": "Student jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "undutchables",
@@ -13264,7 +13750,7 @@
    ],
    "note": "Jobs for international candidates.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "internsg",
@@ -13275,7 +13761,7 @@
    ],
    "note": "Internship listings in Singapore.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "glints",
@@ -13287,7 +13773,7 @@
    ],
    "note": "Jobs and internships in South-East Asia.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "mycareersfuture",
@@ -13298,7 +13784,7 @@
    ],
    "note": "Many roles are for citizens and permanent residents. Check each listing.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "oliv",
@@ -13309,7 +13795,7 @@
    ],
    "note": "Built for students and fresh graduates in the UAE.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "bayt",
@@ -13319,8 +13805,8 @@
     "uae"
    ],
    "note": "Jobs board for the Middle East.",
-   "ok": false,
-   "checked": null
+   "ok": true,
+   "checked": "2026-11-22"
   },
   {
    "id": "gulftalent",
@@ -13342,7 +13828,7 @@
    ],
    "note": "Junior roles and internships in Malaysia.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "jobstreet-my",
@@ -13353,7 +13839,7 @@
    ],
    "note": "Jobs board.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "academicwork",
@@ -13364,7 +13850,7 @@
    ],
    "note": "Jobs for students and graduates in Sweden.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "platsbanken",
@@ -13375,7 +13861,7 @@
    ],
    "note": "Sweden's public job board. Many of its listings appear in our search.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "graduateland",
@@ -13387,7 +13873,7 @@
    ],
    "note": "Graduate jobs and internships.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "finn-job",
@@ -13398,7 +13884,7 @@
    ],
    "note": "Norway's largest job board.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "arbeidsplassen",
@@ -13409,7 +13895,7 @@
    ],
    "note": "Norway's public job board.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "eures",
@@ -13425,7 +13911,7 @@
    ],
    "note": "European Union job portal.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   },
   {
    "id": "iaeste",
@@ -13436,7 +13922,7 @@
    ],
    "note": "Course-related technical internships arranged through national committees.",
    "ok": true,
-   "checked": "2026-11-21"
+   "checked": "2026-11-22"
   }
  ]
 }
