@@ -266,7 +266,7 @@ def grade(res, role, home_reg):
     return ('verified' if name_ok else 'weak'), info['title']
 
 
-def crawl(fetcher, home_url, cap_text=9000):
+def crawl(fetcher, home_url, cap_text=14000):
     """Everything the site gives us for one university. Never raises; failures are recorded in the result."""
     out = {'home': {'url': home_url}, 'links': {}, 'social': {}, 'faculties': [], 'campuses': [], 'students2': [], 'cache': {}}
     res = fetcher.get(home_url)

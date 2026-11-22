@@ -11,6 +11,7 @@ import base64
 import html
 import json
 import re
+import threading
 import time
 import urllib.request
 
@@ -23,10 +24,15 @@ def small(url):
     return re.sub(r'/\d+px-', '/330px-', url or '', count=1)
 
 
+_GATE = threading.Lock()
+
+
 def fetch_thumb(url, delay=0.4):
-    """A data: URI for one thumbnail, or '' when it cannot be fetched (the card then shows a grey box)."""
+    """A data: URI for one thumbnail, or '' when it cannot be fetched (the card then shows a grey box).
+    Requests start at least `delay` seconds apart, even when several threads ask at once."""
     try:
-        time.sleep(delay)
+        with _GATE:
+            time.sleep(delay)
         req = urllib.request.Request(small(url), headers={'User-Agent': UA})
         with urllib.request.urlopen(req, timeout=30) as r:
             data = r.read(400_000)
@@ -55,7 +61,7 @@ a.chip:hover{border-color:currentColor}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:6px}
 .g img,.g .ph{width:100%;height:100px;object-fit:cover;border-radius:6px;background:#e6e9ee;display:block}
 .cr{font-size:10.5px;color:var(--mut);line-height:1.25;margin-top:2px;word-break:break-word}.cr a{color:var(--mut)}
-.names{font-size:13px;color:var(--mut)}
+.names{font-size:13px;color:var(--mut)}.brief{margin:6px 0 8px;max-width:75ch}
 """
 
 
@@ -77,10 +83,17 @@ def credit(p):
 def card(r, thumb):
     fo, st, w = r.get('founded') or {}, r.get('students') or {}, r.get('website') or {}
     out = [f'<section class="card"><h2>{E(r["name"])}</h2><div class="sub">{E(r["country"])}</div>']
-    fk = {'confirmed': 'ok', 'ok': 'rv', 'check': 'rv', 'conflict': 'rv'}.get(fo.get('status'), 'no')
+    br = r.get('brief') or {}
+    if br.get('status') == 'verified' and br.get('text'):
+        out.append(f'<p class="brief">{E(br["text"])}</p>')
+    elif str(br.get('status', '')).startswith('rejected'):
+        out.append(f'<p class="names">Brief not used: {E(br["status"])}</p>')
+    fk = {'confirmed': 'ok', 'official': 'ok', 'ok': 'rv', 'check': 'rv', 'conflict': 'rv'}.get(fo.get('status'), 'no')
     lead = f' (lead says {", ".join(map(str, fo["lead_years"]))})' if fo.get('lead_years') and fo.get('status') == 'check' else ''
+    if fo.get('status') == 'check' and fo.get('wikidata'):
+        lead = f' (Wikidata says {fo["wikidata"]})'
     out.append(f'<div class="row"><span class="lab">Established</span>{chip(str(fo.get("v") or "missing") + lead, fk, fo.get("src", ""))}</div>')
-    sk = {'verified': 'ok', 'single-source': 'rv', 'site-only': 'rv', 'missing-year': 'rv'}.get(st.get('status'), 'no')
+    sk = {'verified': 'ok', 'official': 'ok', 'single-source': 'rv', 'site-only': 'rv', 'missing-year': 'rv', 'official-no-year': 'rv', 'check': 'rv'}.get(st.get('status'), 'no')
     sv = f'{st["v"]:,} as on {st["asof"] or "year unknown"}' if st.get('v') else 'missing'
     sec = st.get('second') or {}
     out.append(f'<div class="row"><span class="lab">Students</span>{chip(sv, sk, st.get("src", ""))}'
@@ -100,6 +113,9 @@ def card(r, thumb):
     out.append(''.join(soc) + '</div>')
     fac = r.get('faculties') or []
     out.append(f'<div class="row"><span class="lab">Faculties</span><span class="names">{len(fac)} found: ' + E('; '.join(f['name'] for f in fac[:6])) + ('…' if len(fac) > 6 else '') + '</span></div>')
+    pn = (r.get('partners') or {}).get('names') or []
+    if pn:
+        out.append(f'<div class="row"><span class="lab">Partners</span><span class="names">{len(pn)} named: ' + E('; '.join(x['name'] for x in pn[:8])) + ('…' if len(pn) > 8 else '') + '</span></div>')
     camps = []
     for c in r.get('campuses') or []:
         ph = c.get('photo')

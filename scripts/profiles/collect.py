@@ -137,7 +137,7 @@ def process(uni, wd_facts, api, fetcher, today):
     site = step('site', lambda: SITE.crawl(fetcher, uni.get('web') or wd.get('website') or ''), {'home': {'error': 'crawl failed'}, 'links': {}, 'social': {}, 'faculties': [], 'campuses': [], 'students2': [], 'cache': {}})
     site['social'] = SITE.socials(site.pop('social_links', []), site.pop('_same_as', []), wd)
     wd_fac = step('wikidata faculties', lambda: WD.faculties(api, uni['qid'], uni['name']), [])
-    gallery, counts = step('commons gallery', lambda: CM.gallery(api, wd['commons'], today.year), ([], {})) if wd.get('commons') else ([], {'note': 'no Commons category on Wikidata'})
+    gallery, counts = step('commons gallery', lambda: CM.gallery(api, wd['commons'], today.year, want=12), ([], {})) if wd.get('commons') else ([], {'note': 'no Commons category on Wikidata'})
 
     # photos for campuses: one search each, at most 4 per university
     photos = {}
