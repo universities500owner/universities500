@@ -86,6 +86,17 @@ import Student from '../../layouts/Student.astro';
         <div class="sop-tones" data-tones role="radiogroup" aria-label="Voice"></div>
       </fieldset>
     </div>
+    <div class="st-card sop-q" data-length-card>
+      <fieldset class="st-q">
+        <legend>How long should it be?</legend>
+        <p class="sop-hint">Pick the length you are aiming for. Check the university's own page: if it sets a limit, enter it below and we will tell you when the draft goes over.</p>
+        <div class="st-chips" data-lengths role="radiogroup" aria-label="Length"></div>
+      </fieldset>
+      <label class="sop-lab" for="sop-limit">The university's own limit, in words (optional)</label>
+      <input id="sop-limit" class="sop-limit" type="number" min="100" max="3000" step="1" inputmode="numeric" data-limit>
+      <p class="st-status is-bad" data-limit-msg></p>
+      <p class="sop-meter" data-meter></p>
+    </div>
     <div class="st-card sop-bar">
       <div class="st-actions">
         <button class="btn" type="button" data-make disabled>Create my first draft</button>
@@ -125,6 +136,7 @@ import Student from '../../layouts/Student.astro';
             <h3 class="sop-h">Statement of Purpose</h3>
             <span class="sop-words" data-words></span>
           </div>
+          <p class="sop-len" data-len></p>
           <p class="st-status is-ok" data-edited-note hidden></p>
           <div class="sop-paper" data-paper></div>
           <label class="sop-lab" for="sop-edit" data-edit-label hidden>Edit your draft. Replace each [gap] with your own words.</label>

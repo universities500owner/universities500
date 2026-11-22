@@ -5,8 +5,14 @@
 // The rule behind all of it: a draft says only what the student told us or what a checked source says. Where something is
 // missing, the draft shows a gap for the student to fill. It never fills one itself.
 
-export const NOTE_MAX = 300;
+export const NOTE_MAX = 700;
 export const EDIT_MAX = 9000;
+// How long the student wants the statement to be (words), and the range for a limit the university sets itself.
+export const WORDS = [400, 600, 800];
+export const WORDS_DEFAULT = 600;
+export const LIMIT_MIN = 100;
+export const LIMIT_MAX = 3000;
+export const wordsTarget = (s) => (WORDS.includes(s && s.words) ? s.words : WORDS_DEFAULT);
 export const FACT_MAX_AGE_DAYS = 365; // a source checked longer ago than this is not used in a draft
 export const FACT_SOON_DAYS = 30; // within this many days of that limit, a fact is marked "Re-check soon"
 
@@ -22,7 +28,7 @@ const Q = {
       ['course', 'A course or book'], ['event', 'A competition or event'], ['hobby', 'A hobby that became serious']],
   },
   q2: {
-    title: 'Which work are you proudest of?', hint: 'Pick up to 2. Chips marked "profile" come from your account.', max: 2, ph: 'e.g. what you built and what changed',
+    title: 'Which work are you proudest of?', hint: 'Pick up to 2. Chips marked "profile" come from your account. Two or three sentences below make the draft fuller.', max: 2, ph: 'e.g. what you built and what changed',
     chips: [['intern', 'An internship task'], ['team', 'A team project'], ['paper', 'A research paper'], ['side', 'A side project of my own'], ['volunteer', 'Volunteer work']],
   },
   q3: {
@@ -31,7 +37,7 @@ const Q = {
       ['studygap', 'A study gap', 'I had a gap in my studies.'], ['workgap', 'A work gap', 'I had a gap in my work.'], ['switch', 'I changed my field', 'I changed my field.']],
   },
   q4: {
-    title: 'Why {dest} and this course?', hint: 'Pick up to 3. We add the verified course facts ourselves.', max: 3, ph: 'e.g. the part of the course that matters to you',
+    title: 'Why {dest} and this course?', hint: 'Pick up to 3. We add the verified course facts ourselves. Two or three sentences below make the draft fuller.', max: 3, ph: 'e.g. the part of the course that matters to you',
     chips: [['taught', 'The way it is taught', 'the way it is taught'], ['practical', 'Practical work and projects', 'its practical work and projects'], ['industry', 'Links with industry', 'its links with industry'],
       ['research', 'Research facilities', 'its research facilities'], ['psw', 'Post-study work options', 'the post-study work options'], ['cost', 'Cost and scholarships', 'the cost and scholarships'],
       ['safe', 'Safe and welcoming', 'how safe and welcoming it is'], ['content', 'The course content matches my goal', 'how well the course content matches my goal']],
@@ -151,6 +157,14 @@ export function cleanSop(input) {
     const n = Number(src.arc);
     if (Number.isInteger(n) && n >= 0 && n < ARCS.length) out.arc = n; else errors.arc = 'Choose one of the openings.';
   }
+  if (src.words !== undefined && src.words !== '') {
+    const n = Number(src.words);
+    if (WORDS.includes(n)) out.words = n; else errors.words = 'Choose one of the lengths.';
+  }
+  if (src.limit !== undefined && src.limit !== '' && src.limit !== null) {
+    const n = Number(src.limit);
+    if (Number.isInteger(n) && n >= LIMIT_MIN && n <= LIMIT_MAX) out.limit = n; else errors.limit = `Enter a whole number from ${LIMIT_MIN} to ${LIMIT_MAX}, or leave it empty.`;
+  }
   if (src.edited !== undefined && src.edited !== '') {
     // The student's own edited text. Line breaks are kept; other control characters are not.
     const t = String(src.edited).replace(/\r\n?/g, '\n').replace(/[\u0000-\u0009\u000b-\u001f\u007f\u2028\u2029]+/g, ' ').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
@@ -250,8 +264,68 @@ const picked = (qs, qid, picks) => {
   return (picks?.[qid] || []).map((id) => q.chips.find((c) => c.id === id) || (id.startsWith('p:') ? { id, text: id.slice(2), say: '' } : null)).filter(Boolean);
 };
 
-// Builds the draft from the answers. Deterministic: the same answers always give the same draft, and the draft
-// holds nothing that is not an answer, a checked fact or a gap. (Writing in the student's chosen voice comes later.)
+// ---- the student's profile as the backbone of the story --------------------------------------------------------
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const monthLabel = (ym) => { const m = /^(\d{4})-(\d{2})$/.exec(String(ym || '')); return m ? `${MONTHS[Number(m[2]) - 1]} ${m[1]}` : ''; };
+const LEVEL = { class10: 'Class 10', class12: 'Class 12', diploma: 'my diploma', bachelors: "my Bachelor's degree", masters: "my Master's degree", other: 'my studies' };
+const RANK = { class10: 1, class12: 2, diploma: 3, other: 3, bachelors: 4, masters: 5 };
+
+// "78%", "a CGPA of 8.2 out of 10", "a GPA of 3.4 out of 4". Another grading system is not worded: we cannot say what it means.
+function gradeText(a) {
+  if (a.grade === undefined || a.grade === null || a.grade === '') return '';
+  if (a.grade_type === 'percentage') return `${a.grade}%`;
+  if (a.grade_type === 'cgpa10') return `a CGPA of ${a.grade} out of 10`;
+  if (a.grade_type === 'gpa4') return `a GPA of ${a.grade} out of 4`;
+  return '';
+}
+
+// The up-to-two highest qualifications, oldest first, as sentences in the student's own details.
+function foundationLines(items) {
+  const rows = (items || []).filter((a) => a && a.institution);
+  rows.sort((x, y) => (RANK[y.level] || 0) - (RANK[x.level] || 0) || (Number(y.end_year) || 0) - (Number(x.end_year) || 0));
+  const out = [];
+  for (const a of rows.slice(0, 2).reverse()) {
+    const what = LEVEL[a.level] || 'my studies';
+    const field = a.field ? ` in ${a.field}` : '';
+    const grade = gradeText(a);
+    if (a.status === 'ongoing') {
+      out.push(S(`I am studying ${what}${field} at ${a.institution}${a.end_year ? `, due to finish in ${a.end_year}` : ''}.`));
+      if (grade) out.push(S(`My result so far is ${grade}.`));
+    } else {
+      out.push(S(`I completed ${what}${field} at ${a.institution}${a.end_year ? ` in ${a.end_year}` : ''}${grade ? `, with ${grade}` : ''}.`));
+    }
+  }
+  return out;
+}
+
+const workChipText = (w) => `My work as ${w.title} at ${w.employer}`;
+const workChipId = (w) => 'p:' + oneLine(workChipText(w), 117);
+const when = (w) => { const a = monthLabel(w.start), b = monthLabel(w.end); return a ? (b ? `${a} to ${b}` : `since ${a}`) : ''; };
+
+// The student's jobs, oldest first (up to two), as sentences. A job the student picked as their proudest work is left out
+// here, because the "proudest" sentence names it, with its dates.
+function workLines(items, skipIds) {
+  const out = [];
+  for (const w of (items || []).filter((x) => x && x.employer && x.title).slice(0, 2).reverse()) {
+    if (skipIds.includes(workChipId(w))) continue;
+    const d = when(w) ? `, ${when(w).startsWith('since') ? '' : 'from '}${when(w)}` : '';
+    if (w.type === 'internship') out.push(S(`I did an internship as ${w.title} at ${w.employer}${d}.`));
+    else if (w.type === 'part_time') out.push(S(`I worked part time as ${w.title} at ${w.employer}${d}.`));
+    else if (w.type === 'self_employed') out.push(S(`I worked for myself as ${w.title} (${w.employer})${d}.`));
+    else out.push(S(`I worked as ${w.title} at ${w.employer}${d}.`));
+  }
+  return out;
+}
+
+// ---- the draft --------------------------------------------------------------------------------------------------
+
+// Builds the draft from the answers and the profile, as a story in six paragraphs:
+//   1 where the interest began   2 the education behind it   3 the work and projects   4 why this course and university
+//   5 what comes after           6 what they bring, returning to where it began
+// Deterministic: the same answers always give the same draft, and the draft holds nothing that is not an answer, the
+// student's own profile, a checked fact or a gap. (Writing in the student's chosen voice and length comes later.)
+// ctx: { destName, courseName, uniName, group, profileChips, academic: [...], work: [...] } (the last two are the profile items)
 export function buildDraft(s, ctx, facts) {
   const qs = questions(ctx);
   const pk = s.picks || {};
@@ -260,10 +334,12 @@ export function buildDraft(s, ctx, facts) {
   const uni = ctx.uniName || 'the university';
   const course = ctx.courseName || 'this course';
   const own = (t) => (t ? S(endStop(t)) : null);
+  const gapMoment = () => GAP('Add what you saw or did that first interested you: one or two sentences');
 
   const interest = picked(qs, 'q1', pk);
-  const interestLine = interest.length ? S(`My interest in this subject started with ${list(interest.map((c) => lc(c.text)))}.`) : null;
-  const moment = own(nt.q1) || GAP('Add what you saw or did that first interested you: one or two sentences');
+  const interestList = interest.length ? list(interest.map((c) => lc(c.text))) : '';
+  const interestLine = interest.length ? S(`My interest in this subject started with ${interestList}.`) : null;
+  const moment = own(nt.q1) || gapMoment();
 
   const roles = picked(qs, 'q5', pk).filter((c) => c.id.startsWith('r_'));
   const where = picked(qs, 'q5', pk).filter((c) => c.id.startsWith('w_'));
@@ -273,44 +349,59 @@ export function buildDraft(s, ctx, facts) {
   if (where.some((c) => c.id === 'w_home')) goal.push(S('I plan to work back in my home country.'));
   if (!goal.length) goal.push(GAP('Add what you want to do after the course'));
 
+  // 1. the opening
   const arc = ARCS[s.arc || 0][0];
   let opening;
   if (arc === 'moment') opening = [moment, interestLine];
-  else if (arc === 'interest') opening = [interestLine, own(nt.q1) || GAP('Add what you saw or did that first interested you: one or two sentences')];
-  else opening = [...goal, own(nt.q1)];
+  else if (arc === 'interest') opening = [interestLine, moment];
+  else opening = [...goal, interestLine, own(nt.q1)];
 
-  const proud = picked(qs, 'q2', pk);
-  const work = [];
-  if (proud.length) work.push(S(`The work I am proudest of is ${list(proud.map((c) => lc(c.text)))}.`));
-  work.push(own(nt.q2) || GAP('Add what you did and what changed because of it: numbers help if you have them'));
-
-  const record = [];
+  // 2. the education behind it, and anything in the record the student wants to explain
+  const education = foundationLines(ctx.academic);
+  if (!education.length) education.push(GAP('Add where you studied and what you completed'));
   const rec = picked(qs, 'q3', pk).filter((c) => c.id !== 'none');
   if (rec.length) {
-    for (const c of rec) record.push(S(c.say));
-    record.push(own(nt.q3) || GAP('Add a short, honest explanation: what happened and what you did next'));
+    for (const c of rec) education.push(S(c.say));
+    education.push(own(nt.q3) || GAP('Add a short, honest explanation: what happened and what you did next'));
   }
 
-  const why = [];
+  // 3. the work and projects
+  const proud = picked(qs, 'q2', pk);
+  const workItems = ctx.work || [];
+  const proudText = (c) => {
+    const w = workItems.find((x) => x && x.employer && x.title && workChipId(x) === c.id);
+    return lc(c.text) + (w && when(w) ? ` (${when(w)})` : '');
+  };
+  const experience = [...workLines(workItems, proud.map((c) => c.id))];
+  if (proud.length) experience.push(S(`The work I am proudest of is ${list(proud.map(proudText))}.`));
+  experience.push(own(nt.q2) || GAP('Add what you did and what changed because of it: numbers help if you have them'));
+
+  // 4. why this course and university
+  const why = [S(`I am applying for the ${course} at ${uni}.`)];
   const f1 = fact('F1'), f2 = fact('F2'), f3 = fact('F3'), p1 = fact('P1');
   if (f1 || f2) {
-    const months = f2 ? list(f2.value.split(', ')) : '';
-    why.push(S(`${uni}'s ${course}${f1 ? ` takes ${f1.value}` : ''}${f1 && f2 ? ', with' : f2 ? ' has' : ''}${f2 ? ` intakes in ${months}` : ''}.`, 'f', [f1 && 'F1', f2 && 'F2'].filter(Boolean)));
+    const bits = [];
+    if (f1) bits.push(`takes ${f1.value}`);
+    if (f2) bits.push(`has intakes in ${list(f2.value.split(', '))}`);
+    why.push(S(`The course ${bits.join(', and ')}.`, 'f', [f1 && 'F1', f2 && 'F2'].filter(Boolean)));
   }
   const reasons = picked(qs, 'q4', pk).map((c) => c.say).filter(Boolean);
   if (reasons.length) why.push(S(`I chose it for ${list(reasons)}.`));
   why.push(own(nt.q4) || GAP('Add the part of the course that matters to you, and why'));
   // Said only when both numbers are on the page and the score meets the requirement. A score below it is not mentioned here.
-  if (f3 && p1 && f3.test === p1.test && p1.num >= f3.num) why.push(S(`My ${p1.value.replace(/ overall /, ' overall score of ')} meets the course requirement of ${f3.num}.`.replace('IELTS overall score of', 'IELTS overall score of'), 'f', ['F3', 'P1']));
+  if (f3 && p1 && f3.test === p1.test && p1.num >= f3.num) why.push(S(`My ${p1.value.replace(/ overall /, ' overall score of ')} meets the course requirement of ${f3.num}.`, 'f', ['F3', 'P1']));
 
-  const future = [];
-  if (arc !== 'goal') future.push(...goal);
-  future.push(own(nt.q5));
+  // 5. what comes after (when the draft opens with the goal, the goal has been said already)
+  const after = [...(arc === 'goal' ? [] : goal), own(nt.q5)];
+
+  // 6. what they bring, and back to where it began
   const bring = picked(qs, 'q6', pk);
-  if (bring.length) future.push(S(`On campus I will bring ${list(bring.map((c) => lc(c.text)))}.`));
-  future.push(own(nt.q6));
+  const close = [];
+  if (bring.length) close.push(S(`On campus I will bring ${list(bring.map((c) => lc(c.text)))}.`));
+  close.push(own(nt.q6));
+  if (interestList) close.push(S(`It began with ${interestList}, and I want to take it further at ${uni}.`));
 
-  return [opening, work, record, why, future].map((p) => p.filter(Boolean)).filter((p) => p.length).map((items) => ({ items }));
+  return [opening, education, experience, why, after, close].map((p) => p.filter(Boolean)).filter((p) => p.length).map((items) => ({ items }));
 }
 
 // Counts for the panel beside the draft.
