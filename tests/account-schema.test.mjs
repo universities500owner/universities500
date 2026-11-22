@@ -156,5 +156,15 @@ test('progress helpers', () => {
   assert.equal(sectionDone('work', { none: true }), true);
   assert.equal(sectionDone('english', { test: 'none' }), true);
   assert.equal(sectionDone('english', { test: 'ielts' }), false);
-  assert.deepEqual(SECTION_IDS, ['profile', 'academic', 'english', 'work', 'immigration', 'visa_au']);
+  assert.deepEqual(SECTION_IDS, ['profile', 'academic', 'english', 'work', 'immigration', 'visa_au', 'sop']);
+});
+
+test('the SOP section is checked by its own rules and counts as done only with a course and every answer', () => {
+  const ok = { dest: 'uk', uni: 'x-university', course_name: 'MSc Data Science', picks: { q1: ['project'], q2: ['team'], q3: ['none'], q4: ['taught'], q5: ['r_analyst'], q6: ['team'] }, tone: 'plain' };
+  const r = cleanSection('sop', ok);
+  assert.deepEqual(r.errors, {});
+  assert.equal(sectionDone('sop', r.value), true);
+  assert.equal(sectionDone('sop', { ...r.value, tone: undefined }), false);
+  assert.ok(cleanSection('sop', { picks: { q1: ['nope'] } }).errors['picks.q1']);
+  assert.equal(cleanSection('sop', { dest: 'uk', secret: 1 }).value.secret, undefined);
 });

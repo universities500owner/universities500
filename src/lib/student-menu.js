@@ -5,7 +5,7 @@ export const MENU = [
   ['profile', 'My profile', '/student/profile/'],
   ['shortlist', 'My shortlist', '/student/shortlist/'],
   ['visa', 'Visa self-check', '/student/visa-check/'],
-  ['sop', 'SOP editor', null],
+  ['sop', 'SOP builder', '/student/sop/'],
   ['lor', 'LOR helper', null],
   ['settings', 'Settings', '/student/settings/'],
 ];

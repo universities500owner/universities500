@@ -17,7 +17,7 @@ import { reply, guard, notConfigured, openSession, signedOut, safe } from './han
 
 const COLUMNS = 'id,email,display_name,full_name,created_at,updated_at,onboarded_at,marketing_opt_in,countries,level,stage,shortlist_count,sections';
 const SORTS = ['created_at', 'updated_at', 'email', 'shortlist_count'];
-const HIDDEN_SECTIONS = ['immigration', 'visa_au'];   // shown as "added", never opened here
+const HIDDEN_SECTIONS = ['immigration', 'visa_au', 'sop'];   // shown as "added", never opened here
 const PAGE_MAX = 1000;                                  // what Supabase returns in one request
 const EXPORT_MAX = 5000;
 const DAY = 86400000;

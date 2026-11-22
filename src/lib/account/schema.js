@@ -1,7 +1,8 @@
 // What a student account stores, and how each piece is checked.
 // This one file is used by the server (to reject anything unexpected before it is saved) and by the
 // dashboard pages (to draw the forms and the same error messages), so the two can never drift apart.
-// It holds no secrets and imports nothing, so it is safe to ship to the browser.
+// It holds no secrets and imports only the SOP builder's own plain-function model, so it is safe to ship to the browser.
+import { cleanSop, courseChosen, answersDone } from '../sop/model.js';
 
 export const CONSENT_VERSION = 'draft-2026-11';
 
@@ -246,6 +247,15 @@ export const SECTIONS = {
       if ((d.school_children || 0) > (d.children || 0)) errors[at + 'school_children'] = 'This cannot be more than the number of children.';
     },
   },
+
+  // The SOP builder (/student/sop/): the chosen course, the answers to the story questions, the voice and the student's edited text.
+  // Checked by its own function because its answers are choices and notes, not plain fields. Staff cannot open it (src/lib/account/admin.js).
+  sop: {
+    label: 'SOP builder',
+    blurb: 'Your course, your answers to the story questions and your draft.',
+    fields: [],
+    custom: cleanSop,
+  },
 };
 
 // Every section that is stored, and the ones that are filled in on the profile page (the rest have their own page).
@@ -257,6 +267,7 @@ export const PROFILE_SECTION_IDS = ['profile', 'academic', 'english', 'work', 'i
 export function cleanSection(name, input, now = Date.now()) {
   const spec = SECTIONS[name];
   if (!spec) return { value: {}, errors: { _: 'Unknown section.' } };
+  if (spec.custom) return spec.custom(input);
   const errors = {};
   const src = input && typeof input === 'object' && !Array.isArray(input) ? input : {};
   const value = cleanObject(spec.fields, src, '', errors);
@@ -325,6 +336,7 @@ export function sectionDone(name, data) {
     case 'english': return !!d.test && (d.test === 'none' || !!d.status);
     case 'work': return !!d.none || (Array.isArray(d.items) && d.items.length > 0);
     case 'immigration': return !!d.history;
+    case 'sop': return courseChosen(d) && answersDone(d);
     case 'visa_au': return SECTIONS.visa_au.fields.filter((f) => f.required).every((f) => d[f.id] !== undefined && d[f.id] !== null && d[f.id] !== '');
     default: return false;
   }

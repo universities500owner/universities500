@@ -233,7 +233,7 @@ test('a new student gets an empty account back', async () => {
   assert.equal(j.student.email, 'asharao@gmail.com');
   assert.equal(j.student.stage, null);
   assert.equal(j.student.onboarded_at, null);
-  assert.deepEqual(Object.keys(j.sections), ['profile', 'academic', 'english', 'work', 'immigration', 'visa_au']);
+  assert.deepEqual(Object.keys(j.sections), ['profile', 'academic', 'english', 'work', 'immigration', 'visa_au', 'sop']);
   assert.ok(!('consent_at' in j.student));
 });
 
@@ -325,6 +325,27 @@ test('the visa self-check answers save, read back, export and stay private', asy
   const b = await api.signIn('ravi.kumar@gmail.com');
   assert.deepEqual((await J(await api.me(b))).sections.visa_au, {});
   assert.ok(!(await (await api.export(b)).text()).includes('80000'));
+});
+
+test('SOP answers save through the account, refuse a wrong pick, export and stay private', async () => {
+  const { api } = setup();
+  const a = await api.signIn('asha.rao@gmail.com');
+  const sop = { dest: 'uk', uni: 'x-university', course_name: 'MSc Data Science', picks: { q1: ['project'], q2: ['team'], q3: ['none'], q4: ['taught'], q5: ['r_analyst'], q6: ['team'] }, notes: { q1: 'my secret note' }, tone: 'plain', arc: 1 };
+  const saved = await api.me(a, 'PATCH', { sections: { sop } });
+  assert.equal(saved.status, 200);
+  const back = (await J(await api.me(a))).sections.sop;
+  assert.deepEqual(back.picks.q5, ['r_analyst']);
+  assert.equal(back.tone, 'plain');
+  // a pick that is not on offer is refused with a message, and nothing is overwritten
+  const bad = await api.me(a, 'PATCH', { sections: { sop: { ...sop, picks: { ...sop.picks, q1: ['nope'] } } } });
+  assert.equal(bad.status, 422);
+  assert.ok((await J(bad)).errors.sections.sop['picks.q1']);
+  assert.equal((await J(await api.me(a))).sections.sop.picks.q1[0], 'project');
+  // the export holds it; another student sees none of it
+  assert.match(await (await api.export(a)).text(), /my secret note/);
+  const b = await api.signIn('ravi.kumar@gmail.com');
+  assert.deepEqual((await J(await api.me(b))).sections.sop, {});
+  assert.ok(!(await (await api.export(b)).text()).includes('my secret note'));
 });
 
 test('a student only ever sees their own details', async () => {

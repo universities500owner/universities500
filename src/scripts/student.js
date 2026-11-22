@@ -5,6 +5,7 @@ import { renderSection } from './student-form.js';
 import { assessAu, BAND_LABEL, BAND_SAY } from '../lib/visa/au-check.js';
 import { STATUSES, STATUS_LABEL, NOTE_MAX } from '../lib/account/saved.js';
 import { syncWithAccount, api as savedApi, clearLocal, forgetLocal } from './saved-sync.js';
+import { initSop } from './student-sop.js';
 
 const root = document.querySelector('[data-student]');
 const page = root.dataset.page;
@@ -446,6 +447,10 @@ function visa() {
   card.open = !sectionDone('visa_au', me.sections.visa_au);
 }
 
+// ---- SOP builder -----------------------------------------------------------------------------------------------
+
+function sop() { initSop({ root, me, api, getSaved: () => syncWithAccount() }); }
+
 // ---- start -----------------------------------------------------------------------------------------------------
 
 $$('[data-signout]').forEach((b) => b.addEventListener('click', async () => {
@@ -464,6 +469,6 @@ window.addEventListener('pageshow', (e) => { if (e.persisted) location.reload();
   if (!r.ok) return notice('We could not load your dashboard', r.j.message || 'Please try again.', { label: 'Try again', run: () => location.reload() });
   me = r.j;
   loading.hidden = true; content.hidden = false;
-  ({ overview, profile, settings, shortlist, visa }[page] || (() => {}))();
+  ({ overview, profile, settings, shortlist, visa, sop }[page] || (() => {}))();
   if (page !== 'shortlist') syncWithAccount().then((list) => { const sum = $('[data-sl-sum]'); if (list && sum && list.length) sum.textContent = `${list.length} saved: ${list.filter((i) => ['crs', 'mba'].includes(i.kind)).length} courses, ${list.filter((i) => i.kind === 'sch').length} scholarships, ${list.filter((i) => i.kind === 'int').length} internships.`; });
 })();
