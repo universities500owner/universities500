@@ -9,6 +9,8 @@ name: Profiles for all universities
 #
 # Run it from the Actions tab (Run workflow). Settings: CONTACT_EMAIL under Settings > Secrets and variables > Actions.
 on:
+  push:
+    branches: [profile-all]   # TEMPORARY: first run before this file is on main; removed before merge
   workflow_dispatch:
     inputs:
       note:
