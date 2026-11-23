@@ -80,6 +80,12 @@ def sections_of(html, url='', max_chars=MAX_SECTION_CHARS):
     return secs
 
 
+def title_of(html):
+    """The page's <title> text, which names the course on most pages. It is part of the text a quote may be found in."""
+    t = X.soup_of(html).find('title')
+    return re.sub(r'\s+', ' ', t.get_text(' ', strip=True)) if t else ''
+
+
 def page_text(secs):
     """The text a quote must be found in: every heading and line of every section."""
     return '\n'.join(f"{s['heading']}\n{s['text']}" for s in secs)
@@ -90,11 +96,12 @@ def page_hash(secs):
 
 
 def norm(text):
-    """Lower case, one kind of quote and dash, no spaces or markup: so a quote matches however the page spaced it."""
-    t = (text or '').lower().replace(' ', ' ')
-    t = re.sub(r'[‘’‚′]', "'", t)
-    t = re.sub(r'[“”„″]', '"', t)
-    t = re.sub(r'[‐-―−]', '-', t)
+    """Lower case, one kind of quote and dash, no spaces or markup: so a quote matches however the page spaced it.
+    Soft hyphens and zero-width characters (pages use them to break long words, as "Archi\u00adtec\u00adtural") are not part of the text."""
+    t = re.sub('[\u00ad\u200b-\u200d\u2060\ufeff]', '', text or '').lower().replace('\u00a0', ' ')
+    t = re.sub(r'[\u2018\u2019\u201a\u2032]', "'", t)
+    t = re.sub(r'[\u201c\u201d\u201e\u2033]', '"', t)
+    t = re.sub(r'[\u2010-\u2015\u2212]', '-', t)
     t = re.sub(r'[*_`]+', '', t)
     return re.sub(r'\s+', ' ', t).strip()
 
@@ -173,8 +180,10 @@ TOOL = {
 }
 
 
-def prompt_of(secs, url=''):
+def prompt_of(secs, url='', title=''):
     parts, used = [f'Course page: {url}'] if url else [], 0
+    if title:
+        parts.append(f'Page title: {title}')
     for s in secs:
         body = s['text'][:MAX_PROMPT_SECTION]
         block = f"[S{s['id']}] {'#' * max(1, s['level'])} {s['heading'] or '(no heading)'}\n{body}"
@@ -185,12 +194,12 @@ def prompt_of(secs, url=''):
     return '\n\n'.join(parts)
 
 
-def request_of(custom_id, secs, url='', model=MODEL):
+def request_of(custom_id, secs, url='', model=MODEL, title=''):
     """One Batch API request (a line of the batch)."""
     return {'custom_id': custom_id, 'params': {
         'model': model, 'max_tokens': 4500, 'system': SYSTEM,
         'tools': [TOOL], 'tool_choice': {'type': 'tool', 'name': 'record_course_detail'},
-        'messages': [{'role': 'user', 'content': prompt_of(secs, url)}]}}
+        'messages': [{'role': 'user', 'content': prompt_of(secs, url, title)}]}}
 
 
 # ---------------- checking what came back ----------------
@@ -225,9 +234,9 @@ def shown_text(item, key, hay):
     return q if 0 < len(q) <= 140 else ''
 
 
-def verify(tool_input, secs):
+def verify(tool_input, secs, title=''):
     """Return (detail, rejected). `detail` holds only what the page supports; `rejected` lists what was thrown away and why."""
-    hay = norm(page_text(secs))
+    hay = norm(page_text(secs) + '\n' + (title or ''))
     rejected = []
     ti = tool_input or {}
 
