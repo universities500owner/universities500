@@ -88,11 +88,11 @@ def held_pool(slug, per_uni, reader_dir=None):
     First the pages it could not settle (study mode or international students unclear), then pages it took for listings whose address looks like a degree."""
     seen = load((reader_dir or READER_DIR) / f'{slug}.json', {}).get('seen') or {}
     first, also, done = [], [], set()
-    for url, v in sorted(seen.items(), key=lambda kv: (not kv[0].startswith('https'), kv[0])):          # https first, so it is the one kept
+    for url, v in sorted(seen.items(), key=lambda kv: ('la=en' not in kv[0], not kv[0].startswith('https'), kv[0])):          # the English and https copies first, so they are the ones kept
         verdict = v[1] if isinstance(v, list) and len(v) > 1 else ''
         if verdict not in HELD_FIRST + HELD_ALSO:
             continue
-        key = re.sub(r'^https?://(?:www\d?\.)?', '', X.canon(url.replace(':443', '')))        # the same page over http and https, with or without www
+        key = re.sub(r'[?&]la=[a-z]{2}\b', '', re.sub(r'^https?://(?:www\d?\.)?', '', X.canon(url.replace(':443', ''))))        # the same page over http and https, with or without www, in either language
         if key in done or X.JUNK_PATH.search(url) or NOT_COURSE_PATH.search(url):
             continue
         done.add(key)
@@ -143,8 +143,9 @@ def prepare(a, fx=None):
             if prev.get(url, {}).get('hash') == h and not a.force:
                 skipped[slug] += 1
                 continue
-            requests.append(D.request_of(cid(url), secs, url, a.model))
-            pages[cid(url)] = {'uni': slug, 'url': url, 'hash': h, 'sections': secs}
+            title = D.title_of(res.text)
+            requests.append(D.request_of(cid(url), secs, url, a.model, title))
+            pages[cid(url)] = {'uni': slug, 'url': url, 'hash': h, 'sections': secs, 'title': title}
     (OUT / 'requests.jsonl').write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in requests), encoding='utf-8')
     (OUT / 'pages.json').write_text(json.dumps(pages, ensure_ascii=False), encoding='utf-8')
     print(f'{len(requests)} pages to read ({sum(skipped.values())} unchanged, {sum(failed.values())} could not be read) from {len(unis)} universities')
@@ -207,7 +208,7 @@ def collect(client, ids, pages, today, model=D.MODEL, dest=None):
             if not ti:
                 rep['failed'] += 1
                 continue
-            detail, rejected = D.verify(ti, page['sections'])
+            detail, rejected = D.verify(ti, page['sections'], page.get('title', ''))
             for what, why in rejected:
                 rep['rejected'][f'{what}: {why}'] += 1
             detail.update({'hash': page['hash'], 'readOn': today, 'model': model, 'eligible': D.eligibility(detail)})

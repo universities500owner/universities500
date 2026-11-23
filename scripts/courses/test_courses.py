@@ -1157,6 +1157,21 @@ class PilotFieldsTests(unittest.TestCase):
         self.assertEqual(D.eligibility(detail), 'no')                                                    # no level, so never listed
         self.assertEqual(len(rejected), 5)
 
+    def test_soft_hyphens_and_page_title(self):
+        html = ('<html><head><title>Architectural Design, MSc | Chalmers</title></head><body><main><h1>Archi\u00adtec\u00adtural Design</h1>'
+                '<p>' + 'The programme teaches design of buildings and cities in depth. ' * 8 + '</p><h2>Requirements</h2><p>A bachelor\'s degree in architecture.</p></main></body></html>')
+        secs = D.sections_of(html, 'https://u.edu/x')
+        title = D.title_of(html)
+        self.assertEqual(title, 'Architectural Design, MSc | Chalmers')
+        self.assertEqual(D.norm('Archi\u00adtec\u00adtural\u200b Design'), 'architectural design')            # a soft hyphen is not part of the words
+        ans = {'sections': [], 'course_name': {'text': 'Architectural Design, MSc', 'quote': 'Architectural Design, MSc'}}
+        detail, rejected = D.verify(ans, secs, title)                                                         # the name is in the title, not in the page's own text
+        self.assertEqual(detail['facts']['courseName']['text'], 'Architectural Design, MSc')
+        self.assertEqual(rejected, [])
+        detail, rejected = D.verify(ans, secs)                                                                # without the title the quote is not found
+        self.assertEqual(rejected, [('course_name', 'quote-not-on-page')])
+        self.assertIn('Page title: Architectural Design, MSc | Chalmers', D.request_of('c1', secs, 'https://u.edu/x', title=title)['params']['messages'][0]['content'])
+
     def test_course_name_falls_back_to_the_pages_own_heading(self):
         secs = self.secs()
         ans = pilot_answer(secs)
@@ -1208,6 +1223,13 @@ class HeldPoolTests(unittest.TestCase):
     def test_pool_is_capped_and_prefers_unsettled_pages(self):
         got = DR.held_pool('u', 2, self.tmp)
         self.assertEqual([r['verdict'] for r in got], ['international-unclear', 'study-mode-unclear'])
+
+    def test_english_copy_of_a_page_is_kept_over_the_other_language(self):
+        seen = {'https://u.se/utbildning/master/ai-masterprogram/': ['2026-11-17', 'study-mode-unclear'],
+                'https://u.se/utbildning/master/ai-masterprogram/?la=en': ['2026-11-17', 'study-mode-unclear']}
+        (self.tmp / 'v.json').write_text(json.dumps({'slug': 'v', 'seen': seen}))
+        got = DR.held_pool('v', 20, self.tmp)
+        self.assertEqual([r['url'] for r in got], ['https://u.se/utbildning/master/ai-masterprogram/?la=en'])
 
     def test_missing_reader_file_gives_nothing(self):
         self.assertEqual(DR.held_pool('nope', 5, self.tmp), [])
