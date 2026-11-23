@@ -10,6 +10,7 @@ export const UNCHECKED = [
   '/course-fitment/',
   '/budget/',
   '/search/',
+  '/courses-preview/',   // internal pilot preview, never public
 ];
 // A path is hidden if it is listed, or sits under a listed path.
 export const hiddenFromSearch = (path) => [...DRAFT, ...ACCOUNT, ...UNCHECKED].some((p) => path === p || (p !== '/' && path.startsWith(p)));

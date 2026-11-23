@@ -1,0 +1,150 @@
+---
+// PILOT PREVIEW. Not linked from anywhere and kept out of search and the sitemap (see src/lib/noindex.js).
+// It shows what the Haiku detail step read from course pages the Python reader held back (data/course-pilot/*.json),
+// so the values can be checked by eye against the quote each one rests on. Nothing here is shown on /courses/.
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import unis from '../../data/universities.json';
+
+const files = import.meta.glob('../../../data/course-pilot/*.json', { eager: true, import: 'default' });
+const uniName = new Map(unis.map((u) => [u.slug, u.name]));
+
+const clip = (t, n = 320) => { const s = String(t || '').replace(/\s+/g, ' ').trim(); return s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + '…' : s; };
+const sec = (p, k) => (p.sections && p.sections[k] && p.sections[k][0] && p.sections[k][0].text) || '';
+const LEVEL = { bachelor: 'Bachelor', master: 'Master', doctorate: 'Doctorate', other_award: 'Other award', not_a_degree_page: 'Not a degree page' };
+const DELIVERY = { on_campus: 'On campus', online: 'Online', blended: 'Blended', unclear: 'Study mode unclear' };
+const INTL = { open: 'International open', restricted: 'International restricted', unstated: 'International not stated' };
+
+// The 13 fields, in the order the pilot reports them. Each gives the text to show and the quote it rests on (if any).
+function fields(p) {
+  const f = p.facts || {};
+  const list = (arr, fn) => (arr || []).map(fn).filter(Boolean);
+  const fee = list(f.fees, (x) => `${x.amount} ${x.currency}${x.period && x.period !== 'unknown' ? ' per ' + x.period : ''} (${x.audience})`);
+  const intlFee = (f.fees || []).some((x) => x.audience === 'international' && x.period === 'year');
+  const english = f.ielts ? `IELTS ${f.ielts.overall}${f.ielts.minBand ? `, no band below ${f.ielts.minBand}` : ''}` : list(f.otherEnglish, (x) => `${x.test} ${x.score || ''}`.trim()).join('; ') || clip(sec(p, 'english_requirements'));
+  return [
+    ['Course name', f.courseName && f.courseName.text, f.courseName && f.courseName.quote],
+    ['Overview', clip(sec(p, 'overview')), ''],
+    ['Faculty or school', f.faculty && f.faculty.text, f.faculty && f.faculty.quote],
+    ['International fee per year', intlFee ? fee.join('; ') : '', ''],
+    ['Any fee found', fee.join('; '), (f.fees && f.fees[0] && f.fees[0].quote) || ''],
+    ['Scholarships', list(f.scholarships, (x) => x.name + (x.amount ? ` (${x.amount})` : '')).join('; ') || clip(sec(p, 'scholarships')), (f.scholarships && f.scholarships[0] && f.scholarships[0].quote) || ''],
+    ['Admission requirement', (f.academicEntry && f.academicEntry.text) || clip(sec(p, 'entry_requirements')), f.academicEntry && f.academicEntry.quote],
+    ['English test', english, f.ielts && f.ielts.quote],
+    ['Additional requirements', list(f.additionalRequirements, (x) => `${x.kind}: ${x.text}`).join(' | '), ''],
+    ['Programme objectives', clip(sec(p, 'objectives')), ''],
+    ['Career outcomes', clip(sec(p, 'careers')) || (f.employers || []).join(', '), ''],
+    ['Industry connections', list(f.industryLinks, (x) => x.text).join(' | ') || clip(sec(p, 'industry_placements')), ''],
+    ['Internships or placements', list(f.internships, (x) => x.text).join(' | '), ''],
+  ];
+}
+
+const groups = [];
+let degreePages = 0, allPages = 0;
+for (const [path, mod] of Object.entries(files)) {
+  const slug = (mod.slug || path.split('/').pop().replace('.json', ''));
+  const rows = [];
+  for (const [url, p] of Object.entries(mod.pages || {})) {
+    allPages++;
+    const f = p.facts || {};
+    const level = f.level && f.level.value;
+    if (!level || level === 'not_a_degree_page') continue;
+    degreePages++;
+    const fl = fields(p);
+    rows.push({ url, p, f, level, fl, filled: fl.filter((x) => x[1]).length, name: (f.courseName && f.courseName.text) || url.replace(/^https?:\/\//, '') });
+  }
+  rows.sort((a, b) => a.name.localeCompare(b.name, 'en'));
+  groups.push({ slug, name: uniName.get(slug) || slug, rows });
+}
+groups.sort((a, b) => a.name.localeCompare(b.name, 'en'));
+const tally = (rows, e) => rows.filter((r) => r.p.eligible === e).length;
+---
+<Base
+  title="Course pilot preview | Universities500"
+  description="Internal preview of pilot course data. Not published."
+  path="/courses-preview/"
+  noindex={true}
+  current="courses"
+  share={false}
+  signup={false}
+  bar={false}
+>
+  <PageHead slot="head" crumbs={[['Course pilot preview', null]]} title="Course pilot preview" lede="Internal. What the pilot read from course pages the reader had held back. Each value sits next to the words on the page it rests on, so you can check it. None of this is on the live course list." />
+
+  <section class="sec pv">
+    <p class="pv-note"><strong>{degreePages}</strong> degree pages from <strong>{groups.length}</strong> universities ({allPages - degreePages} other pages read were not course pages and are left out). “Yes” means the pilot found Bachelor or Master, on campus and open to international students. “Maybe” means one of those was not stated. “No” means the page says otherwise. The pilot’s own call can be wrong, so open a row and read the words it rests on.</p>
+
+    <ul class="pv-jump">
+      {groups.map((g) => <li><a href={`#${g.slug}`}>{g.name}</a> <span>{g.rows.length}</span></li>)}
+    </ul>
+
+    {groups.map((g) => (
+      <section class="pv-uni" id={g.slug} aria-labelledby={`h-${g.slug}`}>
+        <h2 id={`h-${g.slug}`}>{g.name}</h2>
+        <p class="pv-count">{g.rows.length} degree pages · yes {tally(g.rows, 'yes')} · maybe {tally(g.rows, 'maybe')} · no {tally(g.rows, 'no')}</p>
+        {g.rows.map((r) => (
+          <details class="pv-row">
+            <summary>
+              <span class="pv-name">{r.name}</span>
+              <span class={`pv-elig pv-${r.p.eligible}`}>{r.p.eligible}</span>
+              <span class="pv-chips">
+                <span>{LEVEL[r.level] || r.level}</span>
+                <span>{DELIVERY[(r.f.delivery && r.f.delivery.value) || 'unclear'] || 'Study mode unclear'}</span>
+                <span>{INTL[(r.f.international && r.f.international.value) || 'unstated'] || 'International not stated'}</span>
+                <span class="pv-fill">{r.filled}/13 fields</span>
+              </span>
+            </summary>
+            <div class="pv-body">
+              <p class="pv-src"><a href={r.url} rel="noopener">{r.url}</a> · read {r.p.readOn}</p>
+              <h3>How the three eligibility calls were made</h3>
+              <dl class="pv-ev">
+                {[['Level', r.f.level], ['Delivery', r.f.delivery], ['International', r.f.international]].map(([label, x]) => (
+                  <div><dt>{label}: {x && x.value ? x.value.replace('_', ' ') : 'not found'}</dt><dd>{x && x.quote ? `“${clip(x.quote, 200)}”` : 'No words on the page found for this.'}</dd></div>
+                ))}
+              </dl>
+              <h3>The 13 fields</h3>
+              <dl class="pv-f">
+                {r.fl.map(([label, text, quote]) => (
+                  <div class={text ? '' : 'pv-miss'}>
+                    <dt>{label}</dt>
+                    <dd>{text ? text : 'Not found'}{text && quote && quote !== text ? <small>Page says: “{clip(quote, 220)}”</small> : null}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </details>
+        ))}
+      </section>
+    ))}
+  </section>
+</Base>
+
+<style>
+  .pv-note { max-width: 70ch; line-height: 1.6; margin: 0 0 1rem; }
+  .pv-jump { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem .5rem; }
+  .pv-jump li { border: 1px solid var(--k-cobalt); background: var(--k-card); padding: .3rem .8rem; font-weight: 600; }
+  .pv-jump a { color: var(--k-cobalt); text-decoration: none; }
+  .pv-jump span { color: var(--muted); font-weight: 500; margin-left: .3rem; }
+  .pv-uni { margin-top: 2rem; scroll-margin-top: 5rem; }
+  .pv-uni h2 { margin: 0 0 .2rem; }
+  .pv-count { margin: 0 0 .8rem; color: var(--muted); }
+  .pv-row { background: var(--k-card); border: 1px solid var(--k-hair); border-left: .35rem solid var(--k-mint); margin-top: .5rem; }
+  .pv-row summary { cursor: pointer; padding: .7rem 1rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .3rem .8rem; align-items: start; list-style: none; }
+  .pv-row summary::-webkit-details-marker { display: none; }
+  .pv-row summary:focus-visible { outline: 3px solid var(--k-cobalt); outline-offset: 2px; }
+  .pv-name { font-weight: 700; color: var(--k-title); overflow-wrap: anywhere; }
+  .pv-elig { justify-self: end; font-weight: 700; padding: .05rem .6rem; border: 1px solid currentColor; }
+  .pv-yes { color: #0B6B3A; }
+  .pv-maybe { color: #8A5A00; }
+  .pv-no { color: #A12A2A; }
+  .pv-chips { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .3rem .5rem; font-size: .9rem; }
+  .pv-chips span { border: 1px solid var(--k-hair); padding: .05rem .55rem; }
+  .pv-body { padding: 0 1rem 1rem; border-top: 1px solid var(--k-hair); }
+  .pv-body h3 { font-size: 1rem; color: var(--k-title); margin: 1rem 0 .4rem; }
+  .pv-src { font-size: .9rem; overflow-wrap: anywhere; margin: .8rem 0 0; }
+  .pv-ev, .pv-f { margin: 0; display: grid; gap: .5rem; }
+  .pv-ev dt, .pv-f dt { font-weight: 700; }
+  .pv-ev dd, .pv-f dd { margin: 0; line-height: 1.5; overflow-wrap: anywhere; }
+  .pv-f small { display: block; color: var(--muted); margin-top: .15rem; }
+  .pv-miss dd { color: var(--muted); }
+</style>
